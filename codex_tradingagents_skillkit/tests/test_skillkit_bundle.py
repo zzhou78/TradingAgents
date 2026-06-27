@@ -40,13 +40,16 @@ EXPECTED_SKILLS = [
 def test_bundle_has_expected_skills_and_docs():
     assert (BUNDLE / "README.md").exists()
     assert (BUNDLE / "MANIFEST.md").exists()
+    assert (BUNDLE / "scripts" / "collect_role_evidence.py").exists()
     assert (BUNDLE / "docs" / "STUDY_LOCAL_SETUP_AND_SAFETY_REVIEW.md").exists()
     assert (BUNDLE / "docs" / "ARCHITECTURE_LEARNING_NOTES.md").exists()
 
     readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
     manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
     assert "Real data retrieval and processing still uses upstream Python" in readme
+    assert "Codex acts each TradingAgents role using the converted skills" in readme
     assert "not a vendored runtime distribution" in manifest
+    assert "collect_role_evidence.py" in manifest
     assert "--ticker AAPL,MSFT" in readme
 
     actual = sorted(path.name for path in SKILLS_ROOT.glob("tradingagents-*") if path.is_dir())

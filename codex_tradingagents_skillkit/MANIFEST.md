@@ -42,9 +42,9 @@ Data and runner skills:
 - `tradingagents-dataflow-routing`
 - `tradingagents-ticker-workflow-runner`
 
-## Runtime Entry Point
+## Runtime Entry Points
 
-Use the offline workflow packet generator:
+Use the workflow packet generator when you only want to prepare the Codex skill sequence:
 
 ```powershell
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\skills\tradingagents-ticker-workflow-runner\scripts\prepare_skill_workflow.py --ticker AAPL,MSFT --trade-date 2026-06-27 --format json
@@ -57,7 +57,47 @@ Ticker input options:
 
 The output names the skills to run, inferred asset type, report keys, and safety boundaries.
 
+Use the evidence collector when you want upstream TradingAgents dataflow tools to gather role-specific evidence for Codex-operated reports:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
+```
+
+The evidence collector writes outputs under `codex_tradingagents_skillkit/runs/`
+by default:
+- `evidence/<TICKER>/<DATE>/evidence.json`
+- `evidence/<TICKER>/<DATE>/role_packets.md`
+- `evidence_summary.json`
+- `tradingagents_results/`
+- `tradingagents_cache/`
+- `tradingagents_memory/trading_memory.md`
+- `yfinance_cache/`
+
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.
 - The packet lists `tradingagents-dataflow-routing` as the data-routing skill.
-- No live LLM, market-data vendor, cache, checkpoint, or broker action is run by this command.
+- The packet command does not run live LLM, market-data vendor, cache, checkpoint, or broker actions.
+- The evidence command can call market-data vendors through upstream dataflow tools, but it does not call upstream `TradingAgentsGraph` or any LLM backend.
+
+## API and Model Requirements
+
+The Codex skills themselves do not require API keys. In the Codex-operated
+workflow, Codex is the role reasoning engine, so no separate cloud LLM key or
+local Ollama/OpenAI-compatible endpoint is required for analyst, researcher,
+trader, risk, or portfolio-manager reasoning.
+
+Data APIs are separate from LLM APIs. The default yfinance route is keyless but
+uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
+
+## Codex-Operated Report Contract
+
+1. Run `collect_role_evidence.py` for the nominated tickers and date.
+2. Codex follows the workflow skills converted from `tradingagents/graph`.
+3. Codex acts each role independently:
+   - analyst roles read only their own role evidence;
+   - bull and bear researchers read only completed analyst reports;
+   - trader reads the research-manager decision;
+   - risk analysts read the trader proposal and completed upstream reports;
+   - portfolio manager reads the risk debate and produces the final paper-study decision.
+4. Codex writes TradingAgents-style markdown sections under the run output folder.
+5. No broker integration, GCAF connection, or real trading instruction is allowed.
