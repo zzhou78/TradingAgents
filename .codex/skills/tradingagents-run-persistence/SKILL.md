@@ -29,6 +29,14 @@ Procedure:
 Output:
 - Initial-state contract, checkpoint behavior, final state log, optional report tree, deferred reflection update, and parsed rating.
 
+Complete report assembly:
+- `complete_report.md` should mimic original TradingAgents while making debate turns visible.
+- I. Analyst Team Reports: Market Analyst, Sentiment Analyst, News Analyst, and Fundamentals Analyst.
+- II. Research Team Debate: Bull Researcher Round 1, Bear Researcher Round 1, and Research Manager Decision.
+- III. Trading Team Plan: Trader Proposal and the FINAL TRANSACTION PROPOSAL line.
+- IV. Risk Management Team Debate: Aggressive Analyst Round 1, Conservative Analyst Round 1, and Neutral Analyst Round 1.
+- V. Portfolio Manager Decision: Rating, Executive Summary, Investment Thesis, Optional Price Target, and Optional Time Horizon.
+
 Safety boundaries:
 - Do not write outside configured cache/results directories; use safe ticker path components.
 - Do not treat logged decisions or reflections as real investment advice.

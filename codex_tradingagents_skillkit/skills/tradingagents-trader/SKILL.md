@@ -18,7 +18,9 @@ Prompt contract:
 - Transaction direction is exactly Buy / Hold / Sell.
 - Produce a structured `TraderProposal`.
 - Rendered markdown must include `**Action**` and `**Reasoning**`.
-- Include optional entry price, stop loss, and position sizing only when supported.
+- Optional entry price: include only when supported.
+- Optional stop loss: include only when supported.
+- Optional position sizing note: include only when supported.
 - Preserve the trailing `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` compatibility line.
 - Use the configured output language when `output_language` is not English.
 

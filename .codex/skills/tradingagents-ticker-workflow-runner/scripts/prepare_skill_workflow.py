@@ -6,7 +6,6 @@ from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 
-
 DEFAULT_ANALYSTS = ["market", "social", "news", "fundamentals"]
 VALID_ANALYSTS = set(DEFAULT_ANALYSTS)
 WORKFLOW_SKILLS = [

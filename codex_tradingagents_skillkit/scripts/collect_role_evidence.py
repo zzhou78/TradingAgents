@@ -1,15 +1,17 @@
+# ruff: noqa: E402
+
 from __future__ import annotations
 
 import argparse
 import json
 import sys
+from collections.abc import Callable
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import yfinance as yf
 from yfinance import cache as yf_cache
-
 
 BUNDLE_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = BUNDLE_ROOT.parent
@@ -35,7 +37,6 @@ from tradingagents.agents.utils.news_data_tools import (
 from tradingagents.agents.utils.technical_indicators_tools import get_indicators
 from tradingagents.dataflows.config import set_config
 from tradingagents.default_config import DEFAULT_CONFIG
-
 
 DEFAULT_ANALYSTS = ["market", "social", "news", "fundamentals"]
 VALID_ANALYSTS = set(DEFAULT_ANALYSTS)
@@ -66,6 +67,8 @@ WORKFLOW_SKILLS = [
     "tradingagents-debate-routing",
     "tradingagents-run-persistence",
 ]
+DEFAULT_MAX_DEBATE_ROUNDS = 1
+DEFAULT_MAX_RISK_DISCUSS_ROUNDS = 1
 
 
 def _split_tickers(raw: str) -> list[str]:
@@ -89,10 +92,7 @@ def _start_date(trade_date: str, lookback_days: int) -> str:
 
 def _call_tool(func: Callable[..., Any], **kwargs: Any) -> dict[str, Any]:
     try:
-        if hasattr(func, "invoke"):
-            value = func.invoke(kwargs)
-        else:
-            value = func(**kwargs)
+        value = func.invoke(kwargs) if hasattr(func, "invoke") else func(**kwargs)
         return {"status": "ok", "args": kwargs, "output": str(value)}
     except Exception as exc:  # noqa: BLE001 - evidence collection records failures.
         return {"status": "error", "args": kwargs, "error": str(exc)}
@@ -284,18 +284,35 @@ def _write_single_role_packet(
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def _report_paths(report_dir: Path, selected_analysts: list[str]) -> dict[str, str]:
+def _report_paths(
+    report_dir: Path,
+    selected_analysts: list[str],
+    max_debate_rounds: int,
+    max_risk_discuss_rounds: int,
+) -> dict[str, str]:
     paths = {
-        "bull_researcher": str(report_dir / "2_research" / "bull.md"),
-        "bear_researcher": str(report_dir / "2_research" / "bear.md"),
         "research_manager": str(report_dir / "2_research" / "manager.md"),
         "trader": str(report_dir / "3_trading" / "trader.md"),
-        "aggressive_risk_analyst": str(report_dir / "4_risk" / "aggressive.md"),
-        "conservative_risk_analyst": str(report_dir / "4_risk" / "conservative.md"),
-        "neutral_risk_analyst": str(report_dir / "4_risk" / "neutral.md"),
         "portfolio_manager": str(report_dir / "5_portfolio" / "decision.md"),
         "complete_report": str(report_dir / "complete_report.md"),
     }
+    for round_number in range(1, max_debate_rounds + 1):
+        paths[f"bull_researcher_round_{round_number}"] = str(
+            report_dir / "2_research" / f"bull_round_{round_number}.md"
+        )
+        paths[f"bear_researcher_round_{round_number}"] = str(
+            report_dir / "2_research" / f"bear_round_{round_number}.md"
+        )
+    for round_number in range(1, max_risk_discuss_rounds + 1):
+        paths[f"aggressive_risk_round_{round_number}"] = str(
+            report_dir / "4_risk" / f"aggressive_round_{round_number}.md"
+        )
+        paths[f"conservative_risk_round_{round_number}"] = str(
+            report_dir / "4_risk" / f"conservative_round_{round_number}.md"
+        )
+        paths[f"neutral_risk_round_{round_number}"] = str(
+            report_dir / "4_risk" / f"neutral_round_{round_number}.md"
+        )
     for role in selected_analysts:
         key = "sentiment_report" if role == "social" else f"{role}_report"
         paths[key] = str(report_dir / "1_analysts" / ANALYST_REPORT_FILES[role])
@@ -309,8 +326,15 @@ def _workflow_state(
     role_packet_paths: dict[str, str],
     evidence_path: Path,
     report_dir: Path,
+    max_debate_rounds: int,
+    max_risk_discuss_rounds: int,
 ) -> dict[str, Any]:
-    paths = _report_paths(report_dir, selected_analysts)
+    paths = _report_paths(
+        report_dir,
+        selected_analysts,
+        max_debate_rounds,
+        max_risk_discuss_rounds,
+    )
     stages = []
     for role in selected_analysts:
         stage_name = ANALYST_STAGE_NAMES[role]
@@ -334,58 +358,80 @@ def _workflow_state(
         paths["sentiment_report" if role == "social" else f"{role}_report"]
         for role in selected_analysts
     ]
-    downstream = [
-        ("bull_researcher", "tradingagents-bull-researcher", analyst_outputs),
-        (
-            "bear_researcher",
-            "tradingagents-bear-researcher",
-            analyst_outputs + [paths["bull_researcher"]],
-        ),
-        (
-            "research_manager",
-            "tradingagents-research-manager",
-            analyst_outputs + [paths["bull_researcher"], paths["bear_researcher"]],
-        ),
-        (
-            "trader",
-            "tradingagents-trader",
-            analyst_outputs + [paths["research_manager"]],
-        ),
-        (
-            "aggressive_risk_analyst",
-            "tradingagents-aggressive-risk-analyst",
-            analyst_outputs + [paths["research_manager"], paths["trader"]],
-        ),
-        (
-            "conservative_risk_analyst",
-            "tradingagents-conservative-risk-analyst",
-            analyst_outputs
-            + [paths["research_manager"], paths["trader"], paths["aggressive_risk_analyst"]],
-        ),
-        (
-            "neutral_risk_analyst",
-            "tradingagents-neutral-risk-analyst",
-            analyst_outputs
-            + [
-                paths["research_manager"],
-                paths["trader"],
-                paths["aggressive_risk_analyst"],
-                paths["conservative_risk_analyst"],
-            ],
-        ),
+    downstream = []
+    research_debate_outputs = []
+    for round_number in range(1, max_debate_rounds + 1):
+        bull_stage = f"bull_researcher_round_{round_number}"
+        bear_stage = f"bear_researcher_round_{round_number}"
+        downstream.append(
+            (
+                bull_stage,
+                "tradingagents-bull-researcher",
+                analyst_outputs + research_debate_outputs,
+            )
+        )
+        downstream.append(
+            (
+                bear_stage,
+                "tradingagents-bear-researcher",
+                analyst_outputs + research_debate_outputs + [paths[bull_stage]],
+            )
+        )
+        research_debate_outputs.extend([paths[bull_stage], paths[bear_stage]])
+
+    downstream.extend(
+        [
+            (
+                "research_manager",
+                "tradingagents-research-manager",
+                analyst_outputs + research_debate_outputs,
+            ),
+            (
+                "trader",
+                "tradingagents-trader",
+                analyst_outputs + [paths["research_manager"]],
+            ),
+        ]
+    )
+    risk_debate_outputs = []
+    for round_number in range(1, max_risk_discuss_rounds + 1):
+        aggressive_stage = f"aggressive_risk_round_{round_number}"
+        conservative_stage = f"conservative_risk_round_{round_number}"
+        neutral_stage = f"neutral_risk_round_{round_number}"
+        base_risk_inputs = analyst_outputs + [paths["research_manager"], paths["trader"]]
+        downstream.append(
+            (
+                aggressive_stage,
+                "tradingagents-aggressive-risk-analyst",
+                base_risk_inputs + risk_debate_outputs,
+            )
+        )
+        downstream.append(
+            (
+                conservative_stage,
+                "tradingagents-conservative-risk-analyst",
+                base_risk_inputs + risk_debate_outputs + [paths[aggressive_stage]],
+            )
+        )
+        downstream.append(
+            (
+                neutral_stage,
+                "tradingagents-neutral-risk-analyst",
+                base_risk_inputs
+                + risk_debate_outputs
+                + [paths[aggressive_stage], paths[conservative_stage]],
+            )
+        )
+        risk_debate_outputs.extend(
+            [paths[aggressive_stage], paths[conservative_stage], paths[neutral_stage]]
+        )
+    downstream.append(
         (
             "portfolio_manager",
             "tradingagents-portfolio-manager",
-            analyst_outputs
-            + [
-                paths["research_manager"],
-                paths["trader"],
-                paths["aggressive_risk_analyst"],
-                paths["conservative_risk_analyst"],
-                paths["neutral_risk_analyst"],
-            ],
-        ),
-    ]
+            analyst_outputs + [paths["research_manager"], paths["trader"]] + risk_debate_outputs,
+        )
+    )
     for stage_name, skill, allowed_inputs in downstream:
         stages.append(
             {
@@ -419,6 +465,8 @@ def _workflow_state(
         "requires_user_input": False,
         "uses_tradingagents_graph": False,
         "report_style": "tradingagents",
+        "max_debate_rounds": max_debate_rounds,
+        "max_risk_discuss_rounds": max_risk_discuss_rounds,
         "evidence_path": str(evidence_path),
         "report_dir": str(report_dir),
         "report_paths": paths,
@@ -435,6 +483,8 @@ def _workflow_state(
 
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
+    max_debate_rounds = max(1, args.max_debate_rounds)
+    max_risk_discuss_rounds = max(1, args.max_risk_discuss_rounds)
     tickers: list[str] = []
     for raw in args.ticker:
         tickers.extend(_split_tickers(raw))
@@ -449,6 +499,8 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     summary = {
         "trade_date": args.trade_date,
         "selected_analysts": selected_analysts,
+        "max_debate_rounds": max_debate_rounds,
+        "max_risk_discuss_rounds": max_risk_discuss_rounds,
         "output_dir": str(output_dir),
         "codex_operated": True,
         "uses_tradingagents_graph": False,
@@ -496,6 +548,8 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                     role_packet_paths,
                     evidence_path,
                     report_dir,
+                    max_debate_rounds,
+                    max_risk_discuss_rounds,
                 ),
                 indent=2,
             ),
@@ -527,6 +581,8 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=BUNDLE_ROOT / "runs")
     parser.add_argument("--selected-analysts", default=",".join(DEFAULT_ANALYSTS))
     parser.add_argument("--lookback-days", type=int, default=30)
+    parser.add_argument("--max-debate-rounds", type=int, default=DEFAULT_MAX_DEBATE_ROUNDS)
+    parser.add_argument("--max-risk-discuss-rounds", type=int, default=DEFAULT_MAX_RISK_DISCUSS_ROUNDS)
     return parser.parse_args(argv)
 
 

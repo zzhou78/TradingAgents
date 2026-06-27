@@ -4,7 +4,6 @@ import importlib.util
 import json
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 COLLECTOR_PATH = (
     ROOT / "codex_tradingagents_skillkit" / "scripts" / "collect_role_evidence.py"
@@ -99,6 +98,17 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert workflow["report_style"] == "tradingagents"
         stage_names = [stage["stage"] for stage in workflow["stages"]]
         assert stage_names[:2] == ["market_analyst", "news_analyst"]
+        assert stage_names[2:] == [
+            "bull_researcher_round_1",
+            "bear_researcher_round_1",
+            "research_manager",
+            "trader",
+            "aggressive_risk_round_1",
+            "conservative_risk_round_1",
+            "neutral_risk_round_1",
+            "portfolio_manager",
+            "complete_report",
+        ]
         assert stage_names[-1] == "complete_report"
 
         market_stage = workflow["stages"][0]
@@ -108,10 +118,44 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
 
         report_paths = workflow["report_paths"]
         normalized_market_report = report_paths["market_report"].replace("\\", "/")
+        normalized_bull_round = report_paths["bull_researcher_round_1"].replace("\\", "/")
+        normalized_bear_round = report_paths["bear_researcher_round_1"].replace("\\", "/")
+        normalized_aggressive_round = report_paths["aggressive_risk_round_1"].replace("\\", "/")
         normalized_complete_report = report_paths["complete_report"].replace("\\", "/")
         ticker = run["ticker"]
         assert normalized_market_report.endswith(f"reports/{ticker}/2026-06-27/1_analysts/market.md")
+        assert normalized_bull_round.endswith(f"reports/{ticker}/2026-06-27/2_research/bull_round_1.md")
+        assert normalized_bear_round.endswith(f"reports/{ticker}/2026-06-27/2_research/bear_round_1.md")
+        assert normalized_aggressive_round.endswith(
+            f"reports/{ticker}/2026-06-27/4_risk/aggressive_round_1.md"
+        )
         assert normalized_complete_report.endswith(f"reports/{ticker}/2026-06-27/complete_report.md")
+
+        stages_by_name = {stage["stage"]: stage for stage in workflow["stages"]}
+        assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"] == [
+            report_paths["market_report"],
+            report_paths["news_report"],
+        ]
+        assert stages_by_name["bear_researcher_round_1"]["allowed_inputs"] == [
+            report_paths["market_report"],
+            report_paths["news_report"],
+            report_paths["bull_researcher_round_1"],
+        ]
+        assert stages_by_name["research_manager"]["allowed_inputs"] == [
+            report_paths["market_report"],
+            report_paths["news_report"],
+            report_paths["bull_researcher_round_1"],
+            report_paths["bear_researcher_round_1"],
+        ]
+        assert report_paths["aggressive_risk_round_1"] in stages_by_name[
+            "conservative_risk_round_1"
+        ]["allowed_inputs"]
+        assert report_paths["conservative_risk_round_1"] in stages_by_name[
+            "neutral_risk_round_1"
+        ]["allowed_inputs"]
+        assert report_paths["neutral_risk_round_1"] in stages_by_name[
+            "portfolio_manager"
+        ]["allowed_inputs"]
         final_stage = workflow["stages"][-1]
         assert report_paths["market_report"] in final_stage["allowed_inputs"]
         assert report_paths["news_report"] in final_stage["allowed_inputs"]
@@ -152,6 +196,45 @@ def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp
     assert stock_call["status"] == "error"
     assert "vendor temporarily unavailable" in stock_call["error"]
     assert "fundamentals" not in evidence["roles"]
+
+
+def test_workflow_state_can_expand_research_and_risk_debate_rounds(tmp_path):
+    collector = _load_collector()
+    role_packet_paths = {
+        "market": str(tmp_path / "roles" / "market.md"),
+        "news": str(tmp_path / "roles" / "news.md"),
+    }
+
+    workflow = collector._workflow_state(
+        "AAPL",
+        "2026-06-27",
+        ["market", "news"],
+        role_packet_paths,
+        tmp_path / "evidence.json",
+        tmp_path / "reports" / "AAPL" / "2026-06-27",
+        max_debate_rounds=2,
+        max_risk_discuss_rounds=2,
+    )
+
+    stages = {stage["stage"]: stage for stage in workflow["stages"]}
+    assert "bull_researcher_round_2" in stages
+    assert "bear_researcher_round_2" in stages
+    assert "aggressive_risk_round_2" in stages
+    assert "neutral_risk_round_2" in stages
+
+    paths = workflow["report_paths"]
+    assert paths["bear_researcher_round_1"] in stages[
+        "bull_researcher_round_2"
+    ]["allowed_inputs"]
+    assert paths["bull_researcher_round_2"] in stages[
+        "bear_researcher_round_2"
+    ]["allowed_inputs"]
+    assert paths["neutral_risk_round_1"] in stages[
+        "aggressive_risk_round_2"
+    ]["allowed_inputs"]
+    assert paths["neutral_risk_round_2"] in stages[
+        "portfolio_manager"
+    ]["allowed_inputs"]
 
 
 def test_collector_does_not_call_upstream_graph_or_llm_backend():

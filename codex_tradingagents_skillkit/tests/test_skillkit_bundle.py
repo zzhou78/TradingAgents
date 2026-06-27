@@ -5,7 +5,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 BUNDLE = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = BUNDLE / "skills"
 RUNNER = (
@@ -87,3 +86,47 @@ def test_bundle_runner_accepts_cli_tickers():
     assert payload["runs"][1]["asset_type"] == "stock"
     assert "tradingagents-workflow-orchestrator" in payload["workflow_skills"]
     assert "tradingagents-dataflow-routing" in payload["workflow_skills"]
+
+
+def test_trader_skill_preserves_original_transaction_contract():
+    text = (SKILLS_ROOT / "tradingagents-trader" / "SKILL.md").read_text(encoding="utf-8")
+
+    assert "Buy / Hold / Sell" in text
+    assert "Optional entry price" in text
+    assert "Optional stop loss" in text
+    assert "Optional position sizing note" in text
+    assert "FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**" in text
+
+
+def test_debate_and_complete_report_docs_make_debate_turns_visible():
+    debate = (SKILLS_ROOT / "tradingagents-debate-routing" / "SKILL.md").read_text(
+        encoding="utf-8"
+    )
+    persistence = (SKILLS_ROOT / "tradingagents-run-persistence" / "SKILL.md").read_text(
+        encoding="utf-8"
+    )
+
+    assert "Codex-visible debate rendering" in debate
+    for required in [
+        "Bear must directly respond to Bull.",
+        "Research Manager must explicitly weigh Bull vs Bear.",
+        "Conservative Risk must directly respond to Aggressive Risk.",
+        "Neutral Risk must explicitly weigh Aggressive vs Conservative.",
+        "Portfolio Manager must synthesize the risk debate.",
+    ]:
+        assert required in debate
+
+    for section in [
+        "I. Analyst Team Reports",
+        "II. Research Team Debate",
+        "Bull Researcher Round 1",
+        "Bear Researcher Round 1",
+        "III. Trading Team Plan",
+        "FINAL TRANSACTION PROPOSAL line",
+        "IV. Risk Management Team Debate",
+        "Aggressive Analyst Round 1",
+        "Conservative Analyst Round 1",
+        "Neutral Analyst Round 1",
+        "V. Portfolio Manager Decision",
+    ]:
+        assert section in persistence

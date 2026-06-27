@@ -97,9 +97,13 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 2. Codex follows the workflow skills converted from `tradingagents/graph`.
 3. Codex acts each role independently:
    - analyst roles read only their own `roles/<role>.md` evidence packet;
-   - bull and bear researchers read only completed analyst reports;
+   - `bull_researcher_round_1` reads only completed analyst reports;
+   - `bear_researcher_round_1` reads analyst reports and directly responds to bull round 1;
+   - future rounds can extend the same alternating bull/bear pattern;
    - trader reads the research-manager decision;
-   - risk analysts read the trader proposal and completed upstream reports;
+   - `aggressive_risk_round_1` reads the trader proposal and completed upstream reports;
+   - `conservative_risk_round_1` responds to aggressive risk round 1;
+   - `neutral_risk_round_1` weighs aggressive and conservative risk round 1;
    - portfolio manager reads the risk debate and produces the final paper-study decision.
 4. Codex writes TradingAgents-style markdown sections under the run output folder.
 5. No broker integration, GCAF connection, or real trading instruction is allowed.
@@ -109,3 +113,10 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 forbidden analyst packets, and TradingAgents-style output paths. Codex should
 advance through that file without asking for additional user input unless data
 collection fails in a way that prevents evidence-grounded reporting.
+
+The default `complete_report.md` structure is:
+- I. Analyst Team Reports.
+- II. Research Team Debate.
+- III. Trading Team Plan.
+- IV. Risk Management Team Debate.
+- V. Portfolio Manager Decision.

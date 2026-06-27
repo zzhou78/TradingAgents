@@ -25,6 +25,16 @@ Procedure:
 7. While risk debate continues, route after `Aggressive...` to `Conservative Analyst`, after `Conservative...` to `Neutral Analyst`, and otherwise to `Aggressive Analyst`.
 8. When risk debate stops, route to `Portfolio Manager`, then end the graph.
 
+## Codex-visible debate rendering
+
+- The report must show the actual debate turns.
+- Bear must directly respond to Bull.
+- Research Manager must explicitly weigh Bull vs Bear.
+- Conservative Risk must directly respond to Aggressive Risk.
+- Neutral Risk must explicitly weigh Aggressive vs Conservative.
+- Portfolio Manager must synthesize the risk debate.
+- Keep the visible sequence aligned with analyst reports, bull/bear debate, research manager, trader, aggressive/conservative/neutral risk debate, and portfolio manager.
+
 Output:
 - Completed investment debate, research-manager plan, trader proposal, risk debate, and portfolio-manager-ready context.
 
