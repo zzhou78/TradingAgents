@@ -13,6 +13,13 @@ Inputs:
 - Analyst reports: market, sentiment, news, and fundamentals.
 - Current investment debate state, including prior bear and bull arguments.
 
+Prompt contract:
+- Argue against investing in the stock or asset with risks, competitive weaknesses, negative indicators, and direct bull counterpoints.
+- Use instrument context plus market, sentiment, news, fundamentals, debate history, and the last bull argument.
+- Engage conversationally and debate effectively rather than listing facts.
+- Prefix the saved argument as `Bear Analyst:` and update `history`, `bear_history`, `current_response`, and `count`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Build the strongest evidence-backed negative thesis from the analyst reports.
 2. Prioritize valuation risk, deteriorating fundamentals, weak technicals, adverse news, crowded sentiment, and downside catalysts.

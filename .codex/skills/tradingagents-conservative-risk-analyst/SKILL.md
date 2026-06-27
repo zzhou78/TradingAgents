@@ -12,6 +12,14 @@ Source files scanned:
 Inputs:
 - Trader proposal, research manager plan, analyst reports, and current risk debate state.
 
+Prompt contract:
+- Protect assets, minimize volatility, and challenge high-risk elements of the trader's decision.
+- Respond directly to aggressive and neutral arguments when present.
+- Use trader decision, instrument context, analyst reports, risk debate history, and latest opposing responses.
+- Output conversationally without special formatting.
+- Prefix the saved argument as `Conservative Analyst:` and set `latest_speaker` to `Conservative`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Argue the capital-preservation case and identify downside before upside.
 2. Emphasize drawdown risk, uncertainty, valuation pressure, liquidity, evidence gaps, and adverse catalysts.

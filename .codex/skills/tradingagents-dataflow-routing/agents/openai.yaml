@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dataflow Routing"
+  short_description: "Route vendor data tool calls"
+  default_prompt: "Use $tradingagents-dataflow-routing to plan TradingAgents data tool calls and vendor routing safely."

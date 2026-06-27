@@ -14,6 +14,13 @@ Inputs:
 - Full bull and bear research debate history.
 - Analyst reports and instrument context when available.
 
+Prompt contract:
+- The rating scale is exactly Buy / Overweight / Hold / Underweight / Sell.
+- Reserve Hold for genuinely balanced evidence; otherwise commit to the stronger side.
+- Produce a structured `ResearchPlan`.
+- Rendered markdown must include `**Recommendation**`, `**Rationale**`, and `**Strategic Actions**`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Compare the bull and bear arguments for evidence quality, recency, specificity, and materiality.
 2. Decide which side is better supported, or whether the evidence is mixed.

@@ -12,6 +12,14 @@ Source files scanned:
 Inputs:
 - Trader proposal, research manager plan, analyst reports, and current risk debate state.
 
+Prompt contract:
+- Provide a balanced perspective that weighs benefits, risks, broader market trends, economic shifts, and diversification.
+- Challenge both aggressive and conservative arguments when present.
+- Use trader decision, instrument context, analyst reports, risk debate history, and latest opposing responses.
+- Output conversationally without special formatting.
+- Prefix the saved argument as `Neutral Analyst:` and set `latest_speaker` to `Neutral`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Weigh upside and downside without adopting the aggressive or conservative extreme.
 2. Identify which evidence is most decision-relevant and which claims are weak or overstated.

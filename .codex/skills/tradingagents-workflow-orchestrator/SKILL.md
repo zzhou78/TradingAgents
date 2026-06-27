@@ -19,6 +19,7 @@ Inputs:
 - Ticker or company, trade date, asset type, selected analysts, and any pre-collected evidence.
 - Existing role-skill outputs: analyst reports, debate notes, trader proposal, risk debate, and portfolio manager decision.
 - Optional config concepts: `max_debate_rounds`, `max_risk_discuss_rounds`, checkpoint setting, results directory, and data cache directory.
+- Optional ticker workflow packet from `tradingagents-ticker-workflow-runner`.
 
 Required role skills:
 - `tradingagents-market-analyst`
@@ -37,12 +38,13 @@ Required role skills:
 Procedure:
 1. Initialize the run state with ticker/company, trade date, asset type, instrument context, past context, empty analyst reports, empty investment debate, and empty risk debate.
 2. Run selected analysts in configured order; the default keys are `market, social, news, fundamentals`, and the social key maps to Sentiment Analyst.
-3. For analyst details, use `tradingagents-analyst-sequencing`; each analyst may call tools until no tool calls remain, then its report is accepted and messages are cleared before the next analyst.
-4. Run the core graph order: analysts -> bull/bear research debate -> research manager -> trader.
-5. Run risk review in graph order: trader -> aggressive/conservative/neutral risk debate -> portfolio manager.
-6. For debate turn routing and stop conditions, use `tradingagents-debate-routing`.
-7. For checkpoints, final-state logging, deferred reflection, report writing, and deterministic rating extraction, use `tradingagents-run-persistence`.
-8. Extract the final signal as one of `Buy / Overweight / Hold / Underweight / Sell` from the portfolio manager markdown, not from a second LLM call.
+3. For data access and tool-call planning, use `tradingagents-dataflow-routing`; do not bypass its vendor routing, no-data, or path-safety rules.
+4. For analyst details, use `tradingagents-analyst-sequencing`; each analyst may call tools until no tool calls remain, then its report is accepted and messages are cleared before the next analyst.
+5. Run the core graph order: analysts -> bull/bear research debate -> research manager -> trader.
+6. Run risk review in graph order: trader -> aggressive/conservative/neutral risk debate -> portfolio manager.
+7. For debate turn routing and stop conditions, use `tradingagents-debate-routing`.
+8. For checkpoints, final-state logging, deferred reflection, report writing, and deterministic rating extraction, use `tradingagents-run-persistence`.
+9. Extract the final signal as one of `Buy / Overweight / Hold / Underweight / Sell` from the portfolio manager markdown, not from a second LLM call.
 
 Output:
 - Final study artifact containing analyst reports, investment debate, research plan, trader proposal, risk debate, portfolio manager decision, and parsed five-tier rating.

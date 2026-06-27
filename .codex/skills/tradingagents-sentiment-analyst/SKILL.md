@@ -13,6 +13,14 @@ Inputs:
 - Ticker or instrument, company name if available, and the analysis date.
 - Prefetched Yahoo Finance news, StockTwits, Reddit, or equivalent sentiment data for the configured lookback window.
 
+Prompt contract:
+- The role pre-fetches Yahoo Finance news, StockTwits, and Reddit before the LLM response; do not invent missing social posts.
+- It analyzes the prior 7 days and treats source silence or placeholders as lower confidence.
+- Structured output fields are `overall_band`, `overall_score`, `confidence`, and `narrative`.
+- `overall_band` must be one of Bullish, Mildly Bullish, Neutral, Mixed, Mildly Bearish, or Bearish.
+- `overall_score` is 0 to 10, and `confidence` is low, medium, or high.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Focus on the recent window used by the agent, normally 7 calendar days.
 2. Separate news tone, social tone, intensity, and confidence instead of treating all text as equal.

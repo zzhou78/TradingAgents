@@ -12,6 +12,13 @@ Inputs:
 - Ticker or instrument, company name if available, trade date, and asset type.
 - Tool outputs from `get_fundamentals`, `get_balance_sheet`, `get_cashflow`, and `get_income_statement`.
 
+Prompt contract:
+- Use `get_fundamentals` for the comprehensive company analysis.
+- Use `get_balance_sheet`, `get_cashflow`, and `get_income_statement` for statement-specific evidence.
+- Focus on company profile, basic financials, financial documents, and financial history.
+- It must append a Markdown table at the end of the report.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Confirm whether the instrument is a company equity before relying on financial-statement tools.
 2. Collect business, valuation, profitability, leverage, cash flow, and balance-sheet evidence.

@@ -14,6 +14,14 @@ Inputs:
 - `ResearchPlan` from the research manager.
 - Market report, sentiment report, news report, fundamentals report, and instrument context.
 
+Prompt contract:
+- Transaction direction is exactly Buy / Hold / Sell.
+- Produce a structured `TraderProposal`.
+- Rendered markdown must include `**Action**` and `**Reasoning**`.
+- Include optional entry price, stop loss, and position sizing only when supported.
+- Preserve the trailing `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` compatibility line.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Treat the research manager decision as the primary input, then cross-check analyst evidence.
 2. Choose a paper proposal action: `Buy`, `Hold`, or `Sell`.

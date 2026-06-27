@@ -14,6 +14,14 @@ Inputs:
 - Ticker or instrument, company name if available, trade date, and asset type.
 - Tool outputs from `get_stock_data`, `get_indicators`, and `get_verified_market_snapshot`.
 
+Prompt contract:
+- The role must select up to 8 indicators that are complementary and non-redundant.
+- It must call get_stock_data first because indicator generation depends on the OHLCV CSV.
+- It must call get_indicators with exact indicator names from the prompt list.
+- It must call get_verified_market_snapshot before writing the final report and use it as source of truth for exact OHLCV, price-level, and indicator-value claims.
+- It must append a Markdown table at the end of the report.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Retrieve stock data before indicator work.
 2. Select up to 8 complementary indicators, avoiding redundant signals.

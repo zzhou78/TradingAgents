@@ -12,6 +12,14 @@ Inputs:
 - Ticker or instrument, company name if available, trade date, and asset type.
 - Tool outputs from `get_news`, `get_global_news`, `get_macro_indicators`, and `get_prediction_markets`.
 
+Prompt contract:
+- Use `get_news(query, start_date, end_date)` for company, asset-specific, or targeted news.
+- Use `get_global_news(curr_date, look_back_days, limit)` for broader macroeconomic news.
+- Use `get_macro_indicators(indicator, curr_date, look_back_days)` for FRED-grounded macro commentary.
+- Use `get_prediction_markets(topic, limit)` for market-implied probabilities of forward-looking events.
+- It must append a Markdown table at the end of the report.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Pull company or asset-specific news before broad macro context.
 2. Add global news, macro indicators, and prediction-market signals only where relevant to the instrument.

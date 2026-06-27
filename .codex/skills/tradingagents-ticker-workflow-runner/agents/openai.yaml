@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ticker Workflow Runner"
+  short_description: "Prepare ticker skill workflows"
+  default_prompt: "Use $tradingagents-ticker-workflow-runner to prepare a TradingAgents-style skill workflow for my ticker list."

@@ -12,6 +12,14 @@ Source files scanned:
 Inputs:
 - Trader proposal, research manager plan, analyst reports, and current risk debate state.
 
+Prompt contract:
+- Champion high-reward, high-risk opportunities and defend the trader's decision.
+- Respond directly to conservative and neutral concerns when present.
+- Use trader decision, instrument context, analyst reports, risk debate history, and latest opposing responses.
+- Output conversationally without special formatting.
+- Prefix the saved argument as `Aggressive Analyst:` and set `latest_speaker` to `Aggressive`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Argue the opportunity-focused case for accepting higher risk when upside evidence is strong.
 2. Emphasize catalysts, momentum, asymmetry, opportunity cost, and why excessive caution may miss the setup.

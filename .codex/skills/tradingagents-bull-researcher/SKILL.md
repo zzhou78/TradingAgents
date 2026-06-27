@@ -13,6 +13,13 @@ Inputs:
 - Analyst reports: market, sentiment, news, and fundamentals.
 - Current investment debate state, including prior bull and bear arguments.
 
+Prompt contract:
+- Advocate for investing in the stock or asset with growth potential, competitive advantages, positive indicators, and direct bear counterpoints.
+- Use instrument context plus market, sentiment, news, fundamentals, debate history, and the last bear argument.
+- Engage conversationally and debate effectively rather than listing data.
+- Prefix the saved argument as `Bull Analyst:` and update `history`, `bull_history`, `current_response`, and `count`.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Build the strongest evidence-backed positive thesis from the analyst reports.
 2. Prioritize catalysts, improving fundamentals, constructive technicals, favorable sentiment, and upside asymmetry.

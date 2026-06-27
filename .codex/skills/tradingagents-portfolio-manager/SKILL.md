@@ -13,6 +13,14 @@ Source files scanned:
 Inputs:
 - Trader proposal, research manager plan, risk debate history, analyst reports, and optional memory context.
 
+Prompt contract:
+- Produce a structured `PortfolioDecision`.
+- Rating is exactly Buy / Overweight / Hold / Underweight / Sell.
+- Rendered markdown must include `**Rating**`, `**Executive Summary**`, and `**Investment Thesis**`.
+- Optional fields are price target and time horizon.
+- Be decisive and ground conclusions in specific evidence from the analysts and risk debate.
+- Use the configured output language when `output_language` is not English.
+
 Procedure:
 1. Review the trader proposal against the aggressive, conservative, and neutral risk arguments.
 2. Decide whether risk-adjusted evidence supports accepting, modifying, or rejecting the proposal.
