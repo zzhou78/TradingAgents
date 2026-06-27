@@ -70,6 +70,7 @@ by default:
 - `evidence/<TICKER>/<DATE>/roles/<role>.md`
 - `evidence/<TICKER>/<DATE>/workflow_state.json`
 - `evidence_summary.json`
+- `reports/<TICKER>/<DATE>/debate_record.md`
 - `tradingagents_results/`
 - `tradingagents_cache/`
 - `tradingagents_memory/trading_memory.md`
@@ -113,6 +114,10 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 forbidden analyst packets, and TradingAgents-style output paths. Codex should
 advance through that file without asking for additional user input unless data
 collection fails in a way that prevents evidence-grounded reporting.
+
+`reports/<TICKER>/<DATE>/debate_record.md` is the human-readable report-folder
+index for the visible debate turns. It points to the research and risk round
+files that Codex writes while acting each downstream role.
 
 The default `complete_report.md` structure is:
 - I. Analyst Team Reports.

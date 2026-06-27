@@ -294,6 +294,7 @@ def _report_paths(
         "research_manager": str(report_dir / "2_research" / "manager.md"),
         "trader": str(report_dir / "3_trading" / "trader.md"),
         "portfolio_manager": str(report_dir / "5_portfolio" / "decision.md"),
+        "debate_record": str(report_dir / "debate_record.md"),
         "complete_report": str(report_dir / "complete_report.md"),
     }
     for round_number in range(1, max_debate_rounds + 1):
@@ -481,6 +482,54 @@ def _workflow_state(
     }
 
 
+def _write_debate_record(workflow: dict[str, Any], path: Path) -> None:
+    stage_groups = [
+        (
+            "Research Team Debate",
+            {"bull_researcher_round", "bear_researcher_round", "research_manager"},
+        ),
+        (
+            "Risk Management Team Debate",
+            {
+                "aggressive_risk_round",
+                "conservative_risk_round",
+                "neutral_risk_round",
+                "portfolio_manager",
+            },
+        ),
+    ]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# TradingAgents Debate Record",
+        "",
+        f"- Ticker: `{workflow['ticker']}`",
+        f"- Trade date: `{workflow['trade_date']}`",
+        f"- Max research debate rounds: `{workflow['max_debate_rounds']}`",
+        f"- Max risk debate rounds: `{workflow['max_risk_discuss_rounds']}`",
+        "",
+        "This file is the report-folder index for Codex-visible debate turns. The turn files are written by the role stages listed below.",
+        "",
+    ]
+    for heading, stage_prefixes in stage_groups:
+        lines.extend([f"## {heading}", ""])
+        for stage in workflow["stages"]:
+            stage_name = stage["stage"]
+            if not any(stage_name.startswith(prefix) for prefix in stage_prefixes):
+                continue
+            lines.extend(
+                [
+                    f"### {stage_name}",
+                    "",
+                    f"- Skill: `{stage['skill']}`",
+                    f"- Output: `{stage['output_path']}`",
+                    "- Allowed inputs:",
+                ]
+            )
+            lines.extend(f"  - `{input_path}`" for input_path in stage["allowed_inputs"])
+            lines.append("")
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
     max_debate_rounds = max(1, args.max_debate_rounds)
@@ -539,22 +588,22 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             role_packet_paths[role] = str(role_packet)
         report_dir = output_dir / "reports" / ticker / args.trade_date
         workflow_path = evidence_dir / "workflow_state.json"
+        workflow = _workflow_state(
+            ticker,
+            args.trade_date,
+            selected_analysts,
+            role_packet_paths,
+            evidence_path,
+            report_dir,
+            max_debate_rounds,
+            max_risk_discuss_rounds,
+        )
         workflow_path.write_text(
-            json.dumps(
-                _workflow_state(
-                    ticker,
-                    args.trade_date,
-                    selected_analysts,
-                    role_packet_paths,
-                    evidence_path,
-                    report_dir,
-                    max_debate_rounds,
-                    max_risk_discuss_rounds,
-                ),
-                indent=2,
-            ),
+            json.dumps(workflow, indent=2),
             encoding="utf-8",
         )
+        debate_record_path = Path(workflow["report_paths"]["debate_record"])
+        _write_debate_record(workflow, debate_record_path)
         summary["runs"].append(
             {
                 "ticker": ticker,
@@ -562,6 +611,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 "role_packet_path": str(packet_path),
                 "role_packet_paths": role_packet_paths,
                 "workflow_state_path": str(workflow_path),
+                "debate_record_path": str(debate_record_path),
             }
         )
 

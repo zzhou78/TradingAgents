@@ -91,6 +91,7 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert sorted(run["role_packet_paths"]) == ["market", "news"]
         assert run["role_packet_path"].endswith("role_packets.md")
         assert run["workflow_state_path"].endswith("workflow_state.json")
+        assert run["debate_record_path"].endswith("debate_record.md")
 
         workflow = json.loads(Path(run["workflow_state_path"]).read_text(encoding="utf-8"))
         assert workflow["requires_user_input"] is False
@@ -121,6 +122,7 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         normalized_bull_round = report_paths["bull_researcher_round_1"].replace("\\", "/")
         normalized_bear_round = report_paths["bear_researcher_round_1"].replace("\\", "/")
         normalized_aggressive_round = report_paths["aggressive_risk_round_1"].replace("\\", "/")
+        normalized_debate_record = report_paths["debate_record"].replace("\\", "/")
         normalized_complete_report = report_paths["complete_report"].replace("\\", "/")
         ticker = run["ticker"]
         assert normalized_market_report.endswith(f"reports/{ticker}/2026-06-27/1_analysts/market.md")
@@ -129,7 +131,18 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert normalized_aggressive_round.endswith(
             f"reports/{ticker}/2026-06-27/4_risk/aggressive_round_1.md"
         )
+        assert normalized_debate_record.endswith(f"reports/{ticker}/2026-06-27/debate_record.md")
         assert normalized_complete_report.endswith(f"reports/{ticker}/2026-06-27/complete_report.md")
+        assert run["debate_record_path"] == report_paths["debate_record"]
+        debate_record = Path(run["debate_record_path"]).read_text(encoding="utf-8")
+        assert "# TradingAgents Debate Record" in debate_record
+        assert "## Research Team Debate" in debate_record
+        assert "bull_researcher_round_1" in debate_record
+        assert "bear_researcher_round_1" in debate_record
+        assert "## Risk Management Team Debate" in debate_record
+        assert "aggressive_risk_round_1" in debate_record
+        assert "conservative_risk_round_1" in debate_record
+        assert "neutral_risk_round_1" in debate_record
 
         stages_by_name = {stage["stage"]: stage for stage in workflow["stages"]}
         assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"] == [

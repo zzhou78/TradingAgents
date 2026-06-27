@@ -45,6 +45,8 @@ After collection, Codex reads each ticker's `workflow_state.json` and follows th
 - `portfolio_manager`
 - `complete_report`
 
+The collector also writes `reports/<TICKER>/<DATE>/debate_record.md`. Use that file to find the visible debate turn order and the per-stage report paths.
+
 Quick checks:
 
 ```powershell
@@ -60,4 +62,5 @@ Safety:
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
 - `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, and report paths.
+- `debate_record.md` is the report-folder index for the research and risk debate turns.
 - The complete report should show analyst reports, research debate, trader proposal with `FINAL TRANSACTION PROPOSAL`, risk debate, and portfolio manager decision.
