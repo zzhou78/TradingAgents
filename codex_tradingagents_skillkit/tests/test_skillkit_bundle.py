@@ -43,6 +43,12 @@ def test_bundle_has_expected_skills_and_docs():
     assert (BUNDLE / "docs" / "STUDY_LOCAL_SETUP_AND_SAFETY_REVIEW.md").exists()
     assert (BUNDLE / "docs" / "ARCHITECTURE_LEARNING_NOTES.md").exists()
 
+    readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
+    manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
+    assert "Real data retrieval and processing still uses upstream Python" in readme
+    assert "not a vendored runtime distribution" in manifest
+    assert "--ticker AAPL,MSFT" in readme
+
     actual = sorted(path.name for path in SKILLS_ROOT.glob("tradingagents-*") if path.is_dir())
     assert actual == sorted(EXPECTED_SKILLS)
 
@@ -60,7 +66,7 @@ def test_bundle_runner_accepts_cli_tickers():
             sys.executable,
             str(RUNNER),
             "--ticker",
-            "AAPL,BTC-USD",
+            "AAPL,MSFT",
             "--trade-date",
             "2026-06-27",
             "--format",
@@ -73,8 +79,8 @@ def test_bundle_runner_accepts_cli_tickers():
     )
 
     payload = json.loads(result.stdout)
-    assert [run["ticker"] for run in payload["runs"]] == ["AAPL", "BTC-USD"]
+    assert [run["ticker"] for run in payload["runs"]] == ["AAPL", "MSFT"]
     assert payload["runs"][0]["asset_type"] == "stock"
-    assert payload["runs"][1]["asset_type"] == "crypto"
+    assert payload["runs"][1]["asset_type"] == "stock"
     assert "tradingagents-workflow-orchestrator" in payload["workflow_skills"]
     assert "tradingagents-dataflow-routing" in payload["workflow_skills"]

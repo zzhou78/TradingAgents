@@ -10,11 +10,23 @@ Contents:
 - `docs/`: study notes produced during this branch.
 - `MANIFEST.md`: inventory of what is ours and how it maps to upstream source.
 
+Runtime boundary:
+- This folder is our Codex workflow layer, not a vendored copy of the TradingAgents runtime.
+- Real data retrieval and processing still uses upstream Python under `tradingagents/dataflows/`.
+- The `tradingagents-dataflow-routing` skill documents how Codex should route data calls safely; it does not replace those Python modules.
+- Keep upstream runtime code in `tradingagents/` so it stays clear which parts are ours.
+
+Apple and Microsoft example:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\skills\tradingagents-ticker-workflow-runner\scripts\prepare_skill_workflow.py --ticker AAPL,MSFT --trade-date 2026-06-27 --format markdown
+```
+
 Quick checks:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest tests\test_codex_self_contained_skillkit.py -q
-.\.venv\Scripts\python.exe codex_tradingagents_skillkit\skills\tradingagents-ticker-workflow-runner\scripts\prepare_skill_workflow.py --ticker AAPL,BTC-USD --trade-date 2026-06-27 --format markdown
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\skills\tradingagents-ticker-workflow-runner\scripts\prepare_skill_workflow.py --ticker AAPL,MSFT --trade-date 2026-06-27 --format json
 ```
 
 Safety:

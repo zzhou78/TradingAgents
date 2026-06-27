@@ -9,6 +9,13 @@ The upstream TradingAgents source remains in the normal project folders, mainly:
 - `tradingagents/graph`
 - `tradingagents/dataflows`
 
+This is intentional. The skillkit is self-contained for our Codex-created
+workflow layer, but it is not a vendored runtime distribution. If a run needs
+real market, news, social, macro, or prediction-market data, it still depends on
+the upstream Python modules in `tradingagents/dataflows/` and their configured
+vendors. The `tradingagents-dataflow-routing` skill records how to call that
+layer safely; it does not duplicate or replace the implementation.
+
 ## Skill Inventory
 
 Role skills derived from `tradingagents/agents`:
@@ -49,3 +56,8 @@ Ticker input options:
 - `--tickers-file path\to\tickers.txt`
 
 The output names the skills to run, inferred asset type, report keys, and safety boundaries.
+
+Example output scope for Apple and Microsoft:
+- `AAPL` and `MSFT` are normalized as stock tickers.
+- The packet lists `tradingagents-dataflow-routing` as the data-routing skill.
+- No live LLM, market-data vendor, cache, checkpoint, or broker action is run by this command.
