@@ -119,6 +119,10 @@ collection fails in a way that prevents evidence-grounded reporting.
 index for the visible debate turns. It points to the research and risk round
 files that Codex writes while acting each downstream role.
 
+The collector creates missing stage output paths as pending Markdown files under
+`reports/<TICKER>/<DATE>/` so every path listed in `debate_record.md` is
+immediately discoverable. Existing report files are not overwritten.
+
 The default `complete_report.md` structure is:
 - I. Analyst Team Reports.
 - II. Research Team Debate.

@@ -143,6 +143,22 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert "aggressive_risk_round_1" in debate_record
         assert "conservative_risk_round_1" in debate_record
         assert "neutral_risk_round_1" in debate_record
+        for report_key in [
+            "market_report",
+            "news_report",
+            "bull_researcher_round_1",
+            "bear_researcher_round_1",
+            "research_manager",
+            "trader",
+            "aggressive_risk_round_1",
+            "conservative_risk_round_1",
+            "neutral_risk_round_1",
+            "portfolio_manager",
+            "complete_report",
+        ]:
+            report_path = Path(report_paths[report_key])
+            assert report_path.exists(), report_key
+            assert "Pending Codex role output" in report_path.read_text(encoding="utf-8")
 
         stages_by_name = {stage["stage"]: stage for stage in workflow["stages"]}
         assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"] == [

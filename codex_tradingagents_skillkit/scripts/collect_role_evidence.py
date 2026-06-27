@@ -507,7 +507,7 @@ def _write_debate_record(workflow: dict[str, Any], path: Path) -> None:
         f"- Max research debate rounds: `{workflow['max_debate_rounds']}`",
         f"- Max risk debate rounds: `{workflow['max_risk_discuss_rounds']}`",
         "",
-        "This file is the report-folder index for Codex-visible debate turns. The turn files are written by the role stages listed below.",
+        "This file is the report-folder index for Codex-visible debate turns. The turn files are prepared below and filled as Codex acts each role stage.",
         "",
     ]
     for heading, stage_prefixes in stage_groups:
@@ -528,6 +528,40 @@ def _write_debate_record(workflow: dict[str, Any], path: Path) -> None:
             lines.extend(f"  - `{input_path}`" for input_path in stage["allowed_inputs"])
             lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _write_stage_scaffolds(workflow: dict[str, Any]) -> None:
+    for stage in workflow["stages"]:
+        path = Path(stage["output_path"])
+        if path.exists():
+            continue
+        path.parent.mkdir(parents=True, exist_ok=True)
+        lines = [
+            f"# {stage['stage']}",
+            "",
+            "Pending Codex role output.",
+            "",
+            f"- Ticker: `{workflow['ticker']}`",
+            f"- Trade date: `{workflow['trade_date']}`",
+            f"- Skill: `{stage['skill']}`",
+            f"- Completion gate: {stage['completion_gate']}",
+            "",
+            "## Allowed Inputs",
+            "",
+        ]
+        lines.extend(f"- `{input_path}`" for input_path in stage["allowed_inputs"])
+        if stage["forbidden_inputs"]:
+            lines.extend(["", "## Forbidden Inputs", ""])
+            lines.extend(f"- `{input_path}`" for input_path in stage["forbidden_inputs"])
+        lines.extend(
+            [
+                "",
+                "## Role Output",
+                "",
+                "Codex fills this section when the workflow reaches this stage.",
+            ]
+        )
+        path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def collect(args: argparse.Namespace) -> dict[str, Any]:
@@ -603,6 +637,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             encoding="utf-8",
         )
         debate_record_path = Path(workflow["report_paths"]["debate_record"])
+        _write_stage_scaffolds(workflow)
         _write_debate_record(workflow, debate_record_path)
         summary["runs"].append(
             {
