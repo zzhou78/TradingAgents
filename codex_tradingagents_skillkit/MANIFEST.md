@@ -68,6 +68,7 @@ by default:
 - `evidence/<TICKER>/<DATE>/evidence.json`
 - `evidence/<TICKER>/<DATE>/role_packets.md`
 - `evidence/<TICKER>/<DATE>/roles/<role>.md`
+- `evidence/<TICKER>/<DATE>/workflow_state.json`
 - `evidence_summary.json`
 - `tradingagents_results/`
 - `tradingagents_cache/`
@@ -102,3 +103,9 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
    - portfolio manager reads the risk debate and produces the final paper-study decision.
 4. Codex writes TradingAgents-style markdown sections under the run output folder.
 5. No broker integration, GCAF connection, or real trading instruction is allowed.
+
+`workflow_state.json` is the automatic execution contract. It records
+`requires_user_input: false`, the ordered stage list, each role's allowed inputs,
+forbidden analyst packets, and TradingAgents-style output paths. Codex should
+advance through that file without asking for additional user input unless data
+collection fails in a way that prevents evidence-grounded reporting.

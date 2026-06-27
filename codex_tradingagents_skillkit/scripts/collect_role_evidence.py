@@ -47,10 +47,24 @@ ROLE_SKILLS = {
     "news": "tradingagents-news-analyst",
     "fundamentals": "tradingagents-fundamentals-analyst",
 }
+ANALYST_STAGE_NAMES = {
+    "market": "market_analyst",
+    "social": "sentiment_analyst",
+    "news": "news_analyst",
+    "fundamentals": "fundamentals_analyst",
+}
+ANALYST_REPORT_FILES = {
+    "market": "market.md",
+    "social": "sentiment.md",
+    "news": "news.md",
+    "fundamentals": "fundamentals.md",
+}
 WORKFLOW_SKILLS = [
     "tradingagents-workflow-orchestrator",
     "tradingagents-analyst-sequencing",
     "tradingagents-dataflow-routing",
+    "tradingagents-debate-routing",
+    "tradingagents-run-persistence",
 ]
 
 
@@ -270,6 +284,155 @@ def _write_single_role_packet(
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _report_paths(report_dir: Path, selected_analysts: list[str]) -> dict[str, str]:
+    paths = {
+        "bull_researcher": str(report_dir / "2_research" / "bull.md"),
+        "bear_researcher": str(report_dir / "2_research" / "bear.md"),
+        "research_manager": str(report_dir / "2_research" / "manager.md"),
+        "trader": str(report_dir / "3_trading" / "trader.md"),
+        "aggressive_risk_analyst": str(report_dir / "4_risk" / "aggressive.md"),
+        "conservative_risk_analyst": str(report_dir / "4_risk" / "conservative.md"),
+        "neutral_risk_analyst": str(report_dir / "4_risk" / "neutral.md"),
+        "portfolio_manager": str(report_dir / "5_portfolio" / "decision.md"),
+        "complete_report": str(report_dir / "complete_report.md"),
+    }
+    for role in selected_analysts:
+        key = "sentiment_report" if role == "social" else f"{role}_report"
+        paths[key] = str(report_dir / "1_analysts" / ANALYST_REPORT_FILES[role])
+    return paths
+
+
+def _workflow_state(
+    ticker: str,
+    trade_date: str,
+    selected_analysts: list[str],
+    role_packet_paths: dict[str, str],
+    evidence_path: Path,
+    report_dir: Path,
+) -> dict[str, Any]:
+    paths = _report_paths(report_dir, selected_analysts)
+    stages = []
+    for role in selected_analysts:
+        stage_name = ANALYST_STAGE_NAMES[role]
+        output_key = "sentiment_report" if role == "social" else f"{role}_report"
+        stages.append(
+            {
+                "stage": stage_name,
+                "skill": ROLE_SKILLS[role],
+                "allowed_inputs": [role_packet_paths[role]],
+                "forbidden_inputs": [
+                    path
+                    for other_role, path in role_packet_paths.items()
+                    if other_role != role
+                ],
+                "output_path": paths[output_key],
+                "completion_gate": f"write {output_key} in TradingAgents analyst style",
+            }
+        )
+
+    analyst_outputs = [
+        paths["sentiment_report" if role == "social" else f"{role}_report"]
+        for role in selected_analysts
+    ]
+    downstream = [
+        ("bull_researcher", "tradingagents-bull-researcher", analyst_outputs),
+        (
+            "bear_researcher",
+            "tradingagents-bear-researcher",
+            analyst_outputs + [paths["bull_researcher"]],
+        ),
+        (
+            "research_manager",
+            "tradingagents-research-manager",
+            analyst_outputs + [paths["bull_researcher"], paths["bear_researcher"]],
+        ),
+        (
+            "trader",
+            "tradingagents-trader",
+            analyst_outputs + [paths["research_manager"]],
+        ),
+        (
+            "aggressive_risk_analyst",
+            "tradingagents-aggressive-risk-analyst",
+            analyst_outputs + [paths["research_manager"], paths["trader"]],
+        ),
+        (
+            "conservative_risk_analyst",
+            "tradingagents-conservative-risk-analyst",
+            analyst_outputs
+            + [paths["research_manager"], paths["trader"], paths["aggressive_risk_analyst"]],
+        ),
+        (
+            "neutral_risk_analyst",
+            "tradingagents-neutral-risk-analyst",
+            analyst_outputs
+            + [
+                paths["research_manager"],
+                paths["trader"],
+                paths["aggressive_risk_analyst"],
+                paths["conservative_risk_analyst"],
+            ],
+        ),
+        (
+            "portfolio_manager",
+            "tradingagents-portfolio-manager",
+            analyst_outputs
+            + [
+                paths["research_manager"],
+                paths["trader"],
+                paths["aggressive_risk_analyst"],
+                paths["conservative_risk_analyst"],
+                paths["neutral_risk_analyst"],
+            ],
+        ),
+    ]
+    for stage_name, skill, allowed_inputs in downstream:
+        stages.append(
+            {
+                "stage": stage_name,
+                "skill": skill,
+                "allowed_inputs": allowed_inputs,
+                "forbidden_inputs": [],
+                "output_path": paths[stage_name],
+                "completion_gate": "write the stage output before advancing",
+            }
+        )
+    complete_report_inputs = analyst_outputs + [
+        paths[stage_name]
+        for stage_name, _, _ in downstream
+    ]
+    stages.append(
+        {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "allowed_inputs": complete_report_inputs,
+            "forbidden_inputs": [],
+            "output_path": paths["complete_report"],
+            "completion_gate": "assemble TradingAgents-style complete_report.md",
+        }
+    )
+
+    return {
+        "ticker": ticker,
+        "trade_date": trade_date,
+        "codex_operated": True,
+        "requires_user_input": False,
+        "uses_tradingagents_graph": False,
+        "report_style": "tradingagents",
+        "evidence_path": str(evidence_path),
+        "report_dir": str(report_dir),
+        "report_paths": paths,
+        "rules": [
+            "Codex acts each role using the listed skill.",
+            "Analyst stages read only their own role packet.",
+            "Downstream stages read only completed prior report files listed in allowed_inputs.",
+            "Do not call upstream graph orchestration or external LLM backends for role reasoning.",
+            "Do not submit broker orders, connect to GCAF, or treat output as real trading advice.",
+        ],
+        "stages": stages,
+    }
+
+
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
     tickers: list[str] = []
@@ -322,12 +485,29 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             role_packet = role_dir / f"{role}.md"
             _write_single_role_packet(evidence, role, role_data, role_packet)
             role_packet_paths[role] = str(role_packet)
+        report_dir = output_dir / "reports" / ticker / args.trade_date
+        workflow_path = evidence_dir / "workflow_state.json"
+        workflow_path.write_text(
+            json.dumps(
+                _workflow_state(
+                    ticker,
+                    args.trade_date,
+                    selected_analysts,
+                    role_packet_paths,
+                    evidence_path,
+                    report_dir,
+                ),
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
         summary["runs"].append(
             {
                 "ticker": ticker,
                 "evidence_path": str(evidence_path),
                 "role_packet_path": str(packet_path),
                 "role_packet_paths": role_packet_paths,
+                "workflow_state_path": str(workflow_path),
             }
         )
 

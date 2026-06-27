@@ -91,6 +91,31 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
     for run in summary["runs"]:
         assert sorted(run["role_packet_paths"]) == ["market", "news"]
         assert run["role_packet_path"].endswith("role_packets.md")
+        assert run["workflow_state_path"].endswith("workflow_state.json")
+
+        workflow = json.loads(Path(run["workflow_state_path"]).read_text(encoding="utf-8"))
+        assert workflow["requires_user_input"] is False
+        assert workflow["uses_tradingagents_graph"] is False
+        assert workflow["report_style"] == "tradingagents"
+        stage_names = [stage["stage"] for stage in workflow["stages"]]
+        assert stage_names[:2] == ["market_analyst", "news_analyst"]
+        assert stage_names[-1] == "complete_report"
+
+        market_stage = workflow["stages"][0]
+        assert market_stage["skill"] == "tradingagents-market-analyst"
+        assert market_stage["allowed_inputs"] == [run["role_packet_paths"]["market"]]
+        assert market_stage["forbidden_inputs"] == [run["role_packet_paths"]["news"]]
+
+        report_paths = workflow["report_paths"]
+        normalized_market_report = report_paths["market_report"].replace("\\", "/")
+        normalized_complete_report = report_paths["complete_report"].replace("\\", "/")
+        ticker = run["ticker"]
+        assert normalized_market_report.endswith(f"reports/{ticker}/2026-06-27/1_analysts/market.md")
+        assert normalized_complete_report.endswith(f"reports/{ticker}/2026-06-27/complete_report.md")
+        final_stage = workflow["stages"][-1]
+        assert report_paths["market_report"] in final_stage["allowed_inputs"]
+        assert report_paths["news_report"] in final_stage["allowed_inputs"]
+        assert report_paths["portfolio_manager"] in final_stage["allowed_inputs"]
 
 
 def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp_path, monkeypatch):
@@ -133,5 +158,6 @@ def test_collector_does_not_call_upstream_graph_or_llm_backend():
     source = COLLECTOR_PATH.read_text(encoding="utf-8")
 
     assert "TradingAgentsGraph" not in source
+    assert "tradingagents.graph" not in source
     assert "create_llm_client" not in source
     assert "run_tradingagents_reports" not in source

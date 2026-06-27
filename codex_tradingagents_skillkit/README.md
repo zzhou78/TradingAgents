@@ -34,6 +34,8 @@ Apple and Microsoft role-evidence example for Codex-operated reports:
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
 ```
 
+After collection, Codex reads each ticker's `workflow_state.json` and follows the listed stages without asking for more user input.
+
 Quick checks:
 
 ```powershell
@@ -48,3 +50,4 @@ Safety:
 - The runner prepares workflow packets only; it does not call live LLMs or market-data vendors.
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
+- `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, and report paths.
