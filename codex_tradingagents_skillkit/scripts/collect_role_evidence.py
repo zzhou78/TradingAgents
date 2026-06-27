@@ -236,6 +236,40 @@ def _write_role_packets(evidence: dict[str, Any], path: Path) -> None:
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _write_single_role_packet(
+    evidence: dict[str, Any],
+    role: str,
+    role_data: dict[str, Any],
+    path: Path,
+) -> None:
+    lines = [
+        f"# Codex Role Evidence Packet: {evidence['ticker']} / {role}",
+        "",
+        f"- Trade date: `{evidence['trade_date']}`",
+        f"- Instrument identity: `{evidence['identity'].get('company_name', evidence['ticker'])}`",
+        f"- Skill: `{role_data['skill']}`",
+        "",
+        "Read only this packet when acting this analyst role. Do not inspect other analyst role packets until the workflow advances to a downstream debate stage.",
+        "",
+        f"## Role: {role}",
+        "",
+    ]
+    for tool_name, call in role_data["tool_calls"].items():
+        lines.extend(
+            [
+                f"### Tool: {tool_name}",
+                "",
+                f"- Status: `{call['status']}`",
+                "",
+                "```text",
+                call.get("output") or call.get("error", ""),
+                "```",
+                "",
+            ]
+        )
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
     tickers: list[str] = []
@@ -279,13 +313,21 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         }
         evidence_path = evidence_dir / "evidence.json"
         packet_path = evidence_dir / "role_packets.md"
+        role_dir = evidence_dir / "roles"
+        role_dir.mkdir(exist_ok=True)
         evidence_path.write_text(json.dumps(evidence, indent=2), encoding="utf-8")
         _write_role_packets(evidence, packet_path)
+        role_packet_paths = {}
+        for role, role_data in evidence["roles"].items():
+            role_packet = role_dir / f"{role}.md"
+            _write_single_role_packet(evidence, role, role_data, role_packet)
+            role_packet_paths[role] = str(role_packet)
         summary["runs"].append(
             {
                 "ticker": ticker,
                 "evidence_path": str(evidence_path),
                 "role_packet_path": str(packet_path),
+                "role_packet_paths": role_packet_paths,
             }
         )
 

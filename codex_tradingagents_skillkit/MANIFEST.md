@@ -67,6 +67,7 @@ The evidence collector writes outputs under `codex_tradingagents_skillkit/runs/`
 by default:
 - `evidence/<TICKER>/<DATE>/evidence.json`
 - `evidence/<TICKER>/<DATE>/role_packets.md`
+- `evidence/<TICKER>/<DATE>/roles/<role>.md`
 - `evidence_summary.json`
 - `tradingagents_results/`
 - `tradingagents_cache/`
@@ -94,7 +95,7 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 1. Run `collect_role_evidence.py` for the nominated tickers and date.
 2. Codex follows the workflow skills converted from `tradingagents/graph`.
 3. Codex acts each role independently:
-   - analyst roles read only their own role evidence;
+   - analyst roles read only their own `roles/<role>.md` evidence packet;
    - bull and bear researchers read only completed analyst reports;
    - trader reads the research-manager decision;
    - risk analysts read the trader proposal and completed upstream reports;

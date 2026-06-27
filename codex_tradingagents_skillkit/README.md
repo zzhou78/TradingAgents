@@ -47,4 +47,4 @@ Safety:
 - It does not connect to GCAF.
 - The runner prepares workflow packets only; it does not call live LLMs or market-data vendors.
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
-- Codex must keep role passes independent: each analyst role reads only its own evidence packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
+- Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.

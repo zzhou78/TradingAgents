@@ -75,13 +75,22 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
 
     for ticker in ["AAPL", "MSFT"]:
         packet = tmp_path / "evidence" / ticker / "2026-06-27" / "role_packets.md"
+        market_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "market.md"
+        news_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "news.md"
+        fundamentals_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "fundamentals.md"
         data = tmp_path / "evidence" / ticker / "2026-06-27" / "evidence.json"
         assert packet.exists()
+        assert market_packet.exists()
+        assert news_packet.exists()
+        assert not fundamentals_packet.exists()
         assert data.exists()
-        text = packet.read_text(encoding="utf-8")
-        assert "## Role: market" in text
-        assert "## Role: news" in text
-        assert "## Role: fundamentals" not in text
+        assert "## Role: market" in market_packet.read_text(encoding="utf-8")
+        assert "## Role: news" in news_packet.read_text(encoding="utf-8")
+        assert "## Role: news" not in market_packet.read_text(encoding="utf-8")
+
+    for run in summary["runs"]:
+        assert sorted(run["role_packet_paths"]) == ["market", "news"]
+        assert run["role_packet_path"].endswith("role_packets.md")
 
 
 def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp_path, monkeypatch):
