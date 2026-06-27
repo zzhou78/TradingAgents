@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analyst Sequencing"
+  short_description: "Route selected analyst stages"
+  default_prompt: "Use $tradingagents-analyst-sequencing to plan analyst order, tool loops, report keys, and handoff to research debate."

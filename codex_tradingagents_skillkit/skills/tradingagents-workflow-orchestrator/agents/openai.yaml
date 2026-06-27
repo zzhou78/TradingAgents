@@ -1,0 +1,4 @@
+interface:
+  display_name: "TradingAgents Workflow"
+  short_description: "Coordinate the graph workflow"
+  default_prompt: "Use $tradingagents-workflow-orchestrator to coordinate a paper TradingAgents-style analysis from analyst reports through portfolio decision."

@@ -1,0 +1,36 @@
+---
+name: tradingagents-run-persistence
+description: Use when reproducing TradingAgents graph run state, checkpoint resume semantics, final JSON/report persistence, deferred reflection, benchmark outcome lookup, or final signal parsing.
+---
+
+# TradingAgents Run Persistence
+
+Source files scanned:
+- `tradingagents/graph/propagation.py`
+- `tradingagents/graph/trading_graph.py`
+- `tradingagents/graph/checkpointer.py`
+- `tradingagents/graph/reflection.py`
+- `tradingagents/graph/signal_processing.py`
+
+Inputs:
+- Ticker, trade date, asset type, instrument context, prior memory context, graph final state, and optional config paths.
+- Portfolio manager final decision markdown.
+
+Procedure:
+1. Initial state contains the human ticker/company message, `company_of_interest`, `asset_type`, `instrument_context`, `trade_date`, `past_context`, empty investment and risk debate states, and empty analyst reports.
+2. Use recursion-limit config for graph execution; include callbacks only when provided.
+3. If checkpointing is enabled, compile with a per-ticker SQLite saver under `data_cache_dir/checkpoints` and use a deterministic ticker/date thread ID.
+4. Resume only the same ticker/date thread; a different date starts fresh.
+5. On successful completion, clear the ticker/date checkpoint so stale state is not reused.
+6. Log final state as JSON under `results_dir/<safe ticker>/TradingAgentsStrategy_logs/full_states_log_<date>.json`.
+7. Store the final decision for deferred reflection; later same-ticker runs may resolve raw and benchmark-relative return, then store a 2-4 sentence reflection.
+8. Parse the final signal from the portfolio manager markdown with the five-tier rating heuristic; do not make an extra LLM call for signal extraction.
+
+Output:
+- Initial-state contract, checkpoint behavior, final state log, optional report tree, deferred reflection update, and parsed rating.
+
+Safety boundaries:
+- Do not write outside configured cache/results directories; use safe ticker path components.
+- Do not treat logged decisions or reflections as real investment advice.
+- Do not use as real trading advice.
+- Do not connect to GCAF.

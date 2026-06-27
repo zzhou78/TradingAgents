@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Persistence"
+  short_description: "Handle graph state and outputs"
+  default_prompt: "Use $tradingagents-run-persistence to handle initial state, checkpoints, final logs, reports, reflections, and signal parsing."
