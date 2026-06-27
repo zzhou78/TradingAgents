@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debate Routing"
+  short_description: "Route research and risk debates"
+  default_prompt: "Use $tradingagents-debate-routing to reproduce bull/bear and aggressive/conservative/neutral debate flow."
