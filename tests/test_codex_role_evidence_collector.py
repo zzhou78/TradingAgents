@@ -2,12 +2,15 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COLLECTOR_PATH = (
     ROOT / "codex_tradingagents_skillkit" / "scripts" / "collect_role_evidence.py"
 )
+MEMORY_VALIDATOR_PATH = ROOT / "codex_tradingagents_skillkit" / "scripts" / "validate_role_memory.py"
 
 
 def _load_collector():
@@ -42,7 +45,7 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
     monkeypatch.setattr(
         collector,
         "collect_financial_document_sources",
-        lambda ticker, trade_date: {
+        lambda ticker, trade_date, **kwargs: {
             "status": "ok",
             "sources": [
                 {
@@ -116,6 +119,10 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert workflow["requires_user_input"] is False
         assert workflow["uses_tradingagents_graph"] is False
         assert workflow["report_style"] == "tradingagents"
+        memory_root = Path(workflow["memory_root"])
+        for role_name in collector.ROLE_MEMORY_NAMES:
+            assert (memory_root / role_name / "memory.md").exists()
+            assert (memory_root / role_name / "memory.json").exists()
         stage_names = [stage["stage"] for stage in workflow["stages"]]
         assert stage_names[:2] == ["market_analyst", "news_analyst"]
         assert stage_names[2:] == [
@@ -137,6 +144,12 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         market_stage = workflow["stages"][0]
         assert market_stage["skill"] == "tradingagents-market-analyst"
         assert market_stage["allowed_inputs"] == [run["role_packet_paths"]["market"]]
+        assert market_stage["role_memory"] == "market_analyst"
+        assert len(market_stage["allowed_memory_files"]) == 2
+        assert market_stage["memory_update_path"].endswith("memory_updates\\market_analyst.md") or market_stage[
+            "memory_update_path"
+        ].endswith("memory_updates/market_analyst.md")
+        assert market_stage["forbidden_memory_roots"]
         assert market_stage["forbidden_inputs"] == [
             run["role_packet_paths"]["news"],
             run["role_packet_paths"]["financial_report"],
@@ -229,6 +242,13 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert quality_stage["stage"] == "quality_review"
         assert report_paths["complete_report"] in quality_stage["allowed_inputs"]
 
+    validation = subprocess.run(
+        [sys.executable, str(MEMORY_VALIDATOR_PATH), "--output-dir", str(tmp_path)],
+        text=True,
+        capture_output=True,
+    )
+    assert validation.returncode == 0, validation.stdout + validation.stderr
+
 
 def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, monkeypatch):
     collector = _load_collector()
@@ -247,7 +267,7 @@ def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, mo
     monkeypatch.setattr(
         collector,
         "collect_financial_document_sources",
-        lambda ticker, trade_date: {"status": "unavailable", "sources": []},
+        lambda ticker, trade_date, **kwargs: {"status": "unavailable", "sources": []},
     )
     monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
 
@@ -334,7 +354,7 @@ def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp
     monkeypatch.setattr(
         collector,
         "collect_financial_document_sources",
-        lambda ticker, trade_date: {"status": "unavailable", "sources": []},
+        lambda ticker, trade_date, **kwargs: {"status": "unavailable", "sources": []},
     )
     monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {})
 

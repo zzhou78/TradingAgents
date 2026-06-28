@@ -96,18 +96,74 @@ def test_sec_sources_are_filtered_to_trade_date_and_include_excerpts():
     assert "2026-07-01" not in module.render_financial_document_packet(packet)
 
 
-def test_non_us_tickers_record_document_gap_without_sec_lookup():
+def test_other_market_tickers_record_document_gap_without_sec_lookup():
     module = _load_module()
 
     packet = module.collect_financial_document_sources(
-        "CBA.AX",
+        "7203.T",
         "2026-06-27",
         http_get=lambda url, headers: (_ for _ in ()).throw(AssertionError(url)),
     )
 
     assert packet["status"] == "unavailable"
     assert packet["sources"][0]["source_type"] == "sec_filings"
-    assert "not a plain US exchange ticker" in packet["sources"][0]["reason"]
+    assert "No market-specific financial document collector exists" in packet["sources"][0]["reason"]
+
+
+def test_asx_tickers_route_to_asx_announcement_collector_and_filter_trade_date():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/CBA/announcements" in url:
+            return json.dumps(
+                {
+                    "data": [
+                        {
+                            "title": "Appendix 4E and 2026 Full Year Results",
+                            "announcement_date": "2026-08-10",
+                            "url": "https://asx.example/CBA-fy26.pdf",
+                        },
+                        {
+                            "title": "2025 Annual Report",
+                            "announcement_date": "2025-08-12",
+                            "url": "https://asx.example/CBA-annual-report.pdf",
+                        },
+                        {
+                            "title": "AGM Presentation",
+                            "announcement_date": "2025-10-20",
+                            "url": "https://asx.example/CBA-agm.pdf",
+                        },
+                    ]
+                }
+            )
+        if url == "https://asx.example/CBA-annual-report.pdf":
+            return (
+                "Annual report revenue income NPAT EPS dividend per share operating cash flow "
+                "cash debt CET1 segment NIM loan growth arrears impairment outlook dividend capex risks"
+            )
+        if url == "https://asx.example/CBA-agm.pdf":
+            return "AGM presentation outlook dividend capital management"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("CBA.AX", "2026-06-27", http_get=fake_http_get)
+
+    assert packet["status"] == "ok"
+    assert packet["market"] == "ASX"
+    assert packet["asx_code"] == "CBA"
+    assert any("company/CBA/announcements" in url for url in requested_urls)
+    assert not any("fy26" in url for url in requested_urls)
+    sources = packet["sources"]
+    assert [source["document_type"] for source in sources] == ["Annual Report", "AGM Presentation"]
+    annual = sources[0]
+    assert annual["announcement_date"] == "2025-08-12"
+    assert annual["extraction_status"] == "available"
+    assert annual["extracted_sections"]
+    rendered = module.render_financial_document_packet(packet)
+    assert "- Market: `ASX`" in rendered
+    assert "Annual Report" in rendered
+    assert "operating_cash_flow" in rendered
 
 
 def test_generic_8k_is_not_mislabeled_as_earnings_release():

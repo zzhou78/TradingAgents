@@ -67,12 +67,12 @@ Use the evidence collector when you want upstream TradingAgents dataflow tools t
 ```
 
 The evidence collector uses `scripts/financial_document_sources.py` to prepare
-the Financial Report Analyst source packet. For plain US tickers it queries SEC
-company-ticker and submissions data, keeps only filings with
-`filingDate <= trade_date`, and records annual-report, quarterly-report,
-8-K / earnings-release candidate, investor-presentation availability, URLs,
-and short excerpts where available. For non-US tickers or missing source types
-it records explicit coverage gaps instead of fabricating management commentary.
+the Financial Report Analyst source packet. It routes by market: plain US
+tickers query SEC company-ticker and submissions data, `.AX` tickers use
+`scripts/financial_document_sources_asx.py` for ASX announcements, and
+unsupported markets record explicit unavailable coverage. Collectors keep only
+documents dated/lodged on or before `trade_date` and record missing source
+types instead of fabricating management commentary.
 
 Prepare Codex report tasks after evidence collection:
 
@@ -100,12 +100,16 @@ by default:
 - `tradingagents_cache/`
 - `tradingagents_memory/trading_memory.md`
 - `yfinance_cache/`
+- `memory/<TICKER>/<role>/memory.md`
+- `memory/<TICKER>/<role>/memory.json`
 
 The task preparer writes `reports/<TICKER>/<DATE>/tasks/*.md` and
 `task_manifest.json`. It reads only `workflow_state.json` and the already
 collected `evidence.json`; it does not write role reports, assemble
 `complete_report.md`, call upstream graph orchestration, external LLMs, broker
-APIs, or market-data vendors.
+APIs, or market-data vendors. Each task declares allowed input files, forbidden
+input files, allowed memory files, forbidden memory roots, output path, and
+memory update path.
 
 The validator is a hard contract checker only. It fails reports that omit
 required visible headings, post-date social discipline, raw-social-dump limits,
@@ -113,6 +117,9 @@ the final transaction proposal marker, action/proposal matching, the
 paper-study disclaimer section, the primary-driver marker, required Financial
 Report Analyst and Industry / Theme Discovery Analyst sections, or unexplained
 MSFT-to-Apple cross-ticker leakage without `comparative_run=true`.
+`validate_role_memory.py` separately checks that each workflow stage is limited
+to its own role memory and that completed role outputs include a Memory Update
+section.
 
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.

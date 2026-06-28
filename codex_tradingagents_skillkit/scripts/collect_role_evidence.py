@@ -82,6 +82,31 @@ WORKFLOW_SKILLS = [
 ]
 DEFAULT_MAX_DEBATE_ROUNDS = 1
 DEFAULT_MAX_RISK_DISCUSS_ROUNDS = 1
+ROLE_MEMORY_NAMES = [
+    "market_analyst",
+    "sentiment_analyst",
+    "news_analyst",
+    "fundamentals_analyst",
+    "financial_report_analyst",
+    "industry_theme_discovery_analyst",
+    "bull_researcher",
+    "bear_researcher",
+    "research_manager",
+    "trader",
+    "aggressive_risk_analyst",
+    "conservative_risk_analyst",
+    "neutral_risk_analyst",
+    "portfolio_manager",
+    "quality_reviewer",
+]
+MEMORY_UPDATE_FOOTER = """## Memory Update
+
+* Durable facts to retain:
+* Prior mistake to avoid:
+* Open questions:
+* Evidence references:
+* Staleness / expiry:
+"""
 
 
 def _split_tickers(raw: str) -> list[str]:
@@ -224,8 +249,8 @@ def _collect_fundamentals(ticker: str, trade_date: str) -> dict[str, Any]:
     return {"skill": ROLE_SKILLS["fundamentals"], "tool_calls": calls}
 
 
-def _collect_financial_report(ticker: str, trade_date: str) -> dict[str, Any]:
-    packet = collect_financial_document_sources(ticker, trade_date)
+def _collect_financial_report(ticker: str, trade_date: str, identity: dict[str, Any] | None = None) -> dict[str, Any]:
+    packet = collect_financial_document_sources(ticker, trade_date, identity=identity)
     return {
         "skill": ROLE_SKILLS[FINANCIAL_REPORT_ROLE],
         "tool_calls": {
@@ -234,7 +259,7 @@ def _collect_financial_report(ticker: str, trade_date: str) -> dict[str, Any]:
                 "args": {
                     "ticker": ticker,
                     "trade_date": trade_date,
-                    "source_policy": "SEC filings filtered to filingDate <= trade_date",
+                    "source_policy": "Market-aware routing: US uses SEC; ASX uses ASX announcements; unsupported markets return explicit unavailable coverage.",
                 },
                 "output": render_financial_document_packet(packet),
             }
@@ -254,6 +279,127 @@ def _collect_role(role: str, ticker: str, trade_date: str, lookback_days: int) -
     if role == FINANCIAL_REPORT_ROLE:
         return _collect_financial_report(ticker, trade_date)
     raise ValueError(f"unknown role: {role}")
+
+
+def _stage_memory_role(stage_name: str) -> str:
+    if stage_name.startswith("bull_researcher_round"):
+        return "bull_researcher"
+    if stage_name.startswith("bear_researcher_round"):
+        return "bear_researcher"
+    if stage_name.startswith("aggressive_risk_round"):
+        return "aggressive_risk_analyst"
+    if stage_name.startswith("conservative_risk_round"):
+        return "conservative_risk_analyst"
+    if stage_name.startswith("neutral_risk_round"):
+        return "neutral_risk_analyst"
+    if stage_name == "quality_review":
+        return "quality_reviewer"
+    if stage_name in {"complete_report"}:
+        return "portfolio_manager"
+    return stage_name
+
+
+def _memory_seed(role: str, ticker: str, trade_date: str) -> str:
+    return f"""# Role Memory: {ticker} / {role}
+
+- role: `{role}`
+- ticker: `{ticker}`
+- last_updated: `{trade_date}`
+- review_date: `{trade_date}`
+
+## Durable facts learned
+
+- None recorded yet.
+
+## Recurring issues
+
+- None recorded yet.
+
+## Prior role conclusions
+
+- None recorded yet.
+
+## Prior mistakes to avoid
+
+- Prefer current evidence over stale memory.
+
+## Open questions
+
+- None recorded yet.
+
+## Stale assumptions
+
+- None recorded yet.
+
+## Evidence references
+
+- None recorded yet.
+"""
+
+
+def _ensure_role_memories(ticker: str, trade_date: str) -> dict[str, dict[str, str]]:
+    memory_map: dict[str, dict[str, str]] = {}
+    for role in ROLE_MEMORY_NAMES:
+        role_dir = BUNDLE_ROOT / "memory" / ticker / role
+        role_dir.mkdir(parents=True, exist_ok=True)
+        md_path = role_dir / "memory.md"
+        json_path = role_dir / "memory.json"
+        if not md_path.exists():
+            md_path.write_text(_memory_seed(role, ticker, trade_date), encoding="utf-8")
+        if not json_path.exists():
+            json_path.write_text(
+                json.dumps(
+                    {
+                        "role": role,
+                        "ticker": ticker,
+                        "last_updated": trade_date,
+                        "durable_facts_learned": [],
+                        "recurring_issues": [],
+                        "prior_role_conclusions": [],
+                        "prior_mistakes_to_avoid": ["Prefer current evidence over stale memory."],
+                        "open_questions": [],
+                        "stale_assumptions": [],
+                        "evidence_references": [],
+                        "review_date": trade_date,
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+        memory_map[role] = {
+            "memory_md": str(md_path),
+            "memory_json": str(json_path),
+            "root": str(role_dir),
+        }
+    return memory_map
+
+
+def _attach_memory_contract(
+    stage: dict[str, Any],
+    *,
+    ticker: str,
+    memory_map: dict[str, dict[str, str]],
+    report_dir: Path,
+) -> dict[str, Any]:
+    memory_role = _stage_memory_role(stage["stage"])
+    own_memory = memory_map[memory_role]
+    stage["role_memory"] = memory_role
+    stage["allowed_memory_files"] = [own_memory["memory_md"], own_memory["memory_json"]]
+    stage["forbidden_memory_roots"] = [
+        details["root"] for role, details in memory_map.items() if role != memory_role
+    ]
+    update_dir = report_dir / "memory_updates"
+    stage["memory_update_path"] = str(update_dir / f"{stage['stage']}.md")
+    stage["memory_rules"] = [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only.",
+    ]
+    stage["ticker"] = ticker
+    return stage
 
 
 def _write_role_packets(evidence: dict[str, Any], path: Path) -> None:
@@ -374,7 +520,9 @@ def _workflow_state(
     report_dir: Path,
     max_debate_rounds: int,
     max_risk_discuss_rounds: int,
+    memory_map: dict[str, dict[str, str]] | None = None,
 ) -> dict[str, Any]:
+    memory_map = memory_map or _ensure_role_memories(ticker, trade_date)
     paths = _report_paths(
         report_dir,
         selected_analysts,
@@ -386,7 +534,8 @@ def _workflow_state(
         stage_name = ANALYST_STAGE_NAMES[role]
         output_key = "sentiment_report" if role == "social" else f"{role}_report"
         stages.append(
-            {
+            _attach_memory_contract(
+                {
                 "stage": stage_name,
                 "skill": ROLE_SKILLS[role],
                 "allowed_inputs": [role_packet_paths[role]],
@@ -397,7 +546,11 @@ def _workflow_state(
                 ],
                 "output_path": paths[output_key],
                 "completion_gate": f"write {output_key} in TradingAgents analyst style",
-            }
+                },
+                ticker=ticker,
+                memory_map=memory_map,
+                report_dir=report_dir,
+            )
         )
 
     analyst_outputs = [
@@ -405,7 +558,8 @@ def _workflow_state(
         for role in selected_analysts
     ]
     stages.append(
-        {
+        _attach_memory_contract(
+            {
             "stage": "financial_report_analyst",
             "skill": "tradingagents-financial-report-analyst",
             "allowed_inputs": analyst_outputs
@@ -413,18 +567,27 @@ def _workflow_state(
             "forbidden_inputs": [],
             "output_path": paths["financial_report"],
             "completion_gate": "write financial_report.md before industry/theme discovery",
-        }
+            },
+            ticker=ticker,
+            memory_map=memory_map,
+            report_dir=report_dir,
+        )
     )
     analyst_outputs.append(paths["financial_report"])
     stages.append(
-        {
+        _attach_memory_contract(
+            {
             "stage": "industry_theme_discovery_analyst",
             "skill": "tradingagents-industry-theme-discovery-analyst",
             "allowed_inputs": analyst_outputs + [str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["industry_theme_report"],
             "completion_gate": "discover evidence-grounded industry/theme context before research debate",
-        }
+            },
+            ticker=ticker,
+            memory_map=memory_map,
+            report_dir=report_dir,
+        )
     )
     analyst_outputs.append(paths["industry_theme_report"])
     downstream = []
@@ -510,7 +673,8 @@ def _workflow_state(
     )
     for stage_name, skill, allowed_inputs in downstream:
         stages.append(
-            {
+            _attach_memory_contract(
+                {
                 "stage": stage_name,
                 "skill": skill,
                 "allowed_inputs": allowed_inputs,
@@ -519,31 +683,45 @@ def _workflow_state(
                 "completion_gate": completion_gates.get(
                     stage_name, "write the visible debate-stage output before advancing"
                 ),
-            }
+                },
+                ticker=ticker,
+                memory_map=memory_map,
+                report_dir=report_dir,
+            )
         )
     complete_report_inputs = analyst_outputs + [
         paths[stage_name]
         for stage_name, _, _ in downstream
     ]
     stages.append(
-        {
+        _attach_memory_contract(
+            {
             "stage": "complete_report",
             "skill": "tradingagents-run-persistence",
             "allowed_inputs": complete_report_inputs,
             "forbidden_inputs": [],
             "output_path": paths["complete_report"],
             "completion_gate": "assemble TradingAgents-style complete_report.md",
-        }
+            },
+            ticker=ticker,
+            memory_map=memory_map,
+            report_dir=report_dir,
+        )
     )
     stages.append(
-        {
+        _attach_memory_contract(
+            {
             "stage": "quality_review",
             "skill": "tradingagents-quality-reviewer",
             "allowed_inputs": complete_report_inputs + [paths["complete_report"], str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["quality_review"],
             "completion_gate": "write quality_review.md and quality_gate.json",
-        }
+            },
+            ticker=ticker,
+            memory_map=memory_map,
+            report_dir=report_dir,
+        )
     )
 
     return {
@@ -564,7 +742,10 @@ def _workflow_state(
             "Downstream stages read only completed prior report files listed in allowed_inputs.",
             "Do not call upstream graph orchestration or external LLM backends for role reasoning.",
             "Do not submit broker orders, connect to GCAF, or treat output as real trading advice.",
+            "Each stage may read only its own role memory for the same ticker.",
+            "Memory must not override current evidence.",
         ],
+        "memory_root": str(BUNDLE_ROOT / "memory" / ticker),
         "stages": stages,
     }
 
@@ -646,6 +827,8 @@ def _write_stage_scaffolds(workflow: dict[str, Any]) -> None:
                 "## Role Output",
                 "",
                 "Codex fills this section when the workflow reaches this stage.",
+                "",
+                MEMORY_UPDATE_FOOTER.rstrip(),
             ]
         )
         path.write_text("\n".join(lines), encoding="utf-8")
@@ -700,11 +883,10 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 for role in selected_analysts
             },
         }
-        evidence["roles"][FINANCIAL_REPORT_ROLE] = _collect_role(
-            FINANCIAL_REPORT_ROLE,
+        evidence["roles"][FINANCIAL_REPORT_ROLE] = _collect_financial_report(
             ticker,
             args.trade_date,
-            args.lookback_days,
+            identity,
         )
         evidence_path = evidence_dir / "evidence.json"
         packet_path = evidence_dir / "role_packets.md"

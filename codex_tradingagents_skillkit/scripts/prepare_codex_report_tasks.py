@@ -29,7 +29,7 @@ TASKS = {
     "financial_report_task.md": {
         "skill": "tradingagents-financial-report-analyst",
         "output_key": "financial_report",
-        "instruction": "Read the structured fundamentals packet plus section-level 10-K/10-Q records, 8-K cover pages, Exhibit 99.1 earnings releases, investor materials, and management commentary. Write financial_report.md with a claim-source table and cite the source section supporting each substantive claim. Python must not classify themes or financial-report conclusions. If a needed section or exhibit is unavailable, state the evidence gap.",
+        "instruction": "Read the structured fundamentals packet plus market-aware financial document packet: section-level 10-K/10-Q records and 8-K Exhibit 99.1 for US tickers; ASX announcements, annual reports, Appendix 4E/4D, results presentations, and investor materials for ASX tickers. Write financial_report.md with a claim-source table and cite the source section supporting each substantive claim. Python must not classify themes or financial-report conclusions. If a needed section or exhibit is unavailable, state the evidence gap.",
     },
     "industry_theme_discovery_task.md": {
         "skill": "tradingagents-industry-theme-discovery-analyst",
@@ -114,6 +114,12 @@ def _task_text(
 ) -> str:
     output_path = _output_path_for(workflow, task["output_key"])
     evidence_path = workflow["evidence_path"]
+    stage = _stage_for_output(workflow, output_path)
+    allowed_input_files = stage.get("allowed_inputs", [evidence_path]) if stage else [evidence_path]
+    forbidden_input_files = stage.get("forbidden_inputs", []) if stage else []
+    allowed_memory_files = stage.get("allowed_memory_files", []) if stage else []
+    forbidden_memory_roots = stage.get("forbidden_memory_roots", []) if stage else []
+    memory_update_path = stage.get("memory_update_path", "") if stage else ""
     return f"""# Codex Report Task: {workflow['ticker']} {task_name.removesuffix('_task.md').replace('_', ' ').title()}
 
 Ticker: `{workflow['ticker']}`
@@ -121,6 +127,23 @@ Trade date: `{workflow['trade_date']}`
 Skill to use: `{task['skill']}`
 Evidence file: `{_relative_or_absolute(evidence_path, repo_root)}`
 Output file: `{_relative_or_absolute(output_path, repo_root)}`
+Memory update file: `{_relative_or_absolute(memory_update_path, repo_root) if memory_update_path else ''}`
+
+## Allowed Input Files
+
+{_bullet_paths(allowed_input_files, repo_root)}
+
+## Forbidden Input Files
+
+{_bullet_paths(forbidden_input_files, repo_root) if forbidden_input_files else '- None declared.'}
+
+## Allowed Memory Files
+
+{_bullet_paths(allowed_memory_files, repo_root) if allowed_memory_files else '- None declared.'}
+
+## Forbidden Memory Roots
+
+{_bullet_paths(forbidden_memory_roots, repo_root) if forbidden_memory_roots else '- None declared.'}
 
 ## Instruction
 
@@ -134,11 +157,30 @@ Output file: `{_relative_or_absolute(output_path, repo_root)}`
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Read only the allowed input files.
+- Read only the allowed memory files.
+- Do not inspect other role memory.
+- At the end, write a memory update for this role only.
+- Memory must not override current evidence; if memory conflicts with current evidence, state the conflict explicitly.
 - Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
 - If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.
+
+## Required Memory Update Footer
+
+Every role output must end with:
+
+```markdown
+## Memory Update
+
+* Durable facts to retain:
+* Prior mistake to avoid:
+* Open questions:
+* Evidence references:
+* Staleness / expiry:
+```
 """
 
 
@@ -151,6 +193,18 @@ def _output_path_for(workflow: dict[str, Any], output_key: str) -> str:
         folder, filename = DEFAULT_OUTPUTS[output_key]
         return str(report_dir / folder / filename)
     return str(report_dir / "tasks" / f"{output_key}.md")
+
+
+def _stage_for_output(workflow: dict[str, Any], output_path: str) -> dict[str, Any] | None:
+    resolved = str(Path(output_path))
+    for stage in workflow.get("stages", []):
+        if str(Path(stage.get("output_path", ""))) == resolved:
+            return stage
+    return None
+
+
+def _bullet_paths(paths: list[str], repo_root: Path) -> str:
+    return "\n".join(f"- `{_relative_or_absolute(path, repo_root)}`" for path in paths)
 
 
 def prepare_tasks_for_workflow(workflow_path: Path, repo_root: Path) -> dict[str, Any]:
@@ -177,6 +231,18 @@ def prepare_tasks_for_workflow(workflow_path: Path, repo_root: Path) -> dict[str
             "skill": task["skill"],
             "output_key": task["output_key"],
             "path": _relative_or_absolute(str(task_path), repo_root),
+            "allowed_input_files": [
+                _relative_or_absolute(path, repo_root)
+                for path in (_stage_for_output(workflow, _output_path_for(workflow, task["output_key"])) or {}).get(
+                    "allowed_inputs", []
+                )
+            ],
+            "allowed_memory_files": [
+                _relative_or_absolute(path, repo_root)
+                for path in (_stage_for_output(workflow, _output_path_for(workflow, task["output_key"])) or {}).get(
+                    "allowed_memory_files", []
+                )
+            ],
         }
 
     manifest = {

@@ -11,6 +11,7 @@ PREPARER = BUNDLE / "scripts" / "prepare_codex_report_tasks.py"
 WRITER = BUNDLE / "scripts" / "write_codex_reports.py"
 VALIDATOR = BUNDLE / "scripts" / "validate_complete_report.py"
 QUALITY_VALIDATOR = BUNDLE / "scripts" / "validate_quality_review.py"
+MEMORY_VALIDATOR = BUNDLE / "scripts" / "validate_role_memory.py"
 RUNNER = (
     SKILLS_ROOT
     / "tradingagents-ticker-workflow-runner"
@@ -161,12 +162,35 @@ def _write_workflow(tmp_path: Path) -> tuple[Path, dict[str, Path]]:
     for path in report_paths.values():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("Pending Codex role output.\n", encoding="utf-8")
+    memory_root = output_dir / "memory" / "AAPL"
+    news_memory = memory_root / "news_analyst"
+    market_memory = memory_root / "market_analyst"
+    news_memory.mkdir(parents=True)
+    market_memory.mkdir(parents=True)
+    (news_memory / "memory.md").write_text("# news memory\n", encoding="utf-8")
+    (news_memory / "memory.json").write_text('{"role": "news_analyst", "ticker": "AAPL"}\n', encoding="utf-8")
     workflow = {
         "ticker": "AAPL",
         "trade_date": "2026-06-27",
         "evidence_path": str(evidence_path),
         "report_dir": str(report_dir),
         "report_paths": {key: str(path) for key, path in report_paths.items()},
+        "memory_root": str(memory_root),
+        "stages": [
+            {
+                "stage": "news_analyst",
+                "skill": "tradingagents-news-analyst",
+                "allowed_inputs": [str(evidence_path)],
+                "forbidden_inputs": [],
+                "allowed_memory_files": [
+                    str(news_memory / "memory.md"),
+                    str(news_memory / "memory.json"),
+                ],
+                "forbidden_memory_roots": [str(market_memory)],
+                "output_path": str(report_paths["news_report"]),
+                "memory_update_path": str(report_dir / "memory_updates" / "news_analyst.md"),
+            }
+        ],
     }
     (evidence_dir / "workflow_state.json").write_text(
         json.dumps(workflow),
@@ -183,6 +207,7 @@ def test_bundle_has_expected_skills_and_docs():
     assert WRITER.exists()
     assert VALIDATOR.exists()
     assert QUALITY_VALIDATOR.exists()
+    assert MEMORY_VALIDATOR.exists()
 
     readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
     manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
@@ -260,6 +285,10 @@ def test_prepare_codex_report_tasks_writes_task_prompts_not_reports(tmp_path: Pa
     assert "industry_theme_discovery_task.md" in manifest["tasks"]
     assert "Codex must write" in news_task
     assert "Do not let Python classify likely effect" in news_task
+    assert "## Allowed Memory Files" in news_task
+    assert "## Forbidden Memory Roots" in news_task
+    assert "## Memory Update" in news_task
+    assert manifest["tasks"]["news_analyst_task.md"]["allowed_memory_files"]
     assert "tradingagents-financial-report-analyst" in financial_task
     assert "If online sources or filings are unavailable, state the evidence gap." in financial_task
     assert "tradingagents-industry-theme-discovery-analyst" in theme_task
@@ -475,6 +504,8 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         "Claim-source table",
         "Claim, Source document, Section / exhibit, Filing date, Confidence, Evidence gap",
         "Mark capex, formal guidance, segment/product detail, income statement, balance sheet, and cash flow claims as evidence gaps",
+        "For ASX companies",
+        "NIM, CET1, loan growth, arrears, impairment, dividend, ROE",
         "10-K business / risk factors",
         "10-Q MD&A",
         "8-K Exhibit 99.1",

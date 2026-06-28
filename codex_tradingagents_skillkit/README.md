@@ -7,11 +7,14 @@ Contents:
 - `skills/`: Codex skills generated from `tradingagents/agents`, `tradingagents/graph`, and `tradingagents/dataflows`.
 - `skills/tradingagents-ticker-workflow-runner/scripts/prepare_skill_workflow.py`: offline runner that turns ticker input into a workflow packet.
 - `scripts/collect_role_evidence.py`: upstream-data evidence collector for Codex-operated role reports.
-- `scripts/financial_document_sources.py`: SEC filing/source collector used by the Financial Report Analyst evidence packet.
+- `scripts/financial_document_sources.py`: market-aware financial document router used by the Financial Report Analyst evidence packet.
+- `scripts/financial_document_sources_asx.py`: ASX announcement/source collector for `.AX` tickers.
 - `scripts/prepare_codex_report_tasks.py`: prepares task prompts for Codex role execution after evidence collection.
 - `scripts/write_codex_reports.py`: compatibility wrapper for `prepare_codex_report_tasks.py`; it no longer writes investment reasoning. `write_codex_reports.py is a compatibility wrapper`.
 - `scripts/validate_complete_report.py`: hard contract validator for required headings, date discipline, social-dump limits, action matching, disclaimer, and primary driver.
 - `scripts/validate_quality_review.py`: hard prerequisite checker for the Codex quality-review pass.
+- `scripts/validate_role_memory.py`: checks per-role persistent memory isolation contracts.
+- `memory/`: isolated per-ticker, per-role memory roots used by Codex role tasks.
 - `tests/`: regression tests for the skills and runner.
 - `docs/`: study notes produced during this branch.
 - `MANIFEST.md`: inventory of what is ours and how it maps to upstream source.
@@ -83,11 +86,12 @@ Safety:
 - It does not connect to GCAF.
 - The runner prepares workflow packets only; it does not call live LLMs or market-data vendors.
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
-- The Financial Report Analyst evidence collector queries SEC company-ticker/submissions endpoints for plain US tickers, filters filings to `filingDate <= trade_date`, and records unavailable coverage for non-US tickers or missing document types.
+- The Financial Report Analyst evidence collector routes by market: plain US tickers use SEC company-ticker/submissions endpoints; `.AX` tickers use ASX announcement collection; unsupported markets record explicit unavailable coverage. All document collectors filter sources to the trade date and record missing document types rather than fabricating management commentary.
 - The Sentiment Analyst evidence collector uses direct StockTwits and Reddit collection rather than reusing the news feed.
 - The task preparer does not call upstream graph orchestration, external LLMs, broker APIs, or market-data vendors; it writes task prompts from the already collected evidence packet.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
-- `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, and report paths.
+- `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, allowed memory files, forbidden memory roots, memory update paths, and report paths.
+- Each role may read only its own `memory/<TICKER>/<role>/memory.md` and `memory.json`; current evidence overrides stale memory.
 - `debate_record.md` is the report-folder index for the research and risk debate turns.
 - Missing stage outputs are created as pending Markdown files so every path listed in the debate record is findable from `reports/`.
 - The complete report must preserve exact visible debate headings and pass `validate_complete_report.py`.

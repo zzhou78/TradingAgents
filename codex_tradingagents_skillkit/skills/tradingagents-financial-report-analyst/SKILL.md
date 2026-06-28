@@ -17,6 +17,7 @@ Inputs:
 - Latest earnings release if available.
 - Latest investor presentation if available.
 - Structured fundamentals packet, balance sheet, income statement, and cash flow statement.
+- For ASX tickers, ASX announcement packets including Annual Report, Appendix 4E/4D, results presentations, quarterly reports, investor presentations, AGM presentations, and sustainability reports when available.
 
 Procedure:
 1. Build a source coverage table before drawing conclusions.
@@ -31,6 +32,8 @@ Procedure:
 9. Include a claim-source table with columns: Claim, Source document, Section / exhibit, Filing date, Confidence, Evidence gap if section/exhibit is missing.
 10. Mark capex, formal guidance, segment/product detail, income statement, balance sheet, and cash flow claims as evidence gaps when the relevant section or Exhibit 99.1 is unavailable.
 11. Do not infer management commentary from ratios alone.
+12. For ASX companies, report the period covered and summarize revenue/income/NPAT, EPS/DPS, operating cash flow, free cash flow or cash movement, cash/debt/gearing, segment or product performance, management commentary/outlook, dividends/capital management, capex/commitments, material risks, one-off items, and evidence gaps when available.
+13. Apply ASX sector-specific checks where relevant: banks use NIM, CET1, loan growth, arrears, impairment, dividend, ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, commodity exposure; REITs use NTA, occupancy, WALE, gearing, WACR/cap rates, distribution; SaaS/tech uses ARR, churn, NRR, cash runway, gross margin; insurers use premium growth, claims ratio, combined operating ratio, capital adequacy.
 
 Output:
 - `financial_report.md` with sections: Source coverage table; Claim-source table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.

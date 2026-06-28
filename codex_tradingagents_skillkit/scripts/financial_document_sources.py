@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import html
+import importlib.util
 import json
 import os
 import re
 import urllib.request
 from collections.abc import Callable
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
@@ -37,6 +39,25 @@ def _default_http_get(url: str, headers: dict[str, str]) -> str:
 
 def _is_plain_us_ticker(ticker: str) -> bool:
     return bool(re.fullmatch(r"[A-Z]{1,5}", ticker.upper()))
+
+
+def _is_asx_ticker(ticker: str, identity: dict[str, Any] | None = None) -> bool:
+    symbol = ticker.upper().strip()
+    if symbol.endswith(".AX"):
+        return True
+    identity = identity or {}
+    market = str(identity.get("market") or identity.get("exchange") or "").upper()
+    return market in {"ASX", "XASX", "AU"}
+
+
+def _load_asx_collector():
+    module_path = Path(__file__).with_name("financial_document_sources_asx.py")
+    spec = importlib.util.spec_from_file_location("financial_document_sources_asx", module_path)
+    if not spec or not spec.loader:
+        raise ImportError(f"Unable to load ASX collector from {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def _parse_date(value: str) -> datetime:
@@ -494,10 +515,20 @@ def collect_financial_document_sources(
     ticker: str,
     trade_date: str,
     *,
+    identity: dict[str, Any] | None = None,
     http_get: HttpGet = _default_http_get,
     excerpt_chars: int = 6000,
 ) -> dict[str, Any]:
     symbol = ticker.upper()
+    if _is_asx_ticker(symbol, identity):
+        asx = _load_asx_collector()
+        return asx.collect_asx_financial_document_sources(
+            symbol,
+            trade_date,
+            identity=identity,
+            http_get=http_get,
+            excerpt_chars=excerpt_chars,
+        )
     if not _is_plain_us_ticker(symbol):
         return {
             "ticker": symbol,
@@ -507,7 +538,7 @@ def collect_financial_document_sources(
                 {
                     "source_type": "sec_filings",
                     "status": "unavailable",
-                    "reason": "Ticker is not a plain US exchange ticker; SEC lookup was skipped.",
+                    "reason": "No market-specific financial document collector exists for this ticker; SEC lookup was skipped.",
                 }
             ],
         }
@@ -606,6 +637,10 @@ def render_financial_document_packet(packet: dict[str, Any]) -> str:
         lines.append(f"- SEC company name: {packet['company_name']}")
     if packet.get("cik"):
         lines.append(f"- SEC CIK: `{packet['cik']}`")
+    if packet.get("market"):
+        lines.append(f"- Market: `{packet['market']}`")
+    if packet.get("asx_code"):
+        lines.append(f"- ASX code: `{packet['asx_code']}`")
     if packet.get("as_of_rule"):
         lines.append(f"- As-of rule: {packet['as_of_rule']}")
     lines.extend(
@@ -617,18 +652,20 @@ def render_financial_document_packet(packet: dict[str, Any]) -> str:
     )
     for source in packet.get("sources", []):
         url_or_reason = source.get("url") or source.get("reason", "")
+        filing_date = source.get("filing_date") or source.get("announcement_date") or source.get("lodgement_date", "")
+        form = source.get("form") or source.get("document_type", "")
         lines.append(
             "| {source_type} | {status} | {filing_date} | {form} | {url_or_reason} |".format(
                 source_type=source.get("source_type", "unknown"),
                 status=source.get("status", "unknown"),
-                filing_date=source.get("filing_date", ""),
-                form=source.get("form", ""),
+                filing_date=filing_date,
+                form=form,
                 url_or_reason=url_or_reason,
             )
         )
     lines.append("")
     for source in packet.get("sources", []):
-        for section in source.get("sections", []):
+        for section in [*source.get("sections", []), *source.get("extracted_sections", [])]:
             supports_claims = ", ".join(section.get("supports_claims", [])) or "N/A"
             lines.extend(
                 [
