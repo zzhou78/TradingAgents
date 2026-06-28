@@ -12,7 +12,7 @@ Source files scanned:
 
 Inputs:
 - Full bull and bear research debate history.
-- Analyst reports and instrument context when available.
+- Analyst reports and instrument context when available, including Fundamentals Analyst, Financial Report Analyst, and Industry / Theme Discovery Analyst.
 
 Prompt contract:
 - The rating scale is exactly Buy / Overweight / Hold / Underweight / Sell.
@@ -26,13 +26,15 @@ Procedure:
 2. Decide which side is better supported, or whether the evidence is mixed.
 3. Assign one of the role's ratings: `Buy`, `Overweight`, `Hold`, `Underweight`, or `Sell`.
 4. Write strategic actions that explain what a downstream trader should do with the conclusion.
-5. Preserve unresolved uncertainties rather than forcing false precision.
+5. State whether the rating is primarily driven by technical, valuation, fundamental, financial report / management commentary, news, industry/theme, or mixed evidence.
+6. Preserve unresolved uncertainties rather than forcing false precision.
 
 Output:
 - `ResearchPlan`: rating, rationale, key evidence, risks, and strategic actions for the trader.
 - Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.
 - Show the scoring rule and score components when a numeric evidence score is used. Explicitly justify why Sell wins over Hold or Underweight, or why Hold/Underweight is selected instead of Sell when long-term support still holds.
 - Identify the primary driver of rating.
+- Explain the impact of Fundamentals Analyst, Financial Report Analyst, and Industry / Theme Discovery Analyst evidence, or state that the evidence is unavailable or immaterial.
 - Explain rating/action tension when relevant.
 - Explain why Sell beats Underweight/Hold, or why Underweight/Hold beats Sell.
 

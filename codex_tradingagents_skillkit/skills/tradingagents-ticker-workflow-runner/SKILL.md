@@ -26,7 +26,7 @@ Procedure:
 3. Use `--tickers-file` for newline or comma-separated ticker lists; blank lines and `#` comments are ignored.
 4. Use `--trade-date` to anchor all date ranges.
 5. Use `--selected-analysts` to choose ordered selected analysts; defaults follow the graph: market, social, news, fundamentals.
-6. For each packet item, run `tradingagents-workflow-orchestrator`, then the relevant analyst role skills, `tradingagents-dataflow-routing`, debate skills, trader, risk skills, portfolio manager, and run-persistence skill.
+6. For each packet item, run `tradingagents-workflow-orchestrator`, then the relevant analyst role skills, Financial Report Analyst, Industry / Theme Discovery Analyst, `tradingagents-dataflow-routing`, debate skills, trader, risk skills, portfolio manager, run-persistence skill, and quality reviewer.
 7. Do not run live LLM or market-data calls unless the current user explicitly approves them.
 
 Output:

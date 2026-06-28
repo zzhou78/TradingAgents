@@ -18,15 +18,20 @@
       "output_key": "news_report",
       "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\news_analyst_task.md"
     },
-    "industry_theme_task.md": {
-      "skill": "tradingagents-industry-theme-analyst",
-      "output_key": "industry_theme_report",
-      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\industry_theme_task.md"
-    },
     "fundamentals_analyst_task.md": {
       "skill": "tradingagents-fundamentals-analyst",
       "output_key": "fundamentals_report",
       "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\fundamentals_analyst_task.md"
+    },
+    "financial_report_task.md": {
+      "skill": "tradingagents-financial-report-analyst",
+      "output_key": "financial_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\financial_report_task.md"
+    },
+    "industry_theme_discovery_task.md": {
+      "skill": "tradingagents-industry-theme-discovery-analyst",
+      "output_key": "industry_theme_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\industry_theme_discovery_task.md"
     },
     "research_manager_task.md": {
       "skill": "tradingagents-research-manager",

@@ -16,6 +16,9 @@ Pass.
 | Trader consistency | Pass | Trader action is Hold because the Sell gate is not met while price remains above the 200 SMA. |
 | News relevance | Pass | Direct AAPL news is separated from indirect context and irrelevant items are excluded. |
 | Social evidence handling | Pass | Final report summarizes social evidence and limits raw examples to three same-date lines. |
+| Financial Report Analyst | Pass | financial_report.md is present, includes source coverage, and clearly marks missing filings/guidance as evidence gaps. |
+| Industry / Theme Discovery Analyst | Pass | industry_theme.md is present and links each discovered theme to AAPL evidence rather than a preconfigured taxonomy. |
+| Manager/Portfolio use of new roles | Pass | Research Manager and Portfolio Manager state financial-report and industry/theme impacts. |
 
 ## Remaining Limitations
 

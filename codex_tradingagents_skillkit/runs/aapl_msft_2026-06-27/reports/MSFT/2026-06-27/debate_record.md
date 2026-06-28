@@ -18,6 +18,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
 
 ### bear_researcher_round_1
 
@@ -28,6 +30,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\bull_round_1.md`
 
 ### research_manager
@@ -39,6 +43,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\bull_round_1.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\bear_round_1.md`
 
@@ -53,6 +59,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\manager.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\3_trading\trader.md`
 
@@ -65,6 +73,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\manager.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\3_trading\trader.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\4_risk\aggressive_round_1.md`
@@ -78,6 +88,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\manager.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\3_trading\trader.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\4_risk\aggressive_round_1.md`
@@ -92,6 +104,8 @@ This file is the report-folder index for Codex-visible debate turns. The turn fi
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+  - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\manager.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\3_trading\trader.md`
   - `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\4_risk\aggressive_round_1.md`

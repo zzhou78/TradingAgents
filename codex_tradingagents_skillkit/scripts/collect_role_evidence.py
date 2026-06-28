@@ -68,6 +68,7 @@ WORKFLOW_SKILLS = [
     "tradingagents-dataflow-routing",
     "tradingagents-debate-routing",
     "tradingagents-run-persistence",
+    "tradingagents-quality-reviewer",
 ]
 DEFAULT_MAX_DEBATE_ROUNDS = 1
 DEFAULT_MAX_RISK_DISCUSS_ROUNDS = 1
@@ -300,6 +301,7 @@ def _report_paths(
         "research_manager": str(report_dir / "2_research" / "manager.md"),
         "trader": str(report_dir / "3_trading" / "trader.md"),
         "portfolio_manager": str(report_dir / "5_portfolio" / "decision.md"),
+        "financial_report": str(report_dir / "1_analysts" / "financial_report.md"),
         "industry_theme_report": str(report_dir / "1_analysts" / "industry_theme.md"),
         "quality_review": str(report_dir / "6_quality" / "quality_review.md"),
         "quality_gate": str(report_dir / "6_quality" / "quality_gate.json"),
@@ -370,12 +372,23 @@ def _workflow_state(
     ]
     stages.append(
         {
-            "stage": "industry_theme_analyst",
-            "skill": "tradingagents-industry-theme-analyst",
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "allowed_inputs": analyst_outputs + [str(evidence_path)],
+            "forbidden_inputs": [],
+            "output_path": paths["financial_report"],
+            "completion_gate": "write financial_report.md before industry/theme discovery",
+        }
+    )
+    analyst_outputs.append(paths["financial_report"])
+    stages.append(
+        {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
             "allowed_inputs": analyst_outputs + [str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["industry_theme_report"],
-            "completion_gate": "write industry/theme context before research debate",
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate",
         }
     )
     analyst_outputs.append(paths["industry_theme_report"])
@@ -628,7 +641,11 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         "uses_tradingagents_graph": False,
         "skill_context": {
             "workflow_skills": WORKFLOW_SKILLS,
-            "role_skills": [ROLE_SKILLS[key] for key in selected_analysts],
+            "role_skills": [
+                *[ROLE_SKILLS[key] for key in selected_analysts],
+                "tradingagents-financial-report-analyst",
+                "tradingagents-industry-theme-discovery-analyst",
+            ],
             "skill_root": str(BUNDLE_ROOT / "skills"),
             "runtime_uses_upstream_python": ["tradingagents/dataflows", "tradingagents/agents/utils"],
         },

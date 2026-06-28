@@ -91,10 +91,6 @@ Link: https://www.cbsnews.com/news/ai-boom-chip-shortage-gadget-prices-apple-mic
 The power trend has generated impressive gains. Get ready to deal with whatever comes next with five guidelines for how to invest.
 Link: https://www.investors.com/how-to-invest/how-to-invest-nvidia-apple-stock-market-trends/?src=A00220&yptr=yahoo
 
-### Apple’s Vision Pro hardware chief defects to OpenAI (source: Investing.com)
-Apple Inc. is losing a pillar of its spatial computing ambitions to OpenAI. Paul Meade, the Vice President overseeing the Vision Pro headset and Apple’s upcoming smart glasses, is departing the tech giant. Meade will exit Apple by next week to spearhead OpenAI’s burgeoning hardware division, according to a Bloomberg report. At OpenAI, he is tasked with bringing a new family of AI-native devices to life. Neither company has officially commented on the move. Meade isn’t just a manager; he’s an arc
-Link: https://finance.yahoo.com/technology/ai/articles/apple-vision-pro-hardware-chief-200303373.html
-
 
 ```
 
@@ -112,7 +108,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-28 10:56:38
+# Data retrieved on: 2026-06-28 21:00:44
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D

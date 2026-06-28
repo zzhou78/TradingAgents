@@ -18,7 +18,7 @@ Prompt contract:
 - Transaction direction is exactly Buy / Hold / Sell.
 - Produce a structured `TraderProposal`.
 - Rendered markdown must include `**Action**` and `**Reasoning**`.
-- Optional entry price: include only when supported.
+- For `Buy` or `Sell`, include a labelled `**Paper-study price framework**` with a reference price or entry zone, invalidation level, and first confirmation or target level. If exact execution pricing is not supported, say so explicitly and use the latest verified close plus verified technical levels as the study references.
 - Optional stop loss: include only when supported.
 - Optional position sizing note: include only when supported.
 - Preserve the trailing `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` compatibility line.
@@ -28,14 +28,14 @@ Procedure:
 1. Treat the research manager decision as the primary input, then cross-check analyst evidence.
 2. Choose a paper proposal action: `Buy`, `Hold`, or `Sell`.
 3. Explain trade direction, conviction, major supporting evidence, and key invalidation risks.
-4. Include entry zone, stop loss, target, time horizon, or sizing only when evidence supports them.
+4. Include entry zone, stop loss, target, time horizon, or sizing only when evidence supports them. For Buy/Sell, do not stop at direction only; provide a paper-study price framework using verified market evidence.
 5. Make clear that the output is a proposal for downstream risk debate, not an execution command.
 6. Safety boundaries must not change the Buy / Hold / Sell action.
 7. Do not cite paper-study status as a reason to avoid Buy or Sell.
 8. The action rationale must come from market evidence, research manager input, and risk evidence.
 
 Output:
-- `TraderProposal`: action, reasoning, optional entry/exit levels, sizing notes, and risk notes.
+- `TraderProposal`: action, reasoning, paper-study price framework for Buy/Sell actions, optional sizing notes, and risk notes.
 - Include a consistency check before the final proposal. If action is Sell, identify whether price broke below longer-term support or name the separate materially negative setup. If long-term support still holds and no material negative setup is documented, prefer Hold over Sell.
 - FINAL TRANSACTION PROPOSAL must match `**Action**`.
 - Sell requires below 200 SMA or explicit material negative setup.

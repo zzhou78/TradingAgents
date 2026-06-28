@@ -10,6 +10,7 @@ Contents:
 - `scripts/prepare_codex_report_tasks.py`: prepares task prompts for Codex role execution after evidence collection.
 - `scripts/write_codex_reports.py`: compatibility wrapper for `prepare_codex_report_tasks.py`; it no longer writes investment reasoning. `write_codex_reports.py is a compatibility wrapper`.
 - `scripts/validate_complete_report.py`: hard contract validator for required headings, date discipline, social-dump limits, action matching, disclaimer, and primary driver.
+- `scripts/validate_quality_review.py`: hard prerequisite checker for the Codex quality-review pass.
 - `tests/`: regression tests for the skills and runner.
 - `docs/`: study notes produced during this branch.
 - `MANIFEST.md`: inventory of what is ours and how it maps to upstream source.
@@ -51,7 +52,9 @@ Validate a Codex-written complete report:
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\validate_complete_report.py --report codex_tradingagents_skillkit\runs\run_2026-06-27\reports\AAPL\2026-06-27\complete_report.md
 ```
 
-The task preparer reads each ticker's `workflow_state.json` and writes task prompts without asking for more user input. The default stage list includes visible one-round debate turns:
+The task preparer reads each ticker's `workflow_state.json` and writes task prompts without asking for more user input. The default stage list includes the extended analyst layer and visible one-round debate turns:
+- `financial_report_analyst`
+- `industry_theme_discovery_analyst`
 - `bull_researcher_round_1`
 - `bear_researcher_round_1`
 - `research_manager`
@@ -87,3 +90,4 @@ Safety:
 - Missing stage outputs are created as pending Markdown files so every path listed in the debate record is findable from `reports/`.
 - The complete report must preserve exact visible debate headings and pass `validate_complete_report.py`.
 - Analytical quality is reviewed by the `tradingagents-quality-reviewer` skill, which writes `quality_review.md` and `quality_gate.json`.
+- Complete reports must include `### Financial Report Analyst` and `### Industry / Theme Discovery Analyst`; Buy/Sell trader actions must include a labelled paper-study price framework.

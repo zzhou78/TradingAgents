@@ -8,6 +8,10 @@
 
 **Strongest Bear Evidence**: below 200 SMA (446.27), below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66.
 
+**Financial-report impact**: Structured financial data supports Microsoft quality and liquidity, but missing filings, earnings release, guidance, and segment commentary prevent the manager from using management narrative to override the technical breakdown.
+
+**Industry/theme impact**: Azure/cloud and enterprise AI themes are constructive, while cloud regulation and data-center power/capex intensity are material constraints. These themes mitigate but do not overturn the Sell because the primary driver is technical.
+
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
 **Score Components**:

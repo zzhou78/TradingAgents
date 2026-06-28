@@ -25,6 +25,8 @@ Synthesize the trader proposal and risk debate into the final paper portfolio de
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
+- If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.

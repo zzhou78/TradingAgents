@@ -22,8 +22,9 @@ Role skills derived from `tradingagents/agents`:
 - `tradingagents-market-analyst`
 - `tradingagents-sentiment-analyst`
 - `tradingagents-news-analyst`
-- `tradingagents-industry-theme-analyst`
 - `tradingagents-fundamentals-analyst`
+- `tradingagents-financial-report-analyst`
+- `tradingagents-industry-theme-discovery-analyst`
 - `tradingagents-bull-researcher`
 - `tradingagents-bear-researcher`
 - `tradingagents-research-manager`
@@ -101,7 +102,8 @@ APIs, or market-data vendors.
 The validator is a hard contract checker only. It fails reports that omit
 required visible headings, post-date social discipline, raw-social-dump limits,
 the final transaction proposal marker, action/proposal matching, the
-paper-study disclaimer section, the primary-driver marker, or unexplained
+paper-study disclaimer section, the primary-driver marker, required Financial
+Report Analyst and Industry / Theme Discovery Analyst sections, or unexplained
 MSFT-to-Apple cross-ticker leakage without `comparative_run=true`.
 
 Example output scope for Apple and Microsoft:
@@ -128,7 +130,9 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 3. Codex follows the workflow skills converted from `tradingagents/graph`.
 4. Codex acts each role independently:
    - analyst roles read only their own `roles/<role>.md` evidence packet;
-   - `bull_researcher_round_1` reads only completed analyst reports;
+   - `financial_report_analyst` reads completed analyst reports and evidence to summarize financial reports and source gaps;
+   - `industry_theme_discovery_analyst` discovers evidence-grounded themes after financial report review;
+   - `bull_researcher_round_1` reads completed analyst, financial-report, and theme-discovery reports;
    - `bear_researcher_round_1` reads analyst reports and directly responds to bull round 1;
    - future rounds can extend the same alternating bull/bear pattern;
    - trader reads the research-manager decision;

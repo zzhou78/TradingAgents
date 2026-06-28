@@ -88,6 +88,32 @@ Valuation and quality are the central trade-off. PE is 34.36, forward PE is 29.5
 | ROE | 1.41 | Profitability |
 | Current ratio | 1.07 | Liquidity |
 
+### Financial Report Analyst
+
+The financial-report role found structured financial statement data, but no annual report, quarterly report, earnings release, investor presentation, or management guidance packet. Confidence is therefore medium for structured financial facts and low for management-commentary conclusions.
+
+| Source | Status | Use |
+|---|---|---|
+| Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
+| Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
+| Annual report / 10-K | Not available | Evidence gap |
+| Quarterly report / 10-Q | Not available | Evidence gap |
+| Earnings release / investor presentation | Not available | Evidence gap |
+
+Revenue is 451.4B, net income is 122.6B, and free cash flow is 101.1B. Profit margin is 27.15%, operating margin is 32.28%, current ratio is 1.07, and debt/equity is 79.55. The report does not support segment-level claims, formal guidance claims, or direct filing risk-factor quotes.
+
+### Industry / Theme Discovery Analyst
+
+Themes are discovered from AAPL-specific news, fundamentals, and the financial-report evidence gaps rather than from a fixed taxonomy.
+
+| Theme | Subtheme | Evidence link | Classification | Reason | Confidence |
+| ----- | -------- | ------------- | -------------- | ------ | ---------- |
+| Edge AI | Mac chip roadmap / AI-focused M7 | News Analyst direct AAPL item | Mixed | Supports AI roadmap optionality, but execution credibility is not quantified in filings. | Medium |
+| Memory supply chain | Component cost and CXMT approval | News Analyst memory-price and CXMT items | Mixed | Potential input-cost relief is offset by geopolitical and supplier approval risk. | Medium |
+| App-store regulation | Alternative app stores/payments in Brazil | News Analyst CADE agreement item | Headwind | Adds regulatory pressure to App Store economics, with limited geographic scope. | Medium |
+| Services / installed base | Quality and margin support | Fundamentals and financial-report data | Tailwind | Profitability and cash flow support quality, but segment detail is unavailable. | Medium |
+| Hardware replacement cycle | Pricing and demand sensitivity | News Analyst price-hike and memory-cost items | Mixed | Pricing power can protect margins but may pressure demand. | Low-to-Medium |
+
 ## II. Research Team Debate
 
 ### Bull Researcher Round 1 - Opening Case
@@ -111,6 +137,10 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 **Strongest Bull Evidence**: profitable quality support: net income 122.6B, ROE 1.41; above 200 SMA (283.78 vs 269.08).
 
 **Strongest Bear Evidence**: below 10 EMA (291.02), below 50 SMA (291.41); RSI 41.26; MACD -2.24 vs signal 0.53; valuation risk: PE 34.36, P/B 39.09.
+
+**Financial-report impact**: Structured financial data supports Apple quality, but missing filings, earnings release, guidance, and segment commentary prevent the manager from using management narrative as a bullish offset.
+
+**Industry/theme impact**: Memory supply-chain risk, app-store regulation, and AI roadmap uncertainty reinforce Underweight; services/installed-base quality prevents a clean Sell while the 200 SMA still holds.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
@@ -184,6 +214,10 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 **Investment Thesis**: Fundamentals show profitable quality support: net income 122.6B, ROE 1.41. The latest close is 283.78 and the market report shows price is below the 10 EMA, below the 50 SMA, above the 200 SMA. Social evidence contributes Low-to-Medium confidence color because 22 usable of 40 reviewed; 18 excluded as post-date, off-ticker, noisy, or low-information.
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (291.02), below 50 SMA (291.41) and RSI 41.26; MACD -2.24 vs signal 0.53. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
+
+**Financial-report impact**: Structured profitability and free cash flow argue against treating the setup as a fundamental failure, but missing filings and guidance limit conviction.
+
+**Industry/theme impact**: Memory costs, app-store regulation, and AI credibility are material headwinds; services/installed-base support is a mitigating tailwind.
 
 **What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation requires failure at the 200 SMA, materially negative direct news, or a worsening score component mix.
 

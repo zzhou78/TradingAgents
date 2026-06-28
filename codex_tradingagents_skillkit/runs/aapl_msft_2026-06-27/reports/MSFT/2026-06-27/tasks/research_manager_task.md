@@ -8,7 +8,7 @@ Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSF
 
 ## Instruction
 
-Weigh the completed analyst reports and Bull/Bear debate; do not rely on Python-generated investment reasoning.
+Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate; do not rely on Python-generated investment reasoning.
 
 ## Evidence Brief
 
@@ -25,6 +25,8 @@ Weigh the completed analyst reports and Bull/Bear debate; do not rely on Python-
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
+- If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.

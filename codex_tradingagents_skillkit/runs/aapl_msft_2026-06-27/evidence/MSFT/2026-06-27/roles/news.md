@@ -63,38 +63,6 @@ Link: https://finance.yahoo.com/markets/stocks/articles/commvault-systems-cvlt-7
 The man who predicted the 2008 housing crash is making another contrarian call, and this time his sights are set on China. Hedge fund manager Michael Burry, who became famous after the film "The Big Short" chronicled his bet against subprime mortgages, revealed on Thursday, June 25, that he added ...
 Link: https://www.thestreet.com/investing/stocks/jd-stock-michael-burry-doubles-down-beaten-down-china-tech
 
-### Michael Burry Just Bet Big Microsoft Will More Than Double by 2028 (source: 24/7 Wall St.)
-Artificial intelligence has turned the stock market into a contest over who will own the infrastructure powering the next decade of computing. Investors have poured hundreds of billions of dollars into AI leaders, pushing many technology stocks to lofty valuations. Yet even after Microsoft‘s (NASDAQ:MSFT) stock climbed over the past several years, it’s fallen hard ... Michael Burry Just Bet Big Microsoft Will More Than Double by 2028
-Link: https://247wallst.com/investing/2026/06/27/michael-burry-just-bet-big-microsoft-will-more-than-double-by-2028/
-
-### Caterpillar (CAT) Joins Russell Top 50 As AI Power Backlog Draws Investor Focus (source: Simply Wall St.)
-Caterpillar (NYSE:CAT) has been added to the Russell Top 50 Index, reflecting its inclusion among some of the largest U.S. companies by market value. The move comes as Caterpillar reports a record order backlog tied to AI data center power generation projects. The company supplies engines and turbines for large scale infrastructure efforts, including the Chevron Microsoft power initiative for AI data centers. Caterpillar sits at an intersection of heavy equipment manufacturing and large...
-Link: https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-joins-russell-top-130809825.html
-
-### AI’s Energy Crunch Has Investors Searching for Next IPO Winners (source: Bloomberg)
-(Bloomberg) -- The artificial intelligence boom has a power problem, and Wall Street is betting billions on companies that promise to solve it — even if some of the technology hasn’t been fully developed yet. Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsAn Analyst’s Missed Rema
-Link: https://finance.yahoo.com/energy/articles/ai-energy-crunch-investors-searching-130000398.html
-
-### Microsoft vs. Alphabet: What Their Revenue Trends Tell Investors (source: Motley Fool)
-Alphabet has outpaced Microsoft in top-line revenue for every recent quarter, but both tech giants continue to report steady long-term growth.
-Link: https://www.fool.com/coverage/charts/2026/06/27/microsoft-vs-alphabet-what-their-revenue-trends-tell-investors/
-
-### How did the hyperscalers do in 1Q26? (source: Investing.com)
-Investing.com -- Bernstein said Google Cloud has emerged as the leading AI cloud platform after a strong first quarter, with accelerating cloud growth and rising profitability helping it pull ahead of rivals in incremental cloud revenue despite continued heavy spending on AI infrastructure.
-Link: https://finance.yahoo.com/technology/ai/articles/did-hyperscalers-1q26-042810607.html
-
-### Wedbush spots clear investor opportunities in tech stocks (source: TheStreet)
-Dan Ives of Wedbush Securities has a specific name for what is happening to tech stocks right now. In a note published June 26, he called it a "Twilight Zone market," Seeking Alpha reported, and the phrase is more specific than it sounds. Microsoft (MSFT), Nvidia (NVDA), Meta Platforms (META), and ...
-Link: https://www.thestreet.com/investing/stocks/wedbush-spots-clear-investor-opportunities-in-tech-stocks
-
-### The Old-School Signal That Lit Up Palo Alto Networks Stock (source: Trefis)
-While all eyes were on a futuristic AI platform, the most telling clue to the stock's takeoff lay buried in the company's oldest business.
-Link: https://www.trefis.com/articles/604729/the-old-school-signal-that-lit-up-palo-alto-networks-stock/2026-06-26
-
-### Why Microsoft Stock Rose Today (source: Motley Fool)
-Is the AI software play about to come back in vogue?
-Link: https://www.fool.com/investing/2026/06/26/why-microsoft-stock-rose-today/
-
 
 ```
 
@@ -112,7 +80,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-28 10:56:57
+# Data retrieved on: 2026-06-28 21:01:03
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D

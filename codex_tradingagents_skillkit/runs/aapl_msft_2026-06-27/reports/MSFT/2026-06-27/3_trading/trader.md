@@ -6,6 +6,8 @@
 
 **Consistency Check: Sell is supported because price is below the 200 SMA, which is a breakdown below longer-term support, and the evidence score is materially negative.**
 
+**Paper-study price framework**: Reference Sell price is the latest verified close, 372.97. This is not a broker order or live execution price. The Sell view is confirmed by continued trading below the 10 EMA at 377.15 and especially renewed weakness below the latest low zone at 349.20. The first rebound level that weakens the Sell is a close back above 377.15; a stronger invalidation requires reclaiming the 50 SMA at 410.52. The broken long-term reference is the 200 SMA at 446.27.
+
 **Confirmation/invalidation levels**: 10 EMA 377.15; 50 SMA 410.52; 200 SMA 446.27.
 
 **Trigger that would upgrade: close reclaims the 10 EMA (377.15) and 50 SMA (410.52) with improving RSI/MACD.**

@@ -14,7 +14,7 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-06-28 10:56:57
+# Data retrieved on: 2026-06-28 21:01:03
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -52,7 +52,7 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 10:56:58
+# Data retrieved on: 2026-06-28 21:01:04
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
@@ -143,7 +143,7 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 10:56:58
+# Data retrieved on: 2026-06-28 21:01:04
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,,
@@ -215,7 +215,7 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 10:56:58
+# Data retrieved on: 2026-06-28 21:01:04
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0

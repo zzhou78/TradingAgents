@@ -100,7 +100,8 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         stage_names = [stage["stage"] for stage in workflow["stages"]]
         assert stage_names[:2] == ["market_analyst", "news_analyst"]
         assert stage_names[2:] == [
-            "industry_theme_analyst",
+            "financial_report_analyst",
+            "industry_theme_discovery_analyst",
             "bull_researcher_round_1",
             "bear_researcher_round_1",
             "research_manager",
@@ -148,6 +149,7 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         for report_key in [
             "market_report",
             "news_report",
+            "financial_report",
             "industry_theme_report",
             "bull_researcher_round_1",
             "bear_researcher_round_1",
@@ -168,17 +170,20 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"] == [
             report_paths["market_report"],
             report_paths["news_report"],
+            report_paths["financial_report"],
             report_paths["industry_theme_report"],
         ]
         assert stages_by_name["bear_researcher_round_1"]["allowed_inputs"] == [
             report_paths["market_report"],
             report_paths["news_report"],
+            report_paths["financial_report"],
             report_paths["industry_theme_report"],
             report_paths["bull_researcher_round_1"],
         ]
         assert stages_by_name["research_manager"]["allowed_inputs"] == [
             report_paths["market_report"],
             report_paths["news_report"],
+            report_paths["financial_report"],
             report_paths["industry_theme_report"],
             report_paths["bull_researcher_round_1"],
             report_paths["bear_researcher_round_1"],

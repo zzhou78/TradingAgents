@@ -8,6 +8,12 @@ REQUIRED_STRINGS = [
     "# Trading Analysis Report:",
     "Generated:",
     "## I. Analyst Team Reports",
+    "### Market Analyst",
+    "### Sentiment Analyst",
+    "### News Analyst",
+    "### Fundamentals Analyst",
+    "### Financial Report Analyst",
+    "### Industry / Theme Discovery Analyst",
     "## II. Research Team Debate",
     "### Bull Researcher Round 1 - Opening Case",
     "### Bear Researcher Round 1 - Rebuttal to Bull",
@@ -103,6 +109,12 @@ def validate_report(path: Path) -> list[str]:
     final = _final_proposal(text)
     if trader_action and final and trader_action != final:
         errors.append(f"final proposal mismatch: Trader Action is {trader_action}, FINAL TRANSACTION PROPOSAL is {final}")
+    if final in {"Buy", "Sell"} and "**Paper-study price framework**" not in trader:
+        errors.append("missing price framework: Buy/Sell Trader Proposal must include **Paper-study price framework**")
+    if final == "Sell" and not re.search(r"(200 SMA|materially negative|longer-term support)", trader, re.IGNORECASE):
+        errors.append(
+            "unsupported Sell action: Trader section must cite 200 SMA, longer-term support break, or explicit material negative setup"
+        )
     if not trader_action:
         errors.append("missing hard contract field: Trader section must include **Action**")
     if not final:

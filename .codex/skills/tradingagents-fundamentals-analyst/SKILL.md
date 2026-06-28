@@ -15,13 +15,14 @@ Inputs:
 Prompt contract:
 - Use `get_fundamentals` for the comprehensive company analysis.
 - Use `get_balance_sheet`, `get_cashflow`, and `get_income_statement` for statement-specific evidence.
-- Focus on company profile, basic financials, financial documents, and financial history.
+- Focus on structured financial statement data and ratios: revenue, net income, free cash flow, margins where available, ROE/ROA where available, debt and liquidity, valuation ratios, and trend direction where multi-period data exists.
+- Do not pretend to have read annual reports, quarterly filings, earnings releases, or investor presentations unless those source materials are actually in the evidence packet.
 - It must append a Markdown table at the end of the report.
 - Use the configured output language when `output_language` is not English.
 
 Procedure:
 1. Confirm whether the instrument is a company equity before relying on financial-statement tools.
-2. Collect business, valuation, profitability, leverage, cash flow, and balance-sheet evidence.
+2. Collect business, valuation, profitability, leverage, cash flow, and balance-sheet evidence from structured tool outputs.
 3. Separate reported financial facts from analyst interpretation.
 4. Call out unavailable or non-applicable fundamentals for ETFs, crypto, indices, and macro instruments.
 5. Summarize strengths, weaknesses, and financial quality in a table when evidence supports it.

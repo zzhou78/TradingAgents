@@ -8,7 +8,7 @@ Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSF
 
 ## Instruction
 
-Translate the Research Manager plan into a paper Trader Proposal with a matching FINAL TRANSACTION PROPOSAL line.
+Translate the Research Manager plan into a paper Trader Proposal with a matching FINAL TRANSACTION PROPOSAL line. For Buy or Sell, include a labelled Paper-study price framework with reference price or entry zone, invalidation level, and first confirmation or target level.
 
 ## Evidence Brief
 
@@ -25,6 +25,8 @@ Translate the Research Manager plan into a paper Trader Proposal with a matching
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
+- If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.

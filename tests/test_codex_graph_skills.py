@@ -17,6 +17,8 @@ EXPECTED_ROLE_SKILLS = [
     "tradingagents-sentiment-analyst",
     "tradingagents-news-analyst",
     "tradingagents-fundamentals-analyst",
+    "tradingagents-financial-report-analyst",
+    "tradingagents-industry-theme-discovery-analyst",
     "tradingagents-bull-researcher",
     "tradingagents-bear-researcher",
     "tradingagents-research-manager",

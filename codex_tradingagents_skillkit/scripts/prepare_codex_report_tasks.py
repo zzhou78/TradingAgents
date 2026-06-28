@@ -21,25 +21,30 @@ TASKS = {
         "output_key": "news_report",
         "instruction": "Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item.",
     },
-    "industry_theme_task.md": {
-        "skill": "tradingagents-industry-theme-analyst",
-        "output_key": "industry_theme_report",
-        "instruction": "Infer industry and theme context from the company identity, evidence, and news packet.",
-    },
     "fundamentals_analyst_task.md": {
         "skill": "tradingagents-fundamentals-analyst",
         "output_key": "fundamentals_report",
         "instruction": "Write the Fundamentals Analyst report from fundamentals evidence only.",
     },
+    "financial_report_task.md": {
+        "skill": "tradingagents-financial-report-analyst",
+        "output_key": "financial_report",
+        "instruction": "Read the structured fundamentals packet plus any available filings, earnings releases, investor materials, and management commentary. Write financial_report.md. Python must not classify themes or financial-report conclusions. If online sources or filings are unavailable, state the evidence gap.",
+    },
+    "industry_theme_discovery_task.md": {
+        "skill": "tradingagents-industry-theme-discovery-analyst",
+        "output_key": "industry_theme_report",
+        "instruction": "Discover current industry themes and subthemes from the evidence, current online research packet, filings, and investor materials when available. Do not force-fit a preconfigured taxonomy. Python must not classify themes or financial-report conclusions. If online sources or filings are unavailable, state the evidence gap.",
+    },
     "research_manager_task.md": {
         "skill": "tradingagents-research-manager",
         "output_key": "research_manager",
-        "instruction": "Weigh the completed analyst reports and Bull/Bear debate; do not rely on Python-generated investment reasoning.",
+        "instruction": "Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate; do not rely on Python-generated investment reasoning.",
     },
     "trader_task.md": {
         "skill": "tradingagents-trader",
         "output_key": "trader",
-        "instruction": "Translate the Research Manager plan into a paper Trader Proposal with a matching FINAL TRANSACTION PROPOSAL line.",
+        "instruction": "Translate the Research Manager plan into a paper Trader Proposal with a matching FINAL TRANSACTION PROPOSAL line. For Buy or Sell, include a labelled Paper-study price framework with reference price or entry zone, invalidation level, and first confirmation or target level.",
     },
     "portfolio_manager_task.md": {
         "skill": "tradingagents-portfolio-manager",
@@ -59,6 +64,7 @@ TASKS = {
 }
 
 DEFAULT_OUTPUTS = {
+    "financial_report": ("1_analysts", "financial_report.md"),
     "industry_theme_report": ("1_analysts", "industry_theme.md"),
     "quality_review": ("6_quality", "quality_review.md"),
     "quality_gate": ("6_quality", "quality_gate.json"),
@@ -128,7 +134,9 @@ Output file: `{_relative_or_absolute(output_path, repo_root)}`
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
+- If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.
 """

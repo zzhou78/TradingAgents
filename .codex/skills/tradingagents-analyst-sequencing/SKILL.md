@@ -24,7 +24,7 @@ Procedure:
    - `fundamentals` -> `Fundamentals Analyst`, `tools_fundamentals`, `Msg Clear Fundamentals`, `fundamentals_report`.
 3. For each analyst, if the latest message has tool calls, route to its tool node and then back to the same analyst.
 4. When no tool calls remain, accept the report, clear transient messages, and move to the next selected analyst.
-5. After the final selected analyst clears messages, route to `Bull Researcher`.
+5. After the final selected analyst clears messages, route through the Codex extension analysts: Financial Report Analyst, then Industry / Theme Discovery Analyst, before `Bull Researcher`.
 6. If tracking elapsed time, start the first incomplete selected analyst and mark an analyst complete when its report field appears.
 
 Output:

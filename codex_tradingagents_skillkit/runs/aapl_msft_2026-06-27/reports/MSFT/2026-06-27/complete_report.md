@@ -88,6 +88,32 @@ Valuation and quality are the central trade-off. PE is 22.23, forward PE is 19.2
 | ROE | 0.34 | Profitability |
 | Current ratio | 1.28 | Liquidity |
 
+### Financial Report Analyst
+
+The financial-report role found structured financial statement data, but no annual report, quarterly report, earnings release, investor presentation, or management guidance packet. Confidence is medium for structured financial facts and low for management-commentary conclusions.
+
+| Source | Status | Use |
+|---|---|---|
+| Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
+| Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
+| Annual report / 10-K | Not available | Evidence gap |
+| Quarterly report / 10-Q | Not available | Evidence gap |
+| Earnings release / investor presentation | Not available | Evidence gap |
+
+Revenue is 318.3B, net income is 125.2B, and free cash flow is 37.0B. Profit margin is 39.34%, operating margin is 46.33%, current ratio is 1.28, and debt/equity is 30.27. The report does not support segment-level Azure, Office, Windows, gaming, or LinkedIn claims, nor formal management guidance claims.
+
+### Industry / Theme Discovery Analyst
+
+Themes are discovered from MSFT-specific news, fundamentals, and the financial-report evidence gaps rather than from a fixed taxonomy.
+
+| Theme | Subtheme | Evidence link | Classification | Reason | Confidence |
+| ----- | -------- | ------------- | -------------- | ------ | ---------- |
+| Enterprise AI | Copilot ecosystem and OpenAI dependency | News Analyst Copilot and OpenAI items | Mixed | Copilot integration supports adoption, while OpenAI dependency and IPO timing remain uncertainties. | Medium |
+| Azure / cloud infrastructure | Data-center capacity and cloud partnerships | News Analyst data-center, Teradata, and Azure resilience items | Tailwind | Evidence points to ongoing infrastructure demand and partner ecosystem pull-through. | Medium |
+| Data-center power | Long-duration power agreement | News Analyst Chevron agreement item | Mixed | Power supply supports AI infrastructure, but highlights capex and power constraints. | Medium |
+| Cloud regulation | EU gatekeeper rules | News Analyst EU regulatory item | Headwind | Regulatory obligations may constrain cloud-unit economics and flexibility. | Medium |
+| AI infrastructure valuation spillover | Hyperscaler and AI energy context | News Analyst indirect sector items | Mixed | Sector demand is constructive, but does not offset the current technical breakdown by itself. | Low-to-Medium |
+
 ## II. Research Team Debate
 
 ### Bull Researcher Round 1 - Opening Case
@@ -111,6 +137,10 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 **Strongest Bull Evidence**: profitable quality support: net income 125.2B, ROE 0.34; valuation is not flagged as extreme at PE 22.23 and forward PE 19.26; cloud and AI demand evidence remains constructive.
 
 **Strongest Bear Evidence**: below 200 SMA (446.27), below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66.
+
+**Financial-report impact**: Structured financial data supports Microsoft quality and liquidity, but missing filings, earnings release, guidance, and segment commentary prevent the manager from using management narrative to override the technical breakdown.
+
+**Industry/theme impact**: Azure/cloud and enterprise AI themes are constructive, while cloud regulation and data-center power/capex intensity are material constraints. These themes mitigate but do not overturn the Sell because the primary driver is technical.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
@@ -145,6 +175,8 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 **Reasoning**: The research manager rating is Sell. The transaction proposal is grounded in the latest close of 372.97, the 50 SMA at 410.52, the 200 SMA at 446.27, and the current momentum evidence. A Buy requires constructive confirmation above key moving averages; a Sell requires evidence of breakdown below longer-term support or a separately documented materially negative setup; otherwise Hold is appropriate while waiting for confirmation.
 
 **Consistency Check: Sell is supported because price is below the 200 SMA, which is a breakdown below longer-term support, and the evidence score is materially negative.**
+
+**Paper-study price framework**: Reference Sell price is the latest verified close, 372.97. This is not a broker order or live execution price. The Sell view is confirmed by continued trading below the 10 EMA at 377.15 and especially renewed weakness below the latest low zone at 349.20. The first rebound level that weakens the Sell is a close back above 377.15; a stronger invalidation requires reclaiming the 50 SMA at 410.52. The broken long-term reference is the 200 SMA at 446.27.
 
 **Confirmation/invalidation levels**: 10 EMA 377.15; 50 SMA 410.52; 200 SMA 446.27.
 
@@ -183,6 +215,12 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 **Investment Thesis**: Fundamentals show profitable quality support: net income 125.2B, ROE 0.34. The latest close is 372.97 and the market report shows price is below the 10 EMA, below the 50 SMA, below the 200 SMA. Social evidence contributes Low-to-Medium confidence color because 13 usable of 32 reviewed; 19 excluded as post-date, off-ticker, noisy, or low-information.
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (377.15), below 50 SMA (410.52) and RSI 40.48; MACD -13.75 vs signal -9.66. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
+
+**Paper-study price framework**: Final action is Sell using 372.97, the latest verified close, as the reference price. The action is confirmed by continued trading below 377.15 or renewed weakness below 349.20. A close back above 377.15 weakens the Sell; reclaiming 410.52 would invalidate the near-term Sell setup.
+
+**Financial-report impact**: Financial quality is strong, so this is not a fundamental-quality Sell. Missing guidance and segment evidence limit the ability to argue that fundamentals offset the technical break.
+
+**Industry/theme impact**: Enterprise AI, Azure, and data-center demand are constructive themes, but cloud regulation and power/capex intensity keep the theme read-through mixed.
 
 **What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation of the Sell would require that recovery; confirmation of the Sell would come from renewed weakness below the latest low zone at 349.20, materially negative direct news, or a worsening score component mix.
 

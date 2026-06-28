@@ -8,6 +8,10 @@
 
 **Strongest Bear Evidence**: below 10 EMA (291.02), below 50 SMA (291.41); RSI 41.26; MACD -2.24 vs signal 0.53; valuation risk: PE 34.36, P/B 39.09.
 
+**Financial-report impact**: Structured financial data supports Apple quality, but missing filings, earnings release, guidance, and segment commentary prevent the manager from using management narrative as a bullish offset.
+
+**Industry/theme impact**: Memory supply-chain risk, app-store regulation, and AI roadmap uncertainty reinforce Underweight; services/installed-base quality prevents a clean Sell while the 200 SMA still holds.
+
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
 **Score Components**:

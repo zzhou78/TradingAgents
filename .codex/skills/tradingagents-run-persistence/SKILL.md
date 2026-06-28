@@ -34,9 +34,10 @@ Complete report assembly:
 - Python scripts may prepare Codex task prompts, but Codex role execution writes the analytical reports.
 - `write_codex_reports.py` is a compatibility wrapper for task preparation, not a reasoning writer.
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
-- I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, and `### Fundamentals Analyst`.
+- I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, `### Fundamentals Analyst`, `### Financial Report Analyst`, and `### Industry / Theme Discovery Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
 - III. Trading Team Plan: `### Trader Proposal` and the `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` line.
+- For any Buy or Sell final proposal, the Trader Proposal must include `**Paper-study price framework**` with a reference price or entry zone, invalidation level, and first confirmation or target level. Hold may instead list watch levels.
 - IV. Risk Management Team Debate: `### Aggressive Risk Analyst Round 1 - Opportunity Case`, `### Conservative Risk Analyst Round 1 - Response to Aggressive`, and `### Neutral Risk Analyst Round 1 - Weighing`.
 - V. Portfolio Manager Decision: `### Portfolio Manager` with Rating, Executive Summary, Investment Thesis, Risk Assessment or equivalent risk discussion, and Paper-study implementation notes.
 - VI. Paper-Study Disclaimer: include a visible paper-study disclaimer section.

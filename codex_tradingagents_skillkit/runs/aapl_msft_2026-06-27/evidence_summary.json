@@ -17,13 +17,16 @@
       "tradingagents-analyst-sequencing",
       "tradingagents-dataflow-routing",
       "tradingagents-debate-routing",
-      "tradingagents-run-persistence"
+      "tradingagents-run-persistence",
+      "tradingagents-quality-reviewer"
     ],
     "role_skills": [
       "tradingagents-market-analyst",
       "tradingagents-sentiment-analyst",
       "tradingagents-news-analyst",
-      "tradingagents-fundamentals-analyst"
+      "tradingagents-fundamentals-analyst",
+      "tradingagents-financial-report-analyst",
+      "tradingagents-industry-theme-discovery-analyst"
     ],
     "skill_root": "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\skills",
     "runtime_uses_upstream_python": [

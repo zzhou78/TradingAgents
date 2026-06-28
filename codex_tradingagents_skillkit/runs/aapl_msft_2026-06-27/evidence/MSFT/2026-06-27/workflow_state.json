@@ -13,6 +13,10 @@
     "research_manager": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
     "trader": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
     "portfolio_manager": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\5_portfolio\\decision.md",
+    "financial_report": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+    "industry_theme_report": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
+    "quality_review": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\6_quality\\quality_review.md",
+    "quality_gate": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\6_quality\\quality_gate.json",
     "debate_record": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\debate_record.md",
     "complete_report": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\complete_report.md",
     "bull_researcher_round_1": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
@@ -90,13 +94,44 @@
       "completion_gate": "write fundamentals_report in TradingAgents analyst style"
     },
     {
+      "stage": "financial_report_analyst",
+      "skill": "tradingagents-financial-report-analyst",
+      "allowed_inputs": [
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\evidence.json"
+      ],
+      "forbidden_inputs": [],
+      "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+      "completion_gate": "write financial_report.md before industry/theme discovery"
+    },
+    {
+      "stage": "industry_theme_discovery_analyst",
+      "skill": "tradingagents-industry-theme-discovery-analyst",
+      "allowed_inputs": [
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\evidence.json"
+      ],
+      "forbidden_inputs": [],
+      "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
+      "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+    },
+    {
       "stage": "bull_researcher_round_1",
       "skill": "tradingagents-bull-researcher",
       "allowed_inputs": [
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
-        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md"
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md"
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
@@ -110,6 +145,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md"
       ],
       "forbidden_inputs": [],
@@ -124,6 +161,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bear_round_1.md"
       ],
@@ -139,6 +178,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md"
       ],
       "forbidden_inputs": [],
@@ -153,6 +194,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md"
       ],
@@ -168,6 +211,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\aggressive_round_1.md"
@@ -184,6 +229,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\aggressive_round_1.md",
@@ -201,6 +248,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\aggressive_round_1.md",
@@ -219,6 +268,8 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bear_round_1.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
@@ -231,6 +282,31 @@
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\complete_report.md",
       "completion_gate": "assemble TradingAgents-style complete_report.md"
+    },
+    {
+      "stage": "quality_review",
+      "skill": "tradingagents-quality-reviewer",
+      "allowed_inputs": [
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\5_portfolio\\decision.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\complete_report.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\evidence.json"
+      ],
+      "forbidden_inputs": [],
+      "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\6_quality\\quality_review.md",
+      "completion_gate": "write quality_review.md and quality_gate.json"
     }
   ]
 }

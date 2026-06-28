@@ -26,6 +26,8 @@ Required role skills:
 - `tradingagents-sentiment-analyst`
 - `tradingagents-news-analyst`
 - `tradingagents-fundamentals-analyst`
+- `tradingagents-financial-report-analyst`
+- `tradingagents-industry-theme-discovery-analyst`
 - `tradingagents-bull-researcher`
 - `tradingagents-bear-researcher`
 - `tradingagents-research-manager`
@@ -38,9 +40,10 @@ Required role skills:
 Procedure:
 1. Initialize the run state with ticker/company, trade date, asset type, instrument context, past context, empty analyst reports, empty investment debate, and empty risk debate.
 2. Run selected analysts in configured order; the default keys are `market, social, news, fundamentals`, and the social key maps to Sentiment Analyst.
+3. Extend the analyst layer with Financial Report Analyst and Industry / Theme Discovery Analyst before the bull/bear research debate.
 3. For data access and tool-call planning, use `tradingagents-dataflow-routing`; do not bypass its vendor routing, no-data, or path-safety rules.
 4. For analyst details, use `tradingagents-analyst-sequencing`; each analyst may call tools until no tool calls remain, then its report is accepted and messages are cleared before the next analyst.
-5. Run the core graph order: analysts -> bull/bear research debate -> research manager -> trader.
+5. Run the core graph order: analysts -> financial report analyst -> industry/theme discovery analyst -> bull/bear research debate -> research manager -> trader. This preserves the original TradingAgents debate chain: analysts -> bull/bear research debate -> research manager -> trader.
 6. Run risk review in graph order: trader -> aggressive/conservative/neutral risk debate -> portfolio manager.
 7. For debate turn routing and stop conditions, use `tradingagents-debate-routing`.
 8. For checkpoints, final-state logging, deferred reflection, report writing, and deterministic rating extraction, use `tradingagents-run-persistence`.

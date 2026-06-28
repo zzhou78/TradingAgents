@@ -10,6 +10,7 @@ SKILLS_ROOT = BUNDLE / "skills"
 PREPARER = BUNDLE / "scripts" / "prepare_codex_report_tasks.py"
 WRITER = BUNDLE / "scripts" / "write_codex_reports.py"
 VALIDATOR = BUNDLE / "scripts" / "validate_complete_report.py"
+QUALITY_VALIDATOR = BUNDLE / "scripts" / "validate_quality_review.py"
 RUNNER = (
     SKILLS_ROOT
     / "tradingagents-ticker-workflow-runner"
@@ -25,8 +26,9 @@ EXPECTED_SKILLS = [
     "tradingagents-conservative-risk-analyst",
     "tradingagents-dataflow-routing",
     "tradingagents-debate-routing",
+    "tradingagents-financial-report-analyst",
     "tradingagents-fundamentals-analyst",
-    "tradingagents-industry-theme-analyst",
+    "tradingagents-industry-theme-discovery-analyst",
     "tradingagents-market-analyst",
     "tradingagents-neutral-risk-analyst",
     "tradingagents-news-analyst",
@@ -42,6 +44,11 @@ EXPECTED_SKILLS = [
 
 
 def _minimal_complete_report(*, action: str = "Hold", final: str = "HOLD") -> str:
+    price_framework = (
+        "\n**Paper-study price framework**: Reference price 100.00; invalidation 95.00; first target 110.00.\n"
+        if final in {"BUY", "SELL"}
+        else ""
+    )
     return f"""# Trading Analysis Report: AAPL
 
 Generated: 2026-06-27
@@ -57,6 +64,10 @@ Context: comparative_run=false
 ### News Analyst
 
 ### Fundamentals Analyst
+
+### Financial Report Analyst
+
+### Industry / Theme Discovery Analyst
 
 ## II. Research Team Debate
 
@@ -75,6 +86,7 @@ Context: comparative_run=false
 ### Trader Proposal
 
 **Action**: {action}
+{price_framework}
 
 FINAL TRANSACTION PROPOSAL: **{final}**
 
@@ -110,6 +122,8 @@ def _write_workflow(tmp_path: Path) -> tuple[Path, dict[str, Path]]:
         "sentiment_report": report_dir / "1_analysts" / "sentiment.md",
         "news_report": report_dir / "1_analysts" / "news.md",
         "fundamentals_report": report_dir / "1_analysts" / "fundamentals.md",
+        "financial_report": report_dir / "1_analysts" / "financial_report.md",
+        "industry_theme_report": report_dir / "1_analysts" / "industry_theme.md",
         "bull_researcher_round_1": report_dir / "2_research" / "bull_round_1.md",
         "bear_researcher_round_1": report_dir / "2_research" / "bear_round_1.md",
         "research_manager": report_dir / "2_research" / "manager.md",
@@ -168,13 +182,15 @@ def test_bundle_has_expected_skills_and_docs():
     assert PREPARER.exists()
     assert WRITER.exists()
     assert VALIDATOR.exists()
+    assert QUALITY_VALIDATOR.exists()
 
     readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
     manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
     assert "prepare_codex_report_tasks.py" in readme
     assert "write_codex_reports.py is a compatibility wrapper" in readme
     assert "prepare_codex_report_tasks.py" in manifest
-    assert "tradingagents-industry-theme-analyst" in manifest
+    assert "tradingagents-financial-report-analyst" in manifest
+    assert "tradingagents-industry-theme-discovery-analyst" in manifest
     assert "tradingagents-quality-reviewer" in manifest
 
     actual = sorted(path.name for path in SKILLS_ROOT.glob("tradingagents-*") if path.is_dir())
@@ -208,7 +224,8 @@ def test_bundle_runner_accepts_cli_tickers():
 
     payload = json.loads(result.stdout)
     assert [run["ticker"] for run in payload["runs"]] == ["AAPL", "MSFT"]
-    assert "tradingagents-industry-theme-analyst" in payload["workflow_skills"]
+    assert "tradingagents-financial-report-analyst" in payload["role_skills"]
+    assert "tradingagents-industry-theme-discovery-analyst" in payload["role_skills"]
     assert "tradingagents-quality-reviewer" in payload["workflow_skills"]
 
 
@@ -230,15 +247,21 @@ def test_prepare_codex_report_tasks_writes_task_prompts_not_reports(tmp_path: Pa
     task_dir = output_dir / "reports" / "AAPL" / "2026-06-27" / "tasks"
     manifest = json.loads((task_dir / "task_manifest.json").read_text(encoding="utf-8"))
     news_task = (task_dir / "news_analyst_task.md").read_text(encoding="utf-8")
-    theme_task = (task_dir / "industry_theme_task.md").read_text(encoding="utf-8")
+    financial_task = (task_dir / "financial_report_task.md").read_text(encoding="utf-8")
+    theme_task = (task_dir / "industry_theme_discovery_task.md").read_text(encoding="utf-8")
     quality_task = (task_dir / "quality_reviewer_task.md").read_text(encoding="utf-8")
 
     assert "AAPL: prepared Codex report tasks" in result.stdout
     assert manifest["ticker"] == "AAPL"
     assert "news_analyst_task.md" in manifest["tasks"]
+    assert "financial_report_task.md" in manifest["tasks"]
+    assert "industry_theme_discovery_task.md" in manifest["tasks"]
     assert "Codex must write" in news_task
     assert "Do not let Python classify likely effect" in news_task
-    assert "tradingagents-industry-theme-analyst" in theme_task
+    assert "tradingagents-financial-report-analyst" in financial_task
+    assert "If online sources or filings are unavailable, state the evidence gap." in financial_task
+    assert "tradingagents-industry-theme-discovery-analyst" in theme_task
+    assert "Python must not classify themes or financial-report conclusions." in theme_task
     assert "quality_gate.json" in quality_task
     assert report_paths["news_report"].read_text(encoding="utf-8") == "Pending Codex role output.\n"
     assert report_paths["complete_report"].read_text(encoding="utf-8") == "Pending Codex role output.\n"
@@ -344,9 +367,93 @@ def test_complete_report_validator_rejects_missing_primary_driver(tmp_path: Path
     assert "missing primary driver" in result.stdout
 
 
+def test_complete_report_validator_rejects_missing_financial_report_heading(tmp_path: Path):
+    report = tmp_path / "missing_financial_report.md"
+    report.write_text(
+        _minimal_complete_report().replace("### Financial Report Analyst\n\n", ""),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "### Financial Report Analyst" in result.stdout
+
+
+def test_complete_report_validator_rejects_missing_industry_theme_discovery_heading(tmp_path: Path):
+    report = tmp_path / "missing_industry_theme_discovery.md"
+    report.write_text(
+        _minimal_complete_report().replace("### Industry / Theme Discovery Analyst\n\n", ""),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "### Industry / Theme Discovery Analyst" in result.stdout
+
+
+def _write_quality_fixture(tmp_path: Path, *, include_financial: bool, include_theme: bool) -> Path:
+    report_dir = tmp_path / "reports" / "AAPL" / "2026-06-27"
+    analyst_dir = report_dir / "1_analysts"
+    quality_dir = report_dir / "6_quality"
+    analyst_dir.mkdir(parents=True)
+    quality_dir.mkdir(parents=True)
+    (report_dir / "complete_report.md").write_text(_minimal_complete_report(), encoding="utf-8")
+    (quality_dir / "quality_gate.json").write_text('{"passed": true, "issues": []}\n', encoding="utf-8")
+    if include_financial:
+        (analyst_dir / "financial_report.md").write_text(
+            "# Financial Report Analyst\n\n## Source coverage table\n\n| Source | Status |\n|---|---|\n| Fundamentals packet | available |\n",
+            encoding="utf-8",
+        )
+    if include_theme:
+        (analyst_dir / "industry_theme.md").write_text(
+            "| Theme | Subtheme | Evidence link | Classification | Reason | Confidence |\n"
+            "|---|---|---|---|---|---|\n"
+            "| memory supply chain | component cost | news.md | mixed | supported by report source | medium |\n",
+            encoding="utf-8",
+        )
+    return report_dir
+
+
+def test_quality_validator_fails_when_financial_report_is_missing(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=False, include_theme=True)
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "financial_report.md is missing" in result.stdout
+
+
+def test_quality_validator_fails_when_industry_theme_report_is_missing(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=False)
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "industry_theme.md is missing" in result.stdout
+
+
 def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
     news = (SKILLS_ROOT / "tradingagents-news-analyst" / "SKILL.md").read_text(encoding="utf-8")
-    theme = (SKILLS_ROOT / "tradingagents-industry-theme-analyst" / "SKILL.md").read_text(encoding="utf-8")
+    financial = (SKILLS_ROOT / "tradingagents-financial-report-analyst" / "SKILL.md").read_text(encoding="utf-8")
+    theme = (SKILLS_ROOT / "tradingagents-industry-theme-discovery-analyst" / "SKILL.md").read_text(encoding="utf-8")
     quality = (SKILLS_ROOT / "tradingagents-quality-reviewer" / "SKILL.md").read_text(encoding="utf-8")
 
     for required in [
@@ -358,10 +465,20 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         assert required in news
 
     for required in [
-        "infer relevant industry context from sector, industry, company, and evidence",
-        "identify relevant themes and subthemes",
-        "tailwind, headwind, mixed, or irrelevant",
+        "latest annual report / 10-K if available",
+        "Source coverage table",
+        "management narrative / filing commentary",
+        "If annual/quarterly filings or earnings releases are not available",
+    ]:
+        assert required in financial
+
+    for required in [
+        "Discover relevant themes/subthemes from evidence",
+        "Do not force-fit preconfigured themes",
+        "tailwind, headwind, mixed, irrelevant, or insufficient evidence",
         "state confidence",
+        "memory supply chain / app-store regulation / edge AI only when supported",
+        "enterprise AI / Azure / data-center power only when supported",
     ]:
         assert required in theme
 
@@ -371,6 +488,8 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         "evidence summary",
         "quality_review.md",
         "quality_gate.json",
+        "financial_report.md is missing",
+        "industry_theme.md is missing",
         '"passed": false',
     ]:
         assert required in quality
