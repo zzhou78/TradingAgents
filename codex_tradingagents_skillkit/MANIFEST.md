@@ -22,6 +22,7 @@ Role skills derived from `tradingagents/agents`:
 - `tradingagents-market-analyst`
 - `tradingagents-sentiment-analyst`
 - `tradingagents-news-analyst`
+- `tradingagents-industry-theme-analyst`
 - `tradingagents-fundamentals-analyst`
 - `tradingagents-bull-researcher`
 - `tradingagents-bear-researcher`
@@ -31,6 +32,7 @@ Role skills derived from `tradingagents/agents`:
 - `tradingagents-conservative-risk-analyst`
 - `tradingagents-neutral-risk-analyst`
 - `tradingagents-portfolio-manager`
+- `tradingagents-quality-reviewer`
 
 Workflow skills derived from `tradingagents/graph`:
 - `tradingagents-workflow-orchestrator`
@@ -63,11 +65,13 @@ Use the evidence collector when you want upstream TradingAgents dataflow tools t
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
 ```
 
-Use the automatic report writer after evidence collection when you want Codex role outputs written without manual prompting:
+Prepare Codex report tasks after evidence collection:
 
 ```powershell
-.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\write_codex_reports.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\prepare_codex_report_tasks.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
 ```
+
+`write_codex_reports.py` is retained as a compatibility wrapper for task preparation. It does not write investment reasoning or fill role reports.
 
 Validate any generated complete report against the visible debate contract:
 
@@ -88,16 +92,17 @@ by default:
 - `tradingagents_memory/trading_memory.md`
 - `yfinance_cache/`
 
-The report writer replaces pending stage files under
-`reports/<TICKER>/<DATE>/` with TradingAgents-style role reports and assembles
-`complete_report.md`. It reads only `workflow_state.json` and the already
-collected `evidence.json`; it does not call upstream graph orchestration,
-external LLMs, broker APIs, or market-data vendors.
+The task preparer writes `reports/<TICKER>/<DATE>/tasks/*.md` and
+`task_manifest.json`. It reads only `workflow_state.json` and the already
+collected `evidence.json`; it does not write role reports, assemble
+`complete_report.md`, call upstream graph orchestration, external LLMs, broker
+APIs, or market-data vendors.
 
-The validator fails reports that omit required visible debate headings, omit the
-final transaction proposal marker, omit the paper-study disclaimer section, or
-include unexplained MSFT-to-Apple cross-ticker leakage without
-`comparative_run=true`.
+The validator is a hard contract checker only. It fails reports that omit
+required visible headings, post-date social discipline, raw-social-dump limits,
+the final transaction proposal marker, action/proposal matching, the
+paper-study disclaimer section, the primary-driver marker, or unexplained
+MSFT-to-Apple cross-ticker leakage without `comparative_run=true`.
 
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.
@@ -119,7 +124,7 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 ## Codex-Operated Report Contract
 
 1. Run `collect_role_evidence.py` for the nominated tickers and date.
-2. Run `write_codex_reports.py` for the same output directory.
+2. Run `prepare_codex_report_tasks.py` for the same output directory.
 3. Codex follows the workflow skills converted from `tradingagents/graph`.
 4. Codex acts each role independently:
    - analyst roles read only their own `roles/<role>.md` evidence packet;
@@ -130,7 +135,8 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
    - `aggressive_risk_round_1` reads the trader proposal and completed upstream reports;
    - `conservative_risk_round_1` responds to aggressive risk round 1;
    - `neutral_risk_round_1` weighs aggressive and conservative risk round 1;
-   - portfolio manager reads the risk debate and produces the final paper-study decision.
+   - portfolio manager reads the risk debate and produces the final paper-study decision;
+   - quality reviewer reads `complete_report.md`, role reports, and evidence summary, then writes `quality_review.md` and `quality_gate.json`.
 5. Codex writes TradingAgents-style markdown sections under the run output folder.
 6. No broker integration, GCAF connection, or real trading instruction is allowed.
 

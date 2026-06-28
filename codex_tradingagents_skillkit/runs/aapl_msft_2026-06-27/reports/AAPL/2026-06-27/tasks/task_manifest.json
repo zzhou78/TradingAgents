@@ -1,0 +1,58 @@
+{
+  "ticker": "AAPL",
+  "trade_date": "2026-06-27",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\AAPL\\2026-06-27\\evidence.json",
+  "tasks": {
+    "market_analyst_task.md": {
+      "skill": "tradingagents-market-analyst",
+      "output_key": "market_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\market_analyst_task.md"
+    },
+    "sentiment_analyst_task.md": {
+      "skill": "tradingagents-sentiment-analyst",
+      "output_key": "sentiment_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\sentiment_analyst_task.md"
+    },
+    "news_analyst_task.md": {
+      "skill": "tradingagents-news-analyst",
+      "output_key": "news_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\news_analyst_task.md"
+    },
+    "industry_theme_task.md": {
+      "skill": "tradingagents-industry-theme-analyst",
+      "output_key": "industry_theme_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\industry_theme_task.md"
+    },
+    "fundamentals_analyst_task.md": {
+      "skill": "tradingagents-fundamentals-analyst",
+      "output_key": "fundamentals_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\fundamentals_analyst_task.md"
+    },
+    "research_manager_task.md": {
+      "skill": "tradingagents-research-manager",
+      "output_key": "research_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\research_manager_task.md"
+    },
+    "trader_task.md": {
+      "skill": "tradingagents-trader",
+      "output_key": "trader",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\trader_task.md"
+    },
+    "portfolio_manager_task.md": {
+      "skill": "tradingagents-portfolio-manager",
+      "output_key": "portfolio_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\portfolio_manager_task.md"
+    },
+    "complete_report_task.md": {
+      "skill": "tradingagents-run-persistence",
+      "output_key": "complete_report",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\complete_report_task.md"
+    },
+    "quality_reviewer_task.md": {
+      "skill": "tradingagents-quality-reviewer",
+      "output_key": "quality_review",
+      "path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\AAPL\\2026-06-27\\tasks\\quality_reviewer_task.md"
+    }
+  },
+  "contract": "Task prompts only. Codex role execution writes reports."
+}

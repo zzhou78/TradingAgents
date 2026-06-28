@@ -300,6 +300,9 @@ def _report_paths(
         "research_manager": str(report_dir / "2_research" / "manager.md"),
         "trader": str(report_dir / "3_trading" / "trader.md"),
         "portfolio_manager": str(report_dir / "5_portfolio" / "decision.md"),
+        "industry_theme_report": str(report_dir / "1_analysts" / "industry_theme.md"),
+        "quality_review": str(report_dir / "6_quality" / "quality_review.md"),
+        "quality_gate": str(report_dir / "6_quality" / "quality_gate.json"),
         "debate_record": str(report_dir / "debate_record.md"),
         "complete_report": str(report_dir / "complete_report.md"),
     }
@@ -365,6 +368,17 @@ def _workflow_state(
         paths["sentiment_report" if role == "social" else f"{role}_report"]
         for role in selected_analysts
     ]
+    stages.append(
+        {
+            "stage": "industry_theme_analyst",
+            "skill": "tradingagents-industry-theme-analyst",
+            "allowed_inputs": analyst_outputs + [str(evidence_path)],
+            "forbidden_inputs": [],
+            "output_path": paths["industry_theme_report"],
+            "completion_gate": "write industry/theme context before research debate",
+        }
+    )
+    analyst_outputs.append(paths["industry_theme_report"])
     downstream = []
     completion_gates = {
         "bear_researcher_round_1": "Bear must directly rebut the strongest Bull point.",
@@ -471,6 +485,16 @@ def _workflow_state(
             "forbidden_inputs": [],
             "output_path": paths["complete_report"],
             "completion_gate": "assemble TradingAgents-style complete_report.md",
+        }
+    )
+    stages.append(
+        {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "allowed_inputs": complete_report_inputs + [paths["complete_report"], str(evidence_path)],
+            "forbidden_inputs": [],
+            "output_path": paths["quality_review"],
+            "completion_gate": "write quality_review.md and quality_gate.json",
         }
     )
 

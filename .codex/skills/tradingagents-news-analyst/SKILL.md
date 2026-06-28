@@ -27,6 +27,22 @@ Procedure:
 4. Flag stale, sparse, or unavailable feeds because news conclusions drift quickly.
 5. End with a compact markdown table of major events, likely impact, and evidence source.
 
+## LLM News Classification
+
+Codex must classify each news item using reasoning, not keywords. For each item, decide:
+- Is it direct company news, indirect industry/theme context, or irrelevant?
+- What event type is it?
+- What is the likely effect?
+- Why?
+- What could make the effect ambiguous?
+- Is confidence high, medium, or low?
+
+Required table:
+
+| Event | Relevance | Event type | Likely effect | Reason | Confidence |
+|---|---|---|---|---|---|
+| AAPL seeks approval to buy CXMT chips | Direct | supply-chain / regulation | mixed | Could reduce memory cost pressure, but introduces geopolitical/supplier risk | Medium |
+
 Output:
 - `news_report`: a current-event and macro context report for researchers, trader, and risk reviewers.
 - Filter relevance explicitly. Separate direct ticker/company news, indirect sector or market context, and excluded low-relevance items. Do not include unrelated headlines in the decision table unless the report explains why they materially affect the ticker.

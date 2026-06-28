@@ -31,6 +31,8 @@ Output:
 
 Complete report assembly:
 - `complete_report.md` should mimic original TradingAgents while making debate turns visible.
+- Python scripts may prepare Codex task prompts, but Codex role execution writes the analytical reports.
+- `write_codex_reports.py` is a compatibility wrapper for task preparation, not a reasoning writer.
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
 - I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, and `### Fundamentals Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
@@ -42,7 +44,8 @@ Complete report assembly:
 ## Sentiment Report Output Rule
 
 The final report must summarize social evidence. It must not include the full raw StockTwits or Reddit feed.
-The validator must pass before the report is accepted.
+The hard contract validator must pass before the report is accepted.
+The quality-reviewer skill must review analytical quality separately from the hard validator.
 The report must identify the primary driver of rating.
 The report must distinguish research rating from trader action when they differ.
 

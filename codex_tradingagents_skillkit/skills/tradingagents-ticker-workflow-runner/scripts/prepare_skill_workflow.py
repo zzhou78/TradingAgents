@@ -14,11 +14,14 @@ WORKFLOW_SKILLS = [
     "tradingagents-dataflow-routing",
     "tradingagents-debate-routing",
     "tradingagents-run-persistence",
+    "tradingagents-industry-theme-analyst",
+    "tradingagents-quality-reviewer",
 ]
 ROLE_SKILLS = [
     "tradingagents-market-analyst",
     "tradingagents-sentiment-analyst",
     "tradingagents-news-analyst",
+    "tradingagents-industry-theme-analyst",
     "tradingagents-fundamentals-analyst",
     "tradingagents-bull-researcher",
     "tradingagents-bear-researcher",
@@ -28,6 +31,7 @@ ROLE_SKILLS = [
     "tradingagents-conservative-risk-analyst",
     "tradingagents-neutral-risk-analyst",
     "tradingagents-portfolio-manager",
+    "tradingagents-quality-reviewer",
 ]
 REPORT_KEYS = [
     "market_report",
