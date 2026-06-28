@@ -15,6 +15,9 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 ```text
 Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent messages
 
+[2026-06-28T20:58:42Z · @aloooohg1 · Bearish] $AAPL tomorrow when market open.
+[2026-06-28T20:57:58Z · @manett82 · no-label] $AAPL control their destiny    Cxmt to build US plant witth apple soley for memory chips ..think about tsmc is a chinese company now isnt it..so why now have them build a plants here co owned and managed by apple for their supply and possibly dell
+[2026-06-28T20:56:06Z · @Mipel · no-label] $AAPL :-::http://Investing.com - Bank of America raised its global growth forecast as a fragile peace deal with Iran eased concerns in energy markets, warning that persistent U.S. inflation could push the Federal Reserve to resume interest rate hikes later this year.
 [2026-06-28T20:53:40Z · @FrankieSmilez · no-label] $SPY $AAPL $QQQ   Breaking news: AOC urges Congress to consider breaking up Apple amidst rising MacBook and iPhone prices
 [2026-06-28T20:47:05Z · @manett82 · no-label] $AAPL expect another deal with alot of fanfare..apple to invest ...in a new memory chip factor as part of the deal....there will be ...to bridge the gap until the plant is done..oddly enough there is plently of capacity out there everyone is jist throwing eveyrthing they have at …
 [2026-06-28T20:37:48Z · @PivotPoint_101 · no-label] $SPY $QQQ $IWM $AAPL   Dips before key Earnings season ? 🥂🏦
@@ -42,9 +45,6 @@ Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-28T14:40:21Z · @techvested · Bearish] $AAPL   Price to Sales of 9.2x   No revenue growth  Raising prices 20% across the board  Expect meaningful decline with that setup.
 [2026-06-28T14:39:13Z · @ResearchTrends09 · no-label] $AAPL  🛑🛑🛑do people realize everything is killing you the FDA is the devil with our foods, the chemicals, the conditioner, the creams, etc., on your skin and your bloodstream do people realize, do people realize the less you eat  the healthier you are!  Only one mill a day should…
 [2026-06-28T14:36:56Z · @ResearchTrends09 · no-label] $AAPL the important things. Read.  You bran Nubians…..
-[2026-06-28T14:28:26Z · @Themadogtrader · Bearish] $AAPL $MU $SPY   Offer a 25-50% increase in your products that no one buys anymore and lose billions in stock value sounds like a great plan 🤪🤡 lucky I found the last iPad under $400 to ever exist for my sons birthday
-[2026-06-28T14:24:08Z · @Themadogtrader · no-label] $SPY $MU $AAPL   Apple what the f***
-[2026-06-28T14:11:17Z · @HighRewards · no-label] $AAPL Market is cutting losses, aapl isnt worth the money, take years of all the splits and this needs to go down to at least 240.00
 ```
 
 ### Tool: fetch_reddit_posts

@@ -8,7 +8,7 @@ Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\AAP
 
 ## Instruction
 
-Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item.
+Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item. Treat political-trading or celebrity-trading headlines as low relevance unless they directly affect company fundamentals, regulation, price action, or sentiment.
 
 ## Evidence Brief
 

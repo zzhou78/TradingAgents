@@ -52,7 +52,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-29 06:54:17
+# Data retrieved on: 2026-06-29 07:15:45
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D

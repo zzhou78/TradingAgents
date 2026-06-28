@@ -136,50 +136,55 @@ def _heading_section(text: str, heading_pattern: str, limit: int) -> str | None:
     )
 
 
-def _append_section(
-    sections: list[dict[str, str]],
+def _section_record(
     *,
     section_type: str,
-    source_section: str,
+    section_name: str,
+    source_type: str,
+    filing_date: str,
+    url: str,
     excerpt: str | None,
-) -> None:
-    if not excerpt:
-        return
-    sections.append(
-        {
-            "section_type": section_type,
-            "source_section": source_section,
-            "excerpt": excerpt,
-        }
-    )
+    supports_claims: list[str],
+) -> dict[str, Any]:
+    status = "available" if excerpt else "unavailable"
+    return {
+        "section_type": section_type,
+        "section_name": section_name,
+        "source_section": section_name,
+        "status": status,
+        "source_type": source_type,
+        "filing_date": filing_date,
+        "url": url,
+        "excerpt": excerpt or "",
+        "supports_claims": supports_claims,
+        "unavailable_reason": "" if excerpt else f"{section_name} was not identified in the extracted filing text.",
+    }
 
 
-def _extract_filing_sections(form: str, raw: str, limit: int) -> list[dict[str, str]]:
+def _extract_filing_sections(
+    *,
+    form: str,
+    raw: str,
+    limit: int,
+    source_type: str,
+    filing_date: str,
+    url: str,
+) -> list[dict[str, Any]]:
     text = _clean_text(raw)
     prefix = "10-K" if form == "10-K" else "10-Q"
-    sections: list[dict[str, str]] = []
+    sections: list[dict[str, Any]] = []
     if form == "10-K":
-        _append_section(
-            sections,
-            section_type="business_overview",
-            source_section="10-K business",
-            excerpt=_section_between(
-                text,
-                r"Item\s+1\.\s+Business\b",
-                r"Item\s+1A\.\s+Risk Factors\b",
-                limit,
-            ),
+        business = _section_between(
+            text,
+            r"Item\s+1\.\s+Business\b",
+            r"Item\s+1A\.\s+Risk Factors\b",
+            limit,
         )
-        _append_section(
-            sections,
-            section_type="risk_factors",
-            source_section="10-K risk factors",
-            excerpt=_section_between(
-                text,
-                r"Item\s+1A\.\s+Risk Factors\b",
-                r"Item\s+1B\.|Item\s+2\.",
-                limit,
-            ),
+        risk = _section_between(
+            text,
+            r"Item\s+1A\.\s+Risk Factors\b",
+            r"Item\s+1B\.|Item\s+2\.",
+            limit,
         )
         mda = _section_between(
             text,
@@ -188,42 +193,118 @@ def _extract_filing_sections(form: str, raw: str, limit: int) -> list[dict[str, 
             limit,
         )
     else:
+        business = None
         mda = _section_between(
             text,
             r"Item\s+2\.\s+Management'?s Discussion and Analysis",
             r"Item\s+3\.",
             limit,
         )
-        _append_section(
-            sections,
-            section_type="risk_factors",
-            source_section="10-Q risk factors",
-            excerpt=_section_between(
+        risk = _section_between(
+            text,
+            r"Item\s+1A\.\s+Risk Factors\b",
+            r"Item\s+2\.",
+            limit,
+        )
+    common_specs = [
+        (
+            "business_overview",
+            f"{prefix} business overview",
+            business,
+            ["business model", "revenue drivers", "operating context"],
+        ),
+        (
+            "risk_factors",
+            f"{prefix} risk factors",
+            risk,
+            ["risk factors", "downside risks", "uncertainty"],
+        ),
+        (
+            "mda",
+            f"{prefix} MD&A",
+            mda,
+            ["revenue growth", "margin trend", "management discussion"],
+        ),
+        (
+            "segment_information",
+            f"{prefix} segment information",
+            _heading_section(text, r"Segment Information\b", limit),
+            ["segment mix", "business-line performance"],
+        ),
+        (
+            "segment_product_revenue_tables",
+            f"{prefix} segment/product revenue tables",
+            _heading_section(
                 text,
-                r"Item\s+1A\.\s+Risk Factors\b",
-                r"Item\s+2\.",
+                r"SEGMENT RESULTS OF OPERATIONS\b|"
+                r"Segment revenue, cost of revenue, operating expenses, and operating income were as follows\b|"
+                r"net sales by reportable segment\b|Product(?:s)? and Services Performance\b|"
+                r"Net Sales by (?:Category|Reportable Segment)\b|Revenue by (?:Product|Geography)\b|"
+                r"Product Revenue\b|Segment Revenue\b",
                 limit,
             ),
-        )
-    _append_section(sections, section_type="mda", source_section=f"{prefix} MD&A", excerpt=mda)
-    for section_type, source_name, pattern in [
-        ("segment_information", "segment information", r"Segment Information\b"),
+            ["segment revenue", "product revenue", "geographic revenue"],
+        ),
         (
             "liquidity_and_capital_resources",
-            "liquidity and capital resources",
-            r"Liquidity and Capital Resources\b",
+            f"{prefix} liquidity and capital resources",
+            _heading_section(text, r"Liquidity and Capital Resources\b", limit),
+            ["liquidity", "cash resources", "capital resources"],
         ),
         (
             "commitments_capex_contractual_obligations",
-            "commitments / capex / contractual obligations",
-            r"Commitments and Contractual Obligations\b|Capital Expenditures\b|Capital Expenditure\b",
+            f"{prefix} commitments / capex / contractual obligations",
+            _heading_section(
+                text,
+                r"Commitments and Contractual Obligations\b|Capital Expenditures\b|Capital Expenditure\b",
+                limit,
+            ),
+            ["capex", "commitments", "contractual obligations"],
         ),
-    ]:
-        _append_section(
-            sections,
-            section_type=section_type,
-            source_section=f"{prefix} {source_name}",
-            excerpt=_heading_section(text, pattern, limit),
+        (
+            "income_statement",
+            f"{prefix} income statement",
+            _heading_section(
+                text,
+                r"CONSOLIDATED STATEMENTS? OF (?:OPERATIONS|INCOME|EARNINGS)\b|"
+                r"CONDENSED CONSOLIDATED STATEMENTS? OF (?:OPERATIONS|INCOME|EARNINGS)\b",
+                limit,
+            ),
+            ["revenue", "net income", "EPS", "margin"],
+        ),
+        (
+            "balance_sheet",
+            f"{prefix} balance sheet",
+            _heading_section(
+                text,
+                r"CONSOLIDATED BALANCE SHEETS?\b|CONDENSED CONSOLIDATED BALANCE SHEETS?\b",
+                limit,
+            ),
+            ["assets", "liabilities", "cash", "debt"],
+        ),
+        (
+            "cash_flow_statement",
+            f"{prefix} cash flow statement",
+            _heading_section(
+                text,
+                r"CONSOLIDATED STATEMENTS? OF CASH FLOWS\b|"
+                r"CONDENSED CONSOLIDATED STATEMENTS? OF CASH FLOWS\b",
+                limit,
+            ),
+            ["operating cash flow", "free cash flow", "investing cash flow"],
+        ),
+    ]
+    for section_type, section_name, excerpt, supports_claims in common_specs:
+        sections.append(
+            _section_record(
+                section_type=section_type,
+                section_name=section_name,
+                source_type=source_type,
+                filing_date=filing_date,
+                url=url,
+                excerpt=excerpt,
+                supports_claims=supports_claims,
+            )
         )
     return sections
 
@@ -261,7 +342,14 @@ def _source_from_filing(
         raw = http_get(url, headers)
         source["excerpt"] = _clean_excerpt(raw, excerpt_chars)
         if filing["form"] in {"10-K", "10-Q"}:
-            source["sections"] = _extract_filing_sections(filing["form"], raw, excerpt_chars)
+            source["sections"] = _extract_filing_sections(
+                form=filing["form"],
+                raw=raw,
+                limit=excerpt_chars,
+                source_type=source_type,
+                filing_date=filing["filingDate"],
+                url=url,
+            )
     except Exception as exc:  # noqa: BLE001 - source packet should preserve partial coverage.
         source["excerpt_status"] = "unavailable"
         source["excerpt_error"] = str(exc)
@@ -306,6 +394,7 @@ def _earnings_8k_source(
             http_get=http_get,
             headers=headers,
             excerpt_chars=excerpt_chars,
+            filing_date=filing["filingDate"],
         )
         return {
             "source_type": "earnings_release_8k",
@@ -317,8 +406,11 @@ def _earnings_8k_source(
             "url": url,
             "cover_page": {
                 "status": "available" if cover_excerpt else "unavailable",
+                "source_type": "earnings_release_8k_cover_page",
+                "filing_date": filing["filingDate"],
                 "url": url,
                 "excerpt": cover_excerpt,
+                "supports_claims": ["8-K item routing", "earnings-release exhibit existence"],
             },
             "exhibit_99_1": exhibit,
             "excerpt": exhibit.get("excerpt") or cover_excerpt,
@@ -360,19 +452,42 @@ def _extract_exhibit_99_1(
     http_get: HttpGet,
     headers: dict[str, str],
     excerpt_chars: int,
-) -> dict[str, str]:
+    filing_date: str,
+) -> dict[str, Any]:
     try:
         index_html = http_get(_filing_index_url(cik, accession_number), headers)
         exhibit_url = _find_exhibit_99_1_url(index_html, cik, accession_number)
         if not exhibit_url:
-            return {"status": "unavailable", "reason": "No Exhibit 99.1 link found in filing index."}
+            return {
+                "status": "unavailable",
+                "source_type": "earnings_release_exhibit",
+                "exhibit_name": "Exhibit 99.1",
+                "filing_date": filing_date,
+                "url": "",
+                "excerpt": "",
+                "supports_claims": ["guidance", "earnings release", "management commentary"],
+                "reason": "No Exhibit 99.1 link found in filing index.",
+            }
         return {
             "status": "available",
+            "source_type": "earnings_release_exhibit",
+            "exhibit_name": "Exhibit 99.1",
+            "filing_date": filing_date,
             "url": exhibit_url,
             "excerpt": _clean_excerpt(http_get(exhibit_url, headers), excerpt_chars),
+            "supports_claims": ["guidance", "earnings release", "management commentary"],
         }
     except Exception as exc:  # noqa: BLE001 - keep cover-page evidence if exhibit lookup fails.
-        return {"status": "unavailable", "reason": str(exc)}
+        return {
+            "status": "unavailable",
+            "source_type": "earnings_release_exhibit",
+            "exhibit_name": "Exhibit 99.1",
+            "filing_date": filing_date,
+            "url": "",
+            "excerpt": "",
+            "supports_claims": ["guidance", "earnings release", "management commentary"],
+            "reason": str(exc),
+        }
 
 
 def collect_financial_document_sources(
@@ -514,20 +629,23 @@ def render_financial_document_packet(packet: dict[str, Any]) -> str:
     lines.append("")
     for source in packet.get("sources", []):
         for section in source.get("sections", []):
+            supports_claims = ", ".join(section.get("supports_claims", [])) or "N/A"
             lines.extend(
                 [
                     f"### Section: {source.get('source_type', 'source')} / {section.get('section_type', 'section')}",
                     "",
-                    f"- Source section: {section.get('source_section', 'N/A')}",
-                    f"- Filing date: `{source.get('filing_date', 'N/A')}`",
-                    f"- URL: {source.get('url', 'N/A')}",
-                    "",
-                    "```text",
-                    section["excerpt"],
-                    "```",
-                    "",
+                    f"- Section name: {section.get('section_name', section.get('source_section', 'N/A'))}",
+                    f"- Status: `{section.get('status', 'unknown')}`",
+                    f"- Source type: `{section.get('source_type', source.get('source_type', 'N/A'))}`",
+                    f"- Filing date: `{section.get('filing_date', source.get('filing_date', 'N/A'))}`",
+                    f"- URL: {section.get('url', source.get('url', 'N/A'))}",
+                    f"- Supports claims: {supports_claims}",
                 ]
             )
+            if section.get("excerpt"):
+                lines.extend(["", "```text", section["excerpt"], "```", ""])
+            else:
+                lines.extend([f"- Unavailable reason: {section.get('unavailable_reason', 'No excerpt extracted.')}", ""])
         cover = source.get("cover_page", {})
         if cover.get("excerpt"):
             lines.extend(
@@ -544,20 +662,21 @@ def render_financial_document_packet(packet: dict[str, Any]) -> str:
                 ]
             )
         exhibit = source.get("exhibit_99_1", {})
-        if exhibit.get("excerpt"):
+        if exhibit:
             lines.extend(
                 [
                     f"### Exhibit 99.1: {source.get('source_type', 'source')}",
                     "",
-                    f"- Filing date: `{source.get('filing_date', 'N/A')}`",
+                    f"- Status: `{exhibit.get('status', 'unknown')}`",
+                    f"- Filing date: `{exhibit.get('filing_date', source.get('filing_date', 'N/A'))}`",
                     f"- URL: {exhibit.get('url', 'N/A')}",
-                    "",
-                    "```text",
-                    exhibit["excerpt"],
-                    "```",
-                    "",
+                    f"- Supports claims: {', '.join(exhibit.get('supports_claims', [])) or 'N/A'}",
                 ]
             )
+            if exhibit.get("excerpt"):
+                lines.extend(["", "```text", exhibit["excerpt"], "```", ""])
+            else:
+                lines.extend([f"- Unavailable reason: {exhibit.get('reason', 'No exhibit text extracted.')}", ""])
         if not source.get("excerpt"):
             continue
         lines.extend(

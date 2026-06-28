@@ -90,19 +90,19 @@ Valuation and quality are the central trade-off. PE is 34.36, forward PE is 29.5
 
 ### Financial Report Analyst
 
-The financial-report role now has named SEC filing sections in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes 10-K business/risk/liquidity sections, 10-Q risk/segment/liquidity sections, an Item 2.02 8-K cover page, and the actual Exhibit 99.1 earnings release. Investor-presentation evidence remains unavailable. (Source: roles/financial_report.md; 10-K business / risk factors; 10-Q liquidity and capital resources; 8-K Exhibit 99.1)
+The financial-report role now has section-level SEC filing records in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes available 10-K business/risk/segment-product/liquidity/financial-statement sections, available 10-Q risk/segment-product/liquidity/financial-statement sections, an Item 2.02 8-K cover page, and the actual Exhibit 99.1 earnings release. 10-K/10-Q MD&A and dedicated commitments/capex sections were not extracted, and investor-presentation evidence remains unavailable. (Source: roles/financial_report.md; 10-K business / risk factors; 10-Q segment/product revenue tables; 10-Q liquidity and capital resources; 8-K Exhibit 99.1)
 
 | Source | Status | Use |
 |---|---|---|
 | Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
 | Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
-| Annual report / 10-K | Available | Business overview, risk factors, segment references, liquidity, commitments context |
-| Quarterly report / 10-Q | Available | Risk factors, segment references, liquidity, manufacturing and purchase obligations |
+| Annual report / 10-K | Available | Business overview, risk factors, segment/product revenue tables, liquidity, income statement, balance sheet, cash flow |
+| Quarterly report / 10-Q | Available | Risk factors, segment/product revenue tables, liquidity, income statement, balance sheet, cash flow |
 | Earnings release 8-K cover page | Available | Confirms Item 2.02 filing and Exhibit 99.1 routing |
 | 8-K Exhibit 99.1 | Available | Revenue, EPS, product/services sales, operating cash flow, dividend, buyback details |
 | Investor presentation | Not discovered | Evidence gap |
 
-Revenue is 451.4B, net income is 122.6B, and free cash flow is 101.1B. Profit margin is 27.15%, operating margin is 32.28%, current ratio is 1.07, and debt/equity is 79.55. Exhibit 99.1 reports March-quarter revenue of 111.2B, up 17% year over year, diluted EPS of 2.01, and product/services net sales of 80.208B / 30.976B. The 10-Q liquidity section reports manufacturing purchase obligations of 44.6B and other purchase obligations of 30.4B as of March 28, 2026. (Source: structured fundamentals packet; 8-K Exhibit 99.1; 10-Q liquidity and capital resources)
+The standalone financial_report.md includes a claim-source table. Revenue is 451.4B, net income is 122.6B, and free cash flow is 101.1B. Profit margin is 27.15%, operating margin is 32.28%, current ratio is 1.07, and debt/equity is 79.55. Exhibit 99.1 reports March-quarter revenue of 111.2B, up 17% year over year, diluted EPS of 2.01, and product/services net sales of 80.208B / 30.976B; the 10-Q income statement and segment/product revenue tables support statement-level and product/services detail. The 10-Q liquidity section reports manufacturing purchase obligations of 44.6B and other purchase obligations of 30.4B, but dedicated capex/commitments sections were not extracted. (Source: structured fundamentals packet; 8-K Exhibit 99.1; 10-Q income statement; 10-Q segment/product revenue tables; 10-Q liquidity and capital resources)
 
 ### Industry / Theme Discovery Analyst
 
@@ -113,7 +113,7 @@ Themes are discovered from AAPL-specific news, fundamentals, and the financial-r
 | Edge AI | Mac chip roadmap / AI-focused M7 | News Analyst direct AAPL item | Mixed | Supports AI roadmap optionality, but execution credibility is not quantified in filings. | Medium |
 | Memory supply chain | Component cost and CXMT approval | News Analyst memory-price and CXMT items | Mixed | Potential input-cost relief is offset by geopolitical and supplier approval risk. | Medium |
 | App-store regulation | Alternative app stores/payments in Brazil | News Analyst CADE agreement item | Headwind | Adds regulatory pressure to App Store economics, with limited geographic scope. | Medium |
-| Services / installed base | Quality and margin support | Fundamentals and financial-report data | Tailwind | Profitability and cash flow support quality, but segment detail is unavailable. | Medium |
+| Services / installed base | Quality and margin support | Fundamentals and financial-report data | Tailwind | Profitability, cash flow, and extracted product/services tables support quality, but investor presentation detail is unavailable. | Medium |
 | Hardware replacement cycle | Pricing and demand sensitivity | News Analyst price-hike and memory-cost items | Mixed | Pricing power can protect margins but may pressure demand. | Low-to-Medium |
 
 ## II. Research Team Debate
@@ -217,7 +217,7 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (291.02), below 50 SMA (291.41) and RSI 41.26; MACD -2.24 vs signal 0.53. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
 
-**Financial-report impact**: SEC filings and Exhibit 99.1 now support the profitability and cash-flow review, so the setup should not be treated as a fundamental failure. The remaining gaps are investor-presentation detail and deeper table extraction for a full product/geography bridge.
+**Financial-report impact**: SEC filings and Exhibit 99.1 now support the profitability, product/services, and cash-flow review, so the setup should not be treated as a fundamental failure. The remaining gaps are investor-presentation detail, formal numerical guidance, 10-K/10-Q MD&A, and dedicated capex/commitments sections.
 
 **Industry/theme impact**: Memory costs, app-store regulation, and AI credibility are material headwinds; services/installed-base support is a mitigating tailwind.
 

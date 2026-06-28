@@ -179,6 +179,7 @@ def test_10k_and_10q_sources_extract_named_financial_sections():
             <html><body>
             Item 1. Business Annual business overview cloud and AI platform.
             Segment Information Productivity, Intelligent Cloud, and More Personal Computing.
+            Segment Revenue Productivity revenue, Intelligent Cloud revenue, and More Personal Computing revenue.
             Item 1A. Risk Factors Competition, regulation, and infrastructure risk.
             Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations.
             Liquidity and Capital Resources Cash, investments, and debt maturity discussion.
@@ -192,6 +193,8 @@ def test_10k_and_10q_sources_extract_named_financial_sections():
             Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations.
             Revenue increased due to cloud services.
             Segment Information Intelligent Cloud revenue accelerated.
+            Segment revenue, cost of revenue, operating expenses, and operating income were as follows.
+            Productivity, Intelligent Cloud, and More Personal Computing table.
             Liquidity and Capital Resources Cash and short-term investments declined.
             Capital Expenditures Data center investment increased.
             Item 3. Quantitative and Qualitative Disclosures About Market Risk.
@@ -209,17 +212,31 @@ def test_10k_and_10q_sources_extract_named_financial_sections():
     assert "risk_factors" in annual_sections
     assert "mda" in annual_sections
     assert "segment_information" in annual_sections
+    assert "segment_product_revenue_tables" in annual_sections
     assert "liquidity_and_capital_resources" in annual_sections
     assert "commitments_capex_contractual_obligations" in annual_sections
-    assert annual_sections["business_overview"]["source_section"] == "10-K business"
+    assert annual_sections["business_overview"]["section_name"] == "10-K business overview"
+    assert annual_sections["business_overview"]["status"] == "available"
+    assert annual_sections["business_overview"]["source_type"] == "annual_report_10k"
+    assert annual_sections["business_overview"]["filing_date"] == "2025-07-30"
+    assert annual_sections["business_overview"]["url"].endswith("/msft-20250630.htm")
+    assert "revenue drivers" in annual_sections["business_overview"]["supports_claims"]
     assert "cloud and AI platform" in annual_sections["business_overview"]["excerpt"]
+    assert annual_sections["segment_product_revenue_tables"]["section_name"] == "10-K segment/product revenue tables"
+    assert "Productivity revenue" in annual_sections["segment_product_revenue_tables"]["excerpt"]
+    assert "revenue" in annual_sections["income_statement"]["supports_claims"]
+    assert annual_sections["income_statement"]["status"] == "unavailable"
 
     assert "mda" in quarterly_sections
+    assert quarterly_sections["business_overview"]["status"] == "unavailable"
     assert "segment_information" in quarterly_sections
+    assert "segment_product_revenue_tables" in quarterly_sections
     assert "liquidity_and_capital_resources" in quarterly_sections
     assert "commitments_capex_contractual_obligations" in quarterly_sections
-    assert quarterly_sections["mda"]["source_section"] == "10-Q MD&A"
+    assert quarterly_sections["mda"]["section_name"] == "10-Q MD&A"
     assert "cloud services" in quarterly_sections["mda"]["excerpt"]
+    assert "Segment revenue, cost of revenue" in quarterly_sections["segment_product_revenue_tables"]["excerpt"]
+    assert quarterly_sections["cash_flow_statement"]["status"] == "unavailable"
 
 
 def test_earnings_8k_follows_exhibit_991_and_distinguishes_cover_page():
@@ -276,3 +293,81 @@ def test_earnings_8k_follows_exhibit_991_and_distinguishes_cover_page():
     rendered = module.render_financial_document_packet(packet)
     assert "### 8-K Cover Page: earnings_release_8k" in rendered
     assert "### Exhibit 99.1: earnings_release_8k" in rendered
+    assert "- Status: `available`" in rendered
+
+
+def test_earnings_8k_records_unavailable_exhibit_991_when_missing():
+    module = _load_module()
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if url.endswith("/company_tickers.json"):
+            return json.dumps({"0": {"cik_str": 789019, "ticker": "MSFT", "title": "MICROSOFT CORP"}})
+        if url.endswith("/CIK0000789019.json"):
+            return json.dumps(
+                {
+                    "filings": {
+                        "recent": {
+                            "accessionNumber": ["0000789019-26-000100"],
+                            "filingDate": ["2026-04-29"],
+                            "form": ["8-K"],
+                            "primaryDocument": ["msft-20260429.htm"],
+                            "primaryDocDescription": ["Current report"],
+                        }
+                    }
+                }
+            )
+        if url.endswith("-index.html"):
+            return '<html><a href="/Archives/edgar/data/789019/000078901926000100/ex101.htm">EX-101</a></html>'
+        if "msft-20260429.htm" in url:
+            return "<html>Item 2.02 Results of Operations and Financial Condition. Exhibit 99.1 furnished.</html>"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("MSFT", "2026-06-27", http_get=fake_http_get)
+    earnings = next(source for source in packet["sources"] if source["source_type"] == "earnings_release_8k")
+
+    assert earnings["cover_page"]["status"] == "available"
+    assert earnings["exhibit_99_1"]["status"] == "unavailable"
+    assert earnings["exhibit_99_1"]["url"] == ""
+    assert "No Exhibit 99.1 link found" in earnings["exhibit_99_1"]["reason"]
+    rendered = module.render_financial_document_packet(packet)
+    assert "### Exhibit 99.1: earnings_release_8k" in rendered
+    assert "- Status: `unavailable`" in rendered
+
+
+def test_missing_financial_sections_are_recorded_as_evidence_gaps():
+    module = _load_module()
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if url.endswith("/company_tickers.json"):
+            return json.dumps({"0": {"cik_str": 789019, "ticker": "MSFT", "title": "MICROSOFT CORP"}})
+        if url.endswith("/CIK0000789019.json"):
+            return json.dumps(
+                {
+                    "filings": {
+                        "recent": {
+                            "accessionNumber": ["0000789019-26-000200"],
+                            "filingDate": ["2026-04-29"],
+                            "form": ["10-Q"],
+                            "primaryDocument": ["msft-20260331.htm"],
+                            "primaryDocDescription": ["Quarterly report"],
+                        }
+                    }
+                }
+            )
+        if "msft-20260331.htm" in url:
+            return "<html><body>Item 2. Management's Discussion and Analysis Revenue increased. Item 3.</body></html>"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("MSFT", "2026-06-27", http_get=fake_http_get)
+    quarterly = next(source for source in packet["sources"] if source["source_type"] == "quarterly_report_10q")
+    sections = {section["section_type"]: section for section in quarterly["sections"]}
+
+    for section_type in [
+        "commitments_capex_contractual_obligations",
+        "segment_product_revenue_tables",
+        "income_statement",
+        "balance_sheet",
+        "cash_flow_statement",
+    ]:
+        assert sections[section_type]["status"] == "unavailable"
+        assert sections[section_type]["unavailable_reason"]

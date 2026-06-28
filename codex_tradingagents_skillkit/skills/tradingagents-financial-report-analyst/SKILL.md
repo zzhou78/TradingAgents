@@ -28,10 +28,12 @@ Procedure:
 6. For each substantive financial claim, cite which source section supports each claim: structured fundamentals packet, 10-K business / risk factors, 10-Q MD&A, 8-K Exhibit 99.1, 8-K cover page, or investor presentation if available.
 7. Treat the 8-K cover page as source-routing evidence only unless the cover text itself contains the fact. Prefer 8-K Exhibit 99.1 for earnings-release claims when available.
 8. Summarize revenue and segment performance, margin and profitability trend, cash flow quality, capex and investment commitments, balance sheet and liquidity, guidance/outlook, risk factors, one-off/accounting items, changes since prior report, and evidence gaps.
-9. Do not infer management commentary from ratios alone.
+9. Include a claim-source table with columns: Claim, Source document, Section / exhibit, Filing date, Confidence, Evidence gap if section/exhibit is missing.
+10. Mark capex, formal guidance, segment/product detail, income statement, balance sheet, and cash flow claims as evidence gaps when the relevant section or Exhibit 99.1 is unavailable.
+11. Do not infer management commentary from ratios alone.
 
 Output:
-- `financial_report.md` with sections: Source coverage table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.
+- `financial_report.md` with sections: Source coverage table; Claim-source table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.
 - Include a compact citation marker in each paragraph or table row, for example `(Source: 10-Q MD&A)` or `(Source: structured fundamentals packet)`.
 
 Safety boundaries:

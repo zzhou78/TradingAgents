@@ -90,19 +90,20 @@ Valuation and quality are the central trade-off. PE is 22.23, forward PE is 19.2
 
 ### Financial Report Analyst
 
-The financial-report role now has named SEC filing sections in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes 10-K business/risk/liquidity/capex sections, 10-Q risk/segment/liquidity/capex sections, and an Item 2.02 8-K cover page filed 2026-04-29. Exhibit 99.1 was referenced by the 8-K but was not extracted from the SEC index in this run. (Source: roles/financial_report.md; 10-K business / risk factors; 10-Q liquidity and capital resources; 8-K cover page)
+The financial-report role now has section-level SEC filing records in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes available 10-K business/risk/segment-product/liquidity/capex/income-statement/balance-sheet sections, available 10-Q risk/segment-product/liquidity/capex/income-statement/balance-sheet sections, and an Item 2.02 8-K cover page filed 2026-04-29. 10-Q MD&A and cash-flow statement sections were not extracted, and Exhibit 99.1 was referenced by the 8-K but was not extracted from the SEC index in this run. (Source: roles/financial_report.md; 10-K business / risk factors; 10-Q segment/product revenue tables; 10-Q liquidity and capital resources; 8-K cover page)
 
 | Source | Status | Use |
 |---|---|---|
 | Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
-| Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
+| Balance sheet / income statement tables | Available | Statement-level cross-checks |
+| Cash flow statement tables | Not extracted | Evidence gap beyond structured fundamentals and liquidity sections |
 | Annual report / 10-K | Available | Business overview, risk factors, segment references, liquidity, commitments/capex context |
 | Quarterly report / 10-Q | Available | Risk factors, segment references, liquidity, commitments/capex context |
 | Earnings release 8-K cover page | Available | Confirms Item 2.02 filing and Exhibit 99.1 reference |
 | 8-K Exhibit 99.1 | Not extracted | Evidence gap for release-specific management quotes |
 | Investor presentation | Not discovered | Evidence gap |
 
-Revenue is 318.3B, net income is 125.2B, and free cash flow is 37.0B. Profit margin is 39.34%, operating margin is 46.33%, current ratio is 1.28, and debt/equity is 30.27. The March 2026 10-Q excerpt reports quarterly revenue of 82.886B versus 70.066B in the prior-year period and operating income of 38.398B. The 10-Q commitments/capex section reports cash used in investing increased 42.6B to 84.7B for the nine months ended March 31, 2026, including a 32.7B increase in additions to property and equipment. (Source: structured fundamentals packet; 10-Q MD&A; 10-Q commitments / capex / contractual obligations)
+The standalone financial_report.md includes a claim-source table. Revenue is 318.3B, net income is 125.2B, and free cash flow is 37.0B. Profit margin is 39.34%, operating margin is 46.33%, current ratio is 1.28, and debt/equity is 30.27. The March 2026 10-Q income statement reports quarterly revenue of 82.886B versus 70.066B in the prior-year period and operating income of 38.398B. The 10-Q commitments/capex section reports cash used in investing increased 42.6B to 84.7B for the nine months ended March 31, 2026, including a 32.7B increase in additions to property and equipment. (Source: structured fundamentals packet; 10-Q income statement; 10-Q commitments / capex / contractual obligations)
 
 ### Industry / Theme Discovery Analyst
 

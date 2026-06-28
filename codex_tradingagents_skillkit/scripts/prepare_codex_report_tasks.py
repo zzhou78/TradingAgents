@@ -29,7 +29,7 @@ TASKS = {
     "financial_report_task.md": {
         "skill": "tradingagents-financial-report-analyst",
         "output_key": "financial_report",
-        "instruction": "Read the structured fundamentals packet plus any available 10-K/10-Q sections, 8-K cover pages, Exhibit 99.1 earnings releases, investor materials, and management commentary. Write financial_report.md and cite the source section supporting each substantive claim. Python must not classify themes or financial-report conclusions. If online sources or filings are unavailable, state the evidence gap.",
+        "instruction": "Read the structured fundamentals packet plus section-level 10-K/10-Q records, 8-K cover pages, Exhibit 99.1 earnings releases, investor materials, and management commentary. Write financial_report.md with a claim-source table and cite the source section supporting each substantive claim. Python must not classify themes or financial-report conclusions. If a needed section or exhibit is unavailable, state the evidence gap.",
     },
     "industry_theme_discovery_task.md": {
         "skill": "tradingagents-industry-theme-discovery-analyst",

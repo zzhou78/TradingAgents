@@ -13,8 +13,14 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 - Status: `ok`
 
 ```text
-Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent messages
+Bullish: 9 (30%) · Bearish: 4 (13%) · Unlabeled: 17 · Total: 30 most-recent messages
 
+[2026-06-28T21:15:16Z · @Str8Goods · Bullish] $MSFT Very bullish on the weekly.  Bullish candle from Friday.
+[2026-06-28T21:14:05Z · @ImAddicted · Bullish] $MSTR absolutely loading the boat. Same with $MSFT . Shares shares shares!! Nothing else.
+[2026-06-28T21:13:51Z · @Str8Goods · Bullish] $MSFT  As of this week’s close, MSFT is printing a bullish weekly candle, and not a small one. It’s a strong bullish engulfing candle with a decisive reclaim of the $370S after tagging a fresh 52‑week low at $349.20 earlier in the week.
+[2026-06-28T21:12:00Z · @NetflixUser · Bearish] $MSFT I told everyone to load the puts! Sorry not sorry!
+[2026-06-28T21:08:29Z · @AshHydrogen · no-label] $PLTR is flipping with $MSFT for the default MONOPOLY!!!  $SPY $NVDA $NFLX of Ai  https://media.stocktwits-cdn.com/api/3/media/3497045/default.jpeg
+[2026-06-28T21:06:53Z · @AshHydrogen · no-label] $PLTR is the only reason  Ukraine 🇺🇦 is not Russia!!!🇷🇺   $SPY $NO.X $MSFT need to apply..   https://media.stocktwits-cdn.com/api/3/media/504321/medium.png
 [2026-06-28T20:24:09Z · @Zamto · no-label] $MSFT will it be bearish because of Trump on monday
 [2026-06-28T20:21:42Z · @MakeIGVGreatAgain · Bullish] $MSFT
 [2026-06-28T20:17:27Z · @MarketMaestro1 · no-label] You need to pay close attention when these stocks reach these price levels:    1. $DRAM (DRAM) → Must buy under $80  2. $SPCX (SpaceX) → Must buy $135-$155  3. $NVDA (NVIDIA) → Must buy under $195  4. $MSFT (Microsoft) → Must buy under $350  5. $GOOG (Gooqle) →Must buy under $340…
@@ -39,12 +45,6 @@ Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-28T18:07:10Z · @TheHomelander · no-label] $MSFT bear coping at its finest
 [2026-06-28T18:06:20Z · @NetflixUser · Bearish] $MSFT I’ll say this again to warn - this will not close above $400 again in 2026
 [2026-06-28T17:53:48Z · @StackRadar1 · no-label] $MSFT week of June 29
-[2026-06-28T17:50:38Z · @ryanmcraver · no-label] Cash flow the majors shows the impact of AI investments $GOOG $META $ORCL $AMZN $MSFT
-[2026-06-28T17:48:58Z · @MilhouseVanhouten · Bullish] $MSFT you have to be absolutely completely insane or just new and inexperienced to see this in a 6 month period, attached to Microsoft and not put every dime you own into it as soon as you can.
-[2026-06-28T17:46:11Z · @Mercy_forever · Bullish] $ORCL (No position )But Holly crap down 100 point since JUN 01  A 40%  decline 🤯And I thought it’s trading at huge PE BUT NO it’s 25 PE with 13.63 forward LIKE WTF is  going on with this POS market or the FUCKERY that big HF and INSTITUTION try to pull or do Just effing insane $S…
-[2026-06-28T17:44:42Z · @jontanaj · no-label] $MSFT https://youtu.be/HOKO-_iTaH8?is=AOQClzqe4rfh-L88
-[2026-06-28T17:41:13Z · @SwingTraderPro1 · no-label] Out of ~70 mega-cap stocks ($200B+), leadership and laggards are starting to diverge in a big way.    Worst performers over the last 12 months:    $NFLX -43.5%  $ORCL -30.2%  $MSFT -25%  $META -24.2%  $PLTR -21.7%    These aren’t small caps or speculative names-these are core ind…
-[2026-06-28T17:41:01Z · @Rdg57 · no-label] $MSFT $400 by Friday?
 ```
 
 ### Tool: fetch_reddit_posts
@@ -52,19 +52,5 @@ Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent m
 - Status: `ok`
 
 ```text
-r/wallstreetbets — 5 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):
-  [2026-06-28] MSFT - Bearish Cup & Handle Pattern - Next $342.
-    body excerpt: MSFT - Bearish Cup & Handle Pattern - Next $342. Any thesis? https://preview.redd.it/22jnhtkcu2ah1.png?width=1210&format=png&auto=webp&s=ca2375942c616847795880875b7f546bf0db7cf1
-  [2026-06-27] Microslop is on sale
-    body excerpt: So Microsoft just had its worst month since the dot-com bubble and the bear case is they're spending TOO MUCH on AI. You're telling me Microsoft is shoveling billions into the biggest technological revolution in 25 years? Just like every ot…
-  [2026-06-27] MSFT leaps and some long dated
-    body excerpt: Will probably roll out the leaps
-  [2026-06-27] MU $2000 is no longer a meme
-    body excerpt: MU just dropped numbers that broke the old memory playbook. Q3 did $41.46B in revenue, up from $9.3B a year ago, EPS $25.11 when the street was looking for like $20. The part that actually got me was the margin, 85%, nobody had that modeled…
-  [2026-06-26] 2x life savings in MSFT
-    body excerpt: Brain smoother than Satya Nutella’s forehead
-
-r/stocks: <no posts found mentioning MSFT in the past 7 days>
-
-r/investing: <no posts found mentioning MSFT in the past 7 days>
+<no Reddit posts found mentioning MSFT across r/wallstreetbets, r/stocks, r/investing in the past 7 days>
 ```

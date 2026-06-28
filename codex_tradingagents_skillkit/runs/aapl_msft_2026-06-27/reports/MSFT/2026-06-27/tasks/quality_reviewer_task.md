@@ -8,7 +8,7 @@ Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSF
 
 ## Instruction
 
-Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json.
+Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json. Flag political-trading or celebrity-trading news that is treated as material without a direct company impact path.
 
 ## Evidence Brief
 
