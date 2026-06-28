@@ -31,6 +31,7 @@ Procedure:
 
 Output:
 - `market_report`: a detailed technical and market report for downstream researchers, trader, and risk reviewers.
+- Do not use generic technical template claims that conflict with actual data. If the latest close is below the 200 SMA, do not describe the setup as price holding long-term 200 SMA support. If the latest close is above the 200 SMA but below faster averages, say that long-term support still holds but short/medium-term momentum is weak.
 
 Safety boundaries:
 - Do not fabricate prices, support or resistance tests, returns, or indicator values without dated tool evidence.

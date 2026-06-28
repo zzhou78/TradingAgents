@@ -36,6 +36,8 @@ from tradingagents.agents.utils.news_data_tools import (
 )
 from tradingagents.agents.utils.technical_indicators_tools import get_indicators
 from tradingagents.dataflows.config import set_config
+from tradingagents.dataflows.reddit import fetch_reddit_posts
+from tradingagents.dataflows.stocktwits import fetch_stocktwits_messages
 from tradingagents.default_config import DEFAULT_CONFIG
 
 DEFAULT_ANALYSTS = ["market", "social", "news", "fundamentals"]
@@ -139,13 +141,17 @@ def _collect_market(ticker: str, trade_date: str, lookback_days: int) -> dict[st
 
 
 def _collect_social(ticker: str, trade_date: str, lookback_days: int) -> dict[str, Any]:
-    start = _start_date(trade_date, min(lookback_days, 7))
     calls = {
-        "get_news": _call_tool(
-            get_news,
+        "fetch_stocktwits_messages": _call_tool(
+            fetch_stocktwits_messages,
             ticker=ticker,
-            start_date=start,
-            end_date=trade_date,
+            limit=30,
+        ),
+        "fetch_reddit_posts": _call_tool(
+            fetch_reddit_posts,
+            ticker=ticker,
+            limit_per_sub=5,
+            inter_request_delay=0.0,
         )
     }
     return {"skill": ROLE_SKILLS["social"], "tool_calls": calls}
@@ -360,6 +366,13 @@ def _workflow_state(
         for role in selected_analysts
     ]
     downstream = []
+    completion_gates = {
+        "bear_researcher_round_1": "Bear must directly rebut the strongest Bull point.",
+        "research_manager": "Research Manager must weigh Bull vs Bear evidence.",
+        "conservative_risk_round_1": "Conservative Risk must directly respond to Aggressive Risk.",
+        "neutral_risk_round_1": "Neutral Risk must weigh Aggressive vs Conservative.",
+        "portfolio_manager": "Portfolio Manager must synthesize the risk debate.",
+    }
     research_debate_outputs = []
     for round_number in range(1, max_debate_rounds + 1):
         bull_stage = f"bull_researcher_round_{round_number}"
@@ -441,7 +454,9 @@ def _workflow_state(
                 "allowed_inputs": allowed_inputs,
                 "forbidden_inputs": [],
                 "output_path": paths[stage_name],
-                "completion_gate": "write the stage output before advancing",
+                "completion_gate": completion_gates.get(
+                    stage_name, "write the visible debate-stage output before advancing"
+                ),
             }
         )
     complete_report_inputs = analyst_outputs + [

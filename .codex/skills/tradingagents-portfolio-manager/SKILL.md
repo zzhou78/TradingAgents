@@ -30,6 +30,7 @@ Procedure:
 
 Output:
 - `PortfolioDecision` and final decision text for the TradingAgents study flow.
+- Synthesize the risk debate and do not merely repeat the Trader.
 
 Safety boundaries:
 - Do not create real buy, sell, rebalance, or broker instructions.

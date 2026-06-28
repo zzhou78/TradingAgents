@@ -29,6 +29,7 @@ Procedure:
 
 Output:
 - Updated bull-side debate argument in the investment debate state.
+- For Bull Round 1, state the strongest positive thesis, cite analyst evidence, and state what Bear must disprove.
 
 Safety boundaries:
 - Do not ignore material risks that are explicit in the analyst reports.

@@ -36,6 +36,7 @@ Procedure:
 
 Output:
 - `TraderProposal`: action, reasoning, optional entry/exit levels, sizing notes, and risk notes.
+- Include a consistency check before the final proposal. If action is Sell, identify whether price broke below longer-term support or name the separate materially negative setup. If long-term support still holds and no material negative setup is documented, prefer Hold over Sell.
 
 Safety boundaries:
 - Do not submit orders or imply broker execution.

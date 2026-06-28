@@ -29,6 +29,7 @@ Procedure:
 
 Output:
 - Updated bear-side debate argument in the investment debate state.
+- For Bear Round 1, directly rebut the strongest Bull point, cite contrary evidence, and state what Bull is underestimating.
 
 Safety boundaries:
 - Do not exaggerate risks beyond what the supplied reports can support.

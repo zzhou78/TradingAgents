@@ -29,6 +29,7 @@ Procedure:
 
 Output:
 - Updated conservative-side risk debate argument.
+- For Conservative Risk Round 1, directly respond to Aggressive Risk and explain why the proposal may still be unsafe.
 
 Safety boundaries:
 - Do not convert cautionary analysis into real portfolio instructions.

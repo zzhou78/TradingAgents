@@ -29,6 +29,7 @@ Procedure:
 
 Output:
 - Updated aggressive-side risk debate argument.
+- For Aggressive Risk Round 1, explain why taking risk could be justified.
 
 Safety boundaries:
 - Do not recommend leverage, concentration, or real-money action for the user.

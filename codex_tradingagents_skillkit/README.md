@@ -7,6 +7,8 @@ Contents:
 - `skills/`: Codex skills generated from `tradingagents/agents`, `tradingagents/graph`, and `tradingagents/dataflows`.
 - `skills/tradingagents-ticker-workflow-runner/scripts/prepare_skill_workflow.py`: offline runner that turns ticker input into a workflow packet.
 - `scripts/collect_role_evidence.py`: upstream-data evidence collector for Codex-operated role reports.
+- `scripts/write_codex_reports.py`: automatic Codex report writer that fills every role report from collected evidence.
+- `scripts/validate_complete_report.py`: contract validator for required visible debate headings and leakage checks.
 - `tests/`: regression tests for the skills and runner.
 - `docs/`: study notes produced during this branch.
 - `MANIFEST.md`: inventory of what is ours and how it maps to upstream source.
@@ -34,7 +36,19 @@ Apple and Microsoft role-evidence example for Codex-operated reports:
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
 ```
 
-After collection, Codex reads each ticker's `workflow_state.json` and follows the listed stages without asking for more user input. The default stage list includes visible one-round debate turns:
+After collection, run the automatic report writer to fill all stage files and assemble each `complete_report.md`:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\write_codex_reports.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
+```
+
+Validate a generated complete report:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\validate_complete_report.py --report codex_tradingagents_skillkit\runs\run_2026-06-27\reports\AAPL\2026-06-27\complete_report.md
+```
+
+The writer reads each ticker's `workflow_state.json` and follows the listed stages without asking for more user input. The default stage list includes visible one-round debate turns:
 - `bull_researcher_round_1`
 - `bear_researcher_round_1`
 - `research_manager`
@@ -45,12 +59,13 @@ After collection, Codex reads each ticker's `workflow_state.json` and follows th
 - `portfolio_manager`
 - `complete_report`
 
-The collector also writes `reports/<TICKER>/<DATE>/debate_record.md` and creates pending Markdown files for every stage output path. Use `debate_record.md` to find the visible debate turn order and the per-stage report files.
+The collector also writes `reports/<TICKER>/<DATE>/debate_record.md` and creates pending Markdown files for every stage output path. `write_codex_reports.py` replaces those pending files with role outputs and writes the final `complete_report.md`. Use `debate_record.md` to find the visible debate turn order and the per-stage report files.
 
 Quick checks:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest tests\test_codex_self_contained_skillkit.py -q
+.\.venv\Scripts\python.exe -m pytest codex_tradingagents_skillkit\tests\test_skillkit_bundle.py -q
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\skills\tradingagents-ticker-workflow-runner\scripts\prepare_skill_workflow.py --ticker AAPL,MSFT --trade-date 2026-06-27 --format json
 ```
 
@@ -60,8 +75,10 @@ Safety:
 - It does not connect to GCAF.
 - The runner prepares workflow packets only; it does not call live LLMs or market-data vendors.
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
+- The Sentiment Analyst evidence collector uses direct StockTwits and Reddit collection rather than reusing the news feed.
+- The report writer does not call upstream graph orchestration, external LLMs, broker APIs, or market-data vendors; it writes from the already collected evidence packet.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
 - `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, and report paths.
 - `debate_record.md` is the report-folder index for the research and risk debate turns.
 - Missing stage outputs are created as pending Markdown files so every path listed in the debate record is findable from `reports/`.
-- The complete report should show analyst reports, research debate, trader proposal with `FINAL TRANSACTION PROPOSAL`, risk debate, and portfolio manager decision.
+- The complete report must preserve exact visible debate headings and pass `validate_complete_report.py`.

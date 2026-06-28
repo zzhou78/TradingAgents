@@ -191,6 +191,91 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         assert report_paths["portfolio_manager"] in final_stage["allowed_inputs"]
 
 
+def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, monkeypatch):
+    collector = _load_collector()
+    calls = []
+
+    def fake_tool(name):
+        def _inner(**kwargs):
+            calls.append((name, kwargs))
+            return f"{name} evidence"
+
+        return _inner
+
+    monkeypatch.setattr(collector, "fetch_stocktwits_messages", fake_tool("fetch_stocktwits_messages"))
+    monkeypatch.setattr(collector, "fetch_reddit_posts", fake_tool("fetch_reddit_posts"))
+    monkeypatch.setattr(collector, "get_news", fake_tool("get_news"))
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "AAPL",
+            "--trade-date",
+            "2026-06-27",
+            "--selected-analysts",
+            "social",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    called_tools = [name for name, _ in calls]
+    assert "fetch_stocktwits_messages" in called_tools
+    assert "fetch_reddit_posts" in called_tools
+    assert "get_news" not in called_tools
+
+    evidence = json.loads(
+        (tmp_path / "evidence" / "AAPL" / "2026-06-27" / "evidence.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    social_calls = evidence["roles"]["social"]["tool_calls"]
+    assert sorted(social_calls) == ["fetch_reddit_posts", "fetch_stocktwits_messages"]
+
+
+def test_workflow_state_records_explicit_visible_debate_completion_gates(tmp_path):
+    collector = _load_collector()
+    role_packet_paths = {
+        "market": str(tmp_path / "roles" / "market.md"),
+        "news": str(tmp_path / "roles" / "news.md"),
+    }
+
+    workflow = collector._workflow_state(
+        "AAPL",
+        "2026-06-27",
+        ["market", "news"],
+        role_packet_paths,
+        tmp_path / "evidence.json",
+        tmp_path / "reports" / "AAPL" / "2026-06-27",
+        max_debate_rounds=1,
+        max_risk_discuss_rounds=1,
+    )
+
+    stages = {stage["stage"]: stage for stage in workflow["stages"]}
+    assert (
+        stages["bear_researcher_round_1"]["completion_gate"]
+        == "Bear must directly rebut the strongest Bull point."
+    )
+    assert (
+        stages["research_manager"]["completion_gate"]
+        == "Research Manager must weigh Bull vs Bear evidence."
+    )
+    assert (
+        stages["conservative_risk_round_1"]["completion_gate"]
+        == "Conservative Risk must directly respond to Aggressive Risk."
+    )
+    assert (
+        stages["neutral_risk_round_1"]["completion_gate"]
+        == "Neutral Risk must weigh Aggressive vs Conservative."
+    )
+    assert (
+        stages["portfolio_manager"]["completion_gate"]
+        == "Portfolio Manager must synthesize the risk debate."
+    )
+
+
 def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp_path, monkeypatch):
     collector = _load_collector()
 

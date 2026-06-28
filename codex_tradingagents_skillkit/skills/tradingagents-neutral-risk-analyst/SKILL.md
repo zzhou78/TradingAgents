@@ -29,6 +29,7 @@ Procedure:
 
 Output:
 - Updated neutral-side risk debate argument.
+- For Neutral Risk Round 1, weigh Aggressive vs Conservative and state which risk argument is stronger.
 
 Safety boundaries:
 - Do not hide uncertainty behind a forced compromise.

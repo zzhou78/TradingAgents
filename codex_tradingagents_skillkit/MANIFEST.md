@@ -63,6 +63,18 @@ Use the evidence collector when you want upstream TradingAgents dataflow tools t
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
 ```
 
+Use the automatic report writer after evidence collection when you want Codex role outputs written without manual prompting:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\write_codex_reports.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
+```
+
+Validate any generated complete report against the visible debate contract:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\validate_complete_report.py --report path\to\complete_report.md
+```
+
 The evidence collector writes outputs under `codex_tradingagents_skillkit/runs/`
 by default:
 - `evidence/<TICKER>/<DATE>/evidence.json`
@@ -76,11 +88,23 @@ by default:
 - `tradingagents_memory/trading_memory.md`
 - `yfinance_cache/`
 
+The report writer replaces pending stage files under
+`reports/<TICKER>/<DATE>/` with TradingAgents-style role reports and assembles
+`complete_report.md`. It reads only `workflow_state.json` and the already
+collected `evidence.json`; it does not call upstream graph orchestration,
+external LLMs, broker APIs, or market-data vendors.
+
+The validator fails reports that omit required visible debate headings, omit the
+final transaction proposal marker, omit the paper-study disclaimer section, or
+include unexplained MSFT-to-Apple cross-ticker leakage without
+`comparative_run=true`.
+
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.
 - The packet lists `tradingagents-dataflow-routing` as the data-routing skill.
 - The packet command does not run live LLM, market-data vendor, cache, checkpoint, or broker actions.
 - The evidence command can call market-data vendors through upstream dataflow tools, but it does not call upstream `TradingAgentsGraph` or any LLM backend.
+- The Sentiment Analyst evidence path uses direct StockTwits and Reddit collection rather than reusing `get_news`.
 
 ## API and Model Requirements
 
@@ -95,8 +119,9 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
 ## Codex-Operated Report Contract
 
 1. Run `collect_role_evidence.py` for the nominated tickers and date.
-2. Codex follows the workflow skills converted from `tradingagents/graph`.
-3. Codex acts each role independently:
+2. Run `write_codex_reports.py` for the same output directory.
+3. Codex follows the workflow skills converted from `tradingagents/graph`.
+4. Codex acts each role independently:
    - analyst roles read only their own `roles/<role>.md` evidence packet;
    - `bull_researcher_round_1` reads only completed analyst reports;
    - `bear_researcher_round_1` reads analyst reports and directly responds to bull round 1;
@@ -106,8 +131,8 @@ uses network data; FRED and Alpha Vantage are optional keyed vendors if enabled.
    - `conservative_risk_round_1` responds to aggressive risk round 1;
    - `neutral_risk_round_1` weighs aggressive and conservative risk round 1;
    - portfolio manager reads the risk debate and produces the final paper-study decision.
-4. Codex writes TradingAgents-style markdown sections under the run output folder.
-5. No broker integration, GCAF connection, or real trading instruction is allowed.
+5. Codex writes TradingAgents-style markdown sections under the run output folder.
+6. No broker integration, GCAF connection, or real trading instruction is allowed.
 
 `workflow_state.json` is the automatic execution contract. It records
 `requires_user_input: false`, the ordered stage list, each role's allowed inputs,

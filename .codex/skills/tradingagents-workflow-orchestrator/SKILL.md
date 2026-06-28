@@ -45,6 +45,7 @@ Procedure:
 7. For debate turn routing and stop conditions, use `tradingagents-debate-routing`.
 8. For checkpoints, final-state logging, deferred reflection, report writing, and deterministic rating extraction, use `tradingagents-run-persistence`.
 9. Extract the final signal as one of `Buy / Overweight / Hold / Underweight / Sell` from the portfolio manager markdown, not from a second LLM call.
+10. Do not compare the ticker to another ticker unless the run context explicitly says this is a comparative multi-ticker report. In a single-ticker report, do not mention another ticker as a comparison point unless it appears in the evidence packet and is material to the thesis.
 
 Output:
 - Final study artifact containing analyst reports, investment debate, research plan, trader proposal, risk debate, portfolio manager decision, and parsed five-tier rating.

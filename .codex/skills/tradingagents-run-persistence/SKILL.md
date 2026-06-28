@@ -31,11 +31,13 @@ Output:
 
 Complete report assembly:
 - `complete_report.md` should mimic original TradingAgents while making debate turns visible.
-- I. Analyst Team Reports: Market Analyst, Sentiment Analyst, News Analyst, and Fundamentals Analyst.
-- II. Research Team Debate: Bull Researcher Round 1, Bear Researcher Round 1, and Research Manager Decision.
-- III. Trading Team Plan: Trader Proposal and the FINAL TRANSACTION PROPOSAL line.
-- IV. Risk Management Team Debate: Aggressive Analyst Round 1, Conservative Analyst Round 1, and Neutral Analyst Round 1.
-- V. Portfolio Manager Decision: Rating, Executive Summary, Investment Thesis, Optional Price Target, and Optional Time Horizon.
+- Use the exact heading `# Trading Analysis Report: <TICKER>`.
+- I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, and `### Fundamentals Analyst`.
+- II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
+- III. Trading Team Plan: `### Trader Proposal` and the `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` line.
+- IV. Risk Management Team Debate: `### Aggressive Risk Analyst Round 1 - Opportunity Case`, `### Conservative Risk Analyst Round 1 - Response to Aggressive`, and `### Neutral Risk Analyst Round 1 - Weighing`.
+- V. Portfolio Manager Decision: `### Portfolio Manager` with Rating, Executive Summary, Investment Thesis, Risk Assessment or equivalent risk discussion, and Paper-study implementation notes.
+- VI. Paper-Study Disclaimer: include a visible paper-study disclaimer section.
 
 Safety boundaries:
 - Do not write outside configured cache/results directories; use safe ticker path components.

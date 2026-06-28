@@ -30,6 +30,7 @@ Procedure:
 
 Output:
 - `sentiment_report`: overall sentiment label, numeric score when supported, confidence, key themes, and evidence notes.
+- Enforce as-of-date discipline: exclude social posts after the report trade date from the role report. Filter noisy off-ticker posts, label StockTwits/Reddit as retail-heavy color, and lower confidence to low or low-to-medium when the retained sample is noisy, sparse, or uneven.
 
 Safety boundaries:
 - Do not infer broad market sentiment from one noisy post or headline.
