@@ -6,4 +6,10 @@
 
 **Consistency Check: Sell is supported because price is below the 200 SMA, which is a breakdown below longer-term support, and the evidence score is materially negative.**
 
+**Confirmation/invalidation levels**: 10 EMA 377.15; 50 SMA 410.52; 200 SMA 446.27.
+
+**Trigger that would upgrade: close reclaims the 10 EMA (377.15) and 50 SMA (410.52) with improving RSI/MACD.**
+
+**Trigger that would downgrade: close fails below the 200 SMA (446.27) or the report documents a materially negative setup.**
+
 FINAL TRANSACTION PROPOSAL: **SELL**

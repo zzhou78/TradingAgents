@@ -11,6 +11,9 @@ from pathlib import Path
 from typing import Any
 
 ANALYST_KEYS = ["market_report", "sentiment_report", "news_report", "fundamentals_report"]
+MAX_SOCIAL_EXAMPLES_IN_REPORT = 3
+MAX_DIRECT_NEWS_ROWS = 8
+MAX_INDIRECT_NEWS_ROWS = 4
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -133,28 +136,88 @@ def _line_date(line: str) -> str | None:
     return match.group("date") if match else None
 
 
+def _social_label(line: str) -> str:
+    lowered = line.lower()
+    if "bearish" in lowered:
+        return "bearish"
+    if "bullish" in lowered:
+        return "bullish"
+    return "neutral"
+
+
+def _social_theme(lines: list[str], label: str) -> str:
+    candidates = [line for line in lines if _social_label(line) == label]
+    if not candidates:
+        return "No dominant theme identified"
+    joined = " ".join(candidates).lower()
+    theme_terms = [
+        ("AI roadmap", [" ai ", "roadmap", "copilot", "cloud", "gpu"]),
+        ("services / installed-base support", ["services", "installed base", "iphone", "subscription"]),
+        ("valuation pressure", ["valuation", "expensive", "multiple", "p/e", "pe "]),
+        ("technical trend concern", ["sma", "ema", "support", "resistance", "breakdown"]),
+        ("earnings or profitability", ["earnings", "profit", "margin", "revenue"]),
+    ]
+    for theme, needles in theme_terms:
+        if any(needle in joined for needle in needles):
+            return theme
+    return "ticker-specific retail discussion"
+
+
+def _is_low_information_social(line: str) -> bool:
+    lowered = line.lower()
+    noisy_terms = [
+        "hairy",
+        "wendys",
+        "nice dinner",
+        "mom",
+        "drunk",
+        "joke",
+    ]
+    if any(term in lowered for term in noisy_terms):
+        return True
+    without_meta = re.sub(r"\[[^\]]+\]", "", line)
+    without_tickers = re.sub(r"\$[A-Za-z.]+", "", without_meta)
+    words = re.findall(r"[A-Za-z]{3,}", without_tickers)
+    return len(words) == 0
+
+
 def _filter_social_lines(ticker: str, trade_date: str, identity: dict[str, Any], text: str) -> dict[str, Any]:
     terms = _company_terms({"ticker": ticker, "identity": identity})
     kept: list[str] = []
     removed = 0
+    post_date_removed = 0
+    off_ticker_removed = 0
     for line in text.splitlines():
         if not line.strip():
             continue
         line_date = _line_date(line)
         if line_date and line_date > trade_date:
             removed += 1
+            post_date_removed += 1
             continue
         if not _mentions_any(line, terms):
             removed += 1
+            off_ticker_removed += 1
             continue
         if ticker.upper() == "MSFT" and re.search(r"(Apple|AAPL)", line, re.IGNORECASE):
+            removed += 1
+            off_ticker_removed += 1
+            continue
+        if _is_low_information_social(line):
             removed += 1
             continue
         kept.append(line)
     return {
         "text": "\n".join(kept).strip() or "<no relevant same-date social lines retained>",
+        "lines": kept,
+        "reviewed": len([line for line in text.splitlines() if line.strip()]),
         "kept": len(kept),
         "removed": removed,
+        "post_date_removed": post_date_removed,
+        "off_ticker_removed": off_ticker_removed,
+        "bullish": sum(1 for line in kept if _social_label(line) == "bullish"),
+        "bearish": sum(1 for line in kept if _social_label(line) == "bearish"),
+        "neutral": sum(1 for line in kept if _social_label(line) == "neutral"),
     }
 
 
@@ -205,6 +268,147 @@ def _news_buckets(ctx: dict[str, Any]) -> dict[str, list[dict[str, str]]]:
         else:
             excluded.append(item)
     return {"direct": direct, "indirect": indirect, "excluded": excluded}
+
+
+def _news_effect(item: dict[str, str]) -> str:
+    text = f"{item.get('title', '')} {item.get('summary', '')}".lower()
+    negative_terms = [
+        "downgrade",
+        "cut",
+        "pressure",
+        "concern",
+        "risk",
+        "weak",
+        "miss",
+        "lawsuit",
+        "probe",
+    ]
+    positive_terms = [
+        "upgrade",
+        "beat",
+        "raise",
+        "growth",
+        "strong",
+        "record",
+        "approval",
+        "expansion",
+    ]
+    negative = any(term in text for term in negative_terms)
+    positive = any(term in text for term in positive_terms)
+    if positive and not negative:
+        return "positive"
+    if negative and not positive:
+        return "negative"
+    return "mixed/unclear"
+
+
+def _technical_themes(ctx: dict[str, Any]) -> dict[str, str]:
+    close = _num(ctx["ohlcv"].get("Close"))
+    ema10 = _num(ctx["indicators"].get("close_10_ema"))
+    sma50 = _num(ctx["indicators"].get("close_50_sma"))
+    sma200 = _num(ctx["indicators"].get("close_200_sma"))
+    rsi = _num(ctx["indicators"].get("rsi"))
+    macd = _num(ctx["indicators"].get("macd"))
+    macds = _num(ctx["indicators"].get("macds"))
+    atr = ctx["indicators"].get("atr", "N/A")
+    if close is None:
+        return {
+            "long_term_trend_status": "latest close unavailable",
+            "short_medium_trend_status": "moving-average comparison unavailable",
+            "momentum_status": "momentum unavailable",
+            "volatility_status": f"ATR {atr}",
+        }
+    long_term = (
+        f"above 200 SMA ({close:.2f} vs {sma200:.2f})"
+        if sma200 is not None and close >= sma200
+        else f"below 200 SMA ({close:.2f} vs {sma200:.2f})"
+        if sma200 is not None
+        else "200 SMA unavailable"
+    )
+    fast_refs = []
+    if ema10 is not None:
+        fast_refs.append(f"{'above' if close >= ema10 else 'below'} 10 EMA ({ema10:.2f})")
+    if sma50 is not None:
+        fast_refs.append(f"{'above' if close >= sma50 else 'below'} 50 SMA ({sma50:.2f})")
+    rsi_text = f"RSI {rsi:.2f}" if rsi is not None else "RSI unavailable"
+    macd_text = (
+        f"MACD {macd:.2f} vs signal {macds:.2f}"
+        if macd is not None and macds is not None
+        else "MACD unavailable"
+    )
+    return {
+        "long_term_trend_status": long_term,
+        "short_medium_trend_status": ", ".join(fast_refs) or "fast averages unavailable",
+        "momentum_status": f"{rsi_text}; {macd_text}",
+        "volatility_status": f"ATR {atr}",
+    }
+
+
+def _fundamental_themes(ctx: dict[str, Any]) -> dict[str, str]:
+    f = ctx["fundamentals"]
+    roe = _num(f.get("Return on Equity"))
+    net_income = _num(f.get("Net Income"))
+    pe = _num(f.get("PE Ratio (TTM)"))
+    pb = _num(f.get("Price to Book"))
+    current_ratio = _fmt(f.get("Current Ratio"))
+    quality = (
+        f"profitable quality support: net income {_fmt(f.get('Net Income'))}, ROE {_fmt(f.get('Return on Equity'))}"
+        if (net_income is not None and net_income > 0) or (roe is not None and roe > 0)
+        else "quality evidence weak or unavailable"
+    )
+    valuation = (
+        f"valuation risk: PE {_fmt(f.get('PE Ratio (TTM)'))}, P/B {_fmt(f.get('Price to Book'))}"
+        if (pe is not None and pe >= 30) or (pb is not None and pb >= 10)
+        else f"valuation not flagged as extreme: PE {_fmt(f.get('PE Ratio (TTM)'))}, P/B {_fmt(f.get('Price to Book'))}"
+    )
+    missing = []
+    if ctx["missing_cashflow"]:
+        missing.append("cash-flow statement missing")
+    if ctx["missing_income"]:
+        missing.append("income-statement detail missing")
+    return {
+        "quality_strength": quality,
+        "valuation_risk": valuation,
+        "liquidity_or_balance_sheet_note": f"current ratio {current_ratio}, debt/equity {_fmt(f.get('Debt to Equity'))}",
+        "missing_statement_note": ", ".join(missing) if missing else "detailed statements available",
+    }
+
+
+def _social_summary(stocktwits: dict[str, Any], reddit: dict[str, Any]) -> dict[str, Any]:
+    lines = list(stocktwits["lines"]) + list(reddit["lines"])
+    reviewed = stocktwits["reviewed"] + reddit["reviewed"]
+    retained = stocktwits["kept"] + reddit["kept"]
+    removed = stocktwits["removed"] + reddit["removed"]
+    bullish = stocktwits["bullish"] + reddit["bullish"]
+    bearish = stocktwits["bearish"] + reddit["bearish"]
+    neutral = stocktwits["neutral"] + reddit["neutral"]
+    noisy_majority = retained == 0 or neutral >= max(bullish + bearish, 1) or removed > retained
+    confidence = "Low-to-Medium" if noisy_majority else "Medium"
+    if retained == 0:
+        confidence = "Low"
+    confidence_reason = (
+        f"{retained} usable of {reviewed} reviewed; {removed} excluded as post-date, off-ticker, noisy, or low-information"
+    )
+    return {
+        "retained_count": retained,
+        "removed_count": removed,
+        "reviewed_count": reviewed,
+        "bullish_count": bullish,
+        "bearish_count": bearish,
+        "unlabeled_count": neutral,
+        "dominant_positive_social_theme": _social_theme(lines, "bullish"),
+        "dominant_negative_social_theme": _social_theme(lines, "bearish"),
+        "confidence": confidence,
+        "confidence_reason": confidence_reason,
+        "examples": lines[:MAX_SOCIAL_EXAMPLES_IN_REPORT],
+        "stocktwits": stocktwits,
+        "reddit": reddit,
+        "reddit_coverage": (
+            f"{reddit['kept']} usable Reddit items retained"
+            if reddit["reviewed"]
+            else "Reddit coverage sparse or unavailable"
+        ),
+    }
 
 
 def _fmt(value: str | None) -> str:
@@ -289,6 +493,19 @@ def _direction(ctx: dict[str, Any]) -> dict[str, Any]:
         "Sell requires either price below the 200 SMA with a materially negative score, "
         "or an explicitly documented material negative setup despite 200 SMA support."
     )
+    technical_score = sum(
+        component["points"]
+        for component in components
+        if component["label"] in {"Long-term trend", "Medium-term trend", "Near-term trend", "RSI momentum", "MACD momentum"}
+    )
+    valuation_score = sum(component["points"] for component in components if component["label"] == "Valuation risk")
+    fundamental_score = sum(component["points"] for component in components if component["label"] == "Fundamental quality")
+    if abs(technical_score) >= max(abs(valuation_score), abs(fundamental_score), 1):
+        primary_driver = "technical"
+    elif abs(valuation_score) >= abs(fundamental_score):
+        primary_driver = "valuation"
+    else:
+        primary_driver = "fundamental"
     return {
         "score": score,
         "components": components,
@@ -297,6 +514,7 @@ def _direction(ctx: dict[str, Any]) -> dict[str, Any]:
         "below_200": below_200,
         "above_or_at_200": above_or_at_200,
         "sell_gate": sell_gate,
+        "primary_driver": primary_driver,
     }
 
 
@@ -320,6 +538,7 @@ def _context(evidence: dict[str, Any]) -> dict[str, Any]:
         evidence.get("identity", {}),
         _tool_output(evidence, "social", "fetch_reddit_posts"),
     )
+    social = _social_summary(stocktwits, reddit)
     ctx: dict[str, Any] = {
         "ticker": evidence["ticker"],
         "trade_date": evidence["trade_date"],
@@ -331,11 +550,22 @@ def _context(evidence: dict[str, Any]) -> dict[str, Any]:
         "news_items": news_items,
         "stocktwits": stocktwits["text"],
         "reddit": reddit["text"],
+        "social": social,
         "social_kept": stocktwits["kept"] + reddit["kept"],
         "social_removed": stocktwits["removed"] + reddit["removed"],
         "fundamentals": fundamentals,
         "missing_cashflow": "NO_DATA_AVAILABLE" in _tool_output(evidence, "fundamentals", "get_cashflow"),
         "missing_income": "NO_DATA_AVAILABLE" in _tool_output(evidence, "fundamentals", "get_income_statement"),
+    }
+    ctx["technical_themes"] = _technical_themes(ctx)
+    ctx["fundamental_themes"] = _fundamental_themes(ctx)
+    buckets = _news_buckets(ctx)
+    ctx["news_buckets"] = buckets
+    ctx["news_themes"] = {
+        "direct_positive_events": [item for item in buckets["direct"] if _news_effect(item) == "positive"],
+        "direct_negative_events": [item for item in buckets["direct"] if _news_effect(item) == "negative"],
+        "indirect_context": buckets["indirect"],
+        "excluded_low_relevance_count": len(buckets["excluded"]),
     }
     ctx["direction"] = _direction(ctx)
     return ctx
@@ -414,53 +644,50 @@ def market_report(ctx: dict[str, Any]) -> str:
 
 
 def sentiment_report(ctx: dict[str, Any]) -> str:
-    stocktwits = ctx.get("stocktwits") or "<no StockTwits evidence returned>"
-    reddit = ctx.get("reddit") or "<no Reddit evidence returned>"
+    social = ctx["social"]
     band = "Mixed"
     score = "5.0/10"
-    confidence = "Low-to-Medium" if stocktwits or reddit else "Low"
-    combined = f"{stocktwits}\n{reddit}".lower()
-    if "bullish" in combined and "bearish" not in combined:
+    confidence = social["confidence"]
+    if social["bullish_count"] > social["bearish_count"] and social["bearish_count"] == 0:
         band = "Mildly Bullish"
         score = "5.8/10"
-    elif "bearish" in combined and "bullish" not in combined:
+    elif social["bearish_count"] > social["bullish_count"] and social["bullish_count"] == 0:
         band = "Mildly Bearish"
         score = "4.2/10"
+    stocktwits = social["stocktwits"]
+    reddit = social["reddit"]
+    examples = "\n".join(f"- {line}" for line in social["examples"]) or "- No ticker-relevant social examples retained."
     return f"""# Sentiment Analyst Report: {ctx['ticker']}
 
 **Overall Sentiment:** **{band}** (Score: {score})
 **Confidence:** {confidence}
 
-The sentiment role uses direct social evidence from StockTwits and Reddit rather than the news feed. The retained StockTwits/Reddit sample is noisy and retail-heavy, so treat it as low-to-medium confidence sentiment color rather than a complete investor consensus. Lines after the trade date or not materially tied to {ctx['ticker']} are excluded from this report.
+The sentiment role uses direct social evidence from StockTwits and Reddit rather than the news feed. The retained StockTwits/Reddit sample is noisy and retail-heavy, so treat it as sentiment color rather than a complete investor consensus or institutional view. Lines after the trade date or not materially tied to {ctx['ticker']} are excluded from this report.
 
-StockTwits evidence:
-```text
-{stocktwits}
-```
+## Social Evidence Summary
 
-Reddit evidence:
-```text
-{reddit}
-```
+| Source | Items reviewed | Usable ticker-relevant items | Bullish / bearish / neutral split | Dominant themes | Confidence | Limitations |
+|---|---:|---:|---|---|---|---|
+| StockTwits | {stocktwits['reviewed']} | {stocktwits['kept']} | {stocktwits['bullish']} / {stocktwits['bearish']} / {stocktwits['neutral']} | + {social['dominant_positive_social_theme']}; - {social['dominant_negative_social_theme']} | {confidence} | Retail-heavy, excludes {stocktwits['removed']} post-date/off-ticker/noisy lines |
+| Reddit | {reddit['reviewed']} | {reddit['kept']} | {reddit['bullish']} / {reddit['bearish']} / {reddit['neutral']} | {social['reddit_coverage']} | {confidence} | {social['reddit_coverage']} |
 
-| Signal | Direction | Supporting evidence |
-|---|---|---|
-| Social source coverage | Present | StockTwits and Reddit packets were requested directly |
-| Narrative tone | {band} | Derived from explicit social-feed evidence |
-| Confidence | {confidence} | {ctx.get('social_kept', 0)} retained lines; {ctx.get('social_removed', 0)} noisy, off-ticker, or post-date lines excluded |
+Representative social examples (maximum {MAX_SOCIAL_EXAMPLES_IN_REPORT}):
+{examples}
+
+Confidence reason: {social['confidence_reason']}. Reddit coverage: {social['reddit_coverage']}.
 """
 
 
 def news_report(ctx: dict[str, Any]) -> str:
-    buckets = _news_buckets(ctx)
-    direct = buckets["direct"][:8]
-    indirect = buckets["indirect"][:5]
+    buckets = ctx["news_buckets"]
+    direct = buckets["direct"][:MAX_DIRECT_NEWS_ROWS]
+    indirect = buckets["indirect"][:MAX_INDIRECT_NEWS_ROWS]
     direct_rows = "\n".join(
-        f"| {item['title']} | {item['source']} | {item['summary'] or 'No summary supplied.'} |"
+        f"| {item['title']} | {item['source']} | direct ticker/company | {_news_effect(item)} | {item['summary'] or 'No summary supplied.'} |"
         for item in direct
     )
     indirect_rows = "\n".join(
-        f"| {item['title']} | {item['source']} | {item['summary'] or 'No summary supplied.'} |"
+        f"| {item['title']} | {item['source']} | indirect sector/market | {_news_effect(item)} | {item['summary'] or 'No summary supplied.'} |"
         for item in indirect
     )
     return f"""# News Analyst Report: {ctx['ticker']}
@@ -469,15 +696,15 @@ The news packet for {ctx['ticker']} contains {len(ctx['news_items'])} raw items.
 
 Direct {ctx['ticker']} news:
 
-| Event | Source | Read-through |
-|---|---|---|
-{direct_rows or '| No direct ticker news retained | N/A | No direct event signal available |'}
+| Event | Source | Relevance | Likely effect | Read-through |
+|---|---|---|---|---|
+{direct_rows or '| No direct ticker news retained | N/A | direct ticker/company | mixed/unclear | No direct event signal available |'}
 
 Indirect sector/market news:
 
-| Event | Source | Read-through |
-|---|---|---|
-{indirect_rows or '| No indirect context retained | N/A | No indirect event signal available |'}
+| Event | Source | Relevance | Likely effect | Read-through |
+|---|---|---|---|---|
+{indirect_rows or '| No indirect context retained | N/A | indirect sector/market | mixed/unclear | No indirect event signal available |'}
 
 Excluded as low relevance: {len(buckets['excluded'])} raw items were omitted because they did not materially connect to {ctx['ticker']} in the evidence packet.
 
@@ -512,7 +739,14 @@ Valuation and quality are the central trade-off. PE is {_fmt(f.get('PE Ratio (TT
 
 
 def bull_report(ctx: dict[str, Any]) -> str:
-    f = ctx["fundamentals"]
+    fundamental = ctx["fundamental_themes"]
+    technical = ctx["technical_themes"]
+    direct_positive = ctx["news_themes"]["direct_positive_events"]
+    news_phrase = (
+        f"Direct positive news includes {direct_positive[0]['title']}."
+        if direct_positive
+        else "Direct positive news catalysts are limited in the retained packet."
+    )
     trend_support = (
         "Price remains above the 200 SMA, so long-term support is still part of the bull case."
         if ctx["direction"]["above_or_at_200"]
@@ -520,17 +754,24 @@ def bull_report(ctx: dict[str, Any]) -> str:
     )
     return f"""# Bull Researcher Round 1: {ctx['ticker']}
 
-Bull Analyst: The strongest positive thesis is that scale, profitability, and any remaining trend support can justify upside participation. {ctx['identity'].get('company_name', ctx['ticker'])} has market cap of {_fmt(f.get('Market Cap'))}, TTM net income of {_fmt(f.get('Net Income'))}, and ROE of {_fmt(f.get('Return on Equity'))}. The latest close is {ctx['ohlcv'].get('Close', 'N/A')} and the market report says price is {_trend_phrase(ctx)}.
+Bull Analyst: The constructive case rests on {fundamental['quality_strength']} and the technical fact that {technical['long_term_trend_status']}. {news_phrase} Social positives are summarized as {ctx['social']['dominant_positive_social_theme']}, but the sample remains retail-heavy.
 
 {trend_support} Bear must disprove that quality, profitability, and any retained support are enough to offset current momentum or valuation risk.
 """
 
 
 def bear_report(ctx: dict[str, Any]) -> str:
-    f = ctx["fundamentals"]
+    fundamental = ctx["fundamental_themes"]
+    technical = ctx["technical_themes"]
+    direct_negative = ctx["news_themes"]["direct_negative_events"]
+    news_phrase = (
+        f"Direct negative news includes {direct_negative[0]['title']}."
+        if direct_negative
+        else "The retained news packet does not add a decisive direct negative catalyst."
+    )
     return f"""# Bear Researcher Round 1: {ctx['ticker']}
 
-Bear Analyst: I directly rebut the bull claim that quality and trend support are enough. The cautious case is that recent momentum and valuation may not justify immediate risk. The latest technical setup is {_trend_phrase(ctx)}, RSI is {ctx['indicators'].get('rsi', 'N/A')}, and MACD is {ctx['indicators'].get('macd', 'N/A')} versus signal {ctx['indicators'].get('macds', 'N/A')}. Valuation is not automatically cheap: PE is {_fmt(f.get('PE Ratio (TTM)'))} and price/book is {_fmt(f.get('Price to Book'))}.
+Bear Analyst: I directly rebut the bull claim that quality and any retained support are enough. The cautious case is that {technical['short_medium_trend_status']} and {technical['momentum_status']}. Valuation does not provide a clean cushion: {fundamental['valuation_risk']}. {news_phrase}
 
 Bull is underestimating timing risk. Scale and profitability do not remove the risk that price remains below short- or medium-term averages. If the stock is below those averages, the evidence favors patience until price confirms recovery.
 """
@@ -538,6 +779,8 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 
 def research_manager(ctx: dict[str, Any]) -> str:
     rating = ctx["direction"]["rating"]
+    action = ctx["direction"]["action"]
+    primary_driver = ctx["direction"]["primary_driver"]
     score = ctx["direction"]["score"]
     rows = "\n".join(
         f"| {component['label']} | {component['evidence']} | {component['points']:+d} |"
@@ -548,20 +791,29 @@ def research_manager(ctx: dict[str, Any]) -> str:
             "Sell wins over Hold/Underweight because the total score is materially negative "
             "and price is below 200 SMA, showing breakdown below longer-term support."
         )
+        driver_text = "This is primarily a technical/momentum Sell, not a fundamental quality Sell."
     elif rating == "Underweight":
         decision_text = (
             "Underweight wins over Sell because the evidence is negative, but the Sell gate is not fully met. "
             "If the 200 SMA still holds, the framework keeps the trader proposal at Hold unless a separate material negative setup is documented."
         )
+        driver_text = (
+            "This is an Underweight research rating with Hold trader action because long-term support still holds."
+            if action == "Hold"
+            else "The research rating and trader action are aligned."
+        )
     else:
         decision_text = "The selected rating follows the score band and the Sell gate."
+        driver_text = "The research rating and trader action are aligned."
     return f"""# Research Manager Decision: {ctx['ticker']}
 
 **Recommendation**: {rating}
 
-**Strongest Bull Evidence**: Profitability, scale, and any remaining long-term technical support.
+**Primary driver of rating:** {primary_driver}
 
-**Strongest Bear Evidence**: Current technical setup, momentum, and valuation risk.
+**Strongest Bull Evidence**: {ctx['fundamental_themes']['quality_strength']}; {ctx['technical_themes']['long_term_trend_status']}.
+
+**Strongest Bear Evidence**: {ctx['technical_themes']['short_medium_trend_status']}; {ctx['technical_themes']['momentum_status']}; {ctx['fundamental_themes']['valuation_risk']}.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
@@ -573,7 +825,9 @@ def research_manager(ctx: dict[str, Any]) -> str:
 
 **Evidence Score**: {score}
 
-**Evidence Weighing**: {decision_text} The recommendation follows current evidence rather than safety-status language.
+**Evidence Weighing**: {decision_text} {driver_text} The recommendation follows current evidence rather than safety-status language.
+
+**What would change the rating**: An upgrade requires price confirmation above the 10 EMA and 50 SMA with improving momentum or direct positive catalysts. A downgrade requires fresh evidence of long-term support failure, deteriorating momentum, or materially negative direct news.
 
 **Strategic Actions**:
 - Use the 10 EMA and 50 SMA area as the first confirmation zone.
@@ -586,6 +840,7 @@ def trader(ctx: dict[str, Any]) -> str:
     action = ctx["direction"]["action"]
     rating = ctx["direction"]["rating"]
     close = ctx["ohlcv"].get("Close", "N/A")
+    ema10 = ctx["indicators"].get("close_10_ema", "N/A")
     sma50 = ctx["indicators"].get("close_50_sma", "N/A")
     sma200 = ctx["indicators"].get("close_200_sma", "N/A")
     if action == "Sell" and ctx["direction"]["below_200"]:
@@ -600,6 +855,8 @@ def trader(ctx: dict[str, Any]) -> str:
         )
     else:
         consistency = "Consistency Check: The action follows the research rating and score gate."
+    upgrade = f"Trigger that would upgrade: close reclaims the 10 EMA ({ema10}) and 50 SMA ({sma50}) with improving RSI/MACD."
+    downgrade = f"Trigger that would downgrade: close fails below the 200 SMA ({sma200}) or the report documents a materially negative setup."
     return f"""# Trader Proposal: {ctx['ticker']}
 
 **Action**: {action}
@@ -608,6 +865,12 @@ def trader(ctx: dict[str, Any]) -> str:
 
 **{consistency}**
 
+**Confirmation/invalidation levels**: 10 EMA {ema10}; 50 SMA {sma50}; 200 SMA {sma200}.
+
+**{upgrade}**
+
+**{downgrade}**
+
 FINAL TRANSACTION PROPOSAL: **{action.upper()}**
 """
 
@@ -615,7 +878,7 @@ FINAL TRANSACTION PROPOSAL: **{action.upper()}**
 def aggressive_risk(ctx: dict[str, Any]) -> str:
     return f"""# Aggressive Risk Analyst Round 1: {ctx['ticker']}
 
-Aggressive Analyst: The higher-reward interpretation supports the trader proposal when the evidence shows long-term support, improving catalysts, or strong fundamentals. The latest close is {ctx['ohlcv'].get('Close', 'N/A')} and the company has ROE of {_fmt(ctx['fundamentals'].get('Return on Equity'))}. If price can reclaim short-term averages, upside participation could improve quickly.
+Aggressive Analyst: The higher-reward interpretation is strongest where {ctx['fundamental_themes']['quality_strength']} and {ctx['technical_themes']['long_term_trend_status']}. If price can reclaim short-term averages, upside participation could improve quickly; if it cannot, the aggressive case loses force.
 """
 
 
@@ -629,21 +892,40 @@ Conservative Analyst: I directly respond to Aggressive Risk: upside participatio
 def neutral_risk(ctx: dict[str, Any]) -> str:
     return f"""# Neutral Risk Analyst Round 1: {ctx['ticker']}
 
-Neutral Analyst: The aggressive view is right to acknowledge upside if fundamentals and long-term trend support persist. The conservative view is right to require confirmation when short-term momentum is weak. Weighing both sides, the stronger risk argument is the one most consistent with the latest close versus moving averages. The balanced stance is to follow the trader action while using the moving averages and latest close as the key confirmation or invalidation references.
+Neutral Analyst: The Aggressive view is right to acknowledge upside if fundamentals and long-term trend support persist. The Conservative view is right to require confirmation when short-term momentum is weak. Weighing Aggressive versus Conservative, the stronger risk argument is the one most consistent with the latest close versus moving averages: {ctx['technical_themes']['short_medium_trend_status']}. The balanced stance is to follow the trader action while using the moving averages and latest close as the key confirmation or invalidation references.
 """
 
 
 def portfolio_manager(ctx: dict[str, Any]) -> str:
     rating = ctx["direction"]["rating"]
+    action = ctx["direction"]["action"]
+    primary_driver = ctx["direction"]["primary_driver"]
+    risk_impact = (
+        f"Conservative Risk outweighed Aggressive Risk because {ctx['technical_themes']['short_medium_trend_status']} and {ctx['technical_themes']['momentum_status']}."
+        if action in {"Hold", "Sell"}
+        else f"Aggressive Risk remained acceptable because {ctx['technical_themes']['short_medium_trend_status']} and quality evidence supported participation."
+    )
+    action_text = f" Final action differs from rating: Trader Action is {action} because the Sell gate is not met." if rating != action else f" Final action matches rating: {action}."
+    sell_quality_note = (
+        " This is a technical/momentum Sell, not a fundamental quality Sell."
+        if rating == "Sell" and primary_driver == "technical"
+        else ""
+    )
     return f"""# Portfolio Manager Decision: {ctx['ticker']}
 
 **Rating**: {rating}
 
-**Executive Summary**: {ctx['ticker']} receives a {rating} rating based on the current blend of market trend, momentum, fundamentals, and news evidence. The conclusion is evidence-grounded and remains separate from paper-study safety boundaries.
+**Final Action**: {action}
 
-**Investment Thesis**: The latest close is {ctx['ohlcv'].get('Close', 'N/A')} and the market report shows price is {_trend_phrase(ctx)}. Fundamentals show market cap of {_fmt(ctx['fundamentals'].get('Market Cap'))}, net income of {_fmt(ctx['fundamentals'].get('Net Income'))}, and ROE of {_fmt(ctx['fundamentals'].get('Return on Equity'))}. The risk debate supports using the trader action with confirmation from price behavior around the key moving averages.
+**Primary driver of rating:** {primary_driver}
 
-**Risk Assessment**: The portfolio decision synthesizes the aggressive case for taking risk, the conservative response about technical and valuation risk, and the neutral weighing of those arguments. It does not merely repeat the trader proposal.
+**Executive Summary**: {ctx['ticker']} receives a {rating} rating based on {ctx['technical_themes']['long_term_trend_status']}, {ctx['technical_themes']['short_medium_trend_status']}, and {ctx['fundamental_themes']['valuation_risk']}.{action_text}{sell_quality_note}
+
+**Investment Thesis**: Fundamentals show {ctx['fundamental_themes']['quality_strength']}. The latest close is {ctx['ohlcv'].get('Close', 'N/A')} and the market report shows price is {_trend_phrase(ctx)}. Social evidence contributes {ctx['social']['confidence']} confidence color because {ctx['social']['confidence_reason']}.
+
+**Risk Assessment**: Risk debate impact: {risk_impact} This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
+
+**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation requires failure at the 200 SMA, materially negative direct news, or a worsening score component mix.
 
 **Paper-study implementation notes**: This is a study artifact only. Do not submit broker orders or treat the decision as real trading advice.
 

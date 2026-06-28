@@ -242,25 +242,94 @@ def test_debate_and_complete_report_docs_make_debate_turns_visible():
         assert section in persistence
 
 
+def test_sentiment_skill_defines_social_evidence_processing_rules():
+    sentiment = (SKILLS_ROOT / "tradingagents-sentiment-analyst" / "SKILL.md").read_text(
+        encoding="utf-8"
+    )
+    persistence = (SKILLS_ROOT / "tradingagents-run-persistence" / "SKILL.md").read_text(
+        encoding="utf-8"
+    )
+
+    for required in [
+        "## Social Evidence Processing Rules",
+        "Do not paste the full raw feed into the final report.",
+        "directly ticker-relevant",
+        "broad-market relevant",
+        "cross-ticker / sector relevant",
+        "irrelevant / spam / joke / low-information",
+        "Use only directly relevant and clearly sector-relevant items for the sentiment conclusion.",
+        "total items reviewed",
+        "usable items",
+        "bullish count",
+        "bearish count",
+        "neutral/unlabeled count",
+        "dominant positive narratives",
+        "dominant negative narratives",
+        "source limitations",
+        "If Reddit coverage is sparse or unavailable, state that clearly.",
+        "Do not infer institutional sentiment from retail social feeds.",
+        "Classify social evidence into usable, noisy, post-date, and off-ticker groups.",
+        "The final report should include at most 3 representative social examples.",
+    ]:
+        assert required in sentiment
+
+    for required in [
+        "## Sentiment Report Output Rule",
+        "The final report must summarize social evidence. It must not include the full raw StockTwits or Reddit feed.",
+        "The validator must pass before the report is accepted.",
+        "The report must identify the primary driver of rating.",
+        "The report must distinguish research rating from trader action when they differ.",
+        "Source",
+        "Items reviewed",
+        "Usable ticker-relevant items",
+        "Bullish / bearish / neutral split",
+        "Dominant themes",
+        "Confidence",
+        "Limitations",
+    ]:
+        assert required in persistence
+
+
 def test_debate_role_skills_define_interaction_outputs():
     expected = {
-        "tradingagents-bull-researcher": "state the strongest positive thesis, cite analyst evidence, and state what Bear must disprove",
-        "tradingagents-bear-researcher": "directly rebut the strongest Bull point, cite contrary evidence, and state what Bull is underestimating",
-        "tradingagents-research-manager": "Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.",
-        "tradingagents-aggressive-risk-analyst": "explain why taking risk could be justified",
-        "tradingagents-conservative-risk-analyst": "directly respond to Aggressive Risk and explain why the proposal may still be unsafe",
-        "tradingagents-neutral-risk-analyst": "weigh Aggressive vs Conservative and state which risk argument is stronger",
-        "tradingagents-portfolio-manager": "Synthesize the risk debate and do not merely repeat the Trader.",
-        "tradingagents-workflow-orchestrator": "Do not compare the ticker to another ticker unless the run context explicitly says this is a comparative multi-ticker report.",
-        "tradingagents-market-analyst": "Do not use generic technical template claims that conflict with actual data.",
-        "tradingagents-sentiment-analyst": "Enforce as-of-date discipline: exclude social posts after the report trade date from the role report.",
-        "tradingagents-news-analyst": "Filter relevance explicitly. Separate direct ticker/company news, indirect sector or market context, and excluded low-relevance items.",
-        "tradingagents-trader": "Include a consistency check before the final proposal.",
+        "tradingagents-bull-researcher": [
+            "state the strongest positive thesis, cite analyst evidence, and state what Bear must disprove",
+        ],
+        "tradingagents-bear-researcher": [
+            "directly rebut the strongest Bull point, cite contrary evidence, and state what Bull is underestimating",
+        ],
+        "tradingagents-research-manager": [
+            "Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.",
+            "Identify the primary driver of rating.",
+        ],
+        "tradingagents-aggressive-risk-analyst": ["explain why taking risk could be justified"],
+        "tradingagents-conservative-risk-analyst": [
+            "directly respond to Aggressive Risk and explain why the proposal may still be unsafe",
+        ],
+        "tradingagents-neutral-risk-analyst": [
+            "weigh Aggressive vs Conservative and state which risk argument is stronger",
+        ],
+        "tradingagents-portfolio-manager": [
+            "Synthesize the risk debate and do not merely repeat the Trader.",
+            "State Risk debate impact.",
+        ],
+        "tradingagents-workflow-orchestrator": [
+            "Do not compare the ticker to another ticker unless the run context explicitly says this is a comparative multi-ticker report.",
+        ],
+        "tradingagents-market-analyst": ["Do not use generic technical template claims that conflict with actual data."],
+        "tradingagents-sentiment-analyst": [
+            "Enforce as-of-date discipline: exclude social posts after the report trade date from the role report.",
+        ],
+        "tradingagents-news-analyst": [
+            "Classify each retained direct or indirect news item with likely effect: positive, negative, or mixed/unclear.",
+        ],
+        "tradingagents-trader": ["FINAL TRANSACTION PROPOSAL must match `**Action**`."],
     }
 
-    for skill, required in expected.items():
+    for skill, required_strings in expected.items():
         text = (SKILLS_ROOT / skill / "SKILL.md").read_text(encoding="utf-8")
-        assert required in text
+        for required in required_strings:
+            assert required in text
 
 
 def test_codex_report_writer_fills_role_reports(tmp_path: Path):
@@ -437,6 +506,8 @@ def test_complete_report_validator_accepts_required_headings(tmp_path: Path):
     report.write_text(
         """# Trading Analysis Report: MSFT
 
+Generated: 2026-06-27
+
 Context: comparative_run=false
 
 ## I. Analyst Team Reports
@@ -444,6 +515,10 @@ Context: comparative_run=false
 ### Market Analyst
 
 ### Sentiment Analyst
+
+| Source | Items reviewed | Usable ticker-relevant items | Bullish / bearish / neutral split | Dominant themes | Confidence | Limitations |
+|---|---:|---:|---|---|---|---|
+| StockTwits | 2 | 1 | 1 / 0 / 0 | Cloud optimism | Low-to-Medium | Retail-heavy sample |
 
 ### News Analyst
 
@@ -455,11 +530,27 @@ Context: comparative_run=false
 
 ### Bear Researcher Round 1 - Rebuttal to Bull
 
+Bear rebuts the Bull setup and says Bull is underestimating technical risk.
+
 ### Research Manager Decision - Evidence Weighing
+
+**Recommendation**: Buy
+
+**Primary driver of rating:** technical
+
+**Scoring Rule**: example rule.
+
+**Score Components**:
+
+| Component | Evidence | Points |
+|---|---|---:|
+| Trend | close above 200 SMA | +1 |
 
 ## III. Trading Team Plan
 
 ### Trader Proposal
+
+**Action**: Buy
 
 FINAL TRANSACTION PROPOSAL: **BUY**
 
@@ -471,17 +562,23 @@ FINAL TRANSACTION PROPOSAL: **BUY**
 
 ### Neutral Risk Analyst Round 1 - Weighing
 
+Neutral weighs Aggressive and Conservative risk evidence.
+
 ## V. Portfolio Manager Decision
 
 ### Portfolio Manager
 
 **Rating**: Buy
 
+**Primary driver of rating:** technical
+
 **Executive Summary**: Summary.
 
 **Investment Thesis**: Thesis.
 
 **Risk Assessment**: Risk.
+
+**Risk debate impact**: Conservative Risk did not outweigh Aggressive Risk because the setup confirmed above key averages.
 
 **Paper-study implementation notes**: Notes.
 
@@ -541,6 +638,266 @@ FINAL TRANSACTION PROPOSAL: **HOLD**
 
     assert result.returncode != 0
     assert "cross-ticker leakage" in result.stdout
+
+
+def test_complete_report_validator_rejects_raw_social_dump(tmp_path: Path):
+    report = tmp_path / "raw_social.md"
+    raw_lines = "\n".join(
+        f"[2026-06-27T10:0{i}:00Z · @user{i} · no-label] $AAPL repeated social line"
+        for i in range(6)
+    )
+    report.write_text(
+        f"""# Trading Analysis Report: AAPL
+
+Generated: 2026-06-27
+
+Context: comparative_run=false
+
+## II. Research Team Debate
+
+### Bull Researcher Round 1 - Opening Case
+
+### Bear Researcher Round 1 - Rebuttal to Bull
+
+Bear rebuts Bull and says Bull is underestimating risk.
+
+### Research Manager Decision - Evidence Weighing
+
+**Recommendation**: Hold
+**Primary driver of rating:** mixed
+**Scoring Rule**: example.
+**Score Components**:
+
+## III. Trading Team Plan
+
+### Trader Proposal
+
+**Action**: Hold
+{raw_lines}
+FINAL TRANSACTION PROPOSAL: **HOLD**
+
+## IV. Risk Management Team Debate
+
+### Aggressive Risk Analyst Round 1 - Opportunity Case
+
+### Conservative Risk Analyst Round 1 - Response to Aggressive
+
+### Neutral Risk Analyst Round 1 - Weighing
+
+Neutral weighs Aggressive and Conservative risk evidence.
+
+## V. Portfolio Manager Decision
+
+### Portfolio Manager
+
+**Rating**: Hold
+**Primary driver of rating:** mixed
+**Risk debate impact**: Conservative and Aggressive risk were balanced.
+
+## VI. Paper-Study Disclaimer
+""",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "too many raw social examples" in result.stdout
+
+
+def test_complete_report_validator_rejects_post_date_social_evidence(tmp_path: Path):
+    report = tmp_path / "post_date.md"
+    report.write_text(
+        """# Trading Analysis Report: AAPL
+
+Generated: 2026-06-27
+
+Context: comparative_run=false
+
+## II. Research Team Debate
+
+### Bull Researcher Round 1 - Opening Case
+
+### Bear Researcher Round 1 - Rebuttal to Bull
+
+Bear rebuts Bull and says Bull is underestimating timing risk.
+
+### Research Manager Decision - Evidence Weighing
+
+**Recommendation**: Hold
+**Primary driver of rating:** mixed
+**Scoring Rule**: example.
+**Score Components**:
+
+## III. Trading Team Plan
+
+### Trader Proposal
+
+**Action**: Hold
+[2026-06-28T00:01:00Z · @late · Bullish] $AAPL look-ahead social line
+FINAL TRANSACTION PROPOSAL: **HOLD**
+
+## IV. Risk Management Team Debate
+
+### Aggressive Risk Analyst Round 1 - Opportunity Case
+
+### Conservative Risk Analyst Round 1 - Response to Aggressive
+
+### Neutral Risk Analyst Round 1 - Weighing
+
+Neutral weighs Aggressive and Conservative risk evidence.
+
+## V. Portfolio Manager Decision
+
+### Portfolio Manager
+
+**Rating**: Hold
+**Primary driver of rating:** mixed
+**Risk debate impact**: Conservative and Aggressive risk were balanced.
+
+## VI. Paper-Study Disclaimer
+""",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "post-date evidence found" in result.stdout
+
+
+def test_complete_report_validator_rejects_final_proposal_mismatch(tmp_path: Path):
+    report = tmp_path / "mismatch.md"
+    report.write_text(
+        """# Trading Analysis Report: AAPL
+
+Generated: 2026-06-27
+
+Context: comparative_run=false
+
+## II. Research Team Debate
+
+### Bull Researcher Round 1 - Opening Case
+
+### Bear Researcher Round 1 - Rebuttal to Bull
+
+Bear rebuts Bull and says Bull is underestimating timing risk.
+
+### Research Manager Decision - Evidence Weighing
+
+**Recommendation**: Hold
+**Primary driver of rating:** mixed
+**Scoring Rule**: example.
+**Score Components**:
+
+## III. Trading Team Plan
+
+### Trader Proposal
+
+**Action**: Hold
+FINAL TRANSACTION PROPOSAL: **SELL**
+
+## IV. Risk Management Team Debate
+
+### Aggressive Risk Analyst Round 1 - Opportunity Case
+
+### Conservative Risk Analyst Round 1 - Response to Aggressive
+
+### Neutral Risk Analyst Round 1 - Weighing
+
+Neutral weighs Aggressive and Conservative risk evidence.
+
+## V. Portfolio Manager Decision
+
+### Portfolio Manager
+
+**Rating**: Hold
+**Primary driver of rating:** mixed
+**Risk debate impact**: Conservative and Aggressive risk were balanced.
+
+## VI. Paper-Study Disclaimer
+""",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "final proposal mismatch" in result.stdout
+
+
+def test_complete_report_validator_rejects_missing_primary_driver(tmp_path: Path):
+    report = tmp_path / "missing_primary_driver.md"
+    report.write_text(
+        """# Trading Analysis Report: AAPL
+
+Generated: 2026-06-27
+
+Context: comparative_run=false
+
+## II. Research Team Debate
+
+### Bull Researcher Round 1 - Opening Case
+
+### Bear Researcher Round 1 - Rebuttal to Bull
+
+Bear rebuts Bull and says Bull is underestimating timing risk.
+
+### Research Manager Decision - Evidence Weighing
+
+**Recommendation**: Hold
+**Scoring Rule**: example.
+**Score Components**:
+
+## III. Trading Team Plan
+
+### Trader Proposal
+
+**Action**: Hold
+FINAL TRANSACTION PROPOSAL: **HOLD**
+
+## IV. Risk Management Team Debate
+
+### Aggressive Risk Analyst Round 1 - Opportunity Case
+
+### Conservative Risk Analyst Round 1 - Response to Aggressive
+
+### Neutral Risk Analyst Round 1 - Weighing
+
+Neutral weighs Aggressive and Conservative risk evidence.
+
+## V. Portfolio Manager Decision
+
+### Portfolio Manager
+
+**Rating**: Hold
+**Risk debate impact**: Conservative and Aggressive risk were balanced.
+
+## VI. Paper-Study Disclaimer
+""",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(VALIDATOR), "--report", str(report)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "missing primary driver" in result.stdout
 
 
 def test_codex_report_writer_filters_msft_apple_social_leakage(tmp_path: Path):
@@ -700,10 +1057,15 @@ def test_scoring_rule_keeps_aapl_style_setup_underweight_not_sell():
     assert ctx["direction"]["rating"] == "Underweight"
     assert ctx["direction"]["action"] == "Hold"
     assert "Scoring Rule" in research
+    assert "Primary driver of rating:" in research
     assert "Sell requires either price below the 200 SMA" in research
+    assert "Underweight research rating with Hold trader action because long-term support still holds" in research
     assert "FINAL TRANSACTION PROPOSAL: **HOLD**" in trader
+    assert "**Action**: Hold" in trader
     assert "Consistency Check" in trader
     assert "200 SMA still holds" in trader
+    assert "Trigger that would upgrade" in trader
+    assert "Trigger that would downgrade" in trader
 
 
 def test_scoring_rule_explains_msft_sell_vs_hold_or_underweight():
@@ -727,13 +1089,15 @@ def test_scoring_rule_explains_msft_sell_vs_hold_or_underweight():
 
     assert ctx["direction"]["rating"] == "Sell"
     assert "Score Components" in research
+    assert "Primary driver of rating:" in research
     assert "below 200 SMA" in research
     assert "Sell wins over Hold/Underweight" in research
+    assert "technical/momentum Sell, not a fundamental quality Sell" in research
     assert "breakdown below longer-term support" in trader
     assert "FINAL TRANSACTION PROPOSAL: **SELL**" in trader
 
 
-def test_social_evidence_filters_after_trade_date_and_marks_noisy_low_confidence():
+def test_social_evidence_filters_after_trade_date_summarizes_and_marks_noisy_low_confidence():
     writer = _load_writer()
     ctx = writer._context(
         _evidence(
@@ -751,6 +1115,13 @@ def test_social_evidence_filters_after_trade_date_and_marks_noisy_low_confidence
                     "[2026-06-28T00:01:00Z · @late · Bullish] $AAPL look-ahead",
                     "[2026-06-27T20:00:00Z · @ok · no-label] $AAPL useful",
                     "[2026-06-27T20:01:00Z · @noise · no-label] $SPY broad market",
+                    "[2026-06-27T20:02:00Z · @bull1 · Bullish] $AAPL services support",
+                    "[2026-06-27T20:03:00Z · @bull2 · Bullish] $AAPL installed base",
+                    "[2026-06-27T20:04:00Z · @bear1 · Bearish] $AAPL valuation pressure",
+                    "[2026-06-27T20:05:00Z · @plain1 · no-label] $AAPL wait for AI roadmap",
+                    "[2026-06-27T20:06:00Z · @plain2 · no-label] $AAPL watch 200 SMA",
+                    "[2026-06-27T20:07:00Z · @plain3 · no-label] $AAPL mixed tape",
+                    "[2026-06-27T20:08:00Z · @plain4 · no-label] $AAPL retail chatter",
                 ]
             ),
         )
@@ -761,6 +1132,10 @@ def test_social_evidence_filters_after_trade_date_and_marks_noisy_low_confidence
     assert "look-ahead" not in report
     assert "$AAPL useful" in report
     assert "$SPY broad market" not in report
+    assert report.count("[2026-06-27T") <= 3
+    assert "Social Evidence Summary" in report
+    assert "Usable ticker-relevant items" in report
+    assert "Reddit coverage" in report
     assert "**Confidence:** Low-to-Medium" in report
     assert "noisy and retail-heavy" in report
 
@@ -794,6 +1169,7 @@ Alphabet reported stronger cloud margins.
     assert "Direct AAPL news" in report
     assert "Indirect sector/market news" in report
     assert "Excluded as low relevance" in report
+    assert "Likely effect" in report
     assert "KGI downgrade to Hold" in report
     assert "memory-cost pressure" in report
     assert "Crypto week review" not in report

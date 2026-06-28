@@ -2,11 +2,17 @@
 
 **Rating**: Underweight
 
-**Executive Summary**: AAPL receives a Underweight rating based on the current blend of market trend, momentum, fundamentals, and news evidence. The conclusion is evidence-grounded and remains separate from paper-study safety boundaries.
+**Final Action**: Hold
 
-**Investment Thesis**: The latest close is 283.78 and the market report shows price is below the 10 EMA, below the 50 SMA, above the 200 SMA. Fundamentals show market cap of 4168.0B, net income of 122.6B, and ROE of 1.41. The risk debate supports using the trader action with confirmation from price behavior around the key moving averages.
+**Primary driver of rating:** technical
 
-**Risk Assessment**: The portfolio decision synthesizes the aggressive case for taking risk, the conservative response about technical and valuation risk, and the neutral weighing of those arguments. It does not merely repeat the trader proposal.
+**Executive Summary**: AAPL receives a Underweight rating based on above 200 SMA (283.78 vs 269.08), below 10 EMA (291.02), below 50 SMA (291.41), and valuation risk: PE 34.36, P/B 39.09. Final action differs from rating: Trader Action is Hold because the Sell gate is not met.
+
+**Investment Thesis**: Fundamentals show profitable quality support: net income 122.6B, ROE 1.41. The latest close is 283.78 and the market report shows price is below the 10 EMA, below the 50 SMA, above the 200 SMA. Social evidence contributes Low-to-Medium confidence color because 22 usable of 40 reviewed; 18 excluded as post-date, off-ticker, noisy, or low-information.
+
+**Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (291.02), below 50 SMA (291.41) and RSI 41.26; MACD -2.24 vs signal 0.53. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
+
+**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation requires failure at the 200 SMA, materially negative direct news, or a worsening score component mix.
 
 **Paper-study implementation notes**: This is a study artifact only. Do not submit broker orders or treat the decision as real trading advice.
 

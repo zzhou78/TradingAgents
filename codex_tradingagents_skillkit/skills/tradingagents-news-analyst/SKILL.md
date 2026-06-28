@@ -30,6 +30,7 @@ Procedure:
 Output:
 - `news_report`: a current-event and macro context report for researchers, trader, and risk reviewers.
 - Filter relevance explicitly. Separate direct ticker/company news, indirect sector or market context, and excluded low-relevance items. Do not include unrelated headlines in the decision table unless the report explains why they materially affect the ticker.
+- Classify each retained direct or indirect news item with likely effect: positive, negative, or mixed/unclear. Exclude irrelevant headlines from the decision table.
 
 Safety boundaries:
 - Do not present old headlines as current catalysts.

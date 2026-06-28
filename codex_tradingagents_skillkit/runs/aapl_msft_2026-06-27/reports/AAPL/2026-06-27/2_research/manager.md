@@ -2,9 +2,11 @@
 
 **Recommendation**: Underweight
 
-**Strongest Bull Evidence**: Profitability, scale, and any remaining long-term technical support.
+**Primary driver of rating:** technical
 
-**Strongest Bear Evidence**: Current technical setup, momentum, and valuation risk.
+**Strongest Bull Evidence**: profitable quality support: net income 122.6B, ROE 1.41; above 200 SMA (283.78 vs 269.08).
+
+**Strongest Bear Evidence**: below 10 EMA (291.02), below 50 SMA (291.41); RSI 41.26; MACD -2.24 vs signal 0.53; valuation risk: PE 34.36, P/B 39.09.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
@@ -22,7 +24,9 @@
 
 **Evidence Score**: -3
 
-**Evidence Weighing**: Underweight wins over Sell because the evidence is negative, but the Sell gate is not fully met. If the 200 SMA still holds, the framework keeps the trader proposal at Hold unless a separate material negative setup is documented. The recommendation follows current evidence rather than safety-status language.
+**Evidence Weighing**: Underweight wins over Sell because the evidence is negative, but the Sell gate is not fully met. If the 200 SMA still holds, the framework keeps the trader proposal at Hold unless a separate material negative setup is documented. This is an Underweight research rating with Hold trader action because long-term support still holds. The recommendation follows current evidence rather than safety-status language.
+
+**What would change the rating**: An upgrade requires price confirmation above the 10 EMA and 50 SMA with improving momentum or direct positive catalysts. A downgrade requires fresh evidence of long-term support failure, deteriorating momentum, or materially negative direct news.
 
 **Strategic Actions**:
 - Use the 10 EMA and 50 SMA area as the first confirmation zone.

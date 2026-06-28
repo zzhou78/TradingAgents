@@ -31,6 +31,9 @@ Procedure:
 Output:
 - `PortfolioDecision` and final decision text for the TradingAgents study flow.
 - Synthesize the risk debate and do not merely repeat the Trader.
+- State Risk debate impact.
+- Distinguish technical/momentum Sell from fundamental Sell.
+- Explain what would invalidate or improve the final decision.
 
 Safety boundaries:
 - Do not create real buy, sell, rebalance, or broker instructions.

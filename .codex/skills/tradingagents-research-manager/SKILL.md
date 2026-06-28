@@ -32,6 +32,9 @@ Output:
 - `ResearchPlan`: rating, rationale, key evidence, risks, and strategic actions for the trader.
 - Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.
 - Show the scoring rule and score components when a numeric evidence score is used. Explicitly justify why Sell wins over Hold or Underweight, or why Hold/Underweight is selected instead of Sell when long-term support still holds.
+- Identify the primary driver of rating.
+- Explain rating/action tension when relevant.
+- Explain why Sell beats Underweight/Hold, or why Underweight/Hold beats Sell.
 
 Safety boundaries:
 - Do not turn the research rating into a real portfolio instruction.

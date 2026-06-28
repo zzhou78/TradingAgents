@@ -28,6 +28,33 @@ Procedure:
 4. Summarize recurring investor concerns and supportive themes without quoting or amplifying spam.
 5. Produce a structured sentiment view that can be consumed by debate and trading roles.
 
+## Social Evidence Processing Rules
+
+When StockTwits or Reddit evidence is available:
+
+1. Do not paste the full raw feed into the final report.
+2. Classify social evidence into usable, noisy, post-date, and off-ticker groups.
+3. Classify each item as:
+   - directly ticker-relevant
+   - broad-market relevant
+   - cross-ticker / sector relevant
+   - irrelevant / spam / joke / low-information
+4. Use only directly relevant and clearly sector-relevant items for the sentiment conclusion.
+5. Keep raw quotes short and selective.
+6. The final report should include at most 3 representative social examples.
+7. Summarize the feed using:
+   - total items reviewed
+   - usable items
+   - bullish count
+   - bearish count
+   - neutral/unlabeled count
+   - dominant positive narratives
+   - dominant negative narratives
+   - source limitations
+8. If most posts are unlabeled, jokes, spam, or cross-ticker comments, reduce confidence.
+9. If Reddit coverage is sparse or unavailable, state that clearly.
+10. Do not infer institutional sentiment from retail social feeds.
+
 Output:
 - `sentiment_report`: overall sentiment label, numeric score when supported, confidence, key themes, and evidence notes.
 - Enforce as-of-date discipline: exclude social posts after the report trade date from the role report. Filter noisy off-ticker posts, label StockTwits/Reddit as retail-heavy color, and lower confidence to low or low-to-medium when the retained sample is noisy, sparse, or uneven.

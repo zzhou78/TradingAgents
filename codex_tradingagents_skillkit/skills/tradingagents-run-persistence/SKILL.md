@@ -39,6 +39,22 @@ Complete report assembly:
 - V. Portfolio Manager Decision: `### Portfolio Manager` with Rating, Executive Summary, Investment Thesis, Risk Assessment or equivalent risk discussion, and Paper-study implementation notes.
 - VI. Paper-Study Disclaimer: include a visible paper-study disclaimer section.
 
+## Sentiment Report Output Rule
+
+The final report must summarize social evidence. It must not include the full raw StockTwits or Reddit feed.
+The validator must pass before the report is accepted.
+The report must identify the primary driver of rating.
+The report must distinguish research rating from trader action when they differ.
+
+Required sentiment table:
+- Source
+- Items reviewed
+- Usable ticker-relevant items
+- Bullish / bearish / neutral split
+- Dominant themes
+- Confidence
+- Limitations
+
 Safety boundaries:
 - Do not write outside configured cache/results directories; use safe ticker path components.
 - Do not treat logged decisions or reflections as real investment advice.
