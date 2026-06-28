@@ -92,9 +92,9 @@ Valuation and quality are the central trade-off. PE is 22.23, forward PE is 19.2
 
 ### Bull Researcher Round 1 - Opening Case
 
-Bull Analyst: The constructive case rests on profitable quality support: net income 125.2B, ROE 0.34 and the technical fact that below 200 SMA (372.97 vs 446.27). Direct positive news includes Caterpillar (CAT) Joins Russell Top 50 As AI Power Backlog Draws Investor Focus. Social positives are summarized as ticker-specific retail discussion, but the sample remains retail-heavy.
+Bull Analyst: The constructive case rests on profitable quality support: net income 125.2B, ROE 0.34, PE 22.23, and forward PE 19.26. Direct and sector evidence also points to continued cloud and AI demand, including Microsoft data-center capacity expansion, Copilot ecosystem integration, Azure partnership references, and the long-duration Chevron power agreement for a West Texas data-center campus. Social positives are present but thin and retail-heavy, so they should not carry the case.
 
-Price is below the 200 SMA, so the bull case cannot rely on long-term moving-average support. Bear must disprove that quality, profitability, and any retained support are enough to offset current momentum or valuation risk.
+Price is below the 200 SMA, so the bull case cannot rely on long-term moving-average support. The constructive argument is therefore a quality-and-catalyst rebound case only; it requires price to reclaim the 10 EMA and 50 SMA before it becomes a trading case. Bear must show that current momentum damage outweighs fundamentals and cloud/AI demand evidence.
 
 ### Bear Researcher Round 1 - Rebuttal to Bull
 
@@ -108,9 +108,9 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 
 **Primary driver of rating:** technical
 
-**Strongest Bull Evidence**: profitable quality support: net income 125.2B, ROE 0.34; below 200 SMA (372.97 vs 446.27).
+**Strongest Bull Evidence**: profitable quality support: net income 125.2B, ROE 0.34; valuation is not flagged as extreme at PE 22.23 and forward PE 19.26; cloud and AI demand evidence remains constructive.
 
-**Strongest Bear Evidence**: below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66; valuation not flagged as extreme: PE 22.23, P/B 6.69.
+**Strongest Bear Evidence**: below 200 SMA (446.27), below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
@@ -150,7 +150,7 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 
 **Trigger that would upgrade: close reclaims the 10 EMA (377.15) and 50 SMA (410.52) with improving RSI/MACD.**
 
-**Trigger that would downgrade: close fails below the 200 SMA (446.27) or the report documents a materially negative setup.**
+**Trigger that would downgrade: further weakness below the latest low zone at 349.20 with no recovery back toward the 10 EMA, or fresh materially negative direct evidence.**
 
 FINAL TRANSACTION PROPOSAL: **SELL**
 
@@ -158,7 +158,7 @@ FINAL TRANSACTION PROPOSAL: **SELL**
 
 ### Aggressive Risk Analyst Round 1 - Opportunity Case
 
-Aggressive Analyst: The higher-reward interpretation is strongest where profitable quality support: net income 125.2B, ROE 0.34 and below 200 SMA (372.97 vs 446.27). If price can reclaim short-term averages, upside participation could improve quickly; if it cannot, the aggressive case loses force.
+Aggressive Analyst: The higher-reward interpretation is strongest where profitable quality support remains intact: net income 125.2B, ROE 0.34, and a valuation profile that is not flagged as extreme. If price can reclaim short-term averages, upside participation could improve quickly; if it cannot, the aggressive case loses force.
 
 ### Conservative Risk Analyst Round 1 - Response to Aggressive
 
@@ -184,7 +184,7 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (377.15), below 50 SMA (410.52) and RSI 40.48; MACD -13.75 vs signal -9.66. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
 
-**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation requires failure at the 200 SMA, materially negative direct news, or a worsening score component mix.
+**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation of the Sell would require that recovery; confirmation of the Sell would come from renewed weakness below the latest low zone at 349.20, materially negative direct news, or a worsening score component mix.
 
 **Paper-study implementation notes**: This is a study artifact only. Do not submit broker orders or treat the decision as real trading advice.
 

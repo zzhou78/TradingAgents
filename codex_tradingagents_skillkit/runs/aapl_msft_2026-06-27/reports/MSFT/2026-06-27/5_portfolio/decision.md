@@ -12,7 +12,7 @@
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (377.15), below 50 SMA (410.52) and RSI 40.48; MACD -13.75 vs signal -9.66. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
 
-**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation requires failure at the 200 SMA, materially negative direct news, or a worsening score component mix.
+**What would invalidate or improve the decision**: Improvement requires reclaiming the 10 EMA and 50 SMA with improving momentum. Invalidation of the Sell would require that recovery; confirmation of the Sell would come from renewed weakness below the latest low zone at 349.20, materially negative direct news, or a worsening score component mix.
 
 **Paper-study implementation notes**: This is a study artifact only. Do not submit broker orders or treat the decision as real trading advice.
 

@@ -10,6 +10,6 @@
 
 **Trigger that would upgrade: close reclaims the 10 EMA (377.15) and 50 SMA (410.52) with improving RSI/MACD.**
 
-**Trigger that would downgrade: close fails below the 200 SMA (446.27) or the report documents a materially negative setup.**
+**Trigger that would downgrade: further weakness below the latest low zone at 349.20 with no recovery back toward the 10 EMA, or fresh materially negative direct evidence.**
 
 FINAL TRANSACTION PROPOSAL: **SELL**

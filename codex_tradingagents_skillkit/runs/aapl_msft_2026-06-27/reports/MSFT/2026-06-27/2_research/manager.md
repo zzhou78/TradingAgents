@@ -4,9 +4,9 @@
 
 **Primary driver of rating:** technical
 
-**Strongest Bull Evidence**: profitable quality support: net income 125.2B, ROE 0.34; below 200 SMA (372.97 vs 446.27).
+**Strongest Bull Evidence**: profitable quality support: net income 125.2B, ROE 0.34; valuation is not flagged as extreme at PE 22.23 and forward PE 19.26; cloud and AI demand evidence remains constructive.
 
-**Strongest Bear Evidence**: below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66; valuation not flagged as extreme: PE 22.23, P/B 6.69.
+**Strongest Bear Evidence**: below 200 SMA (446.27), below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66.
 
 **Scoring Rule**: +1 / -1 for price versus 200 SMA, 50 SMA, and 10 EMA; +1 / -1 for RSI versus 50; +1 / -1 for MACD versus signal; -1 for expensive valuation; +1 for profitable fundamental quality. Sell requires either price below the 200 SMA with a materially negative score, or an explicitly documented material negative setup despite 200 SMA support.
 
