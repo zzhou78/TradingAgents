@@ -62,3 +62,11 @@ def test_role_skills_are_self_contained_and_discoverable():
 
         assert "Do not use as real trading advice." in text
         assert "Do not connect to GCAF." in text
+
+
+def test_trader_skill_keeps_safety_boundary_out_of_action_rationale():
+    text = (SKILLS_ROOT / "tradingagents-trader" / "SKILL.md").read_text(encoding="utf-8")
+
+    assert "Safety boundaries must not change the Buy / Hold / Sell action." in text
+    assert "Do not cite paper-study status as a reason to avoid Buy or Sell." in text
+    assert "The action rationale must come from market evidence, research manager input, and risk evidence." in text

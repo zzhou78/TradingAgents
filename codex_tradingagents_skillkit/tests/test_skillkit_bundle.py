@@ -96,6 +96,9 @@ def test_trader_skill_preserves_original_transaction_contract():
     assert "Optional stop loss" in text
     assert "Optional position sizing note" in text
     assert "FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**" in text
+    assert "Safety boundaries must not change the Buy / Hold / Sell action." in text
+    assert "Do not cite paper-study status as a reason to avoid Buy or Sell." in text
+    assert "The action rationale must come from market evidence, research manager input, and risk evidence." in text
 
 
 def test_debate_and_complete_report_docs_make_debate_turns_visible():
