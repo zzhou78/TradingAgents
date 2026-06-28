@@ -187,8 +187,10 @@ def test_bundle_has_expected_skills_and_docs():
     readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
     manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
     assert "prepare_codex_report_tasks.py" in readme
+    assert "financial_document_sources.py" in readme
     assert "write_codex_reports.py is a compatibility wrapper" in readme
     assert "prepare_codex_report_tasks.py" in manifest
+    assert "financial_document_sources.py" in manifest
     assert "tradingagents-financial-report-analyst" in manifest
     assert "tradingagents-industry-theme-discovery-analyst" in manifest
     assert "tradingagents-quality-reviewer" in manifest

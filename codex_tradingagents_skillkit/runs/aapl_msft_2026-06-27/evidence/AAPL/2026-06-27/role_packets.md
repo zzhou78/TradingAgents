@@ -16,30 +16,30 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for AAPL from 2026-05-28 to 2026-06-27
 # Total records: 21
-# Data retrieved on: 2026-06-28 21:00:31
+# Data retrieved on: 2026-06-28 22:27:29
 
-Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
-2026-05-28,310.68,312.8,309.57,312.51,48220400,0.0,0.0
-2026-05-29,311.78,315.0,309.53,312.06,70026800,0.0,0.0
-2026-06-01,309.63,310.94,305.02,306.31,48849900,0.0,0.0
-2026-06-02,307.46,315.45,306.69,315.2,44534700,0.0,0.0
-2026-06-03,314.18,316.94,308.85,310.26,50836700,0.0,0.0
-2026-06-04,313.23,313.54,309.65,311.23,44869100,0.0,0.0
-2026-06-05,312.86,315.17,307.15,307.34,65310500,0.0,0.0
-2026-06-08,308.74,317.4,301.17,301.54,77949100,0.0,0.0
-2026-06-09,300.28,300.75,287.78,290.55,70108800,0.0,0.0
-2026-06-10,290.74,294.75,287.38,291.58,52793300,0.0,0.0
-2026-06-11,293.72,297.0,289.59,295.63,42572500,0.0,0.0
-2026-06-12,296.03,297.14,289.62,291.13,38742100,0.0,0.0
-2026-06-15,294.12,297.78,291.7,296.42,45732600,0.0,0.0
-2026-06-16,295.25,300.48,293.97,299.24,39874400,0.0,0.0
-2026-06-17,300.85,302.07,294.36,295.95,42745100,0.0,0.0
-2026-06-18,298.11,300.57,295.62,298.01,85962200,0.0,0.0
-2026-06-22,297.31,302.42,296.76,297.01,44879900,0.0,0.0
-2026-06-23,297.54,301.64,294.18,294.3,52010900,0.0,0.0
-2026-06-24,295.36,299.7,292.94,293.08,53081900,0.0,0.0
-2026-06-25,287.4,288.8,273.75,275.15,107013700,0.0,0.0
-2026-06-26,275.0,285.95,274.21,283.78,261693600,0.0,0.0
+Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
+2026-05-28,310.68,312.8,309.57,312.51,48220400,0.0,0.0
+2026-05-29,311.78,315.0,309.53,312.06,70026800,0.0,0.0
+2026-06-01,309.63,310.94,305.02,306.31,48849900,0.0,0.0
+2026-06-02,307.46,315.45,306.69,315.2,44534700,0.0,0.0
+2026-06-03,314.18,316.94,308.85,310.26,50836700,0.0,0.0
+2026-06-04,313.23,313.54,309.65,311.23,44869100,0.0,0.0
+2026-06-05,312.86,315.17,307.15,307.34,65310500,0.0,0.0
+2026-06-08,308.74,317.4,301.17,301.54,77949100,0.0,0.0
+2026-06-09,300.28,300.75,287.78,290.55,70108800,0.0,0.0
+2026-06-10,290.74,294.75,287.38,291.58,52793300,0.0,0.0
+2026-06-11,293.72,297.0,289.59,295.63,42572500,0.0,0.0
+2026-06-12,296.03,297.14,289.62,291.13,38742100,0.0,0.0
+2026-06-15,294.12,297.78,291.7,296.42,45732600,0.0,0.0
+2026-06-16,295.25,300.48,293.97,299.24,39874400,0.0,0.0
+2026-06-17,300.85,302.07,294.36,295.95,42745100,0.0,0.0
+2026-06-18,298.11,300.57,295.62,298.01,85962200,0.0,0.0
+2026-06-22,297.31,302.42,296.76,297.01,44879900,0.0,0.0
+2026-06-23,297.54,301.64,294.18,294.3,52010900,0.0,0.0
+2026-06-24,295.36,299.7,292.94,293.08,53081900,0.0,0.0
+2026-06-25,287.4,288.8,273.75,275.15,107013700,0.0,0.0
+2026-06-26,275.0,285.95,274.21,283.78,261693600,0.0,0.0
 
 ```
 
@@ -344,11 +344,10 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 ```text
 Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent messages
 
+[2026-06-28T12:10:30Z · @RiskyChick92 · Bullish] $AAPL Nothing compares to Apple!! Especially the IPhone! Any other phone is “Not Cool” with young trendy peeps, so higher prices are irrelevant. People WILL pay it. MARK THIS 💪💪💪
 [2026-06-28T09:52:04Z · @chamono1942 · no-label] $AAPL Apple Uses Chinese Semiconductors!
-[2026-06-28T09:27:58Z · @CindyConwaysa · Bullish] $IBRX $AAPL       @CindyConwaysa
 [2026-06-28T09:23:48Z · @BradBreath · Bullish] $AAPL 💪🏼EVERY BIT OF IT🍏
 [2026-06-28T09:22:07Z · @rst1016 · no-label] $AAPL 290 monday???
-[2026-06-28T09:21:48Z · @CindyConwaysa · no-label] $AAPL Smart trading is built on planning and patience—never stop learning and act on the best opportunities.
 [2026-06-28T09:07:03Z · @Rvazstocksfl · no-label] $AAPL 250 on Monday ?
 [2026-06-28T08:52:38Z · @Agayay · Bullish] $MU $DRAM $AAPL $QQQ $SPY   Actually i think we see MEMORY stock rally on Monday.  Due to Apple seeking to buy MEMORY from China. But we all know that it won&#39;t be approved. News proves that MEMORY SHORTAGE IS CRITICAL. Remember, market is always opposite. You panic but market…
 [2026-06-28T08:50:15Z · @MicroCapsTrader · no-label] $AAPL Index rebalancing caused the high volumes and random price actions on some of the large caps last Friday. Unless it reclaims $287-289 previous breakout zone, be careful as a meltdown after a bear flag confirmation doesn’t last only a day. So look for reclaims of previous ke…
@@ -356,9 +355,8 @@ Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-28T06:48:56Z · @Himbhas18 · Bearish] $AAPL no one wants to buy expensive POS
 [2026-06-28T06:09:33Z · @termalerts · no-label] IPHONE 18 PRICE FORECAST TO SURPASS $1,100 AFTER APPLE&#39;S MACBOOK, IPAD PRICE HIKES $AAPL
 [2026-06-28T06:04:38Z · @juanagustin2086 · Bullish] $AAPL
-[2026-06-28T06:04:27Z · @QuantMindAI · no-label] Testing $AAPL
 [2026-06-28T05:44:44Z · @HEEJIN_J · no-label] $AAPL Apple gets clapped by a nerd they used to bully, now they&#39;re reporting them for school violence lol
-[2026-06-28T04:21:46Z · @TheStockShrewd · Bullish] $MU who else is convinced $AAPL news and post-earnings dip is a scheme for institutions to enter 😂😂
+[2026-06-28T04:21:46Z · @thewolfofsomestreet · Bullish] $MU who else is convinced $AAPL news and post-earnings dip is a scheme for institutions to enter 😂😂
 [2026-06-28T04:21:06Z · @ns9970 · no-label] $MU $AAPL is this another good vs evil? Who is the aggressor? lol who has the right to defend itself?
 [2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
 [2026-06-28T01:29:08Z · @Kaythu · Bearish] $AAPL The War in Iran continues to escalate big time! There is no such thing as a ceasefire and no such thing as a deal. The fighting continues on both ends. Oil prices are likely to go up yet again! Whats the likelihood the stock market winds up red on Monday and the entire week…
@@ -374,6 +372,8 @@ Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-27T23:01:46Z · @johnrivers0110 · Bearish] $WEN 🔺after all this Wendys I&#39;ll be looking into a health care company for all the heart attacks and high cholesterol you gonna have after this stock meets you at 5... The FiB 🔺  $SPCX  $SPY  $BTC.X  $AAPL
 [2026-06-27T23:00:40Z · @FibonacciTrader_ · no-label] $AAPL is facing a strategic input-cost problem that the market is slowly starting to price in around the AI cycle.    If memory becomes the key bottleneck in AI infrastructure, Apple won’t stay exposed to rising component costs indefinitely. Near-term, they may bridge supply via …
 [2026-06-27T22:32:48Z · @MarketPulsee · no-label] Dumping $AAPL at $282 over the &quot;100-year memory crisis&quot; is brainless. Cook just passes costs to consumers via MacBook price hikes. Gross margins stay untouchable. Keep shorting
+[2026-06-27T22:28:45Z · @DrSilbergleit · no-label] $SPY $QQQ $BB  $AAPL  2026 is so weird     BlackBerry +192%     Apple +3%
+[2026-06-27T22:24:52Z · @rally4sport · no-label] $AAPL $MU
 ```
 
 ### Tool: fetch_reddit_posts
@@ -407,10 +407,6 @@ r/investing: <no posts found mentioning AAPL in the past 7 days>
 ```text
 ## AAPL News, from 2026-06-20 to 2026-06-27:
 
-### Crypto's brutal week in review: Bitcoin prices, illicit Iranian transactions, & more (source: Yahoo Finance Video)
-Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
-Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
-
 ### Apple (AAPL) Plans Mac Chip Roadmap Shift Toward AI-Focused M7 (source: Insider Monkey)
 Apple Inc. (NASDAQ:AAPL) is one of the 15 Best AI Stocks That Will Make You Rich in 10 Years. On June 26, 2026, Bloomberg’s Mark Gurman reported that Apple Inc. (NASDAQ:AAPL) is planning a major change to its Mac chip roadmap, citing people with knowledge of the matter. Apple is expected to launch a base […]
 Link: https://finance.yahoo.com/technology/ai/articles/apple-aapl-plans-mac-chip-193217551.html
@@ -442,6 +438,14 @@ Link: https://www.investors.com/research/investing-action-plan/stock-market-week
 ### Apple Wants to Buy Blacklisted Chinese Memory. Micron Has Nothing to Worry About (source: 24/7 Wall St.)
 The AI boom has transformed one of the semiconductor industry’s most cyclical businesses into one of its tightest markets. Memory chips, once plagued by oversupply and collapsing prices, have become one of the biggest bottlenecks for AI infrastructure. That shortage has helped lift Micron Technology (NASDAQ:MU), Samsung Electronics, and SK hynix to record profitability as ... Apple Wants to Buy Blacklisted Chinese Memory. Micron Has Nothing to Worry About
 Link: https://247wallst.com/investing/2026/06/27/apple-wants-to-buy-blacklisted-chinese-memory-micron-has-nothing-to-worry-about/
+
+### Crypto's brutal week in review: Bitcoin prices, illicit Iranian transactions, & more (source: Yahoo Finance Video)
+Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
+Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
+
+### It’s a tale of two S&P 500s as rotation out of top tech stocks shifts into overdrive (source: MarketWatch)
+The equal-weighted version of the S 500 outperformed its traditional capitalization-weighted sibling this week by the widest margin in six years.
+Link: https://www.marketwatch.com/story/its-a-tale-of-two-s-p-500s-as-rotation-out-of-top-tech-stocks-shifts-into-overdrive-5254207f
 
 ### Apple Seeks US Approval to Buy Chips From Blacklisted CXMT: FT (source: Bloomberg)
 (Bloomberg) -- Apple Inc. is pressing the White House for approval to purchase memory chips from a blacklisted Chinese company as it grapples to rein in chip costs, the Financial Times reported on Saturday.Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsUS Strikes Iran in Response
@@ -475,14 +479,6 @@ Link: https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-2
 Apple Inc. (NASDAQ:AAPL) is trading higher on Friday. It has dropped about 12% since the beginning of June. But the sell-off may be over. The shares are oversold and at support — and these can be bullish dynamics. This is why Apple is the Stock of the Day. • What’s driving AAPL shares up today? In February and again in April, Apple ran into resistance at the $275 level. People who sold there thought they made a smart decision when the price dropped afterward. But when the resistance broke, and t
 Link: https://finance.yahoo.com/markets/stocks/articles/stock-day-apple-sell-off-201228930.html
 
-### Gadget prices have fallen for decades. Then AI happened. (source: CBS News)
-The race to build AI data centers is leading to a global shortage of memory chips, driving up the cost of personal electronics.
-Link: https://www.cbsnews.com/news/ai-boom-chip-shortage-gadget-prices-apple-microsoft/
-
-### How To Invest: 5 Tips For Dealing With This Stock Market (source: Investor's Business Daily)
-The power trend has generated impressive gains. Get ready to deal with whatever comes next with five guidelines for how to invest.
-Link: https://www.investors.com/how-to-invest/how-to-invest-nvidia-apple-stock-market-trends/?src=A00220&yptr=yahoo
-
 
 ```
 
@@ -500,87 +496,87 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-28 21:00:44
+# Data retrieved on: 2026-06-28 22:27:41
 
-,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
-0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
-1,240,,,,BORDERS BEN,Officer,,2026-06-15,D
-2,30104,,,,NEWSTEAD JENNIFER,General Counsel,,2026-06-15,D
-3,65000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
-4,50000,15551000.0,,Sale at price 311.02 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
-5,1274,369460.0,,Sale at price 290.00 per share.,BORDERS BEN,Officer,,2026-05-08,D
-6,5000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
-7,250000,71189722.0,,Sale at price 284.57 - 285.04 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
-8,1534,421850.0,,Sale at price 275.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2026-04-23,D
-9,10928,,,,PAREKH KEVAN,Chief Financial Officer,,2026-04-15,D
-10,1717,,,,BORDERS BEN,Officer,,2026-04-15,D
-11,30002,7660875.0,,Sale at price 255.12 - 255.82 per share.,O'BRIEN DEIRDRE,Officer,,2026-04-02,D
-12,64949,16512198.0,,Sale at price 251.25 - 256.00 per share.,COOK TIMOTHY D,Chief Executive Officer,,2026-04-02,D
-13,64317,,,,KHAN SABIH,Chief Operating Officer,,2026-04-01,D
-14,64317,,,,O'BRIEN DEIRDRE,Officer,,2026-04-01,D
-15,131576,,,,COOK TIMOTHY D,Chief Executive Officer,,2026-04-01,D
-16,60208,,,,NEWSTEAD JENNIFER,General Counsel,,2026-03-13,D
-17,1113,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-02-26,D
-18,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
-19,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
-20,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
-21,1255,,,,JUNG ANDREA,Director,,2026-01-30,D
-22,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
-23,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
-24,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
-25,3750,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2025-11-12,D
-26,3752,1017655.0,,Sale at price 271.23 per share.,KONDO CHRISTOPHER,Officer,,2025-11-07,D
-27,4199,1038787.0,,Sale at price 245.89 - 248.73 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-10-16,D
-28,7371,,,,KONDO CHRISTOPHER,Officer,,2025-10-15,D
-29,16457,,,,PAREKH KEVAN,Chief Financial Officer,,2025-10-15,D
-30,43013,11071078.0,,Sale at price 257.36 - 258.08 per share.,O'BRIEN DEIRDRE,Officer,,2025-10-02,D
-31,129963,33375723.0,,Sale at price 254.83 - 257.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-10-02,D
-32,47125,12101154.0,,Sale at price 254.83 - 257.54 per share.,ADAMS KATHERINE L,General Counsel,,2025-10-02,D
-33,92403,,,,KHAN SABIH,Chief Operating Officer,,2025-10-01,D
-34,92403,,,,O'BRIEN DEIRDRE,Officer,,2025-10-01,D
-35,277206,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-10-01,D
-36,92403,,,,ADAMS KATHERINE L,General Counsel,,2025-10-01,D
-37,90000,20886300.0,,Sale at price 232.07 per share.,LEVINSON ARTHUR D,Director,,2025-08-28,D
-38,435,0.0,,Stock Gift at price 0.00 per share.,KONDO CHRISTOPHER,Officer,,2025-08-25,D
-39,34821,7772047.0,,Sale at price 223.20 per share.,O'BRIEN DEIRDRE,Officer,,2025-08-08,D
-40,4486,933955.0,,Sale at price 208.19 per share.,KONDO CHRISTOPHER,Officer,,2025-05-12,D
-41,4570,941420.0,,Sale at price 206.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-04-23,D
-42,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
-43,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
-44,108136,24184658.0,,Sale at price 221.77 - 224.76 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-04-02,D
-45,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
-46,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
-47,74535,,,,O'BRIEN DEIRDRE,Officer,,2025-04-01,D
-48,218568,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-04-01,D
-49,74535,,,,ADAMS KATHERINE L,General Counsel,,2025-04-01,D
-50,74535,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-01,D
-51,1516,343147.0,,Sale at price 226.35 per share.,LEVINSON ARTHUR D,Director,,2025-02-03,D
-52,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
-53,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
-54,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
-55,1516,,,,JUNG ANDREA,Director,,2025-01-31,D
-56,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
-57,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
-58,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
-59,100000,24997395.0,,Sale at price 248.61 - 251.10 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-12-16,I
-60,200000,45464500.0,,Sale at price 224.68 - 229.28 per share.,LEVINSON ARTHUR D,Director,,2024-11-19,D
-61,4130,945233.0,,Sale at price 228.87 per share.,KONDO CHRISTOPHER,Officer,,2024-11-18,D
-62,8000,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-11-05,D
-63,8115,,,,KONDO CHRISTOPHER,Officer,,2024-10-15,D
-64,59305,13433769.0,,Sale at price 226.52 per share.,MAESTRI LUCA,Chief Financial Officer,,2024-10-04,D
-65,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
-66,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
-67,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
-68,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
-69,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
-70,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
-71,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
-72,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
-73,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
-74,8706,1958850.0,,Sale at price 225.00 per share.,KONDO CHRISTOPHER,Officer,,2024-08-15,D
-75,5178,1121037.0,,Sale at price 216.50 per share.,KONDO CHRISTOPHER,Officer,,2024-08-09,D
-76,4500,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-07,D
-77,100000,20643512.0,,Sale at price 206.42 - 207.05 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-05,D
+,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
+0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
+1,240,,,,BORDERS BEN,Officer,,2026-06-15,D
+2,30104,,,,NEWSTEAD JENNIFER,General Counsel,,2026-06-15,D
+3,65000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+4,50000,15551000.0,,Sale at price 311.02 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+5,1274,369460.0,,Sale at price 290.00 per share.,BORDERS BEN,Officer,,2026-05-08,D
+6,5000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+7,250000,71189722.0,,Sale at price 284.57 - 285.04 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+8,1534,421850.0,,Sale at price 275.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2026-04-23,D
+9,10928,,,,PAREKH KEVAN,Chief Financial Officer,,2026-04-15,D
+10,1717,,,,BORDERS BEN,Officer,,2026-04-15,D
+11,30002,7660875.0,,Sale at price 255.12 - 255.82 per share.,O'BRIEN DEIRDRE,Officer,,2026-04-02,D
+12,64949,16512198.0,,Sale at price 251.25 - 256.00 per share.,COOK TIMOTHY D,Chief Executive Officer,,2026-04-02,D
+13,64317,,,,KHAN SABIH,Chief Operating Officer,,2026-04-01,D
+14,64317,,,,O'BRIEN DEIRDRE,Officer,,2026-04-01,D
+15,131576,,,,COOK TIMOTHY D,Chief Executive Officer,,2026-04-01,D
+16,60208,,,,NEWSTEAD JENNIFER,General Counsel,,2026-03-13,D
+17,1113,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-02-26,D
+18,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
+19,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
+20,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
+21,1255,,,,JUNG ANDREA,Director,,2026-01-30,D
+22,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
+23,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
+24,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
+25,3750,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2025-11-12,D
+26,3752,1017655.0,,Sale at price 271.23 per share.,KONDO CHRISTOPHER,Officer,,2025-11-07,D
+27,4199,1038787.0,,Sale at price 245.89 - 248.73 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-10-16,D
+28,7371,,,,KONDO CHRISTOPHER,Officer,,2025-10-15,D
+29,16457,,,,PAREKH KEVAN,Chief Financial Officer,,2025-10-15,D
+30,43013,11071078.0,,Sale at price 257.36 - 258.08 per share.,O'BRIEN DEIRDRE,Officer,,2025-10-02,D
+31,129963,33375723.0,,Sale at price 254.83 - 257.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-10-02,D
+32,47125,12101154.0,,Sale at price 254.83 - 257.54 per share.,ADAMS KATHERINE L,General Counsel,,2025-10-02,D
+33,92403,,,,KHAN SABIH,Chief Operating Officer,,2025-10-01,D
+34,92403,,,,O'BRIEN DEIRDRE,Officer,,2025-10-01,D
+35,277206,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-10-01,D
+36,92403,,,,ADAMS KATHERINE L,General Counsel,,2025-10-01,D
+37,90000,20886300.0,,Sale at price 232.07 per share.,LEVINSON ARTHUR D,Director,,2025-08-28,D
+38,435,0.0,,Stock Gift at price 0.00 per share.,KONDO CHRISTOPHER,Officer,,2025-08-25,D
+39,34821,7772047.0,,Sale at price 223.20 per share.,O'BRIEN DEIRDRE,Officer,,2025-08-08,D
+40,4486,933955.0,,Sale at price 208.19 per share.,KONDO CHRISTOPHER,Officer,,2025-05-12,D
+41,4570,941420.0,,Sale at price 206.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-04-23,D
+42,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
+43,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
+44,108136,24184658.0,,Sale at price 221.77 - 224.76 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-04-02,D
+45,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
+46,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
+47,74535,,,,O'BRIEN DEIRDRE,Officer,,2025-04-01,D
+48,218568,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-04-01,D
+49,74535,,,,ADAMS KATHERINE L,General Counsel,,2025-04-01,D
+50,74535,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-01,D
+51,1516,343147.0,,Sale at price 226.35 per share.,LEVINSON ARTHUR D,Director,,2025-02-03,D
+52,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
+53,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
+54,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
+55,1516,,,,JUNG ANDREA,Director,,2025-01-31,D
+56,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
+57,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
+58,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
+59,100000,24997395.0,,Sale at price 248.61 - 251.10 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-12-16,I
+60,200000,45464500.0,,Sale at price 224.68 - 229.28 per share.,LEVINSON ARTHUR D,Director,,2024-11-19,D
+61,4130,945233.0,,Sale at price 228.87 per share.,KONDO CHRISTOPHER,Officer,,2024-11-18,D
+62,8000,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-11-05,D
+63,8115,,,,KONDO CHRISTOPHER,Officer,,2024-10-15,D
+64,59305,13433769.0,,Sale at price 226.52 per share.,MAESTRI LUCA,Chief Financial Officer,,2024-10-04,D
+65,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
+66,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
+67,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
+68,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
+69,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
+70,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
+71,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
+72,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
+73,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
+74,8706,1958850.0,,Sale at price 225.00 per share.,KONDO CHRISTOPHER,Officer,,2024-08-15,D
+75,5178,1121037.0,,Sale at price 216.50 per share.,KONDO CHRISTOPHER,Officer,,2024-08-09,D
+76,4500,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-07,D
+77,100000,20643512.0,,Sale at price 206.42 - 207.05 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-05,D
 
 ```
 
@@ -594,7 +590,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-06-28 21:00:44
+# Data retrieved on: 2026-06-28 22:27:42
 
 Name: Apple Inc.
 Sector: Technology
@@ -632,75 +628,75 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 21:00:44
+# Data retrieved on: 2026-06-28 22:27:42
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
-Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
-Share Issued,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
-Net Debt,39139000000.0,45192000000.0,62723000000.0,65429000000.0,70024000000.0,,
-Total Debt,84711000000.0,90509000000.0,98657000000.0,101698000000.0,98186000000.0,,
-Tangible Book Value,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
-Invested Capital,191202000000.0,178699000000.0,172390000000.0,167528000000.0,164982000000.0,,
-Working Capital,9473000000.0,-4263000000.0,-17674000000.0,-18629000000.0,-25897000000.0,,
-Net Tangible Assets,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
-Common Stock Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
-Total Capitalization,180895000000.0,164875000000.0,152061000000.0,148260000000.0,145362000000.0,,
-Total Equity Gross Minority Interest,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
-Stockholders Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
-Gains Losses Not Affecting Retained Earnings,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,,
-Other Equity Adjustments,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,,
-Retained Earnings,12359000000.0,-2177000000.0,-14264000000.0,-17607000000.0,-15552000000.0,,
-Capital Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,,
-Common Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,,
-Total Liabilities Net Minority Interest,264591000000.0,291107000000.0,285508000000.0,265665000000.0,264437000000.0,,
-Total Non Current Liabilities Net Minority Interest,129950000000.0,128740000000.0,119877000000.0,124545000000.0,119866000000.0,,
-Other Non Current Liabilities,55546000000.0,52055000000.0,41549000000.0,42115000000.0,41300000000.0,,
-Tradeand Other Payables Non Current,,,,,,,9254000000.0
-Long Term Debt And Capital Lease Obligation,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,,
-Long Term Debt,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,,
-Current Liabilities,134641000000.0,162367000000.0,165631000000.0,141120000000.0,144571000000.0,,
-Other Current Liabilities,57654000000.0,68543000000.0,44452000000.0,62499000000.0,61849000000.0,,
-Current Deferred Liabilities,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,,
-Current Deferred Revenue,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,,
-Current Debt And Capital Lease Obligation,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,,
-Current Debt,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,,
-Other Current Borrowings,8310000000.0,11827000000.0,12350000000.0,9345000000.0,13638000000.0,,
-Commercial Paper,1997000000.0,1997000000.0,7979000000.0,9923000000.0,5982000000.0,,
-Payables And Accrued Expenses,57349000000.0,70587000000.0,91795000000.0,50374000000.0,54126000000.0,,
-Current Accrued Expenses,,,8919000000.0,,,,
-Payables,57349000000.0,70587000000.0,82876000000.0,50374000000.0,54126000000.0,,
-Total Tax Payable,,,13016000000.0,,,,26601000000.0
-Income Tax Payable,,,13016000000.0,,,,26601000000.0
-Accounts Payable,57349000000.0,70587000000.0,69860000000.0,50374000000.0,54126000000.0,,
-Total Assets,371082000000.0,379297000000.0,359241000000.0,331495000000.0,331233000000.0,,
-Total Non Current Assets,226968000000.0,221193000000.0,211284000000.0,209004000000.0,212559000000.0,,
-Other Non Current Assets,77430000000.0,93146000000.0,62950000000.0,82882000000.0,81259000000.0,,
-Non Current Deferred Assets,,,20777000000.0,,,,19499000000.0
-Non Current Deferred Taxes Assets,,,20777000000.0,,,,19499000000.0
-Investments And Advances,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
-Investmentin Financial Assets,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
-Available For Sale Securities,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
-Goodwill And Other Intangible Assets,21334000000.0,,,,,,
-Net PPE,50116000000.0,50159000000.0,49834000000.0,48508000000.0,46876000000.0,,
-Accumulated Depreciation,-77441000000.0,-77161000000.0,-76014000000.0,-75803000000.0,-74303000000.0,,
-Gross PPE,127557000000.0,127320000000.0,125848000000.0,124311000000.0,121179000000.0,,
-Leases,,,15091000000.0,,,,14233000000.0
-Machinery Furniture Equipment,,,83420000000.0,,,,80205000000.0
-Land And Improvements,,,27337000000.0,,,,24690000000.0
-Properties,,,0.0,,,,0.0
-Current Assets,144114000000.0,158104000000.0,147957000000.0,122491000000.0,118674000000.0,,
-Other Current Assets,15349000000.0,15002000000.0,14585000000.0,14359000000.0,14109000000.0,,
-Inventory,6747000000.0,5875000000.0,5718000000.0,5925000000.0,6269000000.0,,
-Finished Goods,,,,3637000000.0,3596000000.0,4119000000.0,
-Raw Materials,,,,2288000000.0,2673000000.0,2792000000.0,
-Receivables,53511000000.0,70320000000.0,72957000000.0,46835000000.0,49798000000.0,,
-Other Receivables,23172000000.0,30399000000.0,33180000000.0,19278000000.0,23662000000.0,,
-Accounts Receivable,30339000000.0,39921000000.0,39777000000.0,27557000000.0,26136000000.0,,
-Cash Cash Equivalents And Short Term Investments,68507000000.0,66907000000.0,54697000000.0,55372000000.0,48498000000.0,,
-Other Short Term Investments,22935000000.0,21590000000.0,18763000000.0,19103000000.0,20336000000.0,,
-Cash And Cash Equivalents,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,,
-Cash Equivalents,15832000000.0,14491000000.0,7667000000.0,9583000000.0,3101000000.0,,
-Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,25061000000.0,,
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
+Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
+Share Issued,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
+Net Debt,39139000000.0,45192000000.0,62723000000.0,65429000000.0,70024000000.0,,
+Total Debt,84711000000.0,90509000000.0,98657000000.0,101698000000.0,98186000000.0,,
+Tangible Book Value,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
+Invested Capital,191202000000.0,178699000000.0,172390000000.0,167528000000.0,164982000000.0,,
+Working Capital,9473000000.0,-4263000000.0,-17674000000.0,-18629000000.0,-25897000000.0,,
+Net Tangible Assets,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
+Common Stock Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
+Total Capitalization,180895000000.0,164875000000.0,152061000000.0,148260000000.0,145362000000.0,,
+Total Equity Gross Minority Interest,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
+Stockholders Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,,
+Gains Losses Not Affecting Retained Earnings,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,,
+Other Equity Adjustments,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,,
+Retained Earnings,12359000000.0,-2177000000.0,-14264000000.0,-17607000000.0,-15552000000.0,,
+Capital Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,,
+Common Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,,
+Total Liabilities Net Minority Interest,264591000000.0,291107000000.0,285508000000.0,265665000000.0,264437000000.0,,
+Total Non Current Liabilities Net Minority Interest,129950000000.0,128740000000.0,119877000000.0,124545000000.0,119866000000.0,,
+Other Non Current Liabilities,55546000000.0,52055000000.0,41549000000.0,42115000000.0,41300000000.0,,
+Tradeand Other Payables Non Current,,,,,,,9254000000.0
+Long Term Debt And Capital Lease Obligation,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,,
+Long Term Debt,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,,
+Current Liabilities,134641000000.0,162367000000.0,165631000000.0,141120000000.0,144571000000.0,,
+Other Current Liabilities,57654000000.0,68543000000.0,44452000000.0,62499000000.0,61849000000.0,,
+Current Deferred Liabilities,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,,
+Current Deferred Revenue,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,,
+Current Debt And Capital Lease Obligation,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,,
+Current Debt,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,,
+Other Current Borrowings,8310000000.0,11827000000.0,12350000000.0,9345000000.0,13638000000.0,,
+Commercial Paper,1997000000.0,1997000000.0,7979000000.0,9923000000.0,5982000000.0,,
+Payables And Accrued Expenses,57349000000.0,70587000000.0,91795000000.0,50374000000.0,54126000000.0,,
+Current Accrued Expenses,,,8919000000.0,,,,
+Payables,57349000000.0,70587000000.0,82876000000.0,50374000000.0,54126000000.0,,
+Total Tax Payable,,,13016000000.0,,,,26601000000.0
+Income Tax Payable,,,13016000000.0,,,,26601000000.0
+Accounts Payable,57349000000.0,70587000000.0,69860000000.0,50374000000.0,54126000000.0,,
+Total Assets,371082000000.0,379297000000.0,359241000000.0,331495000000.0,331233000000.0,,
+Total Non Current Assets,226968000000.0,221193000000.0,211284000000.0,209004000000.0,212559000000.0,,
+Other Non Current Assets,77430000000.0,93146000000.0,62950000000.0,82882000000.0,81259000000.0,,
+Non Current Deferred Assets,,,20777000000.0,,,,19499000000.0
+Non Current Deferred Taxes Assets,,,20777000000.0,,,,19499000000.0
+Investments And Advances,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
+Investmentin Financial Assets,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
+Available For Sale Securities,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,,
+Goodwill And Other Intangible Assets,21334000000.0,,,,,,
+Net PPE,50116000000.0,50159000000.0,49834000000.0,48508000000.0,46876000000.0,,
+Accumulated Depreciation,-77441000000.0,-77161000000.0,-76014000000.0,-75803000000.0,-74303000000.0,,
+Gross PPE,127557000000.0,127320000000.0,125848000000.0,124311000000.0,121179000000.0,,
+Leases,,,15091000000.0,,,,14233000000.0
+Machinery Furniture Equipment,,,83420000000.0,,,,80205000000.0
+Land And Improvements,,,27337000000.0,,,,24690000000.0
+Properties,,,0.0,,,,0.0
+Current Assets,144114000000.0,158104000000.0,147957000000.0,122491000000.0,118674000000.0,,
+Other Current Assets,15349000000.0,15002000000.0,14585000000.0,14359000000.0,14109000000.0,,
+Inventory,6747000000.0,5875000000.0,5718000000.0,5925000000.0,6269000000.0,,
+Finished Goods,,,,3637000000.0,3596000000.0,4119000000.0,
+Raw Materials,,,,2288000000.0,2673000000.0,2792000000.0,
+Receivables,53511000000.0,70320000000.0,72957000000.0,46835000000.0,49798000000.0,,
+Other Receivables,23172000000.0,30399000000.0,33180000000.0,19278000000.0,23662000000.0,,
+Accounts Receivable,30339000000.0,39921000000.0,39777000000.0,27557000000.0,26136000000.0,,
+Cash Cash Equivalents And Short Term Investments,68507000000.0,66907000000.0,54697000000.0,55372000000.0,48498000000.0,,
+Other Short Term Investments,22935000000.0,21590000000.0,18763000000.0,19103000000.0,20336000000.0,,
+Cash And Cash Equivalents,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,,
+Cash Equivalents,15832000000.0,14491000000.0,7667000000.0,9583000000.0,3101000000.0,,
+Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,25061000000.0,,
 
 ```
 
@@ -710,55 +706,55 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 21:00:45
+# Data retrieved on: 2026-06-28 22:27:42
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
-Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,,
-Repurchase Of Capital Stock,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
-Repayment Of Debt,-5751000000.0,-8074000000.0,-1185000000.0,-1770000000.0,976000000.0,,
-Issuance Of Debt,,,0.0,,,,0.0
-Capital Expenditure,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
-Income Tax Paid Supplemental Data,16963000000.0,3434000000.0,6037000000.0,5649000000.0,13032000000.0,,
-End Cash Position,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,,
-Beginning Cash Position,45317000000.0,35934000000.0,36269000000.0,28162000000.0,30299000000.0,,
-Changes In Cash,255000000.0,9383000000.0,-335000000.0,8107000000.0,-2137000000.0,,
-Financing Cash Flow,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,,
-Cash Flow From Continuing Financing Activities,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,,
-Net Other Financing Charges,-418000000.0,-2960000000.0,-265000000.0,-2524000000.0,-326000000.0,,
-Cash Dividends Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,,
-Common Stock Dividend Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,,
-Net Common Stock Issuance,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
-Common Stock Payments,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
-Net Issuance Payments Of Debt,-5751000000.0,-8074000000.0,-3217000000.0,2711000000.0,976000000.0,,
-Net Short Term Debt Issuance,-1000000.0,-5910000000.0,-1967000000.0,3903000000.0,3976000000.0,,
-Short Term Debt Payments,-1000000.0,-5910000000.0,,3903000000.0,3976000000.0,-7944000000.0,
-Net Long Term Debt Issuance,-5750000000.0,-2164000000.0,-1250000000.0,-1192000000.0,-3000000000.0,,
-Long Term Debt Payments,-5750000000.0,-2164000000.0,-1250000000.0,-5673000000.0,-3000000000.0,,
-Long Term Debt Issuance,,,0.0,,,,0.0
-Investing Cash Flow,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,,
-Cash Flow From Continuing Investing Activities,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,,
-Net Other Investing Changes,-1430000000.0,-154000000.0,-505000000.0,-340000000.0,-32000000.0,,
-Net Investment Purchase And Sale,-2767000000.0,-2359000000.0,1160000000.0,8875000000.0,6020000000.0,,
-Sale Of Investment,16972000000.0,10334000000.0,7976000000.0,14024000000.0,12338000000.0,,
-Purchase Of Investment,-19739000000.0,-12693000000.0,-6816000000.0,-5149000000.0,-6318000000.0,,
-Net PPE Purchase And Sale,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
-Purchase Of PPE,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
-Operating Cash Flow,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,,
-Cash Flow From Continuing Operating Activities,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,,
-Change In Working Capital,-6654000000.0,5548000000.0,-5707000000.0,-2034000000.0,-6507000000.0,,
-Change In Other Current Liabilities,-5232000000.0,12533000000.0,4085000000.0,418000000.0,-3581000000.0,,
-Change In Other Current Assets,-4079000000.0,-10250000000.0,-3081000000.0,-1745000000.0,-5310000000.0,,
-Change In Payables And Accrued Expense,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
-Change In Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
-Change In Account Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
-Change In Inventory,-873000000.0,-211000000.0,177000000.0,365000000.0,643000000.0,,
-Change In Receivables,16675000000.0,2628000000.0,-26269000000.0,2803000000.0,9674000000.0,,
-Changes In Account Receivables,9448000000.0,-153000000.0,-12367000000.0,-1581000000.0,3669000000.0,,
-Other Non Cash Items,-1189000000.0,-528000000.0,1659000000.0,469000000.0,-208000000.0,,
-Stock Based Compensation,3528000000.0,3594000000.0,3183000000.0,3168000000.0,3226000000.0,,
-Depreciation Amortization Depletion,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,,
-Depreciation And Amortization,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,,
-Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0,,
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
+Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,,
+Repurchase Of Capital Stock,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
+Repayment Of Debt,-5751000000.0,-8074000000.0,-1185000000.0,-1770000000.0,976000000.0,,
+Issuance Of Debt,,,0.0,,,,0.0
+Capital Expenditure,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
+Income Tax Paid Supplemental Data,16963000000.0,3434000000.0,6037000000.0,5649000000.0,13032000000.0,,
+End Cash Position,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,,
+Beginning Cash Position,45317000000.0,35934000000.0,36269000000.0,28162000000.0,30299000000.0,,
+Changes In Cash,255000000.0,9383000000.0,-335000000.0,8107000000.0,-2137000000.0,,
+Financing Cash Flow,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,,
+Cash Flow From Continuing Financing Activities,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,,
+Net Other Financing Charges,-418000000.0,-2960000000.0,-265000000.0,-2524000000.0,-326000000.0,,
+Cash Dividends Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,,
+Common Stock Dividend Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,,
+Net Common Stock Issuance,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
+Common Stock Payments,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,,
+Net Issuance Payments Of Debt,-5751000000.0,-8074000000.0,-3217000000.0,2711000000.0,976000000.0,,
+Net Short Term Debt Issuance,-1000000.0,-5910000000.0,-1967000000.0,3903000000.0,3976000000.0,,
+Short Term Debt Payments,-1000000.0,-5910000000.0,,3903000000.0,3976000000.0,-7944000000.0,
+Net Long Term Debt Issuance,-5750000000.0,-2164000000.0,-1250000000.0,-1192000000.0,-3000000000.0,,
+Long Term Debt Payments,-5750000000.0,-2164000000.0,-1250000000.0,-5673000000.0,-3000000000.0,,
+Long Term Debt Issuance,,,0.0,,,,0.0
+Investing Cash Flow,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,,
+Cash Flow From Continuing Investing Activities,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,,
+Net Other Investing Changes,-1430000000.0,-154000000.0,-505000000.0,-340000000.0,-32000000.0,,
+Net Investment Purchase And Sale,-2767000000.0,-2359000000.0,1160000000.0,8875000000.0,6020000000.0,,
+Sale Of Investment,16972000000.0,10334000000.0,7976000000.0,14024000000.0,12338000000.0,,
+Purchase Of Investment,-19739000000.0,-12693000000.0,-6816000000.0,-5149000000.0,-6318000000.0,,
+Net PPE Purchase And Sale,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
+Purchase Of PPE,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,,
+Operating Cash Flow,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,,
+Cash Flow From Continuing Operating Activities,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,,
+Change In Working Capital,-6654000000.0,5548000000.0,-5707000000.0,-2034000000.0,-6507000000.0,,
+Change In Other Current Liabilities,-5232000000.0,12533000000.0,4085000000.0,418000000.0,-3581000000.0,,
+Change In Other Current Assets,-4079000000.0,-10250000000.0,-3081000000.0,-1745000000.0,-5310000000.0,,
+Change In Payables And Accrued Expense,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
+Change In Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
+Change In Account Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,,
+Change In Inventory,-873000000.0,-211000000.0,177000000.0,365000000.0,643000000.0,,
+Change In Receivables,16675000000.0,2628000000.0,-26269000000.0,2803000000.0,9674000000.0,,
+Changes In Account Receivables,9448000000.0,-153000000.0,-12367000000.0,-1581000000.0,3669000000.0,,
+Other Non Cash Items,-1189000000.0,-528000000.0,1659000000.0,469000000.0,-208000000.0,,
+Stock Based Compensation,3528000000.0,3594000000.0,3183000000.0,3168000000.0,3226000000.0,,
+Depreciation Amortization Depletion,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,,
+Depreciation And Amortization,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,,
+Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0,,
 
 ```
 
@@ -768,41 +764,94 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 21:00:45
+# Data retrieved on: 2026-06-28 22:27:42
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
-Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0
-Tax Rate For Calcs,0.175,0.175,0.162724,0.164,0.154555
-Normalized EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
-Net Income From Continuing Operation Net Minority Interest,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Reconciled Depreciation,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0
-Reconciled Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
-EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
-EBIT,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
-Normalized Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Net Income From Continuing And Discontinued Operation,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Total Expenses,75299000000.0,92904000000.0,70039000000.0,65834000000.0,65770000000.0
-Total Operating Income As Reported,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
-Diluted Average Shares,14725873000.0,14810356000.0,14863609000.0,14948179000.0,15056133000.0
-Basic Average Shares,14673278000.0,14748158000.0,14815307000.0,14902886000.0,14994082000.0
-Diluted EPS,2.01,2.84,1.85,1.57,1.65
-Basic EPS,2.02,2.85,1.85,1.57,1.65
-Diluted NI Availto Com Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Net Income Common Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Net Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Net Income Including Noncontrolling Interests,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Net Income Continuous Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
-Tax Provision,6255000000.0,8905000000.0,5338000000.0,4597000000.0,4530000000.0
-Pretax Income,35833000000.0,51002000000.0,32804000000.0,28031000000.0,29310000000.0
-Other Income Expense,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
-Other Non Operating Income Expenses,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
-Operating Income,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
-Operating Expense,18896000000.0,18379000000.0,15914000000.0,15516000000.0,15278000000.0
-Research And Development,11419000000.0,10887000000.0,8866000000.0,8866000000.0,8550000000.0
-Selling General And Administration,7477000000.0,7492000000.0,7048000000.0,6650000000.0,6728000000.0
-Gross Profit,54781000000.0,69231000000.0,48341000000.0,43718000000.0,44867000000.0
-Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
-Total Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
-Operating Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
+Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0
+Tax Rate For Calcs,0.175,0.175,0.162724,0.164,0.154555
+Normalized EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
+Net Income From Continuing Operation Net Minority Interest,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Reconciled Depreciation,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0
+Reconciled Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
+EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
+EBIT,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Normalized Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income From Continuing And Discontinued Operation,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Total Expenses,75299000000.0,92904000000.0,70039000000.0,65834000000.0,65770000000.0
+Total Operating Income As Reported,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Diluted Average Shares,14725873000.0,14810356000.0,14863609000.0,14948179000.0,15056133000.0
+Basic Average Shares,14673278000.0,14748158000.0,14815307000.0,14902886000.0,14994082000.0
+Diluted EPS,2.01,2.84,1.85,1.57,1.65
+Basic EPS,2.02,2.85,1.85,1.57,1.65
+Diluted NI Availto Com Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Common Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Including Noncontrolling Interests,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Continuous Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Tax Provision,6255000000.0,8905000000.0,5338000000.0,4597000000.0,4530000000.0
+Pretax Income,35833000000.0,51002000000.0,32804000000.0,28031000000.0,29310000000.0
+Other Income Expense,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
+Other Non Operating Income Expenses,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
+Operating Income,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Operating Expense,18896000000.0,18379000000.0,15914000000.0,15516000000.0,15278000000.0
+Research And Development,11419000000.0,10887000000.0,8866000000.0,8866000000.0,8550000000.0
+Selling General And Administration,7477000000.0,7492000000.0,7048000000.0,6650000000.0,6728000000.0
+Gross Profit,54781000000.0,69231000000.0,48341000000.0,43718000000.0,44867000000.0
+Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
+Total Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
+Operating Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
+
+```
+
+## Role: financial_report
+
+- Skill: `tradingagents-financial-report-analyst`
+
+### Tool: collect_financial_document_sources
+
+- Status: `ok`
+
+```text
+## Financial Document Source Packet: AAPL
+
+- Trade date: `2026-06-27`
+- Collection status: `ok`
+- SEC company name: Apple Inc.
+- SEC CIK: `0000320193`
+- As-of rule: Only filings with filingDate <= trade_date are included.
+
+| Source | Status | Filing date | Form | URL / reason |
+|---|---:|---:|---:|---|
+| annual_report_10k | available | 2025-10-31 | 10-K | https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm |
+| quarterly_report_10q | available | 2026-05-01 | 10-Q | https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm |
+| earnings_release_8k | available | 2026-04-30 | 8-K | https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm |
+| investor_presentation | unavailable |  |  | No investor presentation source was discovered from the SEC submissions feed. |
+
+### Excerpt: annual_report_10k
+
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+aapl-20250927 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 27 , 2025 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 0.000% Notes due 2025 — The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Securities registered pursuant to Section 12(g) of the Act: None Indicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. ☒ If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. ☐ Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes ☐ No ☒ The aggregate market value of the voting and non-voting stock held by non-affiliates of the Registrant, as of March 28, 2025, the last business day of the Registrant’s most recently completed second fiscal quarter, was approximately $ 3,253,431,000,000 . Solely for purposes of this disclosure, shares of common stock held by executive officers and directors of the Registrant as of such date have been excluded because such persons may be deemed to be affiliates. This determination of executive officers and directors as affiliates is not necessarily a conclusive determination for any other purposes. 14,776,353,000 shares of common stock were issued and outstanding as of October 17, 2025. DOCUMENTS INCORPORATED BY REFERENCE Portions of the Registrant’s definitive proxy statement relating to its 2026 annual meeting of shareholders are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. The Registrant’s definitive proxy statement will be filed with the U.S. Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates. Apple Inc. Form 10-K For the Fiscal Year Ended September 27, 2025 TABLE OF CONTENTS Page Part I Item 1. Business 1 Item 1A. Risk Factors 5 Item 1B. Unresolved Staff Comments 17 Item 1C. Cybersecurity 17 Item 2. Properties 17 Item 3. Legal Proceedings 18 Item 4. Mine Safety Disclosures 18 Part II Item 5. Market for Registrant’s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities 19 Item 6. [Reserved] 20 Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 21 Item 7A. Quantitative and Qualitative Disclosures About Market Risk 27 Item 8. Financial Statements and Supplementary Data 28 Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure 52 Item 9A. Controls and Procedures 52 Item 9B. Other Information 53 Item 9C. Disclosure
+```
+
+### Excerpt: quarterly_report_10q
+
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+
+```text
+aapl-20260328 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-Q (Mark One) ☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the quarterly period ended March 28, 2026 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒ 14,687,356,000 shares of common stock were issued and outstanding as of April 17, 2026 . Apple Inc. Form 10-Q For the Fiscal Quarter Ended March 28, 2026 TABLE OF CONTENTS Page Part I Item 1. Financial Statements 1 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 13 Item 3. Quantitative and Qualitative Disclosures About Market Risk 19 Item 4. Controls and Procedures 19 Part II Item 1. Legal Proceedings 20 Item 1A. Risk Factors 21 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 24 Item 3. Defaults Upon Senior Securities 25 Item 4. Mine Safety Disclosures 25 Item 5. Other Information 25 Item 6. Exhibits 25 PART I — FINANCIAL INFORMATION Item 1. Financial Statements Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271 13,040 Total cost of sales 56,403 50,492 130,928 116,517 Gross margin 54,781 44,867 124,012 103,142 Operating expenses: Research and development 11,419 8,550 22,306 16,818 Selling, general and administrative 7,477 6,728 14,969 13,903 Total operating expenses 18,896 15,278 37,275 30,721 Operating income 35,885 29,589 86,737 72,421 Other income/(expense), net ( 52 ) ( 279 ) 98 ( 527 ) Income before provision for income taxes 35,833 29,310 86,835 71,894 Provision for income taxes 6,255 4,530 15,160 10,784 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Earnings per share: Basic $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted $ 2.01 $ 1.65 $ 4.85 $ 4.05 Shares used in computing earnings per share: Basic 14,673,278 14,994,082 14,710,718 15,037,903 Diluted 14,725,873 15,056,133 14,768,115 15,103,499 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 1 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In millions) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Other comprehensive income/(loss): Change in foreign currency translation, net of tax 67 90 ( 92 ) ( 535 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 162 ( 318 ) 373 1,333 Adjustment for net (gains)/losses realized and included in net income 44 ( 628 ) 281 156 Total change in unrealized gains/losses on derivative instruments 206 ( 946 ) 654 1,489 Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities ( 808 ) 1,097 ( 384 ) ( 550 ) Adjustment for net (gains)/losses realized and included in net income 14 185 18 405 Total change in unrealized gains/losses on marketable debt securities ( 794 ) 1,282 ( 366 ) ( 145 ) Total other comprehensive income/(loss) ( 521 ) 426
+```
+
+### Excerpt: earnings_release_8k
+
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm
+
+```text
+aapl-20260430 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 8-K CURRENT REPORT Pursuant to Section 13 OR 15(d) of The Securities Exchange Act of 1934 April 30, 2026 Date of Report (Date of earliest event reported) Apple Inc. (Exact name of Registrant as specified in its charter) California 001-36743 94-2404110 (State or other jurisdiction of incorporation) (Commission File Number) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Not applicable (Former name or former address, if changed since last report.) Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the Registrant under any of the following provisions: ☐ Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425) ☐ Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12) ☐ Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b)) ☐ Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operations and Financial Condition. On April 30, 2026, Apple Inc. (“Apple”) issued a press release regarding Apple’s financial results for its second fiscal quarter ended March 28, 2026. A copy of Apple’s press release is attached hereto as Exhibit 99.1. The information contained in this Current Report shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such a filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits. Exhibit Number Exhibit Description 99.1 Press release issued by Apple Inc. on April 30, 2026. 104 Inline XBRL for the cover page of this Current Report on Form 8-K. SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: April 30, 2026 Apple Inc. By: /s/ Kevan Parekh Kevan Parekh Senior Vice President, Chief Financial Officer
+```
 
 ```

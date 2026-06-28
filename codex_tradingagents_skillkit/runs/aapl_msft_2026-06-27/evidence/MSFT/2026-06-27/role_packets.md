@@ -16,30 +16,30 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for MSFT from 2026-05-28 to 2026-06-27
 # Total records: 21
-# Data retrieved on: 2026-06-28 21:00:45
+# Data retrieved on: 2026-06-28 22:27:44
 
-Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
-2026-05-28,412.98,429.49,412.67,426.99,47250500,0.0,0.0
-2026-05-29,432.55,450.33,432.36,450.24,79654400,0.0,0.0
-2026-06-01,464.84,466.32,458.27,460.52,53628900,0.0,0.0
-2026-06-02,446.88,453.5,440.43,441.31,37036800,0.0,0.0
-2026-06-03,438.45,440.39,424.25,427.34,39037000,0.0,0.0
-2026-06-04,435.81,436.15,426.41,428.05,26899500,0.0,0.0
-2026-06-05,428.34,429.47,414.4,416.67,34782200,0.0,0.0
-2026-06-08,414.14,417.16,408.56,411.74,32086700,0.0,0.0
-2026-06-09,409.03,411.98,398.48,403.41,35317300,0.0,0.0
-2026-06-10,398.55,405.04,397.16,397.36,32576000,0.0,0.0
-2026-06-11,395.21,396.85,384.0,390.34,47224100,0.0,0.0
-2026-06-12,391.43,391.74,382.27,390.74,34865800,0.0,0.0
-2026-06-15,396.8,401.75,392.85,399.76,32266400,0.0,0.0
-2026-06-16,395.79,396.84,390.69,393.83,31506800,0.0,0.0
-2026-06-17,390.25,390.37,377.32,378.91,41987800,0.0,0.0
-2026-06-18,377.82,381.37,373.28,379.4,59714200,0.0,0.0
-2026-06-22,375.74,381.63,367.07,367.34,45171100,0.0,0.0
-2026-06-23,372.38,377.22,370.67,373.94,40647600,0.0,0.0
-2026-06-24,371.57,378.88,364.78,365.46,44509900,0.0,0.0
-2026-06-25,362.77,364.23,349.2,352.83,66179000,0.0,0.0
-2026-06-26,357.15,376.61,355.43,372.97,186112200,0.0,0.0
+Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
+2026-05-28,412.98,429.49,412.67,426.99,47250500,0.0,0.0
+2026-05-29,432.55,450.33,432.36,450.24,79654400,0.0,0.0
+2026-06-01,464.84,466.32,458.27,460.52,53628900,0.0,0.0
+2026-06-02,446.88,453.5,440.43,441.31,37036800,0.0,0.0
+2026-06-03,438.45,440.39,424.25,427.34,39037000,0.0,0.0
+2026-06-04,435.81,436.15,426.41,428.05,26899500,0.0,0.0
+2026-06-05,428.34,429.47,414.4,416.67,34782200,0.0,0.0
+2026-06-08,414.14,417.16,408.56,411.74,32086700,0.0,0.0
+2026-06-09,409.03,411.98,398.48,403.41,35317300,0.0,0.0
+2026-06-10,398.55,405.04,397.16,397.36,32576000,0.0,0.0
+2026-06-11,395.21,396.85,384.0,390.34,47224100,0.0,0.0
+2026-06-12,391.43,391.74,382.27,390.74,34865800,0.0,0.0
+2026-06-15,396.8,401.75,392.85,399.76,32266400,0.0,0.0
+2026-06-16,395.79,396.84,390.69,393.83,31506800,0.0,0.0
+2026-06-17,390.25,390.37,377.32,378.91,41987800,0.0,0.0
+2026-06-18,377.82,381.37,373.28,379.4,59714200,0.0,0.0
+2026-06-22,375.74,381.63,367.07,367.34,45171100,0.0,0.0
+2026-06-23,372.38,377.22,370.67,373.94,40647600,0.0,0.0
+2026-06-24,371.57,378.88,364.78,365.46,44509900,0.0,0.0
+2026-06-25,362.77,364.23,349.2,352.83,66179000,0.0,0.0
+2026-06-26,357.15,376.61,355.43,372.97,186112200,0.0,0.0
 
 ```
 
@@ -344,15 +344,17 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 ```text
 Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent messages
 
+[2026-06-28T12:15:11Z · @howardlindzon · no-label] $MSFT new ai hire to manage how they fit in in a world of open ai and anthropic    https://fortune.com/2026/06/27/microsoft-copilot-boss-jacob-andreou-tapped-by-satya-nadella-to-save-ai-strategy/
+[2026-06-28T11:38:45Z · @VictorTwits · no-label] $AI $META $MSFT $ORCL $SPY @rsmracks Nonsense!Funds are the villains.Fink destroyed the stock market w Alladdin fulfilling every commie’s wet dream: a planned economy.The game is completely run by funds’ algos, dark pools &amp; shorting structures that treat order books as progra…
 [2026-06-28T10:10:20Z · @mynameisplissken · Bullish] $MSFT excited for monday. hope it opens above 380
 [2026-06-28T10:07:35Z · @Michelroro123_ · Bullish] $MSFT When a stock like Microsoft worth over $2.7 trillion moves up over 5% in a single day on 186M+ volume, it is physically impossible for retail investors to cause it only institutions aggressive buying. This was massive institutional buying Hoping for rally.
 [2026-06-28T06:54:42Z · @GlobalMarketBulletin · no-label] $MSFT Microsoft (MSFT) is pouring money into Azure, AI infrastructure, Copilot, and enterprise software growth. While margin pressure is making some analysts cautious, this blue-chip technology stock may still have one of the strongest wealth-building stories in the market. https…
-[2026-06-28T06:19:48Z · @TheStockShrewd · Bullish] $MU BTW, after next quarters EPS, if this retains its P/E ratio of ≈ 27 the stock will be worth $2008   $QQQ $SPY $MSFT
-[2026-06-28T05:13:48Z · @TheStockShrewd · Bullish] $MSFT Burry investment and institutional buying has potential to turn the sentiment around.  I think we’ll see $450 soon, who even cares about capex anymore on a company who continues to grow earnings lol. Micron just proved nobody cares
-[2026-06-28T04:53:32Z · @TheStockShrewd · Bullish] $NKE yikes big bull trap with low price action but zero earnings to push  Rather buy $MSFT $META $MU instead
-[2026-06-28T04:45:42Z · @TheStockShrewd · Bearish] $NKE so this deserves a higher PE than $META , $MSFT , and $MU ?   Yea… holding out until low $30 s
+[2026-06-28T06:19:48Z · @thewolfofsomestreet · Bullish] $MU BTW, after next quarters EPS, if this retains its P/E ratio of ≈ 27 the stock will be worth $2008   $QQQ $SPY $MSFT
+[2026-06-28T05:13:48Z · @thewolfofsomestreet · Bullish] $MSFT Burry investment and institutional buying has potential to turn the sentiment around.  I think we’ll see $450 soon, who even cares about capex anymore on a company who continues to grow earnings lol. Micron just proved nobody cares
+[2026-06-28T04:53:32Z · @thewolfofsomestreet · Bullish] $NKE yikes big bull trap with low price action but zero earnings to push  Rather buy $MSFT $META $MU instead
+[2026-06-28T04:45:42Z · @thewolfofsomestreet · Bearish] $NKE so this deserves a higher PE than $META , $MSFT , and $MU ?   Yea… holding out until low $30 s
 [2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
-[2026-06-28T03:48:17Z · @TheStockShrewd · Bullish] $MU $NVDA $META  $MSFT
+[2026-06-28T03:48:17Z · @thewolfofsomestreet · Bullish] $MU $NVDA $META  $MSFT
 [2026-06-28T03:19:32Z · @NetflixUser · Bearish] $MSFT U.S. strikes on Iranian military sites. U.S. Navy and Air Force fighter jets conducted the strikes on military targets at multiple locations in and near the Strait of Hormuz, CENTCOM said on Saturday night.  The new strikes follow Bahrain&amp;#39;s claim that Iranian drones…
 [2026-06-28T02:10:43Z · @GlobalMarketBulletin · no-label] $AMZN $GOOGL $META $MSFT $NVDA These five technology giants are not just big names anymore. They are building the future of artificial intelligence, cloud infrastructure, AI chips, digital advertising, smart glasses, and autonomous networks which can make you a millionaire. https…
 [2026-06-28T01:47:37Z · @spacechimp · no-label] $MSFT boolish for msft?
@@ -372,8 +374,6 @@ Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent 
 [2026-06-28T00:04:48Z · @OptionsPlayers · no-label] $INTC $MSFT Glad you are enjoying. What’s your next target in the OP Vault?
 [2026-06-28T00:04:32Z · @EconomyEngine · no-label] $QQQ $SPY $NVDA $TSLA $MSFT Iran launches strikes on US military assets in Bahrain, explosions reported.🔴🔴🔴🔴
 [2026-06-28T00:00:39Z · @pnvoss · no-label] $SPY sticking to top 5. Oversold conditions can surge any moment. Down 13% might add $APP $MSFT or $NOW probably now.   China could surge back. Can&#39;t sell this oversold.   They keep running stocks from extremes to extremes. Very hard to time.
-[2026-06-27T23:35:47Z · @Supraman1 · no-label] $MU  $MU $NVDA $SNDK $AAPL $MSFT
-[2026-06-27T23:34:03Z · @Probably_Drunk · no-label] $MSFT My plans tonight you ask?  Well me and Netflixusers mom are going to go out for a nice dinner, and then we&#39;re gonna go back to her place to watch Netflix and.....
 ```
 
 ### Tool: fetch_reddit_posts
@@ -439,18 +439,6 @@ Link: https://finance.yahoo.com/technology/articles/cloudflare-net-announces-ini
 Microsoft Corporation (NASDAQ:MSFT) is one of the safe stocks for beginners to buy in 2026. Reuters reported on June 25 that, according to EU antitrust regulators, Amazon and Microsoft Corporation’s (NASDAQ:MSFT) cloud computing services should be designated as “gatekeepers” under landmark tech rules. This step would subject them to strict obligations aimed at curbing market […]
 Link: https://finance.yahoo.com/technology/articles/eu-targets-microsoft-msft-amazon-183743473.html
 
-### Why Investors Should Avoid Nebius Stock (source: Barchart)
-Nebius has multiple potential negative catalysts and a very high valuation.
-Link: https://www.barchart.com/story/news/3016917/why-investors-should-avoid-nebius-stock
-
-### Commvault Systems (CVLT) Is Up 7.7% After Native Azure AI Cyber Resilience Deal - What's Changed (source: Simply Wall St.)
-In late June 2026, Commvault announced a multiyear partnership with Microsoft to make its AI-driven cyber resilience technologies available as a native ISV service on Microsoft Azure, enabling enterprises to deploy, procure, and manage Commvault Cloud directly within the Azure platform. This move embeds Commvault more deeply into a very large cloud ecosystem, potentially accelerating adoption of its subscription-based resilience offerings across highly regulated industries seeking secure AI...
-Link: https://finance.yahoo.com/markets/stocks/articles/commvault-systems-cvlt-7-7-180619817.html
-
-### Michael Burry doubles down on beaten-down China tech (source: TheStreet)
-The man who predicted the 2008 housing crash is making another contrarian call, and this time his sights are set on China. Hedge fund manager Michael Burry, who became famous after the film "The Big Short" chronicled his bet against subprime mortgages, revealed on Thursday, June 25, that he added ...
-Link: https://www.thestreet.com/investing/stocks/jd-stock-michael-burry-doubles-down-beaten-down-china-tech
-
 
 ```
 
@@ -468,110 +456,110 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-28 21:01:03
+# Data retrieved on: 2026-06-28 22:28:02
 
-,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
-0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D
-1,4500,1812780,,Sale at price 402.84 per share.,NUMOTO TAKESHI,Officer,,2026-06-10,D
-2,2500,1031125,,Sale at price 412.45 per share.,NUMOTO TAKESHI,Officer,,2026-06-08,D
-3,149,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-06-05,D
-4,15,0,,Stock Award(Grant) at price 0.00 per share.,DI SIBIO CARMINE,Director,,2026-06-05,D
-5,149,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-06-05,D
-6,149,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-06-05,D
-7,15500,7145314,,Sale at price 460.99 per share.,ALTHOFF JUDSON,Officer,,2026-06-01,D
-8,1262,519242,,Sale at price 411.34 per share.,COLEMAN AMY,Officer,,2026-05-14,D
-9,12320,5045643,,Sale at price 409.52 per share.,HOGAN KATHLEEN T,Officer,,2026-03-06,D
-10,5000,1986750,,Purchase at price 397.35 per share.,STANTON JOHN W.,Director,,2026-02-18,D
-11,145,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-01-30,D
-12,145,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-01-30,D
-13,145,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2026-01-30,D
-14,145,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-01-30,D
-15,150,0,,Stock Gift at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-12-10,D
-16,2850,1364352,,Sale at price 478.72 per share.,NUMOTO TAKESHI,Officer,,2025-12-04,D
-17,130,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-12-04,D
-18,130,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-12-04,D
-19,130,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-12-04,D
-20,130,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-12-04,D
-21,12750,6266829,,Sale at price 491.52 per share.,ALTHOFF JUDSON,Officer,,2025-12-02,D
-22,3463,0,,Stock Gift at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-11-20,D
-23,3977,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-11-10,D
-24,10000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-11-06,D
-25,38500,19967707,,Sale at price 518.49 - 519.21 per share.,SMITH BRADFORD LEE,President,,2025-11-03,D
-26,6513,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-15,D
-27,26151,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-15,D
-28,11583,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-15,D
-29,4022,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
-30,4358,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
-31,26151,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-15,D
-32,26151,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-15,D
-33,125,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-09-10,D
-34,125,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-09-10,D
-35,125,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-09-10,D
-36,125,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-09-10,D
-37,149205,75315121,,Sale at price 503.00 - 507.56 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-03,D
-38,20386,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-02,D
-39,45220,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-02,D
-40,17223,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-02,D
-41,47877,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-02,D
-42,308870,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-02,D
-43,54053,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-02,D
-44,3813,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2025-08-29,D
-45,4850,2557506,,Sale at price 525.56 - 528.56 per share.,NUMOTO TAKESHI,Officer,,2025-08-12,D
-46,20000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-08-11,D
-47,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-06-10,D
-48,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-06-10,D
-49,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-06-10,D
-50,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-06-10,D
-51,3000,1389000,,Sale at price 463.00 per share.,NUMOTO TAKESHI,Officer,,2025-06-03,D
-52,1000,460008,,Sale at price 460.01 per share.,NUMOTO TAKESHI,Officer,,2025-05-30,D
-53,21500,9756152,,Sale at price 453.77 per share.,HOGAN KATHLEEN T,Officer,,2025-05-21,D
-54,16000,7330817,,Sale at price 457.97 - 458.46 per share.,ALTHOFF JUDSON,Officer,,2025-05-19,D
-55,13242,5985886,,Sale at price 452.01 per share.,COLEMAN AMY,Officer,,2025-05-15,D
-56,3842,1684498,,Sale at price 390.57 - 438.82 per share.,SMITH BRADFORD LEE,President,,2025-05-05,D
-57,81000,35302945,,Sale at price 433.17 - 436.29 per share.,SMITH BRADFORD LEE,President,,2025-05-05,D
-58,3842,1450221,,Purchase at price 377.46 per share.,SMITH BRADFORD LEE,President,,2025-04-23,D
-59,10370,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-04-15,D
-60,151,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-01-31,D
-61,151,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-01-31,D
-62,151,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-01-31,D
-63,151,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-01-31,D
-64,2500,1118530,,Sale at price 447.41 per share.,NUMOTO TAKESHI,Officer,,2024-12-09,D
-65,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2024-12-09,D
-66,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-12-09,D
-67,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-12-09,D
-68,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-12-09,D
-69,2000,874634,,Sale at price 437.32 per share.,NUMOTO TAKESHI,Officer,,2024-12-04,D
-70,3500,1500662,,Sale at price 423.48 - 430.87 per share.,NUMOTO TAKESHI,Officer,,2024-12-02,D
-71,25000,10425000,,Sale at price 417.00 per share.,ALTHOFF JUDSON,Officer,,2024-11-22,D
-72,1000,414720,,Sale at price 414.72 per share.,NUMOTO TAKESHI,Officer,,2024-11-22,D
-73,4719,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-11-13,D
-74,7200,3050340,,Sale at price 423.66 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-11-12,D
-75,7912,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-16,D
-76,8990,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-16,D
-77,23374,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-16,D
-78,8511,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-16,D
-79,23374,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-16,D
-80,23374,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-16,D
-81,17377,7156892,,Sale at price 411.85 per share.,HOGAN KATHLEEN T,Officer,,2024-09-10,D
-82,2500,1027608,,Sale at price 411.04 per share.,NUMOTO TAKESHI,Officer,,2024-09-10,D
-83,12500,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-10,D
-84,40000,16103553,,Sale at price 402.59 - 403.30 per share.,SMITH BRADFORD LEE,President,,2024-09-09,D
-85,146,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-09-06,D
-86,146,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-09-06,D
-87,146,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2024-09-06,D
-88,146,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-09-06,D
-89,38000,15600794,,Sale at price 410.55 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-05,D
-90,78353,32017224,,Sale at price 404.98 - 410.82 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-04,D
-91,2450,0,,Stock Gift at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-04,D
-92,17224,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-03,D
-93,19573,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-03,D
-94,32881,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-03,D
-95,14552,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-03,D
-96,40448,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-03,D
-97,260949,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-03,D
-98,45668,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-03,D
-99,4411,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2024-08-30,D
-100,14398,6009898,,Sale at price 417.41 per share.,NADELLA SATYA,Chief Executive Officer,,2024-08-23,I
+,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
+0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D
+1,4500,1812780,,Sale at price 402.84 per share.,NUMOTO TAKESHI,Officer,,2026-06-10,D
+2,2500,1031125,,Sale at price 412.45 per share.,NUMOTO TAKESHI,Officer,,2026-06-08,D
+3,149,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-06-05,D
+4,15,0,,Stock Award(Grant) at price 0.00 per share.,DI SIBIO CARMINE,Director,,2026-06-05,D
+5,149,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-06-05,D
+6,149,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-06-05,D
+7,15500,7145314,,Sale at price 460.99 per share.,ALTHOFF JUDSON,Officer,,2026-06-01,D
+8,1262,519242,,Sale at price 411.34 per share.,COLEMAN AMY,Officer,,2026-05-14,D
+9,12320,5045643,,Sale at price 409.52 per share.,HOGAN KATHLEEN T,Officer,,2026-03-06,D
+10,5000,1986750,,Purchase at price 397.35 per share.,STANTON JOHN W.,Director,,2026-02-18,D
+11,145,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-01-30,D
+12,145,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-01-30,D
+13,145,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2026-01-30,D
+14,145,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-01-30,D
+15,150,0,,Stock Gift at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-12-10,D
+16,2850,1364352,,Sale at price 478.72 per share.,NUMOTO TAKESHI,Officer,,2025-12-04,D
+17,130,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-12-04,D
+18,130,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-12-04,D
+19,130,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-12-04,D
+20,130,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-12-04,D
+21,12750,6266829,,Sale at price 491.52 per share.,ALTHOFF JUDSON,Officer,,2025-12-02,D
+22,3463,0,,Stock Gift at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-11-20,D
+23,3977,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-11-10,D
+24,10000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-11-06,D
+25,38500,19967707,,Sale at price 518.49 - 519.21 per share.,SMITH BRADFORD LEE,President,,2025-11-03,D
+26,6513,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-15,D
+27,26151,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-15,D
+28,11583,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-15,D
+29,4022,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
+30,4358,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
+31,26151,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-15,D
+32,26151,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-15,D
+33,125,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-09-10,D
+34,125,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-09-10,D
+35,125,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-09-10,D
+36,125,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-09-10,D
+37,149205,75315121,,Sale at price 503.00 - 507.56 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-03,D
+38,20386,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-02,D
+39,45220,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-02,D
+40,17223,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-02,D
+41,47877,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-02,D
+42,308870,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-02,D
+43,54053,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-02,D
+44,3813,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2025-08-29,D
+45,4850,2557506,,Sale at price 525.56 - 528.56 per share.,NUMOTO TAKESHI,Officer,,2025-08-12,D
+46,20000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-08-11,D
+47,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-06-10,D
+48,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-06-10,D
+49,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-06-10,D
+50,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-06-10,D
+51,3000,1389000,,Sale at price 463.00 per share.,NUMOTO TAKESHI,Officer,,2025-06-03,D
+52,1000,460008,,Sale at price 460.01 per share.,NUMOTO TAKESHI,Officer,,2025-05-30,D
+53,21500,9756152,,Sale at price 453.77 per share.,HOGAN KATHLEEN T,Officer,,2025-05-21,D
+54,16000,7330817,,Sale at price 457.97 - 458.46 per share.,ALTHOFF JUDSON,Officer,,2025-05-19,D
+55,13242,5985886,,Sale at price 452.01 per share.,COLEMAN AMY,Officer,,2025-05-15,D
+56,3842,1684498,,Sale at price 390.57 - 438.82 per share.,SMITH BRADFORD LEE,President,,2025-05-05,D
+57,81000,35302945,,Sale at price 433.17 - 436.29 per share.,SMITH BRADFORD LEE,President,,2025-05-05,D
+58,3842,1450221,,Purchase at price 377.46 per share.,SMITH BRADFORD LEE,President,,2025-04-23,D
+59,10370,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-04-15,D
+60,151,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-01-31,D
+61,151,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-01-31,D
+62,151,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-01-31,D
+63,151,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-01-31,D
+64,2500,1118530,,Sale at price 447.41 per share.,NUMOTO TAKESHI,Officer,,2024-12-09,D
+65,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2024-12-09,D
+66,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-12-09,D
+67,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-12-09,D
+68,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-12-09,D
+69,2000,874634,,Sale at price 437.32 per share.,NUMOTO TAKESHI,Officer,,2024-12-04,D
+70,3500,1500662,,Sale at price 423.48 - 430.87 per share.,NUMOTO TAKESHI,Officer,,2024-12-02,D
+71,25000,10425000,,Sale at price 417.00 per share.,ALTHOFF JUDSON,Officer,,2024-11-22,D
+72,1000,414720,,Sale at price 414.72 per share.,NUMOTO TAKESHI,Officer,,2024-11-22,D
+73,4719,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-11-13,D
+74,7200,3050340,,Sale at price 423.66 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-11-12,D
+75,7912,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-16,D
+76,8990,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-16,D
+77,23374,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-16,D
+78,8511,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-16,D
+79,23374,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-16,D
+80,23374,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-16,D
+81,17377,7156892,,Sale at price 411.85 per share.,HOGAN KATHLEEN T,Officer,,2024-09-10,D
+82,2500,1027608,,Sale at price 411.04 per share.,NUMOTO TAKESHI,Officer,,2024-09-10,D
+83,12500,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-10,D
+84,40000,16103553,,Sale at price 402.59 - 403.30 per share.,SMITH BRADFORD LEE,President,,2024-09-09,D
+85,146,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-09-06,D
+86,146,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-09-06,D
+87,146,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2024-09-06,D
+88,146,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-09-06,D
+89,38000,15600794,,Sale at price 410.55 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-05,D
+90,78353,32017224,,Sale at price 404.98 - 410.82 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-04,D
+91,2450,0,,Stock Gift at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-04,D
+92,17224,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-03,D
+93,19573,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-03,D
+94,32881,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-03,D
+95,14552,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-03,D
+96,40448,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-03,D
+97,260949,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-03,D
+98,45668,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-03,D
+99,4411,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2024-08-30,D
+100,14398,6009898,,Sale at price 417.41 per share.,NADELLA SATYA,Chief Executive Officer,,2024-08-23,I
 
 ```
 
@@ -585,7 +573,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-06-28 21:01:03
+# Data retrieved on: 2026-06-28 22:28:02
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -623,88 +611,88 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 21:01:04
+# Data retrieved on: 2026-06-28 22:28:03
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
-Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
-Share Issued,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
-Net Debt,8157000000.0,15966000000.0,14359000000.0,12909000000.0,14053000000.0,,
-Total Debt,56965000000.0,57607000000.0,60556000000.0,60588000000.0,60567000000.0,,
-Tangible Book Value,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,,
-Invested Capital,454629000000.0,431137000000.0,406284000000.0,386630000000.0,364772000000.0,,
-Working Capital,38668000000.0,50185000000.0,54070000000.0,49913000000.0,42438000000.0,,
-Net Tangible Assets,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,,
-Capital Lease Obligations,16703000000.0,17345000000.0,17348000000.0,17437000000.0,17686000000.0,,
-Common Stock Equity,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
-Total Capitalization,445790000000.0,426300000000.0,398452000000.0,383631000000.0,361773000000.0,,
-Total Equity Gross Minority Interest,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
-Stockholders Equity,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
-Gains Losses Not Affecting Retained Earnings,-3228000000.0,-2702000000.0,-2761000000.0,-3347000000.0,-4833000000.0,,
-Other Equity Adjustments,-3228000000.0,-2702000000.0,-2761000000.0,-3347000000.0,-4833000000.0,,
-Retained Earnings,302526000000.0,280789000000.0,254873000000.0,237731000000.0,219759000000.0,,
-Capital Stock,115069000000.0,112788000000.0,110964000000.0,109095000000.0,106965000000.0,,
-Common Stock,115069000000.0,112788000000.0,110964000000.0,109095000000.0,106965000000.0,,
-Total Liabilities Net Minority Interest,279861000000.0,274427000000.0,273275000000.0,275524000000.0,240733000000.0,,
-Total Non Current Liabilities Net Minority Interest,143200000000.0,144422000000.0,138279000000.0,134306000000.0,126527000000.0,,
-Other Non Current Liabilities,61481000000.0,58852000000.0,53588000000.0,45186000000.0,38536000000.0,,
-Tradeand Other Payables Non Current,27941000000.0,27256000000.0,26569000000.0,25986000000.0,25061000000.0,,
-Non Current Deferred Liabilities,5652000000.0,5544000000.0,5398000000.0,5545000000.0,5362000000.0,,
-Non Current Deferred Revenue,2753000000.0,2668000000.0,2546000000.0,2710000000.0,2840000000.0,,
-Non Current Deferred Taxes Liabilities,2899000000.0,2876000000.0,2852000000.0,2835000000.0,2522000000.0,,
-Long Term Debt And Capital Lease Obligation,48126000000.0,52770000000.0,52724000000.0,57589000000.0,57568000000.0,,
-Long Term Capital Lease Obligation,16703000000.0,17345000000.0,17348000000.0,17437000000.0,17686000000.0,,
-Long Term Debt,31423000000.0,35425000000.0,35376000000.0,40152000000.0,39882000000.0,,
-Current Liabilities,136661000000.0,130005000000.0,134996000000.0,141218000000.0,114206000000.0,,
-Other Current Liabilities,24552000000.0,24311000000.0,22741000000.0,25020000000.0,22937000000.0,,
-Current Deferred Liabilities,50924000000.0,51376000000.0,58987000000.0,64555000000.0,44636000000.0,,
-Current Deferred Revenue,50924000000.0,51376000000.0,58987000000.0,64555000000.0,44636000000.0,,
-Current Debt And Capital Lease Obligation,8839000000.0,4837000000.0,7832000000.0,2999000000.0,2999000000.0,,
-Current Debt,8839000000.0,4837000000.0,7832000000.0,2999000000.0,2999000000.0,,
-Other Current Borrowings,,,,2999000000.0,2999000000.0,5248000000.0,2249000000.0
-Commercial Paper,,,,0.0,0.0,0.0,0.0
-Pensionand Other Post Retirement Benefit Plans Current,11270000000.0,10103000000.0,9201000000.0,13709000000.0,10579000000.0,,
-Payables And Accrued Expenses,41076000000.0,39378000000.0,36235000000.0,34935000000.0,33055000000.0,,
-Payables,41076000000.0,39378000000.0,36235000000.0,34935000000.0,33055000000.0,,
-Total Tax Payable,3563000000.0,2050000000.0,3655000000.0,7211000000.0,6805000000.0,,
-Income Tax Payable,3563000000.0,2050000000.0,3655000000.0,7211000000.0,6805000000.0,,
-Accounts Payable,37513000000.0,37328000000.0,32580000000.0,27724000000.0,26250000000.0,,
-Total Assets,694228000000.0,665302000000.0,636351000000.0,619003000000.0,562624000000.0,,
-Total Non Current Assets,518899000000.0,485112000000.0,447285000000.0,427872000000.0,405980000000.0,,
-Other Non Current Assets,38599000000.0,37770000000.0,39435000000.0,40565000000.0,38234000000.0,,
-Financial Assets,0.0,0.0,1182000000.0,272000000.0,273000000.0,,
-Investments And Advances,33683000000.0,21202000000.0,10283000000.0,15133000000.0,15762000000.0,,
-Investmentin Financial Assets,33683000000.0,21202000000.0,10283000000.0,2460000000.0,2275000000.0,,
-Available For Sale Securities,10346000000.0,1620000000.0,2510000000.0,2460000000.0,2275000000.0,,
-Financial Assets Designatedas Fair Value Through Profitor Loss Total,23337000000.0,19582000000.0,7773000000.0,,,,
-Long Term Equity Investment,,,,12673000000.0,13487000000.0,13304000000.0,14278000000.0
-Goodwill And Other Intangible Assets,138986000000.0,139911000000.0,140733000000.0,142113000000.0,143297000000.0,,
-Other Intangible Assets,19325000000.0,20289000000.0,21236000000.0,22604000000.0,23968000000.0,,
-Goodwill,119661000000.0,119622000000.0,119497000000.0,119509000000.0,119329000000.0,,
-Net PPE,307631000000.0,286229000000.0,255652000000.0,229789000000.0,208414000000.0,,
-Accumulated Depreciation,-111723000000.0,-104950000000.0,-98880000000.0,-93653000000.0,-87074000000.0,,
-Gross PPE,419354000000.0,391179000000.0,354532000000.0,323442000000.0,295488000000.0,,
-Leases,15444000000.0,14500000000.0,13610000000.0,12117000000.0,,,
-Other Properties,24403000000.0,25103000000.0,24791000000.0,24823000000.0,295488000000.0,,
-Machinery Furniture Equipment,197434000000.0,177892000000.0,154248000000.0,139243000000.0,,,
-Buildings And Improvements,172260000000.0,163986000000.0,152433000000.0,137921000000.0,,,
-Land And Improvements,9813000000.0,9698000000.0,9450000000.0,9338000000.0,,,
-Properties,0.0,0.0,0.0,0.0,,,
-Current Assets,175329000000.0,180190000000.0,189066000000.0,191131000000.0,156644000000.0,,
-Other Current Assets,35797000000.0,33134000000.0,33030000000.0,25723000000.0,24478000000.0,,
-Hedging Assets Current,44000000.0,6000000.0,7000000.0,10000000.0,6000000.0,,
-Inventory,1219000000.0,1059000000.0,1130000000.0,938000000.0,848000000.0,,
-Finished Goods,,,,,508000000.0,557000000.0,1127000000.0
-Work In Process,,,,,13000000.0,7000000.0,11000000.0
-Raw Materials,,,,,327000000.0,345000000.0,488000000.0
-Receivables,60041000000.0,56535000000.0,52894000000.0,69905000000.0,51700000000.0,,
-Accounts Receivable,60041000000.0,56535000000.0,52894000000.0,69905000000.0,51700000000.0,,
-Allowance For Doubtful Accounts Receivable,-794000000.0,-729000000.0,-687000000.0,-944000000.0,-695000000.0,,
-Gross Accounts Receivable,60835000000.0,57264000000.0,53581000000.0,70849000000.0,52395000000.0,,
-Cash Cash Equivalents And Short Term Investments,78228000000.0,89456000000.0,102005000000.0,94555000000.0,79612000000.0,,
-Other Short Term Investments,46123000000.0,65160000000.0,73156000000.0,64313000000.0,50784000000.0,,
-Cash And Cash Equivalents,32105000000.0,24296000000.0,28849000000.0,30242000000.0,28828000000.0,,
-Cash Equivalents,19374000000.0,14075000000.0,17483000000.0,18531000000.0,18148000000.0,,
-Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,10680000000.0,,
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
+Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
+Share Issued,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
+Net Debt,8157000000.0,15966000000.0,14359000000.0,12909000000.0,14053000000.0,,
+Total Debt,56965000000.0,57607000000.0,60556000000.0,60588000000.0,60567000000.0,,
+Tangible Book Value,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,,
+Invested Capital,454629000000.0,431137000000.0,406284000000.0,386630000000.0,364772000000.0,,
+Working Capital,38668000000.0,50185000000.0,54070000000.0,49913000000.0,42438000000.0,,
+Net Tangible Assets,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,,
+Capital Lease Obligations,16703000000.0,17345000000.0,17348000000.0,17437000000.0,17686000000.0,,
+Common Stock Equity,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
+Total Capitalization,445790000000.0,426300000000.0,398452000000.0,383631000000.0,361773000000.0,,
+Total Equity Gross Minority Interest,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
+Stockholders Equity,414367000000.0,390875000000.0,363076000000.0,343479000000.0,321891000000.0,,
+Gains Losses Not Affecting Retained Earnings,-3228000000.0,-2702000000.0,-2761000000.0,-3347000000.0,-4833000000.0,,
+Other Equity Adjustments,-3228000000.0,-2702000000.0,-2761000000.0,-3347000000.0,-4833000000.0,,
+Retained Earnings,302526000000.0,280789000000.0,254873000000.0,237731000000.0,219759000000.0,,
+Capital Stock,115069000000.0,112788000000.0,110964000000.0,109095000000.0,106965000000.0,,
+Common Stock,115069000000.0,112788000000.0,110964000000.0,109095000000.0,106965000000.0,,
+Total Liabilities Net Minority Interest,279861000000.0,274427000000.0,273275000000.0,275524000000.0,240733000000.0,,
+Total Non Current Liabilities Net Minority Interest,143200000000.0,144422000000.0,138279000000.0,134306000000.0,126527000000.0,,
+Other Non Current Liabilities,61481000000.0,58852000000.0,53588000000.0,45186000000.0,38536000000.0,,
+Tradeand Other Payables Non Current,27941000000.0,27256000000.0,26569000000.0,25986000000.0,25061000000.0,,
+Non Current Deferred Liabilities,5652000000.0,5544000000.0,5398000000.0,5545000000.0,5362000000.0,,
+Non Current Deferred Revenue,2753000000.0,2668000000.0,2546000000.0,2710000000.0,2840000000.0,,
+Non Current Deferred Taxes Liabilities,2899000000.0,2876000000.0,2852000000.0,2835000000.0,2522000000.0,,
+Long Term Debt And Capital Lease Obligation,48126000000.0,52770000000.0,52724000000.0,57589000000.0,57568000000.0,,
+Long Term Capital Lease Obligation,16703000000.0,17345000000.0,17348000000.0,17437000000.0,17686000000.0,,
+Long Term Debt,31423000000.0,35425000000.0,35376000000.0,40152000000.0,39882000000.0,,
+Current Liabilities,136661000000.0,130005000000.0,134996000000.0,141218000000.0,114206000000.0,,
+Other Current Liabilities,24552000000.0,24311000000.0,22741000000.0,25020000000.0,22937000000.0,,
+Current Deferred Liabilities,50924000000.0,51376000000.0,58987000000.0,64555000000.0,44636000000.0,,
+Current Deferred Revenue,50924000000.0,51376000000.0,58987000000.0,64555000000.0,44636000000.0,,
+Current Debt And Capital Lease Obligation,8839000000.0,4837000000.0,7832000000.0,2999000000.0,2999000000.0,,
+Current Debt,8839000000.0,4837000000.0,7832000000.0,2999000000.0,2999000000.0,,
+Other Current Borrowings,,,,2999000000.0,2999000000.0,5248000000.0,2249000000.0
+Commercial Paper,,,,0.0,0.0,0.0,0.0
+Pensionand Other Post Retirement Benefit Plans Current,11270000000.0,10103000000.0,9201000000.0,13709000000.0,10579000000.0,,
+Payables And Accrued Expenses,41076000000.0,39378000000.0,36235000000.0,34935000000.0,33055000000.0,,
+Payables,41076000000.0,39378000000.0,36235000000.0,34935000000.0,33055000000.0,,
+Total Tax Payable,3563000000.0,2050000000.0,3655000000.0,7211000000.0,6805000000.0,,
+Income Tax Payable,3563000000.0,2050000000.0,3655000000.0,7211000000.0,6805000000.0,,
+Accounts Payable,37513000000.0,37328000000.0,32580000000.0,27724000000.0,26250000000.0,,
+Total Assets,694228000000.0,665302000000.0,636351000000.0,619003000000.0,562624000000.0,,
+Total Non Current Assets,518899000000.0,485112000000.0,447285000000.0,427872000000.0,405980000000.0,,
+Other Non Current Assets,38599000000.0,37770000000.0,39435000000.0,40565000000.0,38234000000.0,,
+Financial Assets,0.0,0.0,1182000000.0,272000000.0,273000000.0,,
+Investments And Advances,33683000000.0,21202000000.0,10283000000.0,15133000000.0,15762000000.0,,
+Investmentin Financial Assets,33683000000.0,21202000000.0,10283000000.0,2460000000.0,2275000000.0,,
+Available For Sale Securities,10346000000.0,1620000000.0,2510000000.0,2460000000.0,2275000000.0,,
+Financial Assets Designatedas Fair Value Through Profitor Loss Total,23337000000.0,19582000000.0,7773000000.0,,,,
+Long Term Equity Investment,,,,12673000000.0,13487000000.0,13304000000.0,14278000000.0
+Goodwill And Other Intangible Assets,138986000000.0,139911000000.0,140733000000.0,142113000000.0,143297000000.0,,
+Other Intangible Assets,19325000000.0,20289000000.0,21236000000.0,22604000000.0,23968000000.0,,
+Goodwill,119661000000.0,119622000000.0,119497000000.0,119509000000.0,119329000000.0,,
+Net PPE,307631000000.0,286229000000.0,255652000000.0,229789000000.0,208414000000.0,,
+Accumulated Depreciation,-111723000000.0,-104950000000.0,-98880000000.0,-93653000000.0,-87074000000.0,,
+Gross PPE,419354000000.0,391179000000.0,354532000000.0,323442000000.0,295488000000.0,,
+Leases,15444000000.0,14500000000.0,13610000000.0,12117000000.0,,,
+Other Properties,24403000000.0,25103000000.0,24791000000.0,24823000000.0,295488000000.0,,
+Machinery Furniture Equipment,197434000000.0,177892000000.0,154248000000.0,139243000000.0,,,
+Buildings And Improvements,172260000000.0,163986000000.0,152433000000.0,137921000000.0,,,
+Land And Improvements,9813000000.0,9698000000.0,9450000000.0,9338000000.0,,,
+Properties,0.0,0.0,0.0,0.0,,,
+Current Assets,175329000000.0,180190000000.0,189066000000.0,191131000000.0,156644000000.0,,
+Other Current Assets,35797000000.0,33134000000.0,33030000000.0,25723000000.0,24478000000.0,,
+Hedging Assets Current,44000000.0,6000000.0,7000000.0,10000000.0,6000000.0,,
+Inventory,1219000000.0,1059000000.0,1130000000.0,938000000.0,848000000.0,,
+Finished Goods,,,,,508000000.0,557000000.0,1127000000.0
+Work In Process,,,,,13000000.0,7000000.0,11000000.0
+Raw Materials,,,,,327000000.0,345000000.0,488000000.0
+Receivables,60041000000.0,56535000000.0,52894000000.0,69905000000.0,51700000000.0,,
+Accounts Receivable,60041000000.0,56535000000.0,52894000000.0,69905000000.0,51700000000.0,,
+Allowance For Doubtful Accounts Receivable,-794000000.0,-729000000.0,-687000000.0,-944000000.0,-695000000.0,,
+Gross Accounts Receivable,60835000000.0,57264000000.0,53581000000.0,70849000000.0,52395000000.0,,
+Cash Cash Equivalents And Short Term Investments,78228000000.0,89456000000.0,102005000000.0,94555000000.0,79612000000.0,,
+Other Short Term Investments,46123000000.0,65160000000.0,73156000000.0,64313000000.0,50784000000.0,,
+Cash And Cash Equivalents,32105000000.0,24296000000.0,28849000000.0,30242000000.0,28828000000.0,,
+Cash Equivalents,19374000000.0,14075000000.0,17483000000.0,18531000000.0,18148000000.0,,
+Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,10680000000.0,,
 
 ```
 
@@ -714,69 +702,69 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 21:01:04
+# Data retrieved on: 2026-06-28 22:28:03
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
-Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,,
-Repurchase Of Capital Stock,-4627000000.0,-7415000000.0,-5650000000.0,-4546000000.0,-4781000000.0,,
-Repayment Of Debt,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
-Issuance Of Debt,,,,0.0,0.0,0.0,0.0
-Issuance Of Capital Stock,541000000.0,259000000.0,689000000.0,548000000.0,546000000.0,,
-Capital Expenditure,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
-End Cash Position,32105000000.0,24296000000.0,28849000000.0,30242000000.0,28828000000.0,,
-Beginning Cash Position,24296000000.0,28849000000.0,30242000000.0,28828000000.0,17482000000.0,,
-Effect Of Exchange Rate Changes,-114000000.0,11000000.0,-92000000.0,183000000.0,52000000.0,,
-Changes In Cash,7923000000.0,-4564000000.0,-1301000000.0,1231000000.0,11294000000.0,,
-Financing Cash Flow,-11351000000.0,-17617000000.0,-11799000000.0,-10844000000.0,-13036000000.0,,
-Cash Flow From Continuing Financing Activities,-11351000000.0,-17617000000.0,-11799000000.0,-10844000000.0,-13036000000.0,,
-Net Other Financing Charges,-509000000.0,-699000000.0,-669000000.0,-677000000.0,-382000000.0,,
-Cash Dividends Paid,-6756000000.0,-6762000000.0,-6169000000.0,-6169000000.0,-6169000000.0,,
-Common Stock Dividend Paid,-6756000000.0,-6762000000.0,-6169000000.0,-6169000000.0,-6169000000.0,,
-Net Common Stock Issuance,-4086000000.0,-7156000000.0,-4961000000.0,-3998000000.0,-4235000000.0,,
-Common Stock Payments,-4627000000.0,-7415000000.0,-5650000000.0,-4546000000.0,-4781000000.0,,
-Common Stock Issuance,541000000.0,259000000.0,689000000.0,548000000.0,546000000.0,,
-Net Issuance Payments Of Debt,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
-Net Short Term Debt Issuance,0.0,0.0,0.0,0.0,0.0,,
-Short Term Debt Payments,,0.0,,,,0.0,
-Net Long Term Debt Issuance,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
-Long Term Debt Payments,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
-Long Term Debt Issuance,,,,0.0,0.0,0.0,0.0
-Investing Cash Flow,-27405000000.0,-22705000000.0,-34559000000.0,-30572000000.0,-12714000000.0,,
-Cash Flow From Continuing Investing Activities,-27405000000.0,-22705000000.0,-34559000000.0,-30572000000.0,-12714000000.0,,
-Net Other Investing Changes,-2599000000.0,-637000000.0,-6209000000.0,2642000000.0,604000000.0,,
-Net Investment Purchase And Sale,6328000000.0,8263000000.0,-8378000000.0,-14392000000.0,4408000000.0,,
-Sale Of Investment,18334000000.0,18108000000.0,9293000000.0,7239000000.0,8882000000.0,,
-Purchase Of Investment,-12006000000.0,-9845000000.0,-17671000000.0,-21631000000.0,-4474000000.0,,
-Net Business Purchase And Sale,-258000000.0,-455000000.0,-578000000.0,-1743000000.0,-981000000.0,,
-Purchase Of Business,-258000000.0,-455000000.0,-578000000.0,-1743000000.0,-981000000.0,,
-Net PPE Purchase And Sale,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
-Purchase Of PPE,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
-Operating Cash Flow,46679000000.0,35758000000.0,45057000000.0,42647000000.0,37044000000.0,,
-Cash Flow From Continuing Operating Activities,46183000000.0,35758000000.0,45057000000.0,42647000000.0,36038000000.0,,
-Change In Working Capital,331000000.0,-9632000000.0,-218000000.0,3303000000.0,2042000000.0,,
-Change In Other Working Capital,2130000000.0,-8403000000.0,-8362000000.0,19404000000.0,266000000.0,,
-Change In Other Current Liabilities,923000000.0,1609000000.0,-5984000000.0,4079000000.0,2448000000.0,,
-Change In Other Current Assets,-174000000.0,-669000000.0,-1556000000.0,-3268000000.0,558000000.0,,
-Change In Payables And Accrued Expense,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
-Change In Payable,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
-Change In Account Payable,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
-Change In Tax Payable,,,,,1298000000.0,-3395000000.0,1016000000.0
-Change In Income Tax Payable,,,,,1298000000.0,-3395000000.0,1016000000.0
-Change In Inventory,-161000000.0,70000000.0,-192000000.0,-81000000.0,52000000.0,,
-Change In Receivables,-4707000000.0,-3436000000.0,16490000000.0,-16179000000.0,-2461000000.0,,
-Changes In Account Receivables,-4707000000.0,-3436000000.0,16490000000.0,-16179000000.0,-2461000000.0,,
-Other Non Cash Items,496000000.0,,,,1006000000.0,,
-Stock Based Compensation,3081000000.0,3219000000.0,2983000000.0,3073000000.0,2980000000.0,,
-Unrealized Gain Loss On Investment Securities,-1621000000.0,,635000000.0,36000000.0,-135000000.0,-25000000.0,
-Asset Impairment Charge,37000000.0,,14000000.0,45000000.0,24000000.0,867000000.0,
-Deferred Tax,2602000000.0,4446000000.0,2491000000.0,-2221000000.0,-2244000000.0,,
-Deferred Income Tax,2602000000.0,4446000000.0,2491000000.0,-2221000000.0,-2244000000.0,,
-Depreciation Amortization Depletion,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
-Depreciation And Amortization,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
-Depreciation,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
-Operating Gains Losses,-192000000.0,-9931000000.0,-1656000000.0,-25000000.0,-187000000.0,,
-Gain Loss On Investment Securities,-192000000.0,,-1656000000.0,-25000000.0,-187000000.0,134000000.0,
-Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0,,
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
+Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,,
+Repurchase Of Capital Stock,-4627000000.0,-7415000000.0,-5650000000.0,-4546000000.0,-4781000000.0,,
+Repayment Of Debt,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
+Issuance Of Debt,,,,0.0,0.0,0.0,0.0
+Issuance Of Capital Stock,541000000.0,259000000.0,689000000.0,548000000.0,546000000.0,,
+Capital Expenditure,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
+End Cash Position,32105000000.0,24296000000.0,28849000000.0,30242000000.0,28828000000.0,,
+Beginning Cash Position,24296000000.0,28849000000.0,30242000000.0,28828000000.0,17482000000.0,,
+Effect Of Exchange Rate Changes,-114000000.0,11000000.0,-92000000.0,183000000.0,52000000.0,,
+Changes In Cash,7923000000.0,-4564000000.0,-1301000000.0,1231000000.0,11294000000.0,,
+Financing Cash Flow,-11351000000.0,-17617000000.0,-11799000000.0,-10844000000.0,-13036000000.0,,
+Cash Flow From Continuing Financing Activities,-11351000000.0,-17617000000.0,-11799000000.0,-10844000000.0,-13036000000.0,,
+Net Other Financing Charges,-509000000.0,-699000000.0,-669000000.0,-677000000.0,-382000000.0,,
+Cash Dividends Paid,-6756000000.0,-6762000000.0,-6169000000.0,-6169000000.0,-6169000000.0,,
+Common Stock Dividend Paid,-6756000000.0,-6762000000.0,-6169000000.0,-6169000000.0,-6169000000.0,,
+Net Common Stock Issuance,-4086000000.0,-7156000000.0,-4961000000.0,-3998000000.0,-4235000000.0,,
+Common Stock Payments,-4627000000.0,-7415000000.0,-5650000000.0,-4546000000.0,-4781000000.0,,
+Common Stock Issuance,541000000.0,259000000.0,689000000.0,548000000.0,546000000.0,,
+Net Issuance Payments Of Debt,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
+Net Short Term Debt Issuance,0.0,0.0,0.0,0.0,0.0,,
+Short Term Debt Payments,,0.0,,,,0.0,
+Net Long Term Debt Issuance,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
+Long Term Debt Payments,0.0,-3000000000.0,0.0,0.0,-2250000000.0,,
+Long Term Debt Issuance,,,,0.0,0.0,0.0,0.0
+Investing Cash Flow,-27405000000.0,-22705000000.0,-34559000000.0,-30572000000.0,-12714000000.0,,
+Cash Flow From Continuing Investing Activities,-27405000000.0,-22705000000.0,-34559000000.0,-30572000000.0,-12714000000.0,,
+Net Other Investing Changes,-2599000000.0,-637000000.0,-6209000000.0,2642000000.0,604000000.0,,
+Net Investment Purchase And Sale,6328000000.0,8263000000.0,-8378000000.0,-14392000000.0,4408000000.0,,
+Sale Of Investment,18334000000.0,18108000000.0,9293000000.0,7239000000.0,8882000000.0,,
+Purchase Of Investment,-12006000000.0,-9845000000.0,-17671000000.0,-21631000000.0,-4474000000.0,,
+Net Business Purchase And Sale,-258000000.0,-455000000.0,-578000000.0,-1743000000.0,-981000000.0,,
+Purchase Of Business,-258000000.0,-455000000.0,-578000000.0,-1743000000.0,-981000000.0,,
+Net PPE Purchase And Sale,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
+Purchase Of PPE,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,,
+Operating Cash Flow,46679000000.0,35758000000.0,45057000000.0,42647000000.0,37044000000.0,,
+Cash Flow From Continuing Operating Activities,46183000000.0,35758000000.0,45057000000.0,42647000000.0,36038000000.0,,
+Change In Working Capital,331000000.0,-9632000000.0,-218000000.0,3303000000.0,2042000000.0,,
+Change In Other Working Capital,2130000000.0,-8403000000.0,-8362000000.0,19404000000.0,266000000.0,,
+Change In Other Current Liabilities,923000000.0,1609000000.0,-5984000000.0,4079000000.0,2448000000.0,,
+Change In Other Current Assets,-174000000.0,-669000000.0,-1556000000.0,-3268000000.0,558000000.0,,
+Change In Payables And Accrued Expense,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
+Change In Payable,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
+Change In Account Payable,2320000000.0,1197000000.0,-614000000.0,-652000000.0,1179000000.0,,
+Change In Tax Payable,,,,,1298000000.0,-3395000000.0,1016000000.0
+Change In Income Tax Payable,,,,,1298000000.0,-3395000000.0,1016000000.0
+Change In Inventory,-161000000.0,70000000.0,-192000000.0,-81000000.0,52000000.0,,
+Change In Receivables,-4707000000.0,-3436000000.0,16490000000.0,-16179000000.0,-2461000000.0,,
+Changes In Account Receivables,-4707000000.0,-3436000000.0,16490000000.0,-16179000000.0,-2461000000.0,,
+Other Non Cash Items,496000000.0,,,,1006000000.0,,
+Stock Based Compensation,3081000000.0,3219000000.0,2983000000.0,3073000000.0,2980000000.0,,
+Unrealized Gain Loss On Investment Securities,-1621000000.0,,635000000.0,36000000.0,-135000000.0,-25000000.0,
+Asset Impairment Charge,37000000.0,,14000000.0,45000000.0,24000000.0,867000000.0,
+Deferred Tax,2602000000.0,4446000000.0,2491000000.0,-2221000000.0,-2244000000.0,,
+Deferred Income Tax,2602000000.0,4446000000.0,2491000000.0,-2221000000.0,-2244000000.0,,
+Depreciation Amortization Depletion,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
+Depreciation And Amortization,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
+Depreciation,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0,,
+Operating Gains Losses,-192000000.0,-9931000000.0,-1656000000.0,-25000000.0,-187000000.0,,
+Gain Loss On Investment Securities,-192000000.0,,-1656000000.0,-25000000.0,-187000000.0,134000000.0,
+Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0,,
 
 ```
 
@@ -786,55 +774,108 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 21:01:04
+# Data retrieved on: 2026-06-28 22:28:03
 
-,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
-Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0
-Tax Rate For Calcs,0.19,0.2,0.19,0.165042,0.18
-Normalized EBITDA,48804000000.0,57854000000.0,47075000000.0,44431000000.0,39318000000.0
-Total Unusual Items,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0
-Total Unusual Items Excluding Goodwill,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0
-Net Income From Continuing Operation Net Minority Interest,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Reconciled Depreciation,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0
-Reconciled Cost Of Revenue,26828000000.0,25978000000.0,24043000000.0,24014000000.0,21919000000.0
-EBITDA,50285000000.0,58180000000.0,48060000000.0,44434000000.0,39705000000.0
-EBIT,40118000000.0,48982000000.0,34999000000.0,33231000000.0,31971000000.0
-Net Interest Income,-48000000.0,104000000.0,278000000.0,154000000.0,3000000.0
-Interest Expense,778000000.0,736000000.0,698000000.0,615000000.0,594000000.0
-Interest Income,730000000.0,840000000.0,976000000.0,769000000.0,597000000.0
-Normalized Income,30578390000.0,38197200000.0,26949150000.0,27230495125.09198,25506660000.0
-Net Income From Continuing And Discontinued Operation,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Total Expenses,44488000000.0,42998000000.0,39712000000.0,42118000000.0,38066000000.0
-Total Operating Income As Reported,38398000000.0,38275000000.0,37961000000.0,34323000000.0,32000000000.0
-Diluted Average Shares,7445000000.0,7460000000.0,7466000000.0,7461000000.0,7461000000.0
-Basic Average Shares,7426000000.0,7431000000.0,7433000000.0,7432000000.0,7434000000.0
-Diluted EPS,4.27,5.16,3.72,3.65,3.46
-Basic EPS,4.28,5.18,3.73,3.66,3.47
-Diluted NI Availto Com Stockholders,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Net Income Common Stockholders,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Net Income,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Net Income Including Noncontrolling Interests,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Net Income Continuous Operations,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
-Tax Provision,7562000000.0,9788000000.0,6554000000.0,5383000000.0,5553000000.0
-Pretax Income,39340000000.0,48246000000.0,34301000000.0,32616000000.0,31377000000.0
-Other Income Expense,990000000.0,9867000000.0,-3938000000.0,-1861000000.0,-626000000.0
-Other Non Operating Income Expenses,-491000000.0,9541000000.0,-4923000000.0,-1864000000.0,-1013000000.0
-Special Income Charges,-37000000.0,-59000000.0,-14000000.0,-45000000.0,-24000000.0
-Write Off,37000000.0,59000000.0,14000000.0,45000000.0,24000000.0
-Gain On Sale Of Security,1518000000.0,385000000.0,999000000.0,48000000.0,411000000.0
-Net Non Operating Interest Income Expense,-48000000.0,104000000.0,278000000.0,154000000.0,3000000.0
-Interest Expense Non Operating,778000000.0,736000000.0,698000000.0,615000000.0,594000000.0
-Interest Income Non Operating,730000000.0,840000000.0,976000000.0,769000000.0,597000000.0
-Operating Income,38398000000.0,38275000000.0,37961000000.0,34323000000.0,32000000000.0
-Operating Expense,17660000000.0,17020000000.0,15669000000.0,18104000000.0,16147000000.0
-Research And Development,8915000000.0,8504000000.0,8146000000.0,8829000000.0,8198000000.0
-Selling General And Administration,8745000000.0,8516000000.0,7523000000.0,9275000000.0,7949000000.0
-Selling And Marketing Expense,6814000000.0,6584000000.0,5717000000.0,7285000000.0,6212000000.0
-General And Administrative Expense,1931000000.0,1932000000.0,1806000000.0,1990000000.0,1737000000.0
-Other Gand A,1931000000.0,1932000000.0,1806000000.0,1990000000.0,1737000000.0
-Gross Profit,56058000000.0,55295000000.0,53630000000.0,52427000000.0,48147000000.0
-Cost Of Revenue,26828000000.0,25978000000.0,24043000000.0,24014000000.0,21919000000.0
-Total Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,70066000000.0
-Operating Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,70066000000.0
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
+Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0
+Tax Rate For Calcs,0.19,0.2,0.19,0.165042,0.18
+Normalized EBITDA,48804000000.0,57854000000.0,47075000000.0,44431000000.0,39318000000.0
+Total Unusual Items,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0
+Total Unusual Items Excluding Goodwill,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0
+Net Income From Continuing Operation Net Minority Interest,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Reconciled Depreciation,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0
+Reconciled Cost Of Revenue,26828000000.0,25978000000.0,24043000000.0,24014000000.0,21919000000.0
+EBITDA,50285000000.0,58180000000.0,48060000000.0,44434000000.0,39705000000.0
+EBIT,40118000000.0,48982000000.0,34999000000.0,33231000000.0,31971000000.0
+Net Interest Income,-48000000.0,104000000.0,278000000.0,154000000.0,3000000.0
+Interest Expense,778000000.0,736000000.0,698000000.0,615000000.0,594000000.0
+Interest Income,730000000.0,840000000.0,976000000.0,769000000.0,597000000.0
+Normalized Income,30578390000.0,38197200000.0,26949150000.0,27230495125.09198,25506660000.0
+Net Income From Continuing And Discontinued Operation,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Total Expenses,44488000000.0,42998000000.0,39712000000.0,42118000000.0,38066000000.0
+Total Operating Income As Reported,38398000000.0,38275000000.0,37961000000.0,34323000000.0,32000000000.0
+Diluted Average Shares,7445000000.0,7460000000.0,7466000000.0,7461000000.0,7461000000.0
+Basic Average Shares,7426000000.0,7431000000.0,7433000000.0,7432000000.0,7434000000.0
+Diluted EPS,4.27,5.16,3.72,3.65,3.46
+Basic EPS,4.28,5.18,3.73,3.66,3.47
+Diluted NI Availto Com Stockholders,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Net Income Common Stockholders,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Net Income,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Net Income Including Noncontrolling Interests,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Net Income Continuous Operations,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0
+Tax Provision,7562000000.0,9788000000.0,6554000000.0,5383000000.0,5553000000.0
+Pretax Income,39340000000.0,48246000000.0,34301000000.0,32616000000.0,31377000000.0
+Other Income Expense,990000000.0,9867000000.0,-3938000000.0,-1861000000.0,-626000000.0
+Other Non Operating Income Expenses,-491000000.0,9541000000.0,-4923000000.0,-1864000000.0,-1013000000.0
+Special Income Charges,-37000000.0,-59000000.0,-14000000.0,-45000000.0,-24000000.0
+Write Off,37000000.0,59000000.0,14000000.0,45000000.0,24000000.0
+Gain On Sale Of Security,1518000000.0,385000000.0,999000000.0,48000000.0,411000000.0
+Net Non Operating Interest Income Expense,-48000000.0,104000000.0,278000000.0,154000000.0,3000000.0
+Interest Expense Non Operating,778000000.0,736000000.0,698000000.0,615000000.0,594000000.0
+Interest Income Non Operating,730000000.0,840000000.0,976000000.0,769000000.0,597000000.0
+Operating Income,38398000000.0,38275000000.0,37961000000.0,34323000000.0,32000000000.0
+Operating Expense,17660000000.0,17020000000.0,15669000000.0,18104000000.0,16147000000.0
+Research And Development,8915000000.0,8504000000.0,8146000000.0,8829000000.0,8198000000.0
+Selling General And Administration,8745000000.0,8516000000.0,7523000000.0,9275000000.0,7949000000.0
+Selling And Marketing Expense,6814000000.0,6584000000.0,5717000000.0,7285000000.0,6212000000.0
+General And Administrative Expense,1931000000.0,1932000000.0,1806000000.0,1990000000.0,1737000000.0
+Other Gand A,1931000000.0,1932000000.0,1806000000.0,1990000000.0,1737000000.0
+Gross Profit,56058000000.0,55295000000.0,53630000000.0,52427000000.0,48147000000.0
+Cost Of Revenue,26828000000.0,25978000000.0,24043000000.0,24014000000.0,21919000000.0
+Total Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,70066000000.0
+Operating Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,70066000000.0
+
+```
+
+## Role: financial_report
+
+- Skill: `tradingagents-financial-report-analyst`
+
+### Tool: collect_financial_document_sources
+
+- Status: `ok`
+
+```text
+## Financial Document Source Packet: MSFT
+
+- Trade date: `2026-06-27`
+- Collection status: `ok`
+- SEC company name: MICROSOFT CORP
+- SEC CIK: `0000789019`
+- As-of rule: Only filings with filingDate <= trade_date are included.
+
+| Source | Status | Filing date | Form | URL / reason |
+|---|---:|---:|---:|---|
+| annual_report_10k | available | 2025-07-30 | 10-K | https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm |
+| quarterly_report_10q | available | 2026-04-29 | 10-Q | https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm |
+| earnings_release_8k | available | 2026-04-29 | 8-K | https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/msft-20260429.htm |
+| investor_presentation | unavailable |  |  | No investor presentation source was discovered from the SEC submissions feed. |
+
+### Excerpt: annual_report_10k
+
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+10-K UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Fiscal Year Ended June 30 , 2025 OR ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Transition Period From to Commission File Number 001-37845 MICROSOFT CORPORATION Washington 91-1144442 (STATE OF INCORPORATION) (I.R.S. ID) ONE MICROSOFT WAY , REDMOND , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $ 0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Securities registered pursuant to Section 12(g) of the Act: N one Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large Accelerated Filer ☒ Accelerated Filer ☐ Non-accelerated Filer ☐ Smaller Reporting Company ☐ Emerging Growth Company ☐ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. ☒ If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. ☐ Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐ Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes ☐ No ☒ As of December 31, 2024, the aggregate market value of the registrant’s common stock held by non-affiliates of the registrant was $ 3.1 trillion based on the closing sale price as reported on the NASDAQ National Market System. As of July 24, 2025, there were 7,433,166,379 shares of common stock outstanding. DOCUMENTS INCORPORATED BY REFERENCE Portions of the definitive Proxy Statement to be delivered to shareholders in connection with the Annual Meeting of Shareholders to be held on December 5, 2025 are incorporated by reference into Part III. MICROSOFT CORPORATION FORM 10-K For the Fiscal Year Ended June 30, 2025 INDEX Page PART I Item 1. Business 3 Information about our Executive Officers 14 Item 1A. Risk Factors 16 Item 1B. Unresolved Staff Comments 30 Item 1C. Cybersecurity 30 Item 2. Properties 32 Item 3. Legal Proceedings 32 Item 4. Mine Safety Disclosures 32 PART II Item 5. Market for Registrant’s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities 33 Item 6. [Reserved] 34 Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 35 Item 7A. Quantitative and Qualitative Disclosures About Market Risk 49 Item 8. Financial Statements and Supplementary Data 50 Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure 89 Item 9A. Controls and Procedures 89 Report of Management on Internal Control over Financial Reporting 89 Report of Independent Registered Public Accounting Firm 90 Item 9B. Other Information 91 Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections 91 PART III Item 10. Directors, Executive Officers, and Corporate Governance 91 Item 11. Executive Compensation 91 Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters 91 Item 13. Certain Relationships and Related Transactions, and Director Independence 91 Item 14. Principal Accountant Fees and Services 92 PART IV Item 15. Exhibit and Financial Statement Schedules 93 Item 16. Form 10-K Summary 100 Signatures 101 2 PART I Item 1 Note About Forward-Looking Statements This report includes estimates, projections, statements relating to our business plans, objectives, and expected operating results that are “forward-looking statements” within the meaning of the Private Securities Litigation Reform Act of 1995, Section 27A of the Securities Act of 1933, and Section 21E of the Securities Exchange Act of 1934.
+```
+
+### Excerpt: quarterly_report_10q
+
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm
+
+```text
+10-Q UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10- Q ☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Quarterly Period Ended March 31, 2026 OR ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Transition Period From to Commission File Number 001-37845 MICROSOFT CORPORATION Washington 91-1144442 (STATE OF INCORPORATION) (I.R.S. ID) ONE MICROSOFT WAY , REDMOND , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large Accelerated Filer ☒ Accelerated Filer ☐ Non-accelerated Filer ☐ Smaller Reporting Company ☐ Emerging Growth Company ☐ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒ Indicate the number of shares outstanding of each of the issuer’s classes of common stock, as of the latest practicable date. Class Outstanding as of April 23, 2026 Common Stock, $ 0.00000625 par value per share 7,428,434,704 shares MICROSOFT CORPORATION FORM 10-Q For the Quarter Ended March 31, 2026 INDEX Page PART I. FINANCIAL INFORMATION Item 1. Financial Statements a) Income Statements for the Three and Nine Months Ended March 31, 2026 and 2025 3 b) Comprehensive Income Statements for the Three and Nine Months Ended March 31, 2026 and 2025 4 c) Balance Sheets as of March 31, 2026 and June 30, 2025 5 d) Cash Flows Statements for the Three and Nine Months Ended March 31, 2026 and 2025 6 e) Stockholders’ Equity Statements for the Three and Nine Months Ended March 31, 2026 and 2025 7 f) Notes to Financial Statements 8 g) Report of Independent Registered Public Accounting Firm 30 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 31 Item 3. Quantitative and Qualitative Disclosures About Market Risk 48 Item 4. Controls and Procedures 48 PART II. OTHER INFORMATION Item 1. Legal Proceedings 49 Item 1A. Risk Factors 49 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 65 Item 5. Other Information 66 Item 6. Exhibits 67 SIGNATURE 68 2 PART I Item 1 PART I. FINANCI AL INFORMATION ITEM 1. FINA NCIAL STATEMENTS INCOME STA TEMENTS (In millions, except per share amounts) (Unaudited) Three Months Ended March 31, Nine Months Ended March 31, 2026 2025 2026 2025 Revenue: Product $ 15,089 $ 15,319 $ 47,462 $ 46,810 Service and other 67,797 54,747 194,370 158,473 Total revenue 82,886 70,066 241,832 205,283 Cost of revenue: Product 2,733 3,037 9,160 10,187 Service and other 24,095 18,882 67,689 53,630 Total cost of revenue 26,828 21,919 76,849 63,817 Gross margin 56,058 48,147 164,983 141,466 Research and development 8,915 8,198 25,565 23,659 Sales and marketing 6,814 6,212 19,115 18,369 General and administrative 1,931 1,737 5,669 5,233 Operating income 38,398 32,000 114,634 94,205 Other income (expense), net 942 ( 623 ) 7,253 ( 3,194 ) Income before income taxes 39,340 31,377 121,887 91,011 Provision for income taxes 7,562 5,553 23,904 16,412 Net income $ 31,778 $ 25,824 $ 97,983 $ 74,599 Earnings per share: Basic $ 4.28 $ 3.47 $ 13.19 $ 10.03 Diluted $ 4.27 $ 3.46 $ 13.14 $ 9.99 Weighted average shares outstanding: Basic 7,426 7,434 7,430 7,434 Diluted 7,445 7,461 7,457 7,466 Refer to accompanying notes. 3 PART I Item 1 COMPREHENSIVE IN COME STATEMENTS (In millions) (Unaudited) Three Months Ended March 31, Nine Months Ended March 31, 2026 2025 2026 2025 Net income $ 31,778 $ 25,824 $ 97,983 $ 74,599 Other comprehensive income (loss), net of tax: Net change related to derivatives 0 ( 20 ) ( 6 ) 4 Net change related to investments ( 239 ) 450 287 1,130 Translation adjustments and other ( 287 ) 353 ( 162 ) ( 377 ) Other comprehensive income (loss) ( 526 ) 783 119 757 Comprehensive income $ 31,252 $ 26,607 $ 98,102 $ 75,356 Refer to accompanying notes. 4 PART I Item 1 BALANCE SHEETS (In millions) (Unaudited) March 31, 2026 June 30, 2025 Assets Current assets: Cash and cash equivalents $ 32,105 $ 30,242 Short-term investments 46,167 64,323 Total cash, cash equivalents, and short-term investments 78,272 94,565 Accounts receivable, net of allowance for doubtful accounts of $ 794 and $ 944 60,041 69,905 Inventories 1,219 938 Other current assets 35,797 25,723 Total current assets 175,329 191,131 Property and equipment, net of accumulated depreciation of $ 111,723 and $ 93,653 283,228 204,966 Operating lease right-of-use assets 24,403 24,823 Equity
+```
+
+### Excerpt: earnings_release_8k
+
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/msft-20260429.htm
+
+```text
+8-K UNITED STATES SECURITIES AND EXCHANGE COMMISSION WASHINGTON, D.C. 20549 FORM 8-K CURRENT REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934 Date of Report (Date of earliest event reported) April 29, 2026 Microsoft Corporation Washington 001-37845 91-1144442 (State or Other Jurisdiction of Incorporation) (Commission File Number) (IRS Employer Identification No.) One Microsoft Way , Redmond , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the registrant under any of the following provisions (see General Instruction A.2. below):  Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425)  Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12)  Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b))  Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging growth company ¨ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ¨ Item 2.02. Results of Operations and Financial Condition On April 29, 2026, Microsoft Corporation issued a press release announcing its financial results for the fiscal quarter ended March 31, 2026. A copy of the press release is furnished as Exhibit 99.1 to this report. In accordance with General Instruction B.2 of Form 8-K, the information in this Current Report on Form 8-K, including Exhibit 99.1, shall not be deemed to be “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liability of that section, and shall not be incorporated by reference into any registration statement or other document filed under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such filing. Item 9.01. Financial Statements and Exhibits (d) Exhibits: 99.1 Press release, dated April 29, 2026, issued by Microsoft Corporation 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. MICROSOFT CORPORATION Date: April 29, 2026 /s/ A LICE L . J OLLA Alice L. Jolla Corporate Vice President and Chief Accounting Officer
+```
 
 ```

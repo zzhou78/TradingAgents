@@ -15,15 +15,17 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 ```text
 Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent messages
 
+[2026-06-28T12:15:11Z · @howardlindzon · no-label] $MSFT new ai hire to manage how they fit in in a world of open ai and anthropic    https://fortune.com/2026/06/27/microsoft-copilot-boss-jacob-andreou-tapped-by-satya-nadella-to-save-ai-strategy/
+[2026-06-28T11:38:45Z · @VictorTwits · no-label] $AI $META $MSFT $ORCL $SPY @rsmracks Nonsense!Funds are the villains.Fink destroyed the stock market w Alladdin fulfilling every commie’s wet dream: a planned economy.The game is completely run by funds’ algos, dark pools &amp; shorting structures that treat order books as progra…
 [2026-06-28T10:10:20Z · @mynameisplissken · Bullish] $MSFT excited for monday. hope it opens above 380
 [2026-06-28T10:07:35Z · @Michelroro123_ · Bullish] $MSFT When a stock like Microsoft worth over $2.7 trillion moves up over 5% in a single day on 186M+ volume, it is physically impossible for retail investors to cause it only institutions aggressive buying. This was massive institutional buying Hoping for rally.
 [2026-06-28T06:54:42Z · @GlobalMarketBulletin · no-label] $MSFT Microsoft (MSFT) is pouring money into Azure, AI infrastructure, Copilot, and enterprise software growth. While margin pressure is making some analysts cautious, this blue-chip technology stock may still have one of the strongest wealth-building stories in the market. https…
-[2026-06-28T06:19:48Z · @TheStockShrewd · Bullish] $MU BTW, after next quarters EPS, if this retains its P/E ratio of ≈ 27 the stock will be worth $2008   $QQQ $SPY $MSFT
-[2026-06-28T05:13:48Z · @TheStockShrewd · Bullish] $MSFT Burry investment and institutional buying has potential to turn the sentiment around.  I think we’ll see $450 soon, who even cares about capex anymore on a company who continues to grow earnings lol. Micron just proved nobody cares
-[2026-06-28T04:53:32Z · @TheStockShrewd · Bullish] $NKE yikes big bull trap with low price action but zero earnings to push  Rather buy $MSFT $META $MU instead
-[2026-06-28T04:45:42Z · @TheStockShrewd · Bearish] $NKE so this deserves a higher PE than $META , $MSFT , and $MU ?   Yea… holding out until low $30 s
+[2026-06-28T06:19:48Z · @thewolfofsomestreet · Bullish] $MU BTW, after next quarters EPS, if this retains its P/E ratio of ≈ 27 the stock will be worth $2008   $QQQ $SPY $MSFT
+[2026-06-28T05:13:48Z · @thewolfofsomestreet · Bullish] $MSFT Burry investment and institutional buying has potential to turn the sentiment around.  I think we’ll see $450 soon, who even cares about capex anymore on a company who continues to grow earnings lol. Micron just proved nobody cares
+[2026-06-28T04:53:32Z · @thewolfofsomestreet · Bullish] $NKE yikes big bull trap with low price action but zero earnings to push  Rather buy $MSFT $META $MU instead
+[2026-06-28T04:45:42Z · @thewolfofsomestreet · Bearish] $NKE so this deserves a higher PE than $META , $MSFT , and $MU ?   Yea… holding out until low $30 s
 [2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
-[2026-06-28T03:48:17Z · @TheStockShrewd · Bullish] $MU $NVDA $META  $MSFT
+[2026-06-28T03:48:17Z · @thewolfofsomestreet · Bullish] $MU $NVDA $META  $MSFT
 [2026-06-28T03:19:32Z · @NetflixUser · Bearish] $MSFT U.S. strikes on Iranian military sites. U.S. Navy and Air Force fighter jets conducted the strikes on military targets at multiple locations in and near the Strait of Hormuz, CENTCOM said on Saturday night.  The new strikes follow Bahrain&amp;#39;s claim that Iranian drones…
 [2026-06-28T02:10:43Z · @GlobalMarketBulletin · no-label] $AMZN $GOOGL $META $MSFT $NVDA These five technology giants are not just big names anymore. They are building the future of artificial intelligence, cloud infrastructure, AI chips, digital advertising, smart glasses, and autonomous networks which can make you a millionaire. https…
 [2026-06-28T01:47:37Z · @spacechimp · no-label] $MSFT boolish for msft?
@@ -43,8 +45,6 @@ Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent 
 [2026-06-28T00:04:48Z · @OptionsPlayers · no-label] $INTC $MSFT Glad you are enjoying. What’s your next target in the OP Vault?
 [2026-06-28T00:04:32Z · @EconomyEngine · no-label] $QQQ $SPY $NVDA $TSLA $MSFT Iran launches strikes on US military assets in Bahrain, explosions reported.🔴🔴🔴🔴
 [2026-06-28T00:00:39Z · @pnvoss · no-label] $SPY sticking to top 5. Oversold conditions can surge any moment. Down 13% might add $APP $MSFT or $NOW probably now.   China could surge back. Can&#39;t sell this oversold.   They keep running stocks from extremes to extremes. Very hard to time.
-[2026-06-27T23:35:47Z · @Supraman1 · no-label] $MU  $MU $NVDA $SNDK $AAPL $MSFT
-[2026-06-27T23:34:03Z · @Probably_Drunk · no-label] $MSFT My plans tonight you ask?  Well me and Netflixusers mom are going to go out for a nice dinner, and then we&#39;re gonna go back to her place to watch Netflix and.....
 ```
 
 ### Tool: fetch_reddit_posts

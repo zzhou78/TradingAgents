@@ -7,6 +7,7 @@ Contents:
 - `skills/`: Codex skills generated from `tradingagents/agents`, `tradingagents/graph`, and `tradingagents/dataflows`.
 - `skills/tradingagents-ticker-workflow-runner/scripts/prepare_skill_workflow.py`: offline runner that turns ticker input into a workflow packet.
 - `scripts/collect_role_evidence.py`: upstream-data evidence collector for Codex-operated role reports.
+- `scripts/financial_document_sources.py`: SEC filing/source collector used by the Financial Report Analyst evidence packet.
 - `scripts/prepare_codex_report_tasks.py`: prepares task prompts for Codex role execution after evidence collection.
 - `scripts/write_codex_reports.py`: compatibility wrapper for `prepare_codex_report_tasks.py`; it no longer writes investment reasoning. `write_codex_reports.py is a compatibility wrapper`.
 - `scripts/validate_complete_report.py`: hard contract validator for required headings, date discipline, social-dump limits, action matching, disclaimer, and primary driver.
@@ -82,6 +83,7 @@ Safety:
 - It does not connect to GCAF.
 - The runner prepares workflow packets only; it does not call live LLMs or market-data vendors.
 - The evidence collector can call market-data services through upstream dataflow tools, but it does not call LLMs.
+- The Financial Report Analyst evidence collector queries SEC company-ticker/submissions endpoints for plain US tickers, filters filings to `filingDate <= trade_date`, and records unavailable coverage for non-US tickers or missing document types.
 - The Sentiment Analyst evidence collector uses direct StockTwits and Reddit collection rather than reusing the news feed.
 - The task preparer does not call upstream graph orchestration, external LLMs, broker APIs, or market-data vendors; it writes task prompts from the already collected evidence packet.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.

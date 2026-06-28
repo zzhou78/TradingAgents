@@ -15,11 +15,10 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 ```text
 Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent messages
 
+[2026-06-28T12:10:30Z · @RiskyChick92 · Bullish] $AAPL Nothing compares to Apple!! Especially the IPhone! Any other phone is “Not Cool” with young trendy peeps, so higher prices are irrelevant. People WILL pay it. MARK THIS 💪💪💪
 [2026-06-28T09:52:04Z · @chamono1942 · no-label] $AAPL Apple Uses Chinese Semiconductors!
-[2026-06-28T09:27:58Z · @CindyConwaysa · Bullish] $IBRX $AAPL       @CindyConwaysa
 [2026-06-28T09:23:48Z · @BradBreath · Bullish] $AAPL 💪🏼EVERY BIT OF IT🍏
 [2026-06-28T09:22:07Z · @rst1016 · no-label] $AAPL 290 monday???
-[2026-06-28T09:21:48Z · @CindyConwaysa · no-label] $AAPL Smart trading is built on planning and patience—never stop learning and act on the best opportunities.
 [2026-06-28T09:07:03Z · @Rvazstocksfl · no-label] $AAPL 250 on Monday ?
 [2026-06-28T08:52:38Z · @Agayay · Bullish] $MU $DRAM $AAPL $QQQ $SPY   Actually i think we see MEMORY stock rally on Monday.  Due to Apple seeking to buy MEMORY from China. But we all know that it won&#39;t be approved. News proves that MEMORY SHORTAGE IS CRITICAL. Remember, market is always opposite. You panic but market…
 [2026-06-28T08:50:15Z · @MicroCapsTrader · no-label] $AAPL Index rebalancing caused the high volumes and random price actions on some of the large caps last Friday. Unless it reclaims $287-289 previous breakout zone, be careful as a meltdown after a bear flag confirmation doesn’t last only a day. So look for reclaims of previous ke…
@@ -27,9 +26,8 @@ Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-28T06:48:56Z · @Himbhas18 · Bearish] $AAPL no one wants to buy expensive POS
 [2026-06-28T06:09:33Z · @termalerts · no-label] IPHONE 18 PRICE FORECAST TO SURPASS $1,100 AFTER APPLE&#39;S MACBOOK, IPAD PRICE HIKES $AAPL
 [2026-06-28T06:04:38Z · @juanagustin2086 · Bullish] $AAPL
-[2026-06-28T06:04:27Z · @QuantMindAI · no-label] Testing $AAPL
 [2026-06-28T05:44:44Z · @HEEJIN_J · no-label] $AAPL Apple gets clapped by a nerd they used to bully, now they&#39;re reporting them for school violence lol
-[2026-06-28T04:21:46Z · @TheStockShrewd · Bullish] $MU who else is convinced $AAPL news and post-earnings dip is a scheme for institutions to enter 😂😂
+[2026-06-28T04:21:46Z · @thewolfofsomestreet · Bullish] $MU who else is convinced $AAPL news and post-earnings dip is a scheme for institutions to enter 😂😂
 [2026-06-28T04:21:06Z · @ns9970 · no-label] $MU $AAPL is this another good vs evil? Who is the aggressor? lol who has the right to defend itself?
 [2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
 [2026-06-28T01:29:08Z · @Kaythu · Bearish] $AAPL The War in Iran continues to escalate big time! There is no such thing as a ceasefire and no such thing as a deal. The fighting continues on both ends. Oil prices are likely to go up yet again! Whats the likelihood the stock market winds up red on Monday and the entire week…
@@ -45,6 +43,8 @@ Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent m
 [2026-06-27T23:01:46Z · @johnrivers0110 · Bearish] $WEN 🔺after all this Wendys I&#39;ll be looking into a health care company for all the heart attacks and high cholesterol you gonna have after this stock meets you at 5... The FiB 🔺  $SPCX  $SPY  $BTC.X  $AAPL
 [2026-06-27T23:00:40Z · @FibonacciTrader_ · no-label] $AAPL is facing a strategic input-cost problem that the market is slowly starting to price in around the AI cycle.    If memory becomes the key bottleneck in AI infrastructure, Apple won’t stay exposed to rising component costs indefinitely. Near-term, they may bridge supply via …
 [2026-06-27T22:32:48Z · @MarketPulsee · no-label] Dumping $AAPL at $282 over the &quot;100-year memory crisis&quot; is brainless. Cook just passes costs to consumers via MacBook price hikes. Gross margins stay untouchable. Keep shorting
+[2026-06-27T22:28:45Z · @DrSilbergleit · no-label] $SPY $QQQ $BB  $AAPL  2026 is so weird     BlackBerry +192%     Apple +3%
+[2026-06-27T22:24:52Z · @rally4sport · no-label] $AAPL $MU
 ```
 
 ### Tool: fetch_reddit_posts

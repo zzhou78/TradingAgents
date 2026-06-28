@@ -39,6 +39,22 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
     monkeypatch.setattr(collector, "get_balance_sheet", fake_tool("get_balance_sheet"))
     monkeypatch.setattr(collector, "get_cashflow", fake_tool("get_cashflow"))
     monkeypatch.setattr(collector, "get_income_statement", fake_tool("get_income_statement"))
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date: {
+            "status": "ok",
+            "sources": [
+                {
+                    "source_type": "annual_report_10k",
+                    "status": "available",
+                    "filing_date": "2025-07-30",
+                    "url": "https://www.sec.gov/example",
+                    "excerpt": "Annual report excerpt",
+                }
+            ],
+        },
+    )
     monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
 
     exit_code = collector.main(
@@ -76,19 +92,22 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         packet = tmp_path / "evidence" / ticker / "2026-06-27" / "role_packets.md"
         market_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "market.md"
         news_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "news.md"
+        financial_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "financial_report.md"
         fundamentals_packet = tmp_path / "evidence" / ticker / "2026-06-27" / "roles" / "fundamentals.md"
         data = tmp_path / "evidence" / ticker / "2026-06-27" / "evidence.json"
         assert packet.exists()
         assert market_packet.exists()
         assert news_packet.exists()
+        assert financial_packet.exists()
         assert not fundamentals_packet.exists()
         assert data.exists()
         assert "## Role: market" in market_packet.read_text(encoding="utf-8")
         assert "## Role: news" in news_packet.read_text(encoding="utf-8")
+        assert "annual_report_10k" in financial_packet.read_text(encoding="utf-8")
         assert "## Role: news" not in market_packet.read_text(encoding="utf-8")
 
     for run in summary["runs"]:
-        assert sorted(run["role_packet_paths"]) == ["market", "news"]
+        assert sorted(run["role_packet_paths"]) == ["financial_report", "market", "news"]
         assert run["role_packet_path"].endswith("role_packets.md")
         assert run["workflow_state_path"].endswith("workflow_state.json")
         assert run["debate_record_path"].endswith("debate_record.md")
@@ -118,7 +137,12 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
         market_stage = workflow["stages"][0]
         assert market_stage["skill"] == "tradingagents-market-analyst"
         assert market_stage["allowed_inputs"] == [run["role_packet_paths"]["market"]]
-        assert market_stage["forbidden_inputs"] == [run["role_packet_paths"]["news"]]
+        assert market_stage["forbidden_inputs"] == [
+            run["role_packet_paths"]["news"],
+            run["role_packet_paths"]["financial_report"],
+        ]
+        financial_stage = workflow["stages"][2]
+        assert run["role_packet_paths"]["financial_report"] in financial_stage["allowed_inputs"]
 
         report_paths = workflow["report_paths"]
         normalized_market_report = report_paths["market_report"].replace("\\", "/")
@@ -220,6 +244,11 @@ def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, mo
     monkeypatch.setattr(collector, "fetch_stocktwits_messages", fake_tool("fetch_stocktwits_messages"))
     monkeypatch.setattr(collector, "fetch_reddit_posts", fake_tool("fetch_reddit_posts"))
     monkeypatch.setattr(collector, "get_news", fake_tool("get_news"))
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date: {"status": "unavailable", "sources": []},
+    )
     monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
 
     exit_code = collector.main(
@@ -248,6 +277,7 @@ def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, mo
     )
     social_calls = evidence["roles"]["social"]["tool_calls"]
     assert sorted(social_calls) == ["fetch_reddit_posts", "fetch_stocktwits_messages"]
+    assert "financial_report" in evidence["roles"]
 
 
 def test_workflow_state_records_explicit_visible_debate_completion_gates(tmp_path):
@@ -255,6 +285,7 @@ def test_workflow_state_records_explicit_visible_debate_completion_gates(tmp_pat
     role_packet_paths = {
         "market": str(tmp_path / "roles" / "market.md"),
         "news": str(tmp_path / "roles" / "news.md"),
+        "financial_report": str(tmp_path / "roles" / "financial_report.md"),
     }
 
     workflow = collector._workflow_state(
@@ -300,6 +331,11 @@ def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp
     monkeypatch.setattr(collector, "get_stock_data", failing_stock_data)
     monkeypatch.setattr(collector, "get_verified_market_snapshot", lambda **kwargs: "snapshot")
     monkeypatch.setattr(collector, "get_indicators", lambda **kwargs: "indicator")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date: {"status": "unavailable", "sources": []},
+    )
     monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {})
 
     exit_code = collector.main(
@@ -325,6 +361,7 @@ def test_collector_records_tool_failures_without_collecting_unselected_roles(tmp
     assert stock_call["status"] == "error"
     assert "vendor temporarily unavailable" in stock_call["error"]
     assert "fundamentals" not in evidence["roles"]
+    assert "financial_report" in evidence["roles"]
 
 
 def test_workflow_state_can_expand_research_and_risk_debate_rounds(tmp_path):
@@ -332,6 +369,7 @@ def test_workflow_state_can_expand_research_and_risk_debate_rounds(tmp_path):
     role_packet_paths = {
         "market": str(tmp_path / "roles" / "market.md"),
         "news": str(tmp_path / "roles" / "news.md"),
+        "financial_report": str(tmp_path / "roles" / "financial_report.md"),
     }
 
     workflow = collector._workflow_state(

@@ -66,6 +66,14 @@ Use the evidence collector when you want upstream TradingAgents dataflow tools t
 .\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\collect_role_evidence.py --ticker AAPL,MSFT --trade-date 2026-06-27
 ```
 
+The evidence collector uses `scripts/financial_document_sources.py` to prepare
+the Financial Report Analyst source packet. For plain US tickers it queries SEC
+company-ticker and submissions data, keeps only filings with
+`filingDate <= trade_date`, and records annual-report, quarterly-report,
+8-K / earnings-release candidate, investor-presentation availability, URLs,
+and short excerpts where available. For non-US tickers or missing source types
+it records explicit coverage gaps instead of fabricating management commentary.
+
 Prepare Codex report tasks after evidence collection:
 
 ```powershell

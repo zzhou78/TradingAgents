@@ -10,6 +10,7 @@ Source files scanned:
 - `tradingagents/agents/utils/fundamental_data_tools.py`
 
 Inputs:
+- `roles/financial_report.md`, which is the required source packet for filings and document coverage.
 - latest annual report / 10-K if available.
 - Latest annual report / 10-K if available.
 - Latest quarterly report / 10-Q if available.
@@ -19,10 +20,13 @@ Inputs:
 
 Procedure:
 1. Build a source coverage table before drawing conclusions.
-2. Separate structured financial statement data from management narrative / filing commentary.
-3. If annual/quarterly filings or earnings releases are not available, state that clearly and lower confidence.
-4. Summarize revenue and segment performance, margin and profitability trend, cash flow quality, capex and investment commitments, balance sheet and liquidity, guidance/outlook, risk factors, one-off/accounting items, changes since prior report, and evidence gaps.
-5. Do not infer management commentary from ratios alone.
+2. Check the trade-date discipline in the source packet. Do not use filings, releases, or social/news evidence dated after the trade date.
+3. Separate structured financial statement data from management narrative / filing commentary.
+4. Use filing excerpts only as excerpts. If you need a claim that is not in the packet, mark it as an evidence gap instead of filling it from memory.
+5. If annual/quarterly filings, earnings releases, or investor presentations are not available, state that clearly and lower confidence.
+   If annual/quarterly filings or earnings releases are not available, state that clearly and lower confidence.
+6. Summarize revenue and segment performance, margin and profitability trend, cash flow quality, capex and investment commitments, balance sheet and liquidity, guidance/outlook, risk factors, one-off/accounting items, changes since prior report, and evidence gaps.
+7. Do not infer management commentary from ratios alone.
 
 Output:
 - `financial_report.md` with sections: Source coverage table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.

@@ -15,8 +15,16 @@ from yfinance import cache as yf_cache
 
 BUNDLE_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = BUNDLE_ROOT.parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
+
+from financial_document_sources import (
+    collect_financial_document_sources,
+    render_financial_document_packet,
+)
 
 from tradingagents.agents.utils.agent_utils import resolve_instrument_identity
 from tradingagents.agents.utils.core_stock_tools import get_stock_data
@@ -43,12 +51,14 @@ from tradingagents.default_config import DEFAULT_CONFIG
 DEFAULT_ANALYSTS = ["market", "social", "news", "fundamentals"]
 VALID_ANALYSTS = set(DEFAULT_ANALYSTS)
 MARKET_INDICATORS = ["close_50_sma", "close_200_sma", "rsi", "macd", "atr"]
+FINANCIAL_REPORT_ROLE = "financial_report"
 
 ROLE_SKILLS = {
     "market": "tradingagents-market-analyst",
     "social": "tradingagents-sentiment-analyst",
     "news": "tradingagents-news-analyst",
     "fundamentals": "tradingagents-fundamentals-analyst",
+    FINANCIAL_REPORT_ROLE: "tradingagents-financial-report-analyst",
 }
 ANALYST_STAGE_NAMES = {
     "market": "market_analyst",
@@ -99,6 +109,10 @@ def _call_tool(func: Callable[..., Any], **kwargs: Any) -> dict[str, Any]:
         return {"status": "ok", "args": kwargs, "output": str(value)}
     except Exception as exc:  # noqa: BLE001 - evidence collection records failures.
         return {"status": "error", "args": kwargs, "error": str(exc)}
+
+
+def _clean_tool_text(value: str) -> str:
+    return "\n".join(line.rstrip() for line in value.replace("\r\n", "\n").split("\n"))
 
 
 def _build_config(output_dir: Path) -> dict[str, Any]:
@@ -210,6 +224,24 @@ def _collect_fundamentals(ticker: str, trade_date: str) -> dict[str, Any]:
     return {"skill": ROLE_SKILLS["fundamentals"], "tool_calls": calls}
 
 
+def _collect_financial_report(ticker: str, trade_date: str) -> dict[str, Any]:
+    packet = collect_financial_document_sources(ticker, trade_date)
+    return {
+        "skill": ROLE_SKILLS[FINANCIAL_REPORT_ROLE],
+        "tool_calls": {
+            "collect_financial_document_sources": {
+                "status": packet.get("status", "unknown"),
+                "args": {
+                    "ticker": ticker,
+                    "trade_date": trade_date,
+                    "source_policy": "SEC filings filtered to filingDate <= trade_date",
+                },
+                "output": render_financial_document_packet(packet),
+            }
+        },
+    }
+
+
 def _collect_role(role: str, ticker: str, trade_date: str, lookback_days: int) -> dict[str, Any]:
     if role == "market":
         return _collect_market(ticker, trade_date, lookback_days)
@@ -219,6 +251,8 @@ def _collect_role(role: str, ticker: str, trade_date: str, lookback_days: int) -
         return _collect_news(ticker, trade_date, lookback_days)
     if role == "fundamentals":
         return _collect_fundamentals(ticker, trade_date)
+    if role == FINANCIAL_REPORT_ROLE:
+        return _collect_financial_report(ticker, trade_date)
     raise ValueError(f"unknown role: {role}")
 
 
@@ -249,7 +283,7 @@ def _write_role_packets(evidence: dict[str, Any], path: Path) -> None:
                     f"- Status: `{call['status']}`",
                     "",
                     "```text",
-                    call.get("output") or call.get("error", ""),
+                    _clean_tool_text(call.get("output") or call.get("error", "")),
                     "```",
                     "",
                 ]
@@ -283,7 +317,7 @@ def _write_single_role_packet(
                 f"- Status: `{call['status']}`",
                 "",
                 "```text",
-                call.get("output") or call.get("error", ""),
+                _clean_tool_text(call.get("output") or call.get("error", "")),
                 "```",
                 "",
             ]
@@ -374,7 +408,8 @@ def _workflow_state(
         {
             "stage": "financial_report_analyst",
             "skill": "tradingagents-financial-report-analyst",
-            "allowed_inputs": analyst_outputs + [str(evidence_path)],
+            "allowed_inputs": analyst_outputs
+            + [role_packet_paths[FINANCIAL_REPORT_ROLE], str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["financial_report"],
             "completion_gate": "write financial_report.md before industry/theme discovery",
@@ -665,6 +700,12 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 for role in selected_analysts
             },
         }
+        evidence["roles"][FINANCIAL_REPORT_ROLE] = _collect_role(
+            FINANCIAL_REPORT_ROLE,
+            ticker,
+            args.trade_date,
+            args.lookback_days,
+        )
         evidence_path = evidence_dir / "evidence.json"
         packet_path = evidence_dir / "role_packets.md"
         role_dir = evidence_dir / "roles"

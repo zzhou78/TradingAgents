@@ -15,7 +15,8 @@ Assemble complete_report.md from Codex-written role reports and run the hard con
 - Company: Microsoft Corporation
 - Sector: Technology
 - Industry: Software - Infrastructure
-- Evidence roles: 4
+- Evidence roles: 5
+- financial_report: collect_financial_document_sources
 - fundamentals: get_balance_sheet, get_cashflow, get_fundamentals, get_income_statement
 - market: get_indicators:atr, get_indicators:close_200_sma, get_indicators:close_50_sma, get_indicators:macd, get_indicators:rsi, get_stock_data, get_verified_market_snapshot
 - news: get_global_news, get_insider_transactions, get_news

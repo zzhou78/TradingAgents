@@ -46,7 +46,8 @@
       "forbidden_inputs": [
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\social.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\news.md",
-        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md"
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
       "completion_gate": "write market_report in TradingAgents analyst style"
@@ -60,7 +61,8 @@
       "forbidden_inputs": [
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\market.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\news.md",
-        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md"
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
       "completion_gate": "write sentiment_report in TradingAgents analyst style"
@@ -74,7 +76,8 @@
       "forbidden_inputs": [
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\market.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\social.md",
-        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md"
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
       "completion_gate": "write news_report in TradingAgents analyst style"
@@ -88,7 +91,8 @@
       "forbidden_inputs": [
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\market.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\social.md",
-        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\news.md"
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\news.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
       "completion_gate": "write fundamentals_report in TradingAgents analyst style"
@@ -101,6 +105,7 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md",
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\evidence.json"
       ],
       "forbidden_inputs": [],

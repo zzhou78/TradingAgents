@@ -90,17 +90,18 @@ Valuation and quality are the central trade-off. PE is 22.23, forward PE is 19.2
 
 ### Financial Report Analyst
 
-The financial-report role found structured financial statement data, but no annual report, quarterly report, earnings release, investor presentation, or management guidance packet. Confidence is medium for structured financial facts and low for management-commentary conclusions.
+The financial-report role now has SEC filing evidence in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes the 2025 10-K filed 2025-07-30, the March 2026 10-Q filed 2026-04-29, and an Item 2.02 earnings-release 8-K filed 2026-04-29. Investor-presentation evidence remains unavailable.
 
 | Source | Status | Use |
 |---|---|---|
 | Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
 | Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
-| Annual report / 10-K | Not available | Evidence gap |
-| Quarterly report / 10-Q | Not available | Evidence gap |
-| Earnings release / investor presentation | Not available | Evidence gap |
+| Annual report / 10-K | Available | Annual report context and risk-factor source anchor |
+| Quarterly report / 10-Q | Available | March 2026 quarter statements and MD&A source anchor |
+| Earnings release 8-K | Available | Confirms Item 2.02 results-of-operations evidence |
+| Investor presentation | Not discovered | Evidence gap |
 
-Revenue is 318.3B, net income is 125.2B, and free cash flow is 37.0B. Profit margin is 39.34%, operating margin is 46.33%, current ratio is 1.28, and debt/equity is 30.27. The report does not support segment-level Azure, Office, Windows, gaming, or LinkedIn claims, nor formal management guidance claims.
+Revenue is 318.3B, net income is 125.2B, and free cash flow is 37.0B. Profit margin is 39.34%, operating margin is 46.33%, current ratio is 1.28, and debt/equity is 30.27. The March 2026 10-Q excerpt reports quarterly revenue of 82.886B versus 70.066B in the prior-year period and operating income of 38.398B. The filing evidence improves source confidence, but the current packet still does not fully quantify Azure, Office, Windows, gaming, LinkedIn, capex commitments, or formal guidance.
 
 ### Industry / Theme Discovery Analyst
 
@@ -138,7 +139,7 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 
 **Strongest Bear Evidence**: below 200 SMA (446.27), below 10 EMA (377.15), below 50 SMA (410.52); RSI 40.48; MACD -13.75 vs signal -9.66.
 
-**Financial-report impact**: Structured financial data supports Microsoft quality and liquidity, but missing filings, earnings release, guidance, and segment commentary prevent the manager from using management narrative to override the technical breakdown.
+**Financial-report impact**: SEC annual, quarterly, and Item 2.02 8-K evidence now supports the financial review. Microsoft quality and liquidity remain strong, but the filing evidence does not override the technical breakdown below the 200 SMA.
 
 **Industry/theme impact**: Azure/cloud and enterprise AI themes are constructive, while cloud regulation and data-center power/capex intensity are material constraints. These themes mitigate but do not overturn the Sell because the primary driver is technical.
 
@@ -218,7 +219,7 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 
 **Paper-study price framework**: Final action is Sell using 372.97, the latest verified close, as the reference price. The action is confirmed by continued trading below 377.15 or renewed weakness below 349.20. A close back above 377.15 weakens the Sell; reclaiming 410.52 would invalidate the near-term Sell setup.
 
-**Financial-report impact**: Financial quality is strong, so this is not a fundamental-quality Sell. Missing guidance and segment evidence limit the ability to argue that fundamentals offset the technical break.
+**Financial-report impact**: Financial quality is strong and now supported by SEC annual, quarterly, and earnings-release filings. This is still not a fundamental-quality Sell; the Sell remains technical because price is below the 200 SMA and momentum is weak.
 
 **Industry/theme impact**: Enterprise AI, Azure, and data-center demand are constructive themes, but cloud regulation and power/capex intensity keep the theme read-through mixed.
 
