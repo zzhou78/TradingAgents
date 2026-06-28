@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for AAPL from 2026-05-28 to 2026-06-27
 # Total records: 21
-# Data retrieved on: 2026-06-28 22:27:29
+# Data retrieved on: 2026-06-29 06:53:46
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-05-28,310.68,312.8,309.57,312.51,48220400,0.0,0.0
@@ -169,36 +169,36 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ## close_200_sma values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 269.075539855957
-2026-06-25: 268.8250843048096
-2026-06-24: 268.6353789520264
-2026-06-23: 268.36504806518553
-2026-06-22: 268.08906578063966
+2026-06-26: 269.07553939819337
+2026-06-25: 268.8250838470459
+2026-06-24: 268.6353784942627
+2026-06-23: 268.3650476074219
+2026-06-22: 268.08906532287597
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 267.79300201416015
-2026-06-17: 267.44831161499025
-2026-06-16: 267.1259870910645
-2026-06-15: 266.78930671691893
+2026-06-18: 267.79300155639646
+2026-06-17: 267.4483112335205
+2026-06-16: 267.1259867095947
+2026-06-15: 266.78930641174315
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 266.4564055633545
-2026-06-11: 266.14407096862794
-2026-06-10: 265.79851676940916
-2026-06-09: 265.4762041473389
-2026-06-08: 265.14478179931643
+2026-06-12: 266.45640518188475
+2026-06-11: 266.1440705871582
+2026-06-10: 265.7985163116455
+2026-06-09: 265.47620361328126
+2026-06-08: 265.1447812652588
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 264.76394371032717
-2026-06-04: 264.37679153442383
-2026-06-03: 263.97183464050295
-2026-06-02: 263.5752178955078
-2026-06-01: 263.15983436584474
+2026-06-05: 264.76394317626955
+2026-06-04: 264.3767910003662
+2026-06-03: 263.9718341064453
+2026-06-02: 263.57521728515627
+2026-06-01: 263.15983375549314
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 262.7916431427002
-2026-05-28: 262.3763538360596
+2026-05-29: 262.79164253234865
+2026-05-28: 262.37635314941406
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,36 +212,36 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ## rsi values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 41.264905239850854
-2026-06-25: 32.21626505426505
-2026-06-24: 45.840823823311474
-2026-06-23: 47.09933626555723
-2026-06-22: 49.92659056179099
+2026-06-26: 41.264905239906206
+2026-06-25: 32.21626505437855
+2026-06-24: 45.84082382336667
+2026-06-23: 47.09933626560383
+2026-06-22: 49.926590561816376
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 50.97504659129809
-2026-06-17: 48.92330273622317
-2026-06-16: 52.160660070512996
-2026-06-15: 49.50100406408827
+2026-06-18: 50.97504659131491
+2026-06-17: 48.92330273625924
+2026-06-16: 52.16066007052026
+2026-06-15: 49.501004064122995
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 44.08616262826677
-2026-06-11: 48.16571454883226
-2026-06-10: 43.821187441395324
-2026-06-09: 42.6867635382876
-2026-06-08: 53.36306101714175
+2026-06-12: 44.0861626283662
+2026-06-11: 48.16571454889069
+2026-06-10: 43.8211874415166
+2026-06-09: 42.68676353842677
+2026-06-08: 53.36306101713411
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 60.81720503018205
-2026-06-04: 66.61215956347895
-2026-06-03: 65.85891278463127
-2026-06-02: 73.72449671760747
-2026-06-01: 67.17304316302064
+2026-06-05: 60.81720503002882
+2026-06-04: 66.61215956318807
+2026-06-03: 65.85891278435018
+2026-06-02: 73.7244967171016
+2026-06-01: 67.1730431625876
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 79.00388845028067
-2026-05-28: 80.02820835501764
+2026-05-29: 79.00388844934882
+2026-05-28: 80.02820835403665
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,36 +255,36 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ## macd values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -2.236859871247077
-2026-06-25: -1.5674827205456836
-2026-06-24: 0.18837708853476443
-2026-06-23: 0.6011534147573911
-2026-06-22: 0.9950437517225623
+2026-06-26: -2.236859871236618
+2026-06-25: -1.5674827205343718
+2026-06-24: 0.1883770885470426
+2026-06-23: 0.6011534147706925
+2026-06-22: 0.9950437517369437
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 1.207388180935311
-2026-06-17: 1.359036697044246
-2026-06-16: 1.742572747977647
-2026-06-15: 1.8717781229597676
+2026-06-18: 1.2073881809508862
+2026-06-17: 1.3590366970610148
+2026-06-16: 1.7425727479957231
+2026-06-15: 1.8717781229793218
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 2.296590212824583
-2026-06-11: 3.344019019912082
-2026-06-10: 4.174096966123159
-2026-06-09: 5.585229635035603
-2026-06-08: 7.409980958920812
+2026-06-12: 2.2965902128457287
+2026-06-11: 3.344019019934933
+2026-06-10: 4.174096966147829
+2026-06-09: 5.585229635062262
+2026-06-08: 7.409980958949632
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 8.512261721805714
-2026-06-04: 9.204813877013919
-2026-06-03: 9.55879984360945
-2026-06-02: 9.97034133117404
-2026-06-01: 9.847612707359929
+2026-06-05: 8.512261721836808
+2026-06-04: 9.204813877047513
+2026-06-03: 9.558799843645716
+2026-06-02: 9.970341331213206
+2026-06-01: 9.84761270740222
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 10.45289347960744
-2026-05-28: 10.4879552146636
+2026-05-29: 10.452893479653085
+2026-05-28: 10.487955214712883
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,36 +298,36 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ## atr values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 8.157540458080954
-2026-06-25: 7.881965050860018
-2026-06-24: 7.001348010751894
-2026-06-23: 7.01991249114627
-2026-06-22: 6.986057915645503
+2026-06-26: 8.157540458080666
+2026-06-25: 7.881965050859708
+2026-06-24: 7.00134801075156
+2026-06-23: 7.01991249114591
+2026-06-22: 6.986057915645114
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 7.088062088994436
-2026-06-17: 7.252527464530066
-2026-06-16: 7.21733557928959
-2026-06-15: 7.271745257263789
+2026-06-18: 7.088062088994017
+2026-06-17: 7.252527464529615
+2026-06-16: 7.217335579289105
+2026-06-15: 7.271745257263267
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 7.319572285016052
-2026-06-11: 7.304153266074978
-2026-06-10: 7.296010927918487
-2026-06-09: 7.290319836436255
-2026-06-08: 6.792651380344813
+2026-06-12: 7.319572285015489
+2026-06-11: 7.304153266074373
+2026-06-10: 7.296010927917834
+2026-06-09: 7.290319836435551
+2026-06-08: 6.792651380344055
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 6.066702988929029
-2026-06-04: 5.9164478702889545
-2026-06-03: 6.072327348892912
-2026-06-02: 5.917122042046935
-2026-06-01: 5.669207226170733
+2026-06-05: 6.0667029889282125
+2026-06-04: 5.916447870288075
+2026-06-03: 6.072327348891966
+2026-06-02: 5.917122042045914
+2026-06-01: 5.669207226169633
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 5.563760970882187
-2026-05-28: 5.5709732593575
+2026-05-29: 5.563760970881004
+2026-05-28: 5.570973259356226
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -342,38 +342,38 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 - Status: `ok`
 
 ```text
-Bullish: 6 (20%) · Bearish: 5 (17%) · Unlabeled: 19 · Total: 30 most-recent messages
+Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent messages
 
-[2026-06-28T12:10:30Z · @RiskyChick92 · Bullish] $AAPL Nothing compares to Apple!! Especially the IPhone! Any other phone is “Not Cool” with young trendy peeps, so higher prices are irrelevant. People WILL pay it. MARK THIS 💪💪💪
-[2026-06-28T09:52:04Z · @chamono1942 · no-label] $AAPL Apple Uses Chinese Semiconductors!
-[2026-06-28T09:23:48Z · @BradBreath · Bullish] $AAPL 💪🏼EVERY BIT OF IT🍏
-[2026-06-28T09:22:07Z · @rst1016 · no-label] $AAPL 290 monday???
-[2026-06-28T09:07:03Z · @Rvazstocksfl · no-label] $AAPL 250 on Monday ?
-[2026-06-28T08:52:38Z · @Agayay · Bullish] $MU $DRAM $AAPL $QQQ $SPY   Actually i think we see MEMORY stock rally on Monday.  Due to Apple seeking to buy MEMORY from China. But we all know that it won&#39;t be approved. News proves that MEMORY SHORTAGE IS CRITICAL. Remember, market is always opposite. You panic but market…
-[2026-06-28T08:50:15Z · @MicroCapsTrader · no-label] $AAPL Index rebalancing caused the high volumes and random price actions on some of the large caps last Friday. Unless it reclaims $287-289 previous breakout zone, be careful as a meltdown after a bear flag confirmation doesn’t last only a day. So look for reclaims of previous ke…
-[2026-06-28T07:57:44Z · @lotharchoo · no-label] June 29 - July 2, 2026  $AAPL: 283.78 Sell   $TSLA: 379.71 Sell  $INTC : 128..32 Buy   $NVDA: 192.53 Sell   $META: 550.25 Sell
-[2026-06-28T06:48:56Z · @Himbhas18 · Bearish] $AAPL no one wants to buy expensive POS
-[2026-06-28T06:09:33Z · @termalerts · no-label] IPHONE 18 PRICE FORECAST TO SURPASS $1,100 AFTER APPLE&#39;S MACBOOK, IPAD PRICE HIKES $AAPL
-[2026-06-28T06:04:38Z · @juanagustin2086 · Bullish] $AAPL
-[2026-06-28T05:44:44Z · @HEEJIN_J · no-label] $AAPL Apple gets clapped by a nerd they used to bully, now they&#39;re reporting them for school violence lol
-[2026-06-28T04:21:46Z · @thewolfofsomestreet · Bullish] $MU who else is convinced $AAPL news and post-earnings dip is a scheme for institutions to enter 😂😂
-[2026-06-28T04:21:06Z · @ns9970 · no-label] $MU $AAPL is this another good vs evil? Who is the aggressor? lol who has the right to defend itself?
-[2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
-[2026-06-28T01:29:08Z · @Kaythu · Bearish] $AAPL The War in Iran continues to escalate big time! There is no such thing as a ceasefire and no such thing as a deal. The fighting continues on both ends. Oil prices are likely to go up yet again! Whats the likelihood the stock market winds up red on Monday and the entire week…
-[2026-06-28T00:23:01Z · @PivotPoint_101 · no-label] $SPY  we are no longer accepting Failed YouTubers or http://X.com Gurus  $QQQ $IWM $AAPL
-[2026-06-28T00:06:36Z · @Jumper567 · Bearish] $AAPL $MU and then there is $MSFT $GOOG who are silently sulking
-[2026-06-28T00:05:45Z · @Jumper567 · Bearish] $AAPL this trash complaining about another trash $MU so it’s ok if they did it but not when others do it to them 🤣🤣🤣🤣🤣
-[2026-06-28T00:01:03Z · @ebcnetworks · no-label] $MU this is correct  For decade $AAPL has been buying our chips for $5, gluing it inside a metal box, &amp; selling it to consumers for $99 upgrades &amp; laughing at our attempts to get $7. Now we&#39;re charging them $50 &amp; they turned around &amp; raised prices on their cus…
-[2026-06-28T00:00:19Z · @NBman1988 · Bullish] $AMZN $AAPL $BTC.X come to $VELVET.X for 100% returns
-[2026-06-27T23:52:17Z · @ResearchTrends09 · no-label] $AAPL
-[2026-06-27T23:52:03Z · @ResearchTrends09 · no-label] $AAPL liberal women. Hairy arm pits.
-[2026-06-27T23:35:47Z · @Supraman1 · no-label] $MU  $MU $NVDA $SNDK $AAPL $MSFT
-[2026-06-27T23:09:17Z · @MorganHoratio · no-label] We closed the week with 11 American 🇺🇸 public companies worth more than $1 Trillion    $NVDA $4.7T    $AAPL $4.2T    $GOOGL $4.1T    $MSFT $2.8T     Anchored by its advanced Vera Rubin architecture and defensive CUDA software ecosystem, NVIDIA commands the global leaderboard at a…
-[2026-06-27T23:01:46Z · @johnrivers0110 · Bearish] $WEN 🔺after all this Wendys I&#39;ll be looking into a health care company for all the heart attacks and high cholesterol you gonna have after this stock meets you at 5... The FiB 🔺  $SPCX  $SPY  $BTC.X  $AAPL
-[2026-06-27T23:00:40Z · @FibonacciTrader_ · no-label] $AAPL is facing a strategic input-cost problem that the market is slowly starting to price in around the AI cycle.    If memory becomes the key bottleneck in AI infrastructure, Apple won’t stay exposed to rising component costs indefinitely. Near-term, they may bridge supply via …
-[2026-06-27T22:32:48Z · @MarketPulsee · no-label] Dumping $AAPL at $282 over the &quot;100-year memory crisis&quot; is brainless. Cook just passes costs to consumers via MacBook price hikes. Gross margins stay untouchable. Keep shorting
-[2026-06-27T22:28:45Z · @DrSilbergleit · no-label] $SPY $QQQ $BB  $AAPL  2026 is so weird     BlackBerry +192%     Apple +3%
-[2026-06-27T22:24:52Z · @rally4sport · no-label] $AAPL $MU
+[2026-06-28T20:53:40Z · @FrankieSmilez · no-label] $SPY $AAPL $QQQ   Breaking news: AOC urges Congress to consider breaking up Apple amidst rising MacBook and iPhone prices
+[2026-06-28T20:47:05Z · @manett82 · no-label] $AAPL expect another deal with alot of fanfare..apple to invest ...in a new memory chip factor as part of the deal....there will be ...to bridge the gap until the plant is done..oddly enough there is plently of capacity out there everyone is jist throwing eveyrthing they have at …
+[2026-06-28T20:37:48Z · @PivotPoint_101 · no-label] $SPY $QQQ $IWM $AAPL   Dips before key Earnings season ? 🥂🏦
+[2026-06-28T20:36:48Z · @ResearchTrends09 · no-label] $AAPL politics everywhere
+[2026-06-28T20:20:55Z · @johnrivers0110 · Bearish] $WEN 🔺 so at 8 btc goes lower ..bc everyone at Wendy&#39;s to get a nothing burger 🔺🚬 double liquid Burger 🚬🚬 The FiB 🔺  $BTC.X  $SPCX  $SPY  $AAPL
+[2026-06-28T20:18:24Z · @Jp2112 · Bullish] $AAPL $DRAM $MU $SNDK lotta 🤡 s
+[2026-06-28T20:10:35Z · @MarketMaestro1 · no-label] $MU $DRAM $SNDK Five types of idiots showed up today on stocktwits.    Type 1: Thinks this memory rally is driven by $AAPL, consumers and iPhones. This rally has nothing to do with consumers. Nothing to do with iPhones. Zero. Nada. This is an AI data center infrastructure cycle. …
+[2026-06-28T20:00:49Z · @REALALOY · Bullish] $BB No wonder QNX got invited to the Apple event... $BB.TSX $AAPL
+[2026-06-28T19:55:59Z · @REALALOY · Bullish] $BB Apple CarPlay Ultra + QNX: Why It Matters  CarPlay Ultra on iOS 27 introduces **bidirectional communication** between Apple and the vehicle, not just screen mirroring.  https://x.com/i/status/2071321025456009609  $BB.TSX $AAPL
+[2026-06-28T19:51:36Z · @stockdog88 · Bullish] $MU $AAPL for decades Apple took advantage by keeping billions of cash in offshore accounts to avoid paying taxes, while ripping off consumers with marked up prices supported by former administrations. Now they get theirs …. https://finance.yahoo.com/technology/articles/apple-wan…
+[2026-06-28T19:36:19Z · @WallStreetScoutt · no-label] $AAPL sitting at $283.78. Ecosystem dominance is the moat. Short-term noise, long-term compounder.
+[2026-06-28T19:12:27Z · @DocOctagon · Bullish] $MSFT $AAPL $MU People that keep bringing up China memory chips are either morons who haven&#39;t done any research or bears trying to push a narrative. China DRAM chips have significantly more power draw than Micron&#39;s chips which increases data center total cost of ownership…
+[2026-06-28T19:10:34Z · @Dazedconfused12 · no-label] $AAPL wasn’t this just $315?
+[2026-06-28T18:10:15Z · @TheHomelander · Bullish] $MSFT if $AAPL get their way with Chinese memory chips, the DRAM bubble pops and hyperscalers regain leadership.  You don’t think Trump or Lutnik will go for it? $MU price hikes showing up in inflation data. What do you think they want more? American company leadership or a rate …
+[2026-06-28T17:41:06Z · @FibonacciTrader_ · no-label] Trying to contextualize this drawdown across names tied to the AI buildout:    NBIS AAOI SIVE LITE SNDK    What stands out from history is simple: the biggest winners almost always went through violent resets before compounding long-term.    $AMZN -94% in dot-com era → multi-tril…
+[2026-06-28T17:28:10Z · @Payday_Everyday · Bullish] $AAPL $350 soon   https://kalshi.com/sign-up/?referral=8fc55f38-bd19-40e5-8302-2d61037e4741&amp;m=true&amp;utm_source=mobile_app&amp;utm_medium=copy&amp;utm_campaign=referral&amp;utm_content=referral_qr_sheet
+[2026-06-28T17:12:09Z · @Jointheask · no-label] $SPY WEEKLY STOCK WATCHLIST - $AAPL GAP UP OR $NVDA GAP DOWN !!! #trading https://youtu.be/fQowWtEa-DQ
+[2026-06-28T17:11:51Z · @A_Pino · Bullish] $NKE Tim Cook is bag holding this, he knows it’s deeply undervalued. He is selling $AAPL stocks but adding more Nike
+[2026-06-28T16:20:31Z · @Themadogtrader · no-label] $AAPL $MU $SPY too bad there stock is not doing the same Amazon induced price history a great way to see inflation
+[2026-06-28T16:13:44Z · @Snorkelingwithturtles · no-label] $AAPL AOC the same gal that blocked AMZN from opening a fulfillment center in her district and said nothing when eggs were $8 a dozen and gas was nearly $6 a gallon and now she’s an expert on computer prices?  ok got it.
+[2026-06-28T15:42:42Z · @AStrokeOfLuck · no-label] $AAPL ha
+[2026-06-28T15:22:56Z · @CapitalLogic1 · no-label] $AAPL is coasting at $283.78 after a solid extension. The AI narrative is strong, but seeking blacklisted CXMT chips adds massive political risk. Treading carefully until Washington blinks.
+[2026-06-28T15:02:16Z · @ResearchTrends09 · no-label] $AAPL crickets all I hear is crickets from you Democrats from mainstream media. Everything is politics. Dwarfs talking about stocks.
+[2026-06-28T14:42:44Z · @johnrivers0110 · no-label] $GME 🔺 once gme releases it&#39;s gaming system you should see a stable 100 here .. ebay &amp; pokemon isn&#39;t enough... I&#39;m sure the genius who will intergrade real time btc betting  into gaming platforms shall surely be rich👁️ $BTC.X  $AAPL  $TSLA  $NVDA
+[2026-06-28T14:40:21Z · @techvested · Bearish] $AAPL   Price to Sales of 9.2x   No revenue growth  Raising prices 20% across the board  Expect meaningful decline with that setup.
+[2026-06-28T14:39:13Z · @ResearchTrends09 · no-label] $AAPL  🛑🛑🛑do people realize everything is killing you the FDA is the devil with our foods, the chemicals, the conditioner, the creams, etc., on your skin and your bloodstream do people realize, do people realize the less you eat  the healthier you are!  Only one mill a day should…
+[2026-06-28T14:36:56Z · @ResearchTrends09 · no-label] $AAPL the important things. Read.  You bran Nubians…..
+[2026-06-28T14:28:26Z · @Themadogtrader · Bearish] $AAPL $MU $SPY   Offer a 25-50% increase in your products that no one buys anymore and lose billions in stock value sounds like a great plan 🤪🤡 lucky I found the last iPad under $400 to ever exist for my sons birthday
+[2026-06-28T14:24:08Z · @Themadogtrader · no-label] $SPY $MU $AAPL   Apple what the f***
+[2026-06-28T14:11:17Z · @HighRewards · no-label] $AAPL Market is cutting losses, aapl isnt worth the money, take years of all the splits and this needs to go down to at least 240.00
 ```
 
 ### Tool: fetch_reddit_posts
@@ -443,10 +443,6 @@ Link: https://247wallst.com/investing/2026/06/27/apple-wants-to-buy-blacklisted-
 Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
 Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
 
-### It’s a tale of two S&P 500s as rotation out of top tech stocks shifts into overdrive (source: MarketWatch)
-The equal-weighted version of the S 500 outperformed its traditional capitalization-weighted sibling this week by the widest margin in six years.
-Link: https://www.marketwatch.com/story/its-a-tale-of-two-s-p-500s-as-rotation-out-of-top-tech-stocks-shifts-into-overdrive-5254207f
-
 ### Apple Seeks US Approval to Buy Chips From Blacklisted CXMT: FT (source: Bloomberg)
 (Bloomberg) -- Apple Inc. is pressing the White House for approval to purchase memory chips from a blacklisted Chinese company as it grapples to rein in chip costs, the Financial Times reported on Saturday.Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsUS Strikes Iran in Response
 Link: https://finance.yahoo.com/technology/articles/apple-seeks-us-approval-buy-074523538.html
@@ -462,22 +458,6 @@ Link: https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end
 ### Update: Equity Markets Fall as Trump Says Iran Violated Ceasefire (source: MT Newswires)
 (Updates with market moves at the end of the day.) US equity benchmarks slipped Friday as Presid
 Link: https://finance.yahoo.com/markets/stocks/articles/equity-markets-fall-trump-says-204521099.html
-
-### US stocks recover from tech tremors as oil prices fall (source: AFP)
-Wall Street's main stock indices overcame an early bout of tech jitters Friday thanks to buy-the-dip traders, finishing mildly lower, while oil prices fell as shipping traffic resumed through the Strait of Hormuz.While US stocks retreated early, they were saved by investors swooping in to "buy the dip."
-Link: https://finance.yahoo.com/markets/world-indices/articles/asian-stocks-drop-again-rollercoaster-022857774.html
-
-### US Equity Indexes Mixed, Mag-7 Lags Amid Micron Technology's Blockbuster Quarterly Results This Week (source: MT Newswires)
-US equity indexes were mixed as a decline in technology hit tech-heavy gauges, outweighing a lift in
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-mag-203342644.html
-
-### Stocks to Watch Recap: Micron, Wendy’s, Apple, ON Semiconductor (source: The Wall Street Journal)
-↘️ ON Semiconductor (ON): The chip maker agreed to acquire Synaptics (SYNA) in a roughly $7 billion all-stock transaction, as it seeks to push into physical AI. Shares of ON Semiconductor tumbled 24%, while Synaptics’ stock slipped 3.
-Link: https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-26-2026/card/stocks-to-watch-on-semiconductor-apple-zalando-HXVpEfOkkyL0ye8xKqqr?siteid=yhoof2&yptr=yahoo
-
-### Stock Of The Day: Is The Apple Sell-Off Over? (source: Benzinga)
-Apple Inc. (NASDAQ:AAPL) is trading higher on Friday. It has dropped about 12% since the beginning of June. But the sell-off may be over. The shares are oversold and at support — and these can be bullish dynamics. This is why Apple is the Stock of the Day. • What’s driving AAPL shares up today? In February and again in April, Apple ran into resistance at the $275 level. People who sold there thought they made a smart decision when the price dropped afterward. But when the resistance broke, and t
-Link: https://finance.yahoo.com/markets/stocks/articles/stock-day-apple-sell-off-201228930.html
 
 
 ```
@@ -496,7 +476,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-28 22:27:41
+# Data retrieved on: 2026-06-29 06:54:00
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
@@ -590,7 +570,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-06-28 22:27:42
+# Data retrieved on: 2026-06-29 06:54:00
 
 Name: Apple Inc.
 Sector: Technology
@@ -628,7 +608,7 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 22:27:42
+# Data retrieved on: 2026-06-29 06:54:00
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
@@ -706,7 +686,7 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 22:27:42
+# Data retrieved on: 2026-06-29 06:54:00
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,,
@@ -764,7 +744,7 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-06-28 22:27:42
+# Data retrieved on: 2026-06-29 06:54:00
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0
@@ -827,6 +807,46 @@ Operating Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,953
 | earnings_release_8k | available | 2026-04-30 | 8-K | https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm |
 | investor_presentation | unavailable |  |  | No investor presentation source was discovered from the SEC submissions feed. |
 
+### Section: annual_report_10k / business_overview
+
+- Source section: 10-K business
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+Item 1. Business 1
+```
+
+### Section: annual_report_10k / risk_factors
+
+- Source section: 10-K risk factors
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+Item 1A. Risk Factors 5
+```
+
+### Section: annual_report_10k / segment_information
+
+- Source section: 10-K segment information
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+Segment Information and Geographic Data” for 2025, 2024 and 2023, except in Greater China, where iPhone revenue represented a moderately higher proportion of net sales. As of September 27, 2025 and September 28, 2024, the Company had total deferred revenue of $ 13.7 billion and $ 12.8 billion, respectively. As of September 27, 2025, the Company expects 66 % of total deferred revenue to be realized in less than a year, 23 % within one-to-two years, 9 % within two-to-three years and 2 % in greater than three years. Note 3 – Earnings Per Share The following table shows the computation of basic and diluted earnings per share for 2025, 2024 and 2023 (net income in millions and shares in thousands): 2025 2024 2023 Numerator: Net income $ 112,010 $ 93,736 $ 96,995 Denominator: Weighted-average basic shares outstanding 14,948,500 15,343,783 15,744,231 Effect of dilutive share-based awards 56,197 64,312 68,316 Weighted-average diluted shares 15,004,697 15,408,095 15,812,547 Basic earnings per share $ 7.49 $ 6.11 $ 6.16 Diluted earnings per share $ 7.46 $ 6.08 $ 6.13 Approximately 24 million restricted stock units (“RSUs”) were excluded from the computation of diluted earnings per share for 2023 because their effect would have been antidilutive. Apple Inc. | 2025 Form 10-K | 36 Note 4 – Financial Instruments Cash, Cash Equivalents and Marketable Securities The following tables show the Company’s cash, cash equivalents and marketable securities by significant investment category as of September 27, 2025 and September 28, 2024 (in millions): 2025 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 28,267 $ — $ — $ 28,267 $ 28,267 $ — $ — Level 1: Money market funds 5,272 — — 5,272 5,272 — — Mutual funds 679 177 ( 2 ) 854 — 854 — Subtotal 5,951 177 ( 2 ) 6,126 5,272 854 — Level 2 (1) : U.S. Treasury securities 16,074 56 ( 282 ) 15,848 1,190 3,712 10,946 U.S. agency securities 5,269 — ( 149 ) 5,120 251 2,456 2,413 Non-U.S. government securities 6,586 111 ( 424 ) 6,273 — 855 5,418 Certificates of deposit and time deposits 917 — — 917 904 — 13 Commercial paper 100 — — 100 50 50 — Corporate debt securities 47,210 266 ( 916 ) 46,560 — 10,623 35,937 Municipal securities 207 — ( 2 ) 205 — 119 86 Mortgage- and asset-backed securities 24,130 126 ( 1,252 ) 23,004 — 94 22,910 Subtotal 100,493 559 ( 3,025 ) 98,027 2,395 17,909 77,723 Total $ 134,711 $ 736 $ ( 3,027 ) $ 132,420 $ 35,934 $ 18,763 $ 77,723 2024 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 27,199 $ — $ — $ 27,199 $ 27,199 $ — $ — Level 1: Money market funds 778 — — 778 778 — — Mutual funds 515 105 ( 3 ) 617 — 617 — Subtotal 1,293 105 ( 3 ) 1,395 778 617 — Level 2 (1) : U.S. Treasury securities 16,150 45 ( 516 ) 15,679 212 4,087 11,380 U.S. agency securities 5,431 — ( 272 ) 5,159 155 703 4,301 Non-U.S. government securities 17,959 93 ( 484 ) 17,568 1,158 10,810 5,600 Certificates of deposit and time deposits 873 — — 873 387 478 8 Commercial paper 1,066 — — 1,066 28 1,038 — Corporate debt securities 65,622 270 ( 1,953 ) 63,939 26 16,027 47,886 Municipal securities 412 — ( 7 ) 405 — 190 215 Mortgage- and asset-backed securities 24,595 175 ( 1,403 ) 23,367 — 1,278 22,089 Subtotal 132,108 583 ( 4,635 ) 128,056 1,966 34,611 91,479 Total (2)(3) $ 160,600 $ 688 $ ( 4,638 ) $ 156,650 $ 29,943 $ 35,228 $ 91,479 (1) The valuation techniques used to measure the fair values of the Company’s Level 2 financial instruments, which generally have counterparties with high credit ratings, are based on quoted market prices or model-driven valuations using significant inputs derived from or corroborated by observable market data. (2) As of September 28, 2024, cash and cash equivalents included $ 2.6 billion held in escrow and restricted from general use. These restricted cash and cash equivalents were designated to settle the Company’s obligation related to the State Aid Decision (refer to Note 7, “Income Taxes”). (3) As of September 28, 2024, current marketable securities included $ 13.2 billion held in escrow and restricted from general use. These restricted marketable securities were designated to settle the Company’s obligation related to the State Aid Decision (refer to Note 7, “Income Taxes”). Apple Inc. | 2025 Form 10-K | 37 As of September 27, 2025, 80 % of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years, 15 % between 5 and 10 years, and 5 % greater than 10 years. As of September 27, 2025, 13 % of the Company’s non-current mortgage- and asset-backed securities had maturities between 1 and 5 years, 14 % between 5 and 10 years, and 73 % greater than 10 years. The Company’s investments in marketable debt securities have been classified and accounted for as available-for-sale. The Company classifies marketable debt securities as either current or non-current based on each instrument’s underlying maturity. Derivative Instruments and Hedging The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk. However, the Company may choose not to hedge certain exposures for a variety of reasons including accounting considerations or the prohibitive economic cost of hedging particular exposures. There can be no assurance the hedges will offset more than a portion of the financial impact resulting from movements in foreign exchange or interest rates. All derivative instruments are recorded in the Consolidated Balance Sheets at fair value. The accounting treatment for derivative gains and losses is based on intended use and hedge designation. Gains and losses arising from amounts that are included in the assessment of cash flow hedge effectiveness are initially deferred in accumulated other comprehensive
+```
+
+### Section: annual_report_10k / liquidity_and_capital_resources
+
+- Source section: 10-K liquidity and capital resources
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+Liquidity and Capital Resources The Company believes its balances of cash, cash equivalents and marketable securities, which totaled $132.4 billion as of September 27, 2025, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s material cash requirements include the following contractual obligations: Debt As of September 27, 2025, the Company had outstanding fixed-rate notes with varying maturities for an aggregate principal amount of $91.3 billion (collectively the “Notes”), with $12.4 billion payable within 12 months. Future interest payments associated with the Notes total $37.0 billion, with $2.6 billion payable within 12 months. The Company also issues unsecured short-term promissory notes pursuant to a commercial paper program. As of September 27, 2025, the Company had $8.0 billion of commercial paper outstanding, which was payable within 12 months. Leases The Company has lease arrangements for certain equipment and facilities, including corporate, data center, manufacturing and retail space. As of September 27, 2025, the Company had fixed lease payment obligations of $16.8 billion, with $2.6 billion payable within 12 months. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of September 27, 2025, the Company had manufacturing purchase obligations of $56.2 billion, with $55.4 billion payable within 12 months. Other Purchase Obligations The Company’s other purchase obligations primarily consist of noncancelable obligations to acquire capital assets, including assets related to product manufacturing, and noncancelable obligations related to supplier arrangements, licensed intellectual property and content, and distribution rights. As of September 27, 2025, the Company had other purchase obligations of $14.8 billion, with $7.0 billion payable within 12 months. Deemed Repatriation Tax Payable As of September 27, 2025, the balance of the deemed repatriation tax payable imposed by the U.S. Tax Cuts and Jobs Act of 2017 (“TCJA”) was $8.8 billion, which was payable within 12 months. Apple Inc. | 2025 Form 10-K | 25 Capital Return Program In addition to its contractual cash requirements, the Company has an authorized share repurchase program. The program does not obligate the Company to acquire a minimum amount of shares. As of September 27, 2025, the Company’s quarterly cash dividend was $0.26 per share. The Company intends to increase its dividend on an annual basis, subject to declaration by the Board. In May 2025, the Company announced a new share repurchase program of up to $100 billion and raised its quarterly dividend from $0.25 to $0.26 per share beginning in May 2025. During 2025, the Company repurchased $89.3 billion of its common stock and paid dividends and dividend equivalents of $15.4 billion. Recent Accounting Pronouncements Internal-Use Software In September 2025, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) No. 2025-06, Intangibles—Goodwill and Other—Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software (“ASU 2025-06”), which modernizes the accounting for internal-use software. ASU 2025-06 removes all references to software development stages and requires capitalization of software costs when management has committed to the software project and it is probable the software will be completed and perform its intended use. ASU 2025-06 will be effective for the Company in its first quarter of 2029, and early adoption is permitted. The Company is currently evaluating the timing and method of its adoption of ASU 2025-06. Disaggregation of Income Statement Expenses In November 2024, the FASB issued ASU No. 2024-03, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses (“ASU 2024-03”) and in January 2025, the FASB issued ASU No. 2025-01, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Clarifying the Effective Date , which clarified the effective date of ASU 2024-03. ASU 2024-03 will require the Company to disclose the amounts of purchases of inventory, employee compensation, depreciation and intangible asset amortization, as applicable, included in certain expense captions in the Consolidated Statements of Operations, as well as qualitatively describe remaining amounts included in those captions. ASU 2024-03 will also require the Company to disclose both the amount and the Company’s definition of selling expenses. The Company will adopt ASU 2024-03 in its fourth quarter of 2028 using a prospective transition method. Income Taxes In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures (“ASU 2023-09”), which will require the Company to disclose specified additional information in its income tax rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold. ASU 2023-09 will also require the Company to disaggregate its income taxes paid disclosure by federal, state and foreign taxes, with further disaggregation required for significant individual jurisdictions. The Company will adopt ASU 2023-09 in its fourth quarter of 2026 using a prospective transition method. Critical Accounting Estimates The preparation of financial statements and related disclosures in conformity with U.S. generally accepted accounting principles (“GAAP”) and the Company’s discussion and analysis of its financial condition and operating
+```
+
 ### Excerpt: annual_report_10k
 
 - Filing date: `2025-10-31`
@@ -834,6 +854,36 @@ Operating Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,953
 
 ```text
 aapl-20250927 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 27 , 2025 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 0.000% Notes due 2025 — The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Securities registered pursuant to Section 12(g) of the Act: None Indicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. ☒ If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. ☐ Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes ☐ No ☒ The aggregate market value of the voting and non-voting stock held by non-affiliates of the Registrant, as of March 28, 2025, the last business day of the Registrant’s most recently completed second fiscal quarter, was approximately $ 3,253,431,000,000 . Solely for purposes of this disclosure, shares of common stock held by executive officers and directors of the Registrant as of such date have been excluded because such persons may be deemed to be affiliates. This determination of executive officers and directors as affiliates is not necessarily a conclusive determination for any other purposes. 14,776,353,000 shares of common stock were issued and outstanding as of October 17, 2025. DOCUMENTS INCORPORATED BY REFERENCE Portions of the Registrant’s definitive proxy statement relating to its 2026 annual meeting of shareholders are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. The Registrant’s definitive proxy statement will be filed with the U.S. Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates. Apple Inc. Form 10-K For the Fiscal Year Ended September 27, 2025 TABLE OF CONTENTS Page Part I Item 1. Business 1 Item 1A. Risk Factors 5 Item 1B. Unresolved Staff Comments 17 Item 1C. Cybersecurity 17 Item 2. Properties 17 Item 3. Legal Proceedings 18 Item 4. Mine Safety Disclosures 18 Part II Item 5. Market for Registrant’s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities 19 Item 6. [Reserved] 20 Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 21 Item 7A. Quantitative and Qualitative Disclosures About Market Risk 27 Item 8. Financial Statements and Supplementary Data 28 Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure 52 Item 9A. Controls and Procedures 52 Item 9B. Other Information 53 Item 9C. Disclosure
+```
+
+### Section: quarterly_report_10q / risk_factors
+
+- Source section: 10-Q risk factors
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+
+```text
+Item 1A. Risk Factors 21
+```
+
+### Section: quarterly_report_10q / segment_information
+
+- Source section: 10-Q segment information
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+
+```text
+Segment Information” for the three- and six-month periods ended March 28, 2026 and March 29, 2025, except in Greater China, where iPhone revenue represented a moderately higher proportion of net sales. As of March 28, 2026 and September 27, 2025, the Company had total deferred revenue of $ 14.7 billion and $ 13.7 billion, respectively. As of March 28, 2026, the Company expects 64 % of total deferred revenue to be realized in less than a year, 23 % within one-to-two years, 11 % within two-to-three years and 2 % in greater than three years. Apple Inc. | Q2 2026 Form 10-Q | 6 Note 3 – Earnings Per Share The following table shows the computation of basic and diluted earnings per share for the three- and six-month periods ended March 28, 2026 and March 29, 2025 (net income in millions and shares in thousands): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Numerator: Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Denominator: Weighted-average basic shares outstanding 14,673,278 14,994,082 14,710,718 15,037,903 Effect of dilutive share-based awards 52,595 62,051 57,397 65,596 Weighted-average diluted shares 14,725,873 15,056,133 14,768,115 15,103,499 Basic earnings per share $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted earnings per share $ 2.01 $ 1.65 $ 4.85 $ 4.05 Note 4 – Financial Instruments Cash, Cash Equivalents and Marketable Securities The following tables show the Company’s cash, cash equivalents and marketable securities by significant investment category as of March 28, 2026 and September 27, 2025 (in millions): March 28, 2026 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 29,740 $ — $ — $ 29,740 $ 29,740 $ — $ — Level 1: Money market funds 6,588 — — 6,588 6,588 — — Mutual funds 821 128 ( 14 ) 935 — 935 — Subtotal 7,409 128 ( 14 ) 7,523 6,588 935 — Level 2 (1) : U.S. Treasury securities 18,650 14 ( 254 ) 18,410 2,935 4,174 11,301 U.S. agency securities 7,483 — ( 112 ) 7,371 2,923 2,470 1,978 Non-U.S. government securities 5,906 45 ( 493 ) 5,458 — 576 4,882 Certificates of deposit and time deposits 3,263 — — 3,263 2,987 276 — Commercial paper 3,628 — — 3,628 399 3,229 — Corporate debt securities 48,111 83 ( 982 ) 47,212 — 11,042 36,170 Municipal securities 122 — ( 1 ) 121 — 95 26 Mortgage- and asset-backed securities 25,106 64 ( 1,301 ) 23,869 — 138 23,731 Subtotal 112,269 206 ( 3,143 ) 109,332 9,244 22,000 78,088 Total $ 149,418 $ 334 $ ( 3,157 ) $ 146,595 $ 45,572 $ 22,935 $ 78,088 Apple Inc. | Q2 2026 Form 10-Q | 7 September 27, 2025 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 28,267 $ — $ — $ 28,267 $ 28,267 $ — $ — Level 1: Money market funds 5,272 — — 5,272 5,272 — — Mutual funds 679 177 ( 2 ) 854 — 854 — Subtotal 5,951 177 ( 2 ) 6,126 5,272 854 — Level 2 (1) : U.S. Treasury securities 16,074 56 ( 282 ) 15,848 1,190 3,712 10,946 U.S. agency securities 5,269 — ( 149 ) 5,120 251 2,456 2,413 Non-U.S. government securities 6,586 111 ( 424 ) 6,273 — 855 5,418 Certificates of deposit and time deposits 917 — — 917 904 — 13 Commercial paper 100 — — 100 50 50 — Corporate debt securities 47,210 266 ( 916 ) 46,560 — 10,623 35,937 Municipal securities 207 — ( 2 ) 205 — 119 86 Mortgage- and asset-backed securities 24,130 126 ( 1,252 ) 23,004 — 94 22,910 Subtotal 100,493 559 ( 3,025 ) 98,027 2,395 17,909 77,723 Total $ 134,711 $ 736 $ ( 3,027 ) $ 132,420 $ 35,934 $ 18,763 $ 77,723 (1) The valuation techniques used to measure the fair values of the Company’s Level 2 financial instruments, which generally have counterparties with high credit ratings, are based on quoted market prices or model-driven valuations using significant inputs derived from or corroborated by observable market data. As of March 28, 2026, 79 % of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years, 17 % between 5 and 10 years, and 4 % greater than 10 years. As of March 28, 2026, 13 % of the Company’s non-current mortgage- and asset-backed securities had maturities between 1 and 5 years, 22 % between 5 and 10 years, and 65 % greater than 10 years. Derivative Instruments and Hedging The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk. However, the Company may choose not to hedge certain exposures for a variety of reasons, including accounting considerations or the prohibitive economic cost of hedging particular exposures. There can be no assurance the hedges will offset more than a portion of the financial impact resulting from movements in foreign exchange or interest rates. Foreign Exchange Rate Risk To protect gross margins from fluctuations in foreign exchange rates, the Company may use forwards, options or other instruments, and may designate these instruments as cash flow hedges. The Company generally hedges portions of its forecasted foreign currency exposure associated with revenue and inventory purchases, typically for up to 12 months. To protect the Company’s foreign currency–denominated term debt or marketable securities from fluctuations in foreign exchange rates, the Company may use forwards, cross-currency swaps or other instruments. The Company designates these instruments as either cash flow or fair value hedges. As of March 28, 2026, the maximum length of time over which the Company is hedging its exposure to the variability in future cash flows for term debt–related foreign currency transactions is 16 years. The Company may also use derivative instruments that are not designated as accounting hedges to protect gross margins from certain fluctuations in foreign exchange rates, as well as to offset a portion of the foreign currency gains and losses generated by the remeasurement of
+```
+
+### Section: quarterly_report_10q / liquidity_and_capital_resources
+
+- Source section: 10-Q liquidity and capital resources
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+
+```text
+Liquidity and Capital Resources The Company believes its balances of cash, cash equivalents and marketable securities, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s contractual cash requirements have not changed materially since the 2025 Form 10-K, except for manufacturing purchase obligations, other purchase obligations, and deemed repatriation tax payable. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of March 28, 2026, the Company had manufacturing purchase obligations of $44.6 billion, with $43.9 billion payable within 12 months. Other Purchase Obligations The Company’s other purchase obligations primarily consist of noncancelable obligations related to supplier arrangements, licensed intellectual property and content, distribution rights, and the acquisition of capital assets related to product manufacturing. As of March 28, 2026, the Company had other purchase obligations of $30.4 billion, with $9.3 billion payable within 12 months. Deemed Repatriation Tax Payable During the first six months of 2026, the Company paid the remaining $8.8 billion balance of the deemed repatriation tax payable imposed by the U.S. Tax Cuts and Jobs Act of 2017. Capital Return Program In addition to its contractual cash requirements, the Company has an authorized share repurchase program, under which the remaining availability was $63.8 billion as of March 28, 2026. On April 30, 2026, the Company announced the Board of Directors had authorized an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. On April 30, 2026, the Company also announced the Board of Directors raised the Company’s quarterly cash dividend from $0.26 to $0.27 per share, beginning with the dividend to be paid during the third quarter of 2026. The Company intends to increase its dividend on an annual basis, subject to declaration by the Board of Directors. During the second quarter of 2026, the Company repurchased $11.0 billion of its common stock and paid dividends and dividend equivalents of $3.8 billion. Recent Accounting Pronouncements Internal-Use Software In September 2025, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) No. 2025-06, Intangibles—Goodwill and Other—Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software (“ASU 2025-06”), which modernizes the accounting for internal-use software. ASU 2025-06 removes all references to software development stages and requires capitalization of software costs when management has committed to the software project and it is probable the software will be completed and perform its intended use. ASU 2025-06 will be effective for the Company in its first quarter of 2029, and early adoption is permitted. The Company is currently evaluating the timing and method of its adoption of ASU 2025-06. Apple Inc. | Q2 2026 Form 10-Q | 18 Disaggregation of Income Statement Expenses In November 2024, the FASB issued ASU No. 2024-03, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses (“ASU 2024-03”) and in January 2025, the FASB issued ASU No. 2025-01, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Clarifying the Effective Date , which clarified the effective date of ASU 2024-03. ASU 2024-03 will require the Company to disclose the amounts of purchases of inventory, employee compensation, depreciation and intangible asset amortization, as applicable, included in certain expense captions in the Consolidated Statements of Operations, as well as qualitatively describe remaining amounts included in those captions. ASU 2024-03 will also require the Company to disclose both the amount and the Company’s definition of selling expenses. The Company will adopt ASU 2024-03 in its fourth quarter of 2028 using a prospective transition method. Income Taxes In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures (“ASU 2023-09”), which will require the Company to disclose specified additional information in its income tax rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold. ASU 2023-09 will also require the Company to disaggregate its income taxes paid disclosure by federal, state and foreign taxes, with further disaggregation required for significant individual jurisdictions. The Company will adopt ASU 2023-09 in its fourth quarter of 2026 using a prospective transition method. Critical Accounting Estimates The preparation of financial statements and related disclosures in conformity with GAAP and the Company’s discussion and analysis of its financial condition and operating results require the Company’s management to make judgments, assumptions and estimates that affect the amounts reported. Note 1, “Summary of Significant Accounting Policies” of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Form 10-Q and in the Notes to Consolidated Financial Statements in Part II, Item 8 of the 2025 Form 10-K describe the significant accounting policies and methods used in the preparation of the Company’s condensed consolidated financial statements. There have been no material changes to the Company’s critical accounting estimates since the 2025 Form 10-K.
 ```
 
 ### Excerpt: quarterly_report_10q
@@ -845,13 +895,31 @@ aapl-20250927 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 
 aapl-20260328 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-Q (Mark One) ☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the quarterly period ended March 28, 2026 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒ 14,687,356,000 shares of common stock were issued and outstanding as of April 17, 2026 . Apple Inc. Form 10-Q For the Fiscal Quarter Ended March 28, 2026 TABLE OF CONTENTS Page Part I Item 1. Financial Statements 1 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 13 Item 3. Quantitative and Qualitative Disclosures About Market Risk 19 Item 4. Controls and Procedures 19 Part II Item 1. Legal Proceedings 20 Item 1A. Risk Factors 21 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 24 Item 3. Defaults Upon Senior Securities 25 Item 4. Mine Safety Disclosures 25 Item 5. Other Information 25 Item 6. Exhibits 25 PART I — FINANCIAL INFORMATION Item 1. Financial Statements Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271 13,040 Total cost of sales 56,403 50,492 130,928 116,517 Gross margin 54,781 44,867 124,012 103,142 Operating expenses: Research and development 11,419 8,550 22,306 16,818 Selling, general and administrative 7,477 6,728 14,969 13,903 Total operating expenses 18,896 15,278 37,275 30,721 Operating income 35,885 29,589 86,737 72,421 Other income/(expense), net ( 52 ) ( 279 ) 98 ( 527 ) Income before provision for income taxes 35,833 29,310 86,835 71,894 Provision for income taxes 6,255 4,530 15,160 10,784 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Earnings per share: Basic $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted $ 2.01 $ 1.65 $ 4.85 $ 4.05 Shares used in computing earnings per share: Basic 14,673,278 14,994,082 14,710,718 15,037,903 Diluted 14,725,873 15,056,133 14,768,115 15,103,499 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 1 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In millions) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Other comprehensive income/(loss): Change in foreign currency translation, net of tax 67 90 ( 92 ) ( 535 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 162 ( 318 ) 373 1,333 Adjustment for net (gains)/losses realized and included in net income 44 ( 628 ) 281 156 Total change in unrealized gains/losses on derivative instruments 206 ( 946 ) 654 1,489 Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities ( 808 ) 1,097 ( 384 ) ( 550 ) Adjustment for net (gains)/losses realized and included in net income 14 185 18 405 Total change in unrealized gains/losses on marketable debt securities ( 794 ) 1,282 ( 366 ) ( 145 ) Total other comprehensive income/(loss) ( 521 ) 426
 ```
 
-### Excerpt: earnings_release_8k
+### 8-K Cover Page: earnings_release_8k
 
 - Filing date: `2026-04-30`
 - URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm
 
 ```text
 aapl-20260430 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 8-K CURRENT REPORT Pursuant to Section 13 OR 15(d) of The Securities Exchange Act of 1934 April 30, 2026 Date of Report (Date of earliest event reported) Apple Inc. (Exact name of Registrant as specified in its charter) California 001-36743 94-2404110 (State or other jurisdiction of incorporation) (Commission File Number) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Not applicable (Former name or former address, if changed since last report.) Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the Registrant under any of the following provisions: ☐ Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425) ☐ Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12) ☐ Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b)) ☐ Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operations and Financial Condition. On April 30, 2026, Apple Inc. (“Apple”) issued a press release regarding Apple’s financial results for its second fiscal quarter ended March 28, 2026. A copy of Apple’s press release is attached hereto as Exhibit 99.1. The information contained in this Current Report shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such a filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits. Exhibit Number Exhibit Description 99.1 Press release issued by Apple Inc. on April 30, 2026. 104 Inline XBRL for the cover page of this Current Report on Form 8-K. SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: April 30, 2026 Apple Inc. By: /s/ Kevan Parekh Kevan Parekh Senior Vice President, Chief Financial Officer
+```
+
+### Exhibit 99.1: earnings_release_8k
+
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/a8-kex991q2202603282026.htm
+
+```text
+EX-99.1 2 a8-kex991q2202603282026.htm EX-99.1 Document Exhibit 99.1 Apple reports second quarter results March quarter records for total company revenue, iPhone revenue, and EPS Services revenue reaches new all-time high CUPERTINO, CALIFORNIA — Apple ® today announced financial results for its fiscal 2026 second quarter ended March 28, 2026. The Company posted quarterly revenue of $111.2 billion, up 17 percent year over year. Diluted earnings per share was $2.01, up 22 percent year over year. “Today Apple is proud to report our best March quarter ever, with revenue of $111.2 billion and double-digit growth across every geographic segment,” said Tim Cook, Apple’s CEO. “iPhone achieved a March quarter revenue record, fueled by such extraordinary demand for the iPhone 17 lineup. During the quarter, Services achieved yet another all-time record, and we were excited to introduce remarkable new products to our strongest lineup ever. That included the addition of the iPhone 17e and the M4-powered iPad Air, along with the launch of MacBook Neo, which is captivating customers all around the world.” “Our strong business performance during the March quarter generated over $28 billion in operating cash flow and drove new March quarter records for both operating cash flow and EPS,” said Kevan Parekh, Apple’s CFO. “Continued strong customer demand for our products and services once again helped us achieve a new all-time high for our installed base of active devices across all major product categories and geographic segments.” Apple’s board of directors has declared a cash dividend of $0.27 per share of the Company’s common stock, an increase of 4 percent. The dividend is payable on May 14, 2026, to shareholders of record as of the close of business on May 11, 2026. The board of directors has also authorized an additional program to repurchase up to $100 billion of the Company’s common stock. Apple will provide live streaming of its Q2 2026 financial results conference call beginning at 2:00 p.m. PT on April 30, 2026, at apple.com/investor/earnings-call. The webcast will be available for replay for approximately two weeks thereafter. Apple periodically provides information for investors on its corporate website, apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, reports filed or furnished with the SEC, information on corporate governance, and details related to its annual meeting of shareholders. This press release contains forward-looking statements, within the meaning of the Private Securities Litigation Reform Act of 1995. These forward-looking statements include without limitation those about the Company’s plan for return of capital, payment of the Company’s quarterly dividend and future business plans. These statements involve risks and uncertainties, and actual results may differ materially from any future results expressed or implied by the forward-looking statements. Risks and uncertainties include without limitation: effects of global and regional economic conditions, including as a result of government policies, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, and public health issues; risks relating to the design, manufacture, introduction, and transition of products and services in highly competitive and rapidly changing markets, including from reliance on third parties for components, technology, manufacturing, applications, services, support, and content; risks relating to information technology system failures, network disruptions, and failure to protect, loss of, or unauthorized access to, or release of, data; and effects of unfavorable legal proceedings, government investigations, and complex and changing laws and regulations. More information on these risks and other potential factors that could affect the Company’s business, reputation, results of operations, financial condition, and stock price is included in the Company’s filings with the SEC, including in the “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” sections of the Company’s most recently filed periodic reports on Form 10-K and Form 10-Q and subsequent filings. The Company assumes no obligation to update any forward-looking statements, which speak only as of the date they are made. Apple revolutionized personal technology with the introduction of the Macintosh in 1984. Today, Apple leads the world in innovation with iPhone, iPad, Mac, AirPods, Apple Watch, and Apple Vision Pro. Apple’s six software platforms — iOS, iPadOS, macOS, watchOS, visionOS, and tvOS — provide seamless experiences across all Apple devices and empower people with breakthrough services including the App Store, Apple Music, Apple Pay, iCloud, and Apple TV. Apple’s more than 150,000 employees are dedicated to making the best products on earth and to leaving the world better than we found it. Press Contact: Josh Rosenstock Apple jrosenstock@apple.com (408) 862-1142 Investor Relations Contact: Suhasini Chandramouli Apple suhasini@apple.com (408) 974-3123 NOTE TO EDITORS: For additional information visit Apple Newsroom (www.apple.com/newsroom), or email Apple’s Media Helpline at media.help@apple.com. © 2026 Apple Inc. All rights reserved. Apple and the Apple logo are trademarks of Apple. Other company and product names may be trademarks of their respective owners. Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales (1) 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271
+```
+
+### Excerpt: earnings_release_8k
+
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm
+
+```text
+EX-99.1 2 a8-kex991q2202603282026.htm EX-99.1 Document Exhibit 99.1 Apple reports second quarter results March quarter records for total company revenue, iPhone revenue, and EPS Services revenue reaches new all-time high CUPERTINO, CALIFORNIA — Apple ® today announced financial results for its fiscal 2026 second quarter ended March 28, 2026. The Company posted quarterly revenue of $111.2 billion, up 17 percent year over year. Diluted earnings per share was $2.01, up 22 percent year over year. “Today Apple is proud to report our best March quarter ever, with revenue of $111.2 billion and double-digit growth across every geographic segment,” said Tim Cook, Apple’s CEO. “iPhone achieved a March quarter revenue record, fueled by such extraordinary demand for the iPhone 17 lineup. During the quarter, Services achieved yet another all-time record, and we were excited to introduce remarkable new products to our strongest lineup ever. That included the addition of the iPhone 17e and the M4-powered iPad Air, along with the launch of MacBook Neo, which is captivating customers all around the world.” “Our strong business performance during the March quarter generated over $28 billion in operating cash flow and drove new March quarter records for both operating cash flow and EPS,” said Kevan Parekh, Apple’s CFO. “Continued strong customer demand for our products and services once again helped us achieve a new all-time high for our installed base of active devices across all major product categories and geographic segments.” Apple’s board of directors has declared a cash dividend of $0.27 per share of the Company’s common stock, an increase of 4 percent. The dividend is payable on May 14, 2026, to shareholders of record as of the close of business on May 11, 2026. The board of directors has also authorized an additional program to repurchase up to $100 billion of the Company’s common stock. Apple will provide live streaming of its Q2 2026 financial results conference call beginning at 2:00 p.m. PT on April 30, 2026, at apple.com/investor/earnings-call. The webcast will be available for replay for approximately two weeks thereafter. Apple periodically provides information for investors on its corporate website, apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, reports filed or furnished with the SEC, information on corporate governance, and details related to its annual meeting of shareholders. This press release contains forward-looking statements, within the meaning of the Private Securities Litigation Reform Act of 1995. These forward-looking statements include without limitation those about the Company’s plan for return of capital, payment of the Company’s quarterly dividend and future business plans. These statements involve risks and uncertainties, and actual results may differ materially from any future results expressed or implied by the forward-looking statements. Risks and uncertainties include without limitation: effects of global and regional economic conditions, including as a result of government policies, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, and public health issues; risks relating to the design, manufacture, introduction, and transition of products and services in highly competitive and rapidly changing markets, including from reliance on third parties for components, technology, manufacturing, applications, services, support, and content; risks relating to information technology system failures, network disruptions, and failure to protect, loss of, or unauthorized access to, or release of, data; and effects of unfavorable legal proceedings, government investigations, and complex and changing laws and regulations. More information on these risks and other potential factors that could affect the Company’s business, reputation, results of operations, financial condition, and stock price is included in the Company’s filings with the SEC, including in the “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” sections of the Company’s most recently filed periodic reports on Form 10-K and Form 10-Q and subsequent filings. The Company assumes no obligation to update any forward-looking statements, which speak only as of the date they are made. Apple revolutionized personal technology with the introduction of the Macintosh in 1984. Today, Apple leads the world in innovation with iPhone, iPad, Mac, AirPods, Apple Watch, and Apple Vision Pro. Apple’s six software platforms — iOS, iPadOS, macOS, watchOS, visionOS, and tvOS — provide seamless experiences across all Apple devices and empower people with breakthrough services including the App Store, Apple Music, Apple Pay, iCloud, and Apple TV. Apple’s more than 150,000 employees are dedicated to making the best products on earth and to leaving the world better than we found it. Press Contact: Josh Rosenstock Apple jrosenstock@apple.com (408) 862-1142 Investor Relations Contact: Suhasini Chandramouli Apple suhasini@apple.com (408) 974-3123 NOTE TO EDITORS: For additional information visit Apple Newsroom (www.apple.com/newsroom), or email Apple’s Media Helpline at media.help@apple.com. © 2026 Apple Inc. All rights reserved. Apple and the Apple logo are trademarks of Apple. Other company and product names may be trademarks of their respective owners. Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales (1) 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271
 ```
 
 ```

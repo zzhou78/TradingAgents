@@ -35,22 +35,6 @@ Link: https://finance.yahoo.com/technology/ai/articles/microsoft-msft-backed-ope
 Amazon.com, Inc. (NASDAQ:AMZN) is one of the top trending US stocks to buy now. Reuters reported on June 19 that Amazon.com, Inc. (NASDAQ:AMZN) announced on Friday that its Indian operations reached a significant milestone in water conservation. This came at a time when global tech giants are facing mounting pressure regarding their use of resources […]
 Link: https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-one-top-192057945.html
 
-### Nancy Pelosi places big bets on two surging tech stocks (source: TheStreet)
-Few congressional portfolios attract as much scrutiny as Nancy Pelosi's. Her husband, Paul Pelosi, who executes the family's trades, has previously disclosed bets on Microsoft and Alphabet that outpaced the S&P 500. His latest moves may draw even more attention. Investing.com ...
-Link: https://www.thestreet.com/investing/stocks/nancy-pelosi-uber-intel-call-options
-
-### Here’s What JPMorgan Thinks About Microsoft (MSFT) and Chevron’s 20-Year Agreement (source: Insider Monkey)
-Microsoft Corporation (NASDAQ:MSFT) is one of the best trending AI stocks to watch in 2026. Following Microsoft Corporation (NASDAQ:MSFT) and Chevron’s signing of a 20-year agreement to supply natural-gas- fired power to a data-center campus in West Texas, JPMorgan stated that it considers the offtake as durable and believes “the most compelling element of the […]
-Link: https://finance.yahoo.com/markets/stocks/articles/jpmorgan-thinks-microsoft-msft-chevron-190905266.html
-
-### Cloudflare (NET) Announces New Initiative With Major Web Browsers (source: Insider Monkey)
-Cloudflare, Inc. (NYSE:NET) is one of the best trending AI stocks to watch in 2026. Cloudflare, Inc. (NYSE:NET) announced on June 22 a new initiative with major Web browsers, including Google Chrome, Mozilla Firefox, and Microsoft Edge, focused on developing and submitting for “standardization a privacy-preserving protocol to help humans and bots prove that their […]
-Link: https://finance.yahoo.com/technology/articles/cloudflare-net-announces-initiative-major-183903297.html
-
-### EU Targets Microsoft (MSFT) and Amazon Cloud Units for Big Tech “Gatekeeper” Rules, Reuters Reports (source: Insider Monkey)
-Microsoft Corporation (NASDAQ:MSFT) is one of the safe stocks for beginners to buy in 2026. Reuters reported on June 25 that, according to EU antitrust regulators, Amazon and Microsoft Corporation’s (NASDAQ:MSFT) cloud computing services should be designated as “gatekeepers” under landmark tech rules. This step would subject them to strict obligations aimed at curbing market […]
-Link: https://finance.yahoo.com/technology/articles/eu-targets-microsoft-msft-amazon-183743473.html
-
 
 ```
 
@@ -68,7 +52,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-28 22:28:02
+# Data retrieved on: 2026-06-29 06:54:17
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D

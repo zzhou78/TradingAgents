@@ -51,10 +51,6 @@ Link: https://247wallst.com/investing/2026/06/27/apple-wants-to-buy-blacklisted-
 Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
 Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
 
-### It’s a tale of two S&P 500s as rotation out of top tech stocks shifts into overdrive (source: MarketWatch)
-The equal-weighted version of the S 500 outperformed its traditional capitalization-weighted sibling this week by the widest margin in six years.
-Link: https://www.marketwatch.com/story/its-a-tale-of-two-s-p-500s-as-rotation-out-of-top-tech-stocks-shifts-into-overdrive-5254207f
-
 ### Apple Seeks US Approval to Buy Chips From Blacklisted CXMT: FT (source: Bloomberg)
 (Bloomberg) -- Apple Inc. is pressing the White House for approval to purchase memory chips from a blacklisted Chinese company as it grapples to rein in chip costs, the Financial Times reported on Saturday.Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsUS Strikes Iran in Response
 Link: https://finance.yahoo.com/technology/articles/apple-seeks-us-approval-buy-074523538.html
@@ -70,22 +66,6 @@ Link: https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end
 ### Update: Equity Markets Fall as Trump Says Iran Violated Ceasefire (source: MT Newswires)
 (Updates with market moves at the end of the day.) US equity benchmarks slipped Friday as Presid
 Link: https://finance.yahoo.com/markets/stocks/articles/equity-markets-fall-trump-says-204521099.html
-
-### US stocks recover from tech tremors as oil prices fall (source: AFP)
-Wall Street's main stock indices overcame an early bout of tech jitters Friday thanks to buy-the-dip traders, finishing mildly lower, while oil prices fell as shipping traffic resumed through the Strait of Hormuz.While US stocks retreated early, they were saved by investors swooping in to "buy the dip."
-Link: https://finance.yahoo.com/markets/world-indices/articles/asian-stocks-drop-again-rollercoaster-022857774.html
-
-### US Equity Indexes Mixed, Mag-7 Lags Amid Micron Technology's Blockbuster Quarterly Results This Week (source: MT Newswires)
-US equity indexes were mixed as a decline in technology hit tech-heavy gauges, outweighing a lift in
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-mag-203342644.html
-
-### Stocks to Watch Recap: Micron, Wendy’s, Apple, ON Semiconductor (source: The Wall Street Journal)
-↘️ ON Semiconductor (ON): The chip maker agreed to acquire Synaptics (SYNA) in a roughly $7 billion all-stock transaction, as it seeks to push into physical AI. Shares of ON Semiconductor tumbled 24%, while Synaptics’ stock slipped 3.
-Link: https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-26-2026/card/stocks-to-watch-on-semiconductor-apple-zalando-HXVpEfOkkyL0ye8xKqqr?siteid=yhoof2&yptr=yahoo
-
-### Stock Of The Day: Is The Apple Sell-Off Over? (source: Benzinga)
-Apple Inc. (NASDAQ:AAPL) is trading higher on Friday. It has dropped about 12% since the beginning of June. But the sell-off may be over. The shares are oversold and at support — and these can be bullish dynamics. This is why Apple is the Stock of the Day. • What’s driving AAPL shares up today? In February and again in April, Apple ran into resistance at the $275 level. People who sold there thought they made a smart decision when the price dropped afterward. But when the resistance broke, and t
-Link: https://finance.yahoo.com/markets/stocks/articles/stock-day-apple-sell-off-201228930.html
 
 
 ```
@@ -104,7 +84,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-28 22:27:41
+# Data retrieved on: 2026-06-29 06:54:00
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D

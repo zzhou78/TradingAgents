@@ -17,10 +17,10 @@ Pass.
 | Price framework | Pass | Trader and Portfolio sections identify 372.97 as the paper-study reference Sell price and list confirmation/invalidation levels. |
 | News relevance | Pass | Direct Microsoft cloud, AI, regulatory, and partnership items are separated from broader sector context; low-relevance items are excluded. |
 | Social evidence handling | Pass | Final report summarizes social evidence and limits raw examples to three same-date lines. |
-| Financial Report Analyst | Pass | financial_report.md is present, includes SEC 10-K, 10-Q, and Item 2.02 8-K source coverage, and clearly marks investor-presentation/guidance gaps. |
+| Financial Report Analyst | Pass | financial_report.md is present, cites named 10-K/10-Q sections, distinguishes the Item 2.02 8-K cover page, and clearly marks the missing Exhibit 99.1 and investor-presentation gaps. |
 | Industry / Theme Discovery Analyst | Pass | industry_theme.md is present and links each discovered theme to MSFT evidence rather than a preconfigured taxonomy. |
 | Manager/Portfolio use of new roles | Pass | Research Manager and Portfolio Manager state financial-report and industry/theme impacts. |
 
 ## Remaining Limitations
 
-Social evidence remains low-to-medium confidence because the usable sample is small and retail-heavy. SEC filing coverage is improved, but investor-presentation and full Exhibit 99.1 extraction remain gaps. The Sell rating is technical/momentum-led, not a negative judgment on Microsoft fundamental quality.
+Social evidence remains low-to-medium confidence because the usable sample is small and retail-heavy. SEC filing coverage is improved with business, risk, liquidity, segment, and capex/commitments sections, but investor-presentation and Exhibit 99.1 extraction remain gaps for MSFT. The Sell rating is technical/momentum-led, not a negative judgment on Microsoft fundamental quality.

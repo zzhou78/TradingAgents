@@ -149,3 +149,130 @@ def test_generic_8k_is_not_mislabeled_as_earnings_release():
     assert earnings["status"] == "available"
     assert earnings["filing_date"] == "2026-04-24"
     assert "earnings.htm" in earnings["url"]
+
+
+def test_10k_and_10q_sources_extract_named_financial_sections():
+    module = _load_module()
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if url.endswith("/company_tickers.json"):
+            return json.dumps({"0": {"cik_str": 789019, "ticker": "MSFT", "title": "MICROSOFT CORP"}})
+        if url.endswith("/CIK0000789019.json"):
+            return json.dumps(
+                {
+                    "filings": {
+                        "recent": {
+                            "accessionNumber": [
+                                "0000789019-26-000200",
+                                "0000789019-25-000100",
+                            ],
+                            "filingDate": ["2026-04-29", "2025-07-30"],
+                            "form": ["10-Q", "10-K"],
+                            "primaryDocument": ["msft-20260331.htm", "msft-20250630.htm"],
+                            "primaryDocDescription": ["Quarterly report", "Annual report"],
+                        }
+                    }
+                }
+            )
+        if "msft-20250630.htm" in url:
+            return """
+            <html><body>
+            Item 1. Business Annual business overview cloud and AI platform.
+            Segment Information Productivity, Intelligent Cloud, and More Personal Computing.
+            Item 1A. Risk Factors Competition, regulation, and infrastructure risk.
+            Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations.
+            Liquidity and Capital Resources Cash, investments, and debt maturity discussion.
+            Commitments and Contractual Obligations Data center leases and purchase obligations.
+            Item 7A. Quantitative and Qualitative Disclosures About Market Risk.
+            </body></html>
+            """
+        if "msft-20260331.htm" in url:
+            return """
+            <html><body>
+            Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations.
+            Revenue increased due to cloud services.
+            Segment Information Intelligent Cloud revenue accelerated.
+            Liquidity and Capital Resources Cash and short-term investments declined.
+            Capital Expenditures Data center investment increased.
+            Item 3. Quantitative and Qualitative Disclosures About Market Risk.
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("MSFT", "2026-06-27", http_get=fake_http_get)
+    sources = {source["source_type"]: source for source in packet["sources"]}
+
+    annual_sections = {section["section_type"]: section for section in sources["annual_report_10k"]["sections"]}
+    quarterly_sections = {section["section_type"]: section for section in sources["quarterly_report_10q"]["sections"]}
+
+    assert "business_overview" in annual_sections
+    assert "risk_factors" in annual_sections
+    assert "mda" in annual_sections
+    assert "segment_information" in annual_sections
+    assert "liquidity_and_capital_resources" in annual_sections
+    assert "commitments_capex_contractual_obligations" in annual_sections
+    assert annual_sections["business_overview"]["source_section"] == "10-K business"
+    assert "cloud and AI platform" in annual_sections["business_overview"]["excerpt"]
+
+    assert "mda" in quarterly_sections
+    assert "segment_information" in quarterly_sections
+    assert "liquidity_and_capital_resources" in quarterly_sections
+    assert "commitments_capex_contractual_obligations" in quarterly_sections
+    assert quarterly_sections["mda"]["source_section"] == "10-Q MD&A"
+    assert "cloud services" in quarterly_sections["mda"]["excerpt"]
+
+
+def test_earnings_8k_follows_exhibit_991_and_distinguishes_cover_page():
+    module = _load_module()
+
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if url.endswith("/company_tickers.json"):
+            return json.dumps({"0": {"cik_str": 789019, "ticker": "MSFT", "title": "MICROSOFT CORP"}})
+        if url.endswith("/CIK0000789019.json"):
+            return json.dumps(
+                {
+                    "filings": {
+                        "recent": {
+                            "accessionNumber": ["0000789019-26-000100"],
+                            "filingDate": ["2026-04-29"],
+                            "form": ["8-K"],
+                            "primaryDocument": ["msft-20260429.htm"],
+                            "primaryDocDescription": ["Current report"],
+                        }
+                    }
+                }
+            )
+        if url.endswith("-index.html"):
+            return '<html><a href="/Archives/edgar/data/789019/000078901926000100/ex991.htm">EX-99.1</a></html>'
+        if "msft-20260429.htm" in url:
+            return """
+            <html><body>
+            FORM 8-K cover page.
+            Item 2.02. Results of Operations and Financial Condition.
+            A press release is furnished as Exhibit 99.1.
+            </body></html>
+            """
+        if "ex991.htm" in url:
+            return """
+            <html><body>
+            Exhibit 99.1 Microsoft Cloud revenue increased and operating income expanded.
+            Segment results include Productivity and Business Processes and Intelligent Cloud.
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("MSFT", "2026-06-27", http_get=fake_http_get)
+    earnings = next(source for source in packet["sources"] if source["source_type"] == "earnings_release_8k")
+
+    assert earnings["cover_page"]["status"] == "available"
+    assert "FORM 8-K cover page" in earnings["cover_page"]["excerpt"]
+    assert earnings["exhibit_99_1"]["status"] == "available"
+    assert earnings["exhibit_99_1"]["url"].endswith("/ex991.htm")
+    assert "Cloud revenue increased" in earnings["exhibit_99_1"]["excerpt"]
+    assert "ex991.htm" in "\n".join(requested_urls)
+    rendered = module.render_financial_document_packet(packet)
+    assert "### 8-K Cover Page: earnings_release_8k" in rendered
+    assert "### Exhibit 99.1: earnings_release_8k" in rendered

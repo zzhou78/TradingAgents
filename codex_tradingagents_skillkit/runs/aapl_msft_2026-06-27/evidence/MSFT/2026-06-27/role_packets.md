@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for MSFT from 2026-05-28 to 2026-06-27
 # Total records: 21
-# Data retrieved on: 2026-06-28 22:27:44
+# Data retrieved on: 2026-06-29 06:54:03
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-05-28,412.98,429.49,412.67,426.99,47250500,0.0,0.0
@@ -169,36 +169,36 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ## close_200_sma values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 446.2722749328613
-2026-06-25: 446.88379150390625
-2026-06-24: 447.5949649047852
-2026-06-23: 448.22708892822266
-2026-06-22: 448.8812547302246
+2026-06-26: 446.2722737121582
+2026-06-25: 446.883790435791
+2026-06-24: 447.594963684082
+2026-06-23: 448.22708770751956
+2026-06-22: 448.88125350952146
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 449.55540283203123
-2026-06-17: 450.16810821533204
-2026-06-16: 450.79106430053713
-2026-06-15: 451.35407760620114
+2026-06-18: 449.555401763916
+2026-06-17: 450.1681071472168
+2026-06-16: 450.7910632324219
+2026-06-15: 451.35407653808596
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 451.8730320739746
-2026-06-11: 452.41373443603516
-2026-06-10: 452.96746704101565
-2026-06-09: 453.5008563232422
-2026-06-08: 453.98913940429685
+2026-06-12: 451.8730308532715
+2026-06-11: 452.4137333679199
+2026-06-10: 452.9674659729004
+2026-06-09: 453.50085525512696
+2026-06-08: 453.98913818359375
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 454.43900207519533
-2026-06-04: 454.88430404663086
-2026-06-03: 455.3090660095215
-2026-06-02: 455.7526062011719
-2026-06-01: 456.1377548217773
+2026-06-05: 454.4390010070801
+2026-06-04: 454.88430313110354
+2026-06-03: 455.3090647888184
+2026-06-02: 455.75260498046873
+2026-06-01: 456.13775329589845
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 456.41742904663084
-2026-05-28: 456.7914601135254
+2026-05-29: 456.41742752075197
+2026-05-28: 456.7914582824707
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,36 +212,36 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ## rsi values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 40.482414506149695
-2026-06-25: 28.76292883166267
-2026-06-24: 32.48810369420689
-2026-06-23: 35.3418191704048
-2026-06-22: 30.958966947022148
+2026-06-26: 40.48241450632475
+2026-06-25: 28.7629288320608
+2026-06-24: 32.48810369458887
+2026-06-23: 35.3418191707639
+2026-06-22: 30.958966947498133
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 34.982445721779655
-2026-06-17: 34.66208738437896
-2026-06-16: 40.27273126652913
-2026-06-15: 42.83146004141534
+2026-06-18: 34.982445722221506
+2026-06-17: 34.662087384830656
+2026-06-16: 40.27273126689767
+2026-06-15: 42.831460041731475
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 37.19546537460398
-2026-06-11: 36.939469897063596
-2026-06-10: 39.56781082884556
-2026-06-09: 41.95688626770651
-2026-06-08: 45.466701181294255
+2026-06-12: 37.195465375134724
+2026-06-11: 36.93946989760487
+2026-06-10: 39.56781082933335
+2026-06-09: 41.95688626813507
+2026-06-08: 45.466701181617495
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 47.65765704994542
-2026-06-04: 53.14708757565234
-2026-06-03: 52.832337302090636
-2026-06-02: 60.22430304502888
-2026-06-01: 73.32367188647409
+2026-06-05: 47.65765705019186
+2026-06-04: 53.14708757566906
+2026-06-03: 52.83233730212237
+2026-06-02: 60.224303044666215
+2026-06-01: 73.323671885172
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 70.09099947815089
-2026-05-28: 59.88083487873983
+2026-05-29: 70.09099947692911
+2026-05-28: 59.880834878109724
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,36 +255,36 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ## macd values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -13.754531420546527
-2026-06-25: -14.108447858521401
-2026-06-24: -12.304340469935426
-2026-06-23: -11.108635311554679
-2026-06-22: -10.28431987802503
+2026-06-26: -13.754531420475189
+2026-06-25: -14.108447858444322
+2026-06-24: -12.30434046985215
+2026-06-23: -11.108635311464752
+2026-06-22: -10.284319877927885
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: -8.410602905008886
-2026-06-17: -7.124649677706827
-2026-06-16: -5.32978455750191
-2026-06-15: -4.480485379547133
+2026-06-18: -8.410602904903953
+2026-06-17: -7.124649677593425
+2026-06-16: -5.329784557379412
+2026-06-15: -4.4804853794148585
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -3.935084275669851
-2026-06-11: -2.263314561347613
-2026-06-10: -0.05588089926015982
-2026-06-09: 2.047657452037811
-2026-06-08: 4.086751338590943
+2026-06-12: -3.9350842755270037
+2026-06-11: -2.26331456119334
+2026-06-10: -0.05588089909355176
+2026-06-09: 2.04765745221772
+2026-06-08: 4.086751338785234
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 5.781788883326726
-2026-06-04: 7.359208422435415
-2026-06-03: 8.106838030838446
-2026-06-02: 9.015457671450463
-2026-06-01: 8.621652685957201
+2026-06-05: 5.781788883536592
+2026-06-04: 7.35920842266205
+2026-06-03: 8.106838031083214
+2026-06-02: 9.015457671714842
+2026-06-01: 8.621652686242783
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 6.037682062705642
-2026-05-28: 3.698465876553712
+2026-05-29: 6.037682063014074
+2026-05-28: 3.6984658768868144
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,36 +298,36 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ## atr values from 2026-05-28 to 2026-06-27:
 
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 13.20489118177869
-2026-06-25: 12.391421366584984
-2026-06-24: 12.093839991087915
-2026-06-23: 11.939519520901168
-2026-06-22: 12.097943723831065
+2026-06-26: 13.204891181723736
+2026-06-25: 12.391421366525803
+2026-06-24: 12.093839991024183
+2026-06-23: 11.939519520832533
+2026-06-22: 12.097943723757153
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 11.908554967310863
-2026-06-17: 12.202290246497036
-2026-06-16: 11.870929554070129
-2026-06-15: 12.086385110212547
+2026-06-18: 11.908554967231266
+2026-06-17: 12.202290246411316
+2026-06-16: 11.870929553977815
+2026-06-15: 12.086385110113133
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 12.169183213642357
-2026-06-11: 12.376812597714608
-2026-06-10: 12.301183924341693
-2026-06-09: 12.641274619843939
-2026-06-08: 12.575218821370395
+2026-06-12: 12.169183213535296
+2026-06-11: 12.37681259759931
+2026-06-10: 12.301183924217526
+2026-06-09: 12.64127461971022
+2026-06-08: 12.57521882122639
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 12.881004415051532
-2026-06-04: 12.712619575884823
-2026-06-03: 12.941283371385579
-2026-06-02: 12.624459203138796
-2026-06-01: 12.050187115850198
+2026-06-05: 12.881004414896449
+2026-06-04: 12.71261957571781
+2026-06-03: 12.941283371205719
+2026-06-02: 12.6244592029451
+2026-06-01: 12.050187115641604
 2026-05-31: N/A: Not a trading day (weekend or holiday)
 2026-05-30: N/A: Not a trading day (weekend or holiday)
-2026-05-29: 11.740200194773765
-2026-05-28: 10.847908183764776
+2026-05-29: 11.740200194549127
+2026-05-28: 10.847908183522856
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -342,38 +342,38 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 - Status: `ok`
 
 ```text
-Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent messages
+Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent messages
 
-[2026-06-28T12:15:11Z · @howardlindzon · no-label] $MSFT new ai hire to manage how they fit in in a world of open ai and anthropic    https://fortune.com/2026/06/27/microsoft-copilot-boss-jacob-andreou-tapped-by-satya-nadella-to-save-ai-strategy/
-[2026-06-28T11:38:45Z · @VictorTwits · no-label] $AI $META $MSFT $ORCL $SPY @rsmracks Nonsense!Funds are the villains.Fink destroyed the stock market w Alladdin fulfilling every commie’s wet dream: a planned economy.The game is completely run by funds’ algos, dark pools &amp; shorting structures that treat order books as progra…
-[2026-06-28T10:10:20Z · @mynameisplissken · Bullish] $MSFT excited for monday. hope it opens above 380
-[2026-06-28T10:07:35Z · @Michelroro123_ · Bullish] $MSFT When a stock like Microsoft worth over $2.7 trillion moves up over 5% in a single day on 186M+ volume, it is physically impossible for retail investors to cause it only institutions aggressive buying. This was massive institutional buying Hoping for rally.
-[2026-06-28T06:54:42Z · @GlobalMarketBulletin · no-label] $MSFT Microsoft (MSFT) is pouring money into Azure, AI infrastructure, Copilot, and enterprise software growth. While margin pressure is making some analysts cautious, this blue-chip technology stock may still have one of the strongest wealth-building stories in the market. https…
-[2026-06-28T06:19:48Z · @thewolfofsomestreet · Bullish] $MU BTW, after next quarters EPS, if this retains its P/E ratio of ≈ 27 the stock will be worth $2008   $QQQ $SPY $MSFT
-[2026-06-28T05:13:48Z · @thewolfofsomestreet · Bullish] $MSFT Burry investment and institutional buying has potential to turn the sentiment around.  I think we’ll see $450 soon, who even cares about capex anymore on a company who continues to grow earnings lol. Micron just proved nobody cares
-[2026-06-28T04:53:32Z · @thewolfofsomestreet · Bullish] $NKE yikes big bull trap with low price action but zero earnings to push  Rather buy $MSFT $META $MU instead
-[2026-06-28T04:45:42Z · @thewolfofsomestreet · Bearish] $NKE so this deserves a higher PE than $META , $MSFT , and $MU ?   Yea… holding out until low $30 s
-[2026-06-28T04:18:57Z · @EconomyEngine · no-label] $QQQ $SPY $TSLA $MSFT $AAPL  🇮🇷🇺🇸 IRGC warns US military bases in the Middle East &quot;will experience hell in the coming days.
-[2026-06-28T03:48:17Z · @thewolfofsomestreet · Bullish] $MU $NVDA $META  $MSFT
-[2026-06-28T03:19:32Z · @NetflixUser · Bearish] $MSFT U.S. strikes on Iranian military sites. U.S. Navy and Air Force fighter jets conducted the strikes on military targets at multiple locations in and near the Strait of Hormuz, CENTCOM said on Saturday night.  The new strikes follow Bahrain&amp;#39;s claim that Iranian drones…
-[2026-06-28T02:10:43Z · @GlobalMarketBulletin · no-label] $AMZN $GOOGL $META $MSFT $NVDA These five technology giants are not just big names anymore. They are building the future of artificial intelligence, cloud infrastructure, AI chips, digital advertising, smart glasses, and autonomous networks which can make you a millionaire. https…
-[2026-06-28T01:47:37Z · @spacechimp · no-label] $MSFT boolish for msft?
-[2026-06-28T01:45:22Z · @Kaythu · Bearish] $MSFT WAR AGAIN!!!!!!
-[2026-06-28T01:26:32Z · @Kaythu · Bearish] $MSFT The War with Iran continues!! There is no such thing as a ceasefire and no such thing as a deal. The fighting continues on both ends. Oil prices are likely to go up yet again! Whats the likelihood the stock market winds up red on Monday and the entire week as a result going…
-[2026-06-28T01:13:59Z · @funkymonkey_ · Bullish] $APP $MSFT $NOW $SPY  Well said, it’s like a rubber band till it snaps 🚀  ⬇️
-[2026-06-28T01:01:20Z · @Lolz122445666 · Bullish] $MSFT Entire Week will  be green.  Massive rotation is about to happen.
-[2026-06-28T00:46:58Z · @Lost2much21 · Bullish] $MSFT is so extremely oversold that the  &quot; big short&quot; guy is betting big that this more than doubles in 2 years.  Read that again  December 2028 LEAP call options on Microsoft with a $700 strike price
-[2026-06-28T00:34:12Z · @morgangj · no-label] $MSFT
-[2026-06-28T00:32:47Z · @Dailytune · Bullish] $MSFT Funny how bears think US striking Iran will make this go red. Did the peace deal make this go green? I think more investors/funds will start to derisk now from semis and rotate back to safety in Mag7 for the summer break while they&#39;re at 52 week lows
-[2026-06-28T00:23:33Z · @___dog___ · no-label] $QQQ $SPY $GOOGL $AMZN $MSFT
-[2026-06-28T00:14:49Z · @EconomyEngine · no-label] $QQQ $SPY $GOOGL $AMZN $MSFT Kuwait says its air defenses are currently confronting hostile missile and drone attacks, shortly after Bahrain activated their sirens due to Iranian attacks.🔴🔴🔴🔴
-[2026-06-28T00:14:01Z · @NetflixUser · Bearish] $MSFT Iran war back on! US resuming strikes and ceasefire / MOU toast. Should be a deep red Monday. Grats bears!
-[2026-06-28T00:06:36Z · @Jumper567 · Bearish] $AAPL $MU and then there is $MSFT $GOOG who are silently sulking
-[2026-06-28T00:06:35Z · @K_Money11 · no-label] $MSFT $NVDA $QQQ $SPY $TSLA  “They better stop or else!!!”-Future trump tweet.🤦‍♂️
-[2026-06-28T00:05:27Z · @ranthor · no-label] @ITradeOnceADay lol, biggest? We have companies with losses and comical revenues going for ipo with 2 Trillion valuations…and that’s not scam but this is?  $MSFT lost more than entire bitcoin market cap in just 3 weeks, spcx is valued twice as mucb…Nvidia lost 1 trillion in marke…
-[2026-06-28T00:04:48Z · @OptionsPlayers · no-label] $INTC $MSFT Glad you are enjoying. What’s your next target in the OP Vault?
-[2026-06-28T00:04:32Z · @EconomyEngine · no-label] $QQQ $SPY $NVDA $TSLA $MSFT Iran launches strikes on US military assets in Bahrain, explosions reported.🔴🔴🔴🔴
-[2026-06-28T00:00:39Z · @pnvoss · no-label] $SPY sticking to top 5. Oversold conditions can surge any moment. Down 13% might add $APP $MSFT or $NOW probably now.   China could surge back. Can&#39;t sell this oversold.   They keep running stocks from extremes to extremes. Very hard to time.
+[2026-06-28T20:24:09Z · @Zamto · no-label] $MSFT will it be bearish because of Trump on monday
+[2026-06-28T20:21:42Z · @MakeIGVGreatAgain · Bullish] $MSFT
+[2026-06-28T20:17:27Z · @MarketMaestro1 · no-label] You need to pay close attention when these stocks reach these price levels:    1. $DRAM (DRAM) → Must buy under $80  2. $SPCX (SpaceX) → Must buy $135-$155  3. $NVDA (NVIDIA) → Must buy under $195  4. $MSFT (Microsoft) → Must buy under $350  5. $GOOG (Gooqle) →Must buy under $340…
+[2026-06-28T20:12:44Z · @Nasdaq_Frontier · no-label] These are 5 high quality no brainers available in the market:    - $AMZN    - $META    - $MSFT    - $MA    - $BABA    Do you have better Risk/Reward 5?
+[2026-06-28T20:10:16Z · @Unknown333 · Bullish] $MSFT latest news  gonna hit 450 eow , for sure 💯 very latest news is on the way you guys will see
+[2026-06-28T20:10:07Z · @HitstheGreen · Bullish] $MSFT Financial Strength, Profitability, Growth, Valuation, and Momentum. GLTA long $MSFT
+[2026-06-28T20:08:27Z · @RockyTSTH · no-label] OPTION WATCHLIST 6/28/2026    $ASTS- Stock down 50% from all time highs. Seeing some buyers coming in . looking for $80 plus if $70 holds. Stock seeing some call buyers coming in. high watch    $MSFT- Michael burry going long on the stock last week. Stock bouncing $20 from lows. …
+[2026-06-28T20:04:01Z · @kcphaeton · no-label] $GOOG $META $MSFT $ORCL $QQQ @howardlindzon sometimes it’s good to have a breather and a pull back in order to allow folks to enter the market at a lower rate. Love buying stuff on sale. ￼
+[2026-06-28T20:00:01Z · @NetflixUser · Bearish] $MSFT exactly. Same pattern as previous pops &gt; 2%
+[2026-06-28T19:51:27Z · @Tesla5000 · no-label] $NFLX $MSFT   Microsoft has a rare opportunity to acquire Netflix if the company is trading significantly below its intrinsic value. Netflix’s global streaming platform, premium content, and hundreds of millions of subscribers would complement Microsoft’s strengths in artificial …
+[2026-06-28T19:35:53Z · @TechTraderr1r · no-label] $MSFT is holding strong at $372.97 despite the broader sector noise. Institutional accumulation is clear—they are betting on Azure’s dominance in the AI era.
+[2026-06-28T19:23:47Z · @ironmantrader777 · Bearish] $MSFT bull trap friday
+[2026-06-28T19:12:27Z · @DocOctagon · Bullish] $MSFT $AAPL $MU People that keep bringing up China memory chips are either morons who haven&#39;t done any research or bears trying to push a narrative. China DRAM chips have significantly more power draw than Micron&#39;s chips which increases data center total cost of ownership…
+[2026-06-28T19:06:17Z · @ba1980 · Bullish] $MSFT currently 375.54 on hyper.
+[2026-06-28T18:52:46Z · @TheProphetOfProfit · no-label] $MSFT Buyers finally stepped in late last week at multi-year uptrend support on the weekly. Leaps look rather appetizing at this support.
+[2026-06-28T18:45:13Z · @Unknown333 · no-label] $MSFT hit 400 monday
+[2026-06-28T18:44:25Z · @holdingbags · no-label] $MSFT best case is for an undercut and go. Nice way to buy up the weekly, but still under the up trend line (UTL) and pivot.
+[2026-06-28T18:35:37Z · @AshHydrogen · no-label] $PLTR replacing $MSFT at $DELL
+[2026-06-28T18:33:40Z · @Mercy_forever · no-label] $NVDA $SPY $AMZN $MSFT $GOOGL This is huge.. Nvidia’s partnership with Firmus Technologies marks a strategic move to solidify its influence in the global AI infrastructure market. By supplying 170,000 advanced GPUs for a new Indonesian data center, Nvidia secures significant, lon…
+[2026-06-28T18:28:33Z · @SkeletonEarFace · no-label] $MSFT on the way to 600 and every bear will be smoked
+[2026-06-28T18:10:15Z · @TheHomelander · Bullish] $MSFT if $AAPL get their way with Chinese memory chips, the DRAM bubble pops and hyperscalers regain leadership.  You don’t think Trump or Lutnik will go for it? $MU price hikes showing up in inflation data. What do you think they want more? American company leadership or a rate …
+[2026-06-28T18:07:10Z · @TheHomelander · no-label] $MSFT bear coping at its finest
+[2026-06-28T18:06:20Z · @NetflixUser · Bearish] $MSFT I’ll say this again to warn - this will not close above $400 again in 2026
+[2026-06-28T17:53:48Z · @StackRadar1 · no-label] $MSFT week of June 29
+[2026-06-28T17:50:38Z · @ryanmcraver · no-label] Cash flow the majors shows the impact of AI investments $GOOG $META $ORCL $AMZN $MSFT
+[2026-06-28T17:48:58Z · @MilhouseVanhouten · Bullish] $MSFT you have to be absolutely completely insane or just new and inexperienced to see this in a 6 month period, attached to Microsoft and not put every dime you own into it as soon as you can.
+[2026-06-28T17:46:11Z · @Mercy_forever · Bullish] $ORCL (No position )But Holly crap down 100 point since JUN 01  A 40%  decline 🤯And I thought it’s trading at huge PE BUT NO it’s 25 PE with 13.63 forward LIKE WTF is  going on with this POS market or the FUCKERY that big HF and INSTITUTION try to pull or do Just effing insane $S…
+[2026-06-28T17:44:42Z · @jontanaj · no-label] $MSFT https://youtu.be/HOKO-_iTaH8?is=AOQClzqe4rfh-L88
+[2026-06-28T17:41:13Z · @SwingTraderPro1 · no-label] Out of ~70 mega-cap stocks ($200B+), leadership and laggards are starting to diverge in a big way.    Worst performers over the last 12 months:    $NFLX -43.5%  $ORCL -30.2%  $MSFT -25%  $META -24.2%  $PLTR -21.7%    These aren’t small caps or speculative names-these are core ind…
+[2026-06-28T17:41:01Z · @Rdg57 · no-label] $MSFT $400 by Friday?
 ```
 
 ### Tool: fetch_reddit_posts
@@ -381,15 +381,21 @@ Bullish: 10 (33%) · Bearish: 6 (20%) · Unlabeled: 14 · Total: 30 most-recent 
 - Status: `ok`
 
 ```text
-r/wallstreetbets: <no posts found mentioning MSFT in the past 7 days>
+r/wallstreetbets — 5 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):
+  [2026-06-28] MSFT - Bearish Cup & Handle Pattern - Next $342.
+    body excerpt: MSFT - Bearish Cup & Handle Pattern - Next $342. Any thesis? https://preview.redd.it/22jnhtkcu2ah1.png?width=1210&format=png&auto=webp&s=ca2375942c616847795880875b7f546bf0db7cf1
+  [2026-06-27] Microslop is on sale
+    body excerpt: So Microsoft just had its worst month since the dot-com bubble and the bear case is they're spending TOO MUCH on AI. You're telling me Microsoft is shoveling billions into the biggest technological revolution in 25 years? Just like every ot…
+  [2026-06-27] MSFT leaps and some long dated
+    body excerpt: Will probably roll out the leaps
+  [2026-06-27] MU $2000 is no longer a meme
+    body excerpt: MU just dropped numbers that broke the old memory playbook. Q3 did $41.46B in revenue, up from $9.3B a year ago, EPS $25.11 when the street was looking for like $20. The part that actually got me was the margin, 85%, nobody had that modeled…
+  [2026-06-26] 2x life savings in MSFT
+    body excerpt: Brain smoother than Satya Nutella’s forehead
 
 r/stocks: <no posts found mentioning MSFT in the past 7 days>
 
-r/investing — 2 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):
-  [2026-06-25] If you're not buying MSFT/MSFU at these prices what are you even doing?
-    body excerpt: MSFT is something like ~$10 (2-3%) from it's November 2021 price. The company is printing money, with something like 18% revenue growth for 8 consecutive quarters. It's literally cheaper now than the April 2025 tariff crash. Biggest bargain…
-  [2026-06-23] The Piping hot Current Market Condition
-    body excerpt: Right now feels like a house of cards that is about to topple. A rally that started in the midst of a fresh war has gone on far longer that imagined. While stocks break ATHs repeatedly in a short span of time, prices are swinging erraticall…
+r/investing: <no posts found mentioning MSFT in the past 7 days>
 ```
 
 ## Role: news
@@ -423,22 +429,6 @@ Link: https://finance.yahoo.com/technology/ai/articles/microsoft-msft-backed-ope
 Amazon.com, Inc. (NASDAQ:AMZN) is one of the top trending US stocks to buy now. Reuters reported on June 19 that Amazon.com, Inc. (NASDAQ:AMZN) announced on Friday that its Indian operations reached a significant milestone in water conservation. This came at a time when global tech giants are facing mounting pressure regarding their use of resources […]
 Link: https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-one-top-192057945.html
 
-### Nancy Pelosi places big bets on two surging tech stocks (source: TheStreet)
-Few congressional portfolios attract as much scrutiny as Nancy Pelosi's. Her husband, Paul Pelosi, who executes the family's trades, has previously disclosed bets on Microsoft and Alphabet that outpaced the S&P 500. His latest moves may draw even more attention. Investing.com ...
-Link: https://www.thestreet.com/investing/stocks/nancy-pelosi-uber-intel-call-options
-
-### Here’s What JPMorgan Thinks About Microsoft (MSFT) and Chevron’s 20-Year Agreement (source: Insider Monkey)
-Microsoft Corporation (NASDAQ:MSFT) is one of the best trending AI stocks to watch in 2026. Following Microsoft Corporation (NASDAQ:MSFT) and Chevron’s signing of a 20-year agreement to supply natural-gas- fired power to a data-center campus in West Texas, JPMorgan stated that it considers the offtake as durable and believes “the most compelling element of the […]
-Link: https://finance.yahoo.com/markets/stocks/articles/jpmorgan-thinks-microsoft-msft-chevron-190905266.html
-
-### Cloudflare (NET) Announces New Initiative With Major Web Browsers (source: Insider Monkey)
-Cloudflare, Inc. (NYSE:NET) is one of the best trending AI stocks to watch in 2026. Cloudflare, Inc. (NYSE:NET) announced on June 22 a new initiative with major Web browsers, including Google Chrome, Mozilla Firefox, and Microsoft Edge, focused on developing and submitting for “standardization a privacy-preserving protocol to help humans and bots prove that their […]
-Link: https://finance.yahoo.com/technology/articles/cloudflare-net-announces-initiative-major-183903297.html
-
-### EU Targets Microsoft (MSFT) and Amazon Cloud Units for Big Tech “Gatekeeper” Rules, Reuters Reports (source: Insider Monkey)
-Microsoft Corporation (NASDAQ:MSFT) is one of the safe stocks for beginners to buy in 2026. Reuters reported on June 25 that, according to EU antitrust regulators, Amazon and Microsoft Corporation’s (NASDAQ:MSFT) cloud computing services should be designated as “gatekeepers” under landmark tech rules. This step would subject them to strict obligations aimed at curbing market […]
-Link: https://finance.yahoo.com/technology/articles/eu-targets-microsoft-msft-amazon-183743473.html
-
 
 ```
 
@@ -456,7 +446,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-28 22:28:02
+# Data retrieved on: 2026-06-29 06:54:17
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D
@@ -573,7 +563,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-06-28 22:28:02
+# Data retrieved on: 2026-06-29 06:54:17
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -611,7 +601,7 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 22:28:03
+# Data retrieved on: 2026-06-29 06:54:17
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,,
@@ -702,7 +692,7 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 22:28:03
+# Data retrieved on: 2026-06-29 06:54:18
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,,
@@ -774,7 +764,7 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-06-28 22:28:03
+# Data retrieved on: 2026-06-29 06:54:18
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0
@@ -851,6 +841,56 @@ Operating Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,700660
 | earnings_release_8k | available | 2026-04-29 | 8-K | https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/msft-20260429.htm |
 | investor_presentation | unavailable |  |  | No investor presentation source was discovered from the SEC submissions feed. |
 
+### Section: annual_report_10k / business_overview
+
+- Source section: 10-K business
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+Item 1. Business 3 Information about our Executive Officers 14
+```
+
+### Section: annual_report_10k / risk_factors
+
+- Source section: 10-K risk factors
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+Item 1A. Risk Factors 16
+```
+
+### Section: annual_report_10k / segment_information
+
+- Source section: 10-K segment information
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+Segment Information and Geographic Data of the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). Our reportable segments are described below. Productivity and Business Processes Our Productivity and Business Processes segment consists of products and services in our portfolio of productivity, communication, and information services, spanning a variety of devices and platforms. This segment primarily comprises: • Microsoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud, comprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows Commercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, and Microsoft 365 Copilot; and Microsoft 365 Commercial products, comprising Windows Commercial on-premises and Office licensed on-premises. • Microsoft 365 Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office licensed on-premises, and other consumer services. • LinkedIn, including Talent Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions. • Dynamics products and cloud services, including Dynamics 365, comprising a set of intelligent, cloud-based applications across ERP, CRM, Power Apps, and Power Automate; and on-premises ERP and CRM applications. Microsoft 365 Commercial Products and Cloud Services Microsoft 365 Commercial is an AI-powered business and productivity solutions platform that brings together Office, Windows, Microsoft 365 Copilot, and Enterprise Mobility + Security to help organizations empower their employees. Growth depends on our ability to reach new users in new markets such as frontline workers, small and medium businesses, and growth markets, as well as add AI-enabled tools, features, and agentic scenarios to our core product and service offerings across communication, collaboration, analytics, security, compliance, and other AI business productivity categories. Microsoft 365 Commercial revenue is mainly affected by a combination of continued installed base growth and average revenue per user expansion, as well as the continued shift from Office licensed on-premises to Microsoft 365. Microsoft 365 Consumer Products and Cloud Services Microsoft 365 Consumer is designed to increase personal productivity and creativity through a range of products and services. Growth depends on our ability to reach new users, add value to our core product set with new features including AI tools, and continue to expand our product and service offerings into new markets. Microsoft 365 Consumer cloud revenue and Office Consumer products revenue is mainly affected by the percentage of customers that buy Office with their new devices and the continued shift from Office licensed on-premises to Microsoft 365 Consumer subscriptions. Microsoft 365 Consumer cloud revenue is also affected by the demand for communication and storage through Outlook.com and OneDrive, which is largely driven by subscriptions and advertising. 5 PART I Item 1 LinkedIn LinkedIn connects the world’s professionals to make them more productive and successful and transforms the way companies hire, market, sell, and learn. In addition to LinkedIn’s free services, LinkedIn offers monetized solutions designed to offer AI-enabled insights and productivity: Talent Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions. Growth will depend on our ability to increase LinkedIn member engagement on the platform and our ability to continue offering insight and AI-enabled services that provide value for our members and customers. LinkedIn revenue is mainly affected by demand from enterprises and professionals for subscriptions to Talent Solutions, Sales Solutions, and Premium Subscriptions offerings, as well as member engagement and the quality of the sponsored content delivered to those members to drive Marketing Solutions. Dynamics Products and Cloud Services Dynamics provides cloud-based and on-premises business solutions for financial management, enterprise resource planning (“ERP”), customer relationship management (“CRM”), and supply chain management, as well as agentic AI and other low code application development platforms, for small and medium businesses, large organizations, and divisions of global enterprises. Dynamics revenue is driven by the number of users licensed and applications consumed, expansion of average revenue per user, and the continued shift to Dynamics 365, a unified set of cloud-based intelligent business applications, including our low code development platforms, such as Power Apps and Power Automate. Competition Competitors to Office include software and global application vendors, web-based and mobile application companies, AI-first application companies, as well as local application developers. We compete by providing secure, integrated industry-specific, and easy-to-use productivity and collaboration tools and services that create comprehensive solutions and work well with technologies our customers already have both on-premises or in the cloud. Windows faces competition from various software products and from alternative platforms and devices. Microsoft Defender for Endpoint competes with endpoint security solution providers. Our Enterprise Mobility + Security offerings compete with products from a range of competitors including identity vendors, security solution vendors, and numerous other security point solution vendors. LinkedIn faces competition from online professional networks; recruiting, talent management, and human resource services companies; job boards; companies that provide learning and development products and services; online and offline outlets that generate revenue from advertisers and marketers; and online and offline outlets for companies with lead generation and customer intelligence and insights. Dynamics competes with cloud-based and on-premises business
+```
+
+### Section: annual_report_10k / liquidity_and_capital_resources
+
+- Source section: 10-K liquidity and capital resources
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+LIQUIDITY AND CAPITAL RESOURCES We expect existing cash, cash equivalents, short-term investments, cash flows from operations, and access to capital markets to continue to be sufficient to fund our operating activities and cash commitments for investing and financing activities, such as dividends, share repurchases, debt maturities, material
+```
+
+### Section: annual_report_10k / commitments_capex_contractual_obligations
+
+- Source section: 10-K commitments / capex / contractual obligations
+- Filing date: `2025-07-30`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm
+
+```text
+capital expenditures, and the transition tax related to the Tax Cuts and Jobs Act (“TCJA”), for at least the next 12 months and thereafter for the foreseeable future. Cash, Cash Equivalents, and Investments Cash, cash equivalents, and short-term investments totaled $94.6 billion and $75.5 billion as of June 30, 2025 and 2024, respectively. Equity and other investments were $15.4 billion and $14.6 billion as of June 30, 2025 and 2024, respectively. Our short-term investments are primarily intended to facilitate liquidity and capital preservation. They consist predominantly of highly liquid investment-grade fixed-income securities, diversified among industries and individual issuers. The investments are predominantly U.S. dollar-denominated securities, but also include foreign currency-denominated securities to diversify risk. Our fixed-income investments are exposed to interest rate risk and credit risk. The credit risk and average maturity of our fixed-income portfolio are managed to achieve economic returns that correlate to certain fixed-income indices. The settlement risk related to these investments is insignificant given that the short-term investments held are primarily highly liquid investment-grade fixed-income securities. Valuation In general, and where applicable, we use quoted prices in active markets for identical assets or liabilities to determine the fair value of our financial instruments. This pricing methodology applies to our Level 1 investments, such as U.S. government securities, common and preferred stock, and mutual funds. If quoted prices in active markets for identical assets or liabilities are not available to determine fair value, then we use quoted prices for similar assets and liabilities or inputs other than the quoted prices that are observable either directly or indirectly. This pricing methodology applies to our Level 2 investments, such as commercial paper, certificates of deposit, U.S. agency securities, foreign government bonds, mortgage- and asset-backed securities, corporate notes and bonds, and municipal securities. Level 3 investments are valued using internally-developed models with unobservable inputs. Assets and liabilities measured at fair value on a recurring basis using unobservable inputs are an immaterial portion of our portfolio. A majority of our investments are priced by pricing vendors and are generally Level 1 or Level 2 investments as these vendors either provide a quoted market price in an active market or use observable inputs for their pricing without applying significant adjustments. Broker pricing is used mainly when a quoted price is not available, the investment is not priced by our pricing vendors, or when a broker price is more reflective of fair values in the market in which the investment trades. Our broker-priced investments are generally classified as Level 2 investments because the broker prices these investments based on similar assets without applying significant adjustments. In addition, all our broker-priced investments have a sufficient level of trading volume to demonstrate that the fair values used are appropriate for these investments. Our fair value processes include controls that are designed to ensure appropriate fair values are recorded. These controls include model validation, review of key model inputs, analysis of period-over-period fluctuations, and independent recalculation of prices where appropriate. Cash Flows Cash from operations increased $17.6 billion to $136.2 billion for fiscal year 2025, primarily due to an increase in cash received from customers, offset in part by an increase in cash paid to suppliers and employees and cash used to pay income taxes. Cash used in financing increased $13.9 billion to $51.7 billion for fiscal year 2025, primarily due to a $9.5 billion increase in cash used for repayments of debt, net of proceeds. Cash used in investing decreased $24.4 billion to $72.6 billion for fiscal year 2025, primarily due to a $63.2 billion decrease in cash used for acquisitions of companies, net of cash acquired and divestitures, and purchases of intangible and other assets, offset in part by a $22.3 billion increase in cash used in net investment purchases, sales, and maturities, and a $20.1 billion increase in additions to property and equipment. 43 PART II Item 7 Debt Proceeds We issue debt to take advantage of favorable pricing and liquidity in the debt markets, reflecting our credit rating. The proceeds of these issuances were or will be used for general corporate purposes, which may include, among other things, funding for working capital,
+```
+
 ### Excerpt: annual_report_10k
 
 - Filing date: `2025-07-30`
@@ -860,6 +900,46 @@ Operating Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,700660
 10-K UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Fiscal Year Ended June 30 , 2025 OR ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Transition Period From to Commission File Number 001-37845 MICROSOFT CORPORATION Washington 91-1144442 (STATE OF INCORPORATION) (I.R.S. ID) ONE MICROSOFT WAY , REDMOND , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $ 0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Securities registered pursuant to Section 12(g) of the Act: N one Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large Accelerated Filer ☒ Accelerated Filer ☐ Non-accelerated Filer ☐ Smaller Reporting Company ☐ Emerging Growth Company ☐ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. ☒ If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. ☐ Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐ Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes ☐ No ☒ As of December 31, 2024, the aggregate market value of the registrant’s common stock held by non-affiliates of the registrant was $ 3.1 trillion based on the closing sale price as reported on the NASDAQ National Market System. As of July 24, 2025, there were 7,433,166,379 shares of common stock outstanding. DOCUMENTS INCORPORATED BY REFERENCE Portions of the definitive Proxy Statement to be delivered to shareholders in connection with the Annual Meeting of Shareholders to be held on December 5, 2025 are incorporated by reference into Part III. MICROSOFT CORPORATION FORM 10-K For the Fiscal Year Ended June 30, 2025 INDEX Page PART I Item 1. Business 3 Information about our Executive Officers 14 Item 1A. Risk Factors 16 Item 1B. Unresolved Staff Comments 30 Item 1C. Cybersecurity 30 Item 2. Properties 32 Item 3. Legal Proceedings 32 Item 4. Mine Safety Disclosures 32 PART II Item 5. Market for Registrant’s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities 33 Item 6. [Reserved] 34 Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 35 Item 7A. Quantitative and Qualitative Disclosures About Market Risk 49 Item 8. Financial Statements and Supplementary Data 50 Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure 89 Item 9A. Controls and Procedures 89 Report of Management on Internal Control over Financial Reporting 89 Report of Independent Registered Public Accounting Firm 90 Item 9B. Other Information 91 Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections 91 PART III Item 10. Directors, Executive Officers, and Corporate Governance 91 Item 11. Executive Compensation 91 Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters 91 Item 13. Certain Relationships and Related Transactions, and Director Independence 91 Item 14. Principal Accountant Fees and Services 92 PART IV Item 15. Exhibit and Financial Statement Schedules 93 Item 16. Form 10-K Summary 100 Signatures 101 2 PART I Item 1 Note About Forward-Looking Statements This report includes estimates, projections, statements relating to our business plans, objectives, and expected operating results that are “forward-looking statements” within the meaning of the Private Securities Litigation Reform Act of 1995, Section 27A of the Securities Act of 1933, and Section 21E of the Securities Exchange Act of 1934.
 ```
 
+### Section: quarterly_report_10q / risk_factors
+
+- Source section: 10-Q risk factors
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm
+
+```text
+Item 1A. Risk Factors 49
+```
+
+### Section: quarterly_report_10q / segment_information
+
+- Source section: 10-Q segment information
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm
+
+```text
+SEGMENT INFORMATION AND GEOGRAPHIC DATA In its operation of the business, management, including our chief operating decision maker (“CODM”), who is also our Chief Executive Officer , reviews certain financial information, including segmented internal profit and loss statements. The primary profitability measure used by the CODM to review segment operating results is operating income. The CODM uses operating income to allocate resources during our annual planning process and throughout the year, as well as to assess the performance of our segments, primarily by monitoring actual results compared to prior periods and expected results. During the periods presented, we reported our financial performance based on the following segments : Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. 26 PART I Item 1 Our reportable segments are described below. Productivity and Business Processes Our Productivity and Business Processes segment consists of products and services in our portfolio of productivity, communication, and information services, spanning a variety of devices and platforms. This segment primarily comprises: • Microsoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud, comprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows Commercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, and Microsoft 365 Copilot; and Microsoft 365 Commercial products, comprising Windows Commercial on-premises and Office licensed on-premises. • Microsoft 365 Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office licensed on-premises, and other consumer services. • LinkedIn, including Talent Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions. • Dynamics products and cloud services, including Dynamics 365, comprising a set of intelligent, cloud-based applications across ERP, CRM, Power Apps, and Power Automate; and on-premises ERP and CRM applications. Intelligent Cloud Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that power modern business and developers. This segment primarily comprises: • Server products and cloud services, including Azure and other cloud services, comprising cloud and AI consumption-based services, GitHub cloud services, Nuance Healthcare cloud services, virtual desktop offerings, and other cloud services; and Server products, comprising SQL Server, Windows Server, Visual Studio, System Center, related Client Access Licenses, and other on-premises offerings. • Enterprise and partner services, including Enterprise Support Services, Industry Solutions, Nuance professional services, Microsoft Partner Network, and Learning Experience. More Personal Computing Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology. This segment primarily comprises: • Windows and Devices, including Windows OEM licensing (Windows Pro and non-Pro licenses sold through the OEM channel) and Devices, comprising Surface and PC accessories. • Gaming, including Xbox hardware and Xbox content and services, comprising first- and third-party content (including games and in-game content), Xbox Game Pass and other subscriptions, Xbox Cloud Gaming, advertising, and other cloud services. • Search advertising (formerly Search and news advertising), comprising Bing, Copilot, Microsoft News, Microsoft Edge, and third-party affiliates. Revenue and costs are generally directly attributed to our segments. However, due to the integrated structure of our business, certain revenue recognized and costs incurred by one segment may benefit other segments. Revenue from certain contracts is allocated among the segments based on the relative value of the underlying products and services, which can include allocation based on actual prices charged, prices when sold separately, or estimated costs plus a profit margin. Cost of revenue is allocated in certain cases based on a relative revenue methodology. Operating expenses that are allocated primarily include those relating to our investments in AI infrastructure and training, as well as marketing of products and services, from which multiple segments benefit and are generally allocated based on relative gross margin. 27 PART I Item 1 In addition, certain costs are incurred at a corporate level and allocated to our segments. These allocated costs generally include legal, including settlements and fines, information technology, human resources, finance, excise taxes, field selling, shared facilities services, customer service and support, and severance incurred as part of a corporate program. Each allocation is measured differently based on the specific facts and circumstances of the costs being allocated and is generally based on relative gross margin or relative headcount. Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: (In millions) Three Months Ended March 31, Nine Months Ended March 31, 2026 2025 2026 2025 Productivity and Business Processes Revenue $ 35,013 $ 29,944 $ 102,149 $ 87,698 Cost of revenue 6,197 5,517 18,028 16,380 Operating expenses 7,843 7,048 22,142 20,538 Operating income $ 20,973 $ 17,379 $ 61,979 $ 50,780 Intelligent Cloud Revenue $ 34,681 $ 26,751 $ 98,485 $ 76,387 Cost of revenue 15,120 10,307 41,000 28,326 Operating expenses 5,808 5,349 16,468 15,612 Operating income $ 13,753 $ 11,095 $ 41,017 $ 32,449 More Personal Computing Revenue $ 13,192 $ 13,371 $ 41,198 $ 41,198 Cost of revenue 5,511 6,095 17,821 19,111 Operating expenses 4,009 3,750 11,739 11,111 Operating income $ 3,672 $ 3,526 $ 11,638 $ 10,976 Total Revenue $ 82,886 $ 70,066 $ 241,832 $ 205,283 Cost of revenue 26,828 21,919 76,849 63,817 Operating expenses
+```
+
+### Section: quarterly_report_10q / liquidity_and_capital_resources
+
+- Source section: 10-Q liquidity and capital resources
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm
+
+```text
+LIQUIDITY AND CAPITAL RESOURCES We expect existing cash, cash equivalents, short-term investments, cash flows from operations, and access to capital markets to continue to be sufficient to fund our operating activities and cash commitments for investing and financing activities, such as dividends, share repurchases, debt maturities, and material
+```
+
+### Section: quarterly_report_10q / commitments_capex_contractual_obligations
+
+- Source section: 10-Q commitments / capex / contractual obligations
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm
+
+```text
+capital expenditures, for at least the next 12 months and thereafter for the foreseeable future. Cash, Cash Equivalents, and Investments Cash, cash equivalents, and short-term investments totaled $78.3 billion and $94.6 billion as of March 31, 2026 and June 30, 2025, respectively. Equity and other investments were $33.7 billion and $15.4 billion as of March 31, 2026 and June 30, 2025, respectively. Our short-term investments are primarily intended to facilitate liquidity and capital preservation. They consist predominantly of highly liquid investment-grade fixed-income securities, diversified among industries and individual issuers. The investments are predominantly U.S. dollar-denominated securities, but also include foreign currency-denominated securities to diversify risk. Our fixed-income investments are exposed to interest rate risk and credit risk. The credit risk and average maturity of our fixed-income portfolio are managed to achieve economic returns that correlate to certain fixed-income indices. The settlement risk related to these investments is insignificant given that the short-term investments held are primarily highly liquid investment-grade fixed-income securities. Valuation In general, and where applicable, we use quoted prices in active markets for identical assets or liabilities to determine the fair value of our financial instruments. This pricing methodology applies to our Level 1 investments, such as U.S. government securities, common and preferred stock, and mutual funds. If quoted prices in active markets for identical assets or liabilities are not available to determine fair value, then we use quoted prices for similar assets and liabilities or inputs other than the quoted prices that are observable either directly or indirectly. This pricing methodology applies to our Level 2 investments, such as commercial paper, certificates of deposit, U.S. agency securities, foreign government bonds, mortgage- and asset-backed securities, corporate notes and bonds, and municipal securities. Level 3 investments are valued using internally-developed models with unobservable inputs. Assets and liabilities measured at fair value on a recurring basis using unobservable inputs are an immaterial portion of our portfolio. 43 PART I Item 2 A majority of our investments are priced by pricing vendors and are generally Level 1 or Level 2 investments as these vendors either provide a quoted market price in an active market or use observable inputs for their pricing without applying significant adjustments. Broker pricing is used mainly when a quoted price is not available, the investment is not priced by our pricing vendors, or when a broker price is more reflective of fair values in the market in which the investment trades. Our broker-priced investments are generally classified as Level 2 investments because the broker prices these investments based on similar assets without applying significant adjustments. In addition, all our broker-priced investments have a sufficient level of trading volume to demonstrate that the fair values used are appropriate for these investments. Our fair value processes include controls that are designed to ensure appropriate fair values are recorded. These controls include model validation, review of key model inputs, analysis of period-over-period fluctuations, and independent recalculation of prices where appropriate. Cash Flows Cash from operations increased $34.0 billion to $127.5 billion for the nine months ended March 31, 2026, primarily due to an increase in cash received from customers and a decrease in cash used to pay income taxes, offset in part by an increase in cash paid to suppliers. Cash used in financing decreased $88 million to $40.8 billion for the nine months ended March 31, 2026, primarily due to a $6.0 billion decrease in cash used for repayments of debt, offset in part by a $3.8 billion increase in common stock repurchases and a $1.8 billion increase in dividends paid. Cash used in investing increased $42.6 billion to $84.7 billion for the nine months ended March 31, 2026, primarily due to a $32.7 billion increase in additions to property and equipment, a $9.1 billion increase in other investing primarily to facilitate the purchase of components, and a $3.8 billion decrease in cash from net investment purchases, sales, and maturities. Debt Proceeds We issue debt to take advantage of favorable pricing and liquidity in the debt markets, reflecting our credit rating. The proceeds of these issuances were or will be used for general corporate purposes, which may include, among other things, funding for working capital,
+```
+
 ### Excerpt: quarterly_report_10q
 
 - Filing date: `2026-04-29`
@@ -867,6 +947,15 @@ Operating Revenue,82886000000.0,81273000000.0,77673000000.0,76441000000.0,700660
 
 ```text
 10-Q UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10- Q ☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Quarterly Period Ended March 31, 2026 OR ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the Transition Period From to Commission File Number 001-37845 MICROSOFT CORPORATION Washington 91-1144442 (STATE OF INCORPORATION) (I.R.S. ID) ONE MICROSOFT WAY , REDMOND , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large Accelerated Filer ☒ Accelerated Filer ☐ Non-accelerated Filer ☐ Smaller Reporting Company ☐ Emerging Growth Company ☐ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒ Indicate the number of shares outstanding of each of the issuer’s classes of common stock, as of the latest practicable date. Class Outstanding as of April 23, 2026 Common Stock, $ 0.00000625 par value per share 7,428,434,704 shares MICROSOFT CORPORATION FORM 10-Q For the Quarter Ended March 31, 2026 INDEX Page PART I. FINANCIAL INFORMATION Item 1. Financial Statements a) Income Statements for the Three and Nine Months Ended March 31, 2026 and 2025 3 b) Comprehensive Income Statements for the Three and Nine Months Ended March 31, 2026 and 2025 4 c) Balance Sheets as of March 31, 2026 and June 30, 2025 5 d) Cash Flows Statements for the Three and Nine Months Ended March 31, 2026 and 2025 6 e) Stockholders’ Equity Statements for the Three and Nine Months Ended March 31, 2026 and 2025 7 f) Notes to Financial Statements 8 g) Report of Independent Registered Public Accounting Firm 30 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 31 Item 3. Quantitative and Qualitative Disclosures About Market Risk 48 Item 4. Controls and Procedures 48 PART II. OTHER INFORMATION Item 1. Legal Proceedings 49 Item 1A. Risk Factors 49 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 65 Item 5. Other Information 66 Item 6. Exhibits 67 SIGNATURE 68 2 PART I Item 1 PART I. FINANCI AL INFORMATION ITEM 1. FINA NCIAL STATEMENTS INCOME STA TEMENTS (In millions, except per share amounts) (Unaudited) Three Months Ended March 31, Nine Months Ended March 31, 2026 2025 2026 2025 Revenue: Product $ 15,089 $ 15,319 $ 47,462 $ 46,810 Service and other 67,797 54,747 194,370 158,473 Total revenue 82,886 70,066 241,832 205,283 Cost of revenue: Product 2,733 3,037 9,160 10,187 Service and other 24,095 18,882 67,689 53,630 Total cost of revenue 26,828 21,919 76,849 63,817 Gross margin 56,058 48,147 164,983 141,466 Research and development 8,915 8,198 25,565 23,659 Sales and marketing 6,814 6,212 19,115 18,369 General and administrative 1,931 1,737 5,669 5,233 Operating income 38,398 32,000 114,634 94,205 Other income (expense), net 942 ( 623 ) 7,253 ( 3,194 ) Income before income taxes 39,340 31,377 121,887 91,011 Provision for income taxes 7,562 5,553 23,904 16,412 Net income $ 31,778 $ 25,824 $ 97,983 $ 74,599 Earnings per share: Basic $ 4.28 $ 3.47 $ 13.19 $ 10.03 Diluted $ 4.27 $ 3.46 $ 13.14 $ 9.99 Weighted average shares outstanding: Basic 7,426 7,434 7,430 7,434 Diluted 7,445 7,461 7,457 7,466 Refer to accompanying notes. 3 PART I Item 1 COMPREHENSIVE IN COME STATEMENTS (In millions) (Unaudited) Three Months Ended March 31, Nine Months Ended March 31, 2026 2025 2026 2025 Net income $ 31,778 $ 25,824 $ 97,983 $ 74,599 Other comprehensive income (loss), net of tax: Net change related to derivatives 0 ( 20 ) ( 6 ) 4 Net change related to investments ( 239 ) 450 287 1,130 Translation adjustments and other ( 287 ) 353 ( 162 ) ( 377 ) Other comprehensive income (loss) ( 526 ) 783 119 757 Comprehensive income $ 31,252 $ 26,607 $ 98,102 $ 75,356 Refer to accompanying notes. 4 PART I Item 1 BALANCE SHEETS (In millions) (Unaudited) March 31, 2026 June 30, 2025 Assets Current assets: Cash and cash equivalents $ 32,105 $ 30,242 Short-term investments 46,167 64,323 Total cash, cash equivalents, and short-term investments 78,272 94,565 Accounts receivable, net of allowance for doubtful accounts of $ 794 and $ 944 60,041 69,905 Inventories 1,219 938 Other current assets 35,797 25,723 Total current assets 175,329 191,131 Property and equipment, net of accumulated depreciation of $ 111,723 and $ 93,653 283,228 204,966 Operating lease right-of-use assets 24,403 24,823 Equity
+```
+
+### 8-K Cover Page: earnings_release_8k
+
+- Filing date: `2026-04-29`
+- URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/msft-20260429.htm
+
+```text
+8-K UNITED STATES SECURITIES AND EXCHANGE COMMISSION WASHINGTON, D.C. 20549 FORM 8-K CURRENT REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934 Date of Report (Date of earliest event reported) April 29, 2026 Microsoft Corporation Washington 001-37845 91-1144442 (State or Other Jurisdiction of Incorporation) (Commission File Number) (IRS Employer Identification No.) One Microsoft Way , Redmond , Washington 98052-6399 ( 425 ) 882-8080 www.microsoft.com/investor Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the registrant under any of the following provisions (see General Instruction A.2. below):  Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425)  Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12)  Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b))  Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol Name of exchange on which registered Common stock, $0.00000625 par value per share MSFT Nasdaq 3.125% Notes due 2028 MSFT Nasdaq 2.625% Notes due 2033 MSFT Nasdaq Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging growth company ¨ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ¨ Item 2.02. Results of Operations and Financial Condition On April 29, 2026, Microsoft Corporation issued a press release announcing its financial results for the fiscal quarter ended March 31, 2026. A copy of the press release is furnished as Exhibit 99.1 to this report. In accordance with General Instruction B.2 of Form 8-K, the information in this Current Report on Form 8-K, including Exhibit 99.1, shall not be deemed to be “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liability of that section, and shall not be incorporated by reference into any registration statement or other document filed under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such filing. Item 9.01. Financial Statements and Exhibits (d) Exhibits: 99.1 Press release, dated April 29, 2026, issued by Microsoft Corporation 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. MICROSOFT CORPORATION Date: April 29, 2026 /s/ A LICE L . J OLLA Alice L. Jolla Corporate Vice President and Chief Accounting Officer
 ```
 
 ### Excerpt: earnings_release_8k

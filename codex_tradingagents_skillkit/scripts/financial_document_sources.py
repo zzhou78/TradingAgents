@@ -12,6 +12,7 @@ from typing import Any
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik}.json"
 SEC_ARCHIVES_URL = "https://www.sec.gov/Archives/edgar/data/{cik_int}/{accession}/{document}"
+SEC_INDEX_URL = "https://www.sec.gov/Archives/edgar/data/{cik_int}/{accession}/{accession_dashed}-index.html"
 DEFAULT_SEC_USER_AGENT = (
     "CodexTradingAgents/0.1 research@example.com "
     "(set SEC_USER_AGENT with project contact for production use)"
@@ -43,6 +44,13 @@ def _parse_date(value: str) -> datetime:
 
 
 def _clean_excerpt(raw: str, limit: int) -> str:
+    text = _clean_text(raw)
+    if len(text) <= limit:
+        return text
+    return text[:limit].rsplit(" ", 1)[0].strip()
+
+
+def _clean_text(raw: str) -> str:
     text = re.sub(r"(?is)<ix:header.*?</ix:header>", " ", raw)
     text = re.sub(
         r"(?is)<[^>]+style=[\"'][^\"']*display\s*:\s*none[^\"']*[\"'][^>]*>.*?</[^>]+>",
@@ -52,10 +60,7 @@ def _clean_excerpt(raw: str, limit: int) -> str:
     text = re.sub(r"(?is)<(script|style).*?</\1>", " ", text)
     text = re.sub(r"(?s)<[^>]+>", " ", text)
     text = html.unescape(text)
-    text = re.sub(r"\s+", " ", text).strip()
-    if len(text) <= limit:
-        return text
-    return text[:limit].rsplit(" ", 1)[0].strip()
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def _company_ticker_map(payload: str) -> dict[str, dict[str, Any]]:
@@ -101,6 +106,128 @@ def _filing_url(cik: str, accession_number: str, primary_document: str) -> str:
     )
 
 
+def _filing_index_url(cik: str, accession_number: str) -> str:
+    return SEC_INDEX_URL.format(
+        cik_int=str(int(cik)),
+        accession=accession_number.replace("-", ""),
+        accession_dashed=accession_number,
+    )
+
+
+def _section_between(text: str, start_pattern: str, end_pattern: str | None, limit: int) -> str | None:
+    start = re.search(start_pattern, text, re.IGNORECASE)
+    if not start:
+        return None
+    rest = text[start.start() :]
+    if end_pattern:
+        end = re.search(end_pattern, rest[start.end() - start.start() :], re.IGNORECASE)
+        if end:
+            rest = rest[: start.end() - start.start() + end.start()]
+    return rest[:limit].rsplit(" ", 1)[0].strip()
+
+
+def _heading_section(text: str, heading_pattern: str, limit: int) -> str | None:
+    return _section_between(
+        text,
+        heading_pattern,
+        r"Item\s+\d+[A-Z]?\.|Risk Factors|Liquidity and Capital Resources|"
+        r"Commitments and Contractual Obligations|Capital Expenditures|Segment Information",
+        limit,
+    )
+
+
+def _append_section(
+    sections: list[dict[str, str]],
+    *,
+    section_type: str,
+    source_section: str,
+    excerpt: str | None,
+) -> None:
+    if not excerpt:
+        return
+    sections.append(
+        {
+            "section_type": section_type,
+            "source_section": source_section,
+            "excerpt": excerpt,
+        }
+    )
+
+
+def _extract_filing_sections(form: str, raw: str, limit: int) -> list[dict[str, str]]:
+    text = _clean_text(raw)
+    prefix = "10-K" if form == "10-K" else "10-Q"
+    sections: list[dict[str, str]] = []
+    if form == "10-K":
+        _append_section(
+            sections,
+            section_type="business_overview",
+            source_section="10-K business",
+            excerpt=_section_between(
+                text,
+                r"Item\s+1\.\s+Business\b",
+                r"Item\s+1A\.\s+Risk Factors\b",
+                limit,
+            ),
+        )
+        _append_section(
+            sections,
+            section_type="risk_factors",
+            source_section="10-K risk factors",
+            excerpt=_section_between(
+                text,
+                r"Item\s+1A\.\s+Risk Factors\b",
+                r"Item\s+1B\.|Item\s+2\.",
+                limit,
+            ),
+        )
+        mda = _section_between(
+            text,
+            r"Item\s+7\.\s+Management'?s Discussion and Analysis",
+            r"Item\s+7A\.",
+            limit,
+        )
+    else:
+        mda = _section_between(
+            text,
+            r"Item\s+2\.\s+Management'?s Discussion and Analysis",
+            r"Item\s+3\.",
+            limit,
+        )
+        _append_section(
+            sections,
+            section_type="risk_factors",
+            source_section="10-Q risk factors",
+            excerpt=_section_between(
+                text,
+                r"Item\s+1A\.\s+Risk Factors\b",
+                r"Item\s+2\.",
+                limit,
+            ),
+        )
+    _append_section(sections, section_type="mda", source_section=f"{prefix} MD&A", excerpt=mda)
+    for section_type, source_name, pattern in [
+        ("segment_information", "segment information", r"Segment Information\b"),
+        (
+            "liquidity_and_capital_resources",
+            "liquidity and capital resources",
+            r"Liquidity and Capital Resources\b",
+        ),
+        (
+            "commitments_capex_contractual_obligations",
+            "commitments / capex / contractual obligations",
+            r"Commitments and Contractual Obligations\b|Capital Expenditures\b|Capital Expenditure\b",
+        ),
+    ]:
+        _append_section(
+            sections,
+            section_type=section_type,
+            source_section=f"{prefix} {source_name}",
+            excerpt=_heading_section(text, pattern, limit),
+        )
+    return sections
+
+
 def _source_from_filing(
     *,
     source_type: str,
@@ -131,7 +258,10 @@ def _source_from_filing(
         "url": url,
     }
     try:
-        source["excerpt"] = _clean_excerpt(http_get(url, headers), excerpt_chars)
+        raw = http_get(url, headers)
+        source["excerpt"] = _clean_excerpt(raw, excerpt_chars)
+        if filing["form"] in {"10-K", "10-Q"}:
+            source["sections"] = _extract_filing_sections(filing["form"], raw, excerpt_chars)
     except Exception as exc:  # noqa: BLE001 - source packet should preserve partial coverage.
         source["excerpt_status"] = "unavailable"
         source["excerpt_error"] = str(exc)
@@ -165,11 +295,18 @@ def _earnings_8k_source(
         url = _filing_url(cik, filing["accessionNumber"], filing["primaryDocument"])
         description = filing.get("primaryDocDescription", "")
         try:
-            excerpt = _clean_excerpt(http_get(url, headers), excerpt_chars)
+            cover_excerpt = _clean_excerpt(http_get(url, headers), excerpt_chars)
         except Exception:
-            excerpt = ""
-        if not _has_earnings_8k_hint(f"{description} {excerpt}"):
+            cover_excerpt = ""
+        if not _has_earnings_8k_hint(f"{description} {cover_excerpt}"):
             continue
+        exhibit = _extract_exhibit_99_1(
+            cik=cik,
+            accession_number=filing["accessionNumber"],
+            http_get=http_get,
+            headers=headers,
+            excerpt_chars=excerpt_chars,
+        )
         return {
             "source_type": "earnings_release_8k",
             "source_name": "Latest SEC 8-K earnings-release evidence on or before trade date",
@@ -178,7 +315,13 @@ def _earnings_8k_source(
             "filing_date": filing["filingDate"],
             "description": description,
             "url": url,
-            "excerpt": excerpt,
+            "cover_page": {
+                "status": "available" if cover_excerpt else "unavailable",
+                "url": url,
+                "excerpt": cover_excerpt,
+            },
+            "exhibit_99_1": exhibit,
+            "excerpt": exhibit.get("excerpt") or cover_excerpt,
         }
     return {
         "source_type": "earnings_release_8k",
@@ -186,6 +329,50 @@ def _earnings_8k_source(
         "status": "unavailable",
         "reason": "No 8-K with earnings/results-of-operations evidence was found on or before the trade date.",
     }
+
+
+def _absolute_archive_url(href: str, cik: str, accession_number: str) -> str:
+    if href.startswith("http"):
+        return href
+    if href.startswith("/"):
+        return f"https://www.sec.gov{href}"
+    base = SEC_ARCHIVES_URL.format(
+        cik_int=str(int(cik)),
+        accession=accession_number.replace("-", ""),
+        document="",
+    )
+    return f"{base}{href}"
+
+
+def _find_exhibit_99_1_url(index_html: str, cik: str, accession_number: str) -> str | None:
+    for match in re.finditer(r"href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", index_html, re.IGNORECASE):
+        label = re.sub(r"<[^>]+>", " ", match.group("label"))
+        href = match.group("href")
+        if re.search(r"EX-?99\.?1|99\.1", f"{label} {href}", re.IGNORECASE):
+            return _absolute_archive_url(href, cik, accession_number)
+    return None
+
+
+def _extract_exhibit_99_1(
+    *,
+    cik: str,
+    accession_number: str,
+    http_get: HttpGet,
+    headers: dict[str, str],
+    excerpt_chars: int,
+) -> dict[str, str]:
+    try:
+        index_html = http_get(_filing_index_url(cik, accession_number), headers)
+        exhibit_url = _find_exhibit_99_1_url(index_html, cik, accession_number)
+        if not exhibit_url:
+            return {"status": "unavailable", "reason": "No Exhibit 99.1 link found in filing index."}
+        return {
+            "status": "available",
+            "url": exhibit_url,
+            "excerpt": _clean_excerpt(http_get(exhibit_url, headers), excerpt_chars),
+        }
+    except Exception as exc:  # noqa: BLE001 - keep cover-page evidence if exhibit lookup fails.
+        return {"status": "unavailable", "reason": str(exc)}
 
 
 def collect_financial_document_sources(
@@ -326,6 +513,51 @@ def render_financial_document_packet(packet: dict[str, Any]) -> str:
         )
     lines.append("")
     for source in packet.get("sources", []):
+        for section in source.get("sections", []):
+            lines.extend(
+                [
+                    f"### Section: {source.get('source_type', 'source')} / {section.get('section_type', 'section')}",
+                    "",
+                    f"- Source section: {section.get('source_section', 'N/A')}",
+                    f"- Filing date: `{source.get('filing_date', 'N/A')}`",
+                    f"- URL: {source.get('url', 'N/A')}",
+                    "",
+                    "```text",
+                    section["excerpt"],
+                    "```",
+                    "",
+                ]
+            )
+        cover = source.get("cover_page", {})
+        if cover.get("excerpt"):
+            lines.extend(
+                [
+                    f"### 8-K Cover Page: {source.get('source_type', 'source')}",
+                    "",
+                    f"- Filing date: `{source.get('filing_date', 'N/A')}`",
+                    f"- URL: {cover.get('url', source.get('url', 'N/A'))}",
+                    "",
+                    "```text",
+                    cover["excerpt"],
+                    "```",
+                    "",
+                ]
+            )
+        exhibit = source.get("exhibit_99_1", {})
+        if exhibit.get("excerpt"):
+            lines.extend(
+                [
+                    f"### Exhibit 99.1: {source.get('source_type', 'source')}",
+                    "",
+                    f"- Filing date: `{source.get('filing_date', 'N/A')}`",
+                    f"- URL: {exhibit.get('url', 'N/A')}",
+                    "",
+                    "```text",
+                    exhibit["excerpt"],
+                    "```",
+                    "",
+                ]
+            )
         if not source.get("excerpt"):
             continue
         lines.extend(

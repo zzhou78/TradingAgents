@@ -469,6 +469,10 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
     for required in [
         "latest annual report / 10-K if available",
         "Source coverage table",
+        "cite which source section supports each claim",
+        "10-K business / risk factors",
+        "10-Q MD&A",
+        "8-K Exhibit 99.1",
         "management narrative / filing commentary",
         "If annual/quarterly filings or earnings releases are not available",
     ]:

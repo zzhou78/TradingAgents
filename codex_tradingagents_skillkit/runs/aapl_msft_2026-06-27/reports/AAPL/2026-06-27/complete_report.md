@@ -90,18 +90,19 @@ Valuation and quality are the central trade-off. PE is 34.36, forward PE is 29.5
 
 ### Financial Report Analyst
 
-The financial-report role now has SEC filing evidence in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes the 2025 10-K filed 2025-10-31, the March 2026 10-Q filed 2026-05-01, and an Item 2.02 earnings-release 8-K filed 2026-04-30. Investor-presentation evidence remains unavailable.
+The financial-report role now has named SEC filing sections in addition to structured fundamentals. The source packet applies the as-of rule `filingDate <= 2026-06-27` and includes 10-K business/risk/liquidity sections, 10-Q risk/segment/liquidity sections, an Item 2.02 8-K cover page, and the actual Exhibit 99.1 earnings release. Investor-presentation evidence remains unavailable. (Source: roles/financial_report.md; 10-K business / risk factors; 10-Q liquidity and capital resources; 8-K Exhibit 99.1)
 
 | Source | Status | Use |
 |---|---|---|
 | Structured fundamentals packet | Available | Revenue, income, FCF, margins, leverage, liquidity, valuation |
 | Balance sheet / income statement / cash flow statement tables | Available | Statement-level cross-checks |
-| Annual report / 10-K | Available | Annual report context and risk-factor source anchor |
-| Quarterly report / 10-Q | Available | March 2026 quarter statements and product/service source anchor |
-| Earnings release 8-K | Available | Confirms Item 2.02 results-of-operations evidence |
+| Annual report / 10-K | Available | Business overview, risk factors, segment references, liquidity, commitments context |
+| Quarterly report / 10-Q | Available | Risk factors, segment references, liquidity, manufacturing and purchase obligations |
+| Earnings release 8-K cover page | Available | Confirms Item 2.02 filing and Exhibit 99.1 routing |
+| 8-K Exhibit 99.1 | Available | Revenue, EPS, product/services sales, operating cash flow, dividend, buyback details |
 | Investor presentation | Not discovered | Evidence gap |
 
-Revenue is 451.4B, net income is 122.6B, and free cash flow is 101.1B. Profit margin is 27.15%, operating margin is 32.28%, current ratio is 1.07, and debt/equity is 79.55. The SEC evidence improves source confidence, but the current packet still does not fully quantify product/services mix, formal guidance, capex commitments, or detailed capital-allocation commentary.
+Revenue is 451.4B, net income is 122.6B, and free cash flow is 101.1B. Profit margin is 27.15%, operating margin is 32.28%, current ratio is 1.07, and debt/equity is 79.55. Exhibit 99.1 reports March-quarter revenue of 111.2B, up 17% year over year, diluted EPS of 2.01, and product/services net sales of 80.208B / 30.976B. The 10-Q liquidity section reports manufacturing purchase obligations of 44.6B and other purchase obligations of 30.4B as of March 28, 2026. (Source: structured fundamentals packet; 8-K Exhibit 99.1; 10-Q liquidity and capital resources)
 
 ### Industry / Theme Discovery Analyst
 
@@ -139,7 +140,7 @@ Bull is underestimating timing risk. Scale and profitability do not remove the r
 
 **Strongest Bear Evidence**: below 10 EMA (291.02), below 50 SMA (291.41); RSI 41.26; MACD -2.24 vs signal 0.53; valuation risk: PE 34.36, P/B 39.09.
 
-**Financial-report impact**: SEC annual, quarterly, and Item 2.02 8-K evidence now supports the financial review. Apple quality and cash generation remain strong, but the filing evidence does not erase the valuation and short-term momentum risks.
+**Financial-report impact**: Named 10-K/10-Q sections and Exhibit 99.1 now support the financial review. Apple quality, product/services revenue, operating cash flow, and capital return are better supported, but the filing evidence does not erase valuation and short-term momentum risks.
 
 **Industry/theme impact**: Memory supply-chain risk, app-store regulation, and AI roadmap uncertainty reinforce Underweight; services/installed-base quality prevents a clean Sell while the 200 SMA still holds.
 
@@ -216,7 +217,7 @@ Neutral Analyst: The Aggressive view is right to acknowledge upside if fundament
 
 **Risk Assessment**: Risk debate impact: Conservative Risk outweighed Aggressive Risk because below 10 EMA (291.02), below 50 SMA (291.41) and RSI 41.26; MACD -2.24 vs signal 0.53. This changes the final decision by keeping confirmation levels explicit rather than merely repeating the Trader.
 
-**Financial-report impact**: SEC filings now support the profitability and cash-flow review, so the setup should not be treated as a fundamental failure. The remaining gaps are investor-presentation detail, full earnings-release exhibit detail, guidance, and capex commitments.
+**Financial-report impact**: SEC filings and Exhibit 99.1 now support the profitability and cash-flow review, so the setup should not be treated as a fundamental failure. The remaining gaps are investor-presentation detail and deeper table extraction for a full product/geography bridge.
 
 **Industry/theme impact**: Memory costs, app-store regulation, and AI credibility are material headwinds; services/installed-base support is a mitigating tailwind.
 
