@@ -19,7 +19,7 @@ TASKS = {
     "news_analyst_task.md": {
         "skill": "tradingagents-news-analyst",
         "output_key": "news_report",
-        "instruction": "Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item.",
+        "instruction": "Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item. Treat political-trading or celebrity-trading headlines as low relevance unless they directly affect company fundamentals, regulation, price action, or sentiment.",
     },
     "fundamentals_analyst_task.md": {
         "skill": "tradingagents-fundamentals-analyst",
@@ -59,7 +59,7 @@ TASKS = {
     "quality_reviewer_task.md": {
         "skill": "tradingagents-quality-reviewer",
         "output_key": "quality_review",
-        "instruction": "Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json.",
+        "instruction": "Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json. Flag political-trading or celebrity-trading news that is treated as material without a direct company impact path.",
     },
 }
 

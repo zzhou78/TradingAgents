@@ -26,6 +26,7 @@ Procedure:
 3. Distinguish dated facts from interpretation and preserve event timing.
 4. Flag stale, sparse, or unavailable feeds because news conclusions drift quickly.
 5. End with a compact markdown table of major events, likely impact, and evidence source.
+6. Treat political-trading or celebrity-trading headlines as low relevance unless the item directly affects company fundamentals, regulation, price action, or sentiment; if retained, explain that material transmission path explicitly.
 
 ## LLM News Classification
 
@@ -47,6 +48,7 @@ Output:
 - `news_report`: a current-event and macro context report for researchers, trader, and risk reviewers.
 - Filter relevance explicitly. Separate direct ticker/company news, indirect sector or market context, and excluded low-relevance items. Do not include unrelated headlines in the decision table unless the report explains why they materially affect the ticker.
 - Classify each retained direct or indirect news item with likely effect: positive, negative, or mixed/unclear. Exclude irrelevant headlines from the decision table.
+- Political-trading or celebrity-trading items must be excluded or labeled low relevance unless there is clear evidence of direct fundamental, regulatory, price-action, or sentiment impact.
 
 Safety boundaries:
 - Do not present old headlines as current catalysts.

@@ -463,6 +463,8 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         "direct company news, indirect industry/theme context, or irrelevant",
         "What could make the effect ambiguous?",
         "| Event | Relevance | Event type | Likely effect | Reason | Confidence |",
+        "political-trading or celebrity-trading",
+        "company fundamentals, regulation, price action, or sentiment",
     ]:
         assert required in news
 
@@ -496,6 +498,8 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         "quality_gate.json",
         "financial_report.md is missing",
         "industry_theme.md is missing",
+        "political-trading or celebrity-trading headlines",
+        "company fundamentals, regulation, price action, or sentiment",
         '"passed": false',
     ]:
         assert required in quality
