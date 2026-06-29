@@ -5,6 +5,40 @@ Trade date: `2026-06-27`
 Skill to use: `tradingagents-news-analyst`
 Evidence file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\evidence.json`
 Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\AAPL\2026-06-27\1_analysts\news.md`
+Memory update file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\AAPL\2026-06-27\memory_updates\news_analyst.md`
+
+## Allowed Input Files
+
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\roles\news.md`
+
+## Forbidden Input Files
+
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\roles\market.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\roles\social.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\roles\fundamentals.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\AAPL\2026-06-27\roles\financial_report.md`
+
+## Allowed Memory Files
+
+- `codex_tradingagents_skillkit\memory\AAPL\news_analyst\memory.md`
+- `codex_tradingagents_skillkit\memory\AAPL\news_analyst\memory.json`
+
+## Forbidden Memory Roots
+
+- `codex_tradingagents_skillkit\memory\AAPL\market_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\sentiment_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\fundamentals_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\financial_report_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\industry_theme_discovery_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\bull_researcher`
+- `codex_tradingagents_skillkit\memory\AAPL\bear_researcher`
+- `codex_tradingagents_skillkit\memory\AAPL\research_manager`
+- `codex_tradingagents_skillkit\memory\AAPL\trader`
+- `codex_tradingagents_skillkit\memory\AAPL\aggressive_risk_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\conservative_risk_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\neutral_risk_analyst`
+- `codex_tradingagents_skillkit\memory\AAPL\portfolio_manager`
+- `codex_tradingagents_skillkit\memory\AAPL\quality_reviewer`
 
 ## Instruction
 
@@ -26,8 +60,27 @@ Codex must write the News Analyst report. Do not let Python classify likely effe
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Read only the allowed input files.
+- Read only the allowed memory files.
+- Do not inspect other role memory.
+- At the end, write a memory update for this role only.
+- Memory must not override current evidence; if memory conflicts with current evidence, state the conflict explicitly.
 - Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
 - If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.
+
+## Required Memory Update Footer
+
+Every role output must end with:
+
+```markdown
+## Memory Update
+
+* Durable facts to retain:
+* Prior mistake to avoid:
+* Open questions:
+* Evidence references:
+* Staleness / expiry:
+```

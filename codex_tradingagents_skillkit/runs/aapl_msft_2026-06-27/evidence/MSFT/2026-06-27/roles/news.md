@@ -23,18 +23,6 @@ Link: https://finance.yahoo.com/technology/articles/microsoft-msft-one-best-clou
 Wix.com (NasdaqGS:WIX) is integrating its Wix Harmony website creation platform with Microsoft 365 Copilot through the OpenAI Apps SDK. The collaboration allows users to build and manage Wix Harmony websites directly inside the Microsoft 365 Copilot chat interface using natural language prompts. Users can access the wider Wix ecosystem from within Microsoft 365, aiming to streamline online presence creation and day to day business management. For investors watching Wix.com at a share price...
 Link: https://finance.yahoo.com/markets/stocks/articles/wix-wix-brings-wix-harmony-220728893.html
 
-### Teradata (TDC) Expands Cloud Partnerships As VantageCloud Adoption Picks Up (source: Simply Wall St.)
-Teradata (NYSE:TDC) reports growing momentum in its cloud business tied to adoption of its VantageCloud platform. The company highlights new and expanded partnerships with major cloud providers, including AWS, Microsoft Azure, and Google Cloud. These developments point to a larger shift in Teradata’s model toward cloud based data and AI services for data intensive customers. Teradata is best known for helping large organizations manage and analyze complex data, and its VantageCloud platform...
-Link: https://finance.yahoo.com/markets/stocks/articles/teradata-tdc-expands-cloud-partnerships-210700161.html
-
-### Microsoft (MSFT)-Backed OpenAI May Wait Until 2027 for IPO (source: Insider Monkey)
-Microsoft Corporation (NASDAQ:MSFT) is one of the 15 Best AI Stocks That Will Make You Rich in 10 Years. On June 26, 2026, Microsoft Corporation (NASDAQ:MSFT)-backed OpenAI is leaning toward waiting until next year for its public listing, the New York Times’ Rob Copeland and Mike Isaac reported, citing three people involved in the company’s […]
-Link: https://finance.yahoo.com/technology/ai/articles/microsoft-msft-backed-openai-may-193218688.html
-
-### Is Amazon.com (AMZN) One of the Top Trending US Stocks to Buy Now? (source: Insider Monkey)
-Amazon.com, Inc. (NASDAQ:AMZN) is one of the top trending US stocks to buy now. Reuters reported on June 19 that Amazon.com, Inc. (NASDAQ:AMZN) announced on Friday that its Indian operations reached a significant milestone in water conservation. This came at a time when global tech giants are facing mounting pressure regarding their use of resources […]
-Link: https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-one-top-192057945.html
-
 
 ```
 
@@ -52,7 +40,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-06-29 07:15:45
+# Data retrieved on: 2026-06-29 13:52:41
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D

@@ -36,3 +36,7 @@
 - Use the 10 EMA and 50 SMA area as the first confirmation zone.
 - Treat the 200 SMA as the long-term trend reference when available.
 - Require fresh evidence before upgrading or downgrading the view.
+
+## Memory Update
+
+No durable role-memory update was recorded for this historical generated output.

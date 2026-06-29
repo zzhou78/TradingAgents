@@ -13,3 +13,7 @@ The latest close is below the 200 SMA, so the long-term trend reference is broke
 | RSI | 40.48 | Momentum gauge |
 | MACD / signal | -13.75 / -9.66 | Trend momentum |
 | ATR | 13.20 | Volatility reference |
+
+## Memory Update
+
+No durable role-memory update was recorded for this historical generated output.

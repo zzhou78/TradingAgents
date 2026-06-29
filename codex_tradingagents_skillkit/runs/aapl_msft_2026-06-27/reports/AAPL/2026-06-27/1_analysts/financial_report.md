@@ -62,3 +62,7 @@ The key change in this run is section-level extraction. The Financial Report Ana
 ## Evidence gaps
 
 Investor presentation evidence is unavailable. 10-K/10-Q MD&A and dedicated commitments/capex sections were not extracted, so capex schedule detail and management discussion should not be overstated. Exhibit 99.1 was extracted, but a formal numerical guidance table was not identified in the excerpt. (Source: section-level financial document packet)
+
+## Memory Update
+
+No durable role-memory update was recorded for this historical generated output.

@@ -1,0 +1,192 @@
+{
+  "ticker": "WOW.AX",
+  "trade_date": "2026-06-27",
+  "identity": {
+    "company_name": "Woolworths Group Limited",
+    "sector": "Consumer Defensive",
+    "industry": "Grocery Stores",
+    "exchange": "ASX",
+    "quote_type": "EQUITY"
+  },
+  "roles": {
+    "market": {
+      "skill": "tradingagents-market-analyst",
+      "tool_calls": {
+        "get_stock_data": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "start_date": "2026-05-28",
+            "end_date": "2026-06-27"
+          },
+          "output": "# Stock data for WOW.AX from 2026-05-28 to 2026-06-27\n# Total records: 21\n# Data retrieved on: 2026-06-29 13:54:32\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-05-28,34.8,35.06,34.64,34.94,1961645,0.0,0.0\r\n2026-05-29,35.0,35.23,34.68,35.23,6130955,0.0,0.0\r\n2026-06-01,34.81,35.14,34.48,35.06,1306915,0.0,0.0\r\n2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0\r\n2026-06-03,34.3,35.19,34.25,35.09,1890873,0.0,0.0\r\n2026-06-04,35.29,35.59,35.14,35.26,1427129,0.0,0.0\r\n2026-06-05,35.26,35.8,35.1,35.69,1754868,0.0,0.0\r\n2026-06-09,36.0,36.63,35.9,36.48,2781321,0.0,0.0\r\n2026-06-10,36.58,37.63,36.58,37.63,2237739,0.0,0.0\r\n2026-06-11,37.68,38.09,37.63,38.09,2377238,0.0,0.0\r\n2026-06-12,38.15,38.5,38.09,38.33,2199640,0.0,0.0\r\n2026-06-15,38.19,38.46,37.95,38.23,3411482,0.0,0.0\r\n2026-06-16,38.01,38.28,37.88,38.26,1501664,0.0,0.0\r\n2026-06-17,37.99,38.2,37.73,37.78,2278310,0.0,0.0\r\n2026-06-18,37.75,38.3,37.7,38.12,3777467,0.0,0.0\r\n2026-06-19,38.2,38.42,37.92,38.32,5103756,0.0,0.0\r\n2026-06-22,38.01,38.55,38.01,38.55,1438982,0.0,0.0\r\n2026-06-23,38.6,38.8,38.4,38.74,2019982,0.0,0.0\r\n2026-06-24,38.81,39.38,38.76,39.37,3127670,0.0,0.0\r\n2026-06-25,39.5,40.1,39.43,39.94,2464394,0.0,0.0\r\n2026-06-26,39.8,40.24,39.52,40.24,1677574,0.0,0.0\r\n"
+        },
+        "get_verified_market_snapshot": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## Verified market data snapshot for WOW.AX\n\n- Requested analysis date: 2026-06-27\n- Latest trading row used: 2026-06-26\n- Rows after the requested analysis date are excluded before verification.\n\n### Latest verified OHLCV row\n\n| Field | Value |\n|---|---:|\n| Open | 39.80 |\n| High | 40.24 |\n| Low | 39.52 |\n| Close | 40.24 |\n| Volume | 1677574 |\n\n### Verified technical indicators (latest row)\n\n| Indicator | Value |\n|---|---:|\n| close_10_ema | 38.82 |\n| close_50_sma | 36.00 |\n| close_200_sma | 31.74 |\n| rsi | 79.97 |\n| boll | 37.44 |\n| boll_ub | 40.95 |\n| boll_lb | 33.93 |\n| macd | 1.20 |\n| macds | 0.95 |\n| macdh | 0.24 |\n| atr | 0.62 |\n\n### Recent verified closes (last 30 rows)\n\n| Date | Close |\n|---|---:|\n| 2026-05-15 | 32.98 |\n| 2026-05-18 | 32.98 |\n| 2026-05-19 | 34.21 |\n| 2026-05-20 | 34.43 |\n| 2026-05-21 | 34.49 |\n| 2026-05-22 | 34.68 |\n| 2026-05-25 | 34.75 |\n| 2026-05-26 | 34.49 |\n| 2026-05-27 | 34.62 |\n| 2026-05-28 | 34.94 |\n| 2026-05-29 | 35.23 |\n| 2026-06-01 | 35.06 |\n| 2026-06-02 | 34.41 |\n| 2026-06-03 | 35.09 |\n| 2026-06-04 | 35.26 |\n| 2026-06-05 | 35.69 |\n| 2026-06-09 | 36.48 |\n| 2026-06-10 | 37.63 |\n| 2026-06-11 | 38.09 |\n| 2026-06-12 | 38.33 |\n| 2026-06-15 | 38.23 |\n| 2026-06-16 | 38.26 |\n| 2026-06-17 | 37.78 |\n| 2026-06-18 | 38.12 |\n| 2026-06-19 | 38.32 |\n| 2026-06-22 | 38.55 |\n| 2026-06-23 | 38.74 |\n| 2026-06-24 | 39.37 |\n| 2026-06-25 | 39.94 |\n| 2026-06-26 | 40.24 |\n\nUse this snapshot as the source of truth for exact OHLCV, price-level, and indicator-value claims. If another tool output conflicts with it, flag the discrepancy rather than inventing a reconciled number. Do not claim historical validation, support/resistance bounces, or exact percentage moves unless directly supported by tool output with concrete dates and prices."
+        },
+        "get_indicators:close_50_sma": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "indicator": "close_50_sma",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## close_50_sma values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 36.000799865722655\n2026-06-25: 35.9313998413086\n2026-06-24: 35.86759986877441\n2026-06-23: 35.821599884033205\n2026-06-22: 35.78999984741211\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 35.755599899291994\n2026-06-18: 35.73279991149902\n2026-06-17: 35.70599990844727\n2026-06-16: 35.7007999420166\n2026-06-15: 35.6757999420166\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 35.642199935913084\n2026-06-11: 35.60379989624023\n2026-06-10: 35.575599899291994\n2026-06-09: 35.54799987792969\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 35.54579986572266\n2026-06-04: 35.55959991455078\n2026-06-03: 35.581999969482425\n2026-06-02: 35.60979995727539\n2026-06-01: 35.649999923706055\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 35.68359992980957\n2026-05-28: 35.69939994812012\n\n\n50 SMA: A medium-term trend indicator. Usage: Identify trend direction and serve as dynamic support/resistance. Tips: It lags price; combine with faster indicators for timely signals."
+        },
+        "get_indicators:close_200_sma": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "indicator": "close_200_sma",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## close_200_sma values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 31.741845932006836\n2026-06-25: 31.678592882156373\n2026-06-24: 31.615308752059935\n2026-06-23: 31.555467290878298\n2026-06-22: 31.49803496360779\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 31.441947774887083\n2026-06-18: 31.384442291259766\n2026-06-17: 31.331394128799438\n2026-06-16: 31.282268524169922\n2026-06-15: 31.23098600387573\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 31.177617092132568\n2026-06-11: 31.124574661254883\n2026-06-10: 31.09660327911377\n2026-06-09: 31.066993894577028\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 31.045614004135132\n2026-06-04: 31.030566358566283\n2026-06-03: 31.013439025878906\n2026-06-02: 30.995119743347168\n2026-06-01: 30.980686626434327\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 30.962663192749023\n2026-05-28: 30.944421787261962\n\n\n200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries."
+        },
+        "get_indicators:rsi": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "indicator": "rsi",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## rsi values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 79.97365318769866\n2026-06-25: 78.75947945416164\n2026-06-24: 76.21534392045594\n2026-06-23: 72.88172022535234\n2026-06-22: 71.77380142277075\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 70.41518204662178\n2026-06-18: 69.21885426010432\n2026-06-17: 67.12003308671213\n2026-06-16: 73.70851478456476\n2026-06-15: 73.55788618844632\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 74.88593562607443\n2026-06-11: 73.83310919497966\n2026-06-10: 71.72338753883584\n2026-06-09: 65.21226335779808\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 59.22275825743482\n2026-06-04: 55.336084926735374\n2026-06-03: 53.71660256719244\n2026-06-02: 46.51303625021797\n2026-06-01: 53.96867125284401\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 56.154623405634375\n2026-05-28: 53.148603082853974\n\n\nRSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis."
+        },
+        "get_indicators:macd": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "indicator": "macd",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## macd values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 1.1987773763184961\n2026-06-25: 1.125072502459652\n2026-06-24: 1.0451793559684646\n2026-06-23: 0.9860403727422735\n2026-06-22: 0.960360294532606\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 0.9329600026404279\n2026-06-18: 0.9078350743418895\n2026-06-17: 0.8829253697315238\n2026-06-16: 0.8729071750962447\n2026-06-15: 0.798550803459932\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 0.6950841713222076\n2026-06-11: 0.5427307580402356\n2026-06-10: 0.36481467041454607\n2026-06-09: 0.17925892105804309\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 0.05690597202620751\n2026-06-04: -0.019652149295666277\n2026-06-03: -0.07330045272065888\n2026-06-02: -0.1234001034872847\n2026-06-01: -0.11631417061533966\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: -0.17176007463022813\n2026-05-28: -0.25733978641630983\n\n\nMACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets."
+        },
+        "get_indicators:atr": {
+          "status": "ok",
+          "args": {
+            "symbol": "WOW.AX",
+            "indicator": "atr",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## atr values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 0.6178991909582667\n2026-06-25: 0.6100451886702007\n2026-06-24: 0.60120233481265\n2026-06-23: 0.5982179459791279\n2026-06-22: 0.6134656563481653\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 0.6191167902574592\n2026-06-18: 0.6282796202772637\n2026-06-17: 0.6304550930585076\n2026-06-16: 0.6381825018094024\n2026-06-15: 0.6561197112334429\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 0.6673598181334613\n2026-06-11: 0.6871567389581807\n2026-06-10: 0.7046304046878364\n2026-06-09: 0.6703710876731387\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 0.6496302143090532\n2026-06-04: 0.6457555567220994\n2026-06-03: 0.6569675226237994\n2026-06-02: 0.6351958992326314\n2026-06-01: 0.6225184259614637\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 0.6127121510354224\n2026-05-28: 0.617536221341182\n\n\nATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy."
+        }
+      }
+    },
+    "social": {
+      "skill": "tradingagents-sentiment-analyst",
+      "tool_calls": {
+        "fetch_stocktwits_messages": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "limit": 30
+          },
+          "output": "<stocktwits unavailable: HTTPError>"
+        },
+        "fetch_reddit_posts": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "limit_per_sub": 5,
+            "inter_request_delay": 0.0
+          },
+          "output": "<no Reddit posts found mentioning WOW.AX across r/wallstreetbets, r/stocks, r/investing in the past 7 days>"
+        }
+      }
+    },
+    "news": {
+      "skill": "tradingagents-news-analyst",
+      "tool_calls": {
+        "get_news": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "start_date": "2026-06-20",
+            "end_date": "2026-06-27"
+          },
+          "output": "## WOW.AX News, from 2026-06-20 to 2026-06-27:\n\n### Australia grocery giants set to face \u201cprice gouging\u201d laws (source: Just Drinks)\nThe maximum penalty for every violation will be determined by the greatest of $10m, three times the benefit gained, or 10% of annual turnover.\nLink: https://www.just-drinks.com/news/australia-grocery-price-gouging-laws/\n\n### ADUSA tapped a former Amazon exec to helm its business. What does this mean? (source: Grocery Dive)\nThe grocery company\u2019s nominee for the top role may raise some eyebrows given Amazon\u2019s brick-and-mortar track record, but Claire Peters' appointment could be the key to further omnichannel growth.\nLink: https://www.grocerydive.com/news/ahold-delhaize-usa-adusa-ceo-claire-peters-amazon-executive-changes/823756/\n\n### Australia\u2019s David Jones Appoints Erica Berchtold as CEO (source: WWD)\nBerchtold is the first woman to helm the Australian department store chain in its 188-year history.\nLink: https://wwd.com/fashion-news/designer-luxury/david-jones-ceo-new-1239021387/\n\n"
+        },
+        "get_global_news": {
+          "status": "ok",
+          "args": {
+            "curr_date": "2026-06-27",
+            "look_back_days": 7,
+            "limit": 5
+          },
+          "output": "No global news found between 2026-06-20 and 2026-06-27"
+        },
+        "get_insider_transactions": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX"
+          },
+          "output": "# Insider Transactions data for WOW.AX\n# Data retrieved on: 2026-06-29 13:54:50\n\n,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value\r\n0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,\r\n1,4027,,Purchase at price 24.97 per share.,Perkins (Scott Redvers),Independent Chairman Of The Board,,2026-06-01,D,100558.0\r\n2,7170,,,Fellows (Tracey),Former,,2026-03-01,D,\r\n3,3158,,,Bray (Warwick),Independent Non-Executive Director,,2026-02-26,D,\r\n4,701,,,Fellows (Tracey),Independent Non-Executive Director,,2026-02-26,D,\r\n5,12738,,,Bardwell (Amanda),Chief Executive Officer,,2025-08-28,D,\r\n6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,\r\n7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,\r\n8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,\r\n9,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,\r\n10,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,\r\n11,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,\r\n12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0\r\n13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0\r\n14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,\r\n15,620,,,Fellows (Tracey),Independent Non-Executive Director,,2025-02-28,D,\r\n16,1033,,,Kramer (Holly S),Independent Non-Executive Director,,2025-02-28,D,\r\n17,1676,,Purchase at price 19.89 per share.,Fellows (Tracey),Independent Non-Executive Director,,2024-11-07,D,33342.0\r\n18,8000,,Purchase at price 19.66 per share.,Chronican (Philip Wayne),Independent Non-Executive Director,,2024-11-05,D,157275.0\r\n19,8860,,,Bardwell (Amanda),Chief Executive Officer,,2024-09-01,D,\r\n20,1100,,Purchase at price 24.26 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2024-08-30,D,26688.0\r\n21,22569,,,Banducci (Bradford Leon),Chief Executive Officer,,2024-08-29,D,\r\n22,1930,,,Bray (Warwick),Independent Non-Executive Director,,2024-08-29,D,\r\n23,618,,,Fellows (Tracey),Independent Non-Executive Director,,2024-08-29,D,\r\n24,1027,,,Kramer (Holly S),Independent Non-Executive Director,,2024-08-29,D,\r\n25,8250,,,Bardwell (Amanda),Divisional Officer,,2024-06-30,D,\r\n26,108513,,,Davis (Natalie),Divisional Officer,,2024-06-30,D,\r\n27,4229,,,Harrison (Stephen),Chief Financial Officer,,2024-06-30,D,\r\n"
+        }
+      }
+    },
+    "fundamentals": {
+      "skill": "tradingagents-fundamentals-analyst",
+      "tool_calls": {
+        "get_fundamentals": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "curr_date": "2026-06-27"
+          },
+          "output": "# Company Fundamentals for WOW.AX\n# Data retrieved on: 2026-06-29 13:54:51\n\nName: Woolworths Group Limited\nSector: Consumer Defensive\nIndustry: Grocery Stores\nMarket Cap: 49609146368\nPE Ratio (TTM): 82.87755\nForward PE: 28.779171\nPEG Ratio: 2.16\nPrice to Book: 10.703743\nEPS (TTM): 0.49\nForward EPS: 1.41109\nDividend Yield: 2.24\nBeta: 0.29\n52 Week High: 40.75\n52 Week Low: 25.51\n50 Day Average: 35.9788\n200 Day Average: 32.12405\nRevenue (TTM): 70282002432\nGross Profit: 19207999488\nEBITDA: 3300000000\nNet Income: 598000000\nProfit Margin: 0.00851\nOperating Margin: 0.025910001\nReturn on Equity: 0.1188\nReturn on Assets: 0.03636\nDebt to Equity: 361.53\nCurrent Ratio: 0.557\nBook Value: 3.794\nFree Cash Flow: 2267749888"
+        },
+        "get_balance_sheet": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "# Balance Sheet data for WOW.AX (quarterly)\n# Data retrieved on: 2026-06-29 13:54:51\n\n,2025-06-30\r\nOrdinary Shares Number,1221595333.0\r\nShare Issued,1221595333.0\r\nNet Debt,4236000000.0\r\nTotal Debt,17385000000.0\r\nTangible Book Value,151000000.0\r\nInvested Capital,10371000000.0\r\nWorking Capital,-5306000000.0\r\nNet Tangible Assets,151000000.0\r\nCapital Lease Obligations,11874000000.0\r\nCommon Stock Equity,4860000000.0\r\nTotal Capitalization,10127000000.0\r\nTotal Equity Gross Minority Interest,4962000000.0\r\nMinority Interest,102000000.0\r\nStockholders Equity,4860000000.0\r\nGains Losses Not Affecting Retained Earnings,-7479000000.0\r\nOther Equity Adjustments,-7545000000.0\r\nForeign Currency Translation Adjustments,66000000.0\r\nRetained Earnings,6712000000.0\r\nCapital Stock,5627000000.0\r\nCommon Stock,5627000000.0\r\nTotal Liabilities Net Minority Interest,28867000000.0\r\nTotal Non Current Liabilities Net Minority Interest,16570000000.0\r\nOther Non Current Liabilities,58000000.0\r\nDerivative Product Liabilities,46000000.0\r\nEmployee Benefits,165000000.0\r\nNon Current Pension And Other Postretirement Benefit Plans,165000000.0\r\nNon Current Deferred Liabilities,61000000.0\r\nNon Current Deferred Taxes Liabilities,61000000.0\r\nLong Term Debt And Capital Lease Obligation,15442000000.0\r\nLong Term Capital Lease Obligation,10175000000.0\r\nLong Term Debt,5267000000.0\r\nLong Term Provisions,798000000.0\r\nCurrent Liabilities,12297000000.0\r\nOther Current Liabilities,11000000.0\r\nCurrent Deferred Liabilities,127000000.0\r\nCurrent Deferred Taxes Liabilities,127000000.0\r\nCurrent Debt And Capital Lease Obligation,1943000000.0\r\nCurrent Capital Lease Obligation,1699000000.0\r\nCurrent Debt,244000000.0\r\nOther Current Borrowings,244000000.0\r\nPensionand Other Post Retirement Benefit Plans Current,1401000000.0\r\nCurrent Provisions,732000000.0\r\nPayables And Accrued Expenses,8083000000.0\r\nPayables,8083000000.0\r\nOther Payable,2067000000.0\r\nAccounts Payable,6016000000.0\r\nTotal Assets,33829000000.0\r\nTotal Non Current Assets,26838000000.0\r\nOther Non Current Assets,27000000.0\r\nNon Current Deferred Assets,1853000000.0\r\nNon Current Deferred Taxes Assets,1853000000.0\r\nNon Current Accounts Receivable,455000000.0\r\nFinancial Assets,199000000.0\r\nInvestments And Advances,261000000.0\r\nOther Investments,173000000.0\r\nInvestmentin Financial Assets,11000000.0\r\nTrading Securities,11000000.0\r\nLong Term Equity Investment,77000000.0\r\nInvestmentsin Associatesat Cost,77000000.0\r\nGoodwill And Other Intangible Assets,4709000000.0\r\nOther Intangible Assets,2241000000.0\r\nGoodwill,2468000000.0\r\nNet PPE,19334000000.0\r\nAccumulated Depreciation,-23014000000.0\r\nGross PPE,42348000000.0\r\nLeases,4641000000.0\r\nOther Properties,23329000000.0\r\nMachinery Furniture Equipment,13036000000.0\r\nLand And Improvements,1342000000.0\r\nCurrent Assets,6991000000.0\r\nOther Current Assets,17000000.0\r\nHedging Assets Current,52000000.0\r\nAssets Held For Sale Current,200000000.0\r\nPrepaid Assets,183000000.0\r\nInventory,4169000000.0\r\nInventories Adjustments Allowances,-58000000.0\r\nOther Inventories,4227000000.0\r\nReceivables,1095000000.0\r\nReceivables Adjustments Allowances,-6000000.0\r\nOther Receivables,627000000.0\r\nAccounts Receivable,474000000.0\r\nCash Cash Equivalents And Short Term Investments,1275000000.0\r\nCash And Cash Equivalents,1275000000.0\r\nCash Financial,1275000000.0\r\n"
+        },
+        "get_cashflow": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "NO_DATA_AVAILABLE: No usable market data for 'WOW.AX' from any configured vendor (no cash flow data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol."
+        },
+        "get_income_statement": {
+          "status": "ok",
+          "args": {
+            "ticker": "WOW.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "NO_DATA_AVAILABLE: No usable market data for 'WOW.AX' from any configured vendor (no income statement data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol."
+        }
+      }
+    },
+    "financial_report": {
+      "skill": "tradingagents-financial-report-analyst",
+      "tool_calls": {
+        "collect_financial_document_sources": {
+          "status": "error",
+          "args": {
+            "ticker": "WOW.AX",
+            "trade_date": "2026-06-27",
+            "source_policy": "Market-aware routing: US uses SEC; ASX uses ASX announcements; unsupported markets return explicit unavailable coverage."
+          },
+          "output": "## Financial Document Source Packet: WOW.AX\n\n- Trade date: `2026-06-27`\n- Collection status: `error`\n- Market: `ASX`\n- ASX code: `WOW`\n\n| Source | Status | Filing date | Form | URL / reason |\n|---|---:|---:|---:|---|\n| asx_announcements | error |  |  | HTTP Error 404:  |\n"
+        }
+      }
+    }
+  }
+}

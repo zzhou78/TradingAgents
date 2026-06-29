@@ -1,0 +1,15 @@
+{
+  "role": "bull_researcher",
+  "ticker": "CBA.AX",
+  "last_updated": "2026-06-27",
+  "durable_facts_learned": [],
+  "recurring_issues": [],
+  "prior_role_conclusions": [],
+  "prior_mistakes_to_avoid": [
+    "Prefer current evidence over stale memory."
+  ],
+  "open_questions": [],
+  "stale_assumptions": [],
+  "evidence_references": [],
+  "review_date": "2026-06-27"
+}

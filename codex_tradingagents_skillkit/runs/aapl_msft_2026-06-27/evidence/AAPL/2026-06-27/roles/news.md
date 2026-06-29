@@ -51,22 +51,6 @@ Link: https://247wallst.com/investing/2026/06/27/apple-wants-to-buy-blacklisted-
 Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
 Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
 
-### Apple Seeks US Approval to Buy Chips From Blacklisted CXMT: FT (source: Bloomberg)
-(Bloomberg) -- Apple Inc. is pressing the White House for approval to purchase memory chips from a blacklisted Chinese company as it grapples to rein in chip costs, the Financial Times reported on Saturday.Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsUS Strikes Iran in Response
-Link: https://finance.yahoo.com/technology/articles/apple-seeks-us-approval-buy-074523538.html
-
-### Apple seeks approval to buy chips from blacklisted Chinese company, FT reports (source: Reuters)
-Apple is lobbying the Trump administration for clearance to buy memory chips from ChangXin ‌Memory Technologies, a Chinese company the Pentagon has ‌put on a blacklist, the Financial Times reported on Friday.  The iPhone maker ​has lobbied the White House for approval aimed at easing financial pressure on the company from rising memory chip prices, the newspaper said, citing unnamed sources.  The White House, Apple and ‌CXMT did not respond ⁠to requests for comment from Reuters outside business hours.
-Link: https://finance.yahoo.com/technology/articles/apple-seeks-approval-buy-chips-032619573.html
-
-### S&P 500, Nasdaq End Week Lower As Investors Rotate Out Of Tech, AI Plays — ON, AAPL, SLS, INFQ, NKE in Focus (source: Stocktwits)
-The Dow Jones ended its third consecutive week higher amid cooling oil prices and strength in pharma and materials stocks.
-Link: https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-week-lower-as-investors-rotate-out-of-tech-ai-plays-on-aapl-sls-infq-nke-in-focus/cZ12ck9R7W9
-
-### Update: Equity Markets Fall as Trump Says Iran Violated Ceasefire (source: MT Newswires)
-(Updates with market moves at the end of the day.) US equity benchmarks slipped Friday as Presid
-Link: https://finance.yahoo.com/markets/stocks/articles/equity-markets-fall-trump-says-204521099.html
-
 
 ```
 
@@ -84,7 +68,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-29 07:15:24
+# Data retrieved on: 2026-06-29 13:52:20
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D

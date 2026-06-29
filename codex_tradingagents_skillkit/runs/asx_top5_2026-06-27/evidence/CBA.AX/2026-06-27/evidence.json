@@ -1,0 +1,192 @@
+{
+  "ticker": "CBA.AX",
+  "trade_date": "2026-06-27",
+  "identity": {
+    "company_name": "Commonwealth Bank of Australia",
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "exchange": "ASX",
+    "quote_type": "EQUITY"
+  },
+  "roles": {
+    "market": {
+      "skill": "tradingagents-market-analyst",
+      "tool_calls": {
+        "get_stock_data": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "start_date": "2026-05-28",
+            "end_date": "2026-06-27"
+          },
+          "output": "# Stock data for CBA.AX from 2026-05-28 to 2026-06-27\n# Total records: 21\n# Data retrieved on: 2026-06-29 13:53:29\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-05-28,163.0,163.83,160.24,161.41,2007173,0.0,0.0\r\n2026-05-29,161.8,165.02,161.5,165.02,11194839,0.0,0.0\r\n2026-06-01,163.61,164.29,162.07,163.3,1592801,0.0,0.0\r\n2026-06-02,161.0,163.29,160.14,163.0,2110667,0.0,0.0\r\n2026-06-03,163.75,165.44,162.96,164.76,1780123,0.0,0.0\r\n2026-06-04,164.86,164.89,161.7,163.73,1528064,0.0,0.0\r\n2026-06-05,164.48,164.48,160.0,160.9,2383963,0.0,0.0\r\n2026-06-09,160.43,161.96,158.32,160.48,2993060,0.0,0.0\r\n2026-06-10,159.92,161.5,158.8,160.24,2717126,0.0,0.0\r\n2026-06-11,158.6,159.09,156.42,156.42,2555692,0.0,0.0\r\n2026-06-12,158.16,160.3,157.71,159.51,1819896,0.0,0.0\r\n2026-06-15,160.0,162.6,159.91,161.79,1736947,0.0,0.0\r\n2026-06-16,159.25,162.22,158.21,161.88,1409081,0.0,0.0\r\n2026-06-17,162.0,164.17,161.6,163.71,1958334,0.0,0.0\r\n2026-06-18,164.42,165.45,161.92,162.23,2730130,0.0,0.0\r\n2026-06-19,162.15,162.4,160.34,162.4,4968164,0.0,0.0\r\n2026-06-22,162.4,164.13,162.33,163.41,1520823,0.0,0.0\r\n2026-06-23,163.5,164.9,163.06,164.21,2277025,0.0,0.0\r\n2026-06-24,166.38,167.39,164.27,164.79,2754085,0.0,0.0\r\n2026-06-25,164.79,165.65,162.64,162.7,2761711,0.0,0.0\r\n2026-06-26,162.0,163.2,161.28,162.02,2280044,0.0,0.0\r\n"
+        },
+        "get_verified_market_snapshot": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## Verified market data snapshot for CBA.AX\n\n- Requested analysis date: 2026-06-27\n- Latest trading row used: 2026-06-26\n- Rows after the requested analysis date are excluded before verification.\n\n### Latest verified OHLCV row\n\n| Field | Value |\n|---|---:|\n| Open | 162.00 |\n| High | 163.20 |\n| Low | 161.28 |\n| Close | 162.02 |\n| Volume | 2280044 |\n\n### Verified technical indicators (latest row)\n\n| Indicator | Value |\n|---|---:|\n| close_10_ema | 162.75 |\n| close_50_sma | 166.77 |\n| close_200_sma | 164.55 |\n| rsi | 46.08 |\n| boll | 162.32 |\n| boll_ub | 166.50 |\n| boll_lb | 158.15 |\n| macd | -0.79 |\n| macds | -1.30 |\n| macdh | 0.51 |\n| atr | 3.14 |\n\n### Recent verified closes (last 30 rows)\n\n| Date | Close |\n|---|---:|\n| 2026-05-15 | 159.40 |\n| 2026-05-18 | 160.74 |\n| 2026-05-19 | 162.88 |\n| 2026-05-20 | 162.64 |\n| 2026-05-21 | 164.13 |\n| 2026-05-22 | 165.67 |\n| 2026-05-25 | 164.60 |\n| 2026-05-26 | 164.30 |\n| 2026-05-27 | 164.81 |\n| 2026-05-28 | 161.41 |\n| 2026-05-29 | 165.02 |\n| 2026-06-01 | 163.30 |\n| 2026-06-02 | 163.00 |\n| 2026-06-03 | 164.76 |\n| 2026-06-04 | 163.73 |\n| 2026-06-05 | 160.90 |\n| 2026-06-09 | 160.48 |\n| 2026-06-10 | 160.24 |\n| 2026-06-11 | 156.42 |\n| 2026-06-12 | 159.51 |\n| 2026-06-15 | 161.79 |\n| 2026-06-16 | 161.88 |\n| 2026-06-17 | 163.71 |\n| 2026-06-18 | 162.23 |\n| 2026-06-19 | 162.40 |\n| 2026-06-22 | 163.41 |\n| 2026-06-23 | 164.21 |\n| 2026-06-24 | 164.79 |\n| 2026-06-25 | 162.70 |\n| 2026-06-26 | 162.02 |\n\nUse this snapshot as the source of truth for exact OHLCV, price-level, and indicator-value claims. If another tool output conflicts with it, flag the discrepancy rather than inventing a reconciled number. Do not claim historical validation, support/resistance bounces, or exact percentage moves unless directly supported by tool output with concrete dates and prices."
+        },
+        "get_indicators:close_50_sma": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "indicator": "close_50_sma",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## close_50_sma values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 166.76759979248047\n2026-06-25: 167.0893997192383\n2026-06-24: 167.49919982910157\n2026-06-23: 167.87380004882812\n2026-06-22: 168.25359985351562\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 168.6529998779297\n2026-06-18: 169.05559997558595\n2026-06-17: 169.4152001953125\n2026-06-16: 169.6798001098633\n2026-06-15: 169.89820007324218\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 170.10040008544922\n2026-06-11: 170.26420013427733\n2026-06-10: 170.5102001953125\n2026-06-09: 170.77800018310546\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 171.03200012207031\n2026-06-04: 171.25740020751954\n2026-06-03: 171.4052001953125\n2026-06-02: 171.59500030517577\n2026-06-01: 171.84780029296874\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 172.12900024414063\n2026-05-28: 172.3704000854492\n\n\n50 SMA: A medium-term trend indicator. Usage: Identify trend direction and serve as dynamic support/resistance. Tips: It lags price; combine with faster indicators for timely signals."
+        },
+        "get_indicators:close_200_sma": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "indicator": "close_200_sma",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## close_200_sma values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 164.54604232788085\n2026-06-25: 164.56751861572266\n2026-06-24: 164.57345733642578\n2026-06-23: 164.5796035003662\n2026-06-22: 164.58815620422362\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 164.60001815795897\n2026-06-18: 164.59990783691407\n2026-06-17: 164.62980751037597\n2026-06-16: 164.6448567199707\n2026-06-15: 164.67571685791015\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 164.72207580566408\n2026-06-11: 164.7624670410156\n2026-06-10: 164.81460777282715\n2026-06-09: 164.85366790771485\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 164.9040604400635\n2026-06-04: 164.95708961486815\n2026-06-03: 164.98906120300293\n2026-06-02: 164.9963934326172\n2026-06-01: 165.00834693908692\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 165.0089852142334\n2026-05-28: 164.99635887145996\n\n\n200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries."
+        },
+        "get_indicators:rsi": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "indicator": "rsi",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## rsi values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 46.08186889924427\n2026-06-25: 47.57268779487526\n2026-06-24: 52.41198161661921\n2026-06-23: 51.130992161836396\n2026-06-22: 49.38594117465554\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 47.17454214508068\n2026-06-18: 46.811339510932974\n2026-06-17: 49.56638636943136\n2026-06-16: 45.911401789949366\n2026-06-15: 45.73177407542324\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 41.13358676687982\n2026-06-11: 34.10746056762745\n2026-06-10: 39.52268354438638\n2026-06-09: 39.89217067595233\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 40.507571744657305\n2026-06-04: 44.83513798805817\n2026-06-03: 46.514567625531384\n2026-06-02: 43.134858325397154\n2026-06-01: 43.570638467996915\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 46.04726969406784\n2026-05-28: 39.32578135647969\n\n\nRSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis."
+        },
+        "get_indicators:macd": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "indicator": "macd",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## macd values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: -0.7875177605997408\n2026-06-25: -0.7794955077632153\n2026-06-24: -0.8271536973821867\n2026-06-23: -1.088751178209975\n2026-06-22: -1.3477551310619447\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: -1.5772797909803558\n2026-06-18: -1.7444571110892468\n2026-06-17: -1.9151533372106826\n2026-06-16: -2.255859044981463\n2026-06-15: -2.4715834667200056\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: -2.701811152015665\n2026-06-11: -2.724220996053475\n2026-06-10: -2.3985812644611997\n2026-06-09: -2.337004298029939\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: -2.248852276768133\n2026-06-04: -2.1463911137153957\n2026-06-03: -2.27253881765418\n2026-06-02: -2.5053666526803795\n2026-06-01: -2.586898497378826\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: -2.68388092992015\n2026-05-28: -2.9437549091274207\n\n\nMACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets."
+        },
+        "get_indicators:atr": {
+          "status": "ok",
+          "args": {
+            "symbol": "CBA.AX",
+            "indicator": "atr",
+            "curr_date": "2026-06-27",
+            "look_back_days": 30
+          },
+          "output": "## atr values from 2026-05-28 to 2026-06-27:\n\n2026-06-27: N/A: Not a trading day (weekend or holiday)\n2026-06-26: 3.1357217355910016\n2026-06-25: 3.2292389330252855\n2026-06-24: 3.2461038888860045\n2026-06-23: 3.25118936681714\n2026-06-22: 3.359742676734564\n2026-06-21: N/A: Not a trading day (weekend or holiday)\n2026-06-20: N/A: Not a trading day (weekend or holiday)\n2026-06-19: 3.479722647886622\n2026-06-18: 3.5889322701399196\n2026-06-17: 3.5934656155893845\n2026-06-16: 3.6721943502170533\n2026-06-15: 3.646209722784832\n2026-06-14: N/A: Not a trading day (weekend or holiday)\n2026-06-13: N/A: Not a trading day (weekend or holiday)\n2026-06-12: 3.6889941940236888\n2026-06-11: 3.674301064116857\n2026-06-10: 3.663092890262865\n2026-06-09: 3.737177193495225\n2026-06-08: N/A: Not a trading day (weekend or holiday)\n2026-06-07: N/A: Not a trading day (weekend or holiday)\n2026-06-06: N/A: Not a trading day (weekend or holiday)\n2026-06-05: 3.7446524091757474\n2026-06-04: 3.6880875385324154\n2026-06-03: 3.7264017767728896\n2026-06-02: 3.822279165175492\n2026-06-01: 3.8732234346421164\n2026-05-31: N/A: Not a trading day (weekend or holiday)\n2026-05-30: N/A: Not a trading day (weekend or holiday)\n2026-05-29: 3.94424085667288\n2026-05-28: 3.9699516448514425\n\n\nATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy."
+        }
+      }
+    },
+    "social": {
+      "skill": "tradingagents-sentiment-analyst",
+      "tool_calls": {
+        "fetch_stocktwits_messages": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "limit": 30
+          },
+          "output": "<stocktwits unavailable: HTTPError>"
+        },
+        "fetch_reddit_posts": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "limit_per_sub": 5,
+            "inter_request_delay": 0.0
+          },
+          "output": "<no Reddit posts found mentioning CBA.AX across r/wallstreetbets, r/stocks, r/investing in the past 7 days>"
+        }
+      }
+    },
+    "news": {
+      "skill": "tradingagents-news-analyst",
+      "tool_calls": {
+        "get_news": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "start_date": "2026-06-20",
+            "end_date": "2026-06-27"
+          },
+          "output": "## CBA.AX News, from 2026-06-20 to 2026-06-27:\n\n### Pound Trades Near 2026 Low as UK Political Uncertainty Builds (source: Bloomberg)\n(Bloomberg) -- The pound traded near this year\u2019s low on expectations Keir Starmer will set out a timetable for his departure as UK prime minister in coming days. Most Read from BloombergIran Says Hormuz Closed Again as Talks With US Set to OpenIranian Negotiators Said to Still Be Engaged in Talks With USUS, Iran Meet in Switzerland as Trump Threat Angers TehranDOJ Rejects Judge Request to Certify $1.8 Billion Fund NixedTrump\u2019s Fears About Economy Undercut US Leverage in Iran TalksSterling slid a\nLink: https://finance.yahoo.com/markets/currencies/articles/pound-trades-near-2026-low-080906468.html\n\n### Oil Climbs After Fresh Trump Threat as US-Iran Peace Talks Begin (source: Bloomberg)\n(Bloomberg) -- Oil rose after President Donald Trump threatened strikes on Iran if Hezbollah keeps attacking Israel, raising concerns about progress for peace talks between Washington and Tehran.Most Read from BloombergIran Says Hormuz Closed Again as Talks With US Set to OpenIranian Negotiators Said to Still Be Engaged in Talks With USDOJ Rejects Judge Request to Certify $1.8 Billion Fund NixedUS, Iran Meet in Switzerland as Fresh Trump Threat Angers TehranTrump\u2019s Fears About Economy Undercut U\nLink: https://finance.yahoo.com/energy/articles/oil-climbs-fresh-trump-threat-223930542.html\n\n"
+        },
+        "get_global_news": {
+          "status": "ok",
+          "args": {
+            "curr_date": "2026-06-27",
+            "look_back_days": 7,
+            "limit": 5
+          },
+          "output": "No global news found between 2026-06-20 and 2026-06-27"
+        },
+        "get_insider_transactions": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX"
+          },
+          "output": "# Insider Transactions data for CBA.AX\n# Data retrieved on: 2026-06-29 13:53:48\n\n,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership\r\n0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D\r\n1,312,35771.0,,Purchase at price 114.65 per share.,McAloon (Jane Frances),Director (Non-Executive),,2026-05-18,D\r\n2,530,59599.0,,Purchase at price 112.45 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-05-15,D\r\n3,54,6033.0,,Other at price 111.73 per share.,Currie (Alistair),Director (Non-Executive),,2026-05-14,D\r\n4,74,8267.0,,Other at price 111.73 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-05-14,D\r\n5,6,717.0,,Acquisition at price 119.53 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-03-30,D\r\n6,37,4422.0,,Acquisition at price 119.53 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-03-30,D\r\n7,62,7804.0,,Purchase at price 125.88 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-02-17,D\r\n8,40,4862.0,,Other at price 121.56 per share.,Currie (Alistair),Director (Non-Executive),,2026-02-12,D\r\n9,67,8144.0,,Other at price 121.56 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-02-12,D\r\n10,700,87636.0,,Purchase at price 125.19 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-02-12,D\r\n11,48,4888.0,,Purchase at price 101.85 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-17,D\r\n12,41,4228.0,,Purchase at price 103.12 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-14,D\r\n13,28,2952.0,,Other at price 105.46 per share.,Currie (Alistair),Director (Non-Executive),,2025-11-12,D\r\n14,50,5273.0,,Other at price 105.46 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-11-12,D\r\n15,300,,,,McAloon (Jane Frances),Director (Non-Executive),,2025-10-01,D\r\n16,58,6429.0,,Acquisition at price 110.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-09-29,D\r\n17,39,4323.0,,Acquisition at price 110.85 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-09-29,D\r\n18,20490,,,,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n19,20490,2239804.0,,Sale at price 109.31 per share.,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n20,49,5356.0,,Purchase at price 109.32 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-08-14,D\r\n21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D\r\n22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D\r\n23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D\r\n24,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D\r\n25,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D\r\n26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D\r\n27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D\r\n28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D\r\n29,67,7247.0,,Other at price 108.17 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-05-15,D\r\n30,53,4994.0,,Acquisition at price 94.24 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-03-28,D\r\n31,37,3486.0,,Acquisition at price 94.24 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-03-28,D\r\n32,6748,,,,Lewis (Sian),Former,,2025-02-16,D\r\n33,10000,,,,Williams (Nigel),Former,,2025-02-16,D\r\n34,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D\r\n35,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D\r\n36,57,5628.0,,Purchase at price 98.75 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2024-11-15,D\r\n37,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D\r\n38,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D\r\n39,2458,,,,Howitt (Katherine Neisha),Independent Non-Executive Director,,2024-10-01,D\r\n40,59,5762.0,,Acquisition at price 97.66 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-09-27,D\r\n41,102,9368.0,,Other at price 91.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-08-16,D\r\n42,75,6888.0,,Other at price 91.85 per share.,Templeman-Jones (Anne),Independent Non-Executive Director,,2024-08-16,D\r\n43,125,11481.0,,Other at price 91.85 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-08-16,D\r\n44,19220,88.0,,Sale at price 0.00 per share.,Comyn (Matthew),Chief Executive Officer,,2024-08-15,D\r\n45,618,,,,Docherty (Alan),Chief Financial Officer,,2024-06-30,D\r\n46,3129,,,,Shortt (Vittoria),Managing Director,,2024-06-30,D\r\n47,5277,,,,Sullivan (Angus),Divisional Officer,,2024-06-30,D\r\n48,27162,,,,Vacy-Lyle (Mike),Divisional Officer,,2024-06-30,D\r\n49,30000,,,,Williams (Nigel),Chief Risk Officer,,2024-06-30,D\r\n50,3108,,,,Lewis (Sian),Divisional Officer,,2024-06-30,D\r\n51,345,,,,Munroe (Gavin),Divisional Officer,,2024-06-30,D\r\n"
+        }
+      }
+    },
+    "fundamentals": {
+      "skill": "tradingagents-fundamentals-analyst",
+      "tool_calls": {
+        "get_fundamentals": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "curr_date": "2026-06-27"
+          },
+          "output": "# Company Fundamentals for CBA.AX\n# Data retrieved on: 2026-06-29 13:53:48\n\nName: Commonwealth Bank of Australia\nSector: Financial Services\nIndustry: Banks - Diversified\nMarket Cap: 272138141696\nPE Ratio (TTM): 26.20773\nForward PE: 24.2087\nPEG Ratio: 3.49\nPrice to Book: 3.5236425\nEPS (TTM): 6.21\nForward EPS: 6.72279\nDividend Yield: 3.06\nBeta: 0.802\n52 Week High: 186.83\n52 Week Low: 146.98\n50 Day Average: 166.421\n200 Day Average: 165.47266\nRevenue (TTM): 28466999296\nGross Profit: 28466999296\nNet Income: 10403000320\nProfit Margin: 0.36354\nOperating Margin: 0.55507\nReturn on Equity: 0.13644\nReturn on Assets: 0.0076599997\nBook Value: 46.188"
+        },
+        "get_balance_sheet": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "# Balance Sheet data for CBA.AX (quarterly)\n# Data retrieved on: 2026-06-29 13:53:49\n\n,2025-12-31,2025-06-30,2024-12-31\r\nTreasury Shares Number,1338636.0,1620212.0,1463595.0\r\nOrdinary Shares Number,1672123722.0,1671842146.0,1671998763.0\r\nShare Issued,1673462358.0,1673462358.0,1673462358.0\r\nNet Debt,117533000000.0,158452000000.0,121070000000.0\r\nTotal Debt,207438000000.0,216232000000.0,203847000000.0\r\nTangible Book Value,68936000000.0,70694000000.0,67481000000.0\r\nInvested Capital,284670000000.0,292731000000.0,279111000000.0\r\nNet Tangible Assets,68936000000.0,70694000000.0,67481000000.0\r\nCommon Stock Equity,77232000000.0,78776000000.0,75264000000.0\r\nTotal Capitalization,284670000000.0,292731000000.0,279111000000.0\r\nTotal Equity Gross Minority Interest,77232000000.0,78776000000.0,75264000000.0\r\nMinority Interest,,,0.0\r\nStockholders Equity,77232000000.0,78776000000.0,75264000000.0\r\nTreasury Stock,195000000.0,215000000.0,189000000.0\r\nRetained Earnings,45019000000.0,43974000000.0,42578000000.0\r\nCapital Stock,33775000000.0,33775000000.0,33775000000.0\r\nCommon Stock,33775000000.0,33775000000.0,33775000000.0\r\nTotal Liabilities Net Minority Interest,1331496000000.0,1275023000000.0,1233302000000.0\r\nDerivative Product Liabilities,22477000000.0,22493000000.0,36012000000.0\r\nLong Term Debt And Capital Lease Obligation,207438000000.0,216232000000.0,203847000000.0\r\nPayables,33379000000.0,40492000000.0,28020000000.0\r\nOther Payable,32982000000.0,28275000000.0,27599000000.0\r\nTotal Tax Payable,397000000.0,780000000.0,421000000.0\r\nAccounts Payable,,11437000000.0,\r\nTotal Assets,1408728000000.0,1353799000000.0,1308566000000.0\r\nDefined Pension Benefit,,596000000.0,\r\nInvestments And Advances,253035000000.0,174651000000.0,232590000000.0\r\nInvestmentin Financial Assets,253035000000.0,173832000000.0,231819000000.0\r\nAvailable For Sale Securities,115686000000.0,107651000000.0,103026000000.0\r\nFinancial Assets Designatedas Fair Value Through Profitor Loss Total,117676000000.0,51000000.0,87650000000.0\r\nTrading Securities,,41411000000.0,\r\nLong Term Equity Investment,,819000000.0,771000000.0\r\nGoodwill And Other Intangible Assets,8296000000.0,8082000000.0,7783000000.0\r\nOther Intangible Assets,3026000000.0,2793000000.0,2501000000.0\r\nGoodwill,5270000000.0,5289000000.0,5282000000.0\r\nNet PPE,3537000000.0,3563000000.0,3629000000.0\r\nPrepaid Assets,,850000000.0,\r\nReceivables,,4899000000.0,\r\nTaxes Receivable,,30000000.0,\r\nCash And Cash Equivalents,89905000000.0,55503000000.0,82777000000.0\r\nCash Financial,82606000000.0,54381000000.0,76498000000.0\r\nCash Cash Equivalents And Federal Funds Sold,89905000000.0,134409000000.0,82777000000.0\r\n"
+        },
+        "get_cashflow": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "NO_DATA_AVAILABLE: No usable market data for 'CBA.AX' from any configured vendor (no cash flow data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol."
+        },
+        "get_income_statement": {
+          "status": "ok",
+          "args": {
+            "ticker": "CBA.AX",
+            "freq": "quarterly",
+            "curr_date": "2026-06-27"
+          },
+          "output": "NO_DATA_AVAILABLE: No usable market data for 'CBA.AX' from any configured vendor (no income statement data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol."
+        }
+      }
+    },
+    "financial_report": {
+      "skill": "tradingagents-financial-report-analyst",
+      "tool_calls": {
+        "collect_financial_document_sources": {
+          "status": "error",
+          "args": {
+            "ticker": "CBA.AX",
+            "trade_date": "2026-06-27",
+            "source_policy": "Market-aware routing: US uses SEC; ASX uses ASX announcements; unsupported markets return explicit unavailable coverage."
+          },
+          "output": "## Financial Document Source Packet: CBA.AX\n\n- Trade date: `2026-06-27`\n- Collection status: `error`\n- Market: `ASX`\n- ASX code: `CBA`\n\n| Source | Status | Filing date | Form | URL / reason |\n|---|---:|---:|---:|---|\n| asx_announcements | error |  |  | HTTP Error 404:  |\n"
+        }
+      }
+    }
+  }
+}

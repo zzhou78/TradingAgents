@@ -1,0 +1,201 @@
+{
+  "ticker": "CBA.AX",
+  "trade_date": "2026-06-27",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\evidence.json",
+  "tasks": {
+    "market_analyst_task.md": {
+      "skill": "tradingagents-market-analyst",
+      "output_key": "market_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\market_analyst_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\roles\\market.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\market_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\market_analyst\\memory.json"
+      ]
+    },
+    "sentiment_analyst_task.md": {
+      "skill": "tradingagents-sentiment-analyst",
+      "output_key": "sentiment_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\sentiment_analyst_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\roles\\social.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\sentiment_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\sentiment_analyst\\memory.json"
+      ]
+    },
+    "news_analyst_task.md": {
+      "skill": "tradingagents-news-analyst",
+      "output_key": "news_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\news_analyst_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\roles\\news.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\news_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\news_analyst\\memory.json"
+      ]
+    },
+    "fundamentals_analyst_task.md": {
+      "skill": "tradingagents-fundamentals-analyst",
+      "output_key": "fundamentals_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\fundamentals_analyst_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\roles\\fundamentals.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\fundamentals_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\fundamentals_analyst\\memory.json"
+      ]
+    },
+    "financial_report_task.md": {
+      "skill": "tradingagents-financial-report-analyst",
+      "output_key": "financial_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\financial_report_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\roles\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\evidence.json"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\financial_report_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\financial_report_analyst\\memory.json"
+      ]
+    },
+    "industry_theme_discovery_task.md": {
+      "skill": "tradingagents-industry-theme-discovery-analyst",
+      "output_key": "industry_theme_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\industry_theme_discovery_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\evidence.json"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\industry_theme_discovery_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\industry_theme_discovery_analyst\\memory.json"
+      ]
+    },
+    "research_manager_task.md": {
+      "skill": "tradingagents-research-manager",
+      "output_key": "research_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\research_manager_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bear_round_1.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\research_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\research_manager\\memory.json"
+      ]
+    },
+    "trader_task.md": {
+      "skill": "tradingagents-trader",
+      "output_key": "trader",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\trader_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\manager.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\trader\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\trader\\memory.json"
+      ]
+    },
+    "portfolio_manager_task.md": {
+      "skill": "tradingagents-portfolio-manager",
+      "output_key": "portfolio_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\portfolio_manager_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\neutral_round_1.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\portfolio_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\portfolio_manager\\memory.json"
+      ]
+    },
+    "complete_report_task.md": {
+      "skill": "tradingagents-run-persistence",
+      "output_key": "complete_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\complete_report_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\5_portfolio\\decision.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\portfolio_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\portfolio_manager\\memory.json"
+      ]
+    },
+    "quality_reviewer_task.md": {
+      "skill": "tradingagents-quality-reviewer",
+      "output_key": "quality_review",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\tasks\\quality_reviewer_task.md",
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\5_portfolio\\decision.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\reports\\CBA.AX\\2026-06-27\\complete_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_top5_2026-06-27\\evidence\\CBA.AX\\2026-06-27\\evidence.json"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\quality_reviewer\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\CBA.AX\\quality_reviewer\\memory.json"
+      ]
+    }
+  },
+  "contract": "Task prompts only. Codex role execution writes reports."
+}

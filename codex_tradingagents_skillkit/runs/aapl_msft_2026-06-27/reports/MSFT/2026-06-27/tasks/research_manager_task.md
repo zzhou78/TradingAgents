@@ -5,6 +5,44 @@ Trade date: `2026-06-27`
 Skill to use: `tradingagents-research-manager`
 Evidence file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\evidence\MSFT\2026-06-27\evidence.json`
 Output file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\manager.md`
+Memory update file: `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\memory_updates\research_manager.md`
+
+## Allowed Input Files
+
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\market.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\sentiment.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\news.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\fundamentals.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\financial_report.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\1_analysts\industry_theme.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\bull_round_1.md`
+- `codex_tradingagents_skillkit\runs\aapl_msft_2026-06-27\reports\MSFT\2026-06-27\2_research\bear_round_1.md`
+
+## Forbidden Input Files
+
+- None declared.
+
+## Allowed Memory Files
+
+- `codex_tradingagents_skillkit\memory\MSFT\research_manager\memory.md`
+- `codex_tradingagents_skillkit\memory\MSFT\research_manager\memory.json`
+
+## Forbidden Memory Roots
+
+- `codex_tradingagents_skillkit\memory\MSFT\market_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\sentiment_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\news_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\fundamentals_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\financial_report_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\industry_theme_discovery_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\bull_researcher`
+- `codex_tradingagents_skillkit\memory\MSFT\bear_researcher`
+- `codex_tradingagents_skillkit\memory\MSFT\trader`
+- `codex_tradingagents_skillkit\memory\MSFT\aggressive_risk_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\conservative_risk_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\neutral_risk_analyst`
+- `codex_tradingagents_skillkit\memory\MSFT\portfolio_manager`
+- `codex_tradingagents_skillkit\memory\MSFT\quality_reviewer`
 
 ## Instruction
 
@@ -26,8 +64,27 @@ Weigh the completed analyst reports, Financial Report Analyst report, Industry /
 
 - Python prepared this task file only; it did not write investment reasoning.
 - Codex must write the actual report output using the named skill.
+- Read only the allowed input files.
+- Read only the allowed memory files.
+- Do not inspect other role memory.
+- At the end, write a memory update for this role only.
+- Memory must not override current evidence; if memory conflicts with current evidence, state the conflict explicitly.
 - Python must not classify themes or financial-report conclusions.
 - Keep raw feeds in evidence files unless the relevant skill explicitly asks for short representative examples.
 - If online sources or filings are unavailable, state the evidence gap.
 - Do not use as real trading advice.
 - Do not connect to GCAF.
+
+## Required Memory Update Footer
+
+Every role output must end with:
+
+```markdown
+## Memory Update
+
+* Durable facts to retain:
+* Prior mistake to avoid:
+* Open questions:
+* Evidence references:
+* Staleness / expiry:
+```

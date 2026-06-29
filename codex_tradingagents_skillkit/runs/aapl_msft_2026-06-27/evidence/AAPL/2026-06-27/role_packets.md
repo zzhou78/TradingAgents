@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for AAPL from 2026-05-28 to 2026-06-27
 # Total records: 21
-# Data retrieved on: 2026-06-29 07:15:11
+# Data retrieved on: 2026-06-29 13:52:07
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-05-28,310.68,312.8,309.57,312.51,48220400,0.0,0.0
@@ -342,38 +342,38 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 - Status: `ok`
 
 ```text
-Bullish: 8 (27%) · Bearish: 3 (10%) · Unlabeled: 19 · Total: 30 most-recent messages
+Bullish: 11 (37%) · Bearish: 0 (0%) · Unlabeled: 19 · Total: 30 most-recent messages
 
-[2026-06-28T20:58:42Z · @aloooohg1 · Bearish] $AAPL tomorrow when market open.
-[2026-06-28T20:57:58Z · @manett82 · no-label] $AAPL control their destiny    Cxmt to build US plant witth apple soley for memory chips ..think about tsmc is a chinese company now isnt it..so why now have them build a plants here co owned and managed by apple for their supply and possibly dell
-[2026-06-28T20:56:06Z · @Mipel · no-label] $AAPL :-::http://Investing.com - Bank of America raised its global growth forecast as a fragile peace deal with Iran eased concerns in energy markets, warning that persistent U.S. inflation could push the Federal Reserve to resume interest rate hikes later this year.
-[2026-06-28T20:53:40Z · @FrankieSmilez · no-label] $SPY $AAPL $QQQ   Breaking news: AOC urges Congress to consider breaking up Apple amidst rising MacBook and iPhone prices
-[2026-06-28T20:47:05Z · @manett82 · no-label] $AAPL expect another deal with alot of fanfare..apple to invest ...in a new memory chip factor as part of the deal....there will be ...to bridge the gap until the plant is done..oddly enough there is plently of capacity out there everyone is jist throwing eveyrthing they have at …
-[2026-06-28T20:37:48Z · @PivotPoint_101 · no-label] $SPY $QQQ $IWM $AAPL   Dips before key Earnings season ? 🥂🏦
-[2026-06-28T20:36:48Z · @ResearchTrends09 · no-label] $AAPL politics everywhere
-[2026-06-28T20:20:55Z · @johnrivers0110 · Bearish] $WEN 🔺 so at 8 btc goes lower ..bc everyone at Wendy&#39;s to get a nothing burger 🔺🚬 double liquid Burger 🚬🚬 The FiB 🔺  $BTC.X  $SPCX  $SPY  $AAPL
-[2026-06-28T20:18:24Z · @Jp2112 · Bullish] $AAPL $DRAM $MU $SNDK lotta 🤡 s
-[2026-06-28T20:10:35Z · @MarketMaestro1 · no-label] $MU $DRAM $SNDK Five types of idiots showed up today on stocktwits.    Type 1: Thinks this memory rally is driven by $AAPL, consumers and iPhones. This rally has nothing to do with consumers. Nothing to do with iPhones. Zero. Nada. This is an AI data center infrastructure cycle. …
-[2026-06-28T20:00:49Z · @REALALOY · Bullish] $BB No wonder QNX got invited to the Apple event... $BB.TSX $AAPL
-[2026-06-28T19:55:59Z · @REALALOY · Bullish] $BB Apple CarPlay Ultra + QNX: Why It Matters  CarPlay Ultra on iOS 27 introduces **bidirectional communication** between Apple and the vehicle, not just screen mirroring.  https://x.com/i/status/2071321025456009609  $BB.TSX $AAPL
-[2026-06-28T19:51:36Z · @stockdog88 · Bullish] $MU $AAPL for decades Apple took advantage by keeping billions of cash in offshore accounts to avoid paying taxes, while ripping off consumers with marked up prices supported by former administrations. Now they get theirs …. https://finance.yahoo.com/technology/articles/apple-wan…
-[2026-06-28T19:36:19Z · @WallStreetScoutt · no-label] $AAPL sitting at $283.78. Ecosystem dominance is the moat. Short-term noise, long-term compounder.
-[2026-06-28T19:12:27Z · @DocOctagon · Bullish] $MSFT $AAPL $MU People that keep bringing up China memory chips are either morons who haven&#39;t done any research or bears trying to push a narrative. China DRAM chips have significantly more power draw than Micron&#39;s chips which increases data center total cost of ownership…
-[2026-06-28T19:10:34Z · @Dazedconfused12 · no-label] $AAPL wasn’t this just $315?
-[2026-06-28T18:10:15Z · @TheHomelander · Bullish] $MSFT if $AAPL get their way with Chinese memory chips, the DRAM bubble pops and hyperscalers regain leadership.  You don’t think Trump or Lutnik will go for it? $MU price hikes showing up in inflation data. What do you think they want more? American company leadership or a rate …
-[2026-06-28T17:41:06Z · @FibonacciTrader_ · no-label] Trying to contextualize this drawdown across names tied to the AI buildout:    NBIS AAOI SIVE LITE SNDK    What stands out from history is simple: the biggest winners almost always went through violent resets before compounding long-term.    $AMZN -94% in dot-com era → multi-tril…
-[2026-06-28T17:28:10Z · @Payday_Everyday · Bullish] $AAPL $350 soon   https://kalshi.com/sign-up/?referral=8fc55f38-bd19-40e5-8302-2d61037e4741&amp;m=true&amp;utm_source=mobile_app&amp;utm_medium=copy&amp;utm_campaign=referral&amp;utm_content=referral_qr_sheet
-[2026-06-28T17:12:09Z · @Jointheask · no-label] $SPY WEEKLY STOCK WATCHLIST - $AAPL GAP UP OR $NVDA GAP DOWN !!! #trading https://youtu.be/fQowWtEa-DQ
-[2026-06-28T17:11:51Z · @A_Pino · Bullish] $NKE Tim Cook is bag holding this, he knows it’s deeply undervalued. He is selling $AAPL stocks but adding more Nike
-[2026-06-28T16:20:31Z · @Themadogtrader · no-label] $AAPL $MU $SPY too bad there stock is not doing the same Amazon induced price history a great way to see inflation
-[2026-06-28T16:13:44Z · @Snorkelingwithturtles · no-label] $AAPL AOC the same gal that blocked AMZN from opening a fulfillment center in her district and said nothing when eggs were $8 a dozen and gas was nearly $6 a gallon and now she’s an expert on computer prices?  ok got it.
-[2026-06-28T15:42:42Z · @AStrokeOfLuck · no-label] $AAPL ha
-[2026-06-28T15:22:56Z · @CapitalLogic1 · no-label] $AAPL is coasting at $283.78 after a solid extension. The AI narrative is strong, but seeking blacklisted CXMT chips adds massive political risk. Treading carefully until Washington blinks.
-[2026-06-28T15:02:16Z · @ResearchTrends09 · no-label] $AAPL crickets all I hear is crickets from you Democrats from mainstream media. Everything is politics. Dwarfs talking about stocks.
-[2026-06-28T14:42:44Z · @johnrivers0110 · no-label] $GME 🔺 once gme releases it&#39;s gaming system you should see a stable 100 here .. ebay &amp; pokemon isn&#39;t enough... I&#39;m sure the genius who will intergrade real time btc betting  into gaming platforms shall surely be rich👁️ $BTC.X  $AAPL  $TSLA  $NVDA
-[2026-06-28T14:40:21Z · @techvested · Bearish] $AAPL   Price to Sales of 9.2x   No revenue growth  Raising prices 20% across the board  Expect meaningful decline with that setup.
-[2026-06-28T14:39:13Z · @ResearchTrends09 · no-label] $AAPL  🛑🛑🛑do people realize everything is killing you the FDA is the devil with our foods, the chemicals, the conditioner, the creams, etc., on your skin and your bloodstream do people realize, do people realize the less you eat  the healthier you are!  Only one mill a day should…
-[2026-06-28T14:36:56Z · @ResearchTrends09 · no-label] $AAPL the important things. Read.  You bran Nubians…..
+[2026-06-29T03:45:12Z · @happypopeye · no-label] $BABA $BIDU $TCEHY  So bad it&#39;s good ? A ban here, a sanction there will not stop a tsunami of Tech companies sprouting up fast and furious. There are 500 companies waiting for IPO on the HK exchange.  $AAPL says the price increases of memory chips is not sustainable. It has …
+[2026-06-29T03:34:07Z · @PadZone1 · no-label] Big money week ahead of us team! 💰 it was no coincidence that $SPY wicked right to our target and bounced. If you were on market prep last week you know the plan, if you don’t, I’ll make sure to update you all on live tomorrow. I’ll be watching $SPX for some 0dte setups. And watc…
+[2026-06-29T03:22:31Z · @green_going_up · no-label] $AAPL AOC - the socialist / anti-capitalist, who prevented New York from benefiting from an $AMZN campus is now calling for the breakup of Apple.
+[2026-06-29T03:17:16Z · @Ithaca2018 · Bullish] $AAPL Glad I added last week @ $274, Just 50 shares but that&#39;s good enough for me. Go Apple!
+[2026-06-29T03:06:32Z · @liamsniperalert · no-label] 06/29/2026 Watchlist 🗻  Inside Bar (Daily):  $AAPL 🍏 📈 Calls Above: $288.80 📉 Puts Below: $273.75  $SPCX 🔭 📈 Calls Above: $165.50 📉 Puts Below: $147.11  $TGT 🏪 📈 Calls Above: $142.82 📉 Puts Below: $139.07  All-Time High Breakout:  $MRK 💊 📈 Calls Above: $134.63  Trade your plan. M…
+[2026-06-29T03:05:04Z · @ResearchTrends09 · no-label] $AAPL
+[2026-06-29T03:04:55Z · @ResearchTrends09 · no-label] $AAPL  🛑who said *Rime doesn’t pay?  You must be doing it all wrong and getting caught.! Lmao 😎✊🏿
+[2026-06-29T02:59:50Z · @Brian1969 · Bullish] $AAPL movie
+[2026-06-29T02:59:02Z · @Brian1969 · Bullish] $AAPL 300
+[2026-06-29T02:34:54Z · @Wardenbluffett10 · no-label] $AAPL
+[2026-06-29T02:30:09Z · @newtwo99 · no-label] $AAPL up for shizzle.
+[2026-06-29T02:26:56Z · @chupni · no-label] @brotherm @AlphaBull_10M I&#39;m not an expert enough to know.  I would find it strange for $AAPL to integrate Chinese hardware when contained environmental security is part of their thing.  It also seems that demand is so large it would not impact anything now, but bring about t…
+[2026-06-29T02:14:42Z · @NatoshiSakomoto · Bullish] $MU   $NOW 👀👀👀👀  Yes…  $SPCX $GOOG $AAPL
+[2026-06-29T01:35:36Z · @SwingTradeKing8 · no-label] $AAPL Stock options trading offers the opportunity to build wealth and achieve financial freedom with the flexibility to trade from anywhere in the world with an internet connection. Success comes through education, discipline, sound risk management, and a consistent trading stra…
+[2026-06-29T01:31:16Z · @Iluvoptions85 · Bullish] $QCOM lots of good news!!! LFG! $AAPL $MU $AMD $MSFT
+[2026-06-29T01:26:02Z · @howardlindzon · no-label] 2026    can you have both a speculative mania (ai) and a market that goes up while that mania unwinds    with ai we are going to find out soon    the US markets have been insanely resilient all things considered macro and war and disruption and leadership     charlie&#39;s week i…
+[2026-06-29T01:21:05Z · @Justabrake · no-label] $AAPL  $AAPL  AOC says ‘we need to break up these companies’ after Apple raises prices by $200   🤣😂. These are the Democracts that want to run the country
+[2026-06-29T00:57:27Z · @eu_lern · Bullish] $AAPL confirm$AAPL smash darkpool pattern developing slingshot enabled. Tim apple raises prices then opens up a whole new supplier of his bottleneck. Easy Chad move Tim. $SPY $QQQ $IWM $XLK
+[2026-06-29T00:51:09Z · @Kulig58 · no-label] $AAPL $300 this week?
+[2026-06-29T00:50:58Z · @AG1011 · Bullish] $AVGO $NVDA $AAPL $MSFT $MRVL No. Most analysts are stupid. They want companies to buy back stock and not invest in r&amp;d and the company improving. That is short sighted. Hyperscalers are finally investing money in improving their companies and not jerking off wallstreet. Cape…
+[2026-06-29T00:49:08Z · @evanmedeiros · no-label] $SMH $SPY $QQQ $MU $AAPL
+[2026-06-29T00:46:45Z · @Ayeeitsmee · Bullish] $WEN imagine panic selling last week 🤣 $AMC $GME $TSLA $AAPL
+[2026-06-29T00:41:19Z · @howardlindzon · no-label] good piece by Josh  - i always like his longform writing.  he is so clear    wall street is warning the hyperscalers and check cutters    https://www.downtownjoshbrown.com/p/reasons-to-stay-long?utm_source=www.downtownjoshbrown.com&amp;utm_medium=newsletter&amp;utm_campaign=reaso…
+[2026-06-29T00:39:05Z · @TNNStockAnalysisNews · no-label] $AVGO $NVDA $AAPL $MSFT $MRVL     https://truthsandnews.com/investing/tech-stocks-in-their-worst-week-in-over-a-year
+[2026-06-29T00:31:19Z · @Honest_Bull · no-label] $ARM didn’t they start manufacturing their as chips as well, recently? This is in addition to issuing licenses for their proprietary technology to be used other semiconductor companies such $AMD $AAPL $AMZN andbmanyvotger major players. This will make an $MU style run in Q3, I su…
+[2026-06-29T00:30:17Z · @PivotPoint_101 · no-label] $AAPL $IWM $QQQ $SPY
+[2026-06-29T00:26:35Z · @WunDumFuc · Bullish] $PATH $SPY  $AMZN $GOOG  $AAPL      ​PATH $120 +  Stock  trading  at  $10 🤯;  Let  the  numbers  speak  for  themselves:
+[2026-06-29T00:23:44Z · @penny_z · Bullish] $RDW MARK your calendars: June 30th @ 2:30 PM EDT. NASA Administrator Jared Isaacman is hosting a major update on the &quot;Moon Base&quot; infrastructure &amp; new lunar lander awards. 🚀🌕 Why this matters for Redwire: You can&#39;t build a sustainable lunar base without power, r…
+[2026-06-29T00:15:35Z · @eu_lern · Bullish] $AAPL deep darkpool hitting the chain
+[2026-06-29T00:12:46Z · @ResearchTrends09 · no-label] $AAPL 🛑🛑🛑
 ```
 
 ### Tool: fetch_reddit_posts
@@ -443,22 +443,6 @@ Link: https://247wallst.com/investing/2026/06/27/apple-wants-to-buy-blacklisted-
 Scott Melker reviews the week crypto just had, including bitcoin (BTC-USD) prices plummeting, Bitmine (BMNR) joining the Russell 1000 (^RUI), and more. "The Daily Wolf with Scott Melker" airs every day at 12:00 p.m. Tune in for your daily dose of all things crypto. Make sure to also check out Yahoo Finance's new crypto hub to find the latest crypto-related news.
 Link: https://finance.yahoo.com/video/cryptos-brutal-week-review-bitcoin-120000992.html
 
-### Apple Seeks US Approval to Buy Chips From Blacklisted CXMT: FT (source: Bloomberg)
-(Bloomberg) -- Apple Inc. is pressing the White House for approval to purchase memory chips from a blacklisted Chinese company as it grapples to rein in chip costs, the Financial Times reported on Saturday.Most Read from BloombergLutnick Delayed Canada Bridge Debut to Seek Bigger Cut of Toll RevenueIndonesia Opens Door to Dirty Money to Fund Prabowo’s PlansOman Tells Allies Ships Going Through Hormuz May Have to PayApple Shares Sink After Price Hikes Hit iPads and MacsUS Strikes Iran in Response
-Link: https://finance.yahoo.com/technology/articles/apple-seeks-us-approval-buy-074523538.html
-
-### Apple seeks approval to buy chips from blacklisted Chinese company, FT reports (source: Reuters)
-Apple is lobbying the Trump administration for clearance to buy memory chips from ChangXin ‌Memory Technologies, a Chinese company the Pentagon has ‌put on a blacklist, the Financial Times reported on Friday.  The iPhone maker ​has lobbied the White House for approval aimed at easing financial pressure on the company from rising memory chip prices, the newspaper said, citing unnamed sources.  The White House, Apple and ‌CXMT did not respond ⁠to requests for comment from Reuters outside business hours.
-Link: https://finance.yahoo.com/technology/articles/apple-seeks-approval-buy-chips-032619573.html
-
-### S&P 500, Nasdaq End Week Lower As Investors Rotate Out Of Tech, AI Plays — ON, AAPL, SLS, INFQ, NKE in Focus (source: Stocktwits)
-The Dow Jones ended its third consecutive week higher amid cooling oil prices and strength in pharma and materials stocks.
-Link: https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-week-lower-as-investors-rotate-out-of-tech-ai-plays-on-aapl-sls-infq-nke-in-focus/cZ12ck9R7W9
-
-### Update: Equity Markets Fall as Trump Says Iran Violated Ceasefire (source: MT Newswires)
-(Updates with market moves at the end of the day.) US equity benchmarks slipped Friday as Presid
-Link: https://finance.yahoo.com/markets/stocks/articles/equity-markets-fall-trump-says-204521099.html
-
 
 ```
 
@@ -476,7 +460,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-06-29 07:15:24
+# Data retrieved on: 2026-06-29 13:52:20
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
@@ -570,7 +554,7 @@ No global news found between 2026-06-20 and 2026-06-27
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-06-29 07:15:24
+# Data retrieved on: 2026-06-29 13:52:20
 
 Name: Apple Inc.
 Sector: Technology
@@ -608,7 +592,7 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-06-29 07:15:24
+# Data retrieved on: 2026-06-29 13:52:21
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,,
@@ -686,7 +670,7 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-06-29 07:15:25
+# Data retrieved on: 2026-06-29 13:52:21
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31,2024-09-30
 Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,,
@@ -744,7 +728,7 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-06-29 07:15:25
+# Data retrieved on: 2026-06-29 13:52:21
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0

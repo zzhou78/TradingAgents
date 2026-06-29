@@ -34,8 +34,11 @@
     "Analyst stages read only their own role packet.",
     "Downstream stages read only completed prior report files listed in allowed_inputs.",
     "Do not call upstream graph orchestration or external LLM backends for role reasoning.",
-    "Do not submit broker orders, connect to GCAF, or treat output as real trading advice."
+    "Do not submit broker orders, connect to GCAF, or treat output as real trading advice.",
+    "Each stage may read only its own role memory for the same ticker.",
+    "Memory must not override current evidence."
   ],
+  "memory_root": "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT",
   "stages": [
     {
       "stage": "market_analyst",
@@ -50,7 +53,38 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\market.md",
-      "completion_gate": "write market_report in TradingAgents analyst style"
+      "completion_gate": "write market_report in TradingAgents analyst style",
+      "role_memory": "market_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\market_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "sentiment_analyst",
@@ -65,7 +99,38 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\sentiment.md",
-      "completion_gate": "write sentiment_report in TradingAgents analyst style"
+      "completion_gate": "write sentiment_report in TradingAgents analyst style",
+      "role_memory": "sentiment_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\sentiment_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "news_analyst",
@@ -80,7 +145,38 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\news.md",
-      "completion_gate": "write news_report in TradingAgents analyst style"
+      "completion_gate": "write news_report in TradingAgents analyst style",
+      "role_memory": "news_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\news_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "fundamentals_analyst",
@@ -95,7 +191,38 @@
         "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\evidence\\MSFT\\2026-06-27\\roles\\financial_report.md"
       ],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\fundamentals.md",
-      "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+      "completion_gate": "write fundamentals_report in TradingAgents analyst style",
+      "role_memory": "fundamentals_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\fundamentals_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "financial_report_analyst",
@@ -110,7 +237,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\financial_report.md",
-      "completion_gate": "write financial_report.md before industry/theme discovery"
+      "completion_gate": "write financial_report.md before industry/theme discovery",
+      "role_memory": "financial_report_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\financial_report_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "industry_theme_discovery_analyst",
@@ -125,7 +283,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\1_analysts\\industry_theme.md",
-      "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+      "completion_gate": "discover evidence-grounded industry/theme context before research debate",
+      "role_memory": "industry_theme_discovery_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\industry_theme_discovery_analyst.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "bull_researcher_round_1",
@@ -140,7 +329,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bull_round_1.md",
-      "completion_gate": "write the visible debate-stage output before advancing"
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "role_memory": "bull_researcher",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\bull_researcher_round_1.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "bear_researcher_round_1",
@@ -156,7 +376,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\bear_round_1.md",
-      "completion_gate": "Bear must directly rebut the strongest Bull point."
+      "completion_gate": "Bear must directly rebut the strongest Bull point.",
+      "role_memory": "bear_researcher",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\bear_researcher_round_1.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "research_manager",
@@ -173,7 +424,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\2_research\\manager.md",
-      "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+      "completion_gate": "Research Manager must weigh Bull vs Bear evidence.",
+      "role_memory": "research_manager",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\research_manager.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "trader",
@@ -189,7 +471,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\3_trading\\trader.md",
-      "completion_gate": "write the visible debate-stage output before advancing"
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "role_memory": "trader",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\trader.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "aggressive_risk_round_1",
@@ -206,7 +519,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\aggressive_round_1.md",
-      "completion_gate": "write the visible debate-stage output before advancing"
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "role_memory": "aggressive_risk_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\aggressive_risk_round_1.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "conservative_risk_round_1",
@@ -224,7 +568,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\conservative_round_1.md",
-      "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+      "completion_gate": "Conservative Risk must directly respond to Aggressive Risk.",
+      "role_memory": "conservative_risk_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\conservative_risk_round_1.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "neutral_risk_round_1",
@@ -243,7 +618,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\4_risk\\neutral_round_1.md",
-      "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+      "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative.",
+      "role_memory": "neutral_risk_analyst",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\neutral_risk_round_1.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "portfolio_manager",
@@ -263,7 +669,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\5_portfolio\\decision.md",
-      "completion_gate": "Portfolio Manager must synthesize the risk debate."
+      "completion_gate": "Portfolio Manager must synthesize the risk debate.",
+      "role_memory": "portfolio_manager",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\portfolio_manager.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "complete_report",
@@ -286,7 +723,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\complete_report.md",
-      "completion_gate": "assemble TradingAgents-style complete_report.md"
+      "completion_gate": "assemble TradingAgents-style complete_report.md",
+      "role_memory": "portfolio_manager",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\complete_report.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     },
     {
       "stage": "quality_review",
@@ -311,7 +779,38 @@
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\6_quality\\quality_review.md",
-      "completion_gate": "write quality_review.md and quality_gate.json"
+      "completion_gate": "write quality_review.md and quality_gate.json",
+      "role_memory": "quality_reviewer",
+      "allowed_memory_files": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer\\memory.md",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\quality_reviewer\\memory.json"
+      ],
+      "forbidden_memory_roots": [
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\market_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\sentiment_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\news_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\fundamentals_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\financial_report_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\industry_theme_discovery_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bull_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\bear_researcher",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\research_manager",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\trader",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\aggressive_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\conservative_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\neutral_risk_analyst",
+        "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\memory\\MSFT\\portfolio_manager"
+      ],
+      "memory_update_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-27\\reports\\MSFT\\2026-06-27\\memory_updates\\quality_review.md",
+      "memory_rules": [
+        "Read only the allowed input files.",
+        "Read only the allowed memory files.",
+        "Do not inspect other role memory.",
+        "Current evidence overrides stale memory.",
+        "If memory conflicts with current evidence, state the conflict explicitly.",
+        "At the end, write a memory update for this role only."
+      ],
+      "ticker": "MSFT"
     }
   ]
 }
