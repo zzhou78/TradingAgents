@@ -25,10 +25,13 @@ Procedure:
 2. Collect business, valuation, profitability, leverage, cash flow, and balance-sheet evidence from structured tool outputs.
 3. Separate reported financial facts from analyst interpretation.
 4. Call out unavailable or non-applicable fundamentals for ETFs, crypto, indices, and macro instruments.
-5. Summarize strengths, weaknesses, and financial quality in a table when evidence supports it.
+5. Apply sector-specific metrics where available: banks use NIM, CET1, loan growth, arrears, impairment, dividend, and ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, and commodity exposure.
+6. Summarize strengths, weaknesses, and financial quality in a table when evidence supports it.
 
 Output:
 - `fundamentals_report`: a financial and business-quality report for downstream debate and trading roles.
+- Include `## Tool Outputs Used` listing the fundamentals, balance-sheet, cash-flow, and income-statement tools used.
+- Include `## Sector-Specific Metrics` with the relevant metric set or explicit evidence gaps when the packet does not support those metrics.
 
 Safety boundaries:
 - Do not fabricate statement values, ratios, filings, or guidance where tools do not supply them.

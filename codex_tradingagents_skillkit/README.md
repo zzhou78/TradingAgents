@@ -8,7 +8,7 @@ Contents:
 - `skills/tradingagents-ticker-workflow-runner/scripts/prepare_skill_workflow.py`: offline runner that turns ticker input into a workflow packet.
 - `scripts/collect_role_evidence.py`: upstream-data evidence collector for Codex-operated role reports.
 - `scripts/financial_document_sources.py`: market-aware financial document router used by the Financial Report Analyst evidence packet.
-- `scripts/financial_document_sources_asx.py`: ASX announcement/source collector for `.AX` tickers.
+- `scripts/financial_document_sources_asx.py`: ASX announcement/source collector for `.AX` tickers, with fallback discovery through official ASX company pages and investor-relations URLs when the announcement endpoint fails.
 - `scripts/prepare_codex_report_tasks.py`: prepares task prompts for Codex role execution after evidence collection.
 - `scripts/write_codex_reports.py`: compatibility wrapper for `prepare_codex_report_tasks.py`; it no longer writes investment reasoning. `write_codex_reports.py is a compatibility wrapper`.
 - `scripts/validate_complete_report.py`: hard contract validator for required headings, date discipline, social-dump limits, action matching, disclaimer, and primary driver.
@@ -96,4 +96,6 @@ Safety:
 - Missing stage outputs are created as pending Markdown files so every path listed in the debate record is findable from `reports/`.
 - The complete report must preserve exact visible debate headings and pass `validate_complete_report.py`.
 - Analytical quality is reviewed by the `tradingagents-quality-reviewer` skill, which writes `quality_review.md` and `quality_gate.json`.
+- Role outputs must include `## Tool Outputs Used`; News must include `## Article Evidence Cards`; Market must include `## Quantitative Regime / Tool Outputs`; Financial Report must include `## Claim-Source Table`; Research Manager must include `## Structured Evidence Matrix`.
+- `validate_quality_review.py` enforces the expert-agent sections above and can be passed `--evidence <evidence.json>` so ASX reports fail completion when ASX source collection failed.
 - Complete reports must include `### Financial Report Analyst` and `### Industry / Theme Discovery Analyst`; Buy/Sell trader actions must include a labelled paper-study price framework.

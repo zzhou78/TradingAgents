@@ -37,6 +37,8 @@ Procedure:
 
 Output:
 - `financial_report.md` with sections: Source coverage table; Claim-source table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.
+- Include `## Tool Outputs Used` listing the structured fundamentals packet, SEC tools, ASX announcement tools, browser/search tools, and local extraction tools used.
+- Include `## Claim-Source Table`.
 - Include a compact citation marker in each paragraph or table row, for example `(Source: 10-Q MD&A)` or `(Source: structured fundamentals packet)`.
 
 Safety boundaries:

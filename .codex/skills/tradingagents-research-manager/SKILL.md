@@ -31,6 +31,8 @@ Procedure:
 
 Output:
 - `ResearchPlan`: rating, rationale, key evidence, risks, and strategic actions for the trader.
+- Include `## Tool Outputs Used` listing the role reports, evidence packets, validators, or source files used.
+- Include `## Structured Evidence Matrix` comparing Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence with weight, confidence, and evidence gap.
 - Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.
 - Show the scoring rule and score components when a numeric evidence score is used. Explicitly justify why Sell wins over Hold or Underweight, or why Hold/Underweight is selected instead of Sell when long-term support still holds.
 - Identify the primary driver of rating.

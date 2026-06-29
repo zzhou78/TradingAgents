@@ -15,14 +15,19 @@ Procedure:
 1. Read the complete report, role reports, and evidence summary before judging.
 2. Check whether claims are supported by evidence, whether key risks are explained, and whether role conclusions conflict.
 3. Treat `validate_complete_report.py` as a hard contract validator only; this skill is the analytical quality gate.
-4. Flag unsupported reasoning, missing ambiguity, overconfident social/news interpretation, contradictory ratings/actions, and unexplained primary drivers.
-5. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite missing role outputs.
-6. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
-7. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
+4. Use `## Tool Outputs Used` to record validators, evidence files, role reports, and source packets inspected.
+5. Flag unsupported reasoning, missing ambiguity, overconfident social/news interpretation, contradictory ratings/actions, and unexplained primary drivers.
+6. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite missing role outputs.
+7. Fail completed role reports that omit Tool Outputs Used, Article Evidence Cards for News Analyst, Quantitative Regime / Tool Outputs for Market Analyst, Claim-Source Table for Financial Report Analyst, or Structured Evidence Matrix for Research Manager.
+8. ASX reports are not complete when ASX source collection fails. If official ASX announcements or investor-relations evidence cannot be collected, fail quality_gate.json or leave completion pending with an explicit evidence gap.
+9. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
+10. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
 
 Output:
 - `quality_review.md`: concise narrative review with issues and required fixes.
 - `quality_gate.json`: machine-readable gate result.
+- Include `## Tool Outputs Used`.
+- Include `## Quality Gate Findings`.
 
 Example `quality_gate.json`:
 

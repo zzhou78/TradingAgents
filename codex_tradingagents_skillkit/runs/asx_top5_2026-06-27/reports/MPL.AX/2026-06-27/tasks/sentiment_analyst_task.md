@@ -44,6 +44,23 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_top5_2026-06-27\repor
 
 Write the Sentiment Analyst report from the social evidence only; summarize social evidence instead of dumping raw feeds.
 
+## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+
+
+Role-specific required sections:
+- `## Tool Outputs Used`
+- Social evidence processing table from the Sentiment Analyst skill.
+
+Summarize social evidence only; do not paste full raw feeds or infer institutional sentiment from retail feeds.
+
 ## Evidence Brief
 
 - Company: Medibank Private Limited

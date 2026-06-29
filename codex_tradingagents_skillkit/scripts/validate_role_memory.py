@@ -38,6 +38,29 @@ def _is_pending_output(path: Path) -> bool:
     return "Pending Codex role output" in path.read_text(encoding="utf-8", errors="replace")
 
 
+def _memory_update_section(text: str) -> str:
+    marker = "## Memory Update"
+    if marker not in text:
+        return ""
+    return text.split(marker, 1)[1]
+
+
+def _memory_update_is_meaningful(text: str) -> bool:
+    section = _memory_update_section(text)
+    if not section:
+        return False
+    lowered = section.lower()
+    if "no durable role-memory update" in lowered or "none recorded yet" in lowered:
+        return False
+    for line in section.splitlines():
+        if "evidence references" not in line.lower():
+            continue
+        value = line.split(":", 1)[1].strip() if ":" in line else ""
+        value = value.strip("-* `")
+        return bool(value and value.lower() not in {"none", "n/a", "not applicable"})
+    return False
+
+
 def _validate_workflow(workflow_path: Path) -> list[str]:
     issues: list[str] = []
     workflow = _read_json(workflow_path)
@@ -74,6 +97,8 @@ def _validate_workflow(workflow_path: Path) -> list[str]:
             text = output_path.read_text(encoding="utf-8", errors="replace")
             if "## Memory Update" not in text:
                 issues.append(f"{ticker}/{stage_name}: output missing Memory Update section")
+            elif not _memory_update_is_meaningful(text):
+                issues.append(f"{ticker}/{stage_name}: memory update is placeholder or not evidence-linked")
             for forbidden_root in forbidden_roots:
                 if str(forbidden_root) in text:
                     issues.append(f"{ticker}/{stage_name}: output references forbidden memory root {forbidden_root}")

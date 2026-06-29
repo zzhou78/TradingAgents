@@ -274,8 +274,11 @@ def test_prepare_codex_report_tasks_writes_task_prompts_not_reports(tmp_path: Pa
     task_dir = output_dir / "reports" / "AAPL" / "2026-06-27" / "tasks"
     manifest = json.loads((task_dir / "task_manifest.json").read_text(encoding="utf-8"))
     news_task = (task_dir / "news_analyst_task.md").read_text(encoding="utf-8")
+    market_task = (task_dir / "market_analyst_task.md").read_text(encoding="utf-8")
+    fundamentals_task = (task_dir / "fundamentals_analyst_task.md").read_text(encoding="utf-8")
     financial_task = (task_dir / "financial_report_task.md").read_text(encoding="utf-8")
     theme_task = (task_dir / "industry_theme_discovery_task.md").read_text(encoding="utf-8")
+    research_task = (task_dir / "research_manager_task.md").read_text(encoding="utf-8")
     quality_task = (task_dir / "quality_reviewer_task.md").read_text(encoding="utf-8")
 
     assert "AAPL: prepared Codex report tasks" in result.stdout
@@ -284,16 +287,25 @@ def test_prepare_codex_report_tasks_writes_task_prompts_not_reports(tmp_path: Pa
     assert "financial_report_task.md" in manifest["tasks"]
     assert "industry_theme_discovery_task.md" in manifest["tasks"]
     assert "Codex must write" in news_task
+    assert "## Required Tool-Using Expert Workflow" in news_task
+    assert "## Tool Outputs Used" in news_task
+    assert "## Article Evidence Cards" in news_task
     assert "Do not let Python classify likely effect" in news_task
     assert "## Allowed Memory Files" in news_task
     assert "## Forbidden Memory Roots" in news_task
     assert "## Memory Update" in news_task
+    assert "## Quantitative Regime / Tool Outputs" in market_task
+    assert "## Tool Outputs Used" in fundamentals_task
+    assert "sector-specific metrics" in fundamentals_task
+    assert "## Structured Evidence Matrix" in research_task
     assert manifest["tasks"]["news_analyst_task.md"]["allowed_memory_files"]
     assert "tradingagents-financial-report-analyst" in financial_task
+    assert "## Claim-Source Table" in financial_task
     assert "If online sources or filings are unavailable, state the evidence gap." in financial_task
     assert "tradingagents-industry-theme-discovery-analyst" in theme_task
     assert "Python must not classify themes or financial-report conclusions." in theme_task
     assert "quality_gate.json" in quality_task
+    assert "ASX reports are not complete when ASX source collection fails" in quality_task
     assert report_paths["news_report"].read_text(encoding="utf-8") == "Pending Codex role output.\n"
     assert report_paths["complete_report"].read_text(encoding="utf-8") == "Pending Codex role output.\n"
 
@@ -481,13 +493,97 @@ def test_quality_validator_fails_when_industry_theme_report_is_missing(tmp_path:
     assert "industry_theme.md is missing" in result.stdout
 
 
+def test_quality_validator_fails_when_role_outputs_lack_expert_tool_sections(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    analyst_dir = report_dir / "1_analysts"
+    research_dir = report_dir / "2_research"
+    research_dir.mkdir(parents=True)
+    (analyst_dir / "market.md").write_text("# Market Analyst\n\nGeneric market view.\n", encoding="utf-8")
+    (analyst_dir / "news.md").write_text("# News Analyst\n\nGeneric news view.\n", encoding="utf-8")
+    (analyst_dir / "fundamentals.md").write_text("# Fundamentals Analyst\n\nGeneric fundamentals.\n", encoding="utf-8")
+    (research_dir / "manager.md").write_text("# Research Manager\n\nGeneric decision.\n", encoding="utf-8")
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "market.md missing required section: Tool Outputs Used" in result.stdout
+    assert "market.md missing required section: Quantitative Regime / Tool Outputs" in result.stdout
+    assert "news.md missing required section: Article Evidence Cards" in result.stdout
+    assert "fundamentals.md missing required section: Tool Outputs Used" in result.stdout
+    assert "manager.md missing required section: Structured Evidence Matrix" in result.stdout
+
+
+def test_quality_validator_fails_asx_report_when_asx_source_collection_failed(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    evidence_dir = tmp_path / "evidence" / "BHP.AX" / "2026-06-27"
+    evidence_dir.mkdir(parents=True)
+    (evidence_dir / "evidence.json").write_text(
+        json.dumps(
+            {
+                "ticker": "BHP.AX",
+                "trade_date": "2026-06-27",
+                "roles": {
+                    "financial_report": {
+                        "tool_calls": {
+                            "collect_financial_document_sources": {
+                                "status": "error",
+                                "output": "| asx_announcements | error |",
+                            }
+                        }
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (report_dir / "complete_report.md").write_text(
+        _minimal_complete_report().replace("AAPL", "BHP.AX"),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(QUALITY_VALIDATOR),
+            "--report-dir",
+            str(report_dir),
+            "--evidence",
+            str(evidence_dir / "evidence.json"),
+        ],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "ASX source collection failed; report cannot be marked complete" in result.stdout
+
+
 def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
+    market = (SKILLS_ROOT / "tradingagents-market-analyst" / "SKILL.md").read_text(encoding="utf-8")
     news = (SKILLS_ROOT / "tradingagents-news-analyst" / "SKILL.md").read_text(encoding="utf-8")
+    fundamentals = (SKILLS_ROOT / "tradingagents-fundamentals-analyst" / "SKILL.md").read_text(encoding="utf-8")
     financial = (SKILLS_ROOT / "tradingagents-financial-report-analyst" / "SKILL.md").read_text(encoding="utf-8")
     theme = (SKILLS_ROOT / "tradingagents-industry-theme-discovery-analyst" / "SKILL.md").read_text(encoding="utf-8")
+    research = (SKILLS_ROOT / "tradingagents-research-manager" / "SKILL.md").read_text(encoding="utf-8")
     quality = (SKILLS_ROOT / "tradingagents-quality-reviewer" / "SKILL.md").read_text(encoding="utf-8")
 
     for required in [
+        "## Tool Outputs Used",
+        "## Quantitative Regime / Tool Outputs",
+        "latest close, 10 EMA, 50 SMA, 200 SMA",
+        "template claims that conflict with actual data",
+    ]:
+        assert required in market
+
+    for required in [
+        "## Tool Outputs Used",
+        "## Article Evidence Cards",
+        "full-text status",
+        "snippet-only",
         "classify each news item using reasoning, not keywords",
         "direct company news, indirect industry/theme context, or irrelevant",
         "What could make the effect ambiguous?",
@@ -498,6 +594,17 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         assert required in news
 
     for required in [
+        "## Tool Outputs Used",
+        "## Sector-Specific Metrics",
+        "sector-specific metrics",
+        "banks use NIM, CET1",
+        "miners/resources use production, realised price",
+    ]:
+        assert required in fundamentals
+
+    for required in [
+        "## Tool Outputs Used",
+        "## Claim-Source Table",
         "latest annual report / 10-K if available",
         "Source coverage table",
         "cite which source section supports each claim",
@@ -525,6 +632,20 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         assert required in theme
 
     for required in [
+        "## Tool Outputs Used",
+        "## Structured Evidence Matrix",
+        "weight, confidence, and evidence gap",
+        "why Sell wins over Hold or Underweight",
+    ]:
+        assert required in research
+
+    for required in [
+        "## Tool Outputs Used",
+        "## Quality Gate Findings",
+        "Tool Outputs Used",
+        "Article Evidence Cards",
+        "Structured Evidence Matrix",
+        "ASX reports are not complete when ASX source collection fails",
         "complete_report.md",
         "role reports",
         "evidence summary",

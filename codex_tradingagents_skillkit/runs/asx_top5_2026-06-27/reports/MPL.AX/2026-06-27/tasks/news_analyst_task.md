@@ -44,6 +44,23 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_top5_2026-06-27\repor
 
 Codex must write the News Analyst report. Do not let Python classify likely effect; reason item by item. Treat political-trading or celebrity-trading headlines as low relevance unless they directly affect company fundamentals, regulation, price action, or sentiment.
 
+## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+
+
+Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Article Evidence Cards`
+
+For each material article card include: title, source, publication date, full-text status, direct company relevance, event type, key facts, novelty, materiality, likely effect, reason, confidence, and evidence gap. Keywords may support candidate discovery, not final impact judgment.
+
 ## Evidence Brief
 
 - Company: Medibank Private Limited

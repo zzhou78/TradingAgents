@@ -46,6 +46,23 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_top5_2026-06-27\repor
 
 Read the structured fundamentals packet plus market-aware financial document packet: section-level 10-K/10-Q records and 8-K Exhibit 99.1 for US tickers; ASX announcements, annual reports, Appendix 4E/4D, results presentations, and investor materials for ASX tickers. Write financial_report.md with a claim-source table and cite the source section supporting each substantive claim. Python must not classify themes or financial-report conclusions. If a needed section or exhibit is unavailable, state the evidence gap.
 
+## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+
+
+Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Claim-Source Table`
+
+Every major claim must cite a source section or exhibit. Mark missing capex, guidance, segment, income statement, balance sheet, or cash-flow detail as an evidence gap.
+
 ## Evidence Brief
 
 - Company: BHP Group Limited

@@ -166,6 +166,49 @@ def test_asx_tickers_route_to_asx_announcement_collector_and_filter_trade_date()
     assert "operating_cash_flow" in rendered
 
 
+def test_asx_collector_tries_official_and_ir_fallback_pages_when_endpoint_fails():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/BHP/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/BHP" in url:
+            return """
+            <html><body>
+            <a href="https://asx.example/BHP-annual-report.pdf">2025 Annual Report 15 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://www.bhp.com/investors/results":
+            return """
+            <html><body>
+            <a href="https://www.bhp.com/results/fy25-results-presentation.pdf">FY25 Results Presentation 19 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://asx.example/BHP-annual-report.pdf":
+            return "Annual report revenue income NPAT operating cash flow debt segment production outlook capex risks"
+        if url == "https://www.bhp.com/results/fy25-results-presentation.pdf":
+            return "FY25 results presentation production realised price capex commodity exposure outlook"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources(
+        "BHP.AX",
+        "2026-06-27",
+        identity={"investor_relations_url": "https://www.bhp.com/investors/results"},
+        http_get=fake_http_get,
+    )
+
+    assert packet["status"] == "ok"
+    assert any("company/BHP/announcements" in url for url in requested_urls)
+    assert any("markets/company/BHP" in url for url in requested_urls)
+    assert "https://www.bhp.com/investors/results" in requested_urls
+    titles = [source["title"] for source in packet["sources"]]
+    assert "2025 Annual Report" in titles
+    assert "FY25 Results Presentation" in titles
+    assert all(source["source_type"] == "asx_fallback_document" for source in packet["sources"])
+
+
 def test_generic_8k_is_not_mislabeled_as_earnings_release():
     module = _load_module()
 

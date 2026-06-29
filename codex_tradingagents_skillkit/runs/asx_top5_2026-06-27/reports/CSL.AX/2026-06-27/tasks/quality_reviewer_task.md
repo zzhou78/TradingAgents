@@ -56,6 +56,23 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_top5_2026-06-27\repor
 
 Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json. Flag political-trading or celebrity-trading news that is treated as material without a direct company impact path.
 
+## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+
+
+Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Quality Gate Findings`
+
+Reject generic role text unsupported by tool outputs. ASX reports are not complete when ASX source collection fails; quality_gate.json must be failed until official ASX or investor-relations evidence is available or the gap is explicitly unresolved.
+
 ## Evidence Brief
 
 - Company: CSL Limited

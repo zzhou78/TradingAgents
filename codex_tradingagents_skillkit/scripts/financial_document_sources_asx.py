@@ -7,8 +7,10 @@ import urllib.request
 from collections.abc import Callable
 from datetime import datetime
 from typing import Any
+from urllib.parse import urljoin
 
 ASX_ANNOUNCEMENTS_URL = "https://www.asx.com.au/asx/1/company/{code}/announcements?count=100"
+ASX_COMPANY_PAGE_URL = "https://www.asx.com.au/markets/company/{code}"
 DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
 
 HttpGet = Callable[[str, dict[str, str]], str]
@@ -72,7 +74,9 @@ def is_asx_ticker(ticker: str, identity: dict[str, Any] | None = None) -> bool:
 
 
 def _parse_date(value: str) -> datetime:
-    value = value.strip()[:10]
+    value = value.strip()
+    if re.match(r"\d{4}-\d{2}-\d{2}", value):
+        value = value[:10]
     for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%d %b %Y"):
         try:
             return datetime.strptime(value, fmt)
@@ -125,6 +129,53 @@ def _document_url(row: dict[str, Any]) -> str:
     return _field(row, "url", "document_url", "pdf_url", "file_url", "documentReleaseUrl", "downloadUrl")
 
 
+def _date_from_text(text: str) -> str:
+    iso = re.search(r"\b\d{4}-\d{2}-\d{2}\b", text)
+    if iso:
+        return iso.group(0)
+    dated = re.search(r"\b\d{1,2}\s+[A-Z][a-z]{2,8}\s+\d{4}\b", text)
+    if dated:
+        return dated.group(0)
+    return ""
+
+
+def _title_without_date(text: str) -> str:
+    date_text = _date_from_text(text)
+    if date_text:
+        text = text.replace(date_text, " ")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _fallback_rows(page_html: str, page_url: str) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for href, label in re.findall(r"(?is)<a[^>]+href=['\"]([^'\"]+)['\"][^>]*>(.*?)</a>", page_html):
+        clean_label = _clean_text(label)
+        if not _classify_document(clean_label):
+            continue
+        date_text = _date_from_text(clean_label)
+        if not date_text:
+            continue
+        rows.append(
+            {
+                "title": _title_without_date(clean_label),
+                "announcement_date": date_text,
+                "url": urljoin(page_url, href),
+                "fallback_page_url": page_url,
+            }
+        )
+    return rows
+
+
+def _fallback_page_urls(asx_code: str, identity: dict[str, Any] | None) -> list[str]:
+    urls = [ASX_COMPANY_PAGE_URL.format(code=asx_code)]
+    identity = identity or {}
+    for key in ("investor_relations_url", "investorRelationsUrl", "ir_url", "investors_url"):
+        url = identity.get(key)
+        if url:
+            urls.append(str(url))
+    return list(dict.fromkeys(urls))
+
+
 def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int) -> list[dict[str, Any]]:
     sections: list[dict[str, Any]] = []
     clean = _clean_text(text)
@@ -167,6 +218,7 @@ def _source_from_row(
     http_get: HttpGet,
     headers: dict[str, str],
     excerpt_chars: int,
+    source_type: str = "asx_announcement",
 ) -> dict[str, Any] | None:
     title = _field(row, "title", "header", "headline", "description")
     document_type = _classify_document(title)
@@ -183,7 +235,7 @@ def _source_from_row(
     source: dict[str, Any] = {
         "ticker": "",
         "market": "ASX",
-        "source_type": "asx_announcement",
+        "source_type": source_type,
         "document_type": document_type,
         "title": title,
         "announcement_date": parsed_date.strftime("%Y-%m-%d"),
@@ -194,6 +246,8 @@ def _source_from_row(
         "excerpt": "",
         "extracted_sections": [],
     }
+    if row.get("fallback_page_url"):
+        source["fallback_page_url"] = str(row["fallback_page_url"])
     if not url:
         source["extraction_status"] = "unavailable"
         source["reason"] = "Announcement had no document URL."
@@ -208,6 +262,54 @@ def _source_from_row(
         source["extraction_status"] = "error"
         source["reason"] = str(exc)
     return source
+
+
+def _collect_fallback_sources(
+    *,
+    symbol: str,
+    asx_code: str,
+    trade_date: str,
+    identity: dict[str, Any] | None,
+    http_get: HttpGet,
+    headers: dict[str, str],
+    excerpt_chars: int,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    sources: list[dict[str, Any]] = []
+    fallback_attempts: list[dict[str, Any]] = []
+    for page_url in _fallback_page_urls(asx_code, identity):
+        try:
+            rows = _fallback_rows(http_get(page_url, headers), page_url)
+            fallback_attempts.append(
+                {
+                    "source_type": "asx_fallback_page",
+                    "status": "available",
+                    "url": page_url,
+                    "documents_found": len(rows),
+                }
+            )
+        except Exception as exc:  # noqa: BLE001 - record fallback access failures.
+            fallback_attempts.append(
+                {
+                    "source_type": "asx_fallback_page",
+                    "status": "error",
+                    "url": page_url,
+                    "reason": str(exc),
+                }
+            )
+            continue
+        for row in rows:
+            source = _source_from_row(
+                row,
+                trade_date=trade_date,
+                http_get=http_get,
+                headers=headers,
+                excerpt_chars=excerpt_chars,
+                source_type="asx_fallback_document",
+            )
+            if source:
+                source["ticker"] = symbol
+                sources.append(source)
+    return sources, fallback_attempts
 
 
 def collect_asx_financial_document_sources(
@@ -235,6 +337,8 @@ def collect_asx_financial_document_sources(
             ],
         }
     headers = _headers()
+    endpoint_error = ""
+    fallback_attempts: list[dict[str, Any]] = []
     try:
         rows = _announcement_rows(http_get(ASX_ANNOUNCEMENTS_URL.format(code=asx_code), headers))
         sources = [
@@ -252,6 +356,17 @@ def collect_asx_financial_document_sources(
                     "reason": "No ASX financial report announcement was discovered on or before the trade date.",
                 }
             ]
+            fallback_sources, fallback_attempts = _collect_fallback_sources(
+                symbol=symbol,
+                asx_code=asx_code,
+                trade_date=trade_date,
+                identity=identity,
+                http_get=http_get,
+                headers=headers,
+                excerpt_chars=excerpt_chars,
+            )
+            if fallback_sources:
+                sources = fallback_sources
         for source in sources:
             source["ticker"] = symbol
         return {
@@ -261,20 +376,44 @@ def collect_asx_financial_document_sources(
             "trade_date": trade_date,
             "status": "ok" if any(source.get("status") == "available" for source in sources) else "unavailable",
             "as_of_rule": "Only ASX announcements with announcement/lodgement date <= trade_date are included.",
+            "fallback_attempts": fallback_attempts,
             "sources": sources,
         }
     except Exception as exc:  # noqa: BLE001 - ASX access should degrade gracefully.
+        endpoint_error = str(exc)
+    fallback_sources, fallback_attempts = _collect_fallback_sources(
+        symbol=symbol,
+        asx_code=asx_code,
+        trade_date=trade_date,
+        identity=identity,
+        http_get=http_get,
+        headers=headers,
+        excerpt_chars=excerpt_chars,
+    )
+    if fallback_sources:
         return {
             "ticker": symbol,
             "market": "ASX",
             "asx_code": asx_code,
             "trade_date": trade_date,
-            "status": "error",
-            "sources": [
-                {
-                    "source_type": "asx_announcements",
-                    "status": "error",
-                    "reason": str(exc),
-                }
-            ],
+            "status": "ok",
+            "as_of_rule": "ASX endpoint failed; fallback official ASX/company IR documents still require date <= trade_date.",
+            "primary_endpoint_error": endpoint_error,
+            "fallback_attempts": fallback_attempts,
+            "sources": fallback_sources,
         }
+    return {
+        "ticker": symbol,
+        "market": "ASX",
+        "asx_code": asx_code,
+        "trade_date": trade_date,
+        "status": "error",
+        "fallback_attempts": fallback_attempts,
+        "sources": [
+            {
+                "source_type": "asx_announcements",
+                "status": "error",
+                "reason": endpoint_error,
+            }
+        ],
+    }

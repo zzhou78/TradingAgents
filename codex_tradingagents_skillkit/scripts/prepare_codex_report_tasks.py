@@ -63,6 +63,55 @@ TASKS = {
     },
 }
 
+GENERAL_EXPERT_WORKFLOW = """## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+"""
+
+ROLE_EXPERT_REQUIREMENTS = {
+    "tradingagents-market-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Quantitative Regime / Tool Outputs`
+
+Use verified market snapshots, OHLCV data, moving averages, RSI, MACD, ATR, volume, and trend/regime evidence. Do not make template claims that conflict with actual indicator values.""",
+    "tradingagents-sentiment-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- Social evidence processing table from the Sentiment Analyst skill.
+
+Summarize social evidence only; do not paste full raw feeds or infer institutional sentiment from retail feeds.""",
+    "tradingagents-news-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Article Evidence Cards`
+
+For each material article card include: title, source, publication date, full-text status, direct company relevance, event type, key facts, novelty, materiality, likely effect, reason, confidence, and evidence gap. Keywords may support candidate discovery, not final impact judgment.""",
+    "tradingagents-fundamentals-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Sector-Specific Metrics`
+
+Use sector-specific metrics where available; otherwise state the evidence gap instead of forcing a generic ratio template.""",
+    "tradingagents-financial-report-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Claim-Source Table`
+
+Every major claim must cite a source section or exhibit. Mark missing capex, guidance, segment, income statement, balance sheet, or cash-flow detail as an evidence gap.""",
+    "tradingagents-research-manager": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Structured Evidence Matrix`
+
+The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, and evidence gaps. Explain why Sell vs Hold vs Underweight wins when relevant.""",
+    "tradingagents-quality-reviewer": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Quality Gate Findings`
+
+Reject generic role text unsupported by tool outputs. ASX reports are not complete when ASX source collection fails; quality_gate.json must be failed until official ASX or investor-relations evidence is available or the gap is explicitly unresolved.""",
+}
+
 DEFAULT_OUTPUTS = {
     "financial_report": ("1_analysts", "financial_report.md"),
     "industry_theme_report": ("1_analysts", "industry_theme.md"),
@@ -120,6 +169,7 @@ def _task_text(
     allowed_memory_files = stage.get("allowed_memory_files", []) if stage else []
     forbidden_memory_roots = stage.get("forbidden_memory_roots", []) if stage else []
     memory_update_path = stage.get("memory_update_path", "") if stage else ""
+    role_requirements = ROLE_EXPERT_REQUIREMENTS.get(task["skill"], "Role-specific required sections:\n- `## Tool Outputs Used`")
     return f"""# Codex Report Task: {workflow['ticker']} {task_name.removesuffix('_task.md').replace('_', ' ').title()}
 
 Ticker: `{workflow['ticker']}`
@@ -148,6 +198,10 @@ Memory update file: `{_relative_or_absolute(memory_update_path, repo_root) if me
 ## Instruction
 
 {task['instruction']}
+
+{GENERAL_EXPERT_WORKFLOW}
+
+{role_requirements}
 
 ## Evidence Brief
 

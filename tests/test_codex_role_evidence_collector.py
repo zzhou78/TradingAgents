@@ -21,6 +21,14 @@ def _load_collector():
     return module
 
 
+def _load_memory_validator():
+    spec = importlib.util.spec_from_file_location("validate_role_memory", MEMORY_VALIDATOR_PATH)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp_path, monkeypatch):
     collector = _load_collector()
     calls = []
@@ -431,3 +439,52 @@ def test_collector_does_not_call_upstream_graph_or_llm_backend():
     assert "tradingagents.graph" not in source
     assert "create_llm_client" not in source
     assert "run_tradingagents_reports" not in source
+
+
+def test_memory_validator_rejects_placeholder_memory_updates(tmp_path):
+    validator = _load_memory_validator()
+    memory_root = tmp_path / "memory" / "AAPL"
+    for role_name in validator.ROLE_MEMORY_NAMES:
+        role_root = memory_root / role_name
+        role_root.mkdir(parents=True)
+        (role_root / "memory.md").write_text(f"# {role_name}\n", encoding="utf-8")
+        (role_root / "memory.json").write_text(json.dumps({"role": role_name}), encoding="utf-8")
+
+    output_path = tmp_path / "reports" / "AAPL" / "2026-06-27" / "1_analysts" / "news.md"
+    output_path.parent.mkdir(parents=True)
+    output_path.write_text(
+        "# News Analyst\n\n## Memory Update\n\nNo durable role-memory update was recorded for this historical generated output.\n",
+        encoding="utf-8",
+    )
+    workflow_path = tmp_path / "evidence" / "AAPL" / "2026-06-27" / "workflow_state.json"
+    workflow_path.parent.mkdir(parents=True)
+    workflow_path.write_text(
+        json.dumps(
+            {
+                "ticker": "AAPL",
+                "memory_root": str(memory_root),
+                "report_dir": str(output_path.parents[2]),
+                "stages": [
+                    {
+                        "stage": "news_analyst",
+                        "role_memory": "news_analyst",
+                        "allowed_memory_files": [
+                            str(memory_root / "news_analyst" / "memory.md"),
+                            str(memory_root / "news_analyst" / "memory.json"),
+                        ],
+                        "forbidden_memory_roots": [
+                            str(memory_root / role_name)
+                            for role_name in validator.ROLE_MEMORY_NAMES
+                            if role_name != "news_analyst"
+                        ],
+                        "output_path": str(output_path),
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    issues = validator.validate(tmp_path)
+
+    assert "AAPL/news_analyst: memory update is placeholder or not evidence-linked" in issues

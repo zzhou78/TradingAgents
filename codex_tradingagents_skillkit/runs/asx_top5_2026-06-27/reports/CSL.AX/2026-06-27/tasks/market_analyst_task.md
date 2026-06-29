@@ -44,6 +44,23 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_top5_2026-06-27\repor
 
 Write the Market Analyst report from the market evidence only.
 
+## Required Tool-Using Expert Workflow
+
+1. Identify the role's evidence gap before writing conclusions.
+2. Use the available tool outputs in the allowed input files first.
+3. If a repeatable calculation, extraction, scoring, comparison, or validation is needed, use or request a Python tool instead of hand-waving.
+4. Cite tool outputs and source files for every material claim.
+5. State uncertainty and evidence gaps; do not replace missing evidence with assumptions or memory.
+6. Include a `## Tool Outputs Used` section listing the concrete tools, source files, or upstream role outputs used.
+7. Include an `## Evidence Gaps` section when source coverage is sparse, failed, or snippet-only.
+
+
+Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Quantitative Regime / Tool Outputs`
+
+Use verified market snapshots, OHLCV data, moving averages, RSI, MACD, ATR, volume, and trend/regime evidence. Do not make template claims that conflict with actual indicator values.
+
 ## Evidence Brief
 
 - Company: CSL Limited

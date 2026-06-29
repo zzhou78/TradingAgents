@@ -72,7 +72,10 @@ tickers query SEC company-ticker and submissions data, `.AX` tickers use
 `scripts/financial_document_sources_asx.py` for ASX announcements, and
 unsupported markets record explicit unavailable coverage. Collectors keep only
 documents dated/lodged on or before `trade_date` and record missing source
-types instead of fabricating management commentary.
+types instead of fabricating management commentary. If the ASX announcement
+endpoint fails, the ASX collector attempts official ASX company-page and
+identity-supplied investor-relations fallback URLs before recording the source
+gap.
 
 Prepare Codex report tasks after evidence collection:
 
@@ -120,6 +123,13 @@ MSFT-to-Apple cross-ticker leakage without `comparative_run=true`.
 `validate_role_memory.py` separately checks that each workflow stage is limited
 to its own role memory and that completed role outputs include a Memory Update
 section.
+
+`validate_quality_review.py` is the analytical quality gate. It fails completed
+role outputs missing `Tool Outputs Used`, `Article Evidence Cards`,
+`Quantitative Regime / Tool Outputs`, `Claim-Source Table`, or
+`Structured Evidence Matrix`. When passed `--evidence <evidence.json>`, it also
+fails ASX reports whose ASX source collection ended in an error or unavailable
+state.
 
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.
