@@ -36,9 +36,19 @@ Procedure:
 
 Output:
 - `TraderProposal`: action, reasoning, paper-study price framework for Buy/Sell actions, optional sizing notes, and risk notes.
+- Include `## Tool Outputs Used`.
+- Include `## Action Consistency Check`.
 - Include a consistency check before the final proposal. If action is Sell, identify whether price broke below longer-term support or name the separate materially negative setup. If long-term support still holds and no material negative setup is documented, prefer Hold over Sell.
 - FINAL TRANSACTION PROPOSAL must match `**Action**`.
 - Sell requires below 200 SMA or explicit material negative setup.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite Research Manager and market evidence IDs used for the proposal.
+- Action, reasoning, and `FINAL TRANSACTION PROPOSAL` must be internally consistent.
+- Python may validate action consistency and technical levels; Codex chooses the final paper proposal.
+- Never use broker/order tools.
 
 Safety boundaries:
 - Do not submit orders or imply broker execution.

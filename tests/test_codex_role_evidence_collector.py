@@ -151,7 +151,12 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
 
         market_stage = workflow["stages"][0]
         assert market_stage["skill"] == "tradingagents-market-analyst"
-        assert market_stage["allowed_inputs"] == [run["role_packet_paths"]["market"]]
+        normalized_market_inputs = [path.replace("\\", "/") for path in market_stage["allowed_inputs"]]
+        assert market_stage["allowed_inputs"][0] == run["role_packet_paths"]["market"]
+        assert any(path.endswith("market/quantitative_observations.json") for path in normalized_market_inputs)
+        assert any(path.endswith("market/evidence_ledger.jsonl") for path in normalized_market_inputs)
+        assert market_stage["role_execution_contract"]["role"] == "market_analyst"
+        assert "market_data_evidence" in market_stage["role_execution_contract"]["required_tools"]
         assert market_stage["role_memory"] == "market_analyst"
         assert len(market_stage["allowed_memory_files"]) == 2
         assert market_stage["memory_update_path"].endswith("memory_updates\\market_analyst.md") or market_stage[
@@ -212,20 +217,28 @@ def test_collector_requires_no_live_llm_gate_and_collects_selected_role_data(tmp
             assert "Pending Codex role output" in report_path.read_text(encoding="utf-8")
 
         stages_by_name = {stage["stage"]: stage for stage in workflow["stages"]}
-        assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"] == [
+        assert stages_by_name["bull_researcher_round_1"]["allowed_inputs"][:4] == [
             report_paths["market_report"],
             report_paths["news_report"],
             report_paths["financial_report"],
             report_paths["industry_theme_report"],
         ]
-        assert stages_by_name["bear_researcher_round_1"]["allowed_inputs"] == [
+        assert any(
+            path.replace("\\", "/").endswith("stage_inputs/bull_researcher_round_1/input_records.json")
+            for path in stages_by_name["bull_researcher_round_1"]["allowed_inputs"]
+        )
+        assert stages_by_name["bear_researcher_round_1"]["allowed_inputs"][:5] == [
             report_paths["market_report"],
             report_paths["news_report"],
             report_paths["financial_report"],
             report_paths["industry_theme_report"],
             report_paths["bull_researcher_round_1"],
         ]
-        assert stages_by_name["research_manager"]["allowed_inputs"] == [
+        assert any(
+            path.replace("\\", "/").endswith("stage_inputs/bear_researcher_round_1/input_records.json")
+            for path in stages_by_name["bear_researcher_round_1"]["allowed_inputs"]
+        )
+        assert stages_by_name["research_manager"]["allowed_inputs"][:6] == [
             report_paths["market_report"],
             report_paths["news_report"],
             report_paths["financial_report"],
@@ -305,7 +318,435 @@ def test_social_role_collects_direct_stocktwits_and_reddit_not_news(tmp_path, mo
     )
     social_calls = evidence["roles"]["social"]["tool_calls"]
     assert sorted(social_calls) == ["fetch_reddit_posts", "fetch_stocktwits_messages"]
+    social_dir = tmp_path / "evidence" / "AAPL" / "2026-06-27" / "social"
+    assert (social_dir / "social_summary.json").exists()
+    assert (social_dir / "evidence_ledger.jsonl").exists()
+    workflow = json.loads(
+        (tmp_path / "evidence" / "AAPL" / "2026-06-27" / "workflow_state.json").read_text(encoding="utf-8")
+    )
+    social_stage = next(stage for stage in workflow["stages"] if stage["stage"] == "sentiment_analyst")
+    normalized_allowed = [path.replace("\\", "/") for path in social_stage["allowed_inputs"]]
+    assert social_stage["role_execution_contract"]["role"] == "sentiment_analyst"
+    assert any(path.endswith("social/social_summary.json") for path in normalized_allowed)
+    assert "social_evidence_processing" in social_stage["role_execution_contract"]["required_tools"]
     assert "financial_report" in evidence["roles"]
+
+
+def test_social_role_filters_post_trade_date_stocktwits_and_reddit(tmp_path, monkeypatch):
+    collector = _load_collector()
+
+    monkeypatch.setattr(
+        collector,
+        "fetch_stocktwits_messages",
+        lambda **kwargs: (
+            "Bullish: 1 (50%) · Bearish: 1 (50%) · Unlabeled: 0 · Total: 2 most-recent messages\n\n"
+            "[2026-06-28T01:00:00Z · @late · Bullish] $AAPL after trade date\n"
+            "[2026-06-27T10:00:00Z · @ontime · Bearish] $AAPL on trade date"
+        ),
+    )
+    monkeypatch.setattr(
+        collector,
+        "fetch_reddit_posts",
+        lambda **kwargs: (
+            "r/stocks — 2 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):\n"
+            "  [2026-06-29] late reddit post\n"
+            "  [2026-06-27] on-date reddit post"
+        ),
+    )
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {"status": "unavailable", "sources": []},
+    )
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "AAPL",
+            "--trade-date",
+            "2026-06-27",
+            "--selected-analysts",
+            "social",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    evidence = json.loads(
+        (tmp_path / "evidence" / "AAPL" / "2026-06-27" / "evidence.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    stocktwits = evidence["roles"]["social"]["tool_calls"]["fetch_stocktwits_messages"]["output"]
+    reddit = evidence["roles"]["social"]["tool_calls"]["fetch_reddit_posts"]["output"]
+    assert "2026-06-28" not in stocktwits
+    assert "after trade date" not in stocktwits
+    assert "As-of filter: removed 1 post-trade-date social item after 2026-06-27." in stocktwits
+    assert "2026-06-29" not in reddit
+    assert "late reddit post" not in reddit
+    assert "As-of filter: removed 1 post-trade-date social item after 2026-06-27." in reddit
+
+
+def test_news_role_writes_article_cards_ledger_and_contract(tmp_path, monkeypatch):
+    collector = _load_collector()
+
+    monkeypatch.setattr(
+        collector,
+        "get_news",
+        lambda **kwargs: [
+            {
+                "title": "Apple services update",
+                "source": "Example News",
+                "url": "https://example.com/apple-services?utm_source=test",
+                "published_date": "2026-06-28",
+                "snippet": "Apple services update summary.",
+                "full_text": "Apple services update article body with enough detail for full text status.",
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        collector,
+        "get_global_news",
+        lambda **kwargs: [
+            {
+                "title": "Apple services update",
+                "source": "Example News",
+                "url": "https://example.com/apple-services",
+                "published_date": "2026-06-28",
+                "snippet": "Duplicate global item.",
+                "full_text": "",
+            },
+            {
+                "title": "Future Apple article",
+                "source": "Example News",
+                "url": "https://example.com/future-apple",
+                "published_date": "2026-06-30",
+                "snippet": "Future item.",
+                "full_text": "",
+            },
+        ],
+    )
+    monkeypatch.setattr(collector, "get_insider_transactions", lambda **kwargs: "no insider data")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {"status": "unavailable", "sources": []},
+    )
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "AAPL",
+            "--trade-date",
+            "2026-06-29",
+            "--selected-analysts",
+            "news",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    news_dir = tmp_path / "evidence" / "AAPL" / "2026-06-29" / "news"
+    article_cards_path = news_dir / "article_cards.json"
+    ledger_path = news_dir / "evidence_ledger.jsonl"
+    assert article_cards_path.exists()
+    assert ledger_path.exists()
+
+    cards = json.loads(article_cards_path.read_text(encoding="utf-8"))
+    assert len(cards) == 2
+    assert cards[0]["evidence_id"] == "news:AAPL:2026-06-29:001"
+    assert cards[0]["duplicate_count"] == 2
+    assert cards[0]["full_text_status"] == "full_text"
+    assert cards[0]["materiality"] == "pending_codex_interpretation"
+    assert cards[1]["as_of_validity"]["valid_for_trade_date"] is False
+
+    ledger_lines = ledger_path.read_text(encoding="utf-8").splitlines()
+    assert len(ledger_lines) == 2
+    assert json.loads(ledger_lines[0])["structured_output_path"].endswith("article_cards.json")
+
+    workflow = json.loads(
+        (tmp_path / "evidence" / "AAPL" / "2026-06-29" / "workflow_state.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    news_stage = next(stage for stage in workflow["stages"] if stage["stage"] == "news_analyst")
+    normalized_allowed = [path.replace("\\", "/") for path in news_stage["allowed_inputs"]]
+    assert news_stage["role_execution_contract"]["role"] == "news_analyst"
+    assert any(path.endswith("news/article_cards.json") for path in normalized_allowed)
+    assert any(path.endswith("news/evidence_ledger.jsonl") for path in normalized_allowed)
+    assert "news_article_evidence" in news_stage["role_execution_contract"]["required_tools"]
+
+
+def test_news_candidate_parser_keeps_markdown_articles_not_line_fragments():
+    collector = _load_collector()
+
+    candidates = collector._news_candidates_from_calls(
+        {
+            "get_news": {
+                "status": "ok",
+                "output": (
+                    "## AAPL News, from 2026-06-23 to 2026-06-30:\n\n"
+                    "### UK regulator proposes easing Apple, Google app store payment rules (source: Reuters)\n"
+                    "Britain's competition regulator proposed allowing app developers to steer users.\n"
+                    "Link: https://finance.yahoo.com/apple-regulator\n\n"
+                    "### Price Hikes Could Create a Major Problem for AAPL Stock (source: Barchart)\n"
+                    "Apple's price increases may pressure revenue growth.\n"
+                    "Link: https://www.barchart.com/story/aapl-price-hikes\n"
+                ),
+            },
+            "get_global_news": {"status": "ok", "output": "No global news found between 2026-06-23 and 2026-06-30"},
+        },
+        trade_date="2026-06-30",
+    )
+
+    assert [candidate["title"] for candidate in candidates] == [
+        "UK regulator proposes easing Apple, Google app store payment rules",
+        "Price Hikes Could Create a Major Problem for AAPL Stock",
+    ]
+    assert candidates[0]["source"] == "Reuters"
+    assert candidates[0]["published_date"] == "2026-06-30"
+    assert candidates[0]["url"] == "https://finance.yahoo.com/apple-regulator"
+    assert "Link:" not in {candidate["title"] for candidate in candidates}
+
+
+def test_financial_report_role_writes_section_records_ledger_and_contract(tmp_path, monkeypatch):
+    collector = _load_collector()
+
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+    monkeypatch.setattr(collector, "get_stock_data", lambda **kwargs: "stock data")
+    monkeypatch.setattr(
+        collector,
+        "get_verified_market_snapshot",
+        lambda **kwargs: (
+            "Latest close: 372.97\n"
+            "10 EMA: 377.15\n"
+            "50 SMA: 410.52\n"
+            "200 SMA: 446.27\n"
+            "RSI: 41.26\n"
+            "MACD: -5.1\n"
+            "ATR: 8.2\n"
+            "Volume: 123456"
+        ),
+    )
+    monkeypatch.setattr(collector, "get_indicators", lambda **kwargs: "indicator")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {
+            "ticker": ticker,
+            "trade_date": trade_date,
+            "status": "ok",
+            "sources": [
+                {
+                    "source_type": "annual_report_10k",
+                    "status": "available",
+                    "filing_date": "2025-07-30",
+                    "url": "https://sec.example/10k.htm",
+                    "sections": [
+                        {
+                            "section_type": "business_overview",
+                            "section_name": "10-K business overview",
+                            "status": "available",
+                            "source_type": "annual_report_10k",
+                            "filing_date": "2025-07-30",
+                            "url": "https://sec.example/10k.htm",
+                            "excerpt": "Business overview discusses cloud demand.",
+                            "supports_claims": ["business model", "revenue drivers"],
+                        }
+                    ],
+                },
+                {
+                    "source_type": "earnings_release_8k",
+                    "status": "available",
+                    "filing_date": "2026-04-29",
+                    "url": "https://sec.example/8k.htm",
+                    "exhibit_99_1": {
+                        "status": "available",
+                        "source_type": "earnings_release_exhibit",
+                        "exhibit_name": "Exhibit 99.1",
+                        "filing_date": "2026-04-29",
+                        "url": "https://sec.example/ex991.htm",
+                        "excerpt": "Exhibit 99.1 discusses revenue and guidance.",
+                        "supports_claims": ["guidance", "earnings release"],
+                    },
+                },
+            ],
+        },
+    )
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "MSFT",
+            "--trade-date",
+            "2026-06-29",
+            "--selected-analysts",
+            "market",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    financial_dir = tmp_path / "evidence" / "MSFT" / "2026-06-29" / "financial_report"
+    section_records_path = financial_dir / "section_records.json"
+    ledger_path = financial_dir / "evidence_ledger.jsonl"
+    assert section_records_path.exists()
+    assert ledger_path.exists()
+
+    section_records = json.loads(section_records_path.read_text(encoding="utf-8"))
+    assert section_records[0]["evidence_id"] == "financial:MSFT:2026-06-29:001"
+    assert section_records[0]["section_kind"] == "business_overview"
+    assert section_records[1]["section_kind"] == "exhibit_99_1"
+    assert section_records[1]["final_financial_judgment"] == "pending_codex_interpretation"
+
+    ledger_lines = ledger_path.read_text(encoding="utf-8").splitlines()
+    assert len(ledger_lines) == 2
+    assert json.loads(ledger_lines[0])["role"] == "financial_report_analyst"
+
+    workflow = json.loads(
+        (tmp_path / "evidence" / "MSFT" / "2026-06-29" / "workflow_state.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    financial_stage = next(stage for stage in workflow["stages"] if stage["stage"] == "financial_report_analyst")
+    normalized_allowed = [path.replace("\\", "/") for path in financial_stage["allowed_inputs"]]
+    assert financial_stage["role_execution_contract"]["role"] == "financial_report_analyst"
+    assert any(path.endswith("financial_report/section_records.json") for path in normalized_allowed)
+    assert any(path.endswith("financial_report/evidence_ledger.jsonl") for path in normalized_allowed)
+    assert "financial_document_evidence" in financial_stage["role_execution_contract"]["required_tools"]
+
+
+def test_market_role_writes_quantitative_observations_ledger_and_contract(tmp_path, monkeypatch):
+    collector = _load_collector()
+
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+    monkeypatch.setattr(collector, "get_stock_data", lambda **kwargs: "stock data")
+    monkeypatch.setattr(
+        collector,
+        "get_verified_market_snapshot",
+        lambda **kwargs: (
+            "Latest close: 372.97\n"
+            "10 EMA: 377.15\n"
+            "50 SMA: 410.52\n"
+            "200 SMA: 446.27\n"
+            "RSI: 41.26\n"
+            "MACD: -5.1\n"
+            "ATR: 8.2\n"
+            "Volume: 123456"
+        ),
+    )
+    monkeypatch.setattr(collector, "get_indicators", lambda **kwargs: "indicator")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {
+            "ticker": ticker,
+            "trade_date": trade_date,
+            "status": "ok",
+            "sources": [],
+        },
+    )
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "MSFT",
+            "--trade-date",
+            "2026-06-29",
+            "--selected-analysts",
+            "market",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    market_dir = tmp_path / "evidence" / "MSFT" / "2026-06-29" / "market"
+    observations_path = market_dir / "quantitative_observations.json"
+    ledger_path = market_dir / "evidence_ledger.jsonl"
+    assert observations_path.exists()
+    assert ledger_path.exists()
+
+    observations = json.loads(observations_path.read_text(encoding="utf-8"))
+    by_metric = {observation["metric_name"]: observation for observation in observations}
+    assert by_metric["latest_close"]["value"] == 372.97
+    assert by_metric["latest_close_vs_sma_200"]["relation"] == "below"
+    assert by_metric["latest_close_vs_sma_200"]["final_market_judgment"] == "pending_codex_interpretation"
+
+    ledger_lines = ledger_path.read_text(encoding="utf-8").splitlines()
+    assert ledger_lines
+    assert json.loads(ledger_lines[0])["role"] == "market_analyst"
+
+    workflow = json.loads(
+        (tmp_path / "evidence" / "MSFT" / "2026-06-29" / "workflow_state.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    market_stage = next(stage for stage in workflow["stages"] if stage["stage"] == "market_analyst")
+    normalized_allowed = [path.replace("\\", "/") for path in market_stage["allowed_inputs"]]
+    assert market_stage["role_execution_contract"]["role"] == "market_analyst"
+    assert any(path.endswith("market/quantitative_observations.json") for path in normalized_allowed)
+    assert any(path.endswith("market/evidence_ledger.jsonl") for path in normalized_allowed)
+    assert "market_data_evidence" in market_stage["role_execution_contract"]["required_tools"]
+
+
+def test_fundamentals_role_writes_statement_records_ledger_and_contract(tmp_path, monkeypatch):
+    collector = _load_collector()
+
+    monkeypatch.setattr(
+        collector,
+        "resolve_instrument_identity",
+        lambda ticker: {"company_name": ticker, "sector": "Financial Services", "industry": "Banks"},
+    )
+    monkeypatch.setattr(collector, "get_fundamentals", lambda **kwargs: "PE valuation and ROE data")
+    monkeypatch.setattr(collector, "get_balance_sheet", lambda **kwargs: "Cash, debt, and liquidity data")
+    monkeypatch.setattr(collector, "get_cashflow", lambda **kwargs: "Operating cash flow and free cash flow")
+    monkeypatch.setattr(collector, "get_income_statement", lambda **kwargs: "Revenue and net income data")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {"status": "ok", "sources": []},
+    )
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "CBA.AX",
+            "--trade-date",
+            "2026-06-29",
+            "--selected-analysts",
+            "fundamentals",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    fundamentals_dir = tmp_path / "evidence" / "CBA.AX" / "2026-06-29" / "fundamentals"
+    statement_records_path = fundamentals_dir / "statement_records.json"
+    ledger_path = fundamentals_dir / "evidence_ledger.jsonl"
+    assert statement_records_path.exists()
+    assert ledger_path.exists()
+
+    statement_records = json.loads(statement_records_path.read_text(encoding="utf-8"))
+    assert statement_records[0]["evidence_id"] == "fundamentals:CBA.AX:2026-06-29:001"
+    assert "NIM" in statement_records[0]["sector_specific_metric_expectations"]
+
+    workflow = json.loads(
+        (tmp_path / "evidence" / "CBA.AX" / "2026-06-29" / "workflow_state.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    fundamentals_stage = next(stage for stage in workflow["stages"] if stage["stage"] == "fundamentals_analyst")
+    normalized_allowed = [path.replace("\\", "/") for path in fundamentals_stage["allowed_inputs"]]
+    assert fundamentals_stage["role_execution_contract"]["role"] == "fundamentals_analyst"
+    assert any(path.endswith("fundamentals/statement_records.json") for path in normalized_allowed)
+    assert "fundamentals_statement_evidence" in fundamentals_stage["role_execution_contract"]["required_tools"]
 
 
 def test_workflow_state_records_explicit_visible_debate_completion_gates(tmp_path):

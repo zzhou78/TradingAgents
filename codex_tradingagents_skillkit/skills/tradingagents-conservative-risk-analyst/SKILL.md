@@ -30,6 +30,14 @@ Procedure:
 Output:
 - Updated conservative-side risk debate argument.
 - For Conservative Risk Round 1, directly respond to Aggressive Risk and explain why the proposal may still be unsafe.
+- Include `## Tool Outputs Used`, `## Downside Case`, and `## Unsupported Upside Challenges`.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite `evidence_id`, downside driver, evidence gap, confidence, and reason for each major risk claim.
+- Directly challenge unsupported upside assumptions.
+- Python may prepare input ledgers; Codex makes the risk argument.
 
 Safety boundaries:
 - Do not convert cautionary analysis into real portfolio instructions.

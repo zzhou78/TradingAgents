@@ -32,6 +32,17 @@ Output:
 | Theme | Subtheme | Evidence link | Classification | Reason | Confidence |
 | ----- | -------- | ------------- | -------------- | ------ | ---------- |
 
+- Include `## Tool Outputs Used`.
+- Include `## Theme Evidence Table`.
+- Cite an `evidence_id` or source file for every theme row.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Use stage input records and evidence ledgers when supplied.
+- Python may prepare input records; Codex decides final theme relevance and classification.
+- Do not use preconfigured themes unless the evidence link supports them.
+
 Safety boundaries:
 - Do not invent online evidence or imply live web research was performed when no source packet exists.
 - Do not use as real trading advice.

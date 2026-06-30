@@ -21,7 +21,45 @@ Procedure:
 7. Fail completed role reports that omit Tool Outputs Used, Article Evidence Cards for News Analyst, Quantitative Regime / Tool Outputs for Market Analyst, Claim-Source Table for Financial Report Analyst, or Structured Evidence Matrix for Research Manager.
 8. ASX reports are not complete when ASX source collection fails. If official ASX announcements or investor-relations evidence cannot be collected, fail quality_gate.json or leave completion pending with an explicit evidence gap.
 9. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
-10. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
+10. Fail pending role outputs unless the final gate explicitly documents a limitation and leaves normal completion pending.
+11. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
+
+## News Analyst Evidence Gate
+
+Fail the report when:
+- news impact label lacks article evidence citation;
+- snippet-only news evidence cannot be high confidence;
+- News Analyst uses post-trade-date evidence as valid;
+- News Analyst omits article evidence cards for material news claims.
+
+## Financial Report Analyst Evidence Gate
+
+Fail the report when:
+- financial claim lacks section evidence citation;
+- financial evidence gap missing for unavailable section;
+- Financial Report Analyst makes management-commentary, guidance, segment, capex, liquidity, risk-factor, income-statement, balance-sheet, or cash-flow claims without `evidence_id` citation or an explicit evidence gap;
+- Financial Report Analyst treats an 8-K cover page as the full earnings release when Exhibit 99.1 is unavailable.
+
+## Market Analyst Evidence Gate
+
+Fail the report when:
+- market.md is still pending;
+- market moving-average claim conflicts with metric evidence;
+- Market Analyst makes latest close, 10 EMA, 50 SMA, 200 SMA, RSI, MACD, ATR, volume, support, resistance, trend, or momentum claims without metric `evidence_id` citations;
+- stale or missing metrics are presented as current evidence instead of evidence gaps.
+
+## Full Workflow Evidence Gates
+
+Fail the report when:
+- sentiment report includes raw social feed instead of summary;
+- fundamentals claim lacks statement evidence citation;
+- research evidence matrix missing direction, materiality, confidence, tool output, weight, or reason;
+- research manager rating lacks rating-vs-rating justification;
+- trader final proposal mismatch;
+- trader Buy/Sell lacks paper-study price framework;
+- bull or bear debate lacks falsification conditions or direct response;
+- risk debate lacks failure points, unsupported-upside challenges, or risk argument quality comparison;
+- portfolio decision omits risk debate impact.
 
 Output:
 - `quality_review.md`: concise narrative review with issues and required fixes.

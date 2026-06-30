@@ -30,6 +30,14 @@ Procedure:
 Output:
 - Updated aggressive-side risk debate argument.
 - For Aggressive Risk Round 1, explain why taking risk could be justified.
+- Include `## Tool Outputs Used`, `## Opportunity Case`, and `## Failure Points`.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite `evidence_id`, upside driver, failure point, confidence, and reason for each major opportunity-risk claim.
+- Acknowledge concrete failure points instead of presenting only upside.
+- Python may prepare input ledgers; Codex makes the risk argument.
 
 Safety boundaries:
 - Do not recommend leverage, concentration, or real-money action for the user.

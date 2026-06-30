@@ -46,6 +46,15 @@ Required table:
 |---|---|---|---|---|---|
 | AAPL seeks approval to buy CXMT chips | Direct | supply-chain / regulation | mixed | Could reduce memory cost pressure, but introduces geopolitical/supplier risk | Medium |
 
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract before writing the report.
+- Use only allowed inputs and allowed memory.
+- Cite `evidence_id`, source URL, source date, and full-text status for every material article claim.
+- Python candidate fields are not final investment judgments.
+- Do not assign final impact labels without citing article evidence IDs.
+- Snippet-only evidence cannot support high-confidence impact labels.
+
 Output:
 - `news_report`: a current-event and macro context report for researchers, trader, and risk reviewers.
 - Include `## Tool Outputs Used` listing news, global-news, macro, browser/search, or local source packets used.

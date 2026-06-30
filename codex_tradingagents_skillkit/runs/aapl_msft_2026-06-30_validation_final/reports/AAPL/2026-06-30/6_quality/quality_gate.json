@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "ticker": "AAPL",
+  "trade_date": "2026-06-30",
+  "limitations": [
+    "full-text news coverage is limited",
+    "some filing sections are unavailable"
+  ],
+  "reviewer": "codex-session quality reviewer"
+}

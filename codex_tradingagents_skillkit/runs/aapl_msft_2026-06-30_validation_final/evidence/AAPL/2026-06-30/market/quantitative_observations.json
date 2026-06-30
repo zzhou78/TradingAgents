@@ -1,0 +1,276 @@
+[
+  {
+    "evidence_id": "market:AAPL:2026-06-30:001",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "latest_close",
+    "status": "available",
+    "value": 281.74,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "latest close",
+      "price level"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:002",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "ema_10",
+    "status": "available",
+    "value": 289.33,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "10 EMA",
+      "near-term momentum"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:003",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "sma_50",
+    "status": "available",
+    "value": 291.78,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "50 SMA",
+      "intermediate trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:004",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "sma_200",
+    "status": "available",
+    "value": 269.35,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "200 SMA",
+      "long-term trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:005",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "rsi",
+    "status": "available",
+    "value": 39.91,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "RSI",
+      "momentum regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:006",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "macd",
+    "status": "available",
+    "value": -2.9,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "MACD",
+      "momentum regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:007",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "atr",
+    "status": "available",
+    "value": 8.18,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "ATR",
+      "volatility regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:008",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "volume",
+    "status": "available",
+    "value": 66368400.0,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "volume",
+      "participation"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:009",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "latest_close_vs_ema_10",
+    "status": "available",
+    "value": null,
+    "relation": "below",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 281.74,
+      "right_metric": "ema_10",
+      "right_value": 289.33
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 10 EMA",
+      "near-term momentum"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:010",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "latest_close_vs_sma_50",
+    "status": "available",
+    "value": null,
+    "relation": "below",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 281.74,
+      "right_metric": "sma_50",
+      "right_value": 291.78
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 50 SMA",
+      "intermediate trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:AAPL:2026-06-30:011",
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "metric_name": "latest_close_vs_sma_200",
+    "status": "available",
+    "value": null,
+    "relation": "above",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 281.74,
+      "right_metric": "sma_200",
+      "right_value": 269.35
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 200 SMA",
+      "long-term trend support/resistance"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-06-29",
+    "retrieval_time": "2026-06-30T18:49:09+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-06-30",
+      "source_date": "2026-06-29"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  }
+]

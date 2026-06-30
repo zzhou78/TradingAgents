@@ -35,6 +35,17 @@ Procedure:
 12. For ASX companies, report the period covered and summarize revenue/income/NPAT, EPS/DPS, operating cash flow, free cash flow or cash movement, cash/debt/gearing, segment or product performance, management commentary/outlook, dividends/capital management, capex/commitments, material risks, one-off items, and evidence gaps when available.
 13. Apply ASX sector-specific checks where relevant: banks use NIM, CET1, loan growth, arrears, impairment, dividend, ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, commodity exposure; REITs use NTA, occupancy, WALE, gearing, WACR/cap rates, distribution; SaaS/tech uses ARR, churn, NRR, cash runway, gross margin; insurers use premium growth, claims ratio, combined operating ratio, capital adequacy.
 
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract before writing the report.
+- Use only allowed inputs and allowed memory.
+- Cite `evidence_id`, source type, section name, filing date, and URL for every major financial-report claim.
+- Python section records are not final financial judgments.
+- Do not make major financial claims without section evidence IDs or explicit evidence gaps.
+- Treat unavailable capex, guidance, segment, liquidity, risk-factor, income-statement, balance-sheet, and cash-flow sections as evidence gaps.
+- Treat 8-K cover pages as source-routing evidence unless the cover page itself contains the cited fact.
+- Prefer 8-K Exhibit 99.1 for earnings-release claims when available.
+
 Output:
 - `financial_report.md` with sections: Source coverage table; Claim-source table; Revenue and segment performance; Margin and profitability trend; Cash flow quality; Capex and investment commitments; Balance sheet and liquidity; Management guidance / outlook; Material risk factors; One-off or accounting items; What changed since prior report, if evidence is available; Evidence gaps.
 - Include `## Tool Outputs Used` listing the structured fundamentals packet, SEC tools, ASX announcement tools, browser/search tools, and local extraction tools used.

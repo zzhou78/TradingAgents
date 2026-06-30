@@ -36,6 +36,16 @@ TASKS = {
         "output_key": "industry_theme_report",
         "instruction": "Discover current industry themes and subthemes from the evidence, current online research packet, filings, and investor materials when available. Do not force-fit a preconfigured taxonomy. Python must not classify themes or financial-report conclusions. If online sources or filings are unavailable, state the evidence gap.",
     },
+    "bull_researcher_round_1_task.md": {
+        "skill": "tradingagents-bull-researcher",
+        "output_key": "bull_researcher_round_1",
+        "instruction": "Write the strongest evidence-backed Bull case. Cite the strongest supporting evidence, identify falsification conditions, and directly answer Bear's strongest available argument when prior Bear output exists.",
+    },
+    "bear_researcher_round_1_task.md": {
+        "skill": "tradingagents-bear-researcher",
+        "output_key": "bear_researcher_round_1",
+        "instruction": "Write the strongest evidence-backed Bear case. Cite the strongest negative evidence, identify falsification conditions, and directly answer Bull's strongest argument.",
+    },
     "research_manager_task.md": {
         "skill": "tradingagents-research-manager",
         "output_key": "research_manager",
@@ -45,6 +55,21 @@ TASKS = {
         "skill": "tradingagents-trader",
         "output_key": "trader",
         "instruction": "Translate the Research Manager plan into a paper Trader Proposal with a matching FINAL TRANSACTION PROPOSAL line. For Buy or Sell, include a labelled Paper-study price framework with reference price or entry zone, invalidation level, and first confirmation or target level.",
+    },
+    "aggressive_risk_round_1_task.md": {
+        "skill": "tradingagents-aggressive-risk-analyst",
+        "output_key": "aggressive_risk_round_1",
+        "instruction": "Write the aggressive risk view, focused on opportunity asymmetry and catalysts, while acknowledging concrete failure points.",
+    },
+    "conservative_risk_round_1_task.md": {
+        "skill": "tradingagents-conservative-risk-analyst",
+        "output_key": "conservative_risk_round_1",
+        "instruction": "Write the conservative risk view, focused on downside, drawdown, valuation, liquidity, and evidence gaps; directly challenge unsupported upside assumptions.",
+    },
+    "neutral_risk_round_1_task.md": {
+        "skill": "tradingagents-neutral-risk-analyst",
+        "output_key": "neutral_risk_round_1",
+        "instruction": "Compare the aggressive and conservative risk arguments by evidence quality. Do not force a compromise when the evidence is one-sided.",
     },
     "portfolio_manager_task.md": {
         "skill": "tradingagents-portfolio-manager",
@@ -92,6 +117,7 @@ Summarize social evidence only; do not paste full raw feeds or infer institution
 For each material article card include: title, source, publication date, full-text status, direct company relevance, event type, key facts, novelty, materiality, likely effect, reason, confidence, and evidence gap. Keywords may support candidate discovery, not final impact judgment.""",
     "tradingagents-fundamentals-analyst": """Role-specific required sections:
 - `## Tool Outputs Used`
+- `## Financial Statement Evidence`
 - `## Sector-Specific Metrics`
 
 Use sector-specific metrics where available; otherwise state the evidence gap instead of forcing a generic ratio template.""",
@@ -105,6 +131,51 @@ Every major claim must cite a source section or exhibit. Mark missing capex, gui
 - `## Structured Evidence Matrix`
 
 The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, and evidence gaps. Explain why Sell vs Hold vs Underweight wins when relevant.""",
+    "tradingagents-bull-researcher": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Strongest Bull Evidence`
+- `## Falsification Conditions`
+- `## Response To Bear`
+
+The Bull case must cite strongest evidence, avoid generic optimism, and define what would disprove the thesis.""",
+    "tradingagents-bear-researcher": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Strongest Bear Evidence`
+- `## Falsification Conditions`
+- `## Response To Bull`
+
+The Bear case must cite strongest evidence, avoid generic pessimism, and directly answer Bull's strongest argument.""",
+    "tradingagents-trader": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Action Consistency Check`
+- `## Paper-study price framework`
+- `FINAL TRANSACTION PROPOSAL`
+
+The final transaction proposal must match the reasoning and cite the Research Manager and market evidence used.""",
+    "tradingagents-aggressive-risk-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Opportunity Case`
+- `## Failure Points`
+
+The aggressive case must identify upside asymmetry and concrete failure points.""",
+    "tradingagents-conservative-risk-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Downside Case`
+- `## Unsupported Upside Challenges`
+
+The conservative case must challenge unsupported upside assumptions with evidence.""",
+    "tradingagents-neutral-risk-analyst": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Risk Argument Quality`
+- `## Stronger Risk Side`
+
+The neutral case must compare argument quality and avoid forced compromise.""",
+    "tradingagents-portfolio-manager": """Role-specific required sections:
+- `## Tool Outputs Used`
+- `## Risk debate impact`
+- `## Final Portfolio Decision`
+
+The Portfolio Manager must state how the risk debate changed or confirmed the Trader proposal.""",
     "tradingagents-quality-reviewer": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Quality Gate Findings`
@@ -153,6 +224,53 @@ def _evidence_brief(evidence: dict[str, Any]) -> str:
     )
 
 
+def _role_execution_contract_block(stage: dict[str, Any] | None) -> str:
+    if not stage or "role_execution_contract" not in stage:
+        return ""
+    contract = json.dumps(stage["role_execution_contract"], indent=2)
+    return f"""## RoleExecutionContract
+
+```json
+{contract}
+```
+"""
+
+
+def _news_boundary_block(task: dict[str, str]) -> str:
+    if task["skill"] != "tradingagents-news-analyst":
+        return ""
+    return """## News Analyst Evidence Boundaries
+
+- Python candidate fields are not final investment judgments.
+- Do not assign final impact labels without citing article evidence IDs.
+- Snippet-only evidence cannot support high-confidence impact labels.
+"""
+
+
+def _financial_boundary_block(task: dict[str, str]) -> str:
+    if task["skill"] != "tradingagents-financial-report-analyst":
+        return ""
+    return """## Financial Report Evidence Boundaries
+
+- Python section records are not final financial judgments.
+- Do not make major financial claims without section evidence IDs or explicit evidence gaps.
+- Treat 8-K cover pages as source-routing evidence unless the cover page itself contains the cited fact.
+- Prefer Exhibit 99.1 for earnings-release claims when available.
+"""
+
+
+def _market_boundary_block(task: dict[str, str]) -> str:
+    if task["skill"] != "tradingagents-market-analyst":
+        return ""
+    return """## Market Analyst Evidence Boundaries
+
+- Python metric observations are not final technical judgments.
+- Do not make price-versus-moving-average claims without metric evidence IDs.
+- Latest close, 10 EMA, 50 SMA, 200 SMA, RSI, MACD, ATR, and volume claims must match metric evidence.
+- If metric evidence is missing, state the evidence gap instead of using template language.
+"""
+
+
 def _task_text(
     *,
     workflow: dict[str, Any],
@@ -170,6 +288,10 @@ def _task_text(
     forbidden_memory_roots = stage.get("forbidden_memory_roots", []) if stage else []
     memory_update_path = stage.get("memory_update_path", "") if stage else ""
     role_requirements = ROLE_EXPERT_REQUIREMENTS.get(task["skill"], "Role-specific required sections:\n- `## Tool Outputs Used`")
+    role_execution_contract = _role_execution_contract_block(stage)
+    news_boundary = _news_boundary_block(task)
+    financial_boundary = _financial_boundary_block(task)
+    market_boundary = _market_boundary_block(task)
     return f"""# Codex Report Task: {workflow['ticker']} {task_name.removesuffix('_task.md').replace('_', ' ').title()}
 
 Ticker: `{workflow['ticker']}`
@@ -202,6 +324,14 @@ Memory update file: `{_relative_or_absolute(memory_update_path, repo_root) if me
 {GENERAL_EXPERT_WORKFLOW}
 
 {role_requirements}
+
+{role_execution_contract}
+
+{news_boundary}
+
+{financial_boundary}
+
+{market_boundary}
 
 ## Evidence Brief
 
@@ -271,6 +401,13 @@ def prepare_tasks_for_workflow(workflow_path: Path, repo_root: Path) -> dict[str
     task_entries: dict[str, dict[str, str]] = {}
     for task_name, task in TASKS.items():
         task_path = task_dir / task_name
+        output_path = _output_path_for(workflow, task["output_key"])
+        stage = _stage_for_output(workflow, output_path)
+        workflow_output_paths = {
+            prior_stage.get("output_path", "")
+            for prior_stage in workflow.get("stages", [])
+            if prior_stage.get("output_path")
+        }
         task_path.write_text(
             _task_text(
                 workflow=workflow,
@@ -282,13 +419,30 @@ def prepare_tasks_for_workflow(workflow_path: Path, repo_root: Path) -> dict[str
             encoding="utf-8",
         )
         task_entries[task_name] = {
+            "stage": stage.get("stage", "") if stage else "",
             "skill": task["skill"],
             "output_key": task["output_key"],
             "path": _relative_or_absolute(str(task_path), repo_root),
+            "output_path": _relative_or_absolute(output_path, repo_root),
+            "dependency_inputs": [
+                _relative_or_absolute(path, repo_root)
+                for path in (
+                    stage.get("allowed_inputs", [])
+                    if stage
+                    else []
+                )
+                if path in workflow_output_paths
+            ],
             "allowed_input_files": [
                 _relative_or_absolute(path, repo_root)
                 for path in (_stage_for_output(workflow, _output_path_for(workflow, task["output_key"])) or {}).get(
                     "allowed_inputs", []
+                )
+            ],
+            "forbidden_input_files": [
+                _relative_or_absolute(path, repo_root)
+                for path in (_stage_for_output(workflow, _output_path_for(workflow, task["output_key"])) or {}).get(
+                    "forbidden_inputs", []
                 )
             ],
             "allowed_memory_files": [
@@ -297,6 +451,11 @@ def prepare_tasks_for_workflow(workflow_path: Path, repo_root: Path) -> dict[str
                     "allowed_memory_files", []
                 )
             ],
+            "completion_gate": stage.get("completion_gate", "") if stage else "",
+            "required_output_sections": (
+                stage.get("role_execution_contract", {}).get("required_output_sections", []) if stage else []
+            ),
+            "quality_gate": stage.get("role_execution_contract", {}).get("quality_gate", "") if stage else "",
         }
 
     manifest = {

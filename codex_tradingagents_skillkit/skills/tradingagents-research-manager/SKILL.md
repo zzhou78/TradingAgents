@@ -40,6 +40,14 @@ Output:
 - Explain rating/action tension when relevant.
 - Explain why Sell beats Underweight/Hold, or why Underweight/Hold beats Sell.
 
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- No Buy/Hold/Sell/Underweight/Overweight conclusion is valid without a Structured Evidence Matrix.
+- The matrix must show direction, materiality, confidence, tool output, weight, and reason for each material evidence line.
+- If a numeric score is used, show the scoring rule and component arithmetic.
+- Python may prepare input ledgers; Codex makes the final research rating.
+
 Safety boundaries:
 - Do not turn the research rating into a real portfolio instruction.
 - Do not use as real trading advice.

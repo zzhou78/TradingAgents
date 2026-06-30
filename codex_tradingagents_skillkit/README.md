@@ -10,6 +10,7 @@ Contents:
 - `scripts/financial_document_sources.py`: market-aware financial document router used by the Financial Report Analyst evidence packet.
 - `scripts/financial_document_sources_asx.py`: ASX announcement/source collector for `.AX` tickers, with fallback discovery through official ASX company pages and investor-relations URLs when the announcement endpoint fails.
 - `scripts/prepare_codex_report_tasks.py`: prepares task prompts for Codex role execution after evidence collection.
+- `scripts/run_codex_role_workflow.py`: Codex-session workflow controller that reports the next runnable role stage, blocked dependencies, and role-output validation errors.
 - `scripts/write_codex_reports.py`: compatibility wrapper for `prepare_codex_report_tasks.py`; it no longer writes investment reasoning. `write_codex_reports.py is a compatibility wrapper`.
 - `scripts/validate_complete_report.py`: hard contract validator for required headings, date discipline, social-dump limits, action matching, disclaimer, and primary driver.
 - `scripts/validate_quality_review.py`: hard prerequisite checker for the Codex quality-review pass.
@@ -49,6 +50,17 @@ After collection, prepare Codex role task prompts:
 ```
 
 `write_codex_reports.py` is a compatibility wrapper for this task-preparation step. Python prepares `reports/<TICKER>/<DATE>/tasks/*.md`; Codex fills the actual role reports and `complete_report.md`.
+
+Then use the Codex-session controller to advance role execution:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\run_codex_role_workflow.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
+```
+
+The controller does not write investment reasoning. It reads `workflow_state.json`,
+checks pending/completed outputs, blocks stages with pending dependencies, and
+prints the exact next task file and output file for Codex to execute. See
+`docs/CODEX_SESSION_WORKFLOW_RUNBOOK.md` for the full boundary and gate rules.
 
 Validate a Codex-written complete report:
 
@@ -91,6 +103,7 @@ Safety:
 - The task preparer does not call upstream graph orchestration, external LLMs, broker APIs, or market-data vendors; it writes task prompts from the already collected evidence packet.
 - Codex must keep role passes independent: each analyst role reads only its own `evidence/<TICKER>/<DATE>/roles/<role>.md` packet; downstream debate/trading/risk roles read prior reports only at their workflow stage.
 - `workflow_state.json` is the automatic run contract: it lists stage order, allowed inputs, forbidden inputs, allowed memory files, forbidden memory roots, memory update paths, and report paths.
+- `run_codex_role_workflow.py` is the Codex-session controller for that contract; it is not a standalone LLM runner.
 - Each role may read only its own `memory/<TICKER>/<role>/memory.md` and `memory.json`; current evidence overrides stale memory.
 - `debate_record.md` is the report-folder index for the research and risk debate turns.
 - Missing stage outputs are created as pending Markdown files so every path listed in the debate record is findable from `reports/`.

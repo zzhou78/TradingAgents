@@ -30,12 +30,20 @@ Procedure:
 
 Output:
 - `PortfolioDecision` and final decision text for the TradingAgents study flow.
+- Include `## Tool Outputs Used`.
 - Synthesize the risk debate and do not merely repeat the Trader.
 - State Risk debate impact.
 - State financial-report impact if material, or say it was unavailable/immaterial.
 - State industry/theme impact if material, or say it was unavailable/immaterial.
 - Distinguish technical/momentum Sell from fundamental Sell.
 - Explain what would invalidate or improve the final decision.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite `evidence_id`, research decision, trader action, and risk debate impact for the final decision.
+- State how the risk debate changed, confirmed, or constrained the Trader proposal.
+- Python may prepare input ledgers; Codex makes the final portfolio decision.
 
 Safety boundaries:
 - Do not create real buy, sell, rebalance, or broker instructions.

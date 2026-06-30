@@ -85,6 +85,18 @@ Prepare Codex report tasks after evidence collection:
 
 `write_codex_reports.py` is retained as a compatibility wrapper for task preparation. It does not write investment reasoning or fill role reports.
 
+Use the Codex-session controller to find the next runnable role stage:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\run_codex_role_workflow.py --output-dir codex_tradingagents_skillkit\runs\run_2026-06-27
+```
+
+The controller reads `workflow_state.json`, reports pending/completed/blocked
+stages, validates completed role-output sections and memory footer fields, and
+prints the task file Codex should execute next. It is not a standalone LLM
+runner and does not write investment reasoning. The detailed operator contract
+lives in `docs/CODEX_SESSION_WORKFLOW_RUNBOOK.md`.
+
 Validate any generated complete report against the visible debate contract:
 
 ```powershell
@@ -113,6 +125,12 @@ collected `evidence.json`; it does not write role reports, assemble
 APIs, or market-data vendors. Each task declares allowed input files, forbidden
 input files, allowed memory files, forbidden memory roots, output path, and
 memory update path.
+
+The Codex-session controller consumes the same `workflow_state.json` contract
+and blocks downstream stages until their prior role-report dependencies are
+complete. A completed role output must remove the pending marker, include the
+RoleExecutionContract sections, cite structured evidence where required, avoid
+forbidden input references, and include the required `## Memory Update` footer.
 
 The validator is a hard contract checker only. It fails reports that omit
 required visible headings, post-date social discipline, raw-social-dump limits,

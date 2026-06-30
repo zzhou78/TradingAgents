@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import json
+import re
 import sys
 from collections.abc import Callable
 from datetime import datetime, timedelta
@@ -21,10 +23,17 @@ if str(SCRIPT_DIR) not in sys.path:
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from evidence_contracts import RoleExecutionContract, write_jsonl
+from financial_document_evidence import build_financial_document_evidence
 from financial_document_sources import (
     collect_financial_document_sources,
     render_financial_document_packet,
 )
+from fundamentals_evidence import build_fundamentals_evidence
+from market_data_evidence import build_market_data_evidence
+from news_article_evidence import build_news_evidence
+from social_evidence import build_social_evidence
+from stage_input_evidence import build_stage_input_evidence
 
 from tradingagents.agents.utils.agent_utils import resolve_instrument_identity
 from tradingagents.agents.utils.core_stock_tools import get_stock_data
@@ -108,6 +117,345 @@ MEMORY_UPDATE_FOOTER = """## Memory Update
 * Staleness / expiry:
 """
 
+NEWS_MEMORY_UPDATE_SCHEMA = {
+    "durable_facts_to_retain": ["string"],
+    "prior_mistakes_to_avoid": ["string"],
+    "open_questions": ["string"],
+    "evidence_references": ["evidence_id"],
+    "staleness_or_expiry": "string",
+}
+
+FINANCIAL_MEMORY_UPDATE_SCHEMA = {
+    "durable_facts_to_retain": ["string"],
+    "prior_mistakes_to_avoid": ["string"],
+    "open_questions": ["string"],
+    "evidence_references": ["evidence_id"],
+    "staleness_or_expiry": "string",
+}
+
+MARKET_MEMORY_UPDATE_SCHEMA = {
+    "durable_facts_to_retain": ["string"],
+    "prior_mistakes_to_avoid": ["string"],
+    "open_questions": ["string"],
+    "evidence_references": ["evidence_id"],
+    "staleness_or_expiry": "string",
+}
+
+GENERIC_MEMORY_UPDATE_SCHEMA = {
+    "durable_facts_to_retain": ["string"],
+    "prior_mistakes_to_avoid": ["string"],
+    "open_questions": ["string"],
+    "evidence_references": ["evidence_id"],
+    "staleness_or_expiry": "string",
+}
+
+ROLE_CONTRACT_CONFIGS = {
+    "sentiment_analyst": {
+        "forbidden_inputs": ["future_social_posts", "raw_feed_dump_in_final_report", "institutional_sentiment_inference"],
+        "required_tools": ["fetch_stocktwits_messages", "fetch_reddit_posts", "social_evidence_processing"],
+        "optional_tools": ["social_rate_limit_review"],
+        "required_output_sections": ["Tool Outputs Used", "Social Evidence Processing Rules", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "source", "items_reviewed", "usable_ticker_relevant_items", "confidence"],
+        "quality_gate": "sentiment_social_evidence_gate",
+    },
+    "fundamentals_analyst": {
+        "forbidden_inputs": ["future_filings", "uncited_memory", "unsupported_statement_values"],
+        "required_tools": [
+            "get_fundamentals",
+            "get_balance_sheet",
+            "get_cashflow",
+            "get_income_statement",
+            "fundamentals_statement_evidence",
+        ],
+        "optional_tools": ["sector_metric_adapter"],
+        "required_output_sections": [
+            "Tool Outputs Used",
+            "Financial Statement Evidence",
+            "Sector-Specific Metrics",
+            "Evidence Gaps",
+            "Memory Update",
+        ],
+        "required_evidence_citations": ["evidence_id", "source", "section_name", "supports_claims", "confidence"],
+        "quality_gate": "fundamentals_statement_evidence_gate",
+    },
+    "industry_theme_discovery_analyst": {
+        "forbidden_inputs": ["preconfigured_theme_without_evidence", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "theme_evidence_link_validator"],
+        "optional_tools": ["company_ir_search", "sector_source_search"],
+        "required_output_sections": ["Tool Outputs Used", "Theme Evidence Table", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "theme", "subtheme", "evidence_link", "confidence"],
+        "quality_gate": "industry_theme_evidence_gate",
+    },
+    "bull_researcher": {
+        "forbidden_inputs": ["uncited_memory", "generic_bull_template"],
+        "required_tools": ["stage_input_evidence", "strongest_evidence_selector"],
+        "optional_tools": ["falsification_checklist"],
+        "required_output_sections": ["Tool Outputs Used", "Strongest Bull Evidence", "Falsification Conditions", "Response To Bear", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "source_role", "materiality", "confidence"],
+        "quality_gate": "bull_debate_evidence_gate",
+    },
+    "bear_researcher": {
+        "forbidden_inputs": ["uncited_memory", "generic_bear_template"],
+        "required_tools": ["stage_input_evidence", "strongest_evidence_selector"],
+        "optional_tools": ["falsification_checklist"],
+        "required_output_sections": ["Tool Outputs Used", "Strongest Bear Evidence", "Falsification Conditions", "Response To Bull", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "source_role", "materiality", "confidence"],
+        "quality_gate": "bear_debate_evidence_gate",
+    },
+    "research_manager": {
+        "forbidden_inputs": ["unexplained_rating_score", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "evidence_matrix_validator"],
+        "optional_tools": ["scoring_arithmetic_check"],
+        "required_output_sections": ["Tool Outputs Used", "Structured Evidence Matrix", "Rating Rationale", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "direction", "materiality", "confidence", "weight", "reason"],
+        "quality_gate": "research_manager_evidence_matrix_gate",
+    },
+    "trader": {
+        "forbidden_inputs": ["live_order_tool", "broker_tool", "action_reasoning_mismatch"],
+        "required_tools": ["stage_input_evidence", "trader_action_consistency_validator"],
+        "optional_tools": ["paper_price_framework_check"],
+        "required_output_sections": ["Tool Outputs Used", "Action Consistency Check", "Paper-study price framework", "FINAL TRANSACTION PROPOSAL", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "reference_price", "confirmation_level", "invalidation_level"],
+        "quality_gate": "trader_action_consistency_gate",
+    },
+    "aggressive_risk_analyst": {
+        "forbidden_inputs": ["unsupported_upside_template", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "opportunity_risk_checklist"],
+        "optional_tools": ["catalyst_sensitivity_check"],
+        "required_output_sections": ["Tool Outputs Used", "Opportunity Case", "Failure Points", "Response To Prior Risk Arguments", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "upside_driver", "failure_point", "confidence"],
+        "quality_gate": "aggressive_risk_evidence_gate",
+    },
+    "conservative_risk_analyst": {
+        "forbidden_inputs": ["unsupported_downside_template", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "downside_risk_checklist"],
+        "optional_tools": ["drawdown_scenario_check"],
+        "required_output_sections": ["Tool Outputs Used", "Downside Case", "Unsupported Upside Challenges", "Response To Aggressive", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "downside_driver", "evidence_gap", "confidence"],
+        "quality_gate": "conservative_risk_evidence_gate",
+    },
+    "neutral_risk_analyst": {
+        "forbidden_inputs": ["forced_compromise", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "risk_argument_quality_comparison"],
+        "optional_tools": ["risk_balance_matrix"],
+        "required_output_sections": ["Tool Outputs Used", "Risk Argument Quality", "Stronger Risk Side", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "argument_quality", "confidence", "reason"],
+        "quality_gate": "neutral_risk_evidence_gate",
+    },
+    "portfolio_manager": {
+        "forbidden_inputs": ["trader_repeat_only", "broker_tool", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "portfolio_decision_consistency_validator"],
+        "optional_tools": ["risk_adjusted_decision_check"],
+        "required_output_sections": ["Tool Outputs Used", "Risk debate impact", "Final Portfolio Decision", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "research_decision", "trader_action", "risk_debate_impact"],
+        "quality_gate": "portfolio_decision_evidence_gate",
+    },
+    "quality_reviewer": {
+        "forbidden_inputs": ["ignore_hard_validator_errors", "uncited_memory"],
+        "required_tools": ["validate_quality_review", "stage_input_evidence", "evidence_ledger_consistency_check"],
+        "optional_tools": ["complete_report_validator"],
+        "required_output_sections": ["Tool Outputs Used", "Quality Gate Findings", "Evidence Gaps", "Memory Update"],
+        "required_evidence_citations": ["evidence_id", "role_report", "validator_error", "required_fix"],
+        "quality_gate": "quality_reviewer_gate",
+    },
+    "complete_report": {
+        "forbidden_inputs": ["pending_role_output_as_complete", "uncited_memory"],
+        "required_tools": ["stage_input_evidence", "complete_report_assembly_gate"],
+        "optional_tools": ["validate_complete_report"],
+        "required_output_sections": ["Tool Outputs Used", "Complete Report", "Evidence Gaps"],
+        "required_evidence_citations": ["evidence_id", "role_report", "report_section"],
+        "quality_gate": "complete_report_persistence_gate",
+    },
+}
+
+
+def _news_role_execution_contract(
+    *,
+    allowed_inputs: list[str],
+    allowed_memory: list[str] | None = None,
+) -> dict[str, Any]:
+    return RoleExecutionContract(
+        role="news_analyst",
+        allowed_inputs=allowed_inputs,
+        forbidden_inputs=["future_articles", "uncited_memory", "raw_social_feed_as_news"],
+        allowed_memory=allowed_memory or [],
+        forbidden_memory=["other_role_memory", "other_ticker_memory"],
+        required_tools=[
+            "candidate_news_search",
+            "news_article_evidence",
+            "news_evidence_ledger_validator",
+        ],
+        optional_tools=["browser_full_text_check", "company_ir_search"],
+        required_output_sections=[
+            "Tool Outputs Used",
+            "Article Evidence Cards",
+            "News Impact Summary",
+            "Evidence Gaps",
+            "Memory Update",
+        ],
+        required_evidence_citations=[
+            "evidence_id",
+            "source_url",
+            "source_date",
+            "full_text_status",
+        ],
+        quality_gate="news_analyst_quality_gate",
+        memory_update_schema=NEWS_MEMORY_UPDATE_SCHEMA,
+    ).to_dict()
+
+
+def _financial_role_execution_contract(
+    *,
+    allowed_inputs: list[str],
+    allowed_memory: list[str] | None = None,
+) -> dict[str, Any]:
+    return RoleExecutionContract(
+        role="financial_report_analyst",
+        allowed_inputs=allowed_inputs,
+        forbidden_inputs=["future_filings", "uncited_memory", "unsupported_management_commentary"],
+        allowed_memory=allowed_memory or [],
+        forbidden_memory=["other_role_memory", "other_ticker_memory"],
+        required_tools=[
+            "collect_financial_document_sources",
+            "financial_document_evidence",
+            "financial_claim_source_validator",
+        ],
+        optional_tools=["sec_filing_lookup", "asx_announcement_lookup", "company_ir_search", "pdf_text_extraction"],
+        required_output_sections=[
+            "Tool Outputs Used",
+            "Source coverage table",
+            "Claim-Source Table",
+            "Evidence gaps",
+            "Memory Update",
+        ],
+        required_evidence_citations=[
+            "evidence_id",
+            "source_type",
+            "section_name",
+            "filing_date",
+            "evidence_gap",
+        ],
+        quality_gate="financial_report_claim_source_gate",
+        memory_update_schema=FINANCIAL_MEMORY_UPDATE_SCHEMA,
+    ).to_dict()
+
+
+def _market_role_execution_contract(
+    *,
+    allowed_inputs: list[str],
+    allowed_memory: list[str] | None = None,
+) -> dict[str, Any]:
+    return RoleExecutionContract(
+        role="market_analyst",
+        allowed_inputs=allowed_inputs,
+        forbidden_inputs=["future_prices", "uncited_memory", "template_trend_claims"],
+        allowed_memory=allowed_memory or [],
+        forbidden_memory=["other_role_memory", "other_ticker_memory"],
+        required_tools=[
+            "get_verified_market_snapshot",
+            "get_stock_data",
+            "get_indicators",
+            "market_data_evidence",
+            "market_metric_consistency_validator",
+        ],
+        optional_tools=["market_calendar_check", "yfinance_cache_review"],
+        required_output_sections=[
+            "Tool Outputs Used",
+            "Quantitative Regime / Tool Outputs",
+            "Evidence Gaps",
+            "Memory Update",
+        ],
+        required_evidence_citations=[
+            "evidence_id",
+            "metric_name",
+            "value",
+            "relation",
+            "source_date",
+        ],
+        quality_gate="market_metric_consistency_gate",
+        memory_update_schema=MARKET_MEMORY_UPDATE_SCHEMA,
+    ).to_dict()
+
+
+def _generic_role_execution_contract(
+    *,
+    role: str,
+    allowed_inputs: list[str],
+    allowed_memory: list[str] | None = None,
+) -> dict[str, Any]:
+    config = ROLE_CONTRACT_CONFIGS[role]
+    return RoleExecutionContract(
+        role=role,
+        allowed_inputs=allowed_inputs,
+        forbidden_inputs=config["forbidden_inputs"],
+        allowed_memory=allowed_memory or [],
+        forbidden_memory=["other_role_memory", "other_ticker_memory"],
+        required_tools=config["required_tools"],
+        optional_tools=config["optional_tools"],
+        required_output_sections=config["required_output_sections"],
+        required_evidence_citations=config["required_evidence_citations"],
+        quality_gate=config["quality_gate"],
+        memory_update_schema=GENERIC_MEMORY_UPDATE_SCHEMA,
+    ).to_dict()
+
+
+def _contract_role_for_stage(stage_name: str) -> str | None:
+    if stage_name == "sentiment_analyst":
+        return "sentiment_analyst"
+    if stage_name == "fundamentals_analyst":
+        return "fundamentals_analyst"
+    if stage_name == "industry_theme_discovery_analyst":
+        return "industry_theme_discovery_analyst"
+    if stage_name.startswith("bull_researcher_round"):
+        return "bull_researcher"
+    if stage_name.startswith("bear_researcher_round"):
+        return "bear_researcher"
+    if stage_name == "research_manager":
+        return "research_manager"
+    if stage_name == "trader":
+        return "trader"
+    if stage_name.startswith("aggressive_risk_round"):
+        return "aggressive_risk_analyst"
+    if stage_name.startswith("conservative_risk_round"):
+        return "conservative_risk_analyst"
+    if stage_name.startswith("neutral_risk_round"):
+        return "neutral_risk_analyst"
+    if stage_name == "portfolio_manager":
+        return "portfolio_manager"
+    if stage_name == "complete_report":
+        return "complete_report"
+    if stage_name == "quality_review":
+        return "quality_reviewer"
+    return None
+
+
+def _apply_stage_contract(stage: dict[str, Any]) -> None:
+    if stage["stage"] == "news_analyst":
+        stage["role_execution_contract"] = _news_role_execution_contract(
+            allowed_inputs=stage["allowed_inputs"],
+            allowed_memory=stage["allowed_memory_files"],
+        )
+        return
+    if stage["stage"] == "market_analyst":
+        stage["role_execution_contract"] = _market_role_execution_contract(
+            allowed_inputs=stage["allowed_inputs"],
+            allowed_memory=stage["allowed_memory_files"],
+        )
+        return
+    if stage["stage"] == "financial_report_analyst":
+        stage["role_execution_contract"] = _financial_role_execution_contract(
+            allowed_inputs=stage["allowed_inputs"],
+            allowed_memory=stage["allowed_memory_files"],
+        )
+        return
+    contract_role = _contract_role_for_stage(stage["stage"])
+    if contract_role:
+        stage["role_execution_contract"] = _generic_role_execution_contract(
+            role=contract_role,
+            allowed_inputs=stage["allowed_inputs"],
+            allowed_memory=stage["allowed_memory_files"],
+        )
+
 
 def _split_tickers(raw: str) -> list[str]:
     return [part.strip().upper() for part in raw.replace("\n", ",").split(",") if part.strip()]
@@ -138,6 +486,221 @@ def _call_tool(func: Callable[..., Any], **kwargs: Any) -> dict[str, Any]:
 
 def _clean_tool_text(value: str) -> str:
     return "\n".join(line.rstrip() for line in value.replace("\r\n", "\n").split("\n"))
+
+
+def _line_date(line: str) -> str | None:
+    match = re.search(r"\[(\d{4}-\d{2}-\d{2})(?:T|\]|\s)", line)
+    return match.group(1) if match else None
+
+
+def _social_label_counts(lines: list[str]) -> tuple[int, int, int]:
+    bullish = bearish = unlabeled = 0
+    for line in lines:
+        if "· Bullish]" in line:
+            bullish += 1
+        elif "· Bearish]" in line:
+            bearish += 1
+        elif "· no-label]" in line:
+            unlabeled += 1
+    return bullish, bearish, unlabeled
+
+
+def _filter_social_output_as_of(call: dict[str, Any], trade_date: str) -> dict[str, Any]:
+    if call.get("status") != "ok" or not call.get("output"):
+        return call
+    output = str(call["output"])
+    kept_lines: list[str] = []
+    removed = 0
+    for line in output.splitlines():
+        date = _line_date(line)
+        if date and date > trade_date:
+            removed += 1
+            continue
+        kept_lines.append(line)
+    if not removed:
+        return call
+
+    if kept_lines and kept_lines[0].startswith("Bullish:"):
+        message_lines = [line for line in kept_lines if _line_date(line)]
+        bullish, bearish, unlabeled = _social_label_counts(message_lines)
+        total = bullish + bearish + unlabeled
+        bull_pct = round(100 * bullish / total) if total else 0
+        bear_pct = round(100 * bearish / total) if total else 0
+        kept_lines[0] = (
+            f"Bullish: {bullish} ({bull_pct}%) · "
+            f"Bearish: {bearish} ({bear_pct}%) · "
+            f"Unlabeled: {unlabeled} · "
+            f"Total: {total} messages on or before {trade_date}"
+        )
+    suffix = "item" if removed == 1 else "items"
+    kept_lines.append(f"As-of filter: removed {removed} post-trade-date social {suffix} after {trade_date}.")
+    call["output"] = "\n".join(kept_lines).strip()
+    call.setdefault("as_of_filter", {})
+    call["as_of_filter"] = {
+        "trade_date": trade_date,
+        "removed_post_trade_date_items": removed,
+    }
+    return call
+
+
+def _candidate_from_mapping(payload: dict[str, Any]) -> dict[str, str]:
+    title = payload.get("title") or payload.get("headline") or payload.get("name") or ""
+    source = payload.get("source") or payload.get("publisher") or payload.get("site") or ""
+    if isinstance(source, dict):
+        source = source.get("name") or source.get("publisher") or ""
+    url = payload.get("url") or payload.get("link") or payload.get("article_url") or ""
+    published_date = (
+        payload.get("published_date")
+        or payload.get("date")
+        or payload.get("published")
+        or payload.get("datetime")
+        or payload.get("time_published")
+        or ""
+    )
+    if published_date:
+        published_date = str(published_date)[:10]
+    snippet = payload.get("snippet") or payload.get("summary") or payload.get("description") or ""
+    full_text = payload.get("full_text") or payload.get("content") or payload.get("body") or ""
+    return {
+        "title": str(title).strip(),
+        "source": str(source).strip(),
+        "url": str(url).strip(),
+        "published_date": str(published_date).strip(),
+        "snippet": str(snippet).strip(),
+        "full_text": str(full_text).strip(),
+    }
+
+
+def _fallback_candidates_from_text(
+    text: str,
+    *,
+    default_source: str = "",
+    default_date: str = "",
+) -> list[dict[str, str]]:
+    if re.search(r"\bNo .*news found\b", text, re.IGNORECASE):
+        return []
+    candidates: list[dict[str, str]] = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip(" -\t")
+        if not line:
+            continue
+        url_match = re.search(r"https?://\S+", line)
+        date_match = re.search(r"\b(\d{4}-\d{2}-\d{2})\b", line)
+        title = line
+        if url_match:
+            title = title.replace(url_match.group(0), "").strip(" -|")
+        if date_match:
+            title = title.replace(date_match.group(1), "").strip(" -|")
+        if not title:
+            title = line[:120]
+        candidates.append(
+            {
+                "title": title[:240],
+                "source": default_source,
+                "url": url_match.group(0) if url_match else "",
+                "published_date": date_match.group(1) if date_match else default_date,
+                "snippet": line,
+                "full_text": "",
+            }
+        )
+    return candidates
+
+
+def _markdown_news_candidates(text: str, *, default_source: str, default_date: str) -> list[dict[str, str]]:
+    candidates: list[dict[str, str]] = []
+    blocks = re.split(r"(?=^###\s+)", text, flags=re.MULTILINE)
+    for block in blocks:
+        block = block.strip()
+        if not block.startswith("### "):
+            continue
+        lines = [line.strip() for line in block.splitlines() if line.strip()]
+        if not lines:
+            continue
+        header = lines[0].removeprefix("###").strip()
+        source = default_source
+        source_match = re.search(r"\(source:\s*([^)]+)\)\s*$", header)
+        if source_match:
+            source = source_match.group(1).strip()
+            header = header[: source_match.start()].strip()
+        url = ""
+        snippet_lines: list[str] = []
+        for line in lines[1:]:
+            if line.lower().startswith("link:"):
+                url = line.split(":", 1)[1].strip()
+            elif not line.startswith("###"):
+                snippet_lines.append(line)
+        if not header or header.lower().startswith("link:"):
+            continue
+        candidates.append(
+            {
+                "title": header,
+                "source": source,
+                "url": url,
+                "published_date": default_date,
+                "snippet": " ".join(snippet_lines).strip(),
+                "full_text": "",
+            }
+        )
+    return candidates
+
+
+def _extract_news_candidates_from_call(
+    call: dict[str, Any],
+    *,
+    default_source: str,
+    default_date: str,
+) -> list[dict[str, str]]:
+    if call.get("status") != "ok" or not call.get("output"):
+        return []
+    output = str(call["output"])
+    markdown_candidates = _markdown_news_candidates(
+        output,
+        default_source=default_source,
+        default_date=default_date,
+    )
+    if markdown_candidates:
+        return markdown_candidates
+    parsed: Any | None = None
+    try:
+        parsed = json.loads(output)
+    except json.JSONDecodeError:
+        try:
+            parsed = ast.literal_eval(output)
+        except (ValueError, SyntaxError):
+            parsed = None
+
+    records: list[Any]
+    if isinstance(parsed, list):
+        records = parsed
+    elif isinstance(parsed, dict):
+        for key in ("articles", "news", "items", "results"):
+            if isinstance(parsed.get(key), list):
+                records = parsed[key]
+                break
+        else:
+            records = [parsed]
+    else:
+        return _fallback_candidates_from_text(output, default_source=default_source, default_date=default_date)
+
+    candidates = [
+        _candidate_from_mapping(record)
+        for record in records
+        if isinstance(record, dict)
+    ]
+    return [candidate for candidate in candidates if candidate["title"] or candidate["url"]]
+
+
+def _news_candidates_from_calls(calls: dict[str, dict[str, Any]], *, trade_date: str) -> list[dict[str, str]]:
+    candidates: list[dict[str, str]] = []
+    for tool_name in ("get_news", "get_global_news"):
+        candidates.extend(
+            _extract_news_candidates_from_call(
+                calls.get(tool_name, {}),
+                default_source=tool_name,
+                default_date=trade_date,
+            )
+        )
+    return candidates
 
 
 def _build_config(output_dir: Path) -> dict[str, Any]:
@@ -194,6 +757,8 @@ def _collect_social(ticker: str, trade_date: str, lookback_days: int) -> dict[st
             inter_request_delay=0.0,
         )
     }
+    for key in ("fetch_stocktwits_messages", "fetch_reddit_posts"):
+        calls[key] = _filter_social_output_as_of(calls[key], trade_date)
     return {"skill": ROLE_SKILLS["social"], "tool_calls": calls}
 
 
@@ -253,6 +818,7 @@ def _collect_financial_report(ticker: str, trade_date: str, identity: dict[str, 
     packet = collect_financial_document_sources(ticker, trade_date, identity=identity)
     return {
         "skill": ROLE_SKILLS[FINANCIAL_REPORT_ROLE],
+        "structured_packet": packet,
         "tool_calls": {
             "collect_financial_document_sources": {
                 "status": packet.get("status", "unknown"),
@@ -521,8 +1087,10 @@ def _workflow_state(
     max_debate_rounds: int,
     max_risk_discuss_rounds: int,
     memory_map: dict[str, dict[str, str]] | None = None,
+    role_evidence_paths: dict[str, list[str]] | None = None,
 ) -> dict[str, Any]:
     memory_map = memory_map or _ensure_role_memories(ticker, trade_date)
+    role_evidence_paths = role_evidence_paths or {}
     paths = _report_paths(
         report_dir,
         selected_analysts,
@@ -533,12 +1101,12 @@ def _workflow_state(
     for role in selected_analysts:
         stage_name = ANALYST_STAGE_NAMES[role]
         output_key = "sentiment_report" if role == "social" else f"{role}_report"
-        stages.append(
-            _attach_memory_contract(
-                {
+        allowed_inputs = [role_packet_paths[role], *role_evidence_paths.get(role, [])]
+        stage = _attach_memory_contract(
+            {
                 "stage": stage_name,
                 "skill": ROLE_SKILLS[role],
-                "allowed_inputs": [role_packet_paths[role]],
+                "allowed_inputs": allowed_inputs,
                 "forbidden_inputs": [
                     path
                     for other_role, path in role_packet_paths.items()
@@ -546,49 +1114,54 @@ def _workflow_state(
                 ],
                 "output_path": paths[output_key],
                 "completion_gate": f"write {output_key} in TradingAgents analyst style",
-                },
-                ticker=ticker,
-                memory_map=memory_map,
-                report_dir=report_dir,
-            )
-        )
-
-    analyst_outputs = [
-        paths["sentiment_report" if role == "social" else f"{role}_report"]
-        for role in selected_analysts
-    ]
-    stages.append(
-        _attach_memory_contract(
-            {
-            "stage": "financial_report_analyst",
-            "skill": "tradingagents-financial-report-analyst",
-            "allowed_inputs": analyst_outputs
-            + [role_packet_paths[FINANCIAL_REPORT_ROLE], str(evidence_path)],
-            "forbidden_inputs": [],
-            "output_path": paths["financial_report"],
-            "completion_gate": "write financial_report.md before industry/theme discovery",
             },
             ticker=ticker,
             memory_map=memory_map,
             report_dir=report_dir,
         )
+        _apply_stage_contract(stage)
+        stages.append(stage)
+
+    analyst_outputs = [
+        paths["sentiment_report" if role == "social" else f"{role}_report"]
+        for role in selected_analysts
+    ]
+    financial_allowed_inputs = (
+        analyst_outputs
+        + [role_packet_paths[FINANCIAL_REPORT_ROLE], str(evidence_path)]
+        + role_evidence_paths.get(FINANCIAL_REPORT_ROLE, [])
     )
+    financial_stage = _attach_memory_contract(
+        {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "allowed_inputs": financial_allowed_inputs,
+            "forbidden_inputs": [],
+            "output_path": paths["financial_report"],
+            "completion_gate": "write financial_report.md before industry/theme discovery",
+        },
+        ticker=ticker,
+        memory_map=memory_map,
+        report_dir=report_dir,
+    )
+    _apply_stage_contract(financial_stage)
+    stages.append(financial_stage)
     analyst_outputs.append(paths["financial_report"])
-    stages.append(
-        _attach_memory_contract(
-            {
+    theme_stage = _attach_memory_contract(
+        {
             "stage": "industry_theme_discovery_analyst",
             "skill": "tradingagents-industry-theme-discovery-analyst",
             "allowed_inputs": analyst_outputs + [str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["industry_theme_report"],
             "completion_gate": "discover evidence-grounded industry/theme context before research debate",
-            },
-            ticker=ticker,
-            memory_map=memory_map,
-            report_dir=report_dir,
-        )
+        },
+        ticker=ticker,
+        memory_map=memory_map,
+        report_dir=report_dir,
     )
+    _apply_stage_contract(theme_stage)
+    stages.append(theme_stage)
     analyst_outputs.append(paths["industry_theme_report"])
     downstream = []
     completion_gates = {
@@ -672,9 +1245,8 @@ def _workflow_state(
         )
     )
     for stage_name, skill, allowed_inputs in downstream:
-        stages.append(
-            _attach_memory_contract(
-                {
+        downstream_stage = _attach_memory_contract(
+            {
                 "stage": stage_name,
                 "skill": skill,
                 "allowed_inputs": allowed_inputs,
@@ -683,46 +1255,47 @@ def _workflow_state(
                 "completion_gate": completion_gates.get(
                     stage_name, "write the visible debate-stage output before advancing"
                 ),
-                },
-                ticker=ticker,
-                memory_map=memory_map,
-                report_dir=report_dir,
-            )
+            },
+            ticker=ticker,
+            memory_map=memory_map,
+            report_dir=report_dir,
         )
+        _apply_stage_contract(downstream_stage)
+        stages.append(downstream_stage)
     complete_report_inputs = analyst_outputs + [
         paths[stage_name]
         for stage_name, _, _ in downstream
     ]
-    stages.append(
-        _attach_memory_contract(
-            {
+    complete_stage = _attach_memory_contract(
+        {
             "stage": "complete_report",
             "skill": "tradingagents-run-persistence",
             "allowed_inputs": complete_report_inputs,
             "forbidden_inputs": [],
             "output_path": paths["complete_report"],
             "completion_gate": "assemble TradingAgents-style complete_report.md",
-            },
-            ticker=ticker,
-            memory_map=memory_map,
-            report_dir=report_dir,
-        )
+        },
+        ticker=ticker,
+        memory_map=memory_map,
+        report_dir=report_dir,
     )
-    stages.append(
-        _attach_memory_contract(
-            {
+    _apply_stage_contract(complete_stage)
+    stages.append(complete_stage)
+    quality_stage = _attach_memory_contract(
+        {
             "stage": "quality_review",
             "skill": "tradingagents-quality-reviewer",
             "allowed_inputs": complete_report_inputs + [paths["complete_report"], str(evidence_path)],
             "forbidden_inputs": [],
             "output_path": paths["quality_review"],
             "completion_gate": "write quality_review.md and quality_gate.json",
-            },
-            ticker=ticker,
-            memory_map=memory_map,
-            report_dir=report_dir,
-        )
+        },
+        ticker=ticker,
+        memory_map=memory_map,
+        report_dir=report_dir,
     )
+    _apply_stage_contract(quality_stage)
+    stages.append(quality_stage)
 
     return {
         "ticker": ticker,
@@ -834,6 +1407,34 @@ def _write_stage_scaffolds(workflow: dict[str, Any]) -> None:
         path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _write_stage_input_evidence(workflow: dict[str, Any], evidence_dir: Path) -> None:
+    retrieval_time = datetime.now().astimezone().isoformat(timespec="seconds")
+    for stage in workflow["stages"]:
+        contract = stage.get("role_execution_contract", {})
+        if "stage_input_evidence" not in contract.get("required_tools", []):
+            continue
+        stage_dir = evidence_dir / "stage_inputs" / stage["stage"]
+        stage_dir.mkdir(parents=True, exist_ok=True)
+        input_records_path = stage_dir / "input_records.json"
+        ledger_path = stage_dir / "evidence_ledger.jsonl"
+        base_inputs = list(stage["allowed_inputs"])
+        stage_evidence = build_stage_input_evidence(
+            ticker=workflow["ticker"],
+            trade_date=workflow["trade_date"],
+            role=contract["role"],
+            allowed_inputs=base_inputs,
+            structured_output_path=str(input_records_path),
+            retrieval_time=retrieval_time,
+        )
+        input_records_path.write_text(
+            json.dumps(stage_evidence["input_records"], indent=2),
+            encoding="utf-8",
+        )
+        write_jsonl(ledger_path, stage_evidence["ledger_entries"])
+        stage["allowed_inputs"] = [*base_inputs, str(input_records_path), str(ledger_path)]
+        _apply_stage_contract(stage)
+
+
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
     max_debate_rounds = max(1, args.max_debate_rounds)
@@ -892,6 +1493,134 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         packet_path = evidence_dir / "role_packets.md"
         role_dir = evidence_dir / "roles"
         role_dir.mkdir(exist_ok=True)
+        role_evidence_paths: dict[str, list[str]] = {}
+        if "market" in evidence["roles"]:
+            market_dir = evidence_dir / "market"
+            market_dir.mkdir(exist_ok=True)
+            observations_path = market_dir / "quantitative_observations.json"
+            market_ledger_path = market_dir / "evidence_ledger.jsonl"
+            market_evidence = build_market_data_evidence(
+                ticker=ticker,
+                trade_date=args.trade_date,
+                tool_calls=evidence["roles"]["market"]["tool_calls"],
+                structured_output_path=str(observations_path),
+                retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+            )
+            observations_path.write_text(
+                json.dumps(market_evidence["metric_observations"], indent=2),
+                encoding="utf-8",
+            )
+            write_jsonl(market_ledger_path, market_evidence["ledger_entries"])
+            role_evidence_paths["market"] = [str(observations_path), str(market_ledger_path)]
+            evidence["roles"]["market"]["structured_evidence"] = {
+                "metric_observations": str(observations_path),
+                "evidence_ledger": str(market_ledger_path),
+                "tool_name": "market_data_evidence",
+            }
+        if "news" in evidence["roles"]:
+            news_dir = evidence_dir / "news"
+            news_dir.mkdir(exist_ok=True)
+            article_cards_path = news_dir / "article_cards.json"
+            ledger_path = news_dir / "evidence_ledger.jsonl"
+            news_evidence = build_news_evidence(
+                ticker=ticker,
+                trade_date=args.trade_date,
+                candidates=_news_candidates_from_calls(
+                    evidence["roles"]["news"]["tool_calls"],
+                    trade_date=args.trade_date,
+                ),
+                structured_output_path=str(article_cards_path),
+                retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+            )
+            article_cards_path.write_text(
+                json.dumps(news_evidence["article_cards"], indent=2),
+                encoding="utf-8",
+            )
+            write_jsonl(ledger_path, news_evidence["ledger_entries"])
+            role_evidence_paths["news"] = [str(article_cards_path), str(ledger_path)]
+            evidence["roles"]["news"]["structured_evidence"] = {
+                "article_cards": str(article_cards_path),
+                "evidence_ledger": str(ledger_path),
+                "tool_name": "news_article_evidence",
+            }
+        if "social" in evidence["roles"]:
+            social_dir = evidence_dir / "social"
+            social_dir.mkdir(exist_ok=True)
+            social_summary_path = social_dir / "social_summary.json"
+            social_ledger_path = social_dir / "evidence_ledger.jsonl"
+            social_evidence = build_social_evidence(
+                ticker=ticker,
+                trade_date=args.trade_date,
+                tool_calls=evidence["roles"]["social"]["tool_calls"],
+                structured_output_path=str(social_summary_path),
+                retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+            )
+            social_summary_path.write_text(
+                json.dumps(
+                    {
+                        "social_summary": social_evidence["social_summary"],
+                        "sources": social_evidence["sources"],
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+            write_jsonl(social_ledger_path, social_evidence["ledger_entries"])
+            role_evidence_paths["social"] = [str(social_summary_path), str(social_ledger_path)]
+            evidence["roles"]["social"]["structured_evidence"] = {
+                "social_summary": str(social_summary_path),
+                "evidence_ledger": str(social_ledger_path),
+                "tool_name": "social_evidence_processing",
+            }
+        if "fundamentals" in evidence["roles"]:
+            fundamentals_dir = evidence_dir / "fundamentals"
+            fundamentals_dir.mkdir(exist_ok=True)
+            statement_records_path = fundamentals_dir / "statement_records.json"
+            fundamentals_ledger_path = fundamentals_dir / "evidence_ledger.jsonl"
+            fundamentals_evidence = build_fundamentals_evidence(
+                ticker=ticker,
+                trade_date=args.trade_date,
+                identity=identity,
+                tool_calls=evidence["roles"]["fundamentals"]["tool_calls"],
+                structured_output_path=str(statement_records_path),
+                retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+            )
+            statement_records_path.write_text(
+                json.dumps(fundamentals_evidence["statement_records"], indent=2),
+                encoding="utf-8",
+            )
+            write_jsonl(fundamentals_ledger_path, fundamentals_evidence["ledger_entries"])
+            role_evidence_paths["fundamentals"] = [str(statement_records_path), str(fundamentals_ledger_path)]
+            evidence["roles"]["fundamentals"]["structured_evidence"] = {
+                "statement_records": str(statement_records_path),
+                "evidence_ledger": str(fundamentals_ledger_path),
+                "tool_name": "fundamentals_statement_evidence",
+            }
+        financial_dir = evidence_dir / "financial_report"
+        financial_dir.mkdir(exist_ok=True)
+        financial_section_records_path = financial_dir / "section_records.json"
+        financial_ledger_path = financial_dir / "evidence_ledger.jsonl"
+        financial_evidence = build_financial_document_evidence(
+            ticker=ticker,
+            trade_date=args.trade_date,
+            packet=evidence["roles"][FINANCIAL_REPORT_ROLE].get("structured_packet", {}),
+            structured_output_path=str(financial_section_records_path),
+            retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+        )
+        financial_section_records_path.write_text(
+            json.dumps(financial_evidence["section_records"], indent=2),
+            encoding="utf-8",
+        )
+        write_jsonl(financial_ledger_path, financial_evidence["ledger_entries"])
+        role_evidence_paths[FINANCIAL_REPORT_ROLE] = [
+            str(financial_section_records_path),
+            str(financial_ledger_path),
+        ]
+        evidence["roles"][FINANCIAL_REPORT_ROLE]["structured_evidence"] = {
+            "section_records": str(financial_section_records_path),
+            "evidence_ledger": str(financial_ledger_path),
+            "tool_name": "financial_document_evidence",
+        }
         evidence_path.write_text(json.dumps(evidence, indent=2), encoding="utf-8")
         _write_role_packets(evidence, packet_path)
         role_packet_paths = {}
@@ -910,7 +1639,9 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             report_dir,
             max_debate_rounds,
             max_risk_discuss_rounds,
+            role_evidence_paths=role_evidence_paths,
         )
+        _write_stage_input_evidence(workflow, evidence_dir)
         workflow_path.write_text(
             json.dumps(workflow, indent=2),
             encoding="utf-8",

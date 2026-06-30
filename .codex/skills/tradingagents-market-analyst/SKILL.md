@@ -13,6 +13,7 @@ Source files scanned:
 Inputs:
 - Ticker or instrument, company name if available, trade date, and asset type.
 - Tool outputs from `get_stock_data`, `get_indicators`, and `get_verified_market_snapshot`.
+- Structured `market_data_evidence` outputs when available: `quantitative_observations.json` and `evidence_ledger.jsonl`.
 
 Prompt contract:
 - The role must select up to 8 indicators that are complementary and non-redundant.
@@ -28,6 +29,16 @@ Procedure:
 3. Treat the verified market snapshot as the source of truth for exact OHLCV, price-level, volume, and indicator claims.
 4. If tools conflict or data is missing, flag the discrepancy instead of inventing a reconciliation.
 5. Write an evidence-grounded market report with a markdown summary table.
+
+## RoleExecutionContract Rules
+
+- Read and follow the supplied RoleExecutionContract before writing the report.
+- Use only allowed inputs and allowed memory.
+- Cite `evidence_id`, `metric_name`, tool name, value, relation, and source date for every material technical claim.
+- Python metric observations are not final technical judgments; Codex must interpret them as the Market Analyst.
+- Do not make price-versus-moving-average claims without metric evidence IDs.
+- Claims about latest close, 10 EMA, 50 SMA, 200 SMA, RSI, MACD, ATR, and volume must match metric evidence.
+- If metric evidence is missing or unavailable, state the evidence gap instead of using template language.
 
 Output:
 - `market_report`: a detailed technical and market report for downstream researchers, trader, and risk reviewers.

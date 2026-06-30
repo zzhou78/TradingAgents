@@ -33,6 +33,8 @@ Complete report assembly:
 - `complete_report.md` should mimic original TradingAgents while making debate turns visible.
 - Python scripts may prepare Codex task prompts, but Codex role execution writes the analytical reports.
 - `write_codex_reports.py` is a compatibility wrapper for task preparation, not a reasoning writer.
+- Include `## Tool Outputs Used` and cite stage input evidence IDs when assembling final report sections.
+- Do not mark `complete_report.md` as a completed successful review when a required role output is pending or a required source collection failed unless Quality Reviewer explicitly passes with documented limitations.
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
 - I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, `### Fundamentals Analyst`, `### Financial Report Analyst`, and `### Industry / Theme Discovery Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
@@ -49,6 +51,14 @@ The hard contract validator must pass before the report is accepted.
 The quality-reviewer skill must review analytical quality separately from the hard validator.
 The report must identify the primary driver of rating.
 The report must distinguish research rating from trader action when they differ.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Use stage input records and evidence ledgers when supplied.
+- Python may assemble paths and validate gates; Codex writes report synthesis.
+- The complete report must summarize filing evidence without overstating unsupported section-level details.
+- The complete report must not paste full raw social feeds.
 
 Required sentiment table:
 - Source

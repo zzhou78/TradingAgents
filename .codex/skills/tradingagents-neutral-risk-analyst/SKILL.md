@@ -30,6 +30,14 @@ Procedure:
 Output:
 - Updated neutral-side risk debate argument.
 - For Neutral Risk Round 1, weigh Aggressive vs Conservative and state which risk argument is stronger.
+- Include `## Tool Outputs Used`, `## Risk Argument Quality`, and `## Stronger Risk Side`.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite `evidence_id`, argument quality, confidence, and reason for each major risk comparison.
+- Do not force compromise when evidence quality is one-sided.
+- Python may prepare input ledgers; Codex makes the risk judgment.
 
 Safety boundaries:
 - Do not hide uncertainty behind a forced compromise.

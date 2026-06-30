@@ -30,6 +30,14 @@ Procedure:
 Output:
 - Updated bull-side debate argument in the investment debate state.
 - For Bull Round 1, state the strongest positive thesis, cite analyst evidence, and state what Bear must disprove.
+- Include `## Tool Outputs Used`, `## Strongest Bull Evidence`, `## Falsification Conditions`, and `## Response To Bear`.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Cite `evidence_id`, source role, materiality, confidence, and reason for every major Bull claim.
+- Directly answer Bear's strongest available argument when one exists.
+- Do not use generic Bull template language that is not supported by upstream evidence.
 
 Safety boundaries:
 - Do not ignore material risks that are explicit in the analyst reports.

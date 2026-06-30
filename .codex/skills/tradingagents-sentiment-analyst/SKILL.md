@@ -57,7 +57,18 @@ When StockTwits or Reddit evidence is available:
 
 Output:
 - `sentiment_report`: overall sentiment label, numeric score when supported, confidence, key themes, and evidence notes.
+- Include `## Tool Outputs Used`.
+- Include `## Social Evidence Processing Rules` as the evidence summary table, not as instructional prose.
 - Enforce as-of-date discipline: exclude social posts after the report trade date from the role report. Filter noisy off-ticker posts, label StockTwits/Reddit as retail-heavy color, and lower confidence to low or low-to-medium when the retained sample is noisy, sparse, or uneven.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Use `social_summary.json` and `evidence_ledger.jsonl` when supplied.
+- Cite `evidence_id`, source, reviewed item count, usable item count, label split, confidence, and limitations for every material sentiment claim.
+- Python may classify, count, filter, and summarize social items; Codex makes the final sentiment interpretation.
+- Do not infer institutional sentiment from StockTwits or Reddit.
+- Do not paste full raw feeds into the final report.
 
 Safety boundaries:
 - Do not infer broad market sentiment from one noisy post or headline.

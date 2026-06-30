@@ -31,7 +31,16 @@ Procedure:
 Output:
 - `fundamentals_report`: a financial and business-quality report for downstream debate and trading roles.
 - Include `## Tool Outputs Used` listing the fundamentals, balance-sheet, cash-flow, and income-statement tools used.
+- Include `## Financial Statement Evidence` with cited statement evidence IDs.
 - Include `## Sector-Specific Metrics` with the relevant metric set or explicit evidence gaps when the packet does not support those metrics.
+
+## RoleExecutionContract Rules
+
+- Read the RoleExecutionContract and use only allowed inputs and allowed memory.
+- Use `statement_records.json` and `evidence_ledger.jsonl` when supplied.
+- Cite `evidence_id`, source, section name, supported claims, confidence, and limitations for every major fundamentals claim.
+- Python may normalize statement evidence and sector metric expectations; Codex makes the final fundamentals interpretation.
+- Mark unsupported sector metrics as evidence gaps instead of using generic ratio language.
 
 Safety boundaries:
 - Do not fabricate statement values, ratios, filings, or guidance where tools do not supply them.
