@@ -35,6 +35,7 @@ Complete report assembly:
 - `write_codex_reports.py` is a compatibility wrapper for task preparation, not a reasoning writer.
 - Include `## Tool Outputs Used` and cite stage input evidence IDs when assembling final report sections.
 - Do not mark `complete_report.md` as a completed successful review when a required role output is pending or a required source collection failed unless Quality Reviewer explicitly passes with documented limitations.
+- Do not mark the workflow complete when `quality_remediation_plan.json` has pending remediation tasks. `next_remediation_task.md` must be executed and the workflow rerun until the quality gate passes or a true external blocker is documented.
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
 - I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, `### Fundamentals Analyst`, `### Financial Report Analyst`, and `### Industry / Theme Discovery Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
@@ -59,6 +60,22 @@ The report must distinguish research rating from trader action when they differ.
 - Python may assemble paths and validate gates; Codex writes report synthesis.
 - The complete report must summarize filing evidence without overstating unsupported section-level details.
 - The complete report must not paste full raw social feeds.
+
+## Closed Remediation Persistence
+
+When quality validation fails, persist both `quality_remediation_plan.json` and
+`next_remediation_task.md`. A run with a pending remediation task is
+validation-only, not complete. The persisted next task must tell Codex what to
+fix, which tests to run, and how to rerun the evidence/report workflow. Completion
+requires that the quality gate passes or a true external blocker is documented.
+
+## Standing Auto-Remediation Approval
+
+Option 1 is approved for all future TradingAgents workflows. Persisted
+remediation tasks are approved continuation stages, so Codex must continue automatically; do not ask the user to proceed before executing
+`next_remediation_task.md`. The workflow
+remains incomplete until reruns prove the quality gate passes or a true external
+blocker is documented.
 
 Required sentiment table:
 - Source

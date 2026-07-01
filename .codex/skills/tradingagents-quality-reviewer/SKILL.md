@@ -17,18 +17,20 @@ Procedure:
 3. Treat `validate_complete_report.py` as a hard contract validator only; this skill is the analytical quality gate.
 4. Use `## Tool Outputs Used` to record validators, evidence files, role reports, and source packets inspected.
 5. Flag unsupported reasoning, missing ambiguity, overconfident social/news interpretation, contradictory ratings/actions, and unexplained primary drivers.
-6. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite missing role outputs.
+6. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite quality errors.
 7. Fail completed role reports that omit Tool Outputs Used, Article Evidence Cards for News Analyst, Quantitative Regime / Tool Outputs for Market Analyst, Claim-Source Table for Financial Report Analyst, or Structured Evidence Matrix for Research Manager.
 8. ASX reports are not complete when ASX source collection fails. If official ASX announcements or investor-relations evidence cannot be collected, fail quality_gate.json or leave completion pending with an explicit evidence gap.
 9. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
 10. Fail pending role outputs unless the final gate explicitly documents a limitation and leaves normal completion pending.
 11. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
+12. A failed quality gate is not a terminal artifact. Ensure `quality_remediation_plan.json` and `next_remediation_task.md` exist, then Codex must implement the next remediation task, rerun the evidence/report workflow, and continue until the quality gate passes or a true external blocker is documented.
 
 ## News Analyst Evidence Gate
 
 Fail the report when:
 - news impact label lacks article evidence citation;
 - snippet-only news evidence cannot be high confidence;
+- all available news article cards are snippet-only and the report is presented as review-grade complete;
 - News Analyst uses post-trade-date evidence as valid;
 - News Analyst omits article evidence cards for material news claims.
 
@@ -37,6 +39,9 @@ Fail the report when:
 Fail the report when:
 - financial claim lacks section evidence citation;
 - financial evidence gap missing for unavailable section;
+- structured financial evidence lacks extracted MD&A;
+- an earnings-related 8-K cover page is available but Exhibit 99.1 or equivalent earnings-release exhibit is unavailable;
+- structured financial evidence lacks any extracted cash-flow statement section;
 - Financial Report Analyst makes management-commentary, guidance, segment, capex, liquidity, risk-factor, income-statement, balance-sheet, or cash-flow claims without `evidence_id` citation or an explicit evidence gap;
 - Financial Report Analyst treats an 8-K cover page as the full earnings release when Exhibit 99.1 is unavailable.
 
@@ -64,8 +69,27 @@ Fail the report when:
 Output:
 - `quality_review.md`: concise narrative review with issues and required fixes.
 - `quality_gate.json`: machine-readable gate result.
+- `quality_remediation_plan.json`: machine-readable implementation queue when the quality gate fails.
+- `next_remediation_task.md`: the next actionable remediation task Codex must execute before claiming workflow completion.
 - Include `## Tool Outputs Used`.
 - Include `## Quality Gate Findings`.
+
+## Closed Self-Improvement Loop
+
+When `quality_gate.json` fails, do not stop at diagnosis. The next runnable
+workflow stage is remediation. Codex must read `next_remediation_task.md`, edit
+the affected collector, extractor, validator, prompt, or report integration, add
+or update the required tests, rerun collection and report generation, and repeat
+until the quality gate passes or a true external blocker is documented. A report
+with pending remediation tasks is not complete.
+
+## Standing Auto-Remediation Approval
+
+Option 1 is approved for all future TradingAgents workflows. When the quality
+gate fails, Codex must treat `next_remediation_task.md` as the next approved
+stage and do not ask the user to proceed. Continue implementing the required
+fixes with tests and rerunning the affected ticker workflow until the quality
+gate passes or a true external blocker is documented.
 
 Example `quality_gate.json`:
 

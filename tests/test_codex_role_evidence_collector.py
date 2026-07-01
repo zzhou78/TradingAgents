@@ -481,6 +481,73 @@ def test_news_role_writes_article_cards_ledger_and_contract(tmp_path, monkeypatc
     assert "news_article_evidence" in news_stage["role_execution_contract"]["required_tools"]
 
 
+def test_news_role_passes_article_full_text_fetcher_to_news_evidence(tmp_path, monkeypatch):
+    collector = _load_collector()
+    captured: dict[str, object] = {}
+    original_build_news_evidence = collector.build_news_evidence
+
+    def capture_build_news_evidence(**kwargs):
+        captured["full_text_fetcher"] = kwargs.get("full_text_fetcher")
+        return original_build_news_evidence(**kwargs)
+
+    monkeypatch.setattr(collector, "build_news_evidence", capture_build_news_evidence)
+    monkeypatch.setattr(
+        collector,
+        "_fetch_article_full_text",
+        lambda url: "Fetched article body text with enough company-specific detail for article evidence.",
+    )
+    monkeypatch.setattr(
+        collector,
+        "get_news",
+        lambda **kwargs: [
+            {
+                "title": "Apple services update",
+                "source": "Example News",
+                "url": "https://example.com/apple-services",
+                "published_date": "2026-06-28",
+                "snippet": "Apple services update summary.",
+                "full_text": "",
+            }
+        ],
+    )
+    monkeypatch.setattr(collector, "get_global_news", lambda **kwargs: [])
+    monkeypatch.setattr(collector, "get_insider_transactions", lambda **kwargs: "no insider data")
+    monkeypatch.setattr(
+        collector,
+        "collect_financial_document_sources",
+        lambda ticker, trade_date, **kwargs: {"status": "unavailable", "sources": []},
+    )
+    monkeypatch.setattr(collector, "resolve_instrument_identity", lambda ticker: {"company_name": ticker})
+
+    exit_code = collector.main(
+        [
+            "--ticker",
+            "AAPL",
+            "--trade-date",
+            "2026-06-29",
+            "--selected-analysts",
+            "news",
+            "--output-dir",
+            str(tmp_path),
+        ]
+    )
+
+    assert exit_code == 0
+    assert callable(captured["full_text_fetcher"])
+    cards = json.loads(
+        (
+            tmp_path
+            / "evidence"
+            / "AAPL"
+            / "2026-06-29"
+            / "news"
+            / "article_cards.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert cards[0]["full_text_status"] == "full_text"
+    assert cards[0]["full_text_source"] == "url_fetch"
+
+
 def test_news_candidate_parser_keeps_markdown_articles_not_line_fragments():
     collector = _load_collector()
 

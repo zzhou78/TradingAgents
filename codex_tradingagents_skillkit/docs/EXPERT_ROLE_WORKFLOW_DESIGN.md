@@ -149,7 +149,54 @@ The final `complete_report.md` must not be marked as a completed successful revi
 - post-trade-date evidence is used without being marked invalid;
 - an ASX financial report source collection fails for an ASX company.
 
-The only exception is when the Quality Reviewer explicitly passes the report with a documented limitation and the limitation is visible in both `quality_review.md` and `quality_gate.json`.
+Documented limitations may keep a validation artifact useful for debugging, but
+they do not override review-grade hard gates. When a hard gate fails, the
+workflow must produce a remediation plan instead of marking the report
+successful.
+
+## Quality Remediation Feedback Loop
+
+The workflow must actively improve after quality failures:
+
+- quality validation emits specific failures;
+- a remediation planner maps each failure to a root-cause category;
+- the plan names affected code areas, required tests, and rerun commands;
+- Codex implements the collector, extractor, prompt, validator, or report
+  integration fix;
+- AAPL/MSFT or other nominated tickers are rerun to prove the fix.
+
+The remediation plan is machine-readable and must include:
+
+- `failed_gate`;
+- `root_cause_category`;
+- `affected_files`;
+- `required_fix`;
+- `required_tests`;
+- `rerun_command`;
+- `blocking_for_review_grade`;
+- `status`.
+
+Python may diagnose workflow and extraction failures, generate remediation
+tasks, and validate before/after evidence. Python must not turn those tasks into
+final investment judgments.
+
+## Standing Auto-Remediation Approval
+
+The user has approved Option 1 as the default behavior for all future TradingAgents workflows. When the quality gate fails, Codex must treat the next
+remediation item as an approved continuation of the same workflow. Codex should
+do not ask the user to proceed and should do the following:
+
+- read `quality_remediation_plan.json` and `next_remediation_task.md`;
+- implement the required collector, extractor, validator, skill, prompt, or
+  report-integration fix with tests;
+- rerun evidence collection, task preparation, role/report generation, and the
+  workflow controller for the affected ticker set;
+- repeat until the quality gate passes or a true external blocker is
+  documented.
+
+This approval does not authorize new plugin installs, credentials, broker/order
+tools, real trading actions, or browser/computer-use actions that could affect
+real trading. Those still require explicit approval.
 
 ## Role Upgrade Definition
 

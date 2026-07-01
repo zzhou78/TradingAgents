@@ -4,13 +4,16 @@ from __future__ import annotations
 
 import argparse
 import ast
+import contextlib
 import json
 import re
 import sys
 from collections.abc import Callable
 from datetime import datetime, timedelta
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+from urllib.request import Request, urlopen
 
 import yfinance as yf
 from yfinance import cache as yf_cache
@@ -69,6 +72,9 @@ ROLE_SKILLS = {
     "fundamentals": "tradingagents-fundamentals-analyst",
     FINANCIAL_REPORT_ROLE: "tradingagents-financial-report-analyst",
 }
+
+ARTICLE_FETCH_USER_AGENT = "CodexTradingAgentsSkillkit/0.1 (+paper-study evidence collection)"
+ARTICLE_FETCH_MAX_BYTES = 1_000_000
 ANALYST_STAGE_NAMES = {
     "market": "market_analyst",
     "social": "sentiment_analyst",
@@ -541,6 +547,66 @@ def _filter_social_output_as_of(call: dict[str, Any], trade_date: str) -> dict[s
         "removed_post_trade_date_items": removed,
     }
     return call
+
+
+class _ArticleBodyTextParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self._skip_depth = 0
+        self._capture_depth = 0
+        self._chunks: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        del attrs
+        tag = tag.lower()
+        if tag in {"script", "style", "noscript", "svg", "header", "footer", "nav", "aside"}:
+            self._skip_depth += 1
+            return
+        if tag in {"article", "main", "p", "h1", "h2", "h3", "li"} and self._skip_depth == 0:
+            self._capture_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag in {"script", "style", "noscript", "svg", "header", "footer", "nav", "aside"}:
+            self._skip_depth = max(0, self._skip_depth - 1)
+            return
+        if tag in {"article", "main", "p", "h1", "h2", "h3", "li"} and self._capture_depth:
+            self._capture_depth -= 1
+            if self._chunks and self._chunks[-1] != "\n":
+                self._chunks.append("\n")
+
+    def handle_data(self, data: str) -> None:
+        if self._skip_depth or not self._capture_depth:
+            return
+        text = re.sub(r"\s+", " ", data).strip()
+        if text:
+            self._chunks.append(text)
+
+    def text(self) -> str:
+        return re.sub(r"\s+", " ", " ".join(self._chunks)).strip()
+
+
+def _extract_article_full_text_from_html(html: str) -> str:
+    parser = _ArticleBodyTextParser()
+    parser.feed(html)
+    return parser.text()
+
+
+def _fetch_article_full_text(url: str) -> str:
+    request = Request(
+        url,
+        headers={
+            "User-Agent": ARTICLE_FETCH_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml",
+        },
+    )
+    with contextlib.closing(urlopen(request, timeout=8)) as response:
+        content_type = str(response.headers.get("Content-Type", ""))
+        if "html" not in content_type.lower():
+            return ""
+        raw = response.read(ARTICLE_FETCH_MAX_BYTES)
+        charset = response.headers.get_content_charset() or "utf-8"
+    return _extract_article_full_text_from_html(raw.decode(charset, errors="replace"))
 
 
 def _candidate_from_mapping(payload: dict[str, Any]) -> dict[str, str]:
@@ -1531,6 +1597,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 ),
                 structured_output_path=str(article_cards_path),
                 retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
+                full_text_fetcher=_fetch_article_full_text,
             )
             article_cards_path.write_text(
                 json.dumps(news_evidence["article_cards"], indent=2),

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from collections.abc import Callable
 from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
@@ -37,6 +38,13 @@ def _full_text_status(candidate: dict[str, str]) -> str:
     return "full_text" if len(full_text) >= 40 else "snippet_only"
 
 
+def _full_text_excerpt(candidate: dict[str, str], *, limit: int = 600) -> str:
+    full_text = re.sub(r"\s+", " ", str(candidate.get("full_text") or "").strip())
+    if len(full_text) <= limit:
+        return full_text
+    return full_text[:limit].rsplit(" ", 1)[0].strip()
+
+
 def _confidence(full_text_status: str, limitations: list[str]) -> str:
     if "post_trade_date" in limitations:
         return "low"
@@ -52,6 +60,7 @@ def build_news_evidence(
     candidates: list[dict[str, str]],
     structured_output_path: str,
     retrieval_time: str,
+    full_text_fetcher: Callable[[str], str] | None = None,
 ) -> dict[str, list[dict[str, Any]]]:
     seen: dict[str, dict[str, Any]] = {}
     order: list[str] = []
@@ -60,9 +69,21 @@ def build_news_evidence(
         if key in seen:
             seen[key]["duplicate_count"] = int(seen[key]["duplicate_count"]) + 1
             continue
+        candidate = dict(candidate)
         published_date = str(candidate.get("published_date") or "")
         valid_for_trade_date = bool(published_date and published_date <= trade_date)
         limitations: list[str] = []
+        source_url = _normalize_url(str(candidate.get("url") or ""))
+        full_text_source = "candidate_full_text" if _full_text_status(candidate) == "full_text" else "unavailable"
+        if full_text_source == "unavailable" and full_text_fetcher and source_url and valid_for_trade_date:
+            try:
+                fetched_full_text = str(full_text_fetcher(source_url) or "").strip()
+            except Exception:
+                fetched_full_text = ""
+                limitations.append("full_text_retrieval_failed")
+            if len(fetched_full_text) >= 40:
+                candidate["full_text"] = fetched_full_text
+                full_text_source = "url_fetch"
         full_text_status = _full_text_status(candidate)
         if full_text_status == "snippet_only":
             limitations.append("snippet_only")
@@ -84,10 +105,12 @@ def build_news_evidence(
             "trade_date": trade_date,
             "title": str(candidate.get("title") or "").strip(),
             "source": str(candidate.get("source") or "").strip(),
-            "source_url": _normalize_url(str(candidate.get("url") or "")),
+            "source_url": source_url,
             "source_date": published_date,
             "retrieval_time": retrieval_time,
             "full_text_status": full_text_status,
+            "full_text_source": full_text_source,
+            "full_text_excerpt": _full_text_excerpt(candidate) if full_text_status == "full_text" else "",
             "direct_company_relevance": "pending_codex_interpretation",
             "event_type": "pending_codex_interpretation",
             "key_facts": [],

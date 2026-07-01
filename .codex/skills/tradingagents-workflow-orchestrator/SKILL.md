@@ -49,9 +49,26 @@ Procedure:
 8. For checkpoints, final-state logging, deferred reflection, report writing, and deterministic rating extraction, use `tradingagents-run-persistence`.
 9. Extract the final signal as one of `Buy / Overweight / Hold / Underweight / Sell` from the portfolio manager markdown, not from a second LLM call.
 10. Do not compare the ticker to another ticker unless the run context explicitly says this is a comparative multi-ticker report. In a single-ticker report, do not mention another ticker as a comparison point unless it appears in the evidence packet and is material to the thesis.
+11. If the controller reports `quality_remediation` as the next stage, the workflow is not complete. Read `quality_remediation_plan.json` and `next_remediation_task.md`, implement the remediation task with tests, rerun evidence collection/report generation, and repeat until the quality gate passes or a true external blocker is documented.
 
 Output:
 - Final study artifact containing analyst reports, investment debate, research plan, trader proposal, risk debate, portfolio manager decision, and parsed five-tier rating.
+- If quality remediation is pending, output the remediation status and next task instead of claiming a completed review-grade workflow.
+
+## Closed Self-Improvement Loop
+
+Quality failure must feed back into implementation work. The orchestrator must
+treat `next_remediation_task.md` as the next runnable stage after a failed
+quality gate. Codex should keep improving collectors, extractors, validators,
+prompts, or report integration and rerunning the workflow until the quality gate
+passes or a true external blocker is documented.
+
+## Standing Auto-Remediation Approval
+
+Option 1 is approved for all future TradingAgents workflows. If the controller
+reports `quality_remediation`, Codex must execute the next remediation task; do not ask the user to proceed. Continue through fix, tests, rerun, and
+controller validation until the quality gate passes or a true external blocker
+is documented.
 
 Safety boundaries:
 - Treat the result as a paper-study workflow only, even when the role names sound operational.

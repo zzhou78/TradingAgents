@@ -1,0 +1,10 @@
+{
+  "ticker": "AAPL",
+  "trade_date": "2026-06-30",
+  "report_dir": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\AAPL\\2026-06-30",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\evidence.json",
+  "status": "no_remediation_required",
+  "blocking_for_review_grade": false,
+  "validator_errors": [],
+  "remediation_tasks": []
+}

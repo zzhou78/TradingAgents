@@ -62,6 +62,70 @@ def _asx_source_collection_failed(evidence_path: Path | None) -> bool:
     return status in {"error", "unavailable"} or "asx_announcements | error" in output
 
 
+def _structured_evidence_dir(evidence_path: Path | None) -> Path | None:
+    if not evidence_path:
+        return None
+    return evidence_path.parent
+
+
+def _read_json_file(path: Path) -> object | None:
+    try:
+        return json.loads(_read(path))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def _status_is_available(record: dict[str, object]) -> bool:
+    return str(record.get("status", "")).lower() == "available"
+
+
+def _record_mentions(record: dict[str, object], *needles: str) -> bool:
+    haystack_parts = [
+        str(record.get("section_name", "")),
+        str(record.get("source_type", "")),
+        " ".join(str(item) for item in record.get("supports_claims", []) or []),
+    ]
+    haystack = " ".join(haystack_parts).lower()
+    return any(needle.lower() in haystack for needle in needles)
+
+
+def _structured_evidence_quality_errors(evidence_path: Path | None) -> list[str]:
+    evidence_dir = _structured_evidence_dir(evidence_path)
+    if not evidence_dir:
+        return []
+
+    errors: list[str] = []
+    article_cards = _read_json_file(evidence_dir / "news" / "article_cards.json")
+    if isinstance(article_cards, list) and article_cards:
+        full_text_count = sum(1 for card in article_cards if str(card.get("full_text_status", "")).lower() == "full_text")
+        if full_text_count == 0:
+            errors.append("news evidence has no full-text articles; review-grade quality gate cannot pass")
+
+    section_records = _read_json_file(evidence_dir / "financial_report" / "section_records.json")
+    if isinstance(section_records, list) and section_records:
+        records = [record for record in section_records if isinstance(record, dict)]
+        has_available_mda = any(_status_is_available(record) and _record_mentions(record, "md&a", "management discussion") for record in records)
+        if not has_available_mda:
+            errors.append("financial evidence lacks extracted MD&A; review-grade quality gate cannot pass")
+
+        has_earnings_cover = any(_record_mentions(record, "earnings_release_8k_cover_page", "8-k cover page") for record in records)
+        has_available_exhibit = any(
+            _status_is_available(record) and _record_mentions(record, "earnings_release_exhibit", "exhibit 99.1")
+            for record in records
+        )
+        if has_earnings_cover and not has_available_exhibit:
+            errors.append("earnings 8-K exhibit is unavailable; cover page cannot support earnings-release detail")
+
+        has_available_cash_flow = any(
+            _status_is_available(record) and _record_mentions(record, "cash flow statement")
+            for record in records
+        )
+        if not has_available_cash_flow:
+            errors.append("financial evidence lacks extracted cash-flow statement section; review-grade quality gate cannot pass")
+
+    return errors
+
+
 def _news_quality_errors(news_path: Path) -> list[str]:
     if not news_path.exists():
         return []
@@ -407,6 +471,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     if _asx_source_collection_failed(evidence_path):
         errors.append("ASX source collection failed; report cannot be marked complete")
 
+    errors.extend(_structured_evidence_quality_errors(evidence_path))
     errors.extend(_news_quality_errors(news))
     errors.extend(_market_quality_errors(market))
     errors.extend(_sentiment_quality_errors(sentiment))
@@ -424,7 +489,9 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
             errors.append("quality_gate.json is not valid JSON")
         else:
             if errors and gate.get("passed") is True:
-                errors.append("quality_gate.json passes despite missing role outputs")
+                errors.append("quality_gate.json passes despite quality errors")
+            if gate.get("passed") is not True:
+                errors.append("quality_gate.json does not pass; workflow remains incomplete")
 
     return errors
 

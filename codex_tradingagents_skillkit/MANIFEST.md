@@ -149,6 +149,12 @@ role outputs missing `Tool Outputs Used`, `Article Evidence Cards`,
 fails ASX reports whose ASX source collection ended in an error or unavailable
 state.
 
+`run_quality_remediation.py` turns quality-gate failures into implementation
+tasks. It writes `quality_remediation_plan.json` next to `quality_gate.json`
+with the failed gate, root-cause category, affected code areas, required tests,
+rerun command, and review-grade blocking status. The plan is for Codex workflow
+improvement; it is not an investment judgment.
+
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.
 - The packet lists `tradingagents-dataflow-routing` as the data-routing skill.

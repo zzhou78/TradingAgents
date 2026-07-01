@@ -1,0 +1,122 @@
+[
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:001",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\market.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:002",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\sentiment.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:003",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\news.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:004",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\fundamentals.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:005",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\financial_report.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:006",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\1_analysts\\industry_theme.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:007",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\2_research\\manager.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:aggressive_risk_analyst:MSFT:2026-06-30:008",
+    "ticker": "MSFT",
+    "trade_date": "2026-06-30",
+    "role": "aggressive_risk_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\3_trading\\trader.md",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  }
+]

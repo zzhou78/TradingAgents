@@ -84,7 +84,7 @@ TASKS = {
     "quality_reviewer_task.md": {
         "skill": "tradingagents-quality-reviewer",
         "output_key": "quality_review",
-        "instruction": "Review complete_report.md, role reports, and evidence summary; write quality_review.md and quality_gate.json. Flag political-trading or celebrity-trading news that is treated as material without a direct company impact path.",
+        "instruction": "Review complete_report.md, role reports, evidence summary, and structured evidence files; write quality_review.md and quality_gate.json. Flag political-trading or celebrity-trading news that is treated as material without a direct company impact path. Do not pass review-grade completion when all news article cards are snippet-only, extracted MD&A is unavailable, an earnings 8-K has only cover-page evidence without Exhibit 99.1 or equivalent, or no cash-flow statement section is extracted.",
     },
 }
 
@@ -180,7 +180,7 @@ The Portfolio Manager must state how the risk debate changed or confirmed the Tr
 - `## Tool Outputs Used`
 - `## Quality Gate Findings`
 
-Reject generic role text unsupported by tool outputs. ASX reports are not complete when ASX source collection fails; quality_gate.json must be failed until official ASX or investor-relations evidence is available or the gap is explicitly unresolved.""",
+Reject generic role text unsupported by tool outputs. ASX reports are not complete when ASX source collection fails; quality_gate.json must be failed until official ASX or investor-relations evidence is available or the gap is explicitly unresolved. For US reports, fail review-grade completion when structured evidence is only shallow: all news cards are snippet-only, extracted MD&A is unavailable, an earnings-related 8-K has no Exhibit 99.1 or equivalent earnings-release exhibit, or cash-flow statement sections are unavailable.""",
 }
 
 DEFAULT_OUTPUTS = {

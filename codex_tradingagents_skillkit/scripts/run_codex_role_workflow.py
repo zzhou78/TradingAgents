@@ -182,6 +182,8 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
             next_stage = summary
 
     quality_errors = []
+    remediation_plan_path = ""
+    next_remediation_task_path = ""
     if complete_count == len(stage_summaries) and stage_summaries:
         try:
             from validate_quality_review import validate_report_dir
@@ -190,6 +192,33 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
                 Path(workflow["report_dir"]),
                 Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None,
             )
+            if quality_errors:
+                from run_quality_remediation import (
+                    build_remediation_plan,
+                    write_next_task,
+                    write_plan,
+                )
+
+                output_dir = workflow_path.parents[3] if len(workflow_path.parents) > 3 else None
+                plan = build_remediation_plan(
+                    report_dir=Path(workflow["report_dir"]),
+                    evidence_path=Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None,
+                    output_dir=output_dir,
+                )
+                task_path = write_next_task(plan, Path(workflow["report_dir"]))
+                remediation_plan_path = str(write_plan(plan, Path(workflow["report_dir"])))
+                next_remediation_task_path = str(task_path) if task_path else ""
+                if task_path:
+                    next_stage = {
+                        "stage": "quality_remediation",
+                        "skill": "codex-session-quality-remediation",
+                        "status": "pending",
+                        "task_path": str(task_path),
+                        "output_path": remediation_plan_path,
+                        "blocking_dependencies": [],
+                        "validation_errors": quality_errors,
+                        "completion_gate": "implement next_remediation_task.md, rerun evidence/report workflow, and continue until quality gate passes or a true blocker is documented",
+                    }
         except Exception as exc:  # pragma: no cover - defensive CLI reporting
             quality_errors = [f"quality validation failed to run: {exc}"]
 
@@ -203,6 +232,8 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         "next_stage": next_stage,
         "stages": stage_summaries,
         "quality_errors": quality_errors,
+        "remediation_plan_path": remediation_plan_path,
+        "next_remediation_task_path": next_remediation_task_path,
         "complete": complete_count == len(stage_summaries) and not quality_errors,
     }
 
@@ -219,7 +250,13 @@ def _print_text(payload: dict[str, Any]) -> None:
     for run in payload["runs"]:
         print(f"{run['ticker']} {run['trade_date']}: {run['complete_stages']}/{run['total_stages']} stages complete")
         next_stage = run.get("next_stage")
-        if next_stage:
+        if next_stage and next_stage.get("stage") == "quality_remediation":
+            print("All stages complete; quality gate failed.")
+            if run.get("remediation_plan_path"):
+                print(f"Remediation plan: {run['remediation_plan_path']}")
+            print(f"Next remediation task: {next_stage['task_path']}")
+            print(f"Completion gate: {next_stage['completion_gate']}")
+        elif next_stage:
             print(f"Next stage: {next_stage['stage']} ({next_stage['status']})")
             print(f"Task: {next_stage['task_path']}")
             print(f"Output: {next_stage['output_path']}")
@@ -233,6 +270,10 @@ def _print_text(payload: dict[str, Any]) -> None:
                     print(f"- {error}")
         elif run["complete"]:
             print("Workflow complete.")
+        elif run["complete_stages"] == run["total_stages"] and run["quality_errors"]:
+            print("All stages complete; quality gate failed.")
+            if run.get("remediation_plan_path"):
+                print(f"Remediation plan: {run['remediation_plan_path']}")
         else:
             print("No runnable stage; blocked stages remain.")
         if run["quality_errors"]:

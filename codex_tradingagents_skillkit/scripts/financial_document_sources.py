@@ -157,6 +157,20 @@ def _heading_section(text: str, heading_pattern: str, limit: int) -> str | None:
     )
 
 
+MDA_10K_PATTERN = (
+    r"Item\s+7\.?\s+Management(?:['’])?s\s+Discussion\s+and\s+Analysis"
+)
+MDA_10Q_PATTERN = (
+    r"Item\s+2\.?\s+Management(?:['’])?s\s+Discussion\s+and\s+Analysis"
+)
+CASH_FLOW_STATEMENT_PATTERN = (
+    r"CONSOLIDATED\s+STATEMENTS?\s+OF\s+CASH\s+FLOWS\b|"
+    r"CONDENSED\s+CONSOLIDATED\s+STATEMENTS?\s+OF\s+CASH\s+FLOWS\b|"
+    r"CASH\s+FLOWS\s+S\s*TATEMENTS?\b|"
+    r"CASH\s+FLOW\s+STATEMENTS?\b"
+)
+
+
 def _section_record(
     *,
     section_type: str,
@@ -209,7 +223,7 @@ def _extract_filing_sections(
         )
         mda = _section_between(
             text,
-            r"Item\s+7\.\s+Management'?s Discussion and Analysis",
+            MDA_10K_PATTERN,
             r"Item\s+7A\.",
             limit,
         )
@@ -217,7 +231,7 @@ def _extract_filing_sections(
         business = None
         mda = _section_between(
             text,
-            r"Item\s+2\.\s+Management'?s Discussion and Analysis",
+            MDA_10Q_PATTERN,
             r"Item\s+3\.",
             limit,
         )
@@ -306,12 +320,7 @@ def _extract_filing_sections(
         (
             "cash_flow_statement",
             f"{prefix} cash flow statement",
-            _heading_section(
-                text,
-                r"CONSOLIDATED STATEMENTS? OF CASH FLOWS\b|"
-                r"CONDENSED CONSOLIDATED STATEMENTS? OF CASH FLOWS\b",
-                limit,
-            ),
+            _heading_section(text, CASH_FLOW_STATEMENT_PATTERN, limit),
             ["operating cash flow", "free cash flow", "investing cash flow"],
         ),
     ]
@@ -458,11 +467,14 @@ def _absolute_archive_url(href: str, cik: str, accession_number: str) -> str:
 
 
 def _find_exhibit_99_1_url(index_html: str, cik: str, accession_number: str) -> str | None:
-    for match in re.finditer(r"href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", index_html, re.IGNORECASE):
-        label = re.sub(r"<[^>]+>", " ", match.group("label"))
-        href = match.group("href")
-        if re.search(r"EX-?99\.?1|99\.1", f"{label} {href}", re.IGNORECASE):
-            return _absolute_archive_url(href, cik, accession_number)
+    row_matches = list(re.finditer(r"(?is)<tr\b[^>]*>.*?</tr>", index_html))
+    search_blocks = [match.group(0) for match in row_matches] or [index_html]
+    for block in search_blocks:
+        if not re.search(r"EX-?99\.?1|99\.1", block, re.IGNORECASE):
+            continue
+        link = re.search(r"href=[\"'](?P<href>[^\"']+)[\"']", block, re.IGNORECASE)
+        if link:
+            return _absolute_archive_url(link.group("href"), cik, accession_number)
     return None
 
 

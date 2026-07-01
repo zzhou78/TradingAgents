@@ -13,6 +13,7 @@ WRITER = BUNDLE / "scripts" / "write_codex_reports.py"
 VALIDATOR = BUNDLE / "scripts" / "validate_complete_report.py"
 QUALITY_VALIDATOR = BUNDLE / "scripts" / "validate_quality_review.py"
 MEMORY_VALIDATOR = BUNDLE / "scripts" / "validate_role_memory.py"
+REMEDIATION_RUNNER = BUNDLE / "scripts" / "run_quality_remediation.py"
 RUNNER = (
     SKILLS_ROOT
     / "tradingagents-ticker-workflow-runner"
@@ -606,6 +607,7 @@ def test_bundle_has_expected_skills_and_docs():
     assert VALIDATOR.exists()
     assert QUALITY_VALIDATOR.exists()
     assert MEMORY_VALIDATOR.exists()
+    assert REMEDIATION_RUNNER.exists()
 
     readme = (BUNDLE / "README.md").read_text(encoding="utf-8")
     manifest = (BUNDLE / "MANIFEST.md").read_text(encoding="utf-8")
@@ -888,6 +890,71 @@ def test_codex_role_workflow_runner_flags_invalid_completed_output(tmp_path: Pat
     assert run["next_stage"]["stage"] == "market_analyst"
     assert run["next_stage"]["status"] == "invalid"
     assert "missing required section: Quantitative Regime / Tool Outputs" in run["next_stage"]["validation_errors"]
+
+
+def test_codex_role_workflow_runner_reports_quality_gate_failure_after_all_stages_complete(tmp_path: Path):
+    output_dir, _report_paths = _write_workflow(tmp_path)
+    workflow_path = output_dir / "evidence" / "AAPL" / "2026-06-27" / "workflow_state.json"
+    workflow = json.loads(workflow_path.read_text(encoding="utf-8"))
+    for stage in workflow["stages"]:
+        sections = stage["role_execution_contract"]["required_output_sections"]
+        body = [f"# {stage['stage']}", "", "market:AAPL:2026-06-27:001"]
+        for section in sections:
+            body.extend(["", f"## {section}", "", "market:AAPL:2026-06-27:001"])
+        body.extend(
+            [
+                "",
+                "## Memory Update",
+                "",
+                "* Durable facts to retain: market:AAPL:2026-06-27:001",
+                "* Prior mistake to avoid: None.",
+                "* Open questions: None.",
+                "* Evidence references: market:AAPL:2026-06-27:001",
+                "* Staleness / expiry: Expires after 2026-06-27.",
+            ]
+        )
+        Path(stage["output_path"]).write_text("\n".join(body) + "\n", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(CODEX_WORKFLOW_RUNNER),
+            "--output-dir",
+            str(output_dir),
+        ],
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+
+    assert "AAPL 2026-06-27: 14/14 stages complete" in result.stdout
+    assert "All stages complete; quality gate failed." in result.stdout
+    assert "Remediation plan:" in result.stdout
+    assert "Next remediation task:" in result.stdout
+    assert "No runnable stage; blocked stages remain." not in result.stdout
+    plan_path = output_dir / "reports" / "AAPL" / "2026-06-27" / "6_quality" / "quality_remediation_plan.json"
+    task_path = output_dir / "reports" / "AAPL" / "2026-06-27" / "6_quality" / "next_remediation_task.md"
+    assert plan_path.exists()
+    assert task_path.exists()
+
+    json_result = subprocess.run(
+        [
+            sys.executable,
+            str(CODEX_WORKFLOW_RUNNER),
+            "--output-dir",
+            str(output_dir),
+            "--format",
+            "json",
+        ],
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    payload = json.loads(json_result.stdout)
+    run = payload["runs"][0]
+    assert run["next_stage"]["stage"] == "quality_remediation"
+    assert run["next_stage"]["status"] == "pending"
+    assert run["next_stage"]["task_path"].endswith("next_remediation_task.md")
 
 
 def test_complete_report_validator_accepts_hard_contract_report(tmp_path: Path):
@@ -1196,6 +1263,67 @@ def test_quality_validator_fails_when_snippet_only_news_is_high_confidence(tmp_p
     assert "snippet-only news evidence cannot be high confidence" in result.stdout
 
 
+def test_quality_validator_fails_review_gate_when_all_news_evidence_is_snippet_only(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    evidence_dir = tmp_path / "evidence" / "AAPL" / "2026-06-27"
+    news_dir = evidence_dir / "news"
+    news_dir.mkdir(parents=True)
+    evidence_path = evidence_dir / "evidence.json"
+    evidence_path.write_text('{"ticker": "AAPL"}\n', encoding="utf-8")
+    (news_dir / "article_cards.json").write_text(
+        json.dumps(
+            [
+                {
+                    "evidence_id": "news:AAPL:2026-06-27:001",
+                    "title": "Apple analyst note",
+                    "full_text_status": "snippet_only",
+                    "confidence": "low",
+                },
+                {
+                    "evidence_id": "news:AAPL:2026-06-27:002",
+                    "title": "Apple supplier update",
+                    "full_text_status": "snippet_only",
+                    "confidence": "low",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir), "--evidence", str(evidence_path)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "news evidence has no full-text articles; review-grade quality gate cannot pass" in result.stdout
+
+
+def test_quality_validator_fails_when_quality_gate_is_stale_false(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    quality_gate = report_dir / "6_quality" / "quality_gate.json"
+    quality_gate.write_text(
+        json.dumps(
+            {
+                "passed": False,
+                "review_status": "validation_only_not_review_ready",
+                "issues": [{"section": "Financial Report Analyst", "issue": "Stale issue"}],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "quality_gate.json does not pass; workflow remains incomplete" in result.stdout
+
+
 def test_quality_validator_fails_when_news_output_is_pending(tmp_path: Path):
     report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
     analyst_dir = report_dir / "1_analysts"
@@ -1264,6 +1392,159 @@ def test_quality_validator_fails_when_financial_gap_is_missing_for_unavailable_s
 
     assert result.returncode != 0
     assert "financial evidence gap missing for unavailable section" in result.stdout
+
+
+def test_quality_validator_fails_review_gate_when_financial_sections_are_not_deep_enough(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    evidence_dir = tmp_path / "evidence" / "MSFT" / "2026-06-27"
+    financial_dir = evidence_dir / "financial_report"
+    financial_dir.mkdir(parents=True)
+    evidence_path = evidence_dir / "evidence.json"
+    evidence_path.write_text('{"ticker": "MSFT"}\n', encoding="utf-8")
+    (financial_dir / "section_records.json").write_text(
+        json.dumps(
+            [
+                {
+                    "section_name": "10-K business overview",
+                    "status": "available",
+                    "source_type": "annual_report_10k",
+                    "supports_claims": ["business model"],
+                },
+                {
+                    "section_name": "10-K MD&A",
+                    "status": "unavailable",
+                    "source_type": "annual_report_10k",
+                    "supports_claims": ["management discussion"],
+                },
+                {
+                    "section_name": "10-Q MD&A",
+                    "status": "unavailable",
+                    "source_type": "quarterly_report_10q",
+                    "supports_claims": ["management discussion"],
+                },
+                {
+                    "section_name": "8-K cover page",
+                    "status": "available",
+                    "source_type": "earnings_release_8k_cover_page",
+                    "supports_claims": ["8-K item routing"],
+                },
+                {
+                    "section_name": "Exhibit 99.1",
+                    "status": "unavailable",
+                    "source_type": "earnings_release_exhibit",
+                    "supports_claims": ["guidance", "earnings release"],
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir), "--evidence", str(evidence_path)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "financial evidence lacks extracted MD&A; review-grade quality gate cannot pass" in result.stdout
+    assert "earnings 8-K exhibit is unavailable; cover page cannot support earnings-release detail" in result.stdout
+
+
+def test_quality_remediation_runner_writes_actionable_plan_for_structured_evidence_gaps(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    evidence_dir = tmp_path / "evidence" / "MSFT" / "2026-06-27"
+    (evidence_dir / "news").mkdir(parents=True)
+    (evidence_dir / "financial_report").mkdir(parents=True)
+    evidence_path = evidence_dir / "evidence.json"
+    evidence_path.write_text('{"ticker": "MSFT", "trade_date": "2026-06-27"}\n', encoding="utf-8")
+    (evidence_dir / "news" / "article_cards.json").write_text(
+        json.dumps(
+            [
+                {
+                    "evidence_id": "news:MSFT:2026-06-27:001",
+                    "title": "Microsoft news",
+                    "full_text_status": "snippet_only",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (evidence_dir / "financial_report" / "section_records.json").write_text(
+        json.dumps(
+            [
+                {"section_name": "10-Q MD&A", "status": "unavailable", "source_type": "quarterly_report_10q"},
+                {
+                    "section_name": "8-K cover page",
+                    "status": "available",
+                    "source_type": "earnings_release_8k_cover_page",
+                },
+                {
+                    "section_name": "Exhibit 99.1",
+                    "status": "unavailable",
+                    "source_type": "earnings_release_exhibit",
+                },
+                {
+                    "section_name": "10-Q cash flow statement",
+                    "status": "unavailable",
+                    "source_type": "quarterly_report_10q",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(REMEDIATION_RUNNER),
+            "--report-dir",
+            str(report_dir),
+            "--evidence",
+            str(evidence_path),
+        ],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode == 1
+    plan_path = report_dir / "6_quality" / "quality_remediation_plan.json"
+    task_path = report_dir / "6_quality" / "next_remediation_task.md"
+    plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    categories = {task["root_cause_category"] for task in plan["remediation_tasks"]}
+    assert plan["ticker"] == "MSFT"
+    assert plan["trade_date"] == "2026-06-27"
+    assert plan["status"] == "remediation_required"
+    assert {
+        "news_full_text_retrieval",
+        "sec_mda_extraction",
+        "sec_8k_exhibit_extraction",
+        "sec_cash_flow_extraction",
+    }.issubset(categories)
+    for task in plan["remediation_tasks"]:
+        assert task["blocking_for_review_grade"] is True
+        assert task["required_tests"]
+        assert task["affected_files"]
+        assert task["rerun_command"]
+    assert task_path.exists()
+    next_task_text = task_path.read_text(encoding="utf-8")
+    assert "## Required Fix" in next_task_text
+    assert "## Verification And Rerun" in next_task_text
+
+
+def test_quality_remediation_runner_discovers_workflows_from_output_dir(tmp_path: Path):
+    output_dir, _report_paths = _write_workflow(tmp_path)
+
+    result = subprocess.run(
+        [sys.executable, str(REMEDIATION_RUNNER), "--output-dir", str(output_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode == 1
+    plan_path = output_dir / "reports" / "AAPL" / "2026-06-27" / "6_quality" / "quality_remediation_plan.json"
+    plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    assert plan["ticker"] == "AAPL"
+    assert any(task["root_cause_category"] == "news_full_text_retrieval" for task in plan["remediation_tasks"])
 
 
 def test_quality_validator_fails_when_financial_report_is_pending(tmp_path: Path):
@@ -1430,6 +1711,9 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
     neutral = (SKILLS_ROOT / "tradingagents-neutral-risk-analyst" / "SKILL.md").read_text(encoding="utf-8")
     portfolio = (SKILLS_ROOT / "tradingagents-portfolio-manager" / "SKILL.md").read_text(encoding="utf-8")
     quality = (SKILLS_ROOT / "tradingagents-quality-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+    orchestrator = (SKILLS_ROOT / "tradingagents-workflow-orchestrator" / "SKILL.md").read_text(encoding="utf-8")
+    persistence = (SKILLS_ROOT / "tradingagents-run-persistence" / "SKILL.md").read_text(encoding="utf-8")
+    ticker_runner = (SKILLS_ROOT / "tradingagents-ticker-workflow-runner" / "SKILL.md").read_text(encoding="utf-8")
 
     for required in [
         "## Tool Outputs Used",
@@ -1553,8 +1837,12 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         "company fundamentals, regulation, price action, or sentiment",
         "news impact label lacks article evidence citation",
         "snippet-only news evidence cannot be high confidence",
+        "all available news article cards are snippet-only",
         "financial claim lacks section evidence citation",
         "financial evidence gap missing for unavailable section",
+        "structured financial evidence lacks extracted MD&A",
+        "an earnings-related 8-K cover page is available but Exhibit 99.1",
+        "structured financial evidence lacks any extracted cash-flow statement section",
         "market moving-average claim conflicts with metric evidence",
         "market.md is still pending",
         "research evidence matrix missing direction",
@@ -1563,3 +1851,19 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         '"passed": false',
     ]:
         assert required in quality
+
+    for text in [quality, orchestrator, persistence, ticker_runner]:
+        assert "next_remediation_task.md" in text
+        assert "quality_remediation_plan.json" in text
+        assert "quality gate passes" in text
+        assert "true external blocker" in text
+        assert "Standing Auto-Remediation Approval" in text
+        assert "do not ask the user to proceed" in text
+        assert "future TradingAgents workflows" in text
+
+    design = (BUNDLE / "docs" / "EXPERT_ROLE_WORKFLOW_DESIGN.md").read_text(encoding="utf-8")
+    runbook = (BUNDLE / "docs" / "CODEX_SESSION_WORKFLOW_RUNBOOK.md").read_text(encoding="utf-8")
+    for text in [design, runbook]:
+        assert "Standing Auto-Remediation Approval" in text
+        assert "do not ask the user to proceed" in text
+        assert "future TradingAgents workflows" in text

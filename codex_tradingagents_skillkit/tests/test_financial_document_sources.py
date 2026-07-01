@@ -433,6 +433,58 @@ def test_earnings_8k_records_unavailable_exhibit_991_when_missing():
     assert "- Status: `unavailable`" in rendered
 
 
+def test_us_filing_sections_handle_sec_heading_variants():
+    module = _load_module()
+
+    raw = """
+    <html><body>
+    Item 7. Management&rsquo;s Discussion and Analysis of Financial Condition and Results of Operations.
+    Revenue increased because cloud demand improved.
+    LIQUIDITY AND CAPITAL RESOURCES Cash and investments were sufficient.
+    Item 7A. Quantitative and Qualitative Disclosures About Market Risk.
+    CASH FLOWS S TATEMENTS
+    (In millions) Operations Net income 101,832 Depreciation and amortization 34,710
+    Financing activities Dividends and share repurchases.
+    Notes to Financial Statements
+    </body></html>
+    """
+
+    sections = module._extract_filing_sections(
+        form="10-K",
+        raw=raw,
+        limit=1000,
+        source_type="annual_report_10k",
+        filing_date="2025-07-30",
+        url="https://sec.example/msft-10k.htm",
+    )
+    by_type = {section["section_type"]: section for section in sections}
+
+    assert by_type["mda"]["status"] == "available"
+    assert "cloud demand improved" in by_type["mda"]["excerpt"]
+    assert by_type["cash_flow_statement"]["status"] == "available"
+    assert "Operations Net income" in by_type["cash_flow_statement"]["excerpt"]
+
+
+def test_earnings_8k_finds_exhibit_991_from_table_row_description():
+    module = _load_module()
+
+    index_html = """
+    <html><body>
+    <table>
+      <tr>
+        <td><a href="/ixviewer/doc/action/doc/exhibit991.htm">Document</a></td>
+        <td>EX-99.1</td>
+        <td>Earnings Release</td>
+      </tr>
+    </table>
+    </body></html>
+    """
+
+    url = module._find_exhibit_99_1_url(index_html, "0000789019", "0000789019-26-000100")
+
+    assert url == "https://www.sec.gov/ixviewer/doc/action/doc/exhibit991.htm"
+
+
 def test_missing_financial_sections_are_recorded_as_evidence_gaps():
     module = _load_module()
 

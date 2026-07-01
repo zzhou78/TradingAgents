@@ -1,0 +1,72 @@
+{
+  "social_summary": {
+    "ticker": "AAPL",
+    "trade_date": "2026-06-30",
+    "total_items_reviewed": 18,
+    "usable_items": 8,
+    "source_limitations": [],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:AAPL:2026-06-30:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "items_reviewed": 5,
+      "usable_ticker_relevant_items": 3,
+      "bullish_count": 1,
+      "bearish_count": 0,
+      "neutral_count": 2,
+      "confidence": "medium",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "[2026-06-30T23:47:49Z \u00b7 @MF__DOOM \u00b7 no-label] $AAPL $MSFT $NKE $QQQ $SPY so far $40 has still acted as support but curious what this does tomorrow",
+          "classification": "directly ticker-relevant",
+          "label": "neutral"
+        },
+        {
+          "text_excerpt": "[2026-06-30T23:45:34Z \u00b7 @Kascnef82 \u00b7 Bullish] $AAPL next year 20 years of iPhone \ud83d\udcf1",
+          "classification": "directly ticker-relevant",
+          "label": "bullish"
+        },
+        {
+          "text_excerpt": "[2026-06-30T23:20:24Z \u00b7 @SigmaLab \u00b7 no-label] $AAPL is back in the spotlight after new disclosures showed about $5M exposure and people are now watching that $300 level again.    Not trying to overhype it  just sharing what\u2019s being discusse",
+          "classification": "directly ticker-relevant",
+          "label": "neutral"
+        }
+      ],
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:AAPL:2026-06-30:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "items_reviewed": 13,
+      "usable_ticker_relevant_items": 5,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 5,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "r/wallstreetbets \u2014 5 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
+          "classification": "directly ticker-relevant",
+          "label": "neutral"
+        },
+        {
+          "text_excerpt": "[2026-06-24] Lucky $AAPL and $GOOGL Pump Timings",
+          "classification": "directly ticker-relevant",
+          "label": "neutral"
+        },
+        {
+          "text_excerpt": "body excerpt: Very rarely do I time my exits correctly. So when it happened TWICE this morning on both the AAPL and GOOGL rallies, it's like lightning striking twice. Thank you, bag 7 \u2764\ufe0f",
+          "classification": "directly ticker-relevant",
+          "label": "neutral"
+        }
+      ],
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

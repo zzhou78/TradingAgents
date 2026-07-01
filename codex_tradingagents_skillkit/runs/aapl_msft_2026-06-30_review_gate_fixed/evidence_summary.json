@@ -1,0 +1,67 @@
+{
+  "trade_date": "2026-06-30",
+  "selected_analysts": [
+    "market",
+    "social",
+    "news",
+    "fundamentals"
+  ],
+  "max_debate_rounds": 1,
+  "max_risk_discuss_rounds": 1,
+  "output_dir": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed",
+  "codex_operated": true,
+  "uses_tradingagents_graph": false,
+  "skill_context": {
+    "workflow_skills": [
+      "tradingagents-workflow-orchestrator",
+      "tradingagents-analyst-sequencing",
+      "tradingagents-dataflow-routing",
+      "tradingagents-debate-routing",
+      "tradingagents-run-persistence",
+      "tradingagents-quality-reviewer"
+    ],
+    "role_skills": [
+      "tradingagents-market-analyst",
+      "tradingagents-sentiment-analyst",
+      "tradingagents-news-analyst",
+      "tradingagents-fundamentals-analyst",
+      "tradingagents-financial-report-analyst",
+      "tradingagents-industry-theme-discovery-analyst"
+    ],
+    "skill_root": "C:\\Users\\Yaozhou Ma\\Documents\\TradingAgents\\codex_tradingagents_skillkit\\skills",
+    "runtime_uses_upstream_python": [
+      "tradingagents/dataflows",
+      "tradingagents/agents/utils"
+    ]
+  },
+  "runs": [
+    {
+      "ticker": "AAPL",
+      "evidence_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\evidence.json",
+      "role_packet_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\role_packets.md",
+      "role_packet_paths": {
+        "market": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\roles\\market.md",
+        "social": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\roles\\social.md",
+        "news": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\roles\\news.md",
+        "fundamentals": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\roles\\fundamentals.md",
+        "financial_report": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\roles\\financial_report.md"
+      },
+      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\AAPL\\2026-06-30\\workflow_state.json",
+      "debate_record_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\AAPL\\2026-06-30\\debate_record.md"
+    },
+    {
+      "ticker": "MSFT",
+      "evidence_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\evidence.json",
+      "role_packet_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\role_packets.md",
+      "role_packet_paths": {
+        "market": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\roles\\market.md",
+        "social": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\roles\\social.md",
+        "news": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\roles\\news.md",
+        "fundamentals": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\roles\\fundamentals.md",
+        "financial_report": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\roles\\financial_report.md"
+      },
+      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\evidence\\MSFT\\2026-06-30\\workflow_state.json",
+      "debate_record_path": "codex_tradingagents_skillkit\\runs\\aapl_msft_2026-06-30_review_gate_fixed\\reports\\MSFT\\2026-06-30\\debate_record.md"
+    }
+  ]
+}
