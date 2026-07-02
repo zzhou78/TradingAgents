@@ -33,7 +33,10 @@ Procedure:
 10. Mark capex, formal guidance, segment/product detail, income statement, balance sheet, and cash flow claims as evidence gaps when the relevant section or Exhibit 99.1 is unavailable.
 11. Do not infer management commentary from ratios alone.
 12. For ASX companies, report the period covered and summarize revenue/income/NPAT, EPS/DPS, operating cash flow, free cash flow or cash movement, cash/debt/gearing, segment or product performance, management commentary/outlook, dividends/capital management, capex/commitments, material risks, one-off items, and evidence gaps when available.
-13. Apply ASX sector-specific checks where relevant: banks use NIM, CET1, loan growth, arrears, impairment, dividend, ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, commodity exposure; REITs use NTA, occupancy, WALE, gearing, WACR/cap rates, distribution; SaaS/tech uses ARR, churn, NRR, cash runway, gross margin; insurers use premium growth, claims ratio, combined operating ratio, capital adequacy.
+13. Use official ASX announcements first, then configured company investor-relations URLs from `data/rules/asx_investor_relations_urls.yaml`; do not hard-code new ASX IR URLs in the collector.
+14. For ASX PDFs, use extracted text and tables where available. Prefer `pdfplumber` table extraction when installed, then fall back to text-only PDF extraction.
+15. Apply ASX sector-specific checks where relevant: banks use NIM, CET1, loan growth, arrears, impairment, dividend, ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, commodity exposure; healthcare uses segment revenue, R&D, plasma collections, margins, debt, guidance; insurers/health insurers use premium growth, claims ratio, membership, capital adequacy; retailers use sales growth, EBIT margin, inventory, capex, dividends.
+16. Every ASX sector metric must be available with a source section or explicitly gap-labelled with metric confidence.
 
 ## RoleExecutionContract Rules
 

@@ -1,0 +1,116 @@
+[
+  {
+    "evidence_id": "fundamentals:CBA.AX:2026-07-02:001",
+    "ticker": "CBA.AX",
+    "trade_date": "2026-07-02",
+    "source": "get_fundamentals",
+    "section_name": "company fundamentals packet",
+    "status": "available",
+    "excerpt": "# Company Fundamentals for CBA.AX\n# Data retrieved on: 2026-07-03 07:12:11\n\nName: Commonwealth Bank of Australia\nSector: Financial Services\nIndustry: Banks - Diversified\nMarket Cap: 269446021120\nPE Ratio (TTM): 25.906754\nForward PE: 23.969215\nPEG Ratio: 3.49\nPrice to Book: 3.488785\nEPS (TTM): 6.22\nForward EPS: 6.72279\nDividend Yield: 3.07\nBeta: 0.802\n52 Week High: 185.59\n52 Week Low: 146.98\n50 Day Average: 165.26\n200 Day Average: 165.40845\nRevenue (TTM): 28466999296\nGross Profit: 28466999296\nNet Income: 10403000320\nProfit Margin: 0.36354\nOperating Margin: 0.55507\nReturn on Equity: 0.13644\nReturn on Assets: 0.0076599997\nBook Value: 46.188",
+    "supports_claims": [
+      "company fundamentals packet",
+      "revenue",
+      "net income",
+      "valuation",
+      "profitability"
+    ],
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "sector_specific_metric_expectations": [
+      "NIM",
+      "CET1",
+      "loan growth",
+      "arrears",
+      "impairment",
+      "dividend",
+      "ROE"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:CBA.AX:2026-07-02:002",
+    "ticker": "CBA.AX",
+    "trade_date": "2026-07-02",
+    "source": "get_balance_sheet",
+    "section_name": "balance sheet",
+    "status": "available",
+    "excerpt": "# Balance Sheet data for CBA.AX (quarterly)\n# Data retrieved on: 2026-07-03 07:12:11\n\n,2025-12-31,2025-06-30,2024-12-31\r\nTreasury Shares Number,1338636.0,1620212.0,1463595.0\r\nOrdinary Shares Number,1672123722.0,1671842146.0,1671998763.0\r\nShare Issued,1673462358.0,1673462358.0,1673462358.0\r\nNet Debt,117533000000.0,158452000000.0,121070000000.0\r\nTotal Debt,207438000000.0,216232000000.0,203847000000.0\r\nTangible Book Value,68936000000.0,70694000000.0,67481000000.0\r\nInvested Capital,284670000000.0,292731000000.0,279111000000.0\r\nNet Tangible Assets,68936000000.0,70694000000.0,67481000000.0\r\nCommon Stock Equity,77232000000.0,78776000000.0,75264000000.0\r\nTotal Capitalization,284670000000.0,292731000000.0,279111000000.0\r\nTotal Equity Gross Minority Interest,77232000000.0,78776000000.0,75264000000.0\r\nMinority Interest,,,0.0\r\nStockholders Equity,77232000000.0,78776000000.0,75264000000.0\r\nTreasury Stock,195000000.0,215000000.0,189000000.0\r\nRetained Earnings,45019000000.0,43974000000.0,42578000000.",
+    "supports_claims": [
+      "balance sheet",
+      "net income",
+      "debt/liquidity",
+      "valuation",
+      "profitability"
+    ],
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "sector_specific_metric_expectations": [
+      "NIM",
+      "CET1",
+      "loan growth",
+      "arrears",
+      "impairment",
+      "dividend",
+      "ROE"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:CBA.AX:2026-07-02:003",
+    "ticker": "CBA.AX",
+    "trade_date": "2026-07-02",
+    "source": "get_cashflow",
+    "section_name": "cash flow statement",
+    "status": "available",
+    "excerpt": "NO_DATA_AVAILABLE: No usable market data for 'CBA.AX' from any configured vendor (no cash flow data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol.",
+    "supports_claims": [
+      "cash flow statement",
+      "cash flow",
+      "debt/liquidity"
+    ],
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "sector_specific_metric_expectations": [
+      "NIM",
+      "CET1",
+      "loan growth",
+      "arrears",
+      "impairment",
+      "dividend",
+      "ROE"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:CBA.AX:2026-07-02:004",
+    "ticker": "CBA.AX",
+    "trade_date": "2026-07-02",
+    "source": "get_income_statement",
+    "section_name": "income statement",
+    "status": "available",
+    "excerpt": "NO_DATA_AVAILABLE: No usable market data for 'CBA.AX' from any configured vendor (no income statement data). The symbol may be invalid, delisted, not covered, or the vendor returned stale data. Do not estimate or fabricate values \u2014 report that data is unavailable for this symbol.",
+    "supports_claims": [
+      "income statement"
+    ],
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "sector_specific_metric_expectations": [
+      "NIM",
+      "CET1",
+      "loan growth",
+      "arrears",
+      "impairment",
+      "dividend",
+      "ROE"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  }
+]

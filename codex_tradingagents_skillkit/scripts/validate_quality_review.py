@@ -67,7 +67,20 @@ def _asx_source_collection_failed(evidence_path: Path | None) -> bool:
     source_call = calls.get("collect_financial_document_sources", {})
     status = str(source_call.get("status", "")).lower()
     output = str(source_call.get("output", "")).lower()
+    blocker = bool(source_call.get("external_blocker_documented")) or "external blocker" in output
+    if blocker:
+        return False
     return status in {"error", "unavailable"} or "asx_announcements | error" in output
+
+
+def _is_asx_evidence(evidence_path: Path | None) -> bool:
+    if not evidence_path:
+        return False
+    try:
+        evidence = json.loads(_read(evidence_path))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return str(evidence.get("ticker", "")).upper().endswith(".AX")
 
 
 def _structured_evidence_dir(evidence_path: Path | None) -> Path | None:
@@ -231,6 +244,47 @@ def _structured_evidence_quality_errors(evidence_path: Path | None) -> list[str]
         if not has_available_cash_flow:
             errors.append("financial evidence lacks extracted cash-flow statement section; review-grade quality gate cannot pass")
 
+        errors.extend(_asx_sector_metric_quality_errors(evidence_path, records))
+
+    return errors
+
+
+ASX_REQUIRED_SECTOR_METRICS = {
+    "banks": {"net_interest_margin", "cet1", "loan_growth", "arrears", "impairment", "dividend", "roe"},
+    "miners": {"production", "realised_price", "unit_cost_aisc", "capex", "reserves_resources", "commodity_exposure"},
+    "healthcare": {"segment_revenue", "r_and_d", "plasma_collections", "margins", "debt", "guidance"},
+    "health_insurers": {"premium_growth", "claims_ratio", "membership", "capital_adequacy"},
+    "retailers": {"sales_growth", "ebit_margin", "inventory", "capex", "dividends"},
+}
+
+
+def _asx_sector_metric_quality_errors(evidence_path: Path | None, records: list[dict[str, object]]) -> list[str]:
+    if not _is_asx_evidence(evidence_path):
+        return []
+    metric_records = [
+        record
+        for record in records
+        if str(record.get("section_kind") or record.get("section_type") or "") == "sector_metric"
+        or str(record.get("section_name", "")).startswith("sector_metric_")
+    ]
+    if not metric_records:
+        return ["ASX sector-specific metrics are missing without evidence-gap disclosure"]
+    sector = str(next((record.get("sector") for record in metric_records if record.get("sector")), "") or "")
+    required = ASX_REQUIRED_SECTOR_METRICS.get(sector, set())
+    if not required:
+        return []
+    by_metric = {str(record.get("metric_name") or "").lower(): record for record in metric_records}
+    errors: list[str] = []
+    for metric in sorted(required):
+        record = by_metric.get(metric)
+        if not record:
+            errors.append(f"ASX sector metric {metric} is missing without evidence-gap disclosure")
+            break
+        if str(record.get("status", "")).lower() != "available" and not (
+            record.get("evidence_gap") or record.get("unavailable_reason")
+        ):
+            errors.append(f"ASX sector metric {metric} is unavailable without evidence-gap disclosure")
+            break
     return errors
 
 
@@ -444,8 +498,42 @@ def _fundamentals_quality_errors(fundamentals_path: Path) -> list[str]:
     errors: list[str] = []
     if not re.search(r"fundamentals:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:\d{3}", text):
         errors.append("fundamentals claim lacks statement evidence citation")
-    if "Sector-Specific Metrics" in text and not re.search(r"gap|NIM|CET1|production|capex|pipeline|same-store|R&D", text, re.IGNORECASE):
+    if "Sector-Specific Metrics" in text and not re.search(
+        r"gap|NIM|CET1|production|capex|premium|claims ratio|inventory|plasma|same-store|R&D",
+        text,
+        re.IGNORECASE,
+    ):
         errors.append("fundamentals sector metrics are not sector-specific or gap-labelled")
+    return errors
+
+
+def _complete_report_trade_date_errors(report_dir: Path, complete_text: str) -> list[str]:
+    if not complete_text:
+        return []
+    trade_date_match = re.search(r"^Trade date:\s*(\d{4}-\d{2}-\d{2})\s*$", complete_text, re.MULTILINE)
+    if not trade_date_match:
+        return []
+    report_folder_date = report_dir.name
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", report_folder_date) and report_folder_date != trade_date_match.group(1):
+        return ["report folder trade_date and complete_report.md trade_date disagree"]
+    return []
+
+
+def _asx_financial_claim_support_errors(report_dir: Path, evidence_path: Path | None) -> list[str]:
+    if not _is_asx_evidence(evidence_path):
+        return []
+    errors: list[str] = []
+    for path in [report_dir / "complete_report.md", report_dir / "1_analysts" / "financial_report.md"]:
+        text = _read(path)
+        if not text or _is_pending(text):
+            continue
+        if re.search(
+            r"financial (?:strength|weakness)|balance sheet strength|cash flow strength",
+            text,
+            re.IGNORECASE,
+        ) and not re.search(r"\bfinancial:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:\d{3}\b|evidence gap", text, re.IGNORECASE):
+            errors.append("ASX financial strength/weakness claim lacks source section or metric evidence")
+            break
     return errors
 
 
@@ -628,9 +716,12 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
         errors.append("fundamentals report only lists ratios and does not summarize financial statement data")
 
     complete_text = _read(complete_report)
+    if _is_asx_evidence(evidence_path) and not complete_report.exists():
+        errors.append("complete_report.md is missing")
     if complete_report.exists() and _is_pending(complete_text):
         errors.append("complete_report.md is still pending")
     elif complete_text:
+        errors.extend(_complete_report_trade_date_errors(report_dir, complete_text))
         for heading in ["### Financial Report Analyst", "### Industry / Theme Discovery Analyst"]:
             if heading not in complete_text:
                 errors.append(f"complete_report.md omits {heading}")
@@ -656,6 +747,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     errors.extend(_sentiment_quality_errors(sentiment))
     errors.extend(_fundamentals_quality_errors(fundamentals))
     errors.extend(_financial_quality_errors(financial))
+    errors.extend(_asx_financial_claim_support_errors(report_dir, evidence_path))
     errors.extend(_debate_quality_errors(bull, bear))
     errors.extend(_research_manager_quality_errors(manager))
     errors.extend(_trader_quality_errors(trader))

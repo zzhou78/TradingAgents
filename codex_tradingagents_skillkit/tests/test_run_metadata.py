@@ -138,6 +138,7 @@ def test_run_folder_metadata_file_can_explain_date_mismatch(tmp_path: Path):
                 "run_id": "aapl_msft_review:AAPL:2026-07-02:test",
                 "run_folder_name": output_dir.name,
                 "ticker_list": ["AAPL"],
+                "market": "US",
                 "trade_date": "2026-07-02",
                 "evidence_as_of_date": "2026-07-02",
                 "run_executed_at": "2026-07-02T12:00:00+10:00",
@@ -159,3 +160,37 @@ def test_run_folder_metadata_file_can_explain_date_mismatch(tmp_path: Path):
     }
 
     assert module._run_metadata_errors(workflow_path, workflow) == []
+
+
+def test_run_metadata_requires_market_field(tmp_path: Path):
+    module = _load_workflow_module()
+    output_dir = tmp_path / "asx_2026-07-02_closed_loop"
+    workflow_path = output_dir / "evidence" / "BHP.AX" / "2026-07-02" / "workflow_state.json"
+    workflow_path.parent.mkdir(parents=True)
+    (output_dir / "run_metadata.json").write_text(
+        json.dumps(
+            {
+                "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:test",
+                "run_folder_name": output_dir.name,
+                "ticker_list": ["BHP.AX"],
+                "trade_date": "2026-07-02",
+                "evidence_as_of_date": "2026-07-02",
+                "run_executed_at": "2026-07-02T12:00:00+10:00",
+                "authoritative_result_folder": str(output_dir),
+                "workflow_status": "pending",
+            }
+        ),
+        encoding="utf-8",
+    )
+    workflow = {
+        "ticker": "BHP.AX",
+        "trade_date": "2026-07-02",
+        "output_dir": str(output_dir),
+        "run_metadata": {
+            "trade_date": "2026-07-02",
+            "run_folder_name": output_dir.name,
+            "authoritative_result_folder": True,
+        },
+    }
+
+    assert "run_metadata.json missing required field: market" in module._run_metadata_errors(workflow_path, workflow)

@@ -187,6 +187,7 @@ def _run_metadata_errors(workflow_path: Path, workflow: dict[str, Any]) -> list[
                 "run_id",
                 "run_folder_name",
                 "ticker_list",
+                "market",
                 "trade_date",
                 "evidence_as_of_date",
                 "run_executed_at",

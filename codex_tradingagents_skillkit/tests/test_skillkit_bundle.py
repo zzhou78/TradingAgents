@@ -1802,6 +1802,101 @@ def test_quality_validator_fails_asx_report_when_asx_source_collection_failed(tm
     assert "ASX source collection failed; report cannot be marked complete" in result.stdout
 
 
+def test_quality_validator_fails_asx_when_complete_report_missing(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    (report_dir / "complete_report.md").unlink()
+    evidence_dir = tmp_path / "evidence" / "BHP.AX" / "2026-07-02"
+    evidence_dir.mkdir(parents=True)
+    (evidence_dir / "evidence.json").write_text('{"ticker": "BHP.AX", "trade_date": "2026-07-02"}\n', encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(QUALITY_VALIDATOR),
+            "--report-dir",
+            str(report_dir),
+            "--evidence",
+            str(evidence_dir / "evidence.json"),
+        ],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "complete_report.md is missing" in result.stdout
+
+
+def test_quality_validator_fails_asx_when_sector_metrics_have_no_gap_records(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    evidence_dir = tmp_path / "evidence" / "BHP.AX" / "2026-07-02"
+    financial_dir = evidence_dir / "financial_report"
+    financial_dir.mkdir(parents=True)
+    (evidence_dir / "evidence.json").write_text('{"ticker": "BHP.AX", "trade_date": "2026-07-02"}\n', encoding="utf-8")
+    (financial_dir / "section_records.json").write_text(
+        json.dumps(
+            [
+                {
+                    "section_name": "management_discussion_analysis",
+                    "status": "available",
+                    "source_type": "asx_announcement",
+                    "supports_claims": ["management discussion"],
+                },
+                {
+                    "section_name": "cash_flow_statement",
+                    "status": "available",
+                    "source_type": "asx_announcement",
+                    "supports_claims": ["cash flow statement"],
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(QUALITY_VALIDATOR),
+            "--report-dir",
+            str(report_dir),
+            "--evidence",
+            str(evidence_dir / "evidence.json"),
+        ],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "ASX sector-specific metrics are missing without evidence-gap disclosure" in result.stdout
+
+
+def test_quality_validator_fails_when_asx_report_date_disagrees_with_folder(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    complete_report = report_dir / "complete_report.md"
+    complete_report.write_text(
+        _minimal_complete_report().replace("Generated: 2026-06-27", "Trade date: 2026-07-02"),
+        encoding="utf-8",
+    )
+    evidence_dir = tmp_path / "evidence" / "BHP.AX" / "2026-06-27"
+    evidence_dir.mkdir(parents=True)
+    (evidence_dir / "evidence.json").write_text('{"ticker": "BHP.AX", "trade_date": "2026-06-27"}\n', encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(QUALITY_VALIDATOR),
+            "--report-dir",
+            str(report_dir),
+            "--evidence",
+            str(evidence_dir / "evidence.json"),
+        ],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "report folder trade_date and complete_report.md trade_date disagree" in result.stdout
+
+
 def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
     market = (SKILLS_ROOT / "tradingagents-market-analyst" / "SKILL.md").read_text(encoding="utf-8")
     news = (SKILLS_ROOT / "tradingagents-news-analyst" / "SKILL.md").read_text(encoding="utf-8")

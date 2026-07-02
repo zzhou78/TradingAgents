@@ -1,0 +1,66 @@
+[
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "<stocktwits unavailable: HTTPError>",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MPL.AX:2026-07-02:valuation",
+    "independence_group_id": "reaction:MPL.AX:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MPL.AX:2026-07-02:item:0001"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "<no Reddit posts found mentioning MPL.AX across r/wallstreetbets, r/stocks, r/investing in the past 7 days>",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.0,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MPL.AX:2026-07-02:none",
+    "independence_group_id": "reaction:MPL.AX:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [
+      "no_items_placeholder"
+    ],
+    "evidence_id": "social:MPL.AX:2026-07-02:item:0002"
+  }
+]

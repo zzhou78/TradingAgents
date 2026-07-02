@@ -29,6 +29,8 @@ Procedure:
 6. For each packet item, run `tradingagents-workflow-orchestrator`, then the relevant analyst role skills, Financial Report Analyst, Industry / Theme Discovery Analyst, `tradingagents-dataflow-routing`, debate skills, trader, risk skills, portfolio manager, run-persistence skill, and quality reviewer.
 7. Do not run live LLM or market-data calls unless the current user explicitly approves them.
 8. After quality review, run the Codex workflow controller. If it reports `quality_remediation`, do not stop at `quality_remediation_plan.json`; read `next_remediation_task.md`, implement the fix with tests, rerun evidence/report generation, and continue until the quality gate passes or a true external blocker is documented.
+9. For ASX multi-ticker review runs, use a clear ASX-specific output folder such as `codex_tradingagents_skillkit/runs/asx_YYYY-MM-DD_closed_loop/`; do not store ASX reports under an AAPL/MSFT folder.
+10. ASX run metadata must include `market: ASX`, `ticker_list`, `trade_date`, `evidence_as_of_date`, `run_executed_at`, `authoritative_result_folder`, and `workflow_status`.
 
 Output:
 - JSON or markdown workflow packet listing ticker runs, inferred asset types, selected analysts, workflow skills, role skills, expected report keys, and safety boundaries.

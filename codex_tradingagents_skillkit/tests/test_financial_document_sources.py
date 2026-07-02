@@ -315,6 +315,143 @@ def test_asx_pdf_text_extraction_uses_optional_pypdf(monkeypatch):
     assert "operating cash flow" in asx._extract_pdf_text(b"%PDF fake fixture")
 
 
+def test_asx_ir_fallback_urls_are_loaded_from_rules_file():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    urls = asx._load_known_asx_ir_urls()
+
+    assert "BHP" in urls
+    assert "https://www.bhp.com/investors/annual-reporting" in urls["BHP"]
+    assert "WOW" in urls
+
+
+def test_asx_pdf_text_extraction_includes_pdfplumber_tables(monkeypatch):
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    class FakePage:
+        def extract_text(self) -> str:
+            return "Annual report financial statements"
+
+        def extract_tables(self):
+            return [[["Segment", "Revenue"], ["Australia Food", "50000"]]]
+
+    class FakePdf:
+        pages = [FakePage()]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+    monkeypatch.setitem(
+        sys.modules,
+        "pdfplumber",
+        types.SimpleNamespace(open=lambda stream: FakePdf()),
+    )
+
+    text = asx._extract_pdf_text(b"%PDF fake fixture")
+
+    assert "Annual report financial statements" in text
+    assert "Segment | Revenue" in text
+    assert "Australia Food | 50000" in text
+
+
+def _asx_sector_packet(module, ticker: str, document_text: str):
+    code = ticker.removesuffix(".AX")
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if f"companies/{code}/announcements" in url:
+            return json.dumps(
+                {
+                    "data": [
+                        {
+                            "title": "2025 Annual Report",
+                            "announcement_date": "2025-08-15",
+                            "url": f"https://asx.example/{code}-annual-report.pdf",
+                        }
+                    ]
+                }
+            )
+        if url == f"https://asx.example/{code}-annual-report.pdf":
+            return document_text
+        raise AssertionError(url)
+
+    return module.collect_financial_document_sources(ticker, "2026-07-02", http_get=fake_http_get)
+
+
+def _sector_metric_statuses(packet: dict[str, object]) -> dict[str, str]:
+    source = packet["sources"][0]
+    return {
+        section["metric_name"]: section["status"]
+        for section in source["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+
+def test_asx_miner_metrics_are_extracted_for_bhp():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "BHP.AX",
+        "Annual report operating and financial review cash flow statement production realised price "
+        "unit cost AISC capex reserves resources iron ore copper commodity exposure outlook",
+    )
+
+    statuses = _sector_metric_statuses(packet)
+
+    assert packet["asx_sector"] == "miners"
+    assert statuses["production"] == "available"
+    assert statuses["realised_price"] == "available"
+    assert statuses["unit_cost_aisc"] == "available"
+    assert statuses["capex"] == "available"
+    assert statuses["reserves_resources"] == "available"
+    assert statuses["commodity_exposure"] == "available"
+
+
+def test_asx_bank_metrics_are_extracted_for_cba():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "CBA.AX",
+        "Annual report operating and financial review cash flow statement NIM CET1 loan growth "
+        "arrears impairment dividend ROE outlook",
+    )
+
+    statuses = _sector_metric_statuses(packet)
+
+    assert packet["asx_sector"] == "banks"
+    assert statuses["net_interest_margin"] == "available"
+    assert statuses["cet1"] == "available"
+    assert statuses["loan_growth"] == "available"
+    assert statuses["arrears"] == "available"
+    assert statuses["impairment"] == "available"
+    assert statuses["dividend"] == "available"
+    assert statuses["roe"] == "available"
+
+
+def test_asx_healthcare_metrics_are_extracted_for_csl():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "CSL.AX",
+        "Annual report operating and financial review cash flow statement segment revenue R&D "
+        "plasma collections margin net debt guidance outlook",
+    )
+
+    statuses = _sector_metric_statuses(packet)
+
+    assert packet["asx_sector"] == "healthcare"
+    assert statuses["segment_revenue"] == "available"
+    assert statuses["r_and_d"] == "available"
+    assert statuses["plasma_collections"] == "available"
+    assert statuses["margins"] == "available"
+    assert statuses["debt"] == "available"
+    assert statuses["guidance"] == "available"
+
+
 def test_generic_8k_is_not_mislabeled_as_earnings_release():
     module = _load_module()
 

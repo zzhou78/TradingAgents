@@ -1595,16 +1595,27 @@ def _run_folder_metadata(
     run_executed_at: str,
     workflow_status: str = "pending",
 ) -> dict[str, Any]:
+    market = _run_market(tickers)
     return {
         "run_id": f"{output_dir.name}:{','.join(tickers)}:{trade_date}:{run_executed_at}",
         "run_folder_name": output_dir.name,
         "ticker_list": tickers,
+        "market": market,
         "trade_date": trade_date,
         "evidence_as_of_date": trade_date,
         "run_executed_at": run_executed_at,
         "authoritative_result_folder": str(output_dir),
         "workflow_status": workflow_status,
     }
+
+
+def _run_market(tickers: list[str]) -> str:
+    symbols = [ticker.upper().strip() for ticker in tickers]
+    if symbols and all(symbol.endswith(".AX") for symbol in symbols):
+        return "ASX"
+    if symbols and all("." not in symbol for symbol in symbols):
+        return "US"
+    return "mixed"
 
 
 def _run_metadata(
@@ -1616,11 +1627,13 @@ def _run_metadata(
     run_executed_at: str,
     status: str = "pending",
 ) -> dict[str, Any]:
+    market = _run_market(tickers)
     return {
         "trade_date": trade_date,
         "evidence_as_of_date": trade_date,
         "run_executed_at": run_executed_at,
         "output_dir": str(output_dir),
+        "market": market,
         "run_folder_name": output_dir.name,
         "ticker_list": tickers,
         "run_id": f"{output_dir.name}:{ticker}:{trade_date}:{run_executed_at}",
@@ -1659,6 +1672,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         "trade_date": args.trade_date,
         "evidence_as_of_date": args.trade_date,
         "run_executed_at": run_executed_at,
+        "market": run_folder_metadata["market"],
         "selected_analysts": selected_analysts,
         "max_debate_rounds": max_debate_rounds,
         "max_risk_discuss_rounds": max_risk_discuss_rounds,

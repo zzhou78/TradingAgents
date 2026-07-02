@@ -20,10 +20,11 @@ Procedure:
 6. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite quality errors.
 7. Fail completed role reports that omit Tool Outputs Used, Article Evidence Cards for News Analyst, Quantitative Regime / Tool Outputs for Market Analyst, Claim-Source Table for Financial Report Analyst, or Structured Evidence Matrix for Research Manager.
 8. ASX reports are not complete when ASX source collection fails. If official ASX announcements or investor-relations evidence cannot be collected, fail quality_gate.json or leave completion pending with an explicit evidence gap.
-9. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
-10. Fail pending role outputs unless the final gate explicitly documents a limitation and leaves normal completion pending.
-11. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
-12. A failed quality gate is not a terminal artifact. Ensure `quality_remediation_plan.json` and `next_remediation_task.md` exist, then Codex must implement the next remediation task, rerun the evidence/report workflow, and continue until the quality gate passes or a true external blocker is documented.
+9. Fail ASX review-grade completion when `complete_report.md` is missing, `financial_report.md` is pending, ASX source collection is `error` without an explicit external blocker, sector-specific metrics are missing without evidence-gap disclosure, ASX financial strength/weakness claims lack section or metric evidence, or report folder trade date and report trade date disagree.
+10. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
+11. Fail pending role outputs unless the final gate explicitly documents a limitation and leaves normal completion pending.
+12. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
+13. A failed quality gate is not a terminal artifact. Ensure `quality_remediation_plan.json` and `next_remediation_task.md` exist, then Codex must implement the next remediation task, rerun the evidence/report workflow, and continue until the quality gate passes or a true external blocker is documented.
 
 ## News Analyst Evidence Gate
 

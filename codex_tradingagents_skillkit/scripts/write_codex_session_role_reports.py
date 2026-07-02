@@ -49,6 +49,59 @@ def _fund_record(records: list[dict[str, object]], section: str) -> dict[str, ob
     return records[0] if records else {}
 
 
+def _asx_sector_metric_records(records: list[dict[str, object]]) -> list[dict[str, object]]:
+    return [
+        record
+        for record in records
+        if str(record.get("section_kind") or "") == "sector_metric"
+        or str(record.get("section_name", "")).startswith("sector_metric_")
+    ]
+
+
+def _asx_sector_metric_summary(records: list[dict[str, object]]) -> str:
+    metrics = _asx_sector_metric_records(records)
+    if not metrics:
+        return (
+            "- Sector-specific gap: no ASX sector metric records were extracted. "
+            "Financial strength/weakness claims must stay evidence-gapped.\n"
+        )
+    sector = str(next((record.get("sector") for record in metrics if record.get("sector")), "ASX sector"))
+    lines = [f"- ASX sector identified by collector: {sector}."]
+    for record in metrics:
+        label = _clean_cell(record.get("metric_label") or record.get("metric_name"))
+        status = _clean_cell(record.get("status"))
+        evidence_id = _clean_cell(record.get("evidence_id"))
+        confidence = _clean_cell(record.get("confidence"))
+        gap = _clean_cell(record.get("evidence_gap") or record.get("unavailable_reason"))
+        if status == "available":
+            lines.append(f"- {label}: available via {evidence_id}; confidence {confidence}.")
+        else:
+            lines.append(f"- {label}: evidence gap disclosed via {evidence_id}; {gap}")
+    return "\n".join(lines) + "\n"
+
+
+def _asx_sector_metric_table_rows(records: list[dict[str, object]]) -> list[str]:
+    rows = []
+    for record in _asx_sector_metric_records(records):
+        rows.append(
+            "| "
+            + " | ".join(
+                [
+                    _clean_cell(record.get("evidence_id")),
+                    _clean_cell(record.get("sector")),
+                    _clean_cell(record.get("metric_label") or record.get("metric_name")),
+                    _clean_cell(record.get("status")),
+                    _clean_cell(record.get("confidence")),
+                    _clean_cell(record.get("evidence_gap") or record.get("unavailable_reason") or "none"),
+                ]
+            )
+            + " |"
+        )
+    if not rows:
+        rows.append("| none | ASX | sector metrics | unavailable | low | no ASX sector metric records extracted |")
+    return rows
+
+
 def _first_usable_news(cards: list[dict[str, object]]) -> dict[str, object]:
     preferred: list[tuple[int, dict[str, object]]] = []
     for card in cards:
@@ -291,6 +344,7 @@ def write_reports(*, output_dir: Path, ticker: str, trade_date: str) -> Path:
     evidence_as_of = str(run_metadata.get("evidence_as_of_date") or evidence.get("evidence_as_of_date") or trade_date)
     run_id = str(run_metadata.get("run_id") or evidence.get("run_id") or "")
     run_folder_name = str(run_metadata.get("run_folder_name") or output_dir.name)
+    is_asx = ticker.upper().endswith(".AX")
 
     sources = social_summary.get("sources") if isinstance(social_summary.get("sources"), list) else []
     social_ids = [
@@ -488,6 +542,15 @@ Impact label: mixed-to-positive, supported by {best_news_id}. The strongest usab
         encoding="utf-8",
     )
 
+    sector_metric_summary = _asx_sector_metric_summary(financial_records) if is_asx else (
+        "- Technology sector metrics considered: R&D intensity / innovation investment, cloud or platform scale where disclosed, product and services mix, and capex where available.\n"
+        "- Sector-specific gap: the fundamentals packet does not by itself provide a complete segment KPI model, so Financial Report Analyst section records are required for segment and capex claims.\n"
+    )
+    fundamentals_interpretation = (
+        "Interpretation: structured fundamentals provide ratio and statement context only; ASX sector metrics must come from official announcement or IR section records and are not final investment judgments."
+        if is_asx
+        else "Interpretation: structured fundamentals support a financially durable large-cap technology company, but valuation and market timing must be weighed by Research Manager rather than decided mechanically from ratios."
+    )
     (report_dir / "1_analysts" / "fundamentals.md").write_text(
         f"""# Fundamentals Analyst Report - {ticker}
 
@@ -505,11 +568,10 @@ Impact label: mixed-to-positive, supported by {best_news_id}. The strongest usab
 | {f_balance.get('evidence_id')} | balance sheet | Balance sheet and net debt context. | medium |
 | {f_cash.get('evidence_id')} | cash flow statement | Free cash flow and capital return context. | medium |
 
-Interpretation: structured fundamentals support a financially durable large-cap technology company, but valuation and market timing must be weighed by Research Manager rather than decided mechanically from ratios.
+{fundamentals_interpretation}
 
 ## Sector-Specific Metrics
-- Technology sector metrics considered: R&D intensity / innovation investment, cloud or platform scale where disclosed, product and services mix, and capex where available.
-- Sector-specific gap: the fundamentals packet does not by itself provide a complete segment KPI model, so Financial Report Analyst section records are required for segment and capex claims.
+{sector_metric_summary.rstrip()}
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.
@@ -519,7 +581,8 @@ Interpretation: structured fundamentals support a financially durable large-cap 
         encoding="utf-8",
     )
 
-    coverage_records = [k_business, k_risk, q_mda, q_segment, q_liquidity, q_cash, exhibit]
+    sector_metric_records = _asx_sector_metric_records(financial_records) if is_asx else []
+    coverage_records = [k_business, k_risk, q_mda, q_segment, q_liquidity, q_cash, exhibit, *sector_metric_records[:8]]
     coverage_rows = [
         "| "
         + " | ".join(
@@ -536,16 +599,41 @@ Interpretation: structured fundamentals support a financially durable large-cap 
         for record in coverage_records
         if record
     ]
-    claim_rows = [
-        f"| Quarterly revenue and earnings context | {exhibit.get('evidence_id')} 8-K | Exhibit 99.1 | {exhibit.get('filing_date')} | medium | none |",
-        f"| Management discussion supports operating trend review | {q_mda.get('evidence_id')} 10-Q | 10-Q MD&A | {q_mda.get('filing_date')} | medium | none |",
-        f"| Liquidity appears supported by company cash resources and access to markets | {q_liquidity.get('evidence_id')} 10-Q | Liquidity and capital resources | {q_liquidity.get('filing_date')} | medium | none |",
-        f"| Segment/product mix is available for specialist interpretation | {q_segment.get('evidence_id')} 10-Q | Segment/product revenue tables | {q_segment.get('filing_date')} | medium | none |",
-        f"| Cash-flow statement is available for operating cash flow and capital return review | {q_cash.get('evidence_id')} 10-Q | Cash flow statement | {q_cash.get('filing_date')} | medium | none |",
-        f"| Risk factors require caution around company-specific uncertainties | {k_risk.get('evidence_id')} 10-K | Risk factors | {k_risk.get('filing_date')} | medium | none |",
-        f"| Formal guidance detail | structured fundamentals packet | unavailable section / exhibit if not in Exhibit 99.1 | {trade_date} | low | explicit evidence gap if guidance not in extracted exhibit |",
-        f"| Capex commitments / contractual obligations | 10-K/10-Q | unavailable commitments/capex section | {trade_date} | low | evidence gap: commitments/capex section marked unavailable where not extracted |",
-    ]
+    if is_asx:
+        metric_claim_rows = [
+            f"| ASX sector metric: {_clean_cell(record.get('metric_label') or record.get('metric_name'))} | {record.get('evidence_id')} ASX section record | {record.get('section_name')} | {record.get('filing_date')} | {record.get('confidence')} | {_clean_cell(record.get('evidence_gap') or record.get('unavailable_reason') or 'none')} |"
+            for record in sector_metric_records
+        ]
+        claim_rows = [
+            f"| Official ASX financial-report context | {exhibit.get('evidence_id')} ASX document | {exhibit.get('section_name')} | {exhibit.get('filing_date')} | medium | {_clean_cell(exhibit.get('evidence_gap') or 'none')} |",
+            f"| Management discussion / outlook support | {q_mda.get('evidence_id')} ASX document | {q_mda.get('section_name')} | {q_mda.get('filing_date')} | {q_mda.get('confidence', 'low')} | {_clean_cell(q_mda.get('evidence_gap') or 'none')} |",
+            f"| Liquidity / cash-debt evidence | {q_liquidity.get('evidence_id')} ASX document | {q_liquidity.get('section_name')} | {q_liquidity.get('filing_date')} | {q_liquidity.get('confidence', 'low')} | {_clean_cell(q_liquidity.get('evidence_gap') or 'none')} |",
+            f"| Segment/product evidence | {q_segment.get('evidence_id')} ASX document | {q_segment.get('section_name')} | {q_segment.get('filing_date')} | {q_segment.get('confidence', 'low')} | {_clean_cell(q_segment.get('evidence_gap') or 'none')} |",
+            f"| Cash-flow evidence | {q_cash.get('evidence_id')} ASX document | {q_cash.get('section_name')} | {q_cash.get('filing_date')} | {q_cash.get('confidence', 'low')} | {_clean_cell(q_cash.get('evidence_gap') or 'none')} |",
+            *metric_claim_rows,
+        ]
+        financial_gap_lines = (
+            "- ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.\n"
+            "- Sector-specific metrics are either cited as available or explicitly gap-labelled with low confidence.\n"
+            "- Guidance is not inferred unless explicitly found in the extracted ASX document section."
+        )
+    else:
+        claim_rows = [
+            f"| Quarterly revenue and earnings context | {exhibit.get('evidence_id')} 8-K | Exhibit 99.1 | {exhibit.get('filing_date')} | medium | none |",
+            f"| Management discussion supports operating trend review | {q_mda.get('evidence_id')} 10-Q | 10-Q MD&A | {q_mda.get('filing_date')} | medium | none |",
+            f"| Liquidity appears supported by company cash resources and access to markets | {q_liquidity.get('evidence_id')} 10-Q | Liquidity and capital resources | {q_liquidity.get('filing_date')} | medium | none |",
+            f"| Segment/product mix is available for specialist interpretation | {q_segment.get('evidence_id')} 10-Q | Segment/product revenue tables | {q_segment.get('filing_date')} | medium | none |",
+            f"| Cash-flow statement is available for operating cash flow and capital return review | {q_cash.get('evidence_id')} 10-Q | Cash flow statement | {q_cash.get('filing_date')} | medium | none |",
+            f"| Risk factors require caution around company-specific uncertainties | {k_risk.get('evidence_id')} 10-K | Risk factors | {k_risk.get('filing_date')} | medium | none |",
+            f"| Formal guidance detail | structured fundamentals packet | unavailable section / exhibit if not in Exhibit 99.1 | {trade_date} | low | explicit evidence gap if guidance not in extracted exhibit |",
+            f"| Capex commitments / contractual obligations | 10-K/10-Q | unavailable commitments/capex section | {trade_date} | low | evidence gap: commitments/capex section marked unavailable where not extracted |",
+        ]
+        financial_gap_lines = (
+            "- Do not treat an 8-K cover page as the earnings release; the earnings-release claim uses Exhibit 99.1 when available.\n"
+            "- Commitments / capex / contractual-obligations sections are gap-labelled when extraction marked them unavailable.\n"
+            "- Guidance is not inferred unless explicitly found in the extracted exhibit or filing section."
+        )
+    sector_metric_table = "\n".join(_asx_sector_metric_table_rows(financial_records)) if is_asx else "| not applicable | US technology | not applicable | unavailable | low | ASX sector metric extraction not applicable |"
     (report_dir / "1_analysts" / "financial_report.md").write_text(
         f"""# Financial Report Analyst Report - {ticker}
 
@@ -563,10 +651,13 @@ Interpretation: structured fundamentals support a financially durable large-cap 
 |---|---|---|---|---|---|
 {chr(10).join(claim_rows)}
 
+## ASX Sector Metric Evidence
+| Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
+|---|---|---|---|---|---|
+{sector_metric_table}
+
 ## Evidence gaps
-- Do not treat an 8-K cover page as the earnings release; the earnings-release claim uses Exhibit 99.1 when available.
-- Commitments / capex / contractual-obligations sections are gap-labelled when extraction marked them unavailable.
-- Guidance is not inferred unless explicitly found in the extracted exhibit or filing section.
+{financial_gap_lines}
 
 {_memory_footer(refs=', '.join(str(item.get('evidence_id')) for item in [exhibit, q_mda, q_cash] if item.get('evidence_id')), trade_date=trade_date)}""",
         encoding="utf-8",
@@ -606,6 +697,23 @@ Interpretation: structured fundamentals support a financially durable large-cap 
         "risk": k_risk.get("evidence_id"),
         "fund": f_packet.get("evidence_id"),
     }
+    financial_source_label = "ASX document and sector-metric records" if is_asx else "Exhibit 99.1 and 10-Q sections"
+    financial_source_detail = (
+        f"ASX financial-report evidence uses section-level records including {refs['exhibit']} official document context, "
+        f"{q_mda.get('evidence_id')} management discussion/outlook, {q_liquidity.get('evidence_id')} liquidity, "
+        f"{q_cash.get('evidence_id')} cash-flow, and ASX sector metrics where available or gap-labelled."
+        if is_asx
+        else (
+            f"Financial-report evidence uses section-level records including {refs['exhibit']} Exhibit 99.1, "
+            f"{q_mda.get('evidence_id')} 10-Q MD&A, {q_liquidity.get('evidence_id')} liquidity, "
+            f"and {q_cash.get('evidence_id')} cash-flow statement. The report does not treat the 8-K cover page as the earnings release."
+        )
+    )
+    quality_financial_line = (
+        "ASX extraction: official-source collection succeeded or explicit gaps are disclosed; sector metrics are available or gap-labelled."
+        if is_asx
+        else "Financial extraction: MD&A, cash-flow, and Exhibit 99.1 are present where cited."
+    )
     confirm = max(close + atr * 0.5, ema_10)
     invalid = min(close - atr * 0.5, sma_50 if ticker.upper() == "AAPL" else ema_10)
     (report_dir / "2_research" / "bull_round_1.md").write_text(
@@ -658,7 +766,7 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
 
     matrix_rows = [
         f"| Market Analyst | {refs['close']} | {'positive' if ticker.upper() == 'AAPL' else 'negative'} | high | medium | market snapshot | {'+1' if ticker.upper() == 'AAPL' else '-2'} | {regime} | market:{ticker}:{trade_date}:trend |",
-        f"| Financial Report Analyst | {refs['exhibit']} | positive | high | medium | filing section extraction | +2 | Exhibit 99.1 and 10-Q sections support financial quality | event:{ticker}:{trade_date}:earnings |",
+        f"| Financial Report Analyst | {refs['exhibit']} | positive | high | medium | filing section extraction | +2 | {financial_source_label} support financial review with gaps disclosed | event:{ticker}:{trade_date}:financial-report |",
         f"| News Analyst | {best_news_id} | positive | medium | medium | article evidence card | +1 | Direct company evidence, not repeated snippet-only headlines | event:{ticker}:{trade_date}:earnings |",
         f"| Sentiment Analyst | {first_social_id} | mixed | low | low | social summary | 0 | Retail-only reaction is noisy and not independent fundamental evidence | reaction:{ticker}:{trade_date}:retail |",
         f"| Bear Researcher | {refs['fund']} | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:{ticker}:{trade_date}:valuation-trend |",
@@ -838,7 +946,7 @@ News impact is mixed-to-positive based on direct article/event evidence {best_ne
 Structured fundamentals cite {f_packet.get('evidence_id')}, {f_income.get('evidence_id')}, {f_balance.get('evidence_id')}, and {f_cash.get('evidence_id')} for valuation, income, balance sheet, and cash flow context.
 
 ### Financial Report Analyst
-Financial-report evidence uses section-level records including {refs['exhibit']} Exhibit 99.1, {q_mda.get('evidence_id')} 10-Q MD&A, {q_liquidity.get('evidence_id')} liquidity, and {q_cash.get('evidence_id')} cash-flow statement. The report does not treat the 8-K cover page as the earnings release.
+{financial_source_detail}
 
 ### Industry / Theme Discovery Analyst
 Industry/theme evidence identifies {policy['theme1']} / {policy['subtheme1']} and {policy['theme2']} / {policy['subtheme2']}, supported by {refs['exhibit']}, {refs['segment']}, and market evidence {refs['close']}.
@@ -878,7 +986,7 @@ Risk debate impact: risk evidence tempers implementation; no broker/order tools 
 ## Quality Gate Findings
 - Pending-marker check: no role output intentionally left pending.
 - As-of discipline: report uses trade date {trade_date}; source dates are disclosed.
-- Financial extraction: MD&A, cash-flow, and Exhibit 99.1 are present where cited.
+- {quality_financial_line}
 - Sentiment: retail-only, low confidence, no Reddit requirement, no institution-level inference.
 - Anti-double-counting: Research Manager uses independence groups and does not count social reposts as independent fundamental facts.
 

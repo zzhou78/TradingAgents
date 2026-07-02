@@ -7,6 +7,7 @@ import re
 import urllib.request
 from collections.abc import Callable
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin
 
@@ -15,20 +16,56 @@ ASX_MARKIT_ANNOUNCEMENTS_URL = ASX_MARKIT_API_BASE + "/companies/{code}/announce
 ASX_ANNOUNCEMENTS_URL = "https://www.asx.com.au/asx/1/company/{code}/announcements?count=100"
 ASX_COMPANY_PAGE_URL = "https://www.asx.com.au/markets/company/{code}"
 DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ASX_IR_RULES_PATH = REPO_ROOT / "data" / "rules" / "asx_investor_relations_urls.yaml"
 
-KNOWN_ASX_INVESTOR_RELATIONS_URLS: dict[str, list[str]] = {
-    "BHP": [
-        "https://www.bhp.com/investors/annual-reporting",
-        "https://www.bhp.com/investors/results-and-presentations",
+ASX_SECTOR_BY_CODE = {
+    "BHP": "miners",
+    "CBA": "banks",
+    "CSL": "healthcare",
+    "MPL": "health_insurers",
+    "WOW": "retailers",
+}
+
+ASX_SECTOR_METRIC_PATTERNS: dict[str, list[tuple[str, str, str, list[str]]]] = {
+    "banks": [
+        ("net_interest_margin", "NIM", r"\bNIM\b|net interest margin", ["NIM", "margin quality"]),
+        ("cet1", "CET1", r"\bCET1\b|common equity tier 1", ["CET1", "capital adequacy"]),
+        ("loan_growth", "Loan growth", r"loan growth|home lending|business lending|gross loans", ["loan growth"]),
+        ("arrears", "Arrears", r"arrears|delinquen", ["arrears", "credit quality"]),
+        ("impairment", "Impairment", r"impairment|loan loss|credit loss", ["impairment", "credit quality"]),
+        ("dividend", "Dividend", r"dividend|DPS|dividend per share", ["dividend"]),
+        ("roe", "ROE", r"\bROE\b|return on equity", ["ROE", "profitability"]),
     ],
-    "CBA": ["https://www.commbank.com.au/about-us/investors/annual-reports.html"],
-    "CSL": [
-        "https://www.csl.com/investors/financial-results-and-information",
-        "https://investors.csl.com/annual-reports",
-        "https://investors.csl.com/annualreport/2025/",
+    "miners": [
+        ("production", "Production", r"production|produced|shipments?", ["production"]),
+        ("realised_price", "Realised price", r"realised price|realized price|average realised", ["realised price"]),
+        ("unit_cost_aisc", "Unit cost / AISC", r"unit cost|AISC|all-in sustaining cost|cash cost", ["unit cost", "AISC"]),
+        ("capex", "Capex", r"capex|capital expenditure", ["capex"]),
+        ("reserves_resources", "Reserves/resources", r"reserves?|resources?", ["reserves", "resources"]),
+        ("commodity_exposure", "Commodity exposure", r"iron ore|copper|coal|potash|nickel|commodity", ["commodity exposure"]),
     ],
-    "MPL": ["https://www.medibank.com.au/about/investor-centre/results-reports/"],
-    "WOW": ["https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"],
+    "healthcare": [
+        ("segment_revenue", "Segment revenue", r"segment revenue|revenue by segment|segment sales", ["segment revenue"]),
+        ("r_and_d", "R&D", r"R&D|research and development", ["R&D"]),
+        ("plasma_collections", "Plasma collections", r"plasma collection|plasma collections|plasma volume", ["plasma collections"]),
+        ("margins", "Margins", r"margin|gross margin|EBIT margin", ["margins"]),
+        ("debt", "Debt", r"net debt|borrowings|debt", ["debt", "liquidity"]),
+        ("guidance", "Guidance", r"guidance|outlook|expects?|forecast", ["guidance", "outlook"]),
+    ],
+    "health_insurers": [
+        ("premium_growth", "Premium growth", r"premium growth|premiums?", ["premium growth"]),
+        ("claims_ratio", "Claims ratio", r"claims ratio|claims expense|benefits paid", ["claims ratio"]),
+        ("membership", "Membership", r"membership|policyholders?|members", ["membership"]),
+        ("capital_adequacy", "Capital adequacy", r"capital adequacy|capital ratio|regulatory capital", ["capital adequacy"]),
+    ],
+    "retailers": [
+        ("sales_growth", "Sales growth", r"sales growth|comparable sales|same[- ]store sales|total sales", ["sales growth"]),
+        ("ebit_margin", "EBIT margin", r"EBIT margin|operating margin", ["EBIT margin"]),
+        ("inventory", "Inventory", r"inventor(?:y|ies)|stock loss|shrink", ["inventory"]),
+        ("capex", "Capex", r"capex|capital expenditure", ["capex"]),
+        ("dividends", "Dividends", r"dividend|DPS|dividend per share", ["dividends"]),
+    ],
 }
 
 HttpGet = Callable[[str, dict[str, str]], str]
@@ -71,6 +108,16 @@ SECTION_PATTERNS: list[tuple[str, str, list[str]]] = [
     ("capex_commitments", r"\b(capex|capital expenditure|commitments?)\b", ["capex", "commitments"]),
     ("material_risks", r"\b(risk|uncertain|impairment|arrears|claims ratio)\b", ["risks"]),
     ("one_off_items", r"\b(one-off|significant item|non-recurring|impairment)\b", ["one-off items"]),
+    (
+        "financial_statement_tables",
+        r"\b(revenue\s+.*npat|assets\s+.*liabilities|cash flows?\s+from operating|operating cash flow)\b",
+        ["financial statement table", "income statement", "balance sheet", "cash flow statement"],
+    ),
+    (
+        "segment_product_tables",
+        r"\b(segment\s+.*revenue|production\s+.*unit cost|product\s+.*sales|membership\s+.*premium)\b",
+        ["segment table", "product table", "sector metrics"],
+    ),
 ]
 
 
@@ -95,6 +142,9 @@ def _default_http_get(url: str, headers: dict[str, str]) -> str:
 
 
 def _extract_pdf_text(body: bytes) -> str:
+    pdfplumber_text = _extract_pdf_text_with_pdfplumber(body)
+    if pdfplumber_text:
+        return pdfplumber_text
     try:
         from pypdf import PdfReader
     except ImportError:
@@ -110,6 +160,35 @@ def _extract_pdf_text(body: bytes) -> str:
         except Exception:
             continue
     return "\n".join(page for page in pages if page).strip()
+
+
+def _extract_pdf_text_with_pdfplumber(body: bytes) -> str:
+    try:
+        import pdfplumber
+    except ImportError:
+        return ""
+    parts: list[str] = []
+    try:
+        with pdfplumber.open(io.BytesIO(body)) as pdf:
+            for page in pdf.pages:
+                try:
+                    text = page.extract_text() or ""
+                except Exception:
+                    text = ""
+                if text:
+                    parts.append(text)
+                try:
+                    tables = page.extract_tables() or []
+                except Exception:
+                    tables = []
+                for table in tables:
+                    for row in table or []:
+                        cells = [str(cell or "").strip() for cell in (row or [])]
+                        if any(cells):
+                            parts.append(" | ".join(cells))
+    except Exception:
+        return ""
+    return "\n".join(part for part in parts if part).strip()
 
 
 def normalize_asx_code(ticker: str) -> str:
@@ -277,33 +356,144 @@ def _fallback_page_urls(asx_code: str, identity: dict[str, Any] | None) -> list[
         url = identity.get(key)
         if url:
             urls.append(str(url))
-    urls.extend(KNOWN_ASX_INVESTOR_RELATIONS_URLS.get(asx_code, []))
+    urls.extend(_load_known_asx_ir_urls().get(asx_code, []))
     return list(dict.fromkeys(urls))
 
 
-def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int) -> list[dict[str, Any]]:
+def _parse_simple_ir_yaml(raw: str) -> dict[str, list[str]]:
+    parsed: dict[str, list[str]] = {}
+    current = ""
+    for raw_line in raw.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if not raw_line.startswith((" ", "\t")) and line.endswith(":"):
+            current = line[:-1].strip().upper()
+            parsed.setdefault(current, [])
+            continue
+        if current and line.startswith("- "):
+            parsed.setdefault(current, []).append(line[2:].strip())
+    return {key: [url for url in urls if url] for key, urls in parsed.items()}
+
+
+def _load_known_asx_ir_urls(path: Path = ASX_IR_RULES_PATH) -> dict[str, list[str]]:
+    if not path.exists():
+        return {}
+    raw = path.read_text(encoding="utf-8")
+    try:
+        import yaml
+    except ImportError:
+        return _parse_simple_ir_yaml(raw)
+    data = yaml.safe_load(raw) or {}
+    if not isinstance(data, dict):
+        return {}
+    parsed: dict[str, list[str]] = {}
+    for key, value in data.items():
+        if isinstance(value, list):
+            parsed[str(key).upper()] = [str(url) for url in value if url]
+    return parsed
+
+
+def _sector_for_asx_code(asx_code: str) -> str:
+    return ASX_SECTOR_BY_CODE.get(asx_code.upper(), "general")
+
+
+def _section_unavailable(
+    *,
+    section_name: str,
+    source: dict[str, Any],
+    supports_claims: list[str],
+    reason: str,
+    section_type: str | None = None,
+) -> dict[str, Any]:
+    return {
+        "section_name": section_name,
+        "section_type": section_type or section_name,
+        "status": "unavailable",
+        "source_type": source["source_type"],
+        "filing_date": source["announcement_date"],
+        "url": source.get("url", ""),
+        "excerpt": "",
+        "supports_claims": supports_claims,
+        "unavailable_reason": reason,
+        "evidence_gap": reason,
+    }
+
+
+def _extract_sector_metrics(
+    text: str,
+    source: dict[str, Any],
+    excerpt_chars: int,
+    sector: str,
+) -> list[dict[str, Any]]:
+    specs = ASX_SECTOR_METRIC_PATTERNS.get(sector, [])
+    if not specs:
+        return []
+    clean = _clean_text(text)
+    metrics: list[dict[str, Any]] = []
+    for metric_name, metric_label, pattern, supports_claims in specs:
+        section_name = f"sector_metric_{metric_name}"
+        match = re.search(pattern, clean, re.IGNORECASE)
+        if not match:
+            reason = f"{metric_label} was not identified in extracted ASX document text."
+            metrics.append(
+                {
+                    **_section_unavailable(
+                        section_name=section_name,
+                        section_type="sector_metric",
+                        source=source,
+                        supports_claims=supports_claims,
+                        reason=reason,
+                    ),
+                    "metric_name": metric_name,
+                    "metric_label": metric_label,
+                    "sector": sector,
+                    "metric_confidence": "low",
+                }
+            )
+            continue
+        excerpt = clean[match.start() : match.start() + excerpt_chars].rsplit(" ", 1)[0].strip()
+        metrics.append(
+            {
+                "section_name": section_name,
+                "section_type": "sector_metric",
+                "status": "available",
+                "source_type": source["source_type"],
+                "filing_date": source["announcement_date"],
+                "url": source.get("url", ""),
+                "excerpt": excerpt,
+                "supports_claims": supports_claims,
+                "unavailable_reason": "",
+                "evidence_gap": "",
+                "metric_name": metric_name,
+                "metric_label": metric_label,
+                "sector": sector,
+                "metric_confidence": "medium",
+            }
+        )
+    return metrics
+
+
+def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int, sector: str = "general") -> list[dict[str, Any]]:
     sections: list[dict[str, Any]] = []
     clean = _clean_text(text)
     for section_name, pattern, supports_claims in SECTION_PATTERNS:
         match = re.search(pattern, clean, re.IGNORECASE)
         if not match:
             sections.append(
-                {
-                    "section_name": section_name,
-                    "status": "unavailable",
-                    "source_type": source["source_type"],
-                    "filing_date": source["announcement_date"],
-                    "url": source.get("url", ""),
-                    "excerpt": "",
-                    "supports_claims": supports_claims,
-                    "unavailable_reason": f"{section_name} was not identified in extracted ASX document text.",
-                }
+                _section_unavailable(
+                    section_name=section_name,
+                    source=source,
+                    supports_claims=supports_claims,
+                    reason=f"{section_name} was not identified in extracted ASX document text.",
+                )
             )
             continue
         excerpt = clean[match.start() : match.start() + excerpt_chars]
         sections.append(
             {
                 "section_name": section_name,
+                "section_type": section_name,
                 "status": "available",
                 "source_type": source["source_type"],
                 "filing_date": source["announcement_date"],
@@ -311,8 +501,10 @@ def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int) -> 
                 "excerpt": excerpt.rsplit(" ", 1)[0].strip(),
                 "supports_claims": supports_claims,
                 "unavailable_reason": "",
+                "evidence_gap": "",
             }
         )
+    sections.extend(_extract_sector_metrics(text, source, excerpt_chars, sector))
     return sections
 
 
@@ -324,6 +516,7 @@ def _source_from_row(
     headers: dict[str, str],
     excerpt_chars: int,
     source_type: str = "asx_announcement",
+    asx_sector: str = "general",
 ) -> dict[str, Any] | None:
     title = _field(row, "title", "header", "headline", "description")
     document_type = _classify_document(title)
@@ -340,6 +533,7 @@ def _source_from_row(
     source: dict[str, Any] = {
         "ticker": "",
         "market": "ASX",
+        "asx_sector": asx_sector,
         "source_type": source_type,
         "document_type": document_type,
         "title": title,
@@ -362,7 +556,7 @@ def _source_from_row(
         text = _excerpt(raw_document, excerpt_chars)
         source["extraction_status"] = "available" if text else "unavailable"
         source["excerpt"] = text
-        source["extracted_sections"] = _extract_sections(raw_document, source, excerpt_chars)
+        source["extracted_sections"] = _extract_sections(raw_document, source, excerpt_chars, asx_sector)
     except Exception as exc:  # noqa: BLE001 - keep discovered announcement with extraction failure.
         source["extraction_status"] = "error"
         source["reason"] = str(exc)
@@ -381,6 +575,7 @@ def _collect_fallback_sources(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     sources: list[dict[str, Any]] = []
     fallback_attempts: list[dict[str, Any]] = []
+    asx_sector = _sector_for_asx_code(asx_code)
     for page_url in _fallback_page_urls(asx_code, identity):
         try:
             rows = _fallback_rows(http_get(page_url, headers), page_url)
@@ -410,6 +605,7 @@ def _collect_fallback_sources(
                 headers=headers,
                 excerpt_chars=excerpt_chars,
                 source_type="asx_fallback_document",
+                asx_sector=asx_sector,
             )
             if source:
                 source["ticker"] = symbol
@@ -461,10 +657,12 @@ def collect_asx_financial_document_sources(
 ) -> dict[str, Any]:
     symbol = ticker.upper().strip()
     asx_code = normalize_asx_code(symbol)
+    asx_sector = _sector_for_asx_code(asx_code)
     if not is_asx_ticker(symbol, identity):
         return {
             "ticker": symbol,
             "market": "ASX",
+            "asx_sector": asx_sector,
             "trade_date": trade_date,
             "status": "unavailable",
             "sources": [
@@ -507,7 +705,16 @@ def collect_asx_financial_document_sources(
         sources = [
             source
             for row in rows
-            if (source := _source_from_row(row, trade_date=trade_date, http_get=http_get, headers=headers, excerpt_chars=excerpt_chars))
+            if (
+                source := _source_from_row(
+                    row,
+                    trade_date=trade_date,
+                    http_get=http_get,
+                    headers=headers,
+                    excerpt_chars=excerpt_chars,
+                    asx_sector=asx_sector,
+                )
+            )
         ]
         if not sources:
             sources = [
@@ -548,6 +755,7 @@ def collect_asx_financial_document_sources(
             "ticker": symbol,
             "market": "ASX",
             "asx_code": asx_code,
+            "asx_sector": asx_sector,
             "trade_date": trade_date,
             "status": "ok" if any(source.get("status") == "available" for source in sources) else "unavailable",
             "as_of_rule": "Only ASX announcements with announcement/lodgement date <= trade_date are included.",
@@ -569,6 +777,7 @@ def collect_asx_financial_document_sources(
             "ticker": symbol,
             "market": "ASX",
             "asx_code": asx_code,
+            "asx_sector": asx_sector,
             "trade_date": trade_date,
             "status": "ok",
             "as_of_rule": "ASX endpoint failed; fallback official ASX/company IR documents still require date <= trade_date.",
@@ -581,6 +790,7 @@ def collect_asx_financial_document_sources(
         "ticker": symbol,
         "market": "ASX",
         "asx_code": asx_code,
+        "asx_sector": asx_sector,
         "trade_date": trade_date,
         "status": "error",
         "endpoint_attempts": endpoint_attempts,
