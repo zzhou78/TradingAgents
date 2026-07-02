@@ -68,6 +68,9 @@ When quality validation fails, persist both `quality_remediation_plan.json` and
 validation-only, not complete. The persisted next task must tell Codex what to
 fix, which tests to run, and how to rerun the evidence/report workflow. Completion
 requires that the quality gate passes or a true external blocker is documented.
+Use `codex_tradingagents_skillkit/scripts/run_closed_loop_workflow.py` to write
+`closed_loop_status.json`, discover the next remediation task, and keep the run
+status at `remediation_required` until the task is implemented and rerun.
 
 ## Standing Auto-Remediation Approval
 

@@ -5,12 +5,21 @@ from typing import Any
 
 try:
     from evidence_contracts import EvidenceLedgerEntry
+    from sentiment_evidence_cards import build_sentiment_cards
 except ModuleNotFoundError:
     from codex_tradingagents_skillkit.scripts.evidence_contracts import EvidenceLedgerEntry
+    from codex_tradingagents_skillkit.scripts.sentiment_evidence_cards import build_sentiment_cards
 
 TOOL_NAME = "social_evidence_processing"
 TOOL_VERSION = "0.1.0"
 ROLE = "sentiment_analyst"
+
+SOURCE_CONFIDENCE_BY_TOOL = {
+    "fetch_stocktwits_messages": "ticker_specific_retail_platform",
+    "stocktwits": "ticker_specific_retail_platform",
+    "fetch_reddit_posts": "broad_social_discussion",
+    "reddit": "broad_social_discussion",
+}
 
 
 def _label_for_line(line: str) -> str:
@@ -34,6 +43,33 @@ def _classify_line(ticker: str, line: str) -> str:
     if re.search(r"\$[A-Za-z]{1,5}\b", line):
         return "cross-ticker / sector relevant"
     return "irrelevant / spam / joke / low-information"
+
+
+def _source_status(tool_name: str, call: dict[str, Any]) -> tuple[str, list[str]]:
+    status = str(call.get("status", "unknown")).lower()
+    error = str(call.get("error", "") or "")
+    output = str(call.get("output", "") or "")
+    combined = f"{error} {output}".lower()
+    if status == "ok":
+        return "available", []
+    limitations: list[str] = []
+    if "reddit" in tool_name.lower():
+        if "429" in combined or "rate limit" in combined or "too many requests" in combined:
+            limitations.append("reddit_rate_limited")
+            return "rate_limited", limitations
+        if "credential" in combined or "unauthorized" in combined or "401" in combined:
+            limitations.append("reddit_credentials_missing")
+            return "unavailable", limitations
+    limitations.append(error or "source unavailable")
+    return "unavailable", limitations
+
+
+def _source_confidence_category(tool_name: str) -> str:
+    lower = tool_name.lower()
+    for key, category in SOURCE_CONFIDENCE_BY_TOOL.items():
+        if key in lower:
+            return category
+    return "anonymous_forum_or_comment"
 
 
 def _ledger_entry(
@@ -76,44 +112,61 @@ def build_social_evidence(
     sources: list[dict[str, Any]] = []
     ledger_entries: list[dict[str, Any]] = []
     sequence = 1
+    card_sequence = 1
+    social_cards: list[dict[str, Any]] = []
     total_usable = 0
     total_items = 0
 
     for tool_name, call in tool_calls.items():
         evidence_id = f"social:{ticker}:{trade_date}:{sequence:03d}"
         sequence += 1
+        source_status, status_limitations = _source_status(tool_name, call)
         status = call.get("status", "unknown")
         output = str(call.get("output", ""))
         lines = [line.strip() for line in output.splitlines() if line.strip()] if status == "ok" else []
+        cards, card_sequence = build_sentiment_cards(
+            ticker=ticker,
+            trade_date=trade_date,
+            source=tool_name,
+            lines=lines,
+            start_index=card_sequence,
+        )
+        social_cards.extend(cards)
         classified = [
             {
-                "text_excerpt": line[:240],
-                "classification": _classify_line(ticker, line),
-                "label": _label_for_line(line),
+                "text_excerpt": card["text_excerpt"],
+                "classification": _classify_line(ticker, card["text_excerpt"]),
+                "label": _label_for_line(card["text_excerpt"]),
+                "ticker_relevance": card["ticker_relevance"],
+                "candidate_sentiment_label": card["candidate_sentiment_label"],
+                "reasoning_quality": card["reasoning_quality"],
+                "influence_weight": card["influence_weight"],
             }
-            for line in lines
+            for card in cards
         ]
         usable = [
             item
             for item in classified
-            if item["classification"] == "directly ticker-relevant"
+            if item["ticker_relevance"] == "direct_company"
         ]
-        total_items += len(classified)
+        total_items += len(lines)
         total_usable += len(usable)
-        bullish = sum(1 for item in usable if item["label"] == "bullish")
-        bearish = sum(1 for item in usable if item["label"] == "bearish")
+        bullish = sum(1 for item in usable if item["candidate_sentiment_label"] == "bullish")
+        bearish = sum(1 for item in usable if item["candidate_sentiment_label"] == "bearish")
         neutral = len(usable) - bullish - bearish
-        limitations = []
-        if status != "ok":
-            limitations.append(str(call.get("error", "source unavailable")))
+        limitations = list(status_limitations)
         if not usable:
             limitations.append("no_usable_ticker_relevant_items")
+        low_quality = sum(1 for item in classified if item["reasoning_quality"] == "low")
         noisy_share = 1 - (len(usable) / len(classified)) if classified else 1
-        confidence = "low" if status != "ok" or not usable or noisy_share > 0.5 else "medium"
+        reasoned_usable = [item for item in usable if item["reasoning_quality"] in {"medium", "high"}]
+        confidence = "low" if source_status != "available" or not usable or not reasoned_usable or noisy_share > 0.5 or low_quality >= len(usable) else "medium"
         source_summary = {
             "evidence_id": evidence_id,
             "source": tool_name,
-            "status": "available" if status == "ok" else "unavailable",
+            "status": source_status,
+            "source_confidence_category": _source_confidence_category(tool_name),
+            "retail_only": tool_name in {"fetch_stocktwits_messages", "fetch_reddit_posts"},
             "items_reviewed": len(classified),
             "usable_ticker_relevant_items": len(usable),
             "bullish_count": bullish,
@@ -122,6 +175,7 @@ def build_social_evidence(
             "confidence": confidence,
             "limitations": limitations,
             "representative_items": usable[:3],
+            "quality_weighted_balance": "pending_codex_interpretation",
             "final_sentiment_judgment": "pending_codex_interpretation",
         }
         sources.append(source_summary)
@@ -153,6 +207,7 @@ def build_social_evidence(
             "source_limitations": overall_limitations,
             "final_sentiment_judgment": "pending_codex_interpretation",
         },
+        "social_cards": social_cards,
         "sources": sources,
         "ledger_entries": ledger_entries,
     }

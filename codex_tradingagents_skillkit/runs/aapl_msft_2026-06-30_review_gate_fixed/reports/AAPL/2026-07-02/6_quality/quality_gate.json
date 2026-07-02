@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "ticker": "AAPL",
+  "trade_date": "2026-07-02",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "workflow_complete",
+  "notes": "AAPL/MSFT Codex-session reports passed workflow and quality validators after remediation wording cleanup."
+}

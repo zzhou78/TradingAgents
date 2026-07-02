@@ -1,0 +1,84 @@
+{
+  "social_summary": {
+    "ticker": "AAPL",
+    "trade_date": "2026-07-02",
+    "total_items_reviewed": 42,
+    "usable_items": 29,
+    "source_limitations": [],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:AAPL:2026-07-02:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 31,
+      "usable_ticker_relevant_items": 28,
+      "bullish_count": 10,
+      "bearish_count": 2,
+      "neutral_count": 16,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "[2026-07-02T11:40:41Z \u00b7 @HankHedgeHogFund \u00b7 no-label] @HumbleInvest0r @Danzzzzzzzz 300-400 billion is a steal for this company the value it can add to like an $AAPL",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T11:32:14Z \u00b7 @BradBreath \u00b7 Bullish] $AAPL $BB $NKE $NVDA $OSS  i got my personal checking linked to my Schwab account easy few clicks Done \ud83d\udc4c 300 today \ud83d\udcaa\ud83c\udffc\ud83d\udcaa\ud83c\udffc\ud83d\udcaa\ud83c\udffc\ud83d\udcaa\ud83c\udffc\ud83d\udd1c",
+          "classification": "directly ticker-relevant",
+          "label": "bullish",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "bullish",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T11:10:28Z \u00b7 @goldenceotradegirl \u00b7 no-label] Has anyone figured out a way around depositing money into Charles Schwab? Td Ameritrade was much smoother, and ppl having this same problem on Redd*t  2 years straight now $BB $AAPL $N",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:AAPL:2026-07-02:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 11,
+      "usable_ticker_relevant_items": 1,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "r/wallstreetbets \u2014 4 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

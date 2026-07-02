@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
+import types
 from pathlib import Path
 
 BUNDLE = Path(__file__).resolve().parents[1]
@@ -166,6 +168,50 @@ def test_asx_tickers_route_to_asx_announcement_collector_and_filter_trade_date()
     assert "operating_cash_flow" in rendered
 
 
+def test_asx_collector_supports_current_markit_company_announcements_schema():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "asx-research/1.0/companies/WOW/announcements" in url:
+            return json.dumps(
+                {
+                    "data": {
+                        "displayName": "WOOLWORTHS GROUP LIMITED",
+                        "items": [
+                            {
+                                "headline": "2026 Annual Report",
+                                "date": "2026-08-20T08:00:00.000Z",
+                                "documentKey": "post-trade-date",
+                                "announcementType": "PERIODIC REPORTS",
+                            },
+                            {
+                                "headline": "2025 Annual Report",
+                                "date": "2025-08-28T08:00:00.000Z",
+                                "documentKey": "annual-report-key",
+                                "announcementType": "PERIODIC REPORTS",
+                            },
+                        ],
+                    }
+                }
+            )
+        if "asx-research/1.0/file/annual-report-key" in url:
+            return "Annual report revenue income NPAT operating cash flow cash debt segment sales outlook capex risks"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("WOW.AX", "2026-06-27", http_get=fake_http_get)
+
+    assert packet["status"] == "ok"
+    assert any("asx-research/1.0/companies/WOW/announcements" in url for url in requested_urls)
+    assert any("asx-research/1.0/file/annual-report-key" in url for url in requested_urls)
+    assert not any("post-trade-date" in url for url in requested_urls)
+    assert packet["sources"][0]["title"] == "2025 Annual Report"
+    assert packet["sources"][0]["url"].endswith("/file/annual-report-key")
+    assert packet["sources"][0]["extraction_status"] == "available"
+    assert packet["sources"][0]["extracted_sections"]
+
+
 def test_asx_collector_tries_official_and_ir_fallback_pages_when_endpoint_fails():
     module = _load_module()
     requested_urls: list[str] = []
@@ -207,6 +253,66 @@ def test_asx_collector_tries_official_and_ir_fallback_pages_when_endpoint_fails(
     assert "2025 Annual Report" in titles
     assert "FY25 Results Presentation" in titles
     assert all(source["source_type"] == "asx_fallback_document" for source in packet["sources"])
+
+
+def test_asx_fallback_uses_known_official_ir_pages_and_infers_report_years():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "asx-research/1.0/companies/WOW/announcements" in url or "company/WOW/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/WOW" in url:
+            return "<html><body>No annual report links on this page.</body></html>"
+        if url.endswith("/content/dam/wwg/investors/reports/f25/f25/2936242.pdf"):
+            return "Annual report revenue income NPAT operating cash flow cash debt segment sales outlook capex risks"
+        if "woolworthsgroup.com.au" in url:
+            return """
+            <html><body>
+            <button type="button" data-href="/content/dam/wwg/investors/reports/f25/f25/2936242.pdf">
+            Appendix 4E and Annual Report
+            </button>
+            <button type="button" data-href="/content/dam/wwg/investors/asx-announcements/2026/3058199.pdf">
+            Sales Announcement
+            </button>
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("WOW.AX", "2026-06-27", http_get=fake_http_get)
+
+    assert packet["status"] == "ok"
+    assert any("woolworthsgroup.com.au" in url for url in requested_urls)
+    assert any(url.endswith("/content/dam/wwg/investors/reports/f25/f25/2936242.pdf") for url in requested_urls)
+    assert not any(url.endswith("3058199.pdf") for url in requested_urls)
+    annual = packet["sources"][0]
+    assert annual["document_type"] == "Annual Report"
+    assert annual["announcement_date"] == "2025-12-31"
+    assert annual["extraction_status"] == "available"
+    sections = {section["section_name"]: section for section in annual["extracted_sections"]}
+    assert sections["management_discussion_analysis"]["status"] == "available"
+    assert "management discussion" in sections["management_discussion_analysis"]["supports_claims"]
+    assert sections["cash_flow_statement"]["status"] == "available"
+    assert "cash flow statement" in sections["cash_flow_statement"]["supports_claims"]
+
+
+def test_asx_pdf_text_extraction_uses_optional_pypdf(monkeypatch):
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    class FakePage:
+        def extract_text(self) -> str:
+            return "Annual report operating cash flow outlook segment risks"
+
+    class FakePdfReader:
+        def __init__(self, stream):
+            self.stream = stream
+            self.pages = [FakePage()]
+
+    monkeypatch.setitem(sys.modules, "pypdf", types.SimpleNamespace(PdfReader=FakePdfReader))
+
+    assert "operating cash flow" in asx._extract_pdf_text(b"%PDF fake fixture")
 
 
 def test_generic_8k_is_not_mislabeled_as_earnings_release():

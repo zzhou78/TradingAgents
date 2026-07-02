@@ -148,6 +148,22 @@ def _task_path(workflow: dict[str, Any], stage: dict[str, Any]) -> str:
     return str(report_dir / "tasks" / _task_file_for_stage(stage["stage"]))
 
 
+def _review_status(
+    *,
+    complete_count: int,
+    total_stages: int,
+    quality_errors: list[str],
+    run_metadata: dict[str, Any],
+) -> str:
+    if total_stages == 0 or complete_count < total_stages:
+        return "pending"
+    if quality_errors:
+        return "remediation_required"
+    if not run_metadata.get("authoritative_result_folder"):
+        return "validation_only"
+    return "review_ready_paper_study"
+
+
 def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
     workflow = _read_json(workflow_path)
     stage_summaries = []
@@ -222,9 +238,22 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         except Exception as exc:  # pragma: no cover - defensive CLI reporting
             quality_errors = [f"quality validation failed to run: {exc}"]
 
+    run_metadata = dict(workflow.get("run_metadata") or {})
+    status = _review_status(
+        complete_count=complete_count,
+        total_stages=len(stage_summaries),
+        quality_errors=quality_errors,
+        run_metadata=run_metadata,
+    )
     return {
         "ticker": workflow.get("ticker", ""),
         "trade_date": workflow.get("trade_date", ""),
+        "evidence_as_of_date": workflow.get("evidence_as_of_date", ""),
+        "run_executed_at": workflow.get("run_executed_at", ""),
+        "run_id": workflow.get("run_id", ""),
+        "authoritative_result_folder": bool(workflow.get("authoritative_result_folder")),
+        "status": status,
+        "run_metadata": run_metadata,
         "workflow_path": str(workflow_path),
         "report_dir": workflow.get("report_dir", ""),
         "total_stages": len(stage_summaries),
@@ -235,6 +264,7 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         "remediation_plan_path": remediation_plan_path,
         "next_remediation_task_path": next_remediation_task_path,
         "complete": complete_count == len(stage_summaries) and not quality_errors,
+        "review_ready": status == "review_ready_paper_study",
     }
 
 

@@ -35,6 +35,7 @@ from financial_document_sources import (
 from fundamentals_evidence import build_fundamentals_evidence
 from market_data_evidence import build_market_data_evidence
 from news_article_evidence import build_news_evidence
+from news_sources.orchestrator import collect_news_candidates
 from social_evidence import build_social_evidence
 from stage_input_evidence import build_stage_input_evidence
 
@@ -97,6 +98,17 @@ WORKFLOW_SKILLS = [
 ]
 DEFAULT_MAX_DEBATE_ROUNDS = 1
 DEFAULT_MAX_RISK_DISCUSS_ROUNDS = 1
+AUTHORITATIVE_RESULT_FOLDER_NAME = "aapl_msft_2026-06-30_review_gate_fixed"
+DEFAULT_COMPANY_NEWS_URLS = {
+    "AAPL": [
+        "https://www.apple.com/newsroom/",
+        "https://investor.apple.com/investor-relations/default.aspx",
+    ],
+    "MSFT": [
+        "https://www.microsoft.com/en-us/Investor/press-releases",
+        "https://news.microsoft.com/",
+    ],
+}
 ROLE_MEMORY_NAMES = [
     "market_analyst",
     "sentiment_analyst",
@@ -157,11 +169,34 @@ GENERIC_MEMORY_UPDATE_SCHEMA = {
 
 ROLE_CONTRACT_CONFIGS = {
     "sentiment_analyst": {
-        "forbidden_inputs": ["future_social_posts", "raw_feed_dump_in_final_report", "institutional_sentiment_inference"],
-        "required_tools": ["fetch_stocktwits_messages", "fetch_reddit_posts", "social_evidence_processing"],
-        "optional_tools": ["social_rate_limit_review"],
-        "required_output_sections": ["Tool Outputs Used", "Social Evidence Processing Rules", "Evidence Gaps", "Memory Update"],
-        "required_evidence_citations": ["evidence_id", "source", "items_reviewed", "usable_ticker_relevant_items", "confidence"],
+        "forbidden_inputs": [
+            "future_social_posts",
+            "raw_feed_dump_in_final_report",
+            "institutional_sentiment_inference",
+            "news_article_cards_as_independent_sentiment",
+        ],
+        "required_tools": ["fetch_stocktwits_messages", "social_evidence_processing"],
+        "optional_tools": ["fetch_reddit_posts", "sentiment_source_status_review", "news_article_context_review"],
+        "required_output_sections": [
+            "Tool Outputs Used",
+            "Sentiment Evidence Quality Summary",
+            "Source Quality Table",
+            "Top Reasoned Items",
+            "Excluded / Downgraded Evidence",
+            "Event Context vs Reaction Evidence",
+            "Final Sentiment Interpretation",
+            "Evidence Gaps",
+            "Memory Update",
+        ],
+        "required_evidence_citations": [
+            "evidence_id",
+            "source",
+            "source_confidence_category",
+            "items_reviewed",
+            "usable_ticker_relevant_items",
+            "confidence",
+            "independence_group_id",
+        ],
         "quality_gate": "sentiment_social_evidence_gate",
     },
     "fundamentals_analyst": {
@@ -209,11 +244,19 @@ ROLE_CONTRACT_CONFIGS = {
         "quality_gate": "bear_debate_evidence_gate",
     },
     "research_manager": {
-        "forbidden_inputs": ["unexplained_rating_score", "uncited_memory"],
+        "forbidden_inputs": ["unexplained_rating_score", "uncited_memory", "double_counted_role_mentions"],
         "required_tools": ["stage_input_evidence", "evidence_matrix_validator"],
         "optional_tools": ["scoring_arithmetic_check"],
         "required_output_sections": ["Tool Outputs Used", "Structured Evidence Matrix", "Rating Rationale", "Evidence Gaps", "Memory Update"],
-        "required_evidence_citations": ["evidence_id", "direction", "materiality", "confidence", "weight", "reason"],
+        "required_evidence_citations": [
+            "evidence_id",
+            "direction",
+            "materiality",
+            "confidence",
+            "weight",
+            "reason",
+            "independence_group_id",
+        ],
         "quality_gate": "research_manager_evidence_matrix_gate",
     },
     "trader": {
@@ -769,6 +812,23 @@ def _news_candidates_from_calls(calls: dict[str, dict[str, Any]], *, trade_date:
     return candidates
 
 
+def _company_ir_urls(ticker: str, identity: dict[str, Any]) -> list[str]:
+    urls: list[str] = []
+    urls.extend(DEFAULT_COMPANY_NEWS_URLS.get(ticker.upper(), []))
+    for key in (
+        "investor_relations_url",
+        "investorRelationsUrl",
+        "ir_url",
+        "investors_url",
+        "press_releases_url",
+        "news_url",
+    ):
+        value = identity.get(key)
+        if isinstance(value, str) and value.startswith(("http://", "https://")):
+            urls.append(value)
+    return list(dict.fromkeys(urls))
+
+
 def _build_config(output_dir: Path) -> dict[str, Any]:
     config = DEFAULT_CONFIG.copy()
     config["results_dir"] = str(output_dir / "tradingagents_results")
@@ -1154,6 +1214,7 @@ def _workflow_state(
     max_risk_discuss_rounds: int,
     memory_map: dict[str, dict[str, str]] | None = None,
     role_evidence_paths: dict[str, list[str]] | None = None,
+    run_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     memory_map = memory_map or _ensure_role_memories(ticker, trade_date)
     role_evidence_paths = role_evidence_paths or {}
@@ -1363,9 +1424,25 @@ def _workflow_state(
     _apply_stage_contract(quality_stage)
     stages.append(quality_stage)
 
+    run_metadata = run_metadata or {
+        "trade_date": trade_date,
+        "evidence_as_of_date": trade_date,
+        "run_executed_at": "",
+        "output_dir": str(report_dir.parents[2]) if len(report_dir.parents) > 2 else "",
+        "run_id": "",
+        "authoritative_result_folder": False,
+        "status": "pending",
+    }
     return {
         "ticker": ticker,
         "trade_date": trade_date,
+        "evidence_as_of_date": run_metadata.get("evidence_as_of_date", trade_date),
+        "run_executed_at": run_metadata.get("run_executed_at", ""),
+        "output_dir": run_metadata.get("output_dir", ""),
+        "run_id": run_metadata.get("run_id", ""),
+        "authoritative_result_folder": bool(run_metadata.get("authoritative_result_folder")),
+        "status": run_metadata.get("status", "pending"),
+        "run_metadata": run_metadata,
         "codex_operated": True,
         "requires_user_input": False,
         "uses_tradingagents_graph": False,
@@ -1501,6 +1578,29 @@ def _write_stage_input_evidence(workflow: dict[str, Any], evidence_dir: Path) ->
         _apply_stage_contract(stage)
 
 
+def _is_authoritative_result_folder(output_dir: Path) -> bool:
+    return output_dir.name == AUTHORITATIVE_RESULT_FOLDER_NAME
+
+
+def _run_metadata(
+    *,
+    ticker: str,
+    trade_date: str,
+    output_dir: Path,
+    run_executed_at: str,
+    status: str = "pending",
+) -> dict[str, Any]:
+    return {
+        "trade_date": trade_date,
+        "evidence_as_of_date": trade_date,
+        "run_executed_at": run_executed_at,
+        "output_dir": str(output_dir),
+        "run_id": f"{output_dir.name}:{ticker}:{trade_date}:{run_executed_at}",
+        "authoritative_result_folder": _is_authoritative_result_folder(output_dir),
+        "status": status,
+    }
+
+
 def collect(args: argparse.Namespace) -> dict[str, Any]:
     selected_analysts = _parse_analysts(args.selected_analysts)
     max_debate_rounds = max(1, args.max_debate_rounds)
@@ -1515,13 +1615,18 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     set_config(_build_config(output_dir))
+    run_executed_at = datetime.now().astimezone().isoformat(timespec="seconds")
 
     summary = {
         "trade_date": args.trade_date,
+        "evidence_as_of_date": args.trade_date,
+        "run_executed_at": run_executed_at,
         "selected_analysts": selected_analysts,
         "max_debate_rounds": max_debate_rounds,
         "max_risk_discuss_rounds": max_risk_discuss_rounds,
         "output_dir": str(output_dir),
+        "authoritative_result_folder": _is_authoritative_result_folder(output_dir),
+        "status": "pending",
         "codex_operated": True,
         "uses_tradingagents_graph": False,
         "skill_context": {
@@ -1538,12 +1643,25 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     }
 
     for ticker in tickers:
+        run_metadata = _run_metadata(
+            ticker=ticker,
+            trade_date=args.trade_date,
+            output_dir=output_dir,
+            run_executed_at=run_executed_at,
+        )
         evidence_dir = output_dir / "evidence" / ticker / args.trade_date
         evidence_dir.mkdir(parents=True, exist_ok=True)
         identity = resolve_instrument_identity(ticker)
         evidence = {
             "ticker": ticker,
             "trade_date": args.trade_date,
+            "evidence_as_of_date": args.trade_date,
+            "run_executed_at": run_executed_at,
+            "output_dir": str(output_dir),
+            "run_id": run_metadata["run_id"],
+            "authoritative_result_folder": run_metadata["authoritative_result_folder"],
+            "status": run_metadata["status"],
+            "run_metadata": run_metadata,
             "identity": identity,
             "roles": {
                 role: _collect_role(role, ticker, args.trade_date, args.lookback_days)
@@ -1586,15 +1704,27 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         if "news" in evidence["roles"]:
             news_dir = evidence_dir / "news"
             news_dir.mkdir(exist_ok=True)
+            news_candidates = collect_news_candidates(
+                ticker=ticker,
+                company_name=str(identity.get("company_name") or ticker),
+                trade_date=args.trade_date,
+                lookback_days=args.lookback_days,
+                approved_sources=["company_ir", "regulatory", "websearch", "newsapi", "rss", "upstream"],
+                company_ir_urls=_company_ir_urls(ticker, identity),
+                upstream_calls=evidence["roles"]["news"]["tool_calls"],
+                financial_sources=evidence["roles"][FINANCIAL_REPORT_ROLE]["structured_packet"].get("sources", []),
+                output_dir=news_dir,
+            )
             article_cards_path = news_dir / "article_cards.json"
-            ledger_path = news_dir / "evidence_ledger.jsonl"
+            source_ledger_path = news_dir / "source_evidence_ledger.jsonl"
+            article_ledger_path = news_dir / "evidence_ledger.jsonl"
+            generated_source_ledger_path = news_dir / "evidence_ledger.jsonl"
+            if generated_source_ledger_path.exists():
+                source_ledger_path.write_text(generated_source_ledger_path.read_text(encoding="utf-8"), encoding="utf-8")
             news_evidence = build_news_evidence(
                 ticker=ticker,
                 trade_date=args.trade_date,
-                candidates=_news_candidates_from_calls(
-                    evidence["roles"]["news"]["tool_calls"],
-                    trade_date=args.trade_date,
-                ),
+                candidates=news_candidates["candidates"],
                 structured_output_path=str(article_cards_path),
                 retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
                 full_text_fetcher=_fetch_article_full_text,
@@ -1603,17 +1733,27 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 json.dumps(news_evidence["article_cards"], indent=2),
                 encoding="utf-8",
             )
-            write_jsonl(ledger_path, news_evidence["ledger_entries"])
-            role_evidence_paths["news"] = [str(article_cards_path), str(ledger_path)]
+            write_jsonl(article_ledger_path, news_evidence["ledger_entries"])
+            role_evidence_paths["news"] = [
+                str(news_dir / "candidates.json"),
+                str(news_dir / "source_attempts.json"),
+                str(source_ledger_path),
+                str(article_cards_path),
+                str(article_ledger_path),
+            ]
             evidence["roles"]["news"]["structured_evidence"] = {
+                "candidates": str(news_dir / "candidates.json"),
+                "source_attempts": str(news_dir / "source_attempts.json"),
+                "source_evidence_ledger": str(source_ledger_path),
                 "article_cards": str(article_cards_path),
-                "evidence_ledger": str(ledger_path),
+                "evidence_ledger": str(article_ledger_path),
                 "tool_name": "news_article_evidence",
             }
         if "social" in evidence["roles"]:
             social_dir = evidence_dir / "social"
             social_dir.mkdir(exist_ok=True)
             social_summary_path = social_dir / "social_summary.json"
+            social_cards_path = social_dir / "social_cards.json"
             social_ledger_path = social_dir / "evidence_ledger.jsonl"
             social_evidence = build_social_evidence(
                 ticker=ticker,
@@ -1632,10 +1772,12 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 ),
                 encoding="utf-8",
             )
+            social_cards_path.write_text(json.dumps(social_evidence["social_cards"], indent=2), encoding="utf-8")
             write_jsonl(social_ledger_path, social_evidence["ledger_entries"])
-            role_evidence_paths["social"] = [str(social_summary_path), str(social_ledger_path)]
+            role_evidence_paths["social"] = [str(social_summary_path), str(social_cards_path), str(social_ledger_path)]
             evidence["roles"]["social"]["structured_evidence"] = {
                 "social_summary": str(social_summary_path),
+                "social_cards": str(social_cards_path),
                 "evidence_ledger": str(social_ledger_path),
                 "tool_name": "social_evidence_processing",
             }
@@ -1707,6 +1849,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             max_debate_rounds,
             max_risk_discuss_rounds,
             role_evidence_paths=role_evidence_paths,
+            run_metadata=run_metadata,
         )
         _write_stage_input_evidence(workflow, evidence_dir)
         workflow_path.write_text(
@@ -1724,6 +1867,8 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
                 "role_packet_paths": role_packet_paths,
                 "workflow_state_path": str(workflow_path),
                 "debate_record_path": str(debate_record_path),
+                "run_metadata": run_metadata,
+                "status": run_metadata["status"],
             }
         )
 

@@ -534,11 +534,12 @@ def collect_financial_document_sources(
     symbol = ticker.upper()
     if _is_asx_ticker(symbol, identity):
         asx = _load_asx_collector()
+        asx_http_get = asx._default_http_get if http_get is _default_http_get else http_get
         return asx.collect_asx_financial_document_sources(
             symbol,
             trade_date,
             identity=identity,
-            http_get=http_get,
+            http_get=asx_http_get,
             excerpt_chars=excerpt_chars,
         )
     if not _is_plain_us_ticker(symbol):

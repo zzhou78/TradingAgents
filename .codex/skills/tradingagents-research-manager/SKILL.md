@@ -28,11 +28,12 @@ Procedure:
 4. Write strategic actions that explain what a downstream trader should do with the conclusion.
 5. State whether the rating is primarily driven by technical, valuation, fundamental, financial report / management commentary, news, industry/theme, or mixed evidence.
 6. Preserve unresolved uncertainties rather than forcing false precision.
+7. Weigh independence groups, not repeated role mentions. News event facts, social reaction to the same event, Bull/Bear restatements, and Risk restatements are related evidence unless they cite distinct independence groups.
 
 Output:
 - `ResearchPlan`: rating, rationale, key evidence, risks, and strategic actions for the trader.
 - Include `## Tool Outputs Used` listing the role reports, evidence packets, validators, or source files used.
-- Include `## Structured Evidence Matrix` comparing Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence with weight, confidence, and evidence gap.
+- Include `## Structured Evidence Matrix` comparing Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence with weight, confidence, and evidence gap, plus an independence group for every material line.
 - Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.
 - Show the scoring rule and score components when a numeric evidence score is used. Explicitly justify why Sell wins over Hold or Underweight, or why Hold/Underweight is selected instead of Sell when long-term support still holds.
 - Identify the primary driver of rating.
@@ -45,6 +46,9 @@ Output:
 - Read the RoleExecutionContract and use only allowed inputs and allowed memory.
 - No Buy/Hold/Sell/Underweight/Overweight conclusion is valid without a Structured Evidence Matrix.
 - The matrix must show direction, materiality, confidence, tool output, weight, and reason for each material evidence line.
+- The matrix must show `independence_group_id` or a clearly labelled Independence group for each material evidence line.
+- Do not say News and Sentiment independently confirm each other unless their evidence belongs to separate independence groups.
+- Social reaction to a News event can be weighed as related lower-confidence reaction evidence, not a second fundamental fact.
 - If a numeric score is used, show the scoring rule and component arithmetic.
 - Python may prepare input ledgers; Codex makes the final research rating.
 

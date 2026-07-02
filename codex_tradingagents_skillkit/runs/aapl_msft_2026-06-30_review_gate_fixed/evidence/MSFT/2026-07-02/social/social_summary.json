@@ -1,0 +1,76 @@
+{
+  "social_summary": {
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "total_items_reviewed": 32,
+    "usable_items": 29,
+    "source_limitations": [],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:MSFT:2026-07-02:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 31,
+      "usable_ticker_relevant_items": 29,
+      "bullish_count": 14,
+      "bearish_count": 1,
+      "neutral_count": 14,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "[2026-07-02T11:29:38Z \u00b7 @Telliey \u00b7 Bullish] $MSFT Believe in me!",
+          "classification": "directly ticker-relevant",
+          "label": "bullish",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "bullish",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T11:13:28Z \u00b7 @Stonkapedia \u00b7 Bullish] $MSFT let\u2019s go Fokkers",
+          "classification": "directly ticker-relevant",
+          "label": "bullish",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "bullish",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T11:12:23Z \u00b7 @stockandsex \u00b7 no-label] $MSFT FU shorts \ud83d\ude0e\ud83d\ude80",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.1
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:MSFT:2026-07-02:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 1,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
+      ],
+      "representative_items": [],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

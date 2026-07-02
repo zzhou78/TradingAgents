@@ -7,7 +7,15 @@ from pathlib import Path
 
 ROLE_REQUIRED_SECTIONS = {
     ("1_analysts", "market.md"): ["Tool Outputs Used", "Quantitative Regime / Tool Outputs"],
-    ("1_analysts", "sentiment.md"): ["Tool Outputs Used", "Social Evidence Processing Rules"],
+    ("1_analysts", "sentiment.md"): [
+        "Tool Outputs Used",
+        "Sentiment Evidence Quality Summary",
+        "Source Quality Table",
+        "Top Reasoned Items",
+        "Excluded / Downgraded Evidence",
+        "Event Context vs Reaction Evidence",
+        "Final Sentiment Interpretation",
+    ],
     ("1_analysts", "news.md"): ["Tool Outputs Used", "Article Evidence Cards"],
     ("1_analysts", "fundamentals.md"): ["Tool Outputs Used", "Financial Statement Evidence", "Sector-Specific Metrics"],
     ("1_analysts", "financial_report.md"): ["Tool Outputs Used", "Claim-Source Table"],
@@ -95,11 +103,95 @@ def _structured_evidence_quality_errors(evidence_path: Path | None) -> list[str]
         return []
 
     errors: list[str] = []
+    source_attempts = _read_json_file(evidence_dir / "news" / "source_attempts.json")
+    if isinstance(source_attempts, list) and source_attempts:
+        attempted = [attempt for attempt in source_attempts if isinstance(attempt, dict)]
+        if attempted and all(bool(attempt.get("fallback_used")) for attempt in attempted):
+            errors.append("upstream fallback is the only attempted news source; review-grade quality gate cannot pass")
+
+    news_candidates = _read_json_file(evidence_dir / "news" / "candidates.json")
+    if isinstance(news_candidates, list) and news_candidates:
+        candidate_rows = [candidate for candidate in news_candidates if isinstance(candidate, dict)]
+        if candidate_rows and all(str(candidate.get("source_type", "")).lower() == "upstream_fallback" for candidate in candidate_rows):
+            errors.append("upstream fallback is the only available news candidate; review-grade quality gate cannot pass")
+    elif isinstance(source_attempts, list) and source_attempts:
+        errors.append("news source discovery found no usable news candidates; review-grade quality gate cannot pass")
+
     article_cards = _read_json_file(evidence_dir / "news" / "article_cards.json")
     if isinstance(article_cards, list) and article_cards:
-        full_text_count = sum(1 for card in article_cards if str(card.get("full_text_status", "")).lower() == "full_text")
-        if full_text_count == 0:
+        if not isinstance(source_attempts, list) or not source_attempts:
+            errors.append("news source attempts are missing; review-grade quality gate cannot pass")
+        usable_text_count = 0
+        for card in [card for card in article_cards if isinstance(card, dict)]:
+            text_status = str(card.get("text_status") or card.get("full_text_status") or "").lower()
+            legacy_status = str(card.get("full_text_status", "")).lower()
+            confidence = str(card.get("confidence", "")).lower()
+            quality_score = int(card.get("content_quality_score") or 0)
+            valid_for_trade_date = bool((card.get("as_of_validity") or {}).get("valid_for_trade_date", True))
+            if valid_for_trade_date and (text_status in {"full_text_verified", "partial_text"} or legacy_status == "full_text"):
+                usable_text_count += 1
+            if text_status in {"error_page", "blocked_or_paywalled", "video_without_transcript", "invalid_or_irrelevant"} and legacy_status == "full_text":
+                errors.append("weak or blocked news article is treated as full text; review-grade quality gate cannot pass")
+                break
+            if text_status in {"snippet_only", "metadata_only", "blocked_or_paywalled", "error_page", "video_without_transcript"} and confidence == "high":
+                errors.append("weak news article evidence cannot be high confidence")
+                break
+            if quality_score and quality_score < 50 and confidence in {"medium", "high"}:
+                errors.append("low-quality news article evidence cannot be medium or high confidence")
+                break
+            if not valid_for_trade_date and (
+                legacy_status == "full_text"
+                or confidence in {"medium", "high"}
+                or str(card.get("materiality_readiness", "")) == "ready_for_codex_interpretation"
+            ):
+                errors.append("post-trade-date news article cannot support review-grade evidence")
+                break
+        if usable_text_count == 0:
             errors.append("news evidence has no full-text articles; review-grade quality gate cannot pass")
+
+    social_cards = _read_json_file(evidence_dir / "social" / "social_cards.json")
+    social_summary = _read_json_file(evidence_dir / "social" / "social_summary.json")
+    if isinstance(social_cards, list) and social_cards:
+        cards = [card for card in social_cards if isinstance(card, dict)]
+        if any(not bool((card.get("as_of_validity") or {}).get("valid_for_trade_date", True)) for card in cards):
+            errors.append("post-trade-date social item cannot support sentiment evidence")
+        direct_cards = [card for card in cards if str(card.get("ticker_relevance", "")) == "direct_company"]
+        reasoned_cards = [card for card in direct_cards if str(card.get("reasoning_quality", "")) in {"medium", "high"}]
+        if isinstance(social_summary, dict):
+            sources = social_summary.get("sources", [])
+            if isinstance(sources, list):
+                for source in sources:
+                    if not isinstance(source, dict):
+                        continue
+                    confidence = str(source.get("confidence", "")).lower()
+                    if confidence in {"medium", "high"} and direct_cards and not reasoned_cards:
+                        errors.append("sentiment source confidence is unsupported by social item quality")
+                        break
+                    source_category = str(source.get("source_confidence_category", ""))
+                    if confidence == "high" and source_category in {
+                        "ticker_specific_retail_platform",
+                        "broad_social_discussion",
+                        "anonymous_forum_or_comment",
+                    }:
+                        errors.append("retail-only or broad-social sentiment cannot be high confidence")
+                        break
+    if isinstance(social_summary, dict):
+        sources = social_summary.get("sources", [])
+        if isinstance(sources, list):
+            for source in sources:
+                if not isinstance(source, dict):
+                    continue
+                if str(source.get("status", "")).lower() == "rate_limited" and "reddit" in str(source.get("source", "")).lower():
+                    run_root = evidence_dir.parents[2]
+                    ticker = evidence_dir.parent.name
+                    trade_date = evidence_dir.name
+                    sentiment_path = run_root / "reports" / ticker / trade_date / "1_analysts" / "sentiment.md"
+                    sentiment_text = _read(sentiment_path)
+                    if sentiment_text and not re.search(r"reddit[_ -]?rate[_ -]?limited|rate limit", sentiment_text, re.IGNORECASE):
+                        errors.append("reddit rate limit is hidden from sentiment report")
+                    if re.search(r"reddit.*(?:neutral|no impact)|neutral.*reddit", sentiment_text, re.IGNORECASE):
+                        errors.append("reddit unavailable or rate-limited state is treated as neutral sentiment")
+                    break
 
     section_records = _read_json_file(evidence_dir / "financial_report" / "section_records.json")
     if isinstance(section_records, list) and section_records:
@@ -297,6 +389,22 @@ def _sentiment_quality_errors(sentiment_path: Path) -> list[str]:
         errors.append("retail social feed cannot support institutional sentiment")
     if "Social Evidence Processing Rules" in text and not re.search(r"usable .*items|usable ticker", text, re.IGNORECASE):
         errors.append("sentiment report lacks usable social item summary")
+    if (
+        re.search(r"\b\d+%|bullish\s*/\s*bearish|bullish_count|bearish_count|platform labels?", text, re.IGNORECASE)
+        and re.search(r"\bhigh\b", text, re.IGNORECASE)
+        and not re.search(r"reasoned|reasoning quality|low-information|source limitation", text, re.IGNORECASE)
+    ):
+        errors.append("sentiment conclusion is based only on raw social counts or platform labels")
+    if re.search(r"news[/\\]article_cards\.json|News Analyst article cards", text, re.IGNORECASE) and re.search(
+        r"independent(?:ly)?\s+(?:bearish|bullish|negative|positive)|independent sentiment",
+        text,
+        re.IGNORECASE,
+    ):
+        errors.append("Sentiment Analyst treats News Analyst article cards as independent sentiment evidence")
+    if re.search(r"reddit.*required|required.*reddit", text, re.IGNORECASE):
+        errors.append("Reddit is treated as required sentiment evidence")
+    if re.search(r"StockTwits|Reddit", text, re.IGNORECASE) and re.search(r"\bhigh confidence\b", text, re.IGNORECASE):
+        errors.append("high confidence is assigned to retail-only sentiment")
     return errors
 
 
@@ -328,6 +436,39 @@ def _research_manager_quality_errors(research_path: Path) -> list[str]:
         if required.lower() not in matrix.lower():
             errors.append(f"research evidence matrix missing column: {required}")
             break
+    rows = _markdown_table_rows(matrix)
+    if len(rows) >= 2:
+        header = [cell.lower() for cell in rows[0]]
+        if any("independence" in cell and "group" in cell for cell in header):
+            group_index = next(index for index, cell in enumerate(header) if "independence" in cell and "group" in cell)
+            role_index = next((index for index, cell in enumerate(header) if cell == "role" or "source" in cell), None)
+            weight_index = next((index for index, cell in enumerate(header) if "weight" in cell), None)
+            groups: dict[str, list[dict[str, str]]] = {}
+            for row in rows[1:]:
+                if len(row) <= group_index:
+                    continue
+                group = row[group_index].strip()
+                if not group:
+                    continue
+                role = row[role_index].strip().lower() if role_index is not None and len(row) > role_index else ""
+                weight = row[weight_index].strip() if weight_index is not None and len(row) > weight_index else ""
+                groups.setdefault(group, []).append({"role": role, "weight": weight})
+            for group, group_rows in groups.items():
+                roles = {row["role"] for row in group_rows}
+                has_news = any("news" in role for role in roles)
+                has_sentiment = any("sentiment" in role or "social" in role for role in roles)
+                if has_news and has_sentiment and group.startswith("event:"):
+                    joined_weights = " ".join(row["weight"] for row in group_rows)
+                    if re.search(r"-?\s*[12](?:\.0)?\b", joined_weights) or re.search(
+                        r"independent signals?|confirm", text, re.IGNORECASE
+                    ):
+                        errors.append("research manager double-counts one independence group across News and Sentiment")
+                        break
+        elif re.search(r"news:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:\d{3}", matrix) and re.search(
+            r"social:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:item:\d{4}",
+            matrix,
+        ):
+            errors.append("research evidence matrix missing independence group column")
     if re.search(r"\b(Buy|Sell|Hold|Underweight|Overweight)\b", text) and not re.search(
         r"why .* wins over|beats Hold|beats Underweight|Sell vs Hold|Hold vs Sell|Underweight", text, re.IGNORECASE
     ):
@@ -391,6 +532,16 @@ def _risk_portfolio_quality_errors(report_dir: Path) -> list[str]:
     if portfolio.exists() and not _is_pending(_read(portfolio)) and "Risk debate impact" not in _read(portfolio):
         errors.append("portfolio decision omits risk debate impact")
     return errors
+
+
+def _complete_report_role_consistency_errors(report_dir: Path) -> list[str]:
+    try:
+        from validate_complete_report_against_roles import (
+            validate_report_dir as validate_role_consistency,
+        )
+    except ImportError as exc:  # pragma: no cover - defensive CLI reporting
+        return [f"complete report role-consistency validator unavailable: {exc}"]
+    return validate_role_consistency(report_dir)
 
 
 def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> list[str]:
@@ -481,6 +632,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     errors.extend(_research_manager_quality_errors(manager))
     errors.extend(_trader_quality_errors(trader))
     errors.extend(_risk_portfolio_quality_errors(report_dir))
+    errors.extend(_complete_report_role_consistency_errors(report_dir))
 
     if quality_gate.exists():
         try:

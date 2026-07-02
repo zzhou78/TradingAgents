@@ -57,8 +57,17 @@ Fail the report when:
 
 Fail the report when:
 - sentiment report includes raw social feed instead of summary;
+- Reddit is treated as required;
+- Reddit unavailable or rate-limited status is treated as neutral sentiment;
+- social sentiment is described as institutional sentiment when the evidence is StockTwits, Reddit, or another retail-only source;
+- sentiment conclusion is based only on raw bullish/bearish counts or platform labels;
+- high confidence is assigned to retail-only, sparse, noisy, spam/meme, or low-reasoning social evidence;
+- Sentiment Analyst treats News Analyst article cards as independent sentiment evidence instead of event context;
+- social reaction is described as confirming news when posts merely repeat headlines without reasoning;
 - fundamentals claim lacks statement evidence citation;
 - research evidence matrix missing direction, materiality, confidence, tool output, weight, or reason;
+- research evidence matrix omits independence groups when News and Sentiment both support a material claim;
+- Research Manager double-counts the same event across News, Sentiment, Bull/Bear, Risk, or duplicated news articles;
 - research manager rating lacks rating-vs-rating justification;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;

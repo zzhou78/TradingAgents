@@ -8,13 +8,19 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 try:
     from evidence_contracts import EvidenceLedgerEntry
+    from news_article_cards import build_article_card
 except ModuleNotFoundError:
     from codex_tradingagents_skillkit.scripts.evidence_contracts import EvidenceLedgerEntry
+    from codex_tradingagents_skillkit.scripts.news_article_cards import build_article_card
 
 TOOL_NAME = "news_article_evidence"
 TOOL_VERSION = "0.1.0"
 TRACKING_QUERY_PREFIXES = ("utm_",)
 TRACKING_QUERY_KEYS = {"fbclid", "gclid", "mc_cid", "mc_eid"}
+COMMON_COMPANY_NAMES = {
+    "AAPL": "Apple",
+    "MSFT": "Microsoft",
+}
 
 
 def _normalize_url(url: str) -> str:
@@ -31,26 +37,6 @@ def _fingerprint(candidate: dict[str, str]) -> str:
     normalized_url = _normalize_url(str(candidate.get("url", "")))
     title = re.sub(r"\s+", " ", str(candidate.get("title", "")).strip().lower())
     return hashlib.sha256(f"{normalized_url}|{title}".encode()).hexdigest()[:16]
-
-
-def _full_text_status(candidate: dict[str, str]) -> str:
-    full_text = str(candidate.get("full_text") or "").strip()
-    return "full_text" if len(full_text) >= 40 else "snippet_only"
-
-
-def _full_text_excerpt(candidate: dict[str, str], *, limit: int = 600) -> str:
-    full_text = re.sub(r"\s+", " ", str(candidate.get("full_text") or "").strip())
-    if len(full_text) <= limit:
-        return full_text
-    return full_text[:limit].rsplit(" ", 1)[0].strip()
-
-
-def _confidence(full_text_status: str, limitations: list[str]) -> str:
-    if "post_trade_date" in limitations:
-        return "low"
-    if full_text_status == "snippet_only":
-        return "low"
-    return "medium"
 
 
 def build_news_evidence(
@@ -70,59 +56,21 @@ def build_news_evidence(
             seen[key]["duplicate_count"] = int(seen[key]["duplicate_count"]) + 1
             continue
         candidate = dict(candidate)
-        published_date = str(candidate.get("published_date") or "")
-        valid_for_trade_date = bool(published_date and published_date <= trade_date)
-        limitations: list[str] = []
         source_url = _normalize_url(str(candidate.get("url") or ""))
-        full_text_source = "candidate_full_text" if _full_text_status(candidate) == "full_text" else "unavailable"
-        if full_text_source == "unavailable" and full_text_fetcher and source_url and valid_for_trade_date:
-            try:
-                fetched_full_text = str(full_text_fetcher(source_url) or "").strip()
-            except Exception:
-                fetched_full_text = ""
-                limitations.append("full_text_retrieval_failed")
-            if len(fetched_full_text) >= 40:
-                candidate["full_text"] = fetched_full_text
-                full_text_source = "url_fetch"
-        full_text_status = _full_text_status(candidate)
-        if full_text_status == "snippet_only":
-            limitations.append("snippet_only")
-        if not valid_for_trade_date:
-            limitations.append("post_trade_date")
-        confidence = _confidence(full_text_status, limitations)
+        if not source_url:
+            source_url = _normalize_url(str(candidate.get("source_url") or ""))
         evidence_id = f"news:{ticker}:{trade_date}:{len(order) + 1:03d}"
-        as_of_validity = {
-            "valid_for_trade_date": valid_for_trade_date,
-            "reason": (
-                "source_date is on or before trade_date"
-                if valid_for_trade_date
-                else "source_date is after trade_date"
-            ),
-        }
-        card: dict[str, Any] = {
-            "evidence_id": evidence_id,
-            "ticker": ticker,
-            "trade_date": trade_date,
-            "title": str(candidate.get("title") or "").strip(),
-            "source": str(candidate.get("source") or "").strip(),
-            "source_url": source_url,
-            "source_date": published_date,
-            "retrieval_time": retrieval_time,
-            "full_text_status": full_text_status,
-            "full_text_source": full_text_source,
-            "full_text_excerpt": _full_text_excerpt(candidate) if full_text_status == "full_text" else "",
-            "direct_company_relevance": "pending_codex_interpretation",
-            "event_type": "pending_codex_interpretation",
-            "key_facts": [],
-            "novelty": "pending_codex_interpretation",
-            "materiality": "pending_codex_interpretation",
-            "reason": "pending_codex_interpretation",
-            "confidence": confidence,
-            "evidence_gap": "full text unavailable" if full_text_status == "snippet_only" else "",
-            "limitations": limitations,
-            "as_of_validity": as_of_validity,
-            "duplicate_count": 1,
-        }
+        company_name = str(candidate.get("company_name") or COMMON_COMPANY_NAMES.get(ticker.upper()) or ticker)
+        card = build_article_card(
+            ticker=ticker,
+            company_name=company_name,
+            trade_date=trade_date,
+            candidate=candidate,
+            evidence_id=evidence_id,
+            retrieval_time=retrieval_time,
+            source_url=source_url,
+            full_text_fetcher=full_text_fetcher,
+        )
         seen[key] = card
         order.append(key)
 

@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 from codex_tradingagents_skillkit.scripts.news_article_evidence import build_news_evidence
+from codex_tradingagents_skillkit.scripts.news_article_quality import evaluate_article_quality
+from codex_tradingagents_skillkit.scripts.news_article_retrieval import (
+    extract_article_text_from_html,
+)
 
 
 def test_build_news_evidence_distinguishes_full_text_from_snippet_only():
@@ -154,3 +158,85 @@ def test_build_news_evidence_keeps_failed_full_text_fetch_low_confidence():
     assert card["full_text_source"] == "unavailable"
     assert card["confidence"] == "low"
     assert "full_text_retrieval_failed" in card["limitations"]
+
+
+def test_article_quality_marks_real_article_like_html_full_text_verified():
+    html = """
+    <html><head><title>Microsoft expands Azure AI capacity</title></head>
+    <body><article>
+    <h1>Microsoft expands Azure AI capacity</h1>
+    <p>Microsoft said it is expanding Azure AI capacity for enterprise customers.</p>
+    <p>The company said the investment supports cloud demand and data-center availability.</p>
+    <p>Executives said the project will affect infrastructure spending through fiscal 2026.</p>
+    </article></body></html>
+    """
+
+    retrieval = extract_article_text_from_html(html, title="Microsoft expands Azure AI capacity")
+    quality = evaluate_article_quality(
+        title="Microsoft expands Azure AI capacity",
+        text=retrieval.text,
+        source_date="2026-06-30",
+        trade_date="2026-06-30",
+        company_name="Microsoft",
+        ticker="MSFT",
+        fetch_status=retrieval.fetch_status,
+        http_status=200,
+        content_type="text/html",
+        extraction_method=retrieval.extraction_method,
+    )
+
+    assert quality["text_status"] == "full_text_verified"
+    assert quality["content_quality_score"] >= 80
+    assert quality["company_entity_hits"] == ["Microsoft", "MSFT"]
+
+
+def test_article_quality_downgrades_error_cookie_video_and_short_snippets():
+    cases = [
+        ("Oops, something went wrong. Please try again later.", "error_page"),
+        ("Subscribe or log in to continue. We use cookies to personalize content.", "blocked_or_paywalled"),
+        ("Watch the video for this story. No transcript is available.", "video_without_transcript"),
+        ("Microsoft shares rose after an analyst note.", "snippet_only"),
+    ]
+
+    for text, expected_status in cases:
+        quality = evaluate_article_quality(
+            title="Microsoft update",
+            text=text,
+            source_date="2026-06-30",
+            trade_date="2026-06-30",
+            company_name="Microsoft",
+            ticker="MSFT",
+        )
+        assert quality["text_status"] == expected_status
+        assert quality["content_quality_score"] < 80
+
+
+def test_build_news_evidence_records_quality_score_and_as_of_invalidity():
+    result = build_news_evidence(
+        ticker="MSFT",
+        trade_date="2026-06-30",
+        candidates=[
+            {
+                "title": "Microsoft expands Azure AI capacity",
+                "source": "Example News",
+                "url": "https://example.com/msft-ai",
+                "published_date": "2026-07-01",
+                "snippet": "Microsoft expands Azure AI capacity.",
+                "full_text": (
+                    "Microsoft expands Azure AI capacity for enterprise customers. "
+                    "The company said cloud demand remains strong. "
+                    "Executives said the investment affects infrastructure spending through fiscal 2026."
+                ),
+            }
+        ],
+        structured_output_path="runs/x/news/article_cards.json",
+        retrieval_time="2026-06-30T09:30:00+10:00",
+    )
+
+    card = result["article_cards"][0]
+
+    assert card["text_status"] == "full_text_verified"
+    assert card["content_quality_score"] >= 80
+    assert card["materiality_readiness"] == "limited_or_not_ready_for_codex_interpretation"
+    assert card["as_of_validity"]["valid_for_trade_date"] is False
+    assert "post_trade_date" in card["limitations"]

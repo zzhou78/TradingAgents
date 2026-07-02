@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,98 @@ RULES = (
             "tests/test_news_article_evidence.py",
             "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py::test_quality_validator_fails_review_gate_when_all_news_evidence_is_snippet_only",
         ),
+    ),
+    RemediationRule(
+        marker="news evidence has no full-text articles",
+        failed_gate="news_article_quality_gate",
+        root_cause_category="news_article_quality_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/news_article_evidence.py",
+            "codex_tradingagents_skillkit/scripts/news_article_quality.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-news-analyst/SKILL.md",
+        ),
+        required_fix="Ensure snippet-only article evidence remains low-confidence and cannot support review-grade completion without stronger article text or an explicit blocker.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_news_article_quality_gate.py",
+            "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py::test_quality_validator_fails_review_gate_when_all_news_evidence_is_snippet_only",
+        ),
+    ),
+    RemediationRule(
+        marker="news source discovery found no usable news candidates",
+        failed_gate="news_source_discovery_gate",
+        root_cause_category="news_source_discovery_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/news_sources/",
+            "codex_tradingagents_skillkit/scripts/collect_role_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-news-analyst/SKILL.md",
+        ),
+        required_fix="Improve news candidate discovery or document an approved external source blocker; review-grade reports need at least one usable direct-company, official, or major-media news candidate.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_news_sources.py",
+            "codex_tradingagents_skillkit/tests/test_news_article_quality_gate.py",
+        ),
+    ),
+    RemediationRule(
+        marker="upstream fallback is the only",
+        failed_gate="news_source_discovery_gate",
+        root_cause_category="news_source_discovery_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/news_sources/",
+            "codex_tradingagents_skillkit/scripts/collect_role_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-news-analyst/SKILL.md",
+        ),
+        required_fix="Improve news source discovery so review-grade reports do not depend only on upstream TradingAgents fallback news.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_news_sources.py",
+            "codex_tradingagents_skillkit/tests/test_news_article_quality_gate.py",
+        ),
+    ),
+    RemediationRule(
+        marker="weak or blocked news article",
+        failed_gate="news_article_quality_gate",
+        root_cause_category="news_article_quality_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/news_article_retrieval.py",
+            "codex_tradingagents_skillkit/scripts/news_article_quality.py",
+            "codex_tradingagents_skillkit/scripts/news_article_cards.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+        ),
+        required_fix="Repair article extraction and quality scoring so error, paywall, video-only, or irrelevant pages are not treated as verified article text.",
+        required_tests=(
+            "tests/test_news_article_evidence.py",
+            "codex_tradingagents_skillkit/tests/test_news_article_quality_gate.py",
+        ),
+    ),
+    RemediationRule(
+        marker="sentiment source confidence is unsupported",
+        failed_gate="sentiment_quality_gate",
+        root_cause_category="sentiment_quality_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/sentiment_item_quality.py",
+            "codex_tradingagents_skillkit/scripts/sentiment_evidence_cards.py",
+            "codex_tradingagents_skillkit/scripts/social_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-sentiment-analyst/SKILL.md",
+        ),
+        required_fix="Downgrade or filter low-information social items and prevent platform labels or memes from supporting medium/high-confidence sentiment.",
+        required_tests=(
+            "tests/test_social_fundamentals_stage_evidence.py",
+            "codex_tradingagents_skillkit/tests/test_sentiment_quality_gate.py",
+        ),
+    ),
+    RemediationRule(
+        marker="sentiment conclusion is based only on raw social counts",
+        failed_gate="sentiment_report_quality_gate",
+        root_cause_category="sentiment_quality_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-sentiment-analyst/SKILL.md",
+        ),
+        required_fix="Require Sentiment Analyst reports to cite reasoned, ticker-relevant social evidence instead of raw bullish/bearish counts or platform labels.",
+        required_tests=("codex_tradingagents_skillkit/tests/test_sentiment_quality_gate.py",),
     ),
     RemediationRule(
         marker="financial evidence lacks extracted MD&A",
@@ -90,6 +183,22 @@ RULES = (
         required_fix="Repair official ASX or investor-relations source collection before marking ASX company reports review-ready.",
         required_tests=("codex_tradingagents_skillkit/tests/test_skillkit_bundle.py::test_quality_validator_fails_asx_report_when_asx_source_collection_failed",),
     ),
+    RemediationRule(
+        marker="mismatch",
+        failed_gate="complete_report_role_consistency_gate",
+        root_cause_category="complete_report_assembly_mismatch",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/complete_report_assembly.py",
+            "codex_tradingagents_skillkit/scripts/validate_complete_report_against_roles.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-run-persistence/SKILL.md",
+        ),
+        required_fix="Make complete_report.md assembly parse and preserve actual role outputs instead of generating contradictory summary text.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_complete_report_role_consistency.py",
+            "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py::test_quality_validator_fails_when_complete_report_contradicts_trader",
+        ),
+    ),
 )
 
 
@@ -125,34 +234,41 @@ def _rerun_command(*, ticker: str, trade_date: str, output_dir: Path | None) -> 
     )
 
 
-def _task_for_error(error: str, *, rerun_command: str) -> dict[str, Any]:
+def _tasks_for_error(error: str, *, rerun_command: str) -> list[dict[str, Any]]:
+    tasks: list[dict[str, Any]] = []
     for rule in RULES:
         if rule.marker.lower() in error.lower():
-            return {
-                "failed_gate": rule.failed_gate,
-                "root_cause_category": rule.root_cause_category,
-                "validator_error": error,
-                "affected_files": list(rule.affected_files),
-                "required_fix": rule.required_fix,
-                "required_tests": list(rule.required_tests),
-                "rerun_command": rerun_command,
-                "blocking_for_review_grade": True,
-                "status": "pending",
-            }
-    return {
-        "failed_gate": "quality_review_gate",
-        "root_cause_category": "report_quality_validation",
-        "validator_error": error,
-        "affected_files": [
-            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-            "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md",
-        ],
-        "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-        "required_tests": ["codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"],
-        "rerun_command": rerun_command,
-        "blocking_for_review_grade": True,
-        "status": "pending",
-    }
+            tasks.append(
+                {
+                    "failed_gate": rule.failed_gate,
+                    "root_cause_category": rule.root_cause_category,
+                    "validator_error": error,
+                    "affected_files": list(rule.affected_files),
+                    "required_fix": rule.required_fix,
+                    "required_tests": list(rule.required_tests),
+                    "rerun_command": rerun_command,
+                    "blocking_for_review_grade": True,
+                    "status": "pending",
+                }
+            )
+    if tasks:
+        return tasks
+    return [
+        {
+            "failed_gate": "quality_review_gate",
+            "root_cause_category": "report_quality_validation",
+            "validator_error": error,
+            "affected_files": [
+                "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+                "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md",
+            ],
+            "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
+            "required_tests": ["codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"],
+            "rerun_command": rerun_command,
+            "blocking_for_review_grade": True,
+            "status": "pending",
+        }
+    ]
 
 
 def build_remediation_plan(
@@ -164,15 +280,20 @@ def build_remediation_plan(
     errors = validate_report_dir(report_dir, evidence_path)
     ticker, trade_date = _identity(report_dir, evidence_path)
     rerun_command = _rerun_command(ticker=ticker, trade_date=trade_date, output_dir=output_dir)
+    created_at = datetime.now().astimezone().isoformat(timespec="seconds")
     seen: set[tuple[str, str]] = set()
     tasks = []
     for error in errors:
-        task = _task_for_error(error, rerun_command=rerun_command)
-        key = (task["failed_gate"], task["root_cause_category"])
-        if key in seen:
-            continue
-        seen.add(key)
-        tasks.append(task)
+        for task in _tasks_for_error(error, rerun_command=rerun_command):
+            key = (task["failed_gate"], task["root_cause_category"])
+            if key in seen:
+                continue
+            seen.add(key)
+            task["task_id"] = f"remediate:{ticker or 'UNKNOWN'}:{trade_date or 'UNKNOWN'}:{len(tasks) + 1:03d}"
+            task["rerun_commands"] = [rerun_command]
+            task["created_at"] = created_at
+            task["updated_at"] = created_at
+            tasks.append(task)
     status = "remediation_required" if tasks else "no_remediation_required"
     return {
         "ticker": ticker,

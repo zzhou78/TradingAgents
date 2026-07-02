@@ -14,6 +14,7 @@ VALIDATOR = BUNDLE / "scripts" / "validate_complete_report.py"
 QUALITY_VALIDATOR = BUNDLE / "scripts" / "validate_quality_review.py"
 MEMORY_VALIDATOR = BUNDLE / "scripts" / "validate_role_memory.py"
 REMEDIATION_RUNNER = BUNDLE / "scripts" / "run_quality_remediation.py"
+ROLE_CONSISTENCY_VALIDATOR = BUNDLE / "scripts" / "validate_complete_report_against_roles.py"
 RUNNER = (
     SKILLS_ROOT
     / "tradingagents-ticker-workflow-runner"
@@ -1544,7 +1545,7 @@ def test_quality_remediation_runner_discovers_workflows_from_output_dir(tmp_path
     plan_path = output_dir / "reports" / "AAPL" / "2026-06-27" / "6_quality" / "quality_remediation_plan.json"
     plan = json.loads(plan_path.read_text(encoding="utf-8"))
     assert plan["ticker"] == "AAPL"
-    assert any(task["root_cause_category"] == "news_full_text_retrieval" for task in plan["remediation_tasks"])
+    assert any(task["root_cause_category"] == "news_article_quality_insufficient" for task in plan["remediation_tasks"])
 
 
 def test_quality_validator_fails_when_financial_report_is_pending(tmp_path: Path):
@@ -1649,6 +1650,111 @@ def test_quality_validator_fails_when_trader_action_mismatches_final_proposal(tm
 
     assert result.returncode != 0
     assert "trader final proposal mismatch" in result.stdout
+
+
+def test_quality_validator_fails_when_complete_report_contradicts_trader(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    analyst_dir = report_dir / "1_analysts"
+    research_dir = report_dir / "2_research"
+    trading_dir = report_dir / "3_trading"
+    portfolio_dir = report_dir / "5_portfolio"
+    research_dir.mkdir(parents=True)
+    trading_dir.mkdir(parents=True)
+    portfolio_dir.mkdir(parents=True)
+    (analyst_dir / "market.md").write_text(
+        "# Market Analyst\n\n"
+        "## Tool Outputs Used\n\n"
+        "market:AAPL:2026-06-27:001\n\n"
+        "## Quantitative Regime / Tool Outputs\n\n"
+        "| Metric | Value |\n"
+        "|---|---:|\n"
+        "| Latest close | 195.64 |\n"
+        "| 200 SMA | 180.50 |\n",
+        encoding="utf-8",
+    )
+    (research_dir / "manager.md").write_text(
+        "# Research Manager\n\n"
+        "## Tool Outputs Used\n\n"
+        "stage:AAPL:2026-06-27:001\n\n"
+        "## Structured Evidence Matrix\n\n"
+        "| Direction | Materiality | Confidence | Tool output | Weight | Reason |\n"
+        "|---|---|---|---|---:|---|\n"
+        "| negative | high | medium | market | -2 | weak setup |\n\n"
+        "**Recommendation**: Sell\n\n"
+        "Sell vs Hold: Sell wins over Hold because technical risk dominates.\n",
+        encoding="utf-8",
+    )
+    (trading_dir / "trader.md").write_text(
+        "# Trader\n\n"
+        "## Tool Outputs Used\n\n"
+        "stage:AAPL:2026-06-27:002\n\n"
+        "## Action Consistency Check\n\n"
+        "**Action**: Sell\n\n"
+        "## Paper-study price framework\n\n"
+        "Reference price: 195.64\n\n"
+        "FINAL TRANSACTION PROPOSAL: **SELL**\n",
+        encoding="utf-8",
+    )
+    (portfolio_dir / "decision.md").write_text(
+        "# Portfolio Manager\n\n"
+        "## Tool Outputs Used\n\n"
+        "stage:AAPL:2026-06-27:003\n\n"
+        "## Risk debate impact\n\n"
+        "Risk evidence supports caution.\n\n"
+        "## Final Portfolio Decision\n\n"
+        "**Rating**: Underweight\n",
+        encoding="utf-8",
+    )
+    (report_dir / "complete_report.md").write_text(
+        _minimal_complete_report(action="Hold", final="HOLD")
+        .replace("**Recommendation**: Hold", "**Recommendation**: Sell")
+        .replace("**Rating**: Hold", "**Rating**: Underweight"),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(QUALITY_VALIDATOR), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    assert "Trader action mismatch" in result.stdout
+
+
+def test_quality_remediation_runner_maps_complete_report_role_mismatch(tmp_path: Path):
+    report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
+    research_dir = report_dir / "2_research"
+    trading_dir = report_dir / "3_trading"
+    portfolio_dir = report_dir / "5_portfolio"
+    research_dir.mkdir(parents=True)
+    trading_dir.mkdir(parents=True)
+    portfolio_dir.mkdir(parents=True)
+    (research_dir / "manager.md").write_text("**Recommendation**: Sell\n", encoding="utf-8")
+    (trading_dir / "trader.md").write_text(
+        "**Action**: Sell\n\nReference price: 195.64\n\nFINAL TRANSACTION PROPOSAL: **SELL**\n",
+        encoding="utf-8",
+    )
+    (portfolio_dir / "decision.md").write_text("**Rating**: Underweight\n", encoding="utf-8")
+    (report_dir / "complete_report.md").write_text(
+        _minimal_complete_report(action="Hold", final="HOLD")
+        .replace("**Recommendation**: Hold", "**Recommendation**: Sell")
+        .replace("**Rating**: Hold", "**Rating**: Underweight"),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, str(REMEDIATION_RUNNER), "--report-dir", str(report_dir)],
+        text=True,
+        capture_output=True,
+    )
+
+    assert result.returncode != 0
+    plan = json.loads((report_dir / "6_quality" / "quality_remediation_plan.json").read_text(encoding="utf-8"))
+    assert any(
+        task["root_cause_category"] == "complete_report_assembly_mismatch"
+        for task in plan["remediation_tasks"]
+    )
 
 
 def test_quality_validator_fails_asx_report_when_asx_source_collection_failed(tmp_path: Path):

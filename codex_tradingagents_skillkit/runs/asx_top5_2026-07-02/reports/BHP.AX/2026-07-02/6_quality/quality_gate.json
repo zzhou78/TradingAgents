@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "ticker": "BHP.AX",
+  "trade_date": "2026-07-02",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "workflow_complete"
+}

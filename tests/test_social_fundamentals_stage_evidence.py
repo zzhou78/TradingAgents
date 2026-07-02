@@ -24,8 +24,38 @@ def test_build_social_evidence_filters_noisy_retail_feed_and_lowers_confidence()
     assert result["social_summary"]["usable_items"] == 1
     assert result["sources"][0]["usable_ticker_relevant_items"] == 1
     assert result["sources"][0]["confidence"] == "low"
-    assert result["sources"][1]["limitations"] == ["429 rate limited", "no_usable_ticker_relevant_items"]
+    assert "reddit_rate_limited" in result["sources"][1]["limitations"]
+    assert "no_usable_ticker_relevant_items" in result["sources"][1]["limitations"]
     assert result["ledger_entries"][0]["role"] == "sentiment_analyst"
+    assert result["social_cards"][0]["ticker_relevance"] == "direct_company"
+    assert result["social_cards"][0]["reasoning_quality"] == "medium"
+    assert result["social_cards"][1]["ticker_relevance"] == "cross_ticker"
+    assert result["social_cards"][1]["meme_or_joke"] is True
+    assert result["social_cards"][1]["influence_weight"] < result["social_cards"][0]["influence_weight"]
+
+
+def test_build_social_evidence_deduplicates_and_limits_platform_label_confidence():
+    result = build_social_evidence(
+        ticker="MSFT",
+        trade_date="2026-06-30",
+        tool_calls={
+            "fetch_stocktwits_messages": {
+                "status": "ok",
+                "output": "$MSFT Bullish 🚀\n$MSFT Bullish 🚀\n$MSFT Bullish because Azure demand remains strong",
+            }
+        },
+        structured_output_path="runs/x/social/social_summary.json",
+        retrieval_time="2026-06-30T09:30:00+10:00",
+    )
+
+    cards = result["social_cards"]
+
+    assert len(cards) == 2
+    assert cards[0]["duplicate_or_near_duplicate"] is True
+    assert cards[0]["reasoning_quality"] == "low"
+    assert cards[0]["candidate_sentiment_label"] == "bullish"
+    assert cards[0]["influence_weight"] < cards[1]["influence_weight"]
+    assert result["sources"][0]["confidence"] != "high"
 
 
 def test_build_fundamentals_evidence_records_statement_sections_and_sector_expectations():

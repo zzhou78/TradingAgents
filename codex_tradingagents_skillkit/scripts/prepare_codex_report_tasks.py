@@ -14,7 +14,7 @@ TASKS = {
     "sentiment_analyst_task.md": {
         "skill": "tradingagents-sentiment-analyst",
         "output_key": "sentiment_report",
-        "instruction": "Write the Sentiment Analyst report from the social evidence only; summarize social evidence instead of dumping raw feeds.",
+        "instruction": "Write the Sentiment Analyst report from sentiment evidence cards and source-status evidence. Treat News Analyst article cards as event context only unless they contain explicit reaction evidence; do not count them as an independent sentiment signal. Reddit is optional and unavailable/rate-limited Reddit must lower confidence rather than block the workflow.",
     },
     "news_analyst_task.md": {
         "skill": "tradingagents-news-analyst",
@@ -49,7 +49,7 @@ TASKS = {
     "research_manager_task.md": {
         "skill": "tradingagents-research-manager",
         "output_key": "research_manager",
-        "instruction": "Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate; do not rely on Python-generated investment reasoning.",
+        "instruction": "Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate by evidence quality and independence group; do not count repeated role mentions or related news/social reactions as separate independent facts.",
     },
     "trader_task.md": {
         "skill": "tradingagents-trader",
@@ -107,9 +107,14 @@ ROLE_EXPERT_REQUIREMENTS = {
 Use verified market snapshots, OHLCV data, moving averages, RSI, MACD, ATR, volume, and trend/regime evidence. Do not make template claims that conflict with actual indicator values.""",
     "tradingagents-sentiment-analyst": """Role-specific required sections:
 - `## Tool Outputs Used`
-- Social evidence processing table from the Sentiment Analyst skill.
+- `## Sentiment Evidence Quality Summary`
+- `## Source Quality Table`
+- `## Top Reasoned Items`
+- `## Excluded / Downgraded Evidence`
+- `## Event Context vs Reaction Evidence`
+- `## Final Sentiment Interpretation`
 
-Summarize social evidence only; do not paste full raw feeds or infer institutional sentiment from retail feeds.""",
+Summarize reaction evidence only; do not paste full raw feeds, infer institutional sentiment from retail feeds, treat Reddit as required, or treat News Analyst article cards as independent sentiment evidence.""",
     "tradingagents-news-analyst": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Article Evidence Cards`
@@ -130,7 +135,7 @@ Every major claim must cite a source section or exhibit. Mark missing capex, gui
 - `## Tool Outputs Used`
 - `## Structured Evidence Matrix`
 
-The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, and evidence gaps. Explain why Sell vs Hold vs Underweight wins when relevant.""",
+The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, evidence gaps, and independence groups. Explain why Sell vs Hold vs Underweight wins when relevant. Related event facts, social reactions, price reactions, and repeated debate mentions must be weighted as related evidence, not raw duplicate confirmations.""",
     "tradingagents-bull-researcher": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Strongest Bull Evidence`

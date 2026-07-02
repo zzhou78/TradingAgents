@@ -1,0 +1,276 @@
+[
+  {
+    "evidence_id": "market:MSFT:2026-07-02:001",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "latest_close",
+    "status": "available",
+    "value": 384.28,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "latest close",
+      "price level"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:002",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "ema_10",
+    "status": "available",
+    "value": 376.79,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "10 EMA",
+      "near-term momentum"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:003",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "sma_50",
+    "status": "available",
+    "value": 407.87,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "50 SMA",
+      "intermediate trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:004",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "sma_200",
+    "status": "available",
+    "value": 444.39,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "200 SMA",
+      "long-term trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:005",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "rsi",
+    "status": "available",
+    "value": 46.99,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "RSI",
+      "momentum regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:006",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "macd",
+    "status": "available",
+    "value": -11.6,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "MACD",
+      "momentum regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:007",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "atr",
+    "status": "available",
+    "value": 13.41,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "ATR",
+      "volatility regime"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:008",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "volume",
+    "status": "available",
+    "value": 47966000.0,
+    "tool_call": "get_verified_market_snapshot",
+    "supports_claims": [
+      "volume",
+      "participation"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:009",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "latest_close_vs_ema_10",
+    "status": "available",
+    "value": null,
+    "relation": "above",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 384.28,
+      "right_metric": "ema_10",
+      "right_value": 376.79
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 10 EMA",
+      "near-term momentum"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:010",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "latest_close_vs_sma_50",
+    "status": "available",
+    "value": null,
+    "relation": "below",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 384.28,
+      "right_metric": "sma_50",
+      "right_value": 407.87
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 50 SMA",
+      "intermediate trend"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "market:MSFT:2026-07-02:011",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "metric_name": "latest_close_vs_sma_200",
+    "status": "available",
+    "value": null,
+    "relation": "below",
+    "comparison": {
+      "left_metric": "latest_close",
+      "left_value": 384.28,
+      "right_metric": "sma_200",
+      "right_value": 444.39
+    },
+    "tool_call": "market_data_evidence",
+    "supports_claims": [
+      "price relative to 200 SMA",
+      "long-term trend support/resistance"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "source_date": "2026-07-01",
+    "retrieval_time": "2026-07-02T21:44:56+10:00",
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "trade_date": "2026-07-02",
+      "source_date": "2026-07-01"
+    },
+    "final_market_judgment": "pending_codex_interpretation"
+  }
+]

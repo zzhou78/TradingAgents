@@ -51,6 +51,18 @@ Codex: it names the failed gate, root-cause category, affected code areas,
 required tests, rerun command, and whether the issue blocks review-grade
 completion. It does not make investment judgments.
 
+Run the closed-loop coordinator:
+
+```powershell
+.\.venv\Scripts\python.exe codex_tradingagents_skillkit\scripts\run_closed_loop_workflow.py --output-dir codex_tradingagents_skillkit\runs\aapl_msft_2026-06-30_validation_final
+```
+
+The closed-loop coordinator reads workflow status, runs the hard quality
+validators, writes `closed_loop_status.json`, and persists
+`next_remediation_task.md` when a completed workflow still fails review-grade
+quality. It does not edit code by itself; Codex executes the remediation task in
+the session, adds tests, reruns the workflow, and repeats.
+
 ## Gates
 
 - Pending role outputs block downstream stages that depend on them.

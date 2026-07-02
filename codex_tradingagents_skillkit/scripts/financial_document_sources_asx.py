@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import io
 import json
 import re
 import urllib.request
@@ -9,9 +10,26 @@ from datetime import datetime
 from typing import Any
 from urllib.parse import urljoin
 
+ASX_MARKIT_API_BASE = "https://asx.api.markitdigital.com/asx-research/1.0"
+ASX_MARKIT_ANNOUNCEMENTS_URL = ASX_MARKIT_API_BASE + "/companies/{code}/announcements"
 ASX_ANNOUNCEMENTS_URL = "https://www.asx.com.au/asx/1/company/{code}/announcements?count=100"
 ASX_COMPANY_PAGE_URL = "https://www.asx.com.au/markets/company/{code}"
 DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
+
+KNOWN_ASX_INVESTOR_RELATIONS_URLS: dict[str, list[str]] = {
+    "BHP": [
+        "https://www.bhp.com/investors/annual-reporting",
+        "https://www.bhp.com/investors/results-and-presentations",
+    ],
+    "CBA": ["https://www.commbank.com.au/about-us/investors/annual-reports.html"],
+    "CSL": [
+        "https://www.csl.com/investors/financial-results-and-information",
+        "https://investors.csl.com/annual-reports",
+        "https://investors.csl.com/annualreport/2025/",
+    ],
+    "MPL": ["https://www.medibank.com.au/about/investor-centre/results-reports/"],
+    "WOW": ["https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"],
+}
 
 HttpGet = Callable[[str, dict[str, str]], str]
 
@@ -24,6 +42,7 @@ DOCUMENT_PATTERNS: list[tuple[str, str]] = [
     ("Quarterly Activities Report", r"\bquarterly activities report\b"),
     ("Appendix 4C", r"\bappendix 4c\b"),
     ("Appendix 5B", r"\bappendix 5b\b"),
+    ("Cash Flow Statement", r"\bstatement of cash flows\b|\bcash flows?\b"),
     ("Results Presentation", r"\bresults presentation\b"),
     ("Investor Presentation", r"\binvestor presentation\b"),
     ("AGM Presentation", r"\bagm presentation\b|annual general meeting presentation"),
@@ -33,6 +52,16 @@ DOCUMENT_PATTERNS: list[tuple[str, str]] = [
 SECTION_PATTERNS: list[tuple[str, str, list[str]]] = [
     ("revenue_income_npat", r"\b(revenue|income|npat|profit after tax)\b", ["revenue", "income", "NPAT"]),
     ("eps_dps", r"\b(eps|earnings per share|dps|dividend per share)\b", ["EPS", "DPS", "dividends"]),
+    (
+        "management_discussion_analysis",
+        r"\b(management discussion|operating and financial review|operating review|financial review|outlook)\b",
+        ["management discussion", "MD&A", "outlook"],
+    ),
+    (
+        "cash_flow_statement",
+        r"\b(consolidated statements? of cash flows|statements? of cash flows|cash flow statement|cash flows|operating cash flow|net cash)\b",
+        ["cash flow statement", "operating cash flow"],
+    ),
     ("operating_cash_flow", r"\boperating cash flow\b", ["operating cash flow"]),
     ("free_cash_flow_or_cash_movement", r"\bfree cash flow\b|cash movement|net cash", ["free cash flow", "cash movement"]),
     ("cash_debt_gearing", r"\b(cash|debt|gearing|cet1|capital ratio)\b", ["cash", "debt", "gearing", "capital"]),
@@ -56,7 +85,31 @@ def _headers() -> dict[str, str]:
 def _default_http_get(url: str, headers: dict[str, str]) -> str:
     request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=20) as response:  # noqa: S310 - fixed ASX/user supplied IR URLs.
-        return response.read().decode("utf-8", errors="replace")
+        body = response.read()
+        content_type = str(response.headers.get("Content-Type", ""))
+    if body.startswith(b"%PDF") or "pdf" in content_type.lower():
+        text = _extract_pdf_text(body)
+        if text.strip():
+            return text
+    return body.decode("utf-8", errors="replace")
+
+
+def _extract_pdf_text(body: bytes) -> str:
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        return ""
+    try:
+        reader = PdfReader(io.BytesIO(body))
+    except Exception:
+        return ""
+    pages = []
+    for page in reader.pages:
+        try:
+            pages.append(page.extract_text() or "")
+        except Exception:
+            continue
+    return "\n".join(page for page in pages if page).strip()
 
 
 def normalize_asx_code(ticker: str) -> str:
@@ -114,6 +167,11 @@ def _announcement_rows(payload: str) -> list[dict[str, Any]]:
         rows = data.get(key) if isinstance(data, dict) else None
         if isinstance(rows, list):
             return [row for row in rows if isinstance(row, dict)]
+        if isinstance(rows, dict):
+            for nested_key in ("items", "announcements", "results"):
+                nested_rows = rows.get(nested_key)
+                if isinstance(nested_rows, list):
+                    return [row for row in nested_rows if isinstance(row, dict)]
     return []
 
 
@@ -126,7 +184,20 @@ def _field(row: dict[str, Any], *names: str) -> str:
 
 
 def _document_url(row: dict[str, Any]) -> str:
-    return _field(row, "url", "document_url", "pdf_url", "file_url", "documentReleaseUrl", "downloadUrl")
+    url = _field(row, "url", "document_url", "pdf_url", "file_url", "documentReleaseUrl", "downloadUrl")
+    if url:
+        return url
+    document_key = _field(row, "documentKey", "document_key", "fileKey", "file_key")
+    if document_key:
+        return f"{ASX_MARKIT_API_BASE}/file/{document_key}"
+    return ""
+
+
+def _announcement_endpoint_urls(asx_code: str) -> list[str]:
+    return [
+        ASX_MARKIT_ANNOUNCEMENTS_URL.format(code=asx_code),
+        ASX_ANNOUNCEMENTS_URL.format(code=asx_code),
+    ]
 
 
 def _date_from_text(text: str) -> str:
@@ -136,6 +207,12 @@ def _date_from_text(text: str) -> str:
     dated = re.search(r"\b\d{1,2}\s+[A-Z][a-z]{2,8}\s+\d{4}\b", text)
     if dated:
         return dated.group(0)
+    year = re.search(r"\b(20\d{2})\b", text)
+    if year:
+        return f"{year.group(1)}-12-31"
+    fiscal_year = re.search(r"\bF(?:Y)?(\d{2})\b", text, re.IGNORECASE)
+    if fiscal_year:
+        return f"20{fiscal_year.group(1)}-12-31"
     return ""
 
 
@@ -148,16 +225,43 @@ def _title_without_date(text: str) -> str:
 
 def _fallback_rows(page_html: str, page_url: str) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    for href, label in re.findall(r"(?is)<a[^>]+href=['\"]([^'\"]+)['\"][^>]*>(.*?)</a>", page_html):
-        clean_label = _clean_text(label)
-        if not _classify_document(clean_label):
+    for anchor in re.finditer(r"(?is)<a\b(?P<attrs>[^>]*)>(?P<label>.*?)</a>", page_html):
+        attrs = anchor.group("attrs")
+        href_match = re.search(r"href=['\"]([^'\"]+)['\"]", attrs, re.IGNORECASE)
+        if not href_match:
             continue
-        date_text = _date_from_text(clean_label)
+        href = href_match.group(1)
+        title_match = re.search(r"title=['\"]([^'\"]+)['\"]", attrs, re.IGNORECASE)
+        title = _clean_text(title_match.group(1)) if title_match else ""
+        clean_label = _clean_text(anchor.group("label"))
+        searchable_text = f"{clean_label} {title} {href.replace('-', ' ').replace('_', ' ')} {page_url}"
+        if not _classify_document(searchable_text):
+            continue
+        date_text = _date_from_text(searchable_text)
         if not date_text:
             continue
         rows.append(
             {
-                "title": _title_without_date(clean_label),
+                "title": _title_without_date(title) or _title_without_date(clean_label) or _title_without_date(searchable_text),
+                "announcement_date": date_text,
+                "url": urljoin(page_url, href),
+                "fallback_page_url": page_url,
+            }
+        )
+    for href, label in re.findall(
+        r"(?is)<button\b[^>]+data-href=['\"]([^'\"]+)['\"][^>]*>(.*?)</button>",
+        page_html,
+    ):
+        clean_label = _clean_text(label)
+        searchable_text = f"{clean_label} {href.replace('-', ' ').replace('_', ' ')}"
+        if not _classify_document(searchable_text):
+            continue
+        date_text = _date_from_text(searchable_text)
+        if not date_text:
+            continue
+        rows.append(
+            {
+                "title": _title_without_date(clean_label) or _title_without_date(searchable_text),
                 "announcement_date": date_text,
                 "url": urljoin(page_url, href),
                 "fallback_page_url": page_url,
@@ -173,6 +277,7 @@ def _fallback_page_urls(asx_code: str, identity: dict[str, Any] | None) -> list[
         url = identity.get(key)
         if url:
             urls.append(str(url))
+    urls.extend(KNOWN_ASX_INVESTOR_RELATIONS_URLS.get(asx_code, []))
     return list(dict.fromkeys(urls))
 
 
@@ -312,6 +417,40 @@ def _collect_fallback_sources(
     return sources, fallback_attempts
 
 
+def _has_available_section(sources: list[dict[str, Any]], claim: str) -> bool:
+    claim = claim.lower()
+    for source in sources:
+        for section in source.get("extracted_sections", []):
+            supports = " ".join(str(item) for item in section.get("supports_claims", []))
+            haystack = f"{section.get('section_name', '')} {supports}".lower()
+            if section.get("status") == "available" and claim in haystack:
+                return True
+    return False
+
+
+def _needs_section_supplement(sources: list[dict[str, Any]]) -> bool:
+    available_sources = [source for source in sources if source.get("status") == "available"]
+    if not available_sources:
+        return True
+    return not (
+        _has_available_section(available_sources, "management discussion")
+        and _has_available_section(available_sources, "cash flow statement")
+    )
+
+
+def _merge_unique_sources(primary: list[dict[str, Any]], supplemental: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    seen_urls = {str(source.get("url", "")) for source in primary if source.get("url")}
+    merged = [*primary]
+    for source in supplemental:
+        url = str(source.get("url", ""))
+        if url and url in seen_urls:
+            continue
+        if url:
+            seen_urls.add(url)
+        merged.append(source)
+    return merged
+
+
 def collect_asx_financial_document_sources(
     ticker: str,
     trade_date: str,
@@ -339,8 +478,32 @@ def collect_asx_financial_document_sources(
     headers = _headers()
     endpoint_error = ""
     fallback_attempts: list[dict[str, Any]] = []
-    try:
-        rows = _announcement_rows(http_get(ASX_ANNOUNCEMENTS_URL.format(code=asx_code), headers))
+    rows: list[dict[str, Any]] = []
+    endpoint_attempts: list[dict[str, Any]] = []
+    for endpoint_url in _announcement_endpoint_urls(asx_code):
+        try:
+            endpoint_rows = _announcement_rows(http_get(endpoint_url, headers))
+            endpoint_attempts.append(
+                {
+                    "source_type": "asx_announcements_endpoint",
+                    "status": "available",
+                    "url": endpoint_url,
+                    "announcements_found": len(endpoint_rows),
+                }
+            )
+            rows = endpoint_rows
+            break
+        except Exception as exc:  # noqa: BLE001 - try the next official endpoint before falling back.
+            endpoint_error = str(exc)
+            endpoint_attempts.append(
+                {
+                    "source_type": "asx_announcements_endpoint",
+                    "status": "error",
+                    "url": endpoint_url,
+                    "reason": endpoint_error,
+                }
+            )
+    if rows:
         sources = [
             source
             for row in rows
@@ -367,6 +530,18 @@ def collect_asx_financial_document_sources(
             )
             if fallback_sources:
                 sources = fallback_sources
+        elif _needs_section_supplement(sources):
+            fallback_sources, fallback_attempts = _collect_fallback_sources(
+                symbol=symbol,
+                asx_code=asx_code,
+                trade_date=trade_date,
+                identity=identity,
+                http_get=http_get,
+                headers=headers,
+                excerpt_chars=excerpt_chars,
+            )
+            if fallback_sources:
+                sources = _merge_unique_sources(sources, fallback_sources)
         for source in sources:
             source["ticker"] = symbol
         return {
@@ -376,11 +551,10 @@ def collect_asx_financial_document_sources(
             "trade_date": trade_date,
             "status": "ok" if any(source.get("status") == "available" for source in sources) else "unavailable",
             "as_of_rule": "Only ASX announcements with announcement/lodgement date <= trade_date are included.",
+            "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
             "sources": sources,
         }
-    except Exception as exc:  # noqa: BLE001 - ASX access should degrade gracefully.
-        endpoint_error = str(exc)
     fallback_sources, fallback_attempts = _collect_fallback_sources(
         symbol=symbol,
         asx_code=asx_code,
@@ -399,6 +573,7 @@ def collect_asx_financial_document_sources(
             "status": "ok",
             "as_of_rule": "ASX endpoint failed; fallback official ASX/company IR documents still require date <= trade_date.",
             "primary_endpoint_error": endpoint_error,
+            "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
             "sources": fallback_sources,
         }
@@ -408,6 +583,7 @@ def collect_asx_financial_document_sources(
         "asx_code": asx_code,
         "trade_date": trade_date,
         "status": "error",
+        "endpoint_attempts": endpoint_attempts,
         "fallback_attempts": fallback_attempts,
         "sources": [
             {
