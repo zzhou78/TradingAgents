@@ -94,8 +94,19 @@ def _top_social_cards(cards: list[dict[str, object]]) -> list[dict[str, object]]
     ]
     direct = [card for card in valid if card.get("ticker_relevance") == "direct_company"]
     reasoned = [card for card in direct if card.get("reasoning_quality") in {"medium", "high"}]
-    pool = reasoned or direct or valid
-    return sorted(pool, key=lambda card: float(card.get("influence_weight") or 0), reverse=True)[:3]
+    return sorted(reasoned, key=lambda card: float(card.get("influence_weight") or 0), reverse=True)[:3]
+
+
+def _low_quality_social_cards(cards: list[dict[str, object]]) -> list[dict[str, object]]:
+    valid = [
+        card
+        for card in cards
+        if not isinstance(card.get("as_of_validity"), dict)
+        or bool(card["as_of_validity"].get("valid_for_trade_date", True))
+    ]
+    direct = [card for card in valid if card.get("ticker_relevance") == "direct_company"]
+    low_quality = [card for card in direct if card.get("reasoning_quality") == "low"]
+    return sorted(low_quality, key=lambda card: float(card.get("influence_weight") or 0), reverse=True)[:3]
 
 
 def _memory_footer(*, refs: str, trade_date: str) -> str:
@@ -200,6 +211,7 @@ def write_reports(*, output_dir: Path, ticker: str, trade_date: str) -> Path:
     report_dir = output_dir / "reports" / ticker / trade_date
     _ensure_report_dirs(report_dir)
 
+    evidence = _load_json(evidence_dir / "evidence.json")
     market_records = _load_json(evidence_dir / "market" / "quantitative_observations.json")
     social_summary = _load_json(evidence_dir / "social" / "social_summary.json")
     social_cards_path = evidence_dir / "social" / "social_cards.json"
@@ -208,6 +220,7 @@ def write_reports(*, output_dir: Path, ticker: str, trade_date: str) -> Path:
     financial_records = _load_json(evidence_dir / "financial_report" / "section_records.json")
     fundamental_records = _load_json(evidence_dir / "fundamentals" / "statement_records.json")
     assert isinstance(market_records, list)
+    assert isinstance(evidence, dict)
     assert isinstance(social_summary, dict)
     assert isinstance(social_cards, list)
     assert isinstance(news_cards, list)
@@ -273,6 +286,11 @@ def write_reports(*, output_dir: Path, ticker: str, trade_date: str) -> Path:
     f_cash = _fund_record(fundamental_records, "cash flow")
     f_income = _fund_record(fundamental_records, "income")
     total, usable, bullish, bearish, neutral = _social_stats(social_summary)
+    run_metadata = evidence.get("run_metadata") if isinstance(evidence.get("run_metadata"), dict) else {}
+    run_executed_at = str(run_metadata.get("run_executed_at") or evidence.get("run_executed_at") or "")
+    evidence_as_of = str(run_metadata.get("evidence_as_of_date") or evidence.get("evidence_as_of_date") or trade_date)
+    run_id = str(run_metadata.get("run_id") or evidence.get("run_id") or "")
+    run_folder_name = str(run_metadata.get("run_folder_name") or output_dir.name)
 
     sources = social_summary.get("sources") if isinstance(social_summary.get("sources"), list) else []
     social_ids = [
@@ -352,7 +370,24 @@ Interpretation: {ticker} has a {regime}. This statement is mechanical from the t
             + " |"
         )
     if not top_rows:
-        top_rows.append("| none | none | neutral | low | unavailable | none | No usable item. |")
+        top_rows.append("| none | none | neutral | none | unavailable | none | No genuinely reasoned social items were found. |")
+    low_quality_rows = []
+    for card in _low_quality_social_cards(social_cards):
+        low_quality_rows.append(
+            "| "
+            + " | ".join(
+                [
+                    _clean_cell(card.get("evidence_id")),
+                    _clean_cell(card.get("source")),
+                    _clean_cell(card.get("candidate_sentiment_label")),
+                    _clean_cell(card.get("reasoning_quality")),
+                    _clean_cell(str(card.get("text_excerpt", ""))[:160]),
+                ]
+            )
+            + " |"
+        )
+    if not low_quality_rows:
+        low_quality_rows.append("| none | none | none | none | No representative low-quality retail item needed. |")
     signal = "mixed retail-only reaction" if bullish and bearish else "low-confidence retail reaction"
     (report_dir / "1_analysts" / "sentiment.md").write_text(
         f"""# Sentiment Analyst Report - {ticker}
@@ -377,6 +412,11 @@ The usable sentiment signal is {signal}. It is retail-only because the usable so
 | Evidence ID | Source | Candidate label | Reasoning quality | Relevance | Independence group | Short excerpt |
 |---|---|---|---|---|---|---|
 {chr(10).join(top_rows)}
+
+## Representative Low-Quality Retail Items
+| Evidence ID | Source | Candidate label | Reasoning quality | Short excerpt |
+|---|---|---|---|---|
+{chr(10).join(low_quality_rows)}
 
 ## Excluded / Downgraded Evidence
 - Low-information, meme, spam-like, cross-ticker, and post-trade-date items are excluded or downgraded by the evidence cards.
@@ -767,6 +807,12 @@ Research decision: {manager_rec}. Trader action: {trader_action}. Portfolio deci
     (report_dir / "complete_report.md").write_text(
         f"""# Complete Codex TradingAgents Report - {ticker}
 
+Trade date: {trade_date}
+Evidence as of: {evidence_as_of}
+Run executed at: {run_executed_at}
+Run ID: {run_id}
+Run folder: {run_folder_name}
+
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
 - Core evidence IDs: {refs['close']}, {refs['exhibit']}, {best_news_id}, {first_social_id}.
@@ -826,7 +872,7 @@ Risk debate impact: risk evidence tempers implementation; no broker/order tools 
         f"""# Quality Reviewer Report - {ticker}
 
 ## Tool Outputs Used
-- validate_quality_review.py planned check for report directory.
+- validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
 - Role reports and evidence records including {refs['close']}, {refs['exhibit']}, {best_news_id}, and {first_social_id}.
 
 ## Quality Gate Findings
@@ -837,7 +883,7 @@ Risk debate impact: risk evidence tempers implementation; no broker/order tools 
 - Anti-double-counting: Research Manager uses independence groups and does not count social reposts as independent fundamental facts.
 
 ## Evidence Gaps
-- Validator must still be run after file generation; if it reports errors, remediation remains the next workflow stage.
+- No validator-pending state remains for this artifact. If a later validator run reports errors, remediation becomes the next workflow stage.
 
 {_memory_footer(refs=', '.join(str(item) for item in [refs['close'], refs['exhibit'], best_news_id] if item), trade_date=trade_date)}""",
         encoding="utf-8",

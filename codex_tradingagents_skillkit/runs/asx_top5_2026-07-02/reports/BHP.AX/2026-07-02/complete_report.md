@@ -1,5 +1,11 @@
 # Complete Codex TradingAgents Report - BHP.AX
 
+Trade date: 2026-07-02
+Evidence as of: 2026-07-02
+Run executed at: 2026-07-03T00:00:30+10:00
+Run ID: asx_top5_2026-07-02:BHP.AX:2026-07-02:2026-07-03T00:00:30+10:00
+Run folder: asx_top5_2026-07-02
+
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
 - Core evidence IDs: market:BHP.AX:2026-07-02:001, financial:BHP.AX:2026-07-02:009, news:BHP.AX:2026-07-02:001, social:BHP.AX:2026-07-02:001.

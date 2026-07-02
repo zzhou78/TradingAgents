@@ -9,7 +9,7 @@
     "source_url": "https://www.bhp.com/investor-hub/reports-and-presentations/annual-report",
     "source_date": "2025-12-31",
     "discovered_by": "regulatory_filings_adapter",
-    "retrieval_time": "2026-07-02T22:05:21+10:00",
+    "retrieval_time": "2026-07-03T00:00:56+10:00",
     "fetch_status": "ok",
     "http_status": null,
     "final_url": "https://www.bhp.com/investor-hub/reports-and-presentations/annual-report",
@@ -29,13 +29,13 @@
     "full_text_status": "full_text",
     "full_text_source": "candidate_full_text",
     "full_text_excerpt": "Annual Report 2025 Search --> --> \ud83d\udd0d --> Search Contact us English ES | Espa\u00f1ol \u4e2d\u6587 | Chinese --> English ES | Espa\u00f1ol \u4e2d\u6587 | Chinese Home --> About What we do Investor Hub Sustainability Careers News & Publications Suppliers Contact us Why our work matters Our future Our history Our strategy Operating ethically Our businesses Board & management Corporate governance Our code Products Global locations Reports & presentations Shareholder information Financial Calendar Market announcements Debt investors Consensus estimates Sustainability approach Value chain sustainability Nature and environmental",
-    "direct_company_relevance": "pending_codex_interpretation",
-    "event_type": "pending_codex_interpretation",
+    "direct_company_relevance": "context_only",
+    "event_type": "context_only",
     "key_facts": [],
     "novelty": "pending_codex_interpretation",
-    "materiality": "pending_codex_interpretation",
-    "reason": "pending_codex_interpretation",
-    "confidence": "medium",
+    "materiality": "context_only",
+    "reason": "Generic or unmatched source page; use only as context.",
+    "confidence": "low",
     "evidence_gap": "",
     "limitations": [
       "no_company_entity_match"
@@ -44,7 +44,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "materiality_readiness": "ready_for_codex_interpretation",
+    "materiality_readiness": "limited_or_not_ready_for_codex_interpretation",
     "duplicate_count": 2
   }
 ]

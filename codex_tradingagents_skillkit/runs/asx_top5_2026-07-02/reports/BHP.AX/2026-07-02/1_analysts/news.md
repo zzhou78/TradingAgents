@@ -7,7 +7,7 @@
 ## Article Evidence Cards
 | Evidence ID | Title | Source | Publication date | Full-text status | Direct company relevance | Event type | Likely effect | Reason | Confidence | Evidence gap |
 |---|---|---|---|---|---|---|---|---|---|---|
-| news:BHP.AX:2026-07-02:001 | BHP's 2025 Annual Report Learn more about our financial, economic, social and environmenta | ASX announcement | 2025-12-31 | full_text | pending_codex_interpretation | earnings/context | positive | direct earnings-release or official company evidence | medium | none for selected official item |
+| news:BHP.AX:2026-07-02:001 | BHP's 2025 Annual Report Learn more about our financial, economic, social and environmenta | ASX announcement | 2025-12-31 | full_text | context_only | earnings/context | positive | direct earnings-release or official company evidence | low | none for selected official item |
 
 ## News Impact Summary
 Impact label: mixed-to-positive, supported by news:BHP.AX:2026-07-02:001. The strongest usable news card is `BHP's 2025 Annual Report Learn more about our financial, economic, social and environmental performance.`. It is treated as direct company event context, while generic snippets, duplicate official pages, unrelated posts, and post-trade-date items are excluded from the final impact label.

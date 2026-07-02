@@ -1,0 +1,1082 @@
+[
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "Bullish: 6 (20%) \u00b7 Bearish: 1 (3%) \u00b7 Unlabeled: 23 \u00b7 Total: 30 most-recent messages",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0001"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T14:00:22Z \u00b7 @erob_trades_official \u00b7 no-label] $AAPL what\u2019s the news?",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0002"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T14:00:19Z \u00b7 @ASM \u00b7 no-label] The greatest $AAPL open ive ever seen OMG wow    $SPY $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "SPY",
+      "QQQ"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:valuation",
+    "independence_group_id": "reaction:AAPL:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0003"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:58:14Z \u00b7 @str8upcashhomie \u00b7 Bullish] $AAPL",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0004"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:55:25Z \u00b7 @ElmagoMagico \u00b7 no-label] $AAPL Moved SL to profits. This trade can&#39;t lose. Awesome trade. Discpline &gt; emotions. NFA",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0005"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:53:21Z \u00b7 @SmartTrade99 \u00b7 no-label] $AAPL Will they be allowed to use Chinese chips?",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0006"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:53:07Z \u00b7 @ScalpingAlgo \u00b7 no-label] Patience pays. \ud83d\udcc8\ud83c\udf4f    Stayed disciplined and trusted the setup on $AAPL.    \u2705 Buy signal triggered  \u2705 Clean retest held  \u2705 Followed the plan, not the emotions    The result? A strong intraday",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0007"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:52:25Z \u00b7 @R0yalTEA \u00b7 Bearish] $AAPL selling off at $302 again  #quadrupleTop",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "bearish",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0008"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:51:36Z \u00b7 @scotttrader213 \u00b7 no-label] $AAPL the demise  is premature.. moving towards $315",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0009"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:51:09Z \u00b7 @SeNSF \u00b7 no-label] $NVDA Bulls in Control Above 198.8 Breakout. Bears in Control Below 195.5 Breakdown. Play the Break/Retest or Reversal/Reclaim. $SPY $QQQ $AAPL $TSLA",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "NVDA",
+      "SPY",
+      "QQQ",
+      "AAPL",
+      "TSLA"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0010"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:50:51Z \u00b7 @ASM \u00b7 Bullish] TEXH EXTRAVAGANZAAAA LED HY $AAPL     $SPY $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "SPY",
+      "QQQ"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0011"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:50:40Z \u00b7 @Wize \u00b7 no-label] $AAPL Looking good!",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0012"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:50:14Z \u00b7 @UpsOrDowns \u00b7 no-label] $AAPL Ruh roh. Let&#39;s keep a lid on it.",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0013"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:49:34Z \u00b7 @User24Testing \u00b7 no-label] $AAPL next stop 305. Calls are cheap",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0014"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:48:40Z \u00b7 @ASM \u00b7 Bullish] $AAPL SINGLE HANDEDLY SAVED THE SESSION    $SOY.X $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "SOY.X",
+      "QQQ"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0015"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:48:37Z \u00b7 @AlphaFrontier \u00b7 no-label] $AAPL China shipments are still soft. Edgewater says they\u2019ve been down Y/Y for 8 straight weeks through end of May.      That said, total China shipments through end of May are still estima",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "medium",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.45,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0016"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:47:52Z \u00b7 @ASM \u00b7 Bullish] GOOD GOD ALMIGHTY DID YOU LISTEN $AAPL     Wow WOW WOW       $SPY $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "SPY",
+      "QQQ"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0017"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:47:49Z \u00b7 @InvestorsTechnical \u00b7 no-label] $AAPL  I sell my puts for a major lose if it see 303 . Fk u all",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0018"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:47:44Z \u00b7 @User24Testing \u00b7 no-label] $AAPL new ath inbound. Higher prices is good. They have the power. People can do without paying a car loan but will continue to pay for $AAPL products regardless of the price. Going to $5 t",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:valuation",
+    "independence_group_id": "reaction:AAPL:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0019"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:47:37Z \u00b7 @gtfo9000 \u00b7 no-label] SMR massive squeeze bug contract incoming $SPY $AAPL $NVDA $TSLA.X",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "SPY",
+      "AAPL",
+      "NVDA",
+      "TSLA.X"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0020"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:46:38Z \u00b7 @dennismccain \u00b7 no-label] $AAPL   This is stating the obviou UBS: APPLE AI NOT DRIVING IPHONE UPGRADES",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0021"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:46:19Z \u00b7 @mama2024 \u00b7 no-label] $AAPL --daily 1.618 fib level is 301 and it ha scrossed. I will wait for a pull back",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0022"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:45:50Z \u00b7 @ElmagoMagico \u00b7 Bullish] $AAPL Closed Majority of contracts here. Runners in place. Move SL to BE. Nice ROI. Discipline&gt; emotions. NFA.",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0023"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:45:49Z \u00b7 @erob_trades_official \u00b7 no-label] $AAPL news?",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0024"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:45:05Z \u00b7 @SeNSF \u00b7 no-label] $MSFT Bulls in Control Above 388 Breakout. Bears in Control Below 381 Breakdown. Play the Break/Retest or Reversal/Reclaim. $SPY $QQQ $AAPL $TSLA",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT",
+      "SPY",
+      "QQQ",
+      "AAPL",
+      "TSLA"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0025"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:44:48Z \u00b7 @ASM \u00b7 no-label] $AAPL SKYROCKET    $SPY $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL",
+      "SPY",
+      "QQQ"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "medium",
+    "meme_or_joke": true,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.1,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0026"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:43:58Z \u00b7 @Wingmen \u00b7 no-label] $AAPL got ran over here\ud83e\udd23 retrying at 302",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0027"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:43:53Z \u00b7 @SeNSF \u00b7 no-label] $NFLX Bulls in Control Above 75.8 Breakout. Bears in Control Below 74.4 Breakdown. Play the Break/Retest or Reversal/Reclaim. $SPY $QQQ $AAPL $TSLA",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "NFLX",
+      "SPY",
+      "QQQ",
+      "AAPL",
+      "TSLA"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0028"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:43:22Z \u00b7 @mama2024 \u00b7 no-label] $AAPL  Bought Monday july 6th 295 calls at 3.95 and out at 6.10 --say 50% and I am done. All based on accumulation and accelaeration.   Now will wait for SPY pulling down and moving up  Good luc",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:AAPL:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0029"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:43:07Z \u00b7 @RobertLemire \u00b7 Bullish] $AAPL Nice fatty 2.7x out of the gate. Thank you to the fine folks in Cupertino.",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:valuation",
+    "independence_group_id": "reaction:AAPL:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0030"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T13:42:47Z \u00b7 @ASM \u00b7 no-label] Holy shit what a ripper from $AAPL",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "AAPL"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:valuation",
+    "independence_group_id": "reaction:AAPL:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:AAPL:2026-07-02:item:0031"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "<no Reddit posts found mentioning AAPL across r/wallstreetbets, r/stocks, r/investing in the past 7 days>",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.0,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:AAPL:2026-07-02:none",
+    "independence_group_id": "reaction:AAPL:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [
+      "no_items_placeholder"
+    ],
+    "evidence_id": "social:AAPL:2026-07-02:item:0032"
+  }
+]

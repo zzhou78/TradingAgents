@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 BUNDLE = Path(__file__).resolve().parents[1]
@@ -102,3 +103,59 @@ def test_review_status_requires_authoritative_result_folder():
         )
         == "review_ready_paper_study"
     )
+
+
+def test_run_folder_trade_date_mismatch_requires_explicit_metadata(tmp_path: Path):
+    module = _load_workflow_module()
+    output_dir = tmp_path / "aapl_msft_2026-06-30_review_gate_fixed"
+    workflow_path = output_dir / "evidence" / "AAPL" / "2026-07-02" / "workflow_state.json"
+    workflow_path.parent.mkdir(parents=True)
+    workflow = {
+        "ticker": "AAPL",
+        "trade_date": "2026-07-02",
+        "output_dir": str(output_dir),
+        "run_metadata": {
+            "trade_date": "2026-07-02",
+            "run_folder_name": output_dir.name,
+            "authoritative_result_folder": True,
+        },
+    }
+
+    errors = module._run_metadata_errors(workflow_path, workflow)
+
+    assert "run_metadata.json missing for run folder" in errors
+    assert "run folder trade_date mismatch has no explicit run_metadata.json" in errors
+
+
+def test_run_folder_metadata_file_can_explain_date_mismatch(tmp_path: Path):
+    module = _load_workflow_module()
+    output_dir = tmp_path / "aapl_msft_review"
+    workflow_path = output_dir / "evidence" / "AAPL" / "2026-07-02" / "workflow_state.json"
+    workflow_path.parent.mkdir(parents=True)
+    (output_dir / "run_metadata.json").write_text(
+        json.dumps(
+            {
+                "run_id": "aapl_msft_review:AAPL:2026-07-02:test",
+                "run_folder_name": output_dir.name,
+                "ticker_list": ["AAPL"],
+                "trade_date": "2026-07-02",
+                "evidence_as_of_date": "2026-07-02",
+                "run_executed_at": "2026-07-02T12:00:00+10:00",
+                "authoritative_result_folder": str(output_dir),
+                "workflow_status": "pending",
+            }
+        ),
+        encoding="utf-8",
+    )
+    workflow = {
+        "ticker": "AAPL",
+        "trade_date": "2026-07-02",
+        "output_dir": str(output_dir),
+        "run_metadata": {
+            "trade_date": "2026-07-02",
+            "run_folder_name": output_dir.name,
+            "authoritative_result_folder": False,
+        },
+    }
+
+    assert module._run_metadata_errors(workflow_path, workflow) == []

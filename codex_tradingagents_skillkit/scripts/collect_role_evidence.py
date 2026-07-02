@@ -98,7 +98,6 @@ WORKFLOW_SKILLS = [
 ]
 DEFAULT_MAX_DEBATE_ROUNDS = 1
 DEFAULT_MAX_RISK_DISCUSS_ROUNDS = 1
-AUTHORITATIVE_RESULT_FOLDER_NAME = "aapl_msft_2026-06-30_review_gate_fixed"
 DEFAULT_COMPANY_NEWS_URLS = {
     "AAPL": [
         "https://www.apple.com/newsroom/",
@@ -1429,9 +1428,13 @@ def _workflow_state(
         "evidence_as_of_date": trade_date,
         "run_executed_at": "",
         "output_dir": str(report_dir.parents[2]) if len(report_dir.parents) > 2 else "",
+        "run_folder_name": report_dir.parents[2].name if len(report_dir.parents) > 2 else "",
+        "ticker_list": [ticker],
         "run_id": "",
         "authoritative_result_folder": False,
+        "authoritative_result_folder_path": str(report_dir.parents[2]) if len(report_dir.parents) > 2 else "",
         "status": "pending",
+        "workflow_status": "pending",
     }
     return {
         "ticker": ticker,
@@ -1439,9 +1442,11 @@ def _workflow_state(
         "evidence_as_of_date": run_metadata.get("evidence_as_of_date", trade_date),
         "run_executed_at": run_metadata.get("run_executed_at", ""),
         "output_dir": run_metadata.get("output_dir", ""),
+        "run_folder_name": run_metadata.get("run_folder_name", ""),
         "run_id": run_metadata.get("run_id", ""),
         "authoritative_result_folder": bool(run_metadata.get("authoritative_result_folder")),
         "status": run_metadata.get("status", "pending"),
+        "workflow_status": run_metadata.get("workflow_status", run_metadata.get("status", "pending")),
         "run_metadata": run_metadata,
         "codex_operated": True,
         "requires_user_input": False,
@@ -1578,13 +1583,34 @@ def _write_stage_input_evidence(workflow: dict[str, Any], evidence_dir: Path) ->
         _apply_stage_contract(stage)
 
 
-def _is_authoritative_result_folder(output_dir: Path) -> bool:
-    return output_dir.name == AUTHORITATIVE_RESULT_FOLDER_NAME
+def _is_authoritative_result_folder(output_dir: Path, trade_date: str) -> bool:
+    return trade_date in output_dir.name
+
+
+def _run_folder_metadata(
+    *,
+    output_dir: Path,
+    tickers: list[str],
+    trade_date: str,
+    run_executed_at: str,
+    workflow_status: str = "pending",
+) -> dict[str, Any]:
+    return {
+        "run_id": f"{output_dir.name}:{','.join(tickers)}:{trade_date}:{run_executed_at}",
+        "run_folder_name": output_dir.name,
+        "ticker_list": tickers,
+        "trade_date": trade_date,
+        "evidence_as_of_date": trade_date,
+        "run_executed_at": run_executed_at,
+        "authoritative_result_folder": str(output_dir),
+        "workflow_status": workflow_status,
+    }
 
 
 def _run_metadata(
     *,
     ticker: str,
+    tickers: list[str],
     trade_date: str,
     output_dir: Path,
     run_executed_at: str,
@@ -1595,9 +1621,13 @@ def _run_metadata(
         "evidence_as_of_date": trade_date,
         "run_executed_at": run_executed_at,
         "output_dir": str(output_dir),
+        "run_folder_name": output_dir.name,
+        "ticker_list": tickers,
         "run_id": f"{output_dir.name}:{ticker}:{trade_date}:{run_executed_at}",
-        "authoritative_result_folder": _is_authoritative_result_folder(output_dir),
+        "authoritative_result_folder": _is_authoritative_result_folder(output_dir, trade_date),
+        "authoritative_result_folder_path": str(output_dir),
         "status": status,
+        "workflow_status": status,
     }
 
 
@@ -1616,6 +1646,14 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     set_config(_build_config(output_dir))
     run_executed_at = datetime.now().astimezone().isoformat(timespec="seconds")
+    run_folder_metadata = _run_folder_metadata(
+        output_dir=output_dir,
+        tickers=tickers,
+        trade_date=args.trade_date,
+        run_executed_at=run_executed_at,
+    )
+    run_metadata_path = output_dir / "run_metadata.json"
+    run_metadata_path.write_text(json.dumps(run_folder_metadata, indent=2), encoding="utf-8")
 
     summary = {
         "trade_date": args.trade_date,
@@ -1625,8 +1663,11 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         "max_debate_rounds": max_debate_rounds,
         "max_risk_discuss_rounds": max_risk_discuss_rounds,
         "output_dir": str(output_dir),
-        "authoritative_result_folder": _is_authoritative_result_folder(output_dir),
+        "run_folder_name": output_dir.name,
+        "run_metadata_path": str(run_metadata_path),
+        "authoritative_result_folder": _is_authoritative_result_folder(output_dir, args.trade_date),
         "status": "pending",
+        "workflow_status": "pending",
         "codex_operated": True,
         "uses_tradingagents_graph": False,
         "skill_context": {
@@ -1645,6 +1686,7 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
     for ticker in tickers:
         run_metadata = _run_metadata(
             ticker=ticker,
+            tickers=tickers,
             trade_date=args.trade_date,
             output_dir=output_dir,
             run_executed_at=run_executed_at,

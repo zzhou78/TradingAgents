@@ -164,6 +164,51 @@ def _review_status(
     return "review_ready_paper_study"
 
 
+def _run_metadata_errors(workflow_path: Path, workflow: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    output_dir = Path(str(workflow.get("output_dir") or workflow_path.parents[3]))
+    trade_date = str(workflow.get("trade_date") or "")
+    run_metadata = workflow.get("run_metadata")
+    if not isinstance(run_metadata, dict):
+        errors.append("workflow_state.json missing run_metadata")
+        run_metadata = {}
+
+    root_metadata_path = output_dir / "run_metadata.json"
+    if not root_metadata_path.exists():
+        errors.append("run_metadata.json missing for run folder")
+    else:
+        try:
+            root_metadata = json.loads(root_metadata_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            errors.append("run_metadata.json is not valid JSON")
+            root_metadata = {}
+        if isinstance(root_metadata, dict):
+            required = [
+                "run_id",
+                "run_folder_name",
+                "ticker_list",
+                "trade_date",
+                "evidence_as_of_date",
+                "run_executed_at",
+                "authoritative_result_folder",
+                "workflow_status",
+            ]
+            for field in required:
+                if field not in root_metadata:
+                    errors.append(f"run_metadata.json missing required field: {field}")
+            if root_metadata.get("run_folder_name") and root_metadata.get("run_folder_name") != output_dir.name:
+                errors.append("run_metadata.json run_folder_name does not match actual folder")
+            if trade_date and root_metadata.get("trade_date") and root_metadata.get("trade_date") != trade_date:
+                errors.append("run_metadata.json trade_date does not match workflow_state.json")
+
+    folder_name = str(run_metadata.get("run_folder_name") or output_dir.name)
+    if trade_date and trade_date not in folder_name and not root_metadata_path.exists():
+        errors.append("run folder trade_date mismatch has no explicit run_metadata.json")
+    if folder_name != output_dir.name:
+        errors.append("workflow run_folder_name does not match actual folder")
+    return errors
+
+
 def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
     workflow = _read_json(workflow_path)
     stage_summaries = []
@@ -197,16 +242,18 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         if next_stage is None and status in {"pending", "invalid"}:
             next_stage = summary
 
-    quality_errors = []
+    quality_errors = _run_metadata_errors(workflow_path, workflow)
     remediation_plan_path = ""
     next_remediation_task_path = ""
     if complete_count == len(stage_summaries) and stage_summaries:
         try:
             from validate_quality_review import validate_report_dir
 
-            quality_errors = validate_report_dir(
-                Path(workflow["report_dir"]),
-                Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None,
+            quality_errors.extend(
+                validate_report_dir(
+                    Path(workflow["report_dir"]),
+                    Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None,
+                )
             )
             if quality_errors:
                 from run_quality_remediation import (

@@ -1,0 +1,102 @@
+{
+  "social_summary": {
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "total_items_reviewed": 44,
+    "usable_items": 34,
+    "source_limitations": [],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:MSFT:2026-07-02:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 31,
+      "usable_ticker_relevant_items": 29,
+      "bullish_count": 8,
+      "bearish_count": 5,
+      "neutral_count": 16,
+      "confidence": "medium",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "[2026-07-02T13:51:36Z \u00b7 @CRNA24 \u00b7 Bullish] $MSFT feels like buying &lt;$400 is one of those opportunities you just have to take. Everyone knows this will be back above $500 sooner than later",
+          "classification": "directly ticker-relevant",
+          "label": "bullish",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "bullish",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T13:48:27Z \u00b7 @AIWealthCircle \u00b7 no-label] Microsoft $MSFT just dropped something that feels bigger than a product update.    Microsoft Frontier Company is a new AI operating business with $2.5B committed and ~6,000 employees pulle",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T13:45:23Z \u00b7 @machumble \u00b7 no-label] $SNDK because now funds go to $MSFT $META so $SPY goes up with them and doesnt need $SOXX anymore",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "medium",
+          "influence_weight": 0.45
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:MSFT:2026-07-02:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 13,
+      "usable_ticker_relevant_items": 5,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 5,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "r/wallstreetbets \u2014 5 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02] MSFT earnings",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "medium",
+          "influence_weight": 0.45
+        },
+        {
+          "text_excerpt": "body excerpt: MSFT earnings less than a month out. Prediction that it will run up to 462 just before earnings. Microsoft will post record earnings for another quarter. It will proceed to crash back down to 350 or lower. Source: my ass. I\u2019m ",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "high",
+          "influence_weight": 0.6
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

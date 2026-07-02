@@ -78,3 +78,54 @@ def test_social_card_quality_blocks_medium_confidence_when_items_are_low_quality
     errors = validator.validate_report_dir(report_dir, evidence_path)
 
     assert any("sentiment source confidence is unsupported by social item quality" in error for error in errors)
+
+
+def test_top_reasoned_items_cannot_include_low_reasoning_quality(tmp_path: Path):
+    validator = _load_quality_validator()
+    report_dir = tmp_path / "reports" / "MSFT" / "2026-07-02"
+    analyst_dir = report_dir / "1_analysts"
+    analyst_dir.mkdir(parents=True)
+    (analyst_dir / "sentiment.md").write_text(
+        "# Sentiment\n\n"
+        "## Tool Outputs Used\n\n- social_evidence_processing\n\n"
+        "## Top Reasoned Items\n"
+        "| Evidence ID | Source | Candidate label | Reasoning quality | Relevance |\n"
+        "|---|---|---|---|---|\n"
+        "| social:MSFT:2026-07-02:item:0001 | stocktwits | bullish | low | direct_company |\n",
+        encoding="utf-8",
+    )
+
+    errors = validator.validate_report_dir(report_dir)
+
+    assert any("Top Reasoned Items cannot include low reasoning-quality" in error for error in errors)
+
+
+def test_quality_review_cannot_say_validator_pending_when_gate_passed(tmp_path: Path):
+    validator = _load_quality_validator()
+    run_dir = tmp_path / "run"
+    report_dir = run_dir / "reports" / "MSFT" / "2026-07-02"
+    quality_dir = report_dir / "6_quality"
+    quality_dir.mkdir(parents=True)
+    (run_dir / "closed_loop_status.json").write_text(
+        json.dumps({"status": "review_ready_paper_study"}),
+        encoding="utf-8",
+    )
+    (quality_dir / "quality_gate.json").write_text(
+        json.dumps(
+            {
+                "passed": True,
+                "status": "workflow_complete",
+                "issues": [],
+                "closed_loop_status_path": str(run_dir / "closed_loop_status.json"),
+            }
+        ),
+        encoding="utf-8",
+    )
+    (quality_dir / "quality_review.md").write_text(
+        "# Quality Review\n\n## Evidence Gaps\n\n- Validator must still be run after file generation.\n",
+        encoding="utf-8",
+    )
+
+    errors = validator.validate_report_dir(report_dir)
+
+    assert any("quality_review.md says validator is pending" in error for error in errors)

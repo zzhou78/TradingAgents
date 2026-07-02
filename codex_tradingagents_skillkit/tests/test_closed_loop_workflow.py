@@ -6,10 +6,19 @@ from pathlib import Path
 
 BUNDLE = Path(__file__).resolve().parents[1]
 CLOSED_LOOP = BUNDLE / "scripts" / "run_closed_loop_workflow.py"
+QUALITY_VALIDATOR = BUNDLE / "scripts" / "validate_quality_review.py"
 
 
 def _load_closed_loop():
     spec = importlib.util.spec_from_file_location("run_closed_loop_workflow", CLOSED_LOOP)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _load_quality_validator():
+    spec = importlib.util.spec_from_file_location("validate_quality_review", QUALITY_VALIDATOR)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -92,3 +101,23 @@ def test_closed_loop_creates_remediation_task_for_quality_failure(tmp_path: Path
     assert any(task["root_cause_category"] == "sentiment_quality_insufficient" for task in plan["remediation_tasks"])
     assert all(task["task_id"].startswith("remediate:MSFT:2026-06-30:") for task in plan["remediation_tasks"])
     assert all(task["rerun_commands"] for task in plan["remediation_tasks"])
+
+
+def test_passed_quality_gate_requires_closed_loop_status_artifact(tmp_path: Path):
+    validator = _load_quality_validator()
+    report_dir = tmp_path / "run" / "reports" / "MSFT" / "2026-07-02"
+    quality_dir = report_dir / "6_quality"
+    quality_dir.mkdir(parents=True)
+    (quality_dir / "quality_gate.json").write_text(
+        json.dumps({"passed": True, "status": "workflow_complete", "issues": []}),
+        encoding="utf-8",
+    )
+    (quality_dir / "quality_review.md").write_text(
+        "# Quality Review\n\n## Tool Outputs Used\n\n- validate_quality_review.py was run and passed.\n",
+        encoding="utf-8",
+    )
+
+    errors = validator.validate_report_dir(report_dir)
+
+    assert "closed_loop_status.json missing for completed run" in errors
+    assert "quality_gate.json does not reference closed_loop_status.json" in errors

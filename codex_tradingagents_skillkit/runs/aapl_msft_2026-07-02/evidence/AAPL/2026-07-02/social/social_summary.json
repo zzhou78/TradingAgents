@@ -1,0 +1,76 @@
+{
+  "social_summary": {
+    "ticker": "AAPL",
+    "trade_date": "2026-07-02",
+    "total_items_reviewed": 32,
+    "usable_items": 30,
+    "source_limitations": [],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:AAPL:2026-07-02:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 31,
+      "usable_ticker_relevant_items": 30,
+      "bullish_count": 7,
+      "bearish_count": 2,
+      "neutral_count": 21,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "[2026-07-02T14:00:22Z \u00b7 @erob_trades_official \u00b7 no-label] $AAPL what\u2019s the news?",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T14:00:19Z \u00b7 @ASM \u00b7 no-label] The greatest $AAPL open ive ever seen OMG wow    $SPY $QQQ",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02T13:58:14Z \u00b7 @str8upcashhomie \u00b7 Bullish] $AAPL",
+          "classification": "directly ticker-relevant",
+          "label": "bullish",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "bullish",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:AAPL:2026-07-02:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 1,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
+      ],
+      "representative_items": [],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

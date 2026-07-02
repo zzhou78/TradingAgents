@@ -28,6 +28,8 @@ def _legacy_full_text_status(text_status: str) -> str:
 def _confidence(text_status: str, limitations: list[str]) -> str:
     if "post_trade_date" in limitations:
         return "low"
+    if "no_company_entity_match" in limitations or "generic_landing_or_navigation_page" in limitations:
+        return "low"
     if text_status == "full_text_verified":
         return "medium"
     if text_status == "partial_text":
@@ -123,6 +125,7 @@ def build_article_card(
 
     confidence = _confidence(text_status, limitations)
     evidence_gap = "" if legacy_status == "full_text" else "full text unavailable or not review-grade"
+    context_only = "no_company_entity_match" in limitations or "generic_landing_or_navigation_page" in limitations
     return {
         "evidence_id": evidence_id,
         "ticker": ticker,
@@ -151,12 +154,12 @@ def build_article_card(
         "full_text_status": legacy_status,
         "full_text_source": full_text_source,
         "full_text_excerpt": _excerpt(text) if legacy_status == "full_text" else "",
-        "direct_company_relevance": "pending_codex_interpretation",
-        "event_type": "pending_codex_interpretation",
+        "direct_company_relevance": "context_only" if context_only else "pending_codex_interpretation",
+        "event_type": "context_only" if context_only else "pending_codex_interpretation",
         "key_facts": [],
         "novelty": "pending_codex_interpretation",
-        "materiality": "pending_codex_interpretation",
-        "reason": "pending_codex_interpretation",
+        "materiality": "context_only" if context_only else "pending_codex_interpretation",
+        "reason": "Generic or unmatched source page; use only as context." if context_only else "pending_codex_interpretation",
         "confidence": confidence,
         "evidence_gap": evidence_gap,
         "limitations": limitations,

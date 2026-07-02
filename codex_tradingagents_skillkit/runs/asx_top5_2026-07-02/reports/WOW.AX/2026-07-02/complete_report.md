@@ -1,5 +1,11 @@
 # Complete Codex TradingAgents Report - WOW.AX
 
+Trade date: 2026-07-02
+Evidence as of: 2026-07-02
+Run executed at: 2026-07-03T00:00:30+10:00
+Run ID: asx_top5_2026-07-02:WOW.AX:2026-07-02:2026-07-03T00:00:30+10:00
+Run folder: asx_top5_2026-07-02
+
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
 - Core evidence IDs: market:WOW.AX:2026-07-02:001, financial:WOW.AX:2026-07-02:001, news:WOW.AX:2026-07-02:003, social:WOW.AX:2026-07-02:001.

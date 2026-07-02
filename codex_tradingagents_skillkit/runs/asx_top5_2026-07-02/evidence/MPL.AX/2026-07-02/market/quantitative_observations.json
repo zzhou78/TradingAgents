@@ -14,7 +14,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -37,7 +37,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -60,7 +60,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -83,7 +83,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -106,7 +106,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -129,7 +129,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -152,7 +152,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -166,7 +166,7 @@
     "trade_date": "2026-07-02",
     "metric_name": "volume",
     "status": "available",
-    "value": 9936584.0,
+    "value": 9959834.0,
     "tool_call": "get_verified_market_snapshot",
     "supports_claims": [
       "volume",
@@ -175,7 +175,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -205,7 +205,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -235,7 +235,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",
@@ -265,7 +265,7 @@
     "confidence": "medium",
     "limitations": [],
     "source_date": "2026-07-02",
-    "retrieval_time": "2026-07-02T22:07:20+10:00",
+    "retrieval_time": "2026-07-03T00:03:02+10:00",
     "as_of_validity": {
       "valid_for_trade_date": true,
       "trade_date": "2026-07-02",

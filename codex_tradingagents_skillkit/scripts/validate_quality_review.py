@@ -127,6 +127,9 @@ def _structured_evidence_quality_errors(evidence_path: Path | None) -> list[str]
             legacy_status = str(card.get("full_text_status", "")).lower()
             confidence = str(card.get("confidence", "")).lower()
             quality_score = int(card.get("content_quality_score") or 0)
+            quality_flags = {str(flag) for flag in card.get("quality_flags", []) or []}
+            key_facts = card.get("key_facts_for_codex") or card.get("key_facts") or []
+            entity_hits = card.get("company_entity_hits") or []
             valid_for_trade_date = bool((card.get("as_of_validity") or {}).get("valid_for_trade_date", True))
             if valid_for_trade_date and (text_status in {"full_text_verified", "partial_text"} or legacy_status == "full_text"):
                 usable_text_count += 1
@@ -138,6 +141,19 @@ def _structured_evidence_quality_errors(evidence_path: Path | None) -> list[str]
                 break
             if quality_score and quality_score < 50 and confidence in {"medium", "high"}:
                 errors.append("low-quality news article evidence cannot be medium or high confidence")
+                break
+            if "no_company_entity_match" in quality_flags and confidence in {"medium", "high"}:
+                errors.append("news article with no company entity match cannot be medium or high confidence")
+                break
+            if "generic_landing_or_navigation_page" in quality_flags and str(card.get("materiality", "")).lower() != "context_only":
+                errors.append("generic official or navigation page must be context-only news evidence")
+                break
+            if (
+                str(card.get("materiality_readiness", "")) == "ready_for_codex_interpretation"
+                and not key_facts
+                and not entity_hits
+            ):
+                errors.append("material-ready news evidence needs key facts or a company entity match")
                 break
             if not valid_for_trade_date and (
                 legacy_status == "full_text"
@@ -405,6 +421,17 @@ def _sentiment_quality_errors(sentiment_path: Path) -> list[str]:
         errors.append("Reddit is treated as required sentiment evidence")
     if re.search(r"StockTwits|Reddit", text, re.IGNORECASE) and re.search(r"\bhigh confidence\b", text, re.IGNORECASE):
         errors.append("high confidence is assigned to retail-only sentiment")
+    top_reasoned = _section(text, "## Top Reasoned Items")
+    if top_reasoned:
+        rows = _markdown_table_rows(top_reasoned)
+        if len(rows) >= 2:
+            header = [cell.lower() for cell in rows[0]]
+            quality_index = next((index for index, cell in enumerate(header) if "reasoning quality" in cell), None)
+            if quality_index is not None:
+                for row in rows[1:]:
+                    if len(row) > quality_index and row[quality_index].strip().lower() == "low":
+                        errors.append("Top Reasoned Items cannot include low reasoning-quality social items")
+                        break
     return errors
 
 
@@ -549,6 +576,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     analyst_dir = report_dir / "1_analysts"
     complete_report = report_dir / "complete_report.md"
     quality_gate = report_dir / "6_quality" / "quality_gate.json"
+    quality_review = report_dir / "6_quality" / "quality_review.md"
     news = analyst_dir / "news.md"
     market = analyst_dir / "market.md"
     sentiment = analyst_dir / "sentiment.md"
@@ -640,9 +668,24 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
         except json.JSONDecodeError:
             errors.append("quality_gate.json is not valid JSON")
         else:
+            passed = gate.get("passed") is True
+            if passed:
+                run_root = report_dir.parents[2] if len(report_dir.parents) > 2 else report_dir
+                closed_loop_status = run_root / "closed_loop_status.json"
+                if not closed_loop_status.exists():
+                    errors.append("closed_loop_status.json missing for completed run")
+                if not (
+                    gate.get("closed_loop_status_path")
+                    or gate.get("closed_loop_status")
+                    or gate.get("closed_loop_status_artifact")
+                ):
+                    errors.append("quality_gate.json does not reference closed_loop_status.json")
+                review_text = _read(quality_review)
+                if re.search(r"validator must still be run|validator still pending|planned check", review_text, re.IGNORECASE):
+                    errors.append("quality_review.md says validator is pending while quality_gate.json passed")
             if errors and gate.get("passed") is True:
                 errors.append("quality_gate.json passes despite quality errors")
-            if gate.get("passed") is not True:
+            if not passed:
                 errors.append("quality_gate.json does not pass; workflow remains incomplete")
 
     return errors

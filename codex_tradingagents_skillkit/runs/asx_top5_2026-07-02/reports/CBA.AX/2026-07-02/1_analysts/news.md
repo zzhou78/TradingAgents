@@ -7,7 +7,7 @@
 ## Article Evidence Cards
 | Evidence ID | Title | Source | Publication date | Full-text status | Direct company relevance | Event type | Likely effect | Reason | Confidence | Evidence gap |
 |---|---|---|---|---|---|---|---|---|---|---|
-| news:CBA.AX:2026-07-02:001 | 2025 Annual Report | ASX announcement | 2025-12-31 | full_text | pending_codex_interpretation | earnings/context | positive | direct earnings-release or official company evidence | medium | none for selected official item |
+| news:CBA.AX:2026-07-02:001 | 2025 Annual Report | ASX announcement | 2025-12-31 | full_text | context_only | earnings/context | positive | direct earnings-release or official company evidence | low | none for selected official item |
 | news:CBA.AX:2026-07-02:002 | 2025 Sustainability Reporting (pages 68-93 of the Annual Report) | ASX announcement | 2025-12-31 | full_text | pending_codex_interpretation | earnings/context | excluded / low relevance | snippet, generic, duplicate, or low direct relevance | medium | not used for final impact label |
 | news:CBA.AX:2026-07-02:003 | 2025 Annual Report | ASX announcement | 2025-12-31 | full_text | pending_codex_interpretation | earnings/context | excluded / low relevance | snippet, generic, duplicate, or low direct relevance | medium | not used for final impact label |
 

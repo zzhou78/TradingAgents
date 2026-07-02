@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for WOW.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-02 22:07:21
+# Data retrieved on: 2026-07-03 00:03:03
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0
@@ -191,15 +191,15 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 2026-06-13: N/A: Not a trading day (weekend or holiday)
 2026-06-12: 31.177617092132568
 2026-06-11: 31.124574661254883
-2026-06-10: 31.096603260040283
-2026-06-09: 31.066993885040283
+2026-06-10: 31.09660327911377
+2026-06-09: 31.066993894577028
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 31.045613994598387
-2026-06-04: 31.03056634902954
-2026-06-03: 31.01343900680542
-2026-06-02: 30.995119724273682
+2026-06-05: 31.045614004135132
+2026-06-04: 31.030566358566283
+2026-06-03: 31.013439025878906
+2026-06-02: 30.995119743347168
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 64.2295257505986
-2026-07-01: 63.957887855559534
-2026-06-30: 73.25678021343663
-2026-06-29: 81.17136361465576
+2026-07-02: 64.22952575059672
+2026-07-01: 63.95788785555769
+2026-06-30: 73.25678021343322
+2026-06-29: 81.17136361465077
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 79.97365318770377
-2026-06-25: 78.75947945416686
-2026-06-24: 76.21534392046128
-2026-06-23: 72.8817202253577
-2026-06-22: 71.77380142277606
+2026-06-26: 79.97365318769866
+2026-06-25: 78.75947945416164
+2026-06-24: 76.21534392045594
+2026-06-23: 72.88172022535234
+2026-06-22: 71.77380142277075
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 70.41518204662701
-2026-06-18: 69.21885426010947
-2026-06-17: 67.12003308671706
-2026-06-16: 73.70851478457212
-2026-06-15: 73.5578861884537
+2026-06-19: 70.41518204662178
+2026-06-18: 69.21885426010432
+2026-06-17: 67.12003308671213
+2026-06-16: 73.70851478456476
+2026-06-15: 73.55788618844632
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 74.88593562608233
-2026-06-11: 73.83310919498756
-2026-06-10: 71.72338753884365
-2026-06-09: 65.21226335780496
+2026-06-12: 74.88593562607443
+2026-06-11: 73.83310919497966
+2026-06-10: 71.72338753883584
+2026-06-09: 65.21226335779808
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 59.222758257439935
-2026-06-04: 55.336084926738884
-2026-06-03: 53.71660256719516
-2026-06-02: 46.51303625021647
+2026-06-05: 59.22275825743482
+2026-06-04: 55.336084926735374
+2026-06-03: 53.71660256719244
+2026-06-02: 46.51303625021797
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 1.1242129671843841
-2026-07-01: 1.1921428323778827
-2026-06-30: 1.2655782148384205
-2026-06-29: 1.2675912294425373
+2026-07-02: 1.124212967184377
+2026-07-01: 1.1921428323778684
+2026-06-30: 1.2655782148384063
+2026-06-29: 1.2675912294425231
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 1.1987773763185103
-2026-06-25: 1.125072502459659
-2026-06-24: 1.0451793559684788
-2026-06-23: 0.9860403727422877
-2026-06-22: 0.9603602945326202
+2026-06-26: 1.1987773763184961
+2026-06-25: 1.125072502459652
+2026-06-24: 1.0451793559684646
+2026-06-23: 0.9860403727422735
+2026-06-22: 0.960360294532606
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 0.9329600026404492
-2026-06-18: 0.9078350743419179
-2026-06-17: 0.8829253697315522
-2026-06-16: 0.8729071750962731
-2026-06-15: 0.7985508034599604
+2026-06-19: 0.9329600026404279
+2026-06-18: 0.9078350743418895
+2026-06-17: 0.8829253697315238
+2026-06-16: 0.8729071750962447
+2026-06-15: 0.798550803459932
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 0.6950841713222431
-2026-06-11: 0.5427307580402712
-2026-06-10: 0.3648146704145816
-2026-06-09: 0.1792589210580786
+2026-06-12: 0.6950841713222076
+2026-06-11: 0.5427307580402356
+2026-06-10: 0.36481467041454607
+2026-06-09: 0.17925892105804309
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 0.056905972026243035
-2026-06-04: -0.01965214929563075
-2026-06-03: -0.07330045272062335
-2026-06-02: -0.12340010348724917
+2026-06-05: 0.05690597202620751
+2026-06-04: -0.019652149295666277
+2026-06-03: -0.07330045272065888
+2026-06-02: -0.1234001034872847
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 0.6836905870335487
-2026-07-01: 0.6716667742985993
-2026-06-30: 0.6248720046833468
-2026-06-29: 0.6244777547806841
+2026-07-02: 0.6836905870335797
+2026-07-01: 0.6716667742986328
+2026-06-30: 0.6248720046833829
+2026-06-29: 0.6244777547807231
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 0.6178991909582248
-2026-06-25: 0.6100451886701556
-2026-06-24: 0.6012023348126013
-2026-06-23: 0.5982179459790754
-2026-06-22: 0.6134656563481089
+2026-06-26: 0.6178991909582667
+2026-06-25: 0.6100451886702007
+2026-06-24: 0.60120233481265
+2026-06-23: 0.5982179459791279
+2026-06-22: 0.6134656563481653
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 0.6191167902573985
-2026-06-18: 0.6282796202771984
-2026-06-17: 0.6304550930584372
-2026-06-16: 0.6381825018093266
-2026-06-15: 0.6561197112333613
+2026-06-19: 0.6191167902574592
+2026-06-18: 0.6282796202772637
+2026-06-17: 0.6304550930585076
+2026-06-16: 0.6381825018094024
+2026-06-15: 0.6561197112334429
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 0.6673598181333734
-2026-06-11: 0.6871567389580859
-2026-06-10: 0.7046304046877344
-2026-06-09: 0.6703710876730289
+2026-06-12: 0.6673598181334613
+2026-06-11: 0.6871567389581807
+2026-06-10: 0.7046304046878364
+2026-06-09: 0.6703710876731387
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 0.649630214308935
-2026-06-04: 0.645755556721972
-2026-06-03: 0.6569675226236622
-2026-06-02: 0.6351958992324835
+2026-06-05: 0.6496302143090532
+2026-06-04: 0.6457555567220994
+2026-06-03: 0.6569675226237994
+2026-06-02: 0.6351958992326314
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -394,7 +394,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for WOW.AX
-# Data retrieved on: 2026-07-02 22:07:38
+# Data retrieved on: 2026-07-03 00:03:16
 
 ,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
 0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,
@@ -406,9 +406,9 @@ No global news found between 2026-06-25 and 2026-07-02
 6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,
 7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,
 8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,
-9,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
-10,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
-11,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
+9,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
+10,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
+11,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
 12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0
 13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0
 14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,
@@ -435,7 +435,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for WOW.AX
-# Data retrieved on: 2026-07-02 22:07:38
+# Data retrieved on: 2026-07-03 00:03:17
 
 Name: Woolworths Group Limited
 Sector: Consumer Defensive
@@ -473,7 +473,7 @@ Free Cash Flow: 2267749888
 
 ```text
 # Balance Sheet data for WOW.AX (quarterly)
-# Data retrieved on: 2026-07-02 22:07:39
+# Data retrieved on: 2026-07-03 00:03:17
 
 ,2025-06-30
 Ordinary Shares Number,1221595333.0

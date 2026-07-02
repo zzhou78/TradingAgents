@@ -89,3 +89,37 @@ def test_quality_gate_rejects_post_trade_article_as_valid(tmp_path: Path):
     errors = validator.validate_report_dir(report_dir, evidence_path)
 
     assert any("post-trade-date news article cannot support review-grade evidence" in error for error in errors)
+
+
+def test_no_company_entity_match_cannot_be_medium_confidence_material_ready(tmp_path: Path):
+    validator = _load_quality_validator()
+    report_dir = tmp_path / "reports" / "MSFT" / "2026-07-02"
+    evidence_dir = tmp_path / "evidence" / "MSFT" / "2026-07-02"
+    (report_dir / "1_analysts").mkdir(parents=True)
+    (evidence_dir / "news").mkdir(parents=True)
+    (evidence_dir / "news" / "source_attempts.json").write_text("[]", encoding="utf-8")
+    (evidence_dir / "news" / "article_cards.json").write_text(
+        json.dumps(
+            [
+                {
+                    "evidence_id": "news:MSFT:2026-07-02:001",
+                    "text_status": "partial_text",
+                    "full_text_status": "full_text",
+                    "confidence": "medium",
+                    "content_quality_score": 55,
+                    "quality_flags": ["no_company_entity_match"],
+                    "company_entity_hits": [],
+                    "key_facts_for_codex": [],
+                    "materiality_readiness": "ready_for_codex_interpretation",
+                    "as_of_validity": {"valid_for_trade_date": True},
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    evidence_path = evidence_dir / "evidence.json"
+    evidence_path.write_text(json.dumps({"ticker": "MSFT", "trade_date": "2026-07-02"}), encoding="utf-8")
+
+    errors = validator.validate_report_dir(report_dir, evidence_path)
+
+    assert any("no company entity match cannot be medium or high confidence" in error for error in errors)

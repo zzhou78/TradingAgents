@@ -40,7 +40,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for CBA.AX
-# Data retrieved on: 2026-07-02 22:05:39
+# Data retrieved on: 2026-07-03 00:01:15
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D
@@ -59,16 +59,16 @@ No global news found between 2026-06-25 and 2026-07-02
 13,28,2952.0,,Other at price 105.46 per share.,Currie (Alistair),Director (Non-Executive),,2025-11-12,D
 14,50,5273.0,,Other at price 105.46 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-11-12,D
 15,300,,,,McAloon (Jane Frances),Director (Non-Executive),,2025-10-01,D
-16,39,4323.0,,Acquisition at price 110.85 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-09-29,D
-17,58,6429.0,,Acquisition at price 110.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-09-29,D
-18,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D
-19,20490,,,,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D
-20,20490,2239804.0,,Sale at price 109.31 per share.,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D
-21,49,5356.0,,Purchase at price 109.32 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-08-14,D
-22,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
-23,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D
-24,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D
-25,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
+16,58,6429.0,,Acquisition at price 110.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-09-29,D
+17,39,4323.0,,Acquisition at price 110.85 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-09-29,D
+18,20490,,,,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D
+19,20490,2239804.0,,Sale at price 109.31 per share.,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D
+20,49,5356.0,,Purchase at price 109.32 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-08-14,D
+21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D
+22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D
+23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D
+24,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
+25,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
 26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D
 27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D
 28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D

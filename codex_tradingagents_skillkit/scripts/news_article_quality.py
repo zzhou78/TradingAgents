@@ -30,6 +30,23 @@ BOILERPLATE_PATTERNS = [
     r"\ball rights reserved\b",
     r"\badvertisement\b",
 ]
+GENERIC_PAGE_PATTERNS = [
+    r"\binvestor relations\b",
+    r"\bpress releases?\b",
+    r"\bnewsroom\b",
+    r"\bofficial (?:site|website)\b",
+    r"\b(?:all|browse|our)\s+products?\b",
+    r"\bproduct page\b",
+    r"\bcustomer support\b",
+    r"\bsupport center\b",
+    r"\bsitemap\b",
+    r"\bnavigation\b",
+    r"\bhome page\b",
+]
+COMMON_TICKER_ENTITY_ALIASES = {
+    "AAPL": ["Apple", "Apple Inc"],
+    "MSFT": ["Microsoft", "Microsoft Corp", "Microsoft Corporation"],
+}
 
 
 def _words(text: str) -> list[str]:
@@ -54,8 +71,12 @@ def _title_similarity(title: str, text: str) -> float:
 
 def _entity_hits(text: str, *, company_name: str, ticker: str) -> list[str]:
     hits: list[str] = []
-    if company_name and re.search(rf"\b{re.escape(company_name)}\b", text, re.IGNORECASE):
-        hits.append(company_name)
+    candidates = [company_name]
+    ticker_upper = ticker.upper()
+    candidates.extend(COMMON_TICKER_ENTITY_ALIASES.get(ticker_upper, []))
+    for candidate in dict.fromkeys(item for item in candidates if item):
+        if re.search(rf"\b{re.escape(candidate)}\b", text, re.IGNORECASE):
+            hits.append(candidate)
     if ticker and (re.search(rf"\b{re.escape(ticker)}\b", text, re.IGNORECASE) or hits):
         hits.append(ticker)
     return hits
@@ -125,7 +146,8 @@ def evaluate_article_quality(
     if not valid_for_trade_date:
         flags.append("post_trade_date")
 
-    company_entity_hits = _entity_hits(normalized_text, company_name=company_name, ticker=ticker)
+    entity_text = f"{title} {normalized_text}"
+    company_entity_hits = _entity_hits(entity_text, company_name=company_name, ticker=ticker)
     if not company_entity_hits:
         flags.append("no_company_entity_match")
 
@@ -133,6 +155,9 @@ def evaluate_article_quality(
     sentence_count = len(sentences)
     title_similarity = _title_similarity(title, normalized_text)
     event_fact_count = _event_fact_count(normalized_text)
+    generic_page = _has_any(f"{title} {lower_text}", GENERIC_PAGE_PATTERNS) and event_fact_count == 0
+    if generic_page:
+        flags.append("generic_landing_or_navigation_page")
 
     score = 0
     if fetch_status == "ok":
@@ -174,10 +199,19 @@ def evaluate_article_quality(
         score = min(score, 18)
     if "no_company_entity_match" in flags:
         score = min(score, 55)
+    if "generic_landing_or_navigation_page" in flags:
+        score = min(score, 45)
     if "boilerplate" in flags:
         score = max(0, score - 15)
     score = max(0, min(100, score))
     text_status = _status_from_score(score, text=normalized_text, flags=flags, word_count=word_count)
+    materiality_ready = (
+        text_status in {"full_text_verified", "partial_text"}
+        and valid_for_trade_date
+        and bool(company_entity_hits)
+        and event_fact_count > 0
+        and "generic_landing_or_navigation_page" not in flags
+    )
     return {
         "text_status": text_status,
         "content_quality_score": score,
@@ -192,7 +226,7 @@ def evaluate_article_quality(
             "reason": "source_date is on or before trade_date" if valid_for_trade_date else "source_date is after trade_date",
         },
         "materiality_readiness": "ready_for_codex_interpretation"
-        if text_status in {"full_text_verified", "partial_text"} and valid_for_trade_date
+        if materiality_ready
         else "limited_or_not_ready_for_codex_interpretation",
         "extraction_method": extraction_method,
     }

@@ -20,8 +20,12 @@ The usable sentiment signal is low-confidence retail reaction. It is retail-only
 ## Top Reasoned Items
 | Evidence ID | Source | Candidate label | Reasoning quality | Relevance | Independence group | Short excerpt |
 |---|---|---|---|---|---|---|
-| social:CBA.AX:2026-07-02:item:0001 | fetch_stocktwits_messages | neutral | low | irrelevant | reaction:CBA.AX:2026-07-02:valuation | <stocktwits unavailable: HTTPError> |
-| social:CBA.AX:2026-07-02:item:0002 | fetch_reddit_posts | neutral | low | irrelevant | reaction:CBA.AX:2026-07-02:none | <no Reddit posts found mentioning CBA.AX across r/wallstreetbets, r/stocks, r/investing in the past 7 days> |
+| none | none | neutral | none | unavailable | none | No genuinely reasoned social items were found. |
+
+## Representative Low-Quality Retail Items
+| Evidence ID | Source | Candidate label | Reasoning quality | Short excerpt |
+|---|---|---|---|---|
+| none | none | none | none | No representative low-quality retail item needed. |
 
 ## Excluded / Downgraded Evidence
 - Low-information, meme, spam-like, cross-ticker, and post-trade-date items are excluded or downgraded by the evidence cards.
