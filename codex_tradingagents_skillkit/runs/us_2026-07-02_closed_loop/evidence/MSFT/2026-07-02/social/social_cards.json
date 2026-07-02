@@ -1,0 +1,1099 @@
+[
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "Bullish: 7 (23%) \u00b7 Bearish: 1 (3%) \u00b7 Unlabeled: 22 \u00b7 Total: 30 most-recent messages",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0001"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:35:40Z \u00b7 @NetflixUser \u00b7 Bullish] $MSFT bought calls at close for next week!",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0002"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:34:05Z \u00b7 @SwingTraderPro1 \u00b7 no-label] The memory market narrative is getting seriously misunderstood right now.    While most of the market has moved on emotionally, $MU is still structurally positioned in a way that challeng",
+    "ticker_relevance": "cross_ticker",
+    "cashtags_detected": [
+      "MU"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.15,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0003"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:27:35Z \u00b7 @AStrokeOfLuck \u00b7 no-label] $MSFT",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0004"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:22:15Z \u00b7 @ShowMeThaMonay \u00b7 Bullish] $MSFT Atleast $400 next week.",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0005"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:20:26Z \u00b7 @jcrsbarb \u00b7 Bullish] $MSFT",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0006"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:19:27Z \u00b7 @hkm_trader \u00b7 no-label] $TSLA what scams r going on $MSFT $QQQ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "TSLA",
+      "MSFT",
+      "QQQ"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0007"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:13:07Z \u00b7 @mz08 \u00b7 Bullish] $ZCMD $SDOT  $MSFT  $AAPL  $AMD",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "ZCMD",
+      "SDOT",
+      "MSFT",
+      "AAPL",
+      "AMD"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0008"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:08:59Z \u00b7 @mz08 \u00b7 Bullish] $ZCMD $NVDA  $MSFT  $SPCX",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "ZCMD",
+      "NVDA",
+      "MSFT",
+      "SPCX"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0009"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T21:07:19Z \u00b7 @TalkMarkets \u00b7 no-label] #Magnificent7 Weekly Report - Cloud Pivot Changes The Calculus $GOOGL $META $MSFT $NVDA $TSLA https://talkmarkets.com/article/magnificent-7-weekly-report-july-2-2026-1783026343",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "GOOGL",
+      "META",
+      "MSFT",
+      "NVDA",
+      "TSLA"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0010"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:57:25Z \u00b7 @SmartMoneyRadar \u00b7 no-label] My $IREN thesis:  Even without a major compute partnership with $MSFT, $NVDA, Mirantis, or any hyperscaler/software giant, I believe IREN\u2019s bare-metal AI infrastructure alone could ultima",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "IREN",
+      "MSFT",
+      "NVDA"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:valuation",
+    "independence_group_id": "reaction:MSFT:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0011"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:51:23Z \u00b7 @micheln1 \u00b7 no-label] $MSFT lol makes no sense",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "medium",
+    "meme_or_joke": true,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.1,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0012"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:46:56Z \u00b7 @stockandsex \u00b7 no-label] $MSFT next week",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0013"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:42:18Z \u00b7 @Diceroller1 \u00b7 Bullish] $MSFT 400 on Monday",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0014"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:29:56Z \u00b7 @EddieHayes \u00b7 no-label] $MSFT    15 years of compounding in one snapshot:    Then:  \u2022 Stock: $47.44  \u2022 Revenue: $22.96B  \u2022 FCF: $10.55B  \u2022 EPS: $0.85    Now:  \u2022 Stock: $390.60  \u2022 Revenue: $281.72B  \u2022 FCF: $71.61B  \u2022 ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "high",
+    "event_linked": true,
+    "linked_event_type": "earnings",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.6,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:earnings",
+    "independence_group_id": "reaction:MSFT:2026-07-02:earnings",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0015"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:24:27Z \u00b7 @MorganHoratio \u00b7 no-label] THESE ARE THE BEST MILLIONAIRE MAKERS TODAY: (70% probability this selloff is a correction trap)    1. $NVDA  2. $META  3. $MSFT  4. $AVGO  5. $MU    Data prints a 70% probability that this",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "NVDA",
+      "META",
+      "MSFT",
+      "AVGO",
+      "MU"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:MSFT:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0016"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:22:51Z \u00b7 @DollarRollers \u00b7 no-label] LABT is starting to squeeze up now \ud83d\ude80      Could potentially be the next squeezer.       The same guys who ran  SDOT 1000% recently are now running LABT up!      Micro-float squeezer getting",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT",
+      "SOUN",
+      "MSFT",
+      "POET"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "medium",
+    "meme_or_joke": true,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.1,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0017"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:22:28Z \u00b7 @spacechimp \u00b7 no-label] $MSFT",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0018"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:22:08Z \u00b7 @spacechimp \u00b7 no-label] $MSFT",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0019"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:20:37Z \u00b7 @MissionImpossibl \u00b7 no-label] $META $AMZN $MSFT $AMZN $ORCLgame is rigged right now . Blame the 5 corrupt sponsors.  if they don\u2019t play by the rulebook , everyone is going to loose .. don\u2019t show investors dotcom nigh",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "META",
+      "AMZN",
+      "MSFT",
+      "AMZN",
+      "ORCLGAME"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0020"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:19:23Z \u00b7 @frankjohnson123 \u00b7 no-label] $MSFT $$META $ADOBE $COST $BLK Check out my completely FREE youtube channel I just launched last week. I am a professional swing trader. I show my complete swing trade portfolio, shares, ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT",
+      "META",
+      "ADOBE",
+      "COST",
+      "BLK"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:valuation",
+    "independence_group_id": "reaction:MSFT:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0021"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:13:41Z \u00b7 @MountCapital \u00b7 Bearish] $MSFT nope. it means he will increase capex  to waste more. He is famous for that",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bearish",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "medium",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.45,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:valuation",
+    "independence_group_id": "reaction:MSFT:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0022"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:13:12Z \u00b7 @AnaIyze \u00b7 no-label] $MSFT how on earth is apple so much stronger , one tiny drop on them and explosive V back to ATH\u2019s",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:MSFT:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0023"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:13:03Z \u00b7 @FatmanEZ \u00b7 no-label] $MSFT nice move here on the 400$ calls today. Even the ones on 07-08 bought 1.5 and below. The August 21 400$ calls SCREAMING LFG",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0024"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:12:38Z \u00b7 @Stockmarketinvest \u00b7 no-label] $META Zuckerberg telling you ai agents isn\u2019t going as expected and them selling compute means capex cut coming the first out of big tech $SPY $GOOG $MSFT $AMZN",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "META",
+      "SPY",
+      "GOOG",
+      "MSFT",
+      "AMZN"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "medium",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.45,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:valuation",
+    "independence_group_id": "reaction:MSFT:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0025"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:12:24Z \u00b7 @VB_TrappinStockz \u00b7 no-label] $MSFT had a feeling they would take under $390 in after hours",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0026"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:11:23Z \u00b7 @AlphaVisionn \u00b7 no-label] $IREN thesis: even without a big partnership from $MSFT, $NVDA, Mirantis, or another hyperscaler, the bare-metal AI infrastructure story alone could still support a ~$25B valuation.    If th",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "IREN",
+      "MSFT",
+      "NVDA",
+      "IREN"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "valuation",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:valuation",
+    "independence_group_id": "reaction:MSFT:2026-07-02:valuation",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0027"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:11:19Z \u00b7 @VB_TrappinStockz \u00b7 no-label] @Nasdaq_Frontier  $NVDA $GOOG $MSFT can\u2019t choose just one lol",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "NVDA",
+      "GOOG",
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "medium",
+    "meme_or_joke": true,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.1,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0028"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:09:49Z \u00b7 @Tonicap85 \u00b7 Bullish] $MSFT bears are slowly cooking",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "bullish",
+    "candidate_sentiment_label": "bullish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0029"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:06:04Z \u00b7 @Nasdaq_Frontier \u00b7 no-label] WHAT\u2019S INSIDE TRUMP\u2019S DISCLOSED $3.8B PORTFOLIO    \u2022 Real estate &amp; golf (37%)    \u2022 Stocks (19%) including    AAPL ,$NVDA ,$GOOGL ,$AVGO, $MSFT, $META TSLA     \u2022 Bonds &amp; notes (19%",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "NVDA",
+      "GOOGL",
+      "AVGO",
+      "MSFT",
+      "META"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0030"
+  },
+  {
+    "source": "fetch_stocktwits_messages",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02T20:04:39Z \u00b7 @FibonacciTrader_ \u00b7 no-label] $MSFT - a 15-year compounding snapshot that tells the real story behind price action.    Back then:  \u2022 ~$47 stock price  \u2022 $22.96B revenue  \u2022 $10.55B FCF  \u2022 $0.85 EPS    Today:  \u2022 ~$390 ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [
+      "MSFT"
+    ],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "high",
+    "event_linked": true,
+    "linked_event_type": "earnings",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.6,
+    "source_confidence_category": "ticker_specific_retail_platform",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:earnings",
+    "independence_group_id": "reaction:MSFT:2026-07-02:earnings",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0031"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "<no Reddit posts found mentioning MSFT across r/wallstreetbets, r/stocks, r/investing in the past 7 days>",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.0,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [
+      "no_items_placeholder"
+    ],
+    "evidence_id": "social:MSFT:2026-07-02:item:0032"
+  }
+]

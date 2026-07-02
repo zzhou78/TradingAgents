@@ -14,7 +14,7 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for WOW.AX
-# Data retrieved on: 2026-07-03 07:14:11
+# Data retrieved on: 2026-07-03 07:46:38
 
 Name: Woolworths Group Limited
 Sector: Consumer Defensive
@@ -52,7 +52,7 @@ Free Cash Flow: 2267749888
 
 ```text
 # Balance Sheet data for WOW.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:14:12
+# Data retrieved on: 2026-07-03 07:46:38
 
 ,2025-06-30
 Ordinary Shares Number,1221595333.0

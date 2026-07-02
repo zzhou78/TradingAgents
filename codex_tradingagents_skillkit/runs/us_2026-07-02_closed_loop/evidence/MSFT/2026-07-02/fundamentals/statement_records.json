@@ -1,0 +1,117 @@
+[
+  {
+    "evidence_id": "fundamentals:MSFT:2026-07-02:001",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "source": "get_fundamentals",
+    "section_name": "company fundamentals packet",
+    "status": "available",
+    "excerpt": "# Company Fundamentals for MSFT\n# Data retrieved on: 2026-07-03 07:42:42\n\nName: Microsoft Corporation\nSector: Technology\nIndustry: Software - Infrastructure\nMarket Cap: 2900729528320\nPE Ratio (TTM): 23.257294\nForward PE: 20.160732\nPEG Ratio: 1.15\nPrice to Book: 7.000914\nEPS (TTM): 16.79\nForward EPS: 19.36884\nBeta: 1.103\n52 Week High: 555.45\n52 Week Low: 349.2\n50 Day Average: 408.2688\n200 Day Average: 446.06046\nRevenue (TTM): 318272995328\nGross Profit: 217409994752\nEBITDA: 184457003008\nNet Income: 125215997952\nProfit Margin: 0.39341998\nOperating Margin: 0.46326\nReturn on Equity: 0.34013999\nReturn on Assets: 0.14814\nDebt to Equity: 30.271\nCurrent Ratio: 1.283\nBook Value: 55.777\nFree Cash Flow: 37011251200",
+    "supports_claims": [
+      "company fundamentals packet",
+      "revenue",
+      "net income",
+      "cash flow",
+      "debt/liquidity",
+      "valuation",
+      "profitability"
+    ],
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "sector_specific_metric_expectations": [
+      "revenue growth",
+      "gross margin",
+      "R&D",
+      "subscription mix",
+      "cloud/AI exposure"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:MSFT:2026-07-02:002",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "source": "get_balance_sheet",
+    "section_name": "balance sheet",
+    "status": "available",
+    "excerpt": "# Balance Sheet data for MSFT (quarterly)\n# Data retrieved on: 2026-07-03 07:42:43\n\n,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31\r\nOrdinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,\r\nShare Issued,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,\r\nNet Debt,8157000000.0,15966000000.0,14359000000.0,12909000000.0,14053000000.0,\r\nTotal Debt,56965000000.0,57607000000.0,60556000000.0,60588000000.0,60567000000.0,\r\nTangible Book Value,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,\r\nInvested Capital,454629000000.0,431137000000.0,406284000000.0,386630000000.0,364772000000.0,\r\nWorking Capital,38668000000.0,50185000000.0,54070000000.0,49913000000.0,42438000000.0,\r\nNet Tangible Assets,275381000000.0,250964000000.0,222343000000.0,201366000000.0,178594000000.0,\r\nCapital Lease Obligations,16703000000.0,17345000000.0,17348000000.0,17437000000.0,17686000000.0,\r\nCommon Stock Equity,414367000000.0,390875",
+    "supports_claims": [
+      "balance sheet",
+      "revenue",
+      "net income",
+      "debt/liquidity",
+      "valuation",
+      "profitability"
+    ],
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "sector_specific_metric_expectations": [
+      "revenue growth",
+      "gross margin",
+      "R&D",
+      "subscription mix",
+      "cloud/AI exposure"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:MSFT:2026-07-02:003",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "source": "get_cashflow",
+    "section_name": "cash flow statement",
+    "status": "available",
+    "excerpt": "# Cash Flow data for MSFT (quarterly)\n# Data retrieved on: 2026-07-03 07:42:43\n\n,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31\r\nFree Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,\r\nRepurchase Of Capital Stock,-4627000000.0,-7415000000.0,-5650000000.0,-4546000000.0,-4781000000.0,\r\nRepayment Of Debt,0.0,-3000000000.0,0.0,0.0,-2250000000.0,\r\nIssuance Of Debt,,,,0.0,0.0,0.0\r\nIssuance Of Capital Stock,541000000.0,259000000.0,689000000.0,548000000.0,546000000.0,\r\nCapital Expenditure,-30876000000.0,-29876000000.0,-19394000000.0,-17079000000.0,-16745000000.0,\r\nEnd Cash Position,32105000000.0,24296000000.0,28849000000.0,30242000000.0,28828000000.0,\r\nBeginning Cash Position,24296000000.0,28849000000.0,30242000000.0,28828000000.0,17482000000.0,\r\nEffect Of Exchange Rate Changes,-114000000.0,11000000.0,-92000000.0,183000000.0,52000000.0,\r\nChanges In Cash,7923000000.0,-4564000000.0,-1301000000.0,1231000000.0,11294000000.0,\r\nFinancing Cash Flow,-11",
+    "supports_claims": [
+      "cash flow statement",
+      "net income",
+      "cash flow",
+      "debt/liquidity",
+      "valuation"
+    ],
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "sector_specific_metric_expectations": [
+      "revenue growth",
+      "gross margin",
+      "R&D",
+      "subscription mix",
+      "cloud/AI exposure"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "fundamentals:MSFT:2026-07-02:004",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-02",
+    "source": "get_income_statement",
+    "section_name": "income statement",
+    "status": "available",
+    "excerpt": "# Income Statement data for MSFT (quarterly)\n# Data retrieved on: 2026-07-03 07:42:43\n\n,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31\r\nTax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0\r\nTax Rate For Calcs,0.19,0.2,0.19,0.165042,0.18\r\nNormalized EBITDA,48804000000.0,57854000000.0,47075000000.0,44431000000.0,39318000000.0\r\nTotal Unusual Items,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0\r\nTotal Unusual Items Excluding Goodwill,1481000000.0,326000000.0,985000000.0,3000000.0,387000000.0\r\nNet Income From Continuing Operation Net Minority Interest,31778000000.0,38458000000.0,27747000000.0,27233000000.0,25824000000.0\r\nReconciled Depreciation,10167000000.0,9198000000.0,13061000000.0,11203000000.0,7734000000.0\r\nReconciled Cost Of Revenue,26828000000.0,25978000000.0,24043000000.0,24014000000.0,21919000000.0\r\nEBITDA,50285000000.0,58180000000.0,48060000000.0,44434000000.0,39705000000.0\r\nEBIT,40118000000.0,48982000000.0,34999000000.0,33231",
+    "supports_claims": [
+      "income statement",
+      "revenue",
+      "net income",
+      "valuation",
+      "profitability"
+    ],
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "sector_specific_metric_expectations": [
+      "revenue growth",
+      "gross margin",
+      "R&D",
+      "subscription mix",
+      "cloud/AI exposure"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_fundamentals_judgment": "pending_codex_interpretation"
+  }
+]
