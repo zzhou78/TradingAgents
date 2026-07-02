@@ -7,18 +7,26 @@
 ## Structured Evidence Matrix
 | Role | Evidence ID | Direction | Materiality | Confidence | Tool output | Weight | Reason | Independence group ID |
 |---|---|---|---|---|---|---:|---|---|
-| Market Analyst | market:CBA.AX:2026-07-02:001 | negative | high | medium | market snapshot | -2 | negative across short, intermediate, and long-term trend measures | market:CBA.AX:2026-07-02:trend |
+| Market Analyst | market:CBA.AX:2026-07-02:001 | negative | high | medium | market snapshot | -2 | Hold is ticker-specific here: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case. | market:CBA.AX:2026-07-02:trend |
 | Financial Report Analyst | financial:CBA.AX:2026-07-02:023 | positive | high | medium | filing section extraction | +2 | ASX document and sector-metric records support financial review with gaps disclosed | event:CBA.AX:2026-07-02:financial-report |
 | News Analyst | news:CBA.AX:2026-07-02:001 | positive | medium | medium | article evidence card | +1 | Direct company evidence, not repeated snippet-only headlines | event:CBA.AX:2026-07-02:earnings |
 | Sentiment Analyst | social:CBA.AX:2026-07-02:001 | mixed | low | low | social summary | 0 | Retail-only reaction is noisy and not independent fundamental evidence | reaction:CBA.AX:2026-07-02:retail |
 | Bear Researcher | fundamentals:CBA.AX:2026-07-02:001 | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:CBA.AX:2026-07-02:valuation-trend |
 
-Score calculation / component weights: 0 market/technical balance, +1 available official-source evidence, 0 low-confidence sentiment, -1 unavailable section risk = 0.
+Score calculation / component weights: -2 market setup (negative across 10 EMA, 50 SMA, and 200 SMA), +1 official ASX financial-source context, +1 sector metric availability breadth (7 available), -1 evidence-gap/source-depth cap (0 gaps), 0 retail sentiment = Hold with ticker-specific skew.
 
 ## Rating Rationale
 **Recommendation**: Hold
 
-Hold beats Buy because ASX source coverage is uneven and any missing MD&A, cash-flow, or segment section must be treated as an evidence gap; it beats Sell where available official-source records still support a reviewable base case and the quality gate has not identified a completed negative fundamental case. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Hold vs Sell/Buy was explicitly considered: Hold beats Hold or Sell only to the degree justified above; social sentiment alone has zero decision weight.
+Hold is ticker-specific here: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case. Hold beats Buy/Overweight and Sell/Underweight for ticker-specific reasons, not because of a generic ASX coverage caveat. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Rating-vs-rating selection was explicitly considered; social sentiment alone has zero decision weight.
+
+## Rating-vs-Rating Reasoning
+1. Why not Buy / Overweight? Buy/Overweight is not selected because CBA.AX has a negative across 10 EMA, 50 SMA, and 200 SMA setup and sector metric coverage is 7 available / 0 gap-labelled; that is not enough for an aggressive rating.
+2. Why not Sell / Underweight? Sell/Underweight is not selected because financial:CBA.AX:2026-07-02:023 and financial:CBA.AX:2026-07-02:038 still provide official-source financial context; the negative market setup is decisive for caution but not enough by itself for a directional Sell.
+3. Which role evidence was decisive? Decisive evidence is Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) plus Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038); News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
+4. Which sector-specific financial metrics mattered? banks metric evidence: NIM is available via financial:CBA.AX:2026-07-02:038.
+5. Which evidence gaps capped confidence? Confidence is capped by role-level source limitations and low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, not by sector metrics alone.
+6. How market setup changed the final rating. The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case.
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.

@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
   "status": "review_ready_paper_study",
-  "generated_at": "2026-07-03T07:43:39+10:00",
+  "generated_at": "2026-07-03T09:08:29+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
@@ -402,10 +402,14 @@
         "complete": true,
         "review_ready": true
       }
-    ]
+    ],
+    "run_quality_errors": []
   },
   "remediation_plans": [],
-  "patched_quality_gates": [],
+  "patched_quality_gates": [
+    "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\AAPL\\2026-07-02\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\MSFT\\2026-07-02\\6_quality\\quality_gate.json"
+  ],
   "written_quality_gates": [
     "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\AAPL\\2026-07-02\\6_quality\\quality_gate.json",
     "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\MSFT\\2026-07-02\\6_quality\\quality_gate.json"

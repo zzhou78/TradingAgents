@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from difflib import SequenceMatcher
 from pathlib import Path
 
 ROLE_REQUIRED_SECTIONS = {
@@ -22,7 +23,7 @@ ROLE_REQUIRED_SECTIONS = {
     ("1_analysts", "industry_theme.md"): ["Tool Outputs Used", "Theme Evidence Table"],
     ("2_research", "bull_round_1.md"): ["Tool Outputs Used", "Strongest Bull Evidence", "Falsification Conditions"],
     ("2_research", "bear_round_1.md"): ["Tool Outputs Used", "Strongest Bear Evidence", "Falsification Conditions", "Response To Bull"],
-    ("2_research", "manager.md"): ["Tool Outputs Used", "Structured Evidence Matrix"],
+    ("2_research", "manager.md"): ["Tool Outputs Used", "Structured Evidence Matrix", "Rating-vs-Rating Reasoning"],
     ("3_trading", "trader.md"): ["Tool Outputs Used", "Action Consistency Check", "Paper-study price framework"],
     ("4_risk", "aggressive_round_1.md"): ["Tool Outputs Used", "Opportunity Case", "Failure Points"],
     ("4_risk", "conservative_round_1.md"): ["Tool Outputs Used", "Downside Case", "Unsupported Upside Challenges"],
@@ -537,6 +538,67 @@ def _asx_financial_claim_support_errors(report_dir: Path, evidence_path: Path | 
     return errors
 
 
+def _market_setup_from_evidence(evidence_path: Path | None) -> tuple[str, dict[str, float]]:
+    evidence_dir = _structured_evidence_dir(evidence_path)
+    if not evidence_dir:
+        return "", {}
+    records = _read_json_file(evidence_dir / "market" / "quantitative_observations.json")
+    if not isinstance(records, list):
+        return "", {}
+    values: dict[str, float] = {}
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        name = str(record.get("metric_name") or "")
+        if name in {"latest_close", "ema_10", "sma_50", "sma_200"}:
+            try:
+                values[name] = float(record.get("value"))
+            except (TypeError, ValueError):
+                continue
+    required = {"latest_close", "ema_10", "sma_50", "sma_200"}
+    if not required.issubset(values):
+        return "", values
+    close = values["latest_close"]
+    setup = (
+        ("above" if close > values["ema_10"] else "below" if close < values["ema_10"] else "at"),
+        ("above" if close > values["sma_50"] else "below" if close < values["sma_50"] else "at"),
+        ("above" if close > values["sma_200"] else "below" if close < values["sma_200"] else "at"),
+    )
+    return "/".join(setup), values
+
+
+def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | None) -> list[str]:
+    if not research_path.exists() or not _is_asx_evidence(evidence_path):
+        return []
+    text = _read(research_path)
+    if _is_pending(text):
+        return []
+    errors: list[str] = []
+    setup, _values = _market_setup_from_evidence(evidence_path)
+    if setup and not all(term in text for term in ["10 EMA", "50 SMA", "200 SMA"]):
+        errors.append("ASX Research Manager report lacks ticker-specific market moving-average facts")
+    if "Rating-vs-Rating Reasoning" not in text:
+        errors.append("ASX Research Manager report lacks rating-vs-rating reasoning")
+    sector_section = _section(text, "## Rating-vs-Rating Reasoning") or text
+    has_sector_metric = bool(
+        re.search(
+            r"sector-specific financial metrics|sector metric|NIM|CET1|loan growth|arrears|impairment|ROE|production|realised price|unit cost|AISC|reserves|commodity exposure|segment revenue|R&D|plasma collections|premium growth|claims ratio|membership|capital adequacy|sales growth|EBIT margin|inventory|capex|dividends?",
+            sector_section,
+            re.IGNORECASE,
+        )
+    )
+    has_gap = "evidence gap" in sector_section.lower()
+    has_financial_id = re.search(r"financial:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:\d{3}", sector_section) is not None
+    if not (has_sector_metric and (has_financial_id or has_gap)):
+        errors.append("ASX Research Manager report lacks ticker-specific sector metric or evidence-gap reference")
+    rationale = _section(text, "## Rating Rationale") or text
+    if "ASX source coverage is uneven" in rationale and not (
+        all(term in rationale for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_sector_metric
+    ):
+        errors.append("generic ASX source coverage cannot be the sole reason for Hold")
+    return errors
+
+
 def _research_manager_quality_errors(research_path: Path) -> list[str]:
     if not research_path.exists():
         return []
@@ -649,6 +711,36 @@ def _risk_portfolio_quality_errors(report_dir: Path) -> list[str]:
     return errors
 
 
+def _debate_record_quality_errors(report_dir: Path) -> list[str]:
+    path = report_dir / "debate_record.md"
+    if not path.exists():
+        return ["debate_record.md is missing"]
+    text = _read(path)
+    if _is_pending(text):
+        return ["debate_record.md contains pending debate output"]
+    errors: list[str] = []
+    if re.search(r"prepared below and filled as Codex acts|report-folder index", text, re.IGNORECASE):
+        errors.append("debate_record.md is still a task index rather than a completed debate transcript")
+    required_headings = [
+        "Bull Researcher Round 1 - Opening Case",
+        "Bear Researcher Round 1 - Rebuttal to Bull",
+        "Research Manager Decision - Evidence Weighing",
+        "Aggressive Risk Analyst Round 1 - Opportunity Case",
+        "Conservative Risk Analyst Round 1 - Response to Aggressive",
+        "Neutral Risk Analyst Round 1 - Weighing",
+        "Portfolio Manager Synthesis",
+    ]
+    for heading in required_headings:
+        if heading not in text:
+            errors.append(f"debate_record.md missing debate turn: {heading}")
+            break
+    if "Full output:" not in text:
+        errors.append("debate_record.md does not link to completed role output files")
+    if "Pending debate outputs: `0`" not in text:
+        errors.append("debate_record.md does not confirm zero pending debate outputs")
+    return errors
+
+
 def _complete_report_role_consistency_errors(report_dir: Path) -> list[str]:
     try:
         from validate_complete_report_against_roles import (
@@ -750,8 +842,10 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     errors.extend(_asx_financial_claim_support_errors(report_dir, evidence_path))
     errors.extend(_debate_quality_errors(bull, bear))
     errors.extend(_research_manager_quality_errors(manager))
+    errors.extend(_asx_research_specificity_errors(manager, evidence_path))
     errors.extend(_trader_quality_errors(trader))
     errors.extend(_risk_portfolio_quality_errors(report_dir))
+    errors.extend(_debate_record_quality_errors(report_dir))
     errors.extend(_complete_report_role_consistency_errors(report_dir))
 
     if quality_gate.exists():
@@ -783,13 +877,79 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     return errors
 
 
+def _recommendation_from_research(text: str) -> str:
+    match = re.search(r"\*\*Recommendation\*\*\s*:\s*(Buy|Overweight|Hold|Underweight|Sell)", text, re.IGNORECASE)
+    return match.group(1).lower() if match else ""
+
+
+def _research_reasoning_for_similarity(text: str) -> str:
+    section = _section(text, "## Rating-vs-Rating Reasoning") or _section(text, "## Rating Rationale") or text
+    section = re.sub(r"\b[A-Z]{2,5}(?:\.AX)?\b", "TICKER", section)
+    section = re.sub(r"\b\d+(?:\.\d+)?\b", "NUM", section)
+    section = re.sub(r"financial:TICKER:\d{4}-\d{2}-\d{2}:\d{3}", "FINANCIAL_ID", section)
+    section = re.sub(r"market:TICKER:\d{4}-\d{2}-\d{2}:\d{3}", "MARKET_ID", section)
+    section = re.sub(r"news:TICKER:\d{4}-\d{2}-\d{2}:\d{3}", "NEWS_ID", section)
+    return re.sub(r"\s+", " ", section.lower()).strip()
+
+
+def validate_run_dir(output_dir: Path) -> list[str]:
+    errors: list[str] = []
+    entries: list[dict[str, str]] = []
+    for workflow_path in sorted((output_dir / "evidence").glob("*/*/workflow_state.json")):
+        try:
+            workflow = json.loads(workflow_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        ticker = str(workflow.get("ticker") or workflow_path.parents[1].name)
+        if not ticker.upper().endswith(".AX"):
+            continue
+        evidence_path = Path(str(workflow.get("evidence_path") or workflow_path.parent / "evidence.json"))
+        report_dir = Path(str(workflow.get("report_dir") or output_dir / "reports" / ticker / workflow_path.parent.name))
+        manager_path = report_dir / "2_research" / "manager.md"
+        if not manager_path.exists():
+            continue
+        text = _read(manager_path)
+        if _is_pending(text):
+            continue
+        setup, _values = _market_setup_from_evidence(evidence_path)
+        if not setup:
+            continue
+        entries.append(
+            {
+                "ticker": ticker,
+                "setup": setup,
+                "recommendation": _recommendation_from_research(text),
+                "reasoning": _research_reasoning_for_similarity(text),
+            }
+        )
+
+    for left_index, left in enumerate(entries):
+        for right in entries[left_index + 1 :]:
+            if left["setup"] == right["setup"]:
+                continue
+            if left["recommendation"] != right["recommendation"]:
+                continue
+            if left["recommendation"] not in {"hold", "underweight", "overweight", "sell", "buy"}:
+                continue
+            similarity = SequenceMatcher(None, left["reasoning"], right["reasoning"]).ratio()
+            if similarity >= 0.90:
+                errors.append(
+                    "near-identical Research Manager rationale despite materially different ASX evidence: "
+                    f"{left['ticker']} setup {left['setup']} vs {right['ticker']} setup {right['setup']}"
+                )
+    return errors
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate Codex TradingAgents quality review prerequisites.")
     parser.add_argument("--report-dir", type=Path, required=True)
     parser.add_argument("--evidence", type=Path)
+    parser.add_argument("--run-dir", type=Path)
     args = parser.parse_args(argv)
 
     errors = validate_report_dir(args.report_dir, args.evidence)
+    if args.run_dir:
+        errors.extend(validate_run_dir(args.run_dir))
     if errors:
         print("Quality review validation failed:")
         for error in errors:

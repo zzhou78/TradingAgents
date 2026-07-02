@@ -34,6 +34,7 @@ Procedure:
 - Neutral Risk must explicitly weigh Aggressive vs Conservative.
 - Portfolio Manager must synthesize the risk debate.
 - Keep the visible sequence aligned with analyst reports, bull/bear debate, research manager, trader, aggressive/conservative/neutral risk debate, and portfolio manager.
+- `debate_record.md` must be assembled from completed debate role outputs after those files exist; it must not remain the initial allowed-input task index.
 - Documentation alone is not sufficient. The generated report must preserve visible debate-stage headings. If the final report does not contain the required headings, the run is incomplete.
 
 Output:

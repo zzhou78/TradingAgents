@@ -321,7 +321,22 @@ def summarize(output_dir: Path, workflow: Path | None = None) -> dict[str, Any]:
     if not paths:
         raise FileNotFoundError(f"No workflow_state.json files found under {output_dir}")
     runs = [summarize_workflow(path) for path in paths]
-    return {"output_dir": str(output_dir), "runs": runs}
+    run_quality_errors: list[str] = []
+    if workflow is None:
+        try:
+            from validate_quality_review import validate_run_dir
+
+            run_quality_errors = validate_run_dir(output_dir)
+        except Exception as exc:  # pragma: no cover - defensive CLI reporting
+            run_quality_errors = [f"run-level quality validation failed to run: {exc}"]
+        if run_quality_errors:
+            for run in runs:
+                if run.get("complete_stages") == run.get("total_stages"):
+                    run["quality_errors"].extend(run_quality_errors)
+                    run["complete"] = False
+                    run["review_ready"] = False
+                    run["status"] = "remediation_required"
+    return {"output_dir": str(output_dir), "runs": runs, "run_quality_errors": run_quality_errors}
 
 
 def _print_text(payload: dict[str, Any]) -> None:

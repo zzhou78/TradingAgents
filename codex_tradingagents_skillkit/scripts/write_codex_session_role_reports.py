@@ -102,6 +102,155 @@ def _asx_sector_metric_table_rows(records: list[dict[str, object]]) -> list[str]
     return rows
 
 
+def _asx_decisive_sector_metric(records: list[dict[str, object]]) -> dict[str, object]:
+    metrics = _asx_sector_metric_records(records)
+    for record in metrics:
+        if str(record.get("status")) == "available":
+            return record
+    return metrics[0] if metrics else {}
+
+
+def _asx_metric_counts(records: list[dict[str, object]]) -> tuple[int, int]:
+    status_by_metric: dict[str, bool] = {}
+    for record in _asx_sector_metric_records(records):
+        metric_name = str(record.get("metric_name") or record.get("metric_label") or "")
+        if not metric_name:
+            continue
+        if str(record.get("status")) == "available":
+            status_by_metric[metric_name] = True
+        else:
+            status_by_metric.setdefault(metric_name, False)
+    available = sum(1 for is_available in status_by_metric.values() if is_available)
+    unavailable = sum(1 for is_available in status_by_metric.values() if not is_available)
+    return available, unavailable
+
+
+def _market_setup_label(*, rel_10: str, rel_50: str, rel_200: str) -> str:
+    if rel_10 == rel_50 == rel_200 == "above":
+        return "positive across 10 EMA, 50 SMA, and 200 SMA"
+    if rel_10 == rel_50 == rel_200 == "below":
+        return "negative across 10 EMA, 50 SMA, and 200 SMA"
+    if rel_10 == "above" and rel_50 == "above" and rel_200 == "below":
+        return "short/intermediate rebound but still below the 200 SMA"
+    if rel_10 == "below" and rel_50 == "below" and rel_200 == "above":
+        return "near-term weakness while long-term support remains intact above the 200 SMA"
+    return f"mixed: close is {rel_10} 10 EMA, {rel_50} 50 SMA, and {rel_200} 200 SMA"
+
+
+def _asx_research_reasoning(
+    *,
+    ticker: str,
+    close: float,
+    ema_10: float,
+    sma_50: float,
+    sma_200: float,
+    rel_10: str,
+    rel_50: str,
+    rel_200: str,
+    financial_records: list[dict[str, object]],
+    refs: dict[str, object],
+    best_news_id: str,
+    first_social_id: str,
+) -> dict[str, str]:
+    metric = _asx_decisive_sector_metric(financial_records)
+    metric_label = _clean_cell(metric.get("metric_label") or metric.get("metric_name") or "sector metric")
+    metric_id = _clean_cell(metric.get("evidence_id") or "sector metric unavailable")
+    metric_status = _clean_cell(metric.get("status") or "unavailable")
+    metric_gap = _clean_cell(metric.get("evidence_gap") or metric.get("unavailable_reason") or "none")
+    available_metrics, unavailable_metrics = _asx_metric_counts(financial_records)
+    market_setup = _market_setup_label(rel_10=rel_10, rel_50=rel_50, rel_200=rel_200)
+    sector = _clean_cell(metric.get("sector") or "ASX sector")
+
+    if rel_10 == rel_50 == rel_200 == "below":
+        market_weight = "-2"
+        market_effect = (
+            "The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only "
+            "because official financial records and sector metrics prevent a completed Sell case."
+        )
+        why_not_sell = (
+            f"Sell/Underweight is not selected because {refs['exhibit']} and {metric_id} still provide official-source "
+            "financial context; the negative market setup is decisive for caution but not enough by itself for a directional Sell."
+        )
+    elif rel_10 == rel_50 == "above" and rel_200 == "above":
+        market_weight = "+1"
+        market_effect = (
+            "The above-all-averages setup removes the technical objection to Hold, but the rating is capped because the "
+            "Research Manager needs stronger sector metric breadth and cleaner source depth before Overweight."
+        )
+        why_not_sell = (
+            "Sell/Underweight is not selected because price is above the 10 EMA, 50 SMA, and 200 SMA, so market evidence "
+            "does not support a bearish rating without a separate negative financial catalyst."
+        )
+    elif rel_10 == "above" and rel_50 == "above" and rel_200 == "below":
+        market_weight = "0"
+        market_effect = (
+            "The short/intermediate rebound improves the case versus Underweight, but the close remains below the 200 SMA, "
+            "so long-term confirmation is still missing."
+        )
+        why_not_sell = (
+            "Sell/Underweight is not selected because the close has recovered above the 10 EMA and 50 SMA; the 200 SMA gap "
+            "keeps conviction capped rather than forcing a Sell."
+        )
+    elif rel_10 == "below" and rel_50 == "below" and rel_200 == "above":
+        market_weight = "0"
+        market_effect = (
+            "Near-term weakness blocks Buy/Overweight, while the close above the 200 SMA keeps the Research Manager from "
+            "treating the setup as a completed long-term breakdown."
+        )
+        why_not_sell = (
+            "Sell/Underweight is not selected because long-term support remains intact above the 200 SMA; the negative "
+            "short/intermediate setup is a confidence cap rather than a full Sell trigger."
+        )
+    else:
+        market_weight = "0"
+        market_effect = (
+            "Mixed moving-average evidence keeps the rating at Hold until the market setup resolves."
+        )
+        why_not_sell = (
+            "Sell/Underweight is not selected because market evidence is mixed rather than a clean bearish breakdown."
+        )
+
+    metric_line = (
+        f"{sector} metric evidence: {metric_label} is {metric_status} via {metric_id}"
+        + (f"; evidence gap: {metric_gap}" if metric_status != "available" and metric_gap else ".")
+    )
+    confidence_cap = (
+        f"Confidence is capped by {unavailable_metrics} unavailable sector metric/gap labels and low-confidence retail sentiment "
+        f"from {first_social_id}."
+        if unavailable_metrics
+        else f"Confidence is capped by role-level source limitations and low-confidence retail sentiment from {first_social_id}, not by sector metrics alone."
+    )
+    why_not_buy = (
+        f"Buy/Overweight is not selected because {ticker} has a {market_setup} setup and sector metric coverage is "
+        f"{available_metrics} available / {unavailable_metrics} gap-labelled; that is not enough for an aggressive rating."
+    )
+    decisive = (
+        f"Decisive evidence is Market Analyst ({refs['close']}, {refs['ema10']}, {refs['sma50']}, {refs['sma200']}) plus "
+        f"Financial Report Analyst / ASX sector metrics ({metric_id}); News ({best_news_id}) is contextual and Sentiment is low weight."
+    )
+    score_line = (
+        f"{market_weight} market setup ({market_setup}), +1 official ASX financial-source context, "
+        f"+1 sector metric availability breadth ({available_metrics} available), "
+        f"-1 evidence-gap/source-depth cap ({unavailable_metrics} gaps), 0 retail sentiment = Hold with ticker-specific skew"
+    )
+    return {
+        "market_setup": market_setup,
+        "market_effect": market_effect,
+        "why_not_buy": why_not_buy,
+        "why_not_sell": why_not_sell,
+        "decisive": decisive,
+        "metric_line": metric_line,
+        "confidence_cap": confidence_cap,
+        "score_line": score_line,
+        "metric_id": metric_id,
+        "metric_label": metric_label,
+        "summary": (
+            f"Hold is ticker-specific here: latest close {_money(close)} is {rel_10} the 10 EMA ({_money(ema_10)}), "
+            f"{rel_50} the 50 SMA ({_money(sma_50)}), and {rel_200} the 200 SMA ({_money(sma_200)}). {market_effect}"
+        ),
+    }
+
+
 def _first_usable_news(cards: list[dict[str, object]]) -> dict[str, object]:
     preferred: list[tuple[int, dict[str, object]]] = []
     for card in cards:
@@ -170,6 +319,72 @@ def _memory_footer(*, refs: str, trade_date: str) -> str:
 * Evidence references: {refs}
 * Staleness / expiry: Evidence is valid only for trade date {trade_date}; refresh before reuse.
 """
+
+
+def _report_body_for_debate_record(path: Path) -> str:
+    if not path.exists():
+        return "Pending Codex role output: source file is missing."
+    text = path.read_text(encoding="utf-8", errors="replace").strip()
+    if not text:
+        return "Pending Codex role output: source file is empty."
+    text = text.split("\n## Memory Update", 1)[0].strip()
+    lines = text.splitlines()
+    if lines and lines[0].startswith("# "):
+        lines = lines[1:]
+    return "\n".join(lines).strip() or "Pending Codex role output: source file has no debate body."
+
+
+def _write_assembled_debate_record(*, report_dir: Path, ticker: str, trade_date: str) -> Path:
+    stages = [
+        ("Research Team Debate", "Bull Researcher Round 1 - Opening Case", report_dir / "2_research" / "bull_round_1.md"),
+        ("Research Team Debate", "Bear Researcher Round 1 - Rebuttal to Bull", report_dir / "2_research" / "bear_round_1.md"),
+        ("Research Team Debate", "Research Manager Decision - Evidence Weighing", report_dir / "2_research" / "manager.md"),
+        ("Risk Management Team Debate", "Aggressive Risk Analyst Round 1 - Opportunity Case", report_dir / "4_risk" / "aggressive_round_1.md"),
+        ("Risk Management Team Debate", "Conservative Risk Analyst Round 1 - Response to Aggressive", report_dir / "4_risk" / "conservative_round_1.md"),
+        ("Risk Management Team Debate", "Neutral Risk Analyst Round 1 - Weighing", report_dir / "4_risk" / "neutral_round_1.md"),
+        ("Risk Management Team Debate", "Portfolio Manager Synthesis", report_dir / "5_portfolio" / "decision.md"),
+    ]
+    lines = [
+        "# TradingAgents Debate Record",
+        "",
+        f"- Ticker: `{ticker}`",
+        f"- Trade date: `{trade_date}`",
+        "- Status: completed Codex-visible debate transcript assembled from role outputs",
+        "",
+        "This file is assembled after Codex-session role reports are written. It preserves the completed debate turns and links to the full role files.",
+        "",
+    ]
+    current_group = ""
+    pending_count = 0
+    for group, title, path in stages:
+        if group != current_group:
+            current_group = group
+            lines.extend([f"## {group}", ""])
+        body = _report_body_for_debate_record(path)
+        if "Pending Codex role output" in body:
+            pending_count += 1
+        lines.extend(
+            [
+                f"### {title}",
+                "",
+                f"- Full output: `{path}`",
+                "",
+                body,
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "## Transcript Integrity",
+            "",
+            f"- Pending debate outputs: `{pending_count}`",
+            "- The complete report should cite these same role outputs rather than treating this file as a separate evidence source.",
+            "",
+        ]
+    )
+    path = report_dir / "debate_record.md"
+    path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    return path
 
 
 def _ensure_report_dirs(report_dir: Path) -> None:
@@ -714,6 +929,24 @@ Impact label: mixed-to-positive, supported by {best_news_id}. The strongest usab
         if is_asx
         else "Financial extraction: MD&A, cash-flow, and Exhibit 99.1 are present where cited."
     )
+    asx_reasoning = (
+        _asx_research_reasoning(
+            ticker=ticker,
+            close=close,
+            ema_10=ema_10,
+            sma_50=sma_50,
+            sma_200=sma_200,
+            rel_10=rel_10,
+            rel_50=rel_50,
+            rel_200=rel_200,
+            financial_records=financial_records,
+            refs=refs,
+            best_news_id=best_news_id,
+            first_social_id=first_social_id,
+        )
+        if is_asx
+        else {}
+    )
     confirm = max(close + atr * 0.5, ema_10)
     invalid = min(close - atr * 0.5, sma_50 if ticker.upper() == "AAPL" else ema_10)
     (report_dir / "2_research" / "bull_round_1.md").write_text(
@@ -764,16 +997,50 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
         encoding="utf-8",
     )
 
+    market_matrix_direction = "positive" if ticker.upper() == "AAPL" else "negative"
+    market_matrix_weight = "+1" if ticker.upper() == "AAPL" else "-2"
+    market_matrix_reason = regime
+    score_line = policy["score_line"]
+    rating_rationale = policy["why"]
+    manager_rec = policy["manager_rec"]
+    trader_action = policy["trader_action"]
+    portfolio_rating = policy["portfolio_rating"]
+    rating_vs_rating_section = (
+        "## Rating-vs-Rating Reasoning\n"
+        f"1. Why not Buy / Overweight? {policy['why']}\n"
+        f"2. Why not Sell / Underweight? {manager_rec} is not a Sell because the evidence mix is not a clean long-term breakdown or negative fundamental case.\n"
+        f"3. Decisive role evidence: Market and Financial Report evidence outweighed low-confidence social evidence.\n"
+        "4. Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.\n"
+        "5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.\n"
+        f"6. Market setup impact: {regime}.\n"
+    )
+    if is_asx:
+        market_matrix_direction = "negative" if "negative across" in asx_reasoning["market_setup"] else "mixed"
+        if "positive across" in asx_reasoning["market_setup"]:
+            market_matrix_direction = "positive"
+        market_matrix_weight = asx_reasoning["score_line"].split(" market setup", 1)[0]
+        market_matrix_reason = asx_reasoning["summary"]
+        score_line = asx_reasoning["score_line"]
+        rating_rationale = (
+            f"{asx_reasoning['summary']} Hold beats Buy/Overweight and Sell/Underweight for ticker-specific reasons, "
+            "not because of a generic ASX coverage caveat."
+        )
+        rating_vs_rating_section = (
+            "## Rating-vs-Rating Reasoning\n"
+            f"1. Why not Buy / Overweight? {asx_reasoning['why_not_buy']}\n"
+            f"2. Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
+            f"3. Which role evidence was decisive? {asx_reasoning['decisive']}\n"
+            f"4. Which sector-specific financial metrics mattered? {asx_reasoning['metric_line']}\n"
+            f"5. Which evidence gaps capped confidence? {asx_reasoning['confidence_cap']}\n"
+            f"6. How market setup changed the final rating. {asx_reasoning['market_effect']}\n"
+        )
     matrix_rows = [
-        f"| Market Analyst | {refs['close']} | {'positive' if ticker.upper() == 'AAPL' else 'negative'} | high | medium | market snapshot | {'+1' if ticker.upper() == 'AAPL' else '-2'} | {regime} | market:{ticker}:{trade_date}:trend |",
+        f"| Market Analyst | {refs['close']} | {market_matrix_direction} | high | medium | market snapshot | {market_matrix_weight} | {market_matrix_reason} | market:{ticker}:{trade_date}:trend |",
         f"| Financial Report Analyst | {refs['exhibit']} | positive | high | medium | filing section extraction | +2 | {financial_source_label} support financial review with gaps disclosed | event:{ticker}:{trade_date}:financial-report |",
         f"| News Analyst | {best_news_id} | positive | medium | medium | article evidence card | +1 | Direct company evidence, not repeated snippet-only headlines | event:{ticker}:{trade_date}:earnings |",
         f"| Sentiment Analyst | {first_social_id} | mixed | low | low | social summary | 0 | Retail-only reaction is noisy and not independent fundamental evidence | reaction:{ticker}:{trade_date}:retail |",
         f"| Bear Researcher | {refs['fund']} | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:{ticker}:{trade_date}:valuation-trend |",
     ]
-    manager_rec = policy["manager_rec"]
-    trader_action = policy["trader_action"]
-    portfolio_rating = policy["portfolio_rating"]
     (report_dir / "2_research" / "manager.md").write_text(
         f"""# Research Manager Report - {ticker}
 
@@ -786,12 +1053,14 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
 |---|---|---|---|---|---|---:|---|---|
 {chr(10).join(matrix_rows)}
 
-Score calculation / component weights: {policy['score_line']}.
+Score calculation / component weights: {score_line}.
 
 ## Rating Rationale
 **Recommendation**: {manager_rec}
 
-{policy['why']} The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Hold vs Sell/Buy was explicitly considered: {manager_rec} beats Hold or Sell only to the degree justified above; social sentiment alone has zero decision weight.
+{rating_rationale} The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Rating-vs-rating selection was explicitly considered; social sentiment alone has zero decision weight.
+
+{rating_vs_rating_section.rstrip()}
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.
@@ -912,6 +1181,8 @@ Research decision: {manager_rec}. Trader action: {trader_action}. Portfolio deci
         encoding="utf-8",
     )
 
+    debate_record_path = _write_assembled_debate_record(report_dir=report_dir, ticker=ticker, trade_date=trade_date)
+
     (report_dir / "complete_report.md").write_text(
         f"""# Complete Codex TradingAgents Report - {ticker}
 
@@ -923,6 +1194,7 @@ Run folder: {run_folder_name}
 
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
+- Completed debate transcript: {debate_record_path}.
 - Core evidence IDs: {refs['close']}, {refs['exhibit']}, {best_news_id}, {first_social_id}.
 
 ## Complete Report

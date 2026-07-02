@@ -40,6 +40,14 @@ Output:
 - Explain the impact of Fundamentals Analyst, Financial Report Analyst, and Industry / Theme Discovery Analyst evidence, or state that the evidence is unavailable or immaterial.
 - Explain rating/action tension when relevant.
 - Explain why Sell beats Underweight/Hold, or why Underweight/Hold beats Sell.
+- Include `## Rating-vs-Rating Reasoning` with ticker-specific answers to:
+  1. Why not Buy / Overweight?
+  2. Why not Sell / Underweight?
+  3. Which role evidence was decisive?
+  4. Which sector-specific financial metrics mattered?
+  5. Which evidence gaps capped confidence?
+  6. How market setup changed the final rating.
+- For ASX tickers, do not use generic "ASX source coverage is uneven" language as the sole reason for Hold. Cite the actual moving-average setup and at least one sector-specific financial metric or explicit evidence gap.
 
 ## RoleExecutionContract Rules
 

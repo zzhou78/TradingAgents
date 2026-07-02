@@ -8,6 +8,7 @@ Run folder: us_2026-07-02_closed_loop
 
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
+- Completed debate transcript: codex_tradingagents_skillkit\runs\us_2026-07-02_closed_loop\reports\AAPL\2026-07-02\debate_record.md.
 - Core evidence IDs: market:AAPL:2026-07-02:001, financial:AAPL:2026-07-02:022, news:AAPL:2026-07-02:040, social:AAPL:2026-07-02:001.
 
 ## Complete Report

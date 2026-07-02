@@ -18,7 +18,15 @@ Score calculation / component weights: -2 market trend, +2 financial quality, +1
 ## Rating Rationale
 **Recommendation**: Underweight
 
-Underweight beats Hold because the strongest financial evidence is positive, but the market evidence still shows the close below both 50 SMA and 200 SMA; it does not become Sell because the company fundamentals and Exhibit 99.1 evidence remain strong and price is above the 10 EMA. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Hold vs Sell/Buy was explicitly considered: Underweight beats Hold or Sell only to the degree justified above; social sentiment alone has zero decision weight.
+Underweight beats Hold because the strongest financial evidence is positive, but the market evidence still shows the close below both 50 SMA and 200 SMA; it does not become Sell because the company fundamentals and Exhibit 99.1 evidence remain strong and price is above the 10 EMA. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Rating-vs-rating selection was explicitly considered; social sentiment alone has zero decision weight.
+
+## Rating-vs-Rating Reasoning
+1. Why not Buy / Overweight? Underweight beats Hold because the strongest financial evidence is positive, but the market evidence still shows the close below both 50 SMA and 200 SMA; it does not become Sell because the company fundamentals and Exhibit 99.1 evidence remain strong and price is above the 10 EMA.
+2. Why not Sell / Underweight? Underweight is not a Sell because the evidence mix is not a clean long-term breakdown or negative fundamental case.
+3. Decisive role evidence: Market and Financial Report evidence outweighed low-confidence social evidence.
+4. Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.
+5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
+6. Market setup impact: short rebound inside a still-negative intermediate and long-term trend.
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.

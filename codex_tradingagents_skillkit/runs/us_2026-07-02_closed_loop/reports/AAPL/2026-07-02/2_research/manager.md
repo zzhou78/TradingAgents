@@ -18,7 +18,15 @@ Score calculation / component weights: +1 market, +2 financial quality, +1 earni
 ## Rating Rationale
 **Recommendation**: Overweight
 
-Overweight beats Hold because multiple direct filing and earnings-release records show business strength while the latest close is above the 10 EMA, 50 SMA, and 200 SMA; it does not become Buy because MACD is negative and social evidence is low-confidence retail color. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Hold vs Sell/Buy was explicitly considered: Overweight beats Hold or Sell only to the degree justified above; social sentiment alone has zero decision weight.
+Overweight beats Hold because multiple direct filing and earnings-release records show business strength while the latest close is above the 10 EMA, 50 SMA, and 200 SMA; it does not become Buy because MACD is negative and social evidence is low-confidence retail color. The earnings/news/social style of evidence is grouped by independence ID so repeated role mentions do not become separate support. Rating-vs-rating selection was explicitly considered; social sentiment alone has zero decision weight.
+
+## Rating-vs-Rating Reasoning
+1. Why not Buy / Overweight? Overweight beats Hold because multiple direct filing and earnings-release records show business strength while the latest close is above the 10 EMA, 50 SMA, and 200 SMA; it does not become Buy because MACD is negative and social evidence is low-confidence retail color.
+2. Why not Sell / Underweight? Overweight is not a Sell because the evidence mix is not a clean long-term breakdown or negative fundamental case.
+3. Decisive role evidence: Market and Financial Report evidence outweighed low-confidence social evidence.
+4. Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.
+5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
+6. Market setup impact: constructive but not trend-confirmed because MACD remains negative.
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.

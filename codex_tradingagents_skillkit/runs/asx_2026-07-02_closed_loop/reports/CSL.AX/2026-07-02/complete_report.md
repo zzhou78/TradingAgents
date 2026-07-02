@@ -8,6 +8,7 @@ Run folder: asx_2026-07-02_closed_loop
 
 ## Tool Outputs Used
 - Role reports under 1_analysts, 2_research, 3_trading, 4_risk, and 5_portfolio.
+- Completed debate transcript: codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\reports\CSL.AX\2026-07-02\debate_record.md.
 - Core evidence IDs: market:CSL.AX:2026-07-02:001, financial:CSL.AX:2026-07-02:001, news:CSL.AX:2026-07-02:001, social:CSL.AX:2026-07-02:001.
 
 ## Complete Report

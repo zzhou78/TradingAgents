@@ -31,6 +31,8 @@ Output:
 
 Complete report assembly:
 - `complete_report.md` should mimic original TradingAgents while making debate turns visible.
+- `debate_record.md` must be regenerated after role reports are written. It must be a completed debate transcript/index hybrid, not only the initial task index from evidence collection.
+- `debate_record.md` must include completed Bull, Bear, Research Manager, Aggressive Risk, Conservative Risk, Neutral Risk, and Portfolio Manager debate/synthesis sections with links to the full role output files and zero pending debate outputs.
 - Python scripts may prepare Codex task prompts, but Codex role execution writes the analytical reports.
 - `write_codex_reports.py` is a compatibility wrapper for task preparation, not a reasoning writer.
 - Include `## Tool Outputs Used` and cite stage input evidence IDs when assembling final report sections.

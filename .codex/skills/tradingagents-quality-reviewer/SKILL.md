@@ -70,11 +70,15 @@ Fail the report when:
 - research evidence matrix omits independence groups when News and Sentiment both support a material claim;
 - Research Manager double-counts the same event across News, Sentiment, Bull/Bear, Risk, or duplicated news articles;
 - research manager rating lacks rating-vs-rating justification;
+- ASX Research Manager report omits ticker-specific moving-average facts, sector metric evidence, or explicit evidence gaps;
+- multiple tickers in the same run use near-identical Research Manager rationale despite materially different market, financial, or sector evidence;
+- generic "ASX source coverage is uneven" is the sole reason for Hold;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;
 - bull or bear debate lacks falsification conditions or direct response;
 - risk debate lacks failure points, unsupported-upside challenges, or risk argument quality comparison;
 - portfolio decision omits risk debate impact.
+- debate_record.md is missing, still contains the initial task-index wording, omits completed debate turns, or does not confirm zero pending debate outputs.
 
 Output:
 - `quality_review.md`: concise narrative review with issues and required fixes.
