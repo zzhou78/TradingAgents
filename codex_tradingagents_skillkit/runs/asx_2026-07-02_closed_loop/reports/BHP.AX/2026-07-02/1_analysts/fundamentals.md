@@ -18,18 +18,18 @@ Interpretation: structured fundamentals provide ratio and statement context only
 
 ## Sector-Specific Metrics
 - ASX sector identified by collector: miners.
-- Production: available via financial:BHP.AX:2026-07-02:016; confidence medium.
-- Realised price: available via financial:BHP.AX:2026-07-02:017; confidence medium.
-- Unit cost / AISC: available via financial:BHP.AX:2026-07-02:018; confidence medium.
-- Capex: evidence gap disclosed via financial:BHP.AX:2026-07-02:019; Capex was not identified in extracted ASX document text.
-- Reserves/resources: available via financial:BHP.AX:2026-07-02:020; confidence medium.
-- Commodity exposure: available via financial:BHP.AX:2026-07-02:021; confidence medium.
-- Production: available via financial:BHP.AX:2026-07-02:037; confidence medium.
-- Realised price: available via financial:BHP.AX:2026-07-02:038; confidence medium.
-- Unit cost / AISC: available via financial:BHP.AX:2026-07-02:039; confidence medium.
-- Capex: evidence gap disclosed via financial:BHP.AX:2026-07-02:040; Capex was not identified in extracted ASX document text.
-- Reserves/resources: available via financial:BHP.AX:2026-07-02:041; confidence medium.
-- Commodity exposure: available via financial:BHP.AX:2026-07-02:042; confidence medium.
+- production: available via financial:BHP.AX:2026-07-02:016; confidence low.
+- realised price: available via financial:BHP.AX:2026-07-02:017; confidence low.
+- unit cost: available via financial:BHP.AX:2026-07-02:018; confidence medium.
+- capex: evidence gap disclosed via financial:BHP.AX:2026-07-02:019; capex was not identified in extracted ASX document text.
+- reserves: available via financial:BHP.AX:2026-07-02:020; confidence low.
+- iron ore: available via financial:BHP.AX:2026-07-02:021; confidence low.
+- production: available via financial:BHP.AX:2026-07-02:037; confidence low.
+- realised price: available via financial:BHP.AX:2026-07-02:038; confidence low.
+- unit cost: available via financial:BHP.AX:2026-07-02:039; confidence medium.
+- capex: evidence gap disclosed via financial:BHP.AX:2026-07-02:040; capex was not identified in extracted ASX document text.
+- reserves: available via financial:BHP.AX:2026-07-02:041; confidence low.
+- iron ore: available via financial:BHP.AX:2026-07-02:042; confidence low.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

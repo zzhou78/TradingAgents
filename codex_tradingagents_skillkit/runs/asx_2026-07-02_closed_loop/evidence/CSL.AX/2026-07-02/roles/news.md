@@ -36,17 +36,17 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for CSL.AX
-# Data retrieved on: 2026-07-04 16:15:39
+# Data retrieved on: 2026-07-05 09:42:21
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,1036,71079.0,,Purchase at price 68.61 per share.,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-06-01,D
 1,1100,77260.0,,Purchase at price 70.24 per share.,Naylor (Gordon),Director (Non-Executive),,2026-05-26,D
 2,2540,179125.0,,Purchase at price 70.52 per share.,Watkins (Alison Mary),Independent Non-Executive Director,,2026-05-15,D
-3,214,,,,Watkins (Alison Mary),Independent Non-Executive Director,,2026-02-17,D
-4,183,,,,Cuthbertson (Robert Andrew),Independent Non-Executive Director,,2026-02-17,D
-5,244,,,,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-02-17,D
-6,153,,,,Lewis (Samantha Louise),Independent Non-Executive Director,,2026-02-17,D
-7,433,,,,McNamee (Brian Anthony),Independent Non-Executive Director,,2026-02-17,D
+3,433,,,,McNamee (Brian Anthony),Independent Non-Executive Director,,2026-02-17,D
+4,214,,,,Watkins (Alison Mary),Independent Non-Executive Director,,2026-02-17,D
+5,183,,,,Cuthbertson (Robert Andrew),Independent Non-Executive Director,,2026-02-17,D
+6,244,,,,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-02-17,D
+7,153,,,,Lewis (Samantha Louise),Independent Non-Executive Director,,2026-02-17,D
 8,67797,,,,Naylor (Gordon),Director (Non-Executive),,2025-12-01,D
 9,3400,,,,Daniels (Brian M.D.),Non-Independent Executive Director,,2025-11-18,D
 10,723,,,,McDonald (Marie Elizabeth),Former,,2025-10-28,D

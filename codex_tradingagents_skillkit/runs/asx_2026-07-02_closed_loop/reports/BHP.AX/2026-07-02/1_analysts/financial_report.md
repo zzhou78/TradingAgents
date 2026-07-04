@@ -31,34 +31,34 @@
 | Liquidity / cash-debt evidence | financial:BHP.AX:2026-07-02:007 ASX document | cash_debt_gearing | 2025-12-31 | medium | none |
 | Segment/product evidence | financial:BHP.AX:2026-07-02:008 ASX document | segment_product_performance | 2025-12-31 | medium | none |
 | Cash-flow evidence | financial:BHP.AX:2026-07-02:004 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
-| ASX sector metric: Production | financial:BHP.AX:2026-07-02:016 ASX section record | sector_metric_production | 2025-12-31 | medium | none |
-| ASX sector metric: Realised price | financial:BHP.AX:2026-07-02:017 ASX section record | sector_metric_realised_price | 2025-12-31 | medium | none |
-| ASX sector metric: Unit cost / AISC | financial:BHP.AX:2026-07-02:018 ASX section record | sector_metric_unit_cost_aisc | 2025-12-31 | medium | none |
-| ASX sector metric: Capex | financial:BHP.AX:2026-07-02:019 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Reserves/resources | financial:BHP.AX:2026-07-02:020 ASX section record | sector_metric_reserves_resources | 2025-12-31 | medium | none |
-| ASX sector metric: Commodity exposure | financial:BHP.AX:2026-07-02:021 ASX section record | sector_metric_commodity_exposure | 2025-12-31 | medium | none |
-| ASX sector metric: Production | financial:BHP.AX:2026-07-02:037 ASX section record | sector_metric_production | 2025-12-31 | medium | none |
-| ASX sector metric: Realised price | financial:BHP.AX:2026-07-02:038 ASX section record | sector_metric_realised_price | 2025-12-31 | medium | none |
-| ASX sector metric: Unit cost / AISC | financial:BHP.AX:2026-07-02:039 ASX section record | sector_metric_unit_cost_aisc | 2025-12-31 | medium | none |
-| ASX sector metric: Capex | financial:BHP.AX:2026-07-02:040 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Reserves/resources | financial:BHP.AX:2026-07-02:041 ASX section record | sector_metric_reserves_resources | 2025-12-31 | medium | none |
-| ASX sector metric: Commodity exposure | financial:BHP.AX:2026-07-02:042 ASX section record | sector_metric_commodity_exposure | 2025-12-31 | medium | none |
+| ASX sector metric: production | financial:BHP.AX:2026-07-02:016 ASX section record | sector_metric_production | 2025-12-31 | low | none |
+| ASX sector metric: realised price | financial:BHP.AX:2026-07-02:017 ASX section record | sector_metric_realised_price | 2025-12-31 | low | none |
+| ASX sector metric: unit cost | financial:BHP.AX:2026-07-02:018 ASX section record | sector_metric_unit_cost_aisc | 2025-12-31 | medium | none |
+| ASX sector metric: capex | financial:BHP.AX:2026-07-02:019 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: reserves | financial:BHP.AX:2026-07-02:020 ASX section record | sector_metric_reserves_resources | 2025-12-31 | low | none |
+| ASX sector metric: iron ore | financial:BHP.AX:2026-07-02:021 ASX section record | sector_metric_commodity_exposure | 2025-12-31 | low | none |
+| ASX sector metric: production | financial:BHP.AX:2026-07-02:037 ASX section record | sector_metric_production | 2025-12-31 | low | none |
+| ASX sector metric: realised price | financial:BHP.AX:2026-07-02:038 ASX section record | sector_metric_realised_price | 2025-12-31 | low | none |
+| ASX sector metric: unit cost | financial:BHP.AX:2026-07-02:039 ASX section record | sector_metric_unit_cost_aisc | 2025-12-31 | medium | none |
+| ASX sector metric: capex | financial:BHP.AX:2026-07-02:040 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: reserves | financial:BHP.AX:2026-07-02:041 ASX section record | sector_metric_reserves_resources | 2025-12-31 | low | none |
+| ASX sector metric: iron ore | financial:BHP.AX:2026-07-02:042 ASX section record | sector_metric_commodity_exposure | 2025-12-31 | low | none |
 
 ## ASX Sector Metric Evidence
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
 |---|---|---|---|---|---|
-| financial:BHP.AX:2026-07-02:016 | miners | Production | available | medium | none |
-| financial:BHP.AX:2026-07-02:017 | miners | Realised price | available | medium | none |
-| financial:BHP.AX:2026-07-02:018 | miners | Unit cost / AISC | available | medium | none |
-| financial:BHP.AX:2026-07-02:019 | miners | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:BHP.AX:2026-07-02:020 | miners | Reserves/resources | available | medium | none |
-| financial:BHP.AX:2026-07-02:021 | miners | Commodity exposure | available | medium | none |
-| financial:BHP.AX:2026-07-02:037 | miners | Production | available | medium | none |
-| financial:BHP.AX:2026-07-02:038 | miners | Realised price | available | medium | none |
-| financial:BHP.AX:2026-07-02:039 | miners | Unit cost / AISC | available | medium | none |
-| financial:BHP.AX:2026-07-02:040 | miners | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:BHP.AX:2026-07-02:041 | miners | Reserves/resources | available | medium | none |
-| financial:BHP.AX:2026-07-02:042 | miners | Commodity exposure | available | medium | none |
+| financial:BHP.AX:2026-07-02:016 | miners | production | available | low | none |
+| financial:BHP.AX:2026-07-02:017 | miners | realised price | available | low | none |
+| financial:BHP.AX:2026-07-02:018 | miners | unit cost | available | medium | none |
+| financial:BHP.AX:2026-07-02:019 | miners | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:BHP.AX:2026-07-02:020 | miners | reserves | available | low | none |
+| financial:BHP.AX:2026-07-02:021 | miners | iron ore | available | low | none |
+| financial:BHP.AX:2026-07-02:037 | miners | production | available | low | none |
+| financial:BHP.AX:2026-07-02:038 | miners | realised price | available | low | none |
+| financial:BHP.AX:2026-07-02:039 | miners | unit cost | available | medium | none |
+| financial:BHP.AX:2026-07-02:040 | miners | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:BHP.AX:2026-07-02:041 | miners | reserves | available | low | none |
+| financial:BHP.AX:2026-07-02:042 | miners | iron ore | available | low | none |
 
 ## Evidence gaps
 - ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.

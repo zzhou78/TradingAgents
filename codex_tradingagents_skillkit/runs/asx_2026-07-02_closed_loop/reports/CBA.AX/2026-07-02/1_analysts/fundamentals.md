@@ -18,27 +18,27 @@ Interpretation: structured fundamentals provide ratio and statement context only
 
 ## Sector-Specific Metrics
 - ASX sector identified by collector: banks.
-- NIM: evidence gap disclosed via financial:CBA.AX:2026-07-02:016; NIM was not identified in extracted ASX document text.
+- net interest margin: evidence gap disclosed via financial:CBA.AX:2026-07-02:016; net interest margin was not identified in extracted ASX document text.
 - CET1: evidence gap disclosed via financial:CBA.AX:2026-07-02:017; CET1 was not identified in extracted ASX document text.
-- Loan growth: evidence gap disclosed via financial:CBA.AX:2026-07-02:018; Loan growth was not identified in extracted ASX document text.
-- Arrears: evidence gap disclosed via financial:CBA.AX:2026-07-02:019; Arrears was not identified in extracted ASX document text.
-- Impairment: evidence gap disclosed via financial:CBA.AX:2026-07-02:020; Impairment was not identified in extracted ASX document text.
-- Dividend: evidence gap disclosed via financial:CBA.AX:2026-07-02:021; Dividend was not identified in extracted ASX document text.
+- loan growth: evidence gap disclosed via financial:CBA.AX:2026-07-02:018; loan growth was not identified in extracted ASX document text.
+- arrears: evidence gap disclosed via financial:CBA.AX:2026-07-02:019; arrears was not identified in extracted ASX document text.
+- impairment: evidence gap disclosed via financial:CBA.AX:2026-07-02:020; impairment was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:CBA.AX:2026-07-02:021; dividend was not identified in extracted ASX document text.
 - ROE: evidence gap disclosed via financial:CBA.AX:2026-07-02:022; ROE was not identified in extracted ASX document text.
-- NIM: available via financial:CBA.AX:2026-07-02:038; confidence medium.
-- CET1: available via financial:CBA.AX:2026-07-02:039; confidence medium.
-- Loan growth: available via financial:CBA.AX:2026-07-02:040; confidence medium.
-- Arrears: available via financial:CBA.AX:2026-07-02:041; confidence medium.
-- Impairment: available via financial:CBA.AX:2026-07-02:042; confidence medium.
-- Dividend: available via financial:CBA.AX:2026-07-02:043; confidence medium.
-- ROE: available via financial:CBA.AX:2026-07-02:044; confidence medium.
-- NIM: available via financial:CBA.AX:2026-07-02:060; confidence medium.
-- CET1: available via financial:CBA.AX:2026-07-02:061; confidence medium.
-- Loan growth: available via financial:CBA.AX:2026-07-02:062; confidence medium.
-- Arrears: available via financial:CBA.AX:2026-07-02:063; confidence medium.
-- Impairment: available via financial:CBA.AX:2026-07-02:064; confidence medium.
-- Dividend: available via financial:CBA.AX:2026-07-02:065; confidence medium.
-- ROE: available via financial:CBA.AX:2026-07-02:066; confidence medium.
+- net interest margin: available via financial:CBA.AX:2026-07-02:038; confidence low.
+- CET1: available via financial:CBA.AX:2026-07-02:039; confidence low.
+- loan growth: available via financial:CBA.AX:2026-07-02:040; confidence low.
+- arrears: available via financial:CBA.AX:2026-07-02:041; confidence low.
+- impairment: available via financial:CBA.AX:2026-07-02:042; confidence medium.
+- dividend: available via financial:CBA.AX:2026-07-02:043; confidence low.
+- ROE: available via financial:CBA.AX:2026-07-02:044; confidence low.
+- net interest margin: available via financial:CBA.AX:2026-07-02:060; confidence low.
+- CET1: available via financial:CBA.AX:2026-07-02:061; confidence low.
+- loan growth: available via financial:CBA.AX:2026-07-02:062; confidence low.
+- arrears: available via financial:CBA.AX:2026-07-02:063; confidence low.
+- impairment: available via financial:CBA.AX:2026-07-02:064; confidence medium.
+- dividend: available via financial:CBA.AX:2026-07-02:065; confidence low.
+- ROE: available via financial:CBA.AX:2026-07-02:066; confidence low.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

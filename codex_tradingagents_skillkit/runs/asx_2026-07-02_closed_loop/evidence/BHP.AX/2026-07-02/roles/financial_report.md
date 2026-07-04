@@ -256,7 +256,7 @@ unit cost reduction and WAIO remains the lowest-cost major iron ore producer in 
 - Filing date: `2025-12-31`
 - URL: https://www.bhp.com/investor-hub/reports-and-presentations/annual-report
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -523,7 +523,7 @@ unit cost reduction and WAIO remains the lowest-cost major iron ore producer in 
 - Filing date: `2025-12-31`
 - URL: https://www.bhp.com/investor-hub/reports-and-presentations/annual-report
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 

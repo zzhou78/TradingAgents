@@ -230,7 +230,7 @@ Product Portfolio 20 Material Risks 24 Healthier World Healthier Communities 27 
 - Filing date: `2025-12-31`
 - URL: https://investors.csl.com/annualreport/2025/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -467,7 +467,7 @@ revenue and margins Empowering CSL’s people through rewarding jobs, career dev
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/17/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -490,7 +490,7 @@ research and development to identify new indications for CSL’s existing produc
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/17/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -513,7 +513,7 @@ margins Empowering CSL’s people through rewarding jobs, career development opp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/17/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -523,7 +523,7 @@ margins Empowering CSL’s people through rewarding jobs, career development opp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/17/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -695,7 +695,7 @@ risk assessment procedures, including an understanding of internal control, and 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/61/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -715,7 +715,7 @@ risk assessment procedures, including an understanding of internal control, and 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/61/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -725,7 +725,7 @@ risk assessment procedures, including an understanding of internal control, and 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/61/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -735,7 +735,7 @@ risk assessment procedures, including an understanding of internal control, and 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/61/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -745,7 +745,7 @@ risk assessment procedures, including an understanding of internal control, and 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/61/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -926,7 +926,7 @@ Risk Management Committee and the Human Resources and Remuneration Committee are
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/69/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -946,7 +946,7 @@ Risk Management Committee and the Human Resources and Remuneration Committee are
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/69/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -956,7 +956,7 @@ Risk Management Committee and the Human Resources and Remuneration Committee are
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/69/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -966,7 +966,7 @@ Risk Management Committee and the Human Resources and Remuneration Committee are
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/69/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1151,7 +1151,7 @@ revenue for CSL Behring; ‒ Albumin Growth ‒ D eliver Hemgenix and Garadacima
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/77/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1171,7 +1171,7 @@ revenue for CSL Behring; ‒ Albumin Growth ‒ D eliver Hemgenix and Garadacima
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/77/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1194,7 +1194,7 @@ margin ‒ D elivery of CSL Operating System (COS) savings ‒ D rive value from
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/77/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1204,7 +1204,7 @@ margin ‒ D elivery of CSL Operating System (COS) savings ‒ D rive value from
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/77/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1388,7 +1388,7 @@ Cash Flows from Operating Activities Profit before income tax expense 3,724 3,37
 - Filing date: `2025-12-31`
 - URL: https://investors.csl.com/annualreport/2025/95/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1408,7 +1408,7 @@ Cash Flows from Operating Activities Profit before income tax expense 3,724 3,37
 - Filing date: `2025-12-31`
 - URL: https://investors.csl.com/annualreport/2025/95/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1418,7 +1418,7 @@ Cash Flows from Operating Activities Profit before income tax expense 3,724 3,37
 - Filing date: `2025-12-31`
 - URL: https://investors.csl.com/annualreport/2025/95/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1436,15 +1436,12 @@ borrowings 97 2,058 Repayment of borrowings (832) (2,017) Principal payments of 
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2025-12-31`
 - URL: https://investors.csl.com/annualreport/2025/95/
 - Supports claims: guidance, outlook
-
-```text
-expected credit losses 6 4 Finance costs, net 410 437 Net gain on business disposals 2 (30) — Loss/(gain) on disposal of property, plant and equipment 11 (2) Unrealised foreign exchange losses 25 53 Changes in operating assets and liabilities: Increase in receivables and contract assets (314) (766) Increase in inventories (628) (780) Increase in trade and other payables 319 445 Decrease in provisions and other liabilities (242) (70) Income tax paid (637) (784) Finance costs paid, net (412) (432) Net cash inflow from operating activities 3,561 2,764 Cash flows from Investing Activities Payments for property, plant and equipment (636) (847) Payments for intangible assets (362) (409) Net proceeds from business disposals 2 180 — Payments for financial assets (13) (3) Payments for other assets (19) — Net cash outflow from investing activities (850) (1,259) Cash flows from Financing Activities Proceeds from issue of shares 17 40 Dividends paid to CSL Limited shareholders 10 (1,334) (1,192) Dividends paid to non-controlling interests 22 (100) (74) Proceeds from borrowings 97 2,058 Repayment of borrowings (832) (2,017) Principal payments of lease liabilities (89) (99) Net cash outflow from financing activities (2,241) (1,284) Net increase in cash and cash equivalents 470 221 Cash and cash equivalents at the beginning of the financial year 1,643 1,509 Exchange rate variations on foreign cash and cash equivalent balances 44 (87) Cash and cash equivalents at the end of the year 2,157 1,643 Reconciliation of cash and cash equivalents in the statement of cash flows: Cash and cash equivalents 2,157 1,657 Bank overdrafts — (14) Cash and cash equivalents at the end of the year 2,157 1,643 The consolidated statement of cash flows should be read in conjunction with the accompanying notes. 93 Consolidated Statement of Cash Flows For the Year Ended 30 June 2025 93 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1622,7 +1619,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/97/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1642,7 +1639,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/97/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1652,7 +1649,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/97/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1662,7 +1659,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/97/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1672,7 +1669,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/97/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1882,7 +1879,7 @@ Research and development expenses (1,359) (1,428) General and administrative exp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/99/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1892,7 +1889,7 @@ Research and development expenses (1,359) (1,428) General and administrative exp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/99/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1902,7 +1899,7 @@ Research and development expenses (1,359) (1,428) General and administrative exp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/99/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1912,7 +1909,7 @@ Research and development expenses (1,359) (1,428) General and administrative exp
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/99/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -2081,7 +2078,7 @@ CSL 2025 Annual Report – Page 99 1 98 Table of Contents 100 148 CSL 2025 Annua
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/107/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2101,7 +2098,7 @@ CSL 2025 Annual Report – Page 99 1 98 Table of Contents 100 148 CSL 2025 Annua
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/107/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2111,7 +2108,7 @@ CSL 2025 Annual Report – Page 99 1 98 Table of Contents 100 148 CSL 2025 Annua
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/107/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2121,7 +2118,7 @@ CSL 2025 Annual Report – Page 99 1 98 Table of Contents 100 148 CSL 2025 Annua
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/107/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2131,7 +2128,7 @@ CSL 2025 Annual Report – Page 99 1 98 Table of Contents 100 148 CSL 2025 Annua
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/107/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -2321,7 +2318,7 @@ assets outside of business combinations is recognised as a financial liability o
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/109/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2344,7 +2341,7 @@ research and development expenses for early-stage products and as cost of sales 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/109/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2354,7 +2351,7 @@ research and development expenses for early-stage products and as cost of sales 
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/109/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2372,15 +2369,12 @@ debt. The determination of cash flows over the life of an asset requires judgeme
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/109/
 - Supports claims: guidance, outlook
-
-```text
-expected to give rise to future economic benefits that will flow to the Group. If the milestones paid are for regulatory approval and a sales target, they are likely to meet the capitalisation criteria, and would be accumulated into the cost of the intangible. Changes in the fair value of contingent consideration liabilities acquired in a business combination in subsequent periods are recognised in research and development expenses for early-stage products and as cost of sales for currently marketed products. The effect of unwinding the discount over time for contingent consideration liabilities is recognised in finance costs. Software Costs incurred in developing or acquiring software licenses and information systems that contribute future financial benefits are capitalised. These include external direct costs of materials and service and payroll costs of employees’ time spent on the project. Amortisation is calculated on a straight-line basis over periods generally ranging from 3 to 10 years. IT development costs include only those costs directly attributable to the development phase and are only recognised following completion of technical feasibility, where the Group has the intention and ability to use the asset. Amortisation of intangible assets The useful lives of intangible assets are assessed to be either finite or indefinite. The amortisation period and method is reviewed at each financial year end at a minimum. Intangible assets with indefinite useful lives are not amortised. The useful life of these intangibles is reviewed each reporting period. Impairment of intangible assets Assets with finite lives are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount may not be recoverable. Intangible assets that have an indefinite useful life (including goodwill) or not yet ready for use are tested annually for impairment or more frequently if events or changes in circumstances indicate that they may be impaired. An impairment loss is recognised in the statement of comprehensive income for the amount by which the asset’s carrying amount exceeds its recoverable amount. The recoverable amount is the higher of an asset’s fair value less costs to sell and value in use. For the purpose of assessing impairment, assets are grouped at the lowest levels for which there are separately identifiable cash flows (cash generating units), other than goodwill that is monitored at the segment level. Impairment losses recognised in respect of cash generating units are allocated first to reduce the carrying amount of any goodwill allocated to cash generating units, and then to reduce the carrying amount of the other assets in the unit on a pro-rata basis. Key Judgements and Estimates The Group's impairment assessment requires significant judgement. Determining whether goodwill, indefinite lived intangibles and in development intangibles have been impaired requires estimation of the recoverable amount of cash generating units based on value-in-use calculations. The calculations use cash flow projections based on operating budgets and a ten-year strategic business plan, after which a terminal value, based on our view of the longer term growth profile of the business unit is applied. Cash flows have been discounted using an implied pre-tax discount rate of 9.5% (2024: 9.8%) which is calculated with reference to external analyst views, long-term government bond rates and long-term cost of debt. The determination of cash flows over the life of an asset requires judgement in assessing the future demand for the Group’s products, climate related impacts, any changes in the price and cost of those products and of other costs incurred by the Group. Factors considered in the exercise of our judgement include the progress of the research project, time to market and the anticipated competitive landscape. These factors require judgement and may change in future periods, the impairment analysis takes into account the latest available information. Management considers that there are no reasonably foreseeable changes in assumptions (including change in tariffs) that would, in isolation, result in the impairment of goodwill at 30 June 2025. 107 107 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -2564,7 +2558,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/113/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2584,7 +2578,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/113/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2594,7 +2588,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/113/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2604,7 +2598,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/113/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2614,7 +2608,7 @@ assets and liabilities are translated on consolidation to US dollars using the e
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/113/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -2792,7 +2786,7 @@ Risk The following chart summarises the Group's maturity profile of debt on an u
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/115/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2812,7 +2806,7 @@ Risk The following chart summarises the Group's maturity profile of debt on an u
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/115/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2822,7 +2816,7 @@ Risk The following chart summarises the Group's maturity profile of debt on an u
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/115/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2840,15 +2834,12 @@ debt on an undiscounted basis by facility (US$m). US$m Private Placement QDI Ban
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/115/
 - Supports claims: guidance, outlook
-
-```text
-expected to be paid under residual value guarantees. 113 113 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -3029,7 +3020,7 @@ assets Other financial assets include equity securities (publicly traded securit
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/117/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3049,7 +3040,7 @@ assets Other financial assets include equity securities (publicly traded securit
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/117/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3059,7 +3050,7 @@ assets Other financial assets include equity securities (publicly traded securit
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/117/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3077,15 +3068,12 @@ debt. At 30 June 2025, the total fixed rate debt (excluding lease liabilities) h
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/117/
 - Supports claims: guidance, outlook
-
-```text
-expected principal and interest cash flows, using rates currently available for debt of similar terms, credit risk and remaining maturities. Other financial liabilities also includes contingent consideration liabilities from past business combinations. These liabilities are recorded as non-current financial liabilities at fair value (Note 14), which are then remeasured at each subsequent reporting date at fair value through profit or loss. The fair value estimations typically depend on factors such as technical milestones or market performance, and are adjusted for the probability of their likelihood of potential future payments, and are appropriately discounted to reflect the impact of time. As at 30 June 2025, the maximum amount of undiscounted potential future milestone payments relating to historical business combinations ("contingent consideration liabilities from business combinations") are $470m (2024: $470m). Key Judgements and Estimates Contingent consideration liabilities are valued with reference to our judgement of the expected probability and timing of potential future milestone payments, based upon level 3 inputs under the fair value hierarchy, which is then discounted to a present value using appropriate discount rates with reference to the Group's incremental borrowing rates. Valuation of financial instruments Financial instruments measured and carried at fair value are categorised as follows: • Level 1: Items traded with quoted prices in active markets for identical liabilities • Level 2: Items with significantly observable inputs other than quoted prices in active markets • Level 3: Items with unobservable inputs (not based on observable market data) The group had the following financial assets and liabilities measured at fair value: 2025 2024 Financial assets/(liabilities) measured at fair value US$m US$m Publicly traded securities – FVOCI Level 1 35 12 Venture fund assets – FVTPL Level 3 140 126 Contingent consideration assets (earn-out receivable) Level 3 28 25 Contingent consideration liabilities from business combinations Level 3 (227) (220) There were no transfers between Level 1 and Level 2 during the year, or any transfers into Level 3. 115 115 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -3257,7 +3245,7 @@ EPS growth and Return on Invested Capital (ROIC). • The Retain and Grow Plan (
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/125/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3277,7 +3265,7 @@ EPS growth and Return on Invested Capital (ROIC). • The Retain and Grow Plan (
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/125/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3287,7 +3275,7 @@ EPS growth and Return on Invested Capital (ROIC). • The Retain and Grow Plan (
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/125/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3297,20 +3285,17 @@ EPS growth and Return on Invested Capital (ROIC). • The Retain and Grow Plan (
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/125/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/125/
 - Supports claims: guidance, outlook
-
-```text
-expected to vest. At each reporting date, the number of awards that are expected to vest is revised. The employee benefit expense recognised each period considers the most recent estimate of the number of awards that are expected to vest. No expense is recognised for awards that do not ultimately vest, except where the vesting is conditional upon a market condition and that market condition is not met. The Group does not have any awards with a market condition as at 30 June 2025. 123 123 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -3485,7 +3470,7 @@ ASSETS Cash and cash equivalents 178 189 Receivables and contract assets 543 557
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/129/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3505,7 +3490,7 @@ ASSETS Cash and cash equivalents 178 189 Receivables and contract assets 543 557
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/129/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3515,7 +3500,7 @@ ASSETS Cash and cash equivalents 178 189 Receivables and contract assets 543 557
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/129/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3538,7 +3523,7 @@ borrowings 320 163 Other current liabilities 2 — Total Current Liabilities 852
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/129/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -3707,7 +3692,7 @@ CSL 2025 Annual Report – Page 129 1 128 Table of Contents 130 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/137/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3727,7 +3712,7 @@ CSL 2025 Annual Report – Page 129 1 128 Table of Contents 130 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/137/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3750,7 +3735,7 @@ margins realised. Given the significant value of inventories, global distributio
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/137/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3760,7 +3745,7 @@ margins realised. Given the significant value of inventories, global distributio
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/137/
 - Supports claims: guidance, outlook
-- Unavailable reason: Guidance was not identified in extracted ASX document text.
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -3929,7 +3914,7 @@ CSL 2025 Annual Report – Page 137 1 136 Table of Contents 138 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/139/
 - Supports claims: segment revenue
-- Unavailable reason: Segment revenue was not identified in extracted ASX document text.
+- Unavailable reason: segment revenue was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3949,7 +3934,7 @@ CSL 2025 Annual Report – Page 137 1 136 Table of Contents 138 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/139/
 - Supports claims: plasma collections
-- Unavailable reason: Plasma collections was not identified in extracted ASX document text.
+- Unavailable reason: plasma collections was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3959,7 +3944,7 @@ CSL 2025 Annual Report – Page 137 1 136 Table of Contents 138 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/139/
 - Supports claims: margins
-- Unavailable reason: Margins was not identified in extracted ASX document text.
+- Unavailable reason: margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -3969,20 +3954,17 @@ CSL 2025 Annual Report – Page 137 1 136 Table of Contents 138 148 CSL 2025 Ann
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/139/
 - Supports claims: debt, liquidity
-- Unavailable reason: Debt was not identified in extracted ASX document text.
+- Unavailable reason: net debt was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
 - Section name: sector_metric_guidance
-- Status: `available`
+- Status: `unavailable`
 - Source type: `asx_fallback_document`
 - Filing date: `2024-12-31`
 - URL: https://investors.csl.com/annualreport/2025/139/
 - Supports claims: guidance, outlook
-
-```text
-expected to outweigh the public interest benefits of such communication. Report on the Remuneration Report Opinion on the Remuneration Report We have audited the Remuneration Report included in the Directors’ Report for the year ended 30 June 2025. In our opinion, the Remuneration Report of CSL Limited, for the year ended 30 June 2025, complies with section 300A of the Corporations Act 2001. Responsibilities The directors of the Company are responsible for the preparation and presentation of the Remuneration Report in accordance with section 300A of the Corporations Act 2001. Our responsibility is to express an opinion on the Remuneration Report, based on our audit conducted in accordance with Australian Auditing Standards. DELOITTE TOUCHE TOHMATSU Andrew Griffiths Genevra Cavallo Partner Partner Chartered Accountants Chartered Accountants Sydney, NSW Melbourne, VIC 18 August 2025 18 August 2025 137 CSL Limited Annual Report 2024/25 Made with FlippingBook RkJQdWJsaXNoZXIy
-```
+- Unavailable reason: guidance was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 

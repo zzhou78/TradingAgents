@@ -2,17 +2,17 @@
   "ticker": "CBA.AX",
   "trade_date": "2026-07-02",
   "evidence_as_of_date": "2026-07-02",
-  "run_executed_at": "2026-07-04T16:13:43+10:00",
+  "run_executed_at": "2026-07-05T09:40:28+10:00",
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
   "run_folder_name": "asx_2026-07-02_closed_loop",
-  "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-04T16:13:43+10:00",
+  "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T09:40:28+10:00",
   "authoritative_result_folder": true,
   "status": "pending",
   "workflow_status": "pending",
   "run_metadata": {
     "trade_date": "2026-07-02",
     "evidence_as_of_date": "2026-07-02",
-    "run_executed_at": "2026-07-04T16:13:43+10:00",
+    "run_executed_at": "2026-07-05T09:40:28+10:00",
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "market": "ASX",
     "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -23,7 +23,7 @@
       "MPL.AX",
       "WOW.AX"
     ],
-    "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-04T16:13:43+10:00",
+    "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T09:40:28+10:00",
     "authoritative_result_folder": true,
     "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "status": "pending",
@@ -1164,6 +1164,8 @@
         "required_output_sections": [
           "Tool Outputs Used",
           "Action Consistency Check",
+          "Setup Quality Assessment",
+          "Setup Thresholds",
           "Paper-study price framework",
           "FINAL TRANSACTION PROPOSAL",
           "Memory Update"

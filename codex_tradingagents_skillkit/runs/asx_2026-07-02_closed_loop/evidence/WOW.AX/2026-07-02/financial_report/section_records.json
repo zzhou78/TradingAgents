@@ -26,7 +26,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -56,7 +56,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -86,7 +86,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -115,7 +115,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -143,7 +143,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -172,7 +172,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -203,7 +203,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -232,7 +232,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -261,7 +261,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -290,7 +290,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -319,7 +319,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -347,7 +347,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -375,7 +375,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -406,7 +406,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -436,7 +436,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -447,7 +447,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -458,14 +458,30 @@
       "sales growth"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "context_only",
+    "association_score": 0,
+    "association_reason": "navigation or table-of-contents context is not metric evidence",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "comparable sales), by adjusting for non-recurring or uncontrollable factors which affect IFRS measures, to aid the user in understanding the Woolworths Group\u2019s performance. Consequently, non-IFRS measures are used by the directors and manag",
+    "comparison_basis": "unavailable",
+    "direction": "context_only",
+    "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:017",
@@ -492,8 +508,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "value_extracted",
+    "association_score": 100,
+    "association_reason": "label-value distance 4 tokens; unit bps compatible; competing labels nearby: margins, margins",
+    "clean_metric_value": "82",
+    "value_unit": "bps",
+    "value_context": "EBIT margin near 82 bps",
+    "period_reference": "not specified",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "adverse",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:018",
@@ -503,7 +535,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -520,8 +552,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "value_extracted",
+    "association_score": 100,
+    "association_reason": "label-value distance 1 tokens; unit $m compatible",
+    "clean_metric_value": "44",
+    "value_unit": "$m",
+    "value_context": "inventories near $44 m",
+    "period_reference": "not specified",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "Decrease in inventories of $44 million reflects lower inventory holdings in Australian Food, New Zealand Food and Australian B2B partially offset by higher inventory holdings in BIG W.",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "supportive",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:019",
@@ -531,7 +579,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -542,14 +590,30 @@
       "capex"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "metric_mentioned_only",
+    "association_score": 35,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "capex for energy efficiency and emissions reduction.",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:020",
@@ -559,7 +623,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -570,14 +634,30 @@
       "dividends"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "context_only",
+    "association_score": 0,
+    "association_reason": "navigation or table-of-contents context is not metric evidence",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "dividends 1 CENTS PER SHARE $M 2025 interim dividend paid on 23 April 2025 39 476 2025 final dividend declared on 27 August 2025 2,3 45 5504 1 All dividends are fully franked at a 30% tax rate. 2 Record date for determining entitlement to t",
+    "comparison_basis": "unavailable",
+    "direction": "context_only",
+    "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:021",
@@ -606,7 +686,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -638,7 +718,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -670,7 +750,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -699,7 +779,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -729,7 +809,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -758,7 +838,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -789,7 +869,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -818,7 +898,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -847,7 +927,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -876,7 +956,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -905,7 +985,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -933,7 +1013,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -961,7 +1041,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -992,7 +1072,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1022,7 +1102,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1033,7 +1113,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -1043,7 +1123,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -1052,8 +1132,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:037",
@@ -1082,8 +1178,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:038",
@@ -1093,7 +1205,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -1104,14 +1216,30 @@
       "inventory"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "context_only",
+    "association_score": 0,
+    "association_reason": "navigation or table-of-contents context is not metric evidence",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "Inventories 4,470 4,187 3,999 Other financial assets 6 91 23 22 Current tax receivable 61 \u2013 \u2013 Other current assets 308 221 251 7,304 6,791 6,964 Assets held for sale 80 200 352 Total current assets 7,384 6,991 7,316 Non-current assets Trade",
+    "comparison_basis": "unavailable",
+    "direction": "context_only",
+    "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:039",
@@ -1121,7 +1249,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -1132,14 +1260,30 @@
       "capex"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "context_only",
+    "association_score": 0,
+    "association_reason": "navigation or table-of-contents context is not metric evidence",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "capital expenditure 18 12 Contingent liabilities 18 13 Subsequent events 18 Directors\u2019 Declaration 19 Independent Auditor\u2019s Review Report 20 Half-Year Financial Report 2025 Table of Contents 1Woolworths Group Half-Year Financial Report 2025",
+    "comparison_basis": "unavailable",
+    "direction": "context_only",
+    "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:040",
@@ -1149,7 +1293,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -1160,14 +1304,30 @@
       "dividends"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "context_only",
+    "association_score": 0,
+    "association_reason": "navigation or table-of-contents context is not metric evidence",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "dividends 1 CENTS PER SHARE $M 2024 interim dividend paid on 11 April 2024 47 574 2024 final dividend paid on 30 September 2024 57 696 2024 special dividend paid on 30 September 2024 40 489 2025 interim dividend declared on 26 February 2025",
+    "comparison_basis": "unavailable",
+    "direction": "context_only",
+    "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:041",
@@ -1198,7 +1358,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1230,7 +1390,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1262,7 +1422,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1293,7 +1453,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1323,7 +1483,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1354,7 +1514,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1387,7 +1547,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1418,7 +1578,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1449,7 +1609,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1480,7 +1640,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1511,7 +1671,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1541,7 +1701,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1571,7 +1731,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1604,7 +1764,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1636,7 +1796,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1647,7 +1807,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -1657,7 +1817,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -1666,8 +1826,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:057",
@@ -1696,8 +1872,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:058",
@@ -1707,7 +1899,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -1717,7 +1909,7 @@
     "supports_claims": [
       "inventory"
     ],
-    "evidence_gap": "Inventory was not identified in extracted ASX document text.",
+    "evidence_gap": "inventory was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -1726,8 +1918,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "inventory was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "inventory was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:059",
@@ -1737,7 +1945,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -1747,7 +1955,7 @@
     "supports_claims": [
       "capex"
     ],
-    "evidence_gap": "Capex was not identified in extracted ASX document text.",
+    "evidence_gap": "capex was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -1756,8 +1964,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "capex was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "capex was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:060",
@@ -1767,7 +1991,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -1777,7 +2001,7 @@
     "supports_claims": [
       "dividends"
     ],
-    "evidence_gap": "Dividends was not identified in extracted ASX document text.",
+    "evidence_gap": "dividend was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -1786,8 +2010,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "dividend was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "dividend was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:061",
@@ -1818,7 +2058,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1850,7 +2090,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1882,7 +2122,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1913,7 +2153,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1943,7 +2183,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1974,7 +2214,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2007,7 +2247,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2038,7 +2278,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2069,7 +2309,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2100,7 +2340,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2131,7 +2371,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2161,7 +2401,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2191,7 +2431,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2224,7 +2464,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2256,7 +2496,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2267,7 +2507,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2277,7 +2517,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2286,8 +2526,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:077",
@@ -2316,8 +2572,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:078",
@@ -2327,7 +2599,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2337,7 +2609,7 @@
     "supports_claims": [
       "inventory"
     ],
-    "evidence_gap": "Inventory was not identified in extracted ASX document text.",
+    "evidence_gap": "inventory was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2346,8 +2618,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "inventory was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "inventory was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:079",
@@ -2357,7 +2645,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2367,7 +2655,7 @@
     "supports_claims": [
       "capex"
     ],
-    "evidence_gap": "Capex was not identified in extracted ASX document text.",
+    "evidence_gap": "capex was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2376,8 +2664,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "capex was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "capex was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:080",
@@ -2387,7 +2691,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2397,7 +2701,7 @@
     "supports_claims": [
       "dividends"
     ],
-    "evidence_gap": "Dividends was not identified in extracted ASX document text.",
+    "evidence_gap": "dividend was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2406,8 +2710,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "dividend was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "dividend was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:081",
@@ -2438,7 +2758,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2470,7 +2790,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2502,7 +2822,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2533,7 +2853,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2563,7 +2883,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2594,7 +2914,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2627,7 +2947,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2658,7 +2978,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2689,7 +3009,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2720,7 +3040,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2751,7 +3071,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2781,7 +3101,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2811,7 +3131,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2844,7 +3164,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2876,7 +3196,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2887,7 +3207,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2897,7 +3217,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2906,8 +3226,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:097",
@@ -2936,8 +3272,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:098",
@@ -2947,7 +3299,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2957,7 +3309,7 @@
     "supports_claims": [
       "inventory"
     ],
-    "evidence_gap": "Inventory was not identified in extracted ASX document text.",
+    "evidence_gap": "inventory was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2966,8 +3318,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "inventory was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "inventory was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:099",
@@ -2977,7 +3345,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -2987,7 +3355,7 @@
     "supports_claims": [
       "capex"
     ],
-    "evidence_gap": "Capex was not identified in extracted ASX document text.",
+    "evidence_gap": "capex was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -2996,8 +3364,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "capex was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "capex was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:100",
@@ -3007,7 +3391,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -3017,7 +3401,7 @@
     "supports_claims": [
       "dividends"
     ],
-    "evidence_gap": "Dividends was not identified in extracted ASX document text.",
+    "evidence_gap": "dividend was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -3026,8 +3410,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "dividend was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "dividend was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:101",
@@ -3058,7 +3458,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3090,7 +3490,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3122,7 +3522,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3153,7 +3553,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3183,7 +3583,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3214,7 +3614,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3247,7 +3647,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3278,7 +3678,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3309,7 +3709,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3340,7 +3740,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3371,7 +3771,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3401,7 +3801,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3431,7 +3831,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3464,7 +3864,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3496,7 +3896,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3507,7 +3907,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -3517,7 +3917,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -3526,8 +3926,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:117",
@@ -3556,8 +3972,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:118",
@@ -3567,7 +3999,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -3577,7 +4009,7 @@
     "supports_claims": [
       "inventory"
     ],
-    "evidence_gap": "Inventory was not identified in extracted ASX document text.",
+    "evidence_gap": "inventory was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -3586,8 +4018,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "inventory was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "inventory was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:119",
@@ -3597,7 +4045,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -3607,7 +4055,7 @@
     "supports_claims": [
       "capex"
     ],
-    "evidence_gap": "Capex was not identified in extracted ASX document text.",
+    "evidence_gap": "capex was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -3616,8 +4064,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "capex was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "capex was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:120",
@@ -3627,7 +4091,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -3637,7 +4101,7 @@
     "supports_claims": [
       "dividends"
     ],
-    "evidence_gap": "Dividends was not identified in extracted ASX document text.",
+    "evidence_gap": "dividend was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -3646,8 +4110,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "dividend was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "dividend was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:121",
@@ -3678,7 +4158,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3710,7 +4190,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3742,7 +4222,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3773,7 +4253,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3803,7 +4283,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3834,7 +4314,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3867,7 +4347,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3898,7 +4378,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3929,7 +4409,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3960,7 +4440,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3991,7 +4471,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4021,7 +4501,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4051,7 +4531,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4084,7 +4564,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4116,7 +4596,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4127,7 +4607,7 @@
     "section_name": "sector_metric_sales_growth",
     "section_kind": "sector_metric",
     "metric_name": "sales_growth",
-    "metric_label": "Sales growth",
+    "metric_label": "sales growth",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -4137,7 +4617,7 @@
     "supports_claims": [
       "sales growth"
     ],
-    "evidence_gap": "Sales growth was not identified in extracted ASX document text.",
+    "evidence_gap": "sales growth was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -4146,8 +4626,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "sales growth was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "sales growth was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:137",
@@ -4176,8 +4672,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "EBIT margin was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:138",
@@ -4187,7 +4699,7 @@
     "section_name": "sector_metric_inventory",
     "section_kind": "sector_metric",
     "metric_name": "inventory",
-    "metric_label": "Inventory",
+    "metric_label": "inventory",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -4197,7 +4709,7 @@
     "supports_claims": [
       "inventory"
     ],
-    "evidence_gap": "Inventory was not identified in extracted ASX document text.",
+    "evidence_gap": "inventory was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -4206,8 +4718,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "inventory was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "inventory was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:139",
@@ -4217,7 +4745,7 @@
     "section_name": "sector_metric_capex",
     "section_kind": "sector_metric",
     "metric_name": "capex",
-    "metric_label": "Capex",
+    "metric_label": "capex",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -4227,7 +4755,7 @@
     "supports_claims": [
       "capex"
     ],
-    "evidence_gap": "Capex was not identified in extracted ASX document text.",
+    "evidence_gap": "capex was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -4236,8 +4764,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "capex was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "capex was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:WOW.AX:2026-07-02:140",
@@ -4247,7 +4791,7 @@
     "section_name": "sector_metric_dividends",
     "section_kind": "sector_metric",
     "metric_name": "dividends",
-    "metric_label": "Dividends",
+    "metric_label": "dividend",
     "sector": "retailers",
     "status": "unavailable",
     "filing_date": "2025-12-31",
@@ -4257,7 +4801,7 @@
     "supports_claims": [
       "dividends"
     ],
-    "evidence_gap": "Dividends was not identified in extracted ASX document text.",
+    "evidence_gap": "dividend was not identified in extracted ASX document text.",
     "confidence": "low",
     "limitations": [
       "section_unavailable"
@@ -4266,7 +4810,23 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:57+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:43:39+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "dividend was not identified in extracted ASX document text.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "dividend was not identified in extracted ASX document text.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   }
 ]

@@ -26,7 +26,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -56,7 +56,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -86,7 +86,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -115,7 +115,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -145,7 +145,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -174,7 +174,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -205,7 +205,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -234,7 +234,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -263,7 +263,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -292,7 +292,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -321,7 +321,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -349,7 +349,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -377,7 +377,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -408,7 +408,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -438,7 +438,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -449,7 +449,7 @@
     "section_name": "sector_metric_premium_growth",
     "section_kind": "sector_metric",
     "metric_name": "premium_growth",
-    "metric_label": "Premium growth",
+    "metric_label": "premium growth",
     "sector": "health_insurers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -460,14 +460,30 @@
       "premium growth"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "metric_mentioned_only",
+    "association_score": 35,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "premiums, or products or services from our health and wellbeing partners.",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:017",
@@ -477,7 +493,7 @@
     "section_name": "sector_metric_claims_ratio",
     "section_kind": "sector_metric",
     "metric_name": "claims_ratio",
-    "metric_label": "Claims ratio",
+    "metric_label": "claims ratio",
     "sector": "health_insurers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -494,8 +510,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "value_extracted",
+    "association_score": 87,
+    "association_reason": "label-value distance 9 tokens; unit % compatible",
+    "clean_metric_value": "3.3",
+    "value_unit": "%",
+    "value_context": "claims expense near 3.3%",
+    "period_reference": "not specified",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% Gross profit 1,396.4 1,307.",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "adverse",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:018",
@@ -505,13 +537,13 @@
     "section_name": "sector_metric_membership",
     "section_kind": "sector_metric",
     "metric_name": "membership",
-    "metric_label": "Membership",
+    "metric_label": "membership",
     "sector": "health_insurers",
     "status": "available",
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.medibank.com.au/content/dam/retail/about-assets/pdfs/investor-centre/annual-reports/Medibank_AnnualReport2025.pdf",
-    "excerpt": "policyholder growth +10.5k (+3.1%) net non-resident policy unit growth Healthcare 52% of Medibank policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m investment in mental health over next 5 years 177k hospital bed days saved through homecare programs delivered by Amplar Health 4.3m health interactions delivered by Amplar Health network 2 Medibank People & community 8.1 \u2044 10 employee engagement $2.8m community investment Place to work +38 Products and services +39 employee advocacy (eNPS) 3,956 employees including 964 health professionals Financial $618.7m (+8.5%) Group underlying net profit after tax 10.2 cps final ordinary dividend fully franked 26.5% resident policyholder market share $76.7m (+27.0%) Medibank Health segment profit $741.5m (+7.1%) Health Insurance operating profit c. $10m in productivity savings $207.8m (+14.1%) net investment income All data is presented on a statutory basis as at 30 June 2025. Some figures are subject to rounding. Annual Report 2025 3 Chair\u2019s message Mike Wilkins AO Medibank\u2019s commitment to our customers has been demonstrated in the strength of our performance this year. Importantly, Medibank\u2019s leadership in further driving Australia\u2019s health transition is supporting system change while positioning the company for sustainable long-term growth. The Australian health insurance market remained buoyant with customer numbers at record levels despite the ongoing impact of cost-of-living pressures on many households. We saw continued growth in both the resident and non- resident health insurance businesses with Medibank's Health Insurance operating profit up 7.1% to $741.5 million. In Medibank Health, segment profit was up 27% to $76.7 million. The increasing contribution of this business, now at around 10% of earnings, is delivering benefits for both our customers and the community, as well as further diversifying our business for the long-term benefit of our shareholders. Medibank remains a resilient business with a strong capital position and the Board determined shareholders would receive a fully franked final ordinary dividend of 10.2 cents per share, bringing the total FY25 fully franked ordinary dividend to 18.0 cents per share, up 8.4% on FY24. The Board continued to play an active role in the oversight of the Medibank Group. Throughout the year we maintained our focus on performance, working alongside the executive team on the company\u2019s strategy and its 2030 vision. A feature of our strategy is our growing focus on wellbeing and on primary care, which also centres on system change as we look to support GPs, nurses and allied health professionals within multidisciplinary teams to deliver proactive and coordinated care in the community, and also to champion a focus on prevention. We are proud of Medibank\u2019s growing role in driving change across the health system \u2013 not only for the benefit of our customers and patients, but also for the wider community. The Board has seen personalised care models in action, with on-site tours of the Amplar Health Home Hospital service in Adelaide and Adeney Private Hospital in Melbourne. As well, directors continued to participate in regular customer connection sessions and visits to retail stores. At the same time, we have deepened our relationships with industry stakeholders and community partners. This includes providing targeted funding and collaborative support to help our hospital partners innovate and drive lasting change across the health system. During the year the Board supervised key risk and regulatory initiatives designed to enhance Medibank\u2019s resilience. This included adopting the Australian Prudential Regulation Authority\u2019s new operational risk management standard, implementing the Financial Accountability Regime and overseeing an update to our risk culture framework. Board succession planning and capability development are essential for leadership continuity, strong governance and the ability to take on future opportunities and challenges. To support this focus, the Board participated in a wide- ranging program of professional development and business immersion activities throughout the year. 4 Medibank We remain committed to advancing diversity and inclusion across the business. We aim to maintain at least 40% female representation in the Group and senior executive population and on our Board. While we narrowly missed our objective for the Board in FY25, we exceeded the target across the Group and senior executive team. At our Annual General Meeting in November, we will farewell long standing directors, Linda Nicholls AO and David Fagan, who will retire at the conclusion of that meeting. The Board is recommending shareholders vote for the election of Jacqueline Hey and Dr Lisa McIntyre, two highly credentialed and experienced directors who bring a wealth of experience across the financial services, technology and health sectors. We continue to address our environmental, social and governance commitments, including preparing for new sustainability reporting requirements next year. In FY25 we achieved the target for net zero emissions for our Scope 1 and 2 operations that we set in FY21. Given the changes in our business since this target was set, we have now developed an updated baseline for greenhouse gas emissions and are reassessing our targets and pathway to account for this. The 2025 financial year was another successful year for Medibank. I extend my sincere thanks to my fellow directors for their contribution during the year, and on behalf of the Board, acknowledge the leadership of David Koczkar and the executive team. Most importantly, I thank the entire Medibank team for their steadfast commitment to our shared purpose of Better Health for Better Lives. \u201c We are proud of Medibank\u2019s growing role in driving change across the health system \u2013 not only for the benefit of our customers and patients, but also for the wider community.\u201d \u201c The Board",
+    "excerpt": "policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m investment in mental health over next 5 years 177k hospital bed days saved through homecare programs delivered by Amplar Health 4.3m health interactions delivered by Amplar Health network 2 Medibank People & community 8.1 \u2044 10 employee engagement $2.8m community investment Place to work +38 Products and services +39 employee advocacy (eNPS) 3,956 employees including 964 health professionals Financial $618.7m (+8.5%) Group underlying net profit after tax 10.2 cps final ordinary dividend fully franked 26.5% resident policyholder market share $76.7m (+27.0%) Medibank Health segment profit $741.5m (+7.1%) Health Insurance operating profit c. $10m in productivity savings $207.8m (+14.1%) net investment income All data is presented on a statutory basis as at 30 June 2025. Some figures are subject to rounding. Annual Report 2025 3 Chair\u2019s message Mike Wilkins AO Medibank\u2019s commitment to our customers has been demonstrated in the strength of our performance this year. Importantly, Medibank\u2019s leadership in further driving Australia\u2019s health transition is supporting system change while positioning the company for sustainable long-term growth. The Australian health insurance market remained buoyant with customer numbers at record levels despite the ongoing impact of cost-of-living pressures on many households. We saw continued growth in both the resident and non- resident health insurance businesses with Medibank's Health Insurance operating profit up 7.1% to $741.5 million. In Medibank Health, segment profit was up 27% to $76.7 million. The increasing contribution of this business, now at around 10% of earnings, is delivering benefits for both our customers and the community, as well as further diversifying our business for the long-term benefit of our shareholders. Medibank remains a resilient business with a strong capital position and the Board determined shareholders would receive a fully franked final ordinary dividend of 10.2 cents per share, bringing the total FY25 fully franked ordinary dividend to 18.0 cents per share, up 8.4% on FY24. The Board continued to play an active role in the oversight of the Medibank Group. Throughout the year we maintained our focus on performance, working alongside the executive team on the company\u2019s strategy and its 2030 vision. A feature of our strategy is our growing focus on wellbeing and on primary care, which also centres on system change as we look to support GPs, nurses and allied health professionals within multidisciplinary teams to deliver proactive and coordinated care in the community, and also to champion a focus on prevention. We are proud of Medibank\u2019s growing role in driving change across the health system \u2013 not only for the benefit of our customers and patients, but also for the wider community. The Board has seen personalised care models in action, with on-site tours of the Amplar Health Home Hospital service in Adelaide and Adeney Private Hospital in Melbourne. As well, directors continued to participate in regular customer connection sessions and visits to retail stores. At the same time, we have deepened our relationships with industry stakeholders and community partners. This includes providing targeted funding and collaborative support to help our hospital partners innovate and drive lasting change across the health system. During the year the Board supervised key risk and regulatory initiatives designed to enhance Medibank\u2019s resilience. This included adopting the Australian Prudential Regulation Authority\u2019s new operational risk management standard, implementing the Financial Accountability Regime and overseeing an update to our risk culture framework. Board succession planning and capability development are essential for leadership continuity, strong governance and the ability to take on future opportunities and challenges. To support this focus, the Board participated in a wide- ranging program of professional development and business immersion activities throughout the year. 4 Medibank We remain committed to advancing diversity and inclusion across the business. We aim to maintain at least 40% female representation in the Group and senior executive population and on our Board. While we narrowly missed our objective for the Board in FY25, we exceeded the target across the Group and senior executive team. At our Annual General Meeting in November, we will farewell long standing directors, Linda Nicholls AO and David Fagan, who will retire at the conclusion of that meeting. The Board is recommending shareholders vote for the election of Jacqueline Hey and Dr Lisa McIntyre, two highly credentialed and experienced directors who bring a wealth of experience across the financial services, technology and health sectors. We continue to address our environmental, social and governance commitments, including preparing for new sustainability reporting requirements next year. In FY25 we achieved the target for net zero emissions for our Scope 1 and 2 operations that we set in FY21. Given the changes in our business since this target was set, we have now developed an updated baseline for greenhouse gas emissions and are reassessing our targets and pathway to account for this. The 2025 financial year was another successful year for Medibank. I extend my sincere thanks to my fellow directors for their contribution during the year, and on behalf of the Board, acknowledge the leadership of David Koczkar and the executive team. Most importantly, I thank the entire Medibank team for their steadfast commitment to our shared purpose of Better Health for Better Lives. \u201c We are proud of Medibank\u2019s growing role in driving change across the health system \u2013 not only for the benefit of our customers and patients, but also for the wider community.\u201d \u201c The Board continued to play an active role in the oversight of the Medibank Group.\u201d Annual Report 2025 5",
     "supports_claims": [
       "membership"
     ],
@@ -522,8 +554,24 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "value_extracted",
+    "association_score": 86,
+    "association_reason": "label-value distance 7 tokens; unit % compatible",
+    "clean_metric_value": "13",
+    "value_unit": "%",
+    "value_context": "policyholders near 13%",
+    "period_reference": "not specified",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m investment in mental health over next 5 years 177k hospital bed days saved through homecare programs delivered by Amplar Health 4.3m ",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:019",
@@ -533,7 +581,7 @@
     "section_name": "sector_metric_capital_adequacy",
     "section_kind": "sector_metric",
     "metric_name": "capital_adequacy",
-    "metric_label": "Capital adequacy",
+    "metric_label": "capital adequacy",
     "sector": "health_insurers",
     "status": "available",
     "filing_date": "2025-12-31",
@@ -550,7 +598,23 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-04T16:16:15+10:00",
-    "final_financial_judgment": "pending_codex_interpretation"
+    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "metric_value_status": "value_extracted",
+    "association_score": 96,
+    "association_reason": "label-value distance 2 tokens; unit $m compatible",
+    "clean_metric_value": "250",
+    "value_unit": "$m",
+    "value_context": "capital adequacy near $250 m",
+    "period_reference": "FY2023",
+    "comparison_reference": "FY2022",
+    "supporting_sentence": "capital adequacy requirement of $250 million for Medibank, with effect from 1 July 2023, following a review of the 2022 cybercrime event.",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "source_page": "unavailable"
   }
 ]

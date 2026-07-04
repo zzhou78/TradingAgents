@@ -18,10 +18,10 @@ Interpretation: structured fundamentals provide ratio and statement context only
 
 ## Sector-Specific Metrics
 - ASX sector identified by collector: health_insurers.
-- Premium growth: available via financial:MPL.AX:2026-07-02:016; confidence medium.
-- Claims ratio: available via financial:MPL.AX:2026-07-02:017; confidence medium.
-- Membership: available via financial:MPL.AX:2026-07-02:018; confidence medium.
-- Capital adequacy: available via financial:MPL.AX:2026-07-02:019; confidence medium.
+- premium growth: available via financial:MPL.AX:2026-07-02:016; confidence low.
+- claims ratio: available via financial:MPL.AX:2026-07-02:017; confidence medium.
+- membership: available via financial:MPL.AX:2026-07-02:018; confidence medium.
+- capital adequacy: available via financial:MPL.AX:2026-07-02:019; confidence medium.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

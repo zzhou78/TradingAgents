@@ -191,7 +191,7 @@ risk framework, together with a strong culture, empowers our people to take the 
 - Filing date: `2025-12-31`
 - URL: https://www.commbank.com.au/about-us/investors/annual-reports/annual-report-2025.html
 - Supports claims: NIM, margin quality
-- Unavailable reason: NIM was not identified in extracted ASX document text.
+- Unavailable reason: net interest margin was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -211,7 +211,7 @@ risk framework, together with a strong culture, empowers our people to take the 
 - Filing date: `2025-12-31`
 - URL: https://www.commbank.com.au/about-us/investors/annual-reports/annual-report-2025.html
 - Supports claims: loan growth
-- Unavailable reason: Loan growth was not identified in extracted ASX document text.
+- Unavailable reason: loan growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -221,7 +221,7 @@ risk framework, together with a strong culture, empowers our people to take the 
 - Filing date: `2025-12-31`
 - URL: https://www.commbank.com.au/about-us/investors/annual-reports/annual-report-2025.html
 - Supports claims: arrears, credit quality
-- Unavailable reason: Arrears was not identified in extracted ASX document text.
+- Unavailable reason: arrears was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -231,7 +231,7 @@ risk framework, together with a strong culture, empowers our people to take the 
 - Filing date: `2025-12-31`
 - URL: https://www.commbank.com.au/about-us/investors/annual-reports/annual-report-2025.html
 - Supports claims: impairment, credit quality
-- Unavailable reason: Impairment was not identified in extracted ASX document text.
+- Unavailable reason: impairment was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -241,7 +241,7 @@ risk framework, together with a strong culture, empowers our people to take the 
 - Filing date: `2025-12-31`
 - URL: https://www.commbank.com.au/about-us/investors/annual-reports/annual-report-2025.html
 - Supports claims: dividend
-- Unavailable reason: Dividend was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 

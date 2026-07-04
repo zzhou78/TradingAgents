@@ -9,6 +9,24 @@ except ModuleNotFoundError:
 
 TOOL_NAME = "financial_document_evidence"
 TOOL_VERSION = "0.1.0"
+ASX_METRIC_AUDIT_FIELDS = [
+    "metric_value_status",
+    "association_score",
+    "association_reason",
+    "clean_metric_value",
+    "value_unit",
+    "value_context",
+    "period_reference",
+    "comparison_reference",
+    "supporting_sentence",
+    "comparison_basis",
+    "direction",
+    "confidence_reason",
+    "table_title",
+    "row_label",
+    "column_label",
+    "source_page",
+]
 
 
 def _filing_date(source: dict[str, Any], section: dict[str, Any] | None = None) -> str:
@@ -72,7 +90,7 @@ def _record(
         else ""
     )
     limitations = _limitations(status, section_kind, source)
-    return {
+    record = {
         "evidence_id": evidence_id,
         "ticker": ticker,
         "trade_date": trade_date,
@@ -95,6 +113,10 @@ def _record(
         "retrieval_time": retrieval_time,
         "final_financial_judgment": "pending_codex_interpretation",
     }
+    for field in ASX_METRIC_AUDIT_FIELDS:
+        if field in section:
+            record[field] = section[field]
+    return record
 
 
 def _source_unavailable_record(

@@ -30,7 +30,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for MPL.AX
-# Data retrieved on: 2026-07-04 16:16:07
+# Data retrieved on: 2026-07-05 09:42:47
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,25000,78420.0,,Purchase at price 3.14 per share.,Everingham (Peter Dobie),Independent Non-Executive Director,,2026-02-27,D

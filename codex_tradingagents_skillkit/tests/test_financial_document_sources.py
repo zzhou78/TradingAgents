@@ -432,6 +432,231 @@ def test_asx_bank_metrics_are_extracted_for_cba():
     assert statuses["roe"] == "available"
 
 
+def test_metric_value_association_prefers_nearest_compatible_label():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Net interest margin 9 bps on FY24. Operating income increased 5% on FY24.",
+        "net_interest_margin",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "9"
+    assert result["value_unit"] == "bps"
+    assert result["association_score"] >= 80
+
+
+def test_metric_value_rejects_competing_label_value():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    nim = asx._extract_metric_value_from_text(
+        "Net interest margin commentary remained stable. Operating income increased 5% on FY24.",
+        "net_interest_margin",
+    )
+    cet1 = asx._extract_metric_value_from_text(
+        "CET1 capital remained strong. Operating income increased 5% on FY24.",
+        "cet1",
+    )
+
+    assert nim["metric_value_status"] in {"metric_mentioned_only", "direction_extracted"}
+    assert nim["clean_metric_value"] == "unavailable"
+    assert "competing" in nim["association_reason"].lower()
+    assert cet1["clean_metric_value"] == "unavailable"
+
+
+def test_metric_value_downgrades_table_of_contents_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Contents 1 Overview 2 Operating review 3 Guidance 4 Directors report 5 Financial statements",
+        "guidance",
+    )
+
+    assert result["metric_value_status"] == "context_only"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["association_score"] < 50
+
+
+def test_metric_mentioned_only_keeps_clean_metric_value_unavailable():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "The report discusses dividends and capital management priorities.",
+        "dividends",
+    )
+
+    assert result["metric_value_status"] == "metric_mentioned_only"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_table_row_value_preserves_row_column_period_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Net interest margin | FY25 | 2.05% | FY24 | 1.96%",
+        "net_interest_margin",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "2.05"
+    assert result["value_unit"] == "%"
+    assert result["row_label"] == "Net interest margin"
+    assert result["column_label"] == "FY25"
+    assert result["period_reference"] == "FY25"
+    assert result["comparison_reference"] == "FY24"
+
+
+def test_low_association_score_does_not_populate_clean_metric_value():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Selling and marketing expenses were 17.4% of revenue. Segment revenue discussion follows.",
+        "segment_revenue",
+    )
+
+    assert result["association_score"] < 80
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_nim_and_cet1_do_not_capture_operating_income_percentage():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "CBA.AX",
+        "Annual report operating and financial review cash flow statement. "
+        "Net interest margin 9 bps on FY24. CET1 12.3% at period end. "
+        "Operating income increased 5% on FY24.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["net_interest_margin"]["clean_metric_value"] == "9"
+    assert sections["net_interest_margin"]["value_unit"] == "bps"
+    assert sections["cet1"]["clean_metric_value"] == "12.3"
+    assert sections["cet1"]["value_unit"] == "%"
+
+
+def test_csl_segment_revenue_and_guidance_reject_unrelated_percentages_and_toc_numbers():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "CSL.AX",
+        "Contents 1 Overview 2 Segment revenue 3 Guidance 4 Financial statements. "
+        "Selling and marketing expenses were 17.4% of revenue. "
+        "Segment revenue by division is discussed in the operating review. "
+        "Guidance outlook is subject to currency and regulatory conditions.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["segment_revenue"]["clean_metric_value"] == "unavailable"
+    assert sections["segment_revenue"]["metric_value_status"] != "value_extracted"
+    assert sections["guidance"]["clean_metric_value"] == "unavailable"
+    assert sections["guidance"]["metric_value_status"] in {"metric_mentioned_only", "context_only"}
+
+
+def test_wow_dividends_reject_footnote_marker_and_ebit_margin_is_preserved():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "WOW.AX",
+        "Annual report operating and financial review cash flow statement. "
+        "Dividend 1 cents footnote marker for prior period table note. "
+        "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["dividends"]["clean_metric_value"] == "unavailable"
+    assert sections["dividends"]["metric_value_status"] != "value_extracted"
+    assert sections["ebit_margin"]["clean_metric_value"] == "82"
+    assert sections["ebit_margin"]["value_unit"] == "bps"
+    assert sections["ebit_margin"]["direction"] == "adverse"
+
+
+def test_mpl_claims_ratio_and_capital_adequacy_preserve_context():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "MPL.AX",
+        "Annual report operating and financial review cash flow statement. "
+        "Claims ratio increased 3.3% compared with the prior period. "
+        "Capital adequacy included a $250m capital buffer above regulatory requirements.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["claims_ratio"]["clean_metric_value"] == "3.3"
+    assert sections["claims_ratio"]["direction"] == "adverse"
+    assert sections["capital_adequacy"]["clean_metric_value"] == "250"
+    assert sections["capital_adequacy"]["value_unit"] == "$m"
+    assert "capital buffer" in sections["capital_adequacy"]["supporting_sentence"].lower()
+
+
+def test_wow_ebit_margin_prefers_82_bps_change_over_later_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "EBIT margin decreasing by a normalised 82 bps to 5.4%. "
+        "In H2, EBIT declined by a normalised 8.1% with an EBIT margin of 5.5%.",
+        "ebit_margin",
+    )
+
+    assert result["clean_metric_value"] == "82"
+    assert result["value_unit"] == "bps"
+    assert result["direction"] == "adverse"
+
+
+def test_mpl_claims_ratio_prefers_claims_expense_change_over_later_percentages():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% "
+        "Gross profit 1,396.4 1,307.2 6.8% Management expenses 6.5%",
+        "claims_ratio",
+    )
+
+    assert result["clean_metric_value"] == "3.3"
+    assert result["value_unit"] == "%"
+    assert result["direction"] == "adverse"
+
+
+def test_mpl_claims_ratio_prefers_primary_row_over_later_non_resident_sentence():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% "
+        "Gross profit 1,396.4 1,307.2 6.8%. "
+        "Non-resident net claims expense increased by 8.8% to $190.6 million.",
+        "claims_ratio",
+    )
+
+    assert result["clean_metric_value"] == "3.3"
+    assert result["value_unit"] == "%"
+    assert "8.8" not in result["value_context"]
+
+
 def test_asx_healthcare_metrics_are_extracted_for_csl():
     module = _load_module()
     packet = _asx_sector_packet(

@@ -31,214 +31,214 @@
 | Liquidity / cash-debt evidence | financial:CSL.AX:2026-07-02:007 ASX document | cash_debt_gearing | 2025-12-31 | medium | none |
 | Segment/product evidence | financial:CSL.AX:2026-07-02:008 ASX document | segment_product_performance | 2025-12-31 | medium | none |
 | Cash-flow evidence | financial:CSL.AX:2026-07-02:109 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:016 ASX section record | sector_metric_segment_revenue | 2025-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
-| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:017 ASX section record | sector_metric_r_and_d | 2025-12-31 | medium | none |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:018 ASX section record | sector_metric_plasma_collections | 2025-12-31 | medium | none |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:019 ASX section record | sector_metric_margins | 2025-12-31 | medium | none |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:020 ASX section record | sector_metric_debt | 2025-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:021 ASX section record | sector_metric_guidance | 2025-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:037 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
-| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:038 ASX section record | sector_metric_r_and_d | 2024-12-31 | medium | none |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:039 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:040 ASX section record | sector_metric_margins | 2024-12-31 | medium | none |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:041 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:042 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:058 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:016 ASX section record | sector_metric_segment_revenue | 2025-12-31 | low | segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:017 ASX section record | sector_metric_r_and_d | 2025-12-31 | low | none |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:018 ASX section record | sector_metric_plasma_collections | 2025-12-31 | low | none |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:019 ASX section record | sector_metric_margins | 2025-12-31 | low | none |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:020 ASX section record | sector_metric_debt | 2025-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:021 ASX section record | sector_metric_guidance | 2025-12-31 | low | none |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:037 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:038 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | none |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:039 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:040 ASX section record | sector_metric_margins | 2024-12-31 | low | none |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:041 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:042 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:058 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:059 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:060 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:061 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:062 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:063 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:079 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:060 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:061 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:062 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:063 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:079 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:080 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:081 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:082 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:083 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:084 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:100 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:081 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:082 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:083 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:084 ASX section record | sector_metric_guidance | 2024-12-31 | low | none |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:100 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:101 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:102 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:103 ASX section record | sector_metric_margins | 2024-12-31 | medium | none |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:104 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:105 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:121 ASX section record | sector_metric_segment_revenue | 2025-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:102 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:103 ASX section record | sector_metric_margins | 2024-12-31 | low | none |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:104 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:105 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:121 ASX section record | sector_metric_segment_revenue | 2025-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:122 ASX section record | sector_metric_r_and_d | 2025-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:123 ASX section record | sector_metric_plasma_collections | 2025-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:124 ASX section record | sector_metric_margins | 2025-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:125 ASX section record | sector_metric_debt | 2025-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:126 ASX section record | sector_metric_guidance | 2025-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:142 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:123 ASX section record | sector_metric_plasma_collections | 2025-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:124 ASX section record | sector_metric_margins | 2025-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:125 ASX section record | sector_metric_debt | 2025-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:126 ASX section record | sector_metric_guidance | 2025-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:142 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:143 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:144 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:145 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:146 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:147 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:163 ASX section record | sector_metric_segment_revenue | 2024-12-31 | medium | none |
-| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:164 ASX section record | sector_metric_r_and_d | 2024-12-31 | medium | none |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:165 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:166 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:167 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:168 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:184 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:144 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:145 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:146 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:147 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:163 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | none |
+| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:164 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | none |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:165 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:166 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:167 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:168 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:184 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:185 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:186 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:187 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:188 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:189 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:205 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
-| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:206 ASX section record | sector_metric_r_and_d | 2024-12-31 | medium | none |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:207 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:208 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:209 ASX section record | sector_metric_debt | 2024-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:210 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:226 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:186 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:187 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:188 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:189 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:205 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: R&D | financial:CSL.AX:2026-07-02:206 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | none |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:207 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:208 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:209 ASX section record | sector_metric_debt | 2024-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:210 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:226 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:227 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:228 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:229 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:230 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:231 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:247 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:228 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:229 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:230 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:231 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:247 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:248 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:249 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:250 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:251 ASX section record | sector_metric_debt | 2024-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:252 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:268 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:249 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:250 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:251 ASX section record | sector_metric_debt | 2024-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:252 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:268 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:269 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:270 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:271 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:272 ASX section record | sector_metric_debt | 2024-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:273 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:289 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:270 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:271 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:272 ASX section record | sector_metric_debt | 2024-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:273 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:289 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:290 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:291 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:292 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:293 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:294 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:310 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:291 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:292 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:293 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:294 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:310 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:311 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:312 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:313 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:314 ASX section record | sector_metric_debt | 2024-12-31 | medium | none |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:315 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:331 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:312 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:313 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:314 ASX section record | sector_metric_debt | 2024-12-31 | low | none |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:315 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:331 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:332 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:333 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:334 ASX section record | sector_metric_margins | 2024-12-31 | medium | none |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:335 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:336 ASX section record | sector_metric_guidance | 2024-12-31 | low | Guidance was not identified in extracted ASX document text. |
-| ASX sector metric: Segment revenue | financial:CSL.AX:2026-07-02:352 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | Segment revenue was not identified in extracted ASX document text. |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:333 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:334 ASX section record | sector_metric_margins | 2024-12-31 | low | none |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:335 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:336 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
+| ASX sector metric: segment revenue | financial:CSL.AX:2026-07-02:352 ASX section record | sector_metric_segment_revenue | 2024-12-31 | low | segment revenue was not identified in extracted ASX document text. |
 | ASX sector metric: R&D | financial:CSL.AX:2026-07-02:353 ASX section record | sector_metric_r_and_d | 2024-12-31 | low | R&D was not identified in extracted ASX document text. |
-| ASX sector metric: Plasma collections | financial:CSL.AX:2026-07-02:354 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | Plasma collections was not identified in extracted ASX document text. |
-| ASX sector metric: Margins | financial:CSL.AX:2026-07-02:355 ASX section record | sector_metric_margins | 2024-12-31 | low | Margins was not identified in extracted ASX document text. |
-| ASX sector metric: Debt | financial:CSL.AX:2026-07-02:356 ASX section record | sector_metric_debt | 2024-12-31 | low | Debt was not identified in extracted ASX document text. |
-| ASX sector metric: Guidance | financial:CSL.AX:2026-07-02:357 ASX section record | sector_metric_guidance | 2024-12-31 | medium | none |
+| ASX sector metric: plasma collections | financial:CSL.AX:2026-07-02:354 ASX section record | sector_metric_plasma_collections | 2024-12-31 | low | plasma collections was not identified in extracted ASX document text. |
+| ASX sector metric: margin | financial:CSL.AX:2026-07-02:355 ASX section record | sector_metric_margins | 2024-12-31 | low | margin was not identified in extracted ASX document text. |
+| ASX sector metric: net debt | financial:CSL.AX:2026-07-02:356 ASX section record | sector_metric_debt | 2024-12-31 | low | net debt was not identified in extracted ASX document text. |
+| ASX sector metric: guidance | financial:CSL.AX:2026-07-02:357 ASX section record | sector_metric_guidance | 2024-12-31 | low | guidance was not identified in extracted ASX document text. |
 
 ## ASX Sector Metric Evidence
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
 |---|---|---|---|---|---|
-| financial:CSL.AX:2026-07-02:016 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:017 | healthcare | R&D | available | medium | none |
-| financial:CSL.AX:2026-07-02:018 | healthcare | Plasma collections | available | medium | none |
-| financial:CSL.AX:2026-07-02:019 | healthcare | Margins | available | medium | none |
-| financial:CSL.AX:2026-07-02:020 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:021 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:037 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:038 | healthcare | R&D | available | medium | none |
-| financial:CSL.AX:2026-07-02:039 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:040 | healthcare | Margins | available | medium | none |
-| financial:CSL.AX:2026-07-02:041 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:042 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:058 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:016 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:017 | healthcare | R&D | available | low | none |
+| financial:CSL.AX:2026-07-02:018 | healthcare | plasma collections | available | low | none |
+| financial:CSL.AX:2026-07-02:019 | healthcare | margin | available | low | none |
+| financial:CSL.AX:2026-07-02:020 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:021 | healthcare | guidance | available | low | none |
+| financial:CSL.AX:2026-07-02:037 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:038 | healthcare | R&D | available | low | none |
+| financial:CSL.AX:2026-07-02:039 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:040 | healthcare | margin | available | low | none |
+| financial:CSL.AX:2026-07-02:041 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:042 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:058 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:059 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:060 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:061 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:062 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:063 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:079 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:060 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:061 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:062 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:063 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:079 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:080 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:081 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:082 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:083 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:084 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:100 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:081 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:082 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:083 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:084 | healthcare | guidance | available | low | none |
+| financial:CSL.AX:2026-07-02:100 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:101 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:102 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:103 | healthcare | Margins | available | medium | none |
-| financial:CSL.AX:2026-07-02:104 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:105 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:121 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:102 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:103 | healthcare | margin | available | low | none |
+| financial:CSL.AX:2026-07-02:104 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:105 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:121 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:122 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:123 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:124 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:125 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:126 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:142 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:123 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:124 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:125 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:126 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:142 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:143 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:144 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:145 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:146 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:147 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:163 | healthcare | Segment revenue | available | medium | none |
-| financial:CSL.AX:2026-07-02:164 | healthcare | R&D | available | medium | none |
-| financial:CSL.AX:2026-07-02:165 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:166 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:167 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:168 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:184 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:144 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:145 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:146 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:147 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:163 | healthcare | segment revenue | available | low | none |
+| financial:CSL.AX:2026-07-02:164 | healthcare | R&D | available | low | none |
+| financial:CSL.AX:2026-07-02:165 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:166 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:167 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:168 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:184 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:185 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:186 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:187 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:188 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:189 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:205 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:206 | healthcare | R&D | available | medium | none |
-| financial:CSL.AX:2026-07-02:207 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:208 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:209 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:210 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:226 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:186 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:187 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:188 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:189 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:205 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:206 | healthcare | R&D | available | low | none |
+| financial:CSL.AX:2026-07-02:207 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:208 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:209 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:210 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:226 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:227 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:228 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:229 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:230 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:231 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:247 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:228 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:229 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:230 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:231 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:247 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:248 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:249 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:250 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:251 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:252 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:268 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:249 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:250 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:251 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:252 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:268 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:269 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:270 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:271 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:272 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:273 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:289 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:270 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:271 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:272 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:273 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:289 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:290 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:291 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:292 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:293 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:294 | healthcare | Guidance | available | medium | none |
-| financial:CSL.AX:2026-07-02:310 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:291 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:292 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:293 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:294 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:310 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:311 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:312 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:313 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:314 | healthcare | Debt | available | medium | none |
-| financial:CSL.AX:2026-07-02:315 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:331 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:312 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:313 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:314 | healthcare | net debt | available | low | none |
+| financial:CSL.AX:2026-07-02:315 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:331 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:332 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:333 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:334 | healthcare | Margins | available | medium | none |
-| financial:CSL.AX:2026-07-02:335 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:336 | healthcare | Guidance | unavailable | low | Guidance was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:352 | healthcare | Segment revenue | unavailable | low | Segment revenue was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:333 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:334 | healthcare | margin | available | low | none |
+| financial:CSL.AX:2026-07-02:335 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:336 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:352 | healthcare | segment revenue | unavailable | low | segment revenue was not identified in extracted ASX document text. |
 | financial:CSL.AX:2026-07-02:353 | healthcare | R&D | unavailable | low | R&D was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:354 | healthcare | Plasma collections | unavailable | low | Plasma collections was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:355 | healthcare | Margins | unavailable | low | Margins was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:356 | healthcare | Debt | unavailable | low | Debt was not identified in extracted ASX document text. |
-| financial:CSL.AX:2026-07-02:357 | healthcare | Guidance | available | medium | none |
+| financial:CSL.AX:2026-07-02:354 | healthcare | plasma collections | unavailable | low | plasma collections was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:355 | healthcare | margin | unavailable | low | margin was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:356 | healthcare | net debt | unavailable | low | net debt was not identified in extracted ASX document text. |
+| financial:CSL.AX:2026-07-02:357 | healthcare | guidance | unavailable | low | guidance was not identified in extracted ASX document text. |
 
 ## Evidence gaps
 - ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.

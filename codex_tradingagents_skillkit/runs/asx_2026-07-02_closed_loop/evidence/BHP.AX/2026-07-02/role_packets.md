@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for BHP.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-04 16:13:47
+# Data retrieved on: 2026-07-05 09:40:29
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,63.4,63.58,62.55,63.37,7621289,0.0,0.0
@@ -430,7 +430,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-04 16:14:01
+# Data retrieved on: 2026-07-05 09:40:42
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
@@ -447,7 +447,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for BHP.AX
-# Data retrieved on: 2026-07-04 16:14:01
+# Data retrieved on: 2026-07-05 09:40:43
 
 Name: BHP Group Limited
 Sector: Basic Materials
@@ -485,7 +485,7 @@ Free Cash Flow: 8137124864
 
 ```text
 # Balance Sheet data for BHP.AX (quarterly)
-# Data retrieved on: 2026-07-04 16:14:01
+# Data retrieved on: 2026-07-05 09:40:43
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,,701522.0,
@@ -841,7 +841,7 @@ unit cost reduction and WAIO remains the lowest-cost major iron ore producer in 
 - Filing date: `2025-12-31`
 - URL: https://www.bhp.com/investor-hub/reports-and-presentations/annual-report
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1108,7 +1108,7 @@ unit cost reduction and WAIO remains the lowest-cost major iron ore producer in 
 - Filing date: `2025-12-31`
 - URL: https://www.bhp.com/investor-hub/reports-and-presentations/annual-report
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 

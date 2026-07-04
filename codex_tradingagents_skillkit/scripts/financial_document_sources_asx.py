@@ -18,6 +18,7 @@ ASX_COMPANY_PAGE_URL = "https://www.asx.com.au/markets/company/{code}"
 DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ASX_IR_RULES_PATH = REPO_ROOT / "data" / "rules" / "asx_investor_relations_urls.yaml"
+ASX_METRIC_PROFILE_PATH = Path(__file__).resolve().parents[1] / "data" / "rules" / "asx_sector_metric_extraction_profiles.yaml"
 
 ASX_SECTOR_BY_CODE = {
     "BHP": "miners",
@@ -394,6 +395,33 @@ def _load_known_asx_ir_urls(path: Path = ASX_IR_RULES_PATH) -> dict[str, list[st
     return parsed
 
 
+def _load_metric_profiles(path: Path = ASX_METRIC_PROFILE_PATH) -> dict[str, dict[str, dict[str, Any]]]:
+    if not path.exists():
+        return {}
+    raw = path.read_text(encoding="utf-8")
+    try:
+        import yaml
+    except ImportError:
+        return {}
+    data = yaml.safe_load(raw) or {}
+    if not isinstance(data, dict):
+        return {}
+    profiles: dict[str, dict[str, dict[str, Any]]] = {}
+    for sector, sector_profiles in data.items():
+        if not isinstance(sector_profiles, dict):
+            continue
+        profiles[str(sector)] = {
+            str(metric_name): profile
+            for metric_name, profile in sector_profiles.items()
+            if isinstance(profile, dict)
+        }
+    return profiles
+
+
+def _metric_profiles_for_sector(sector: str) -> dict[str, dict[str, Any]]:
+    return _load_metric_profiles().get(sector, {})
+
+
 def _sector_for_asx_code(asx_code: str) -> str:
     return ASX_SECTOR_BY_CODE.get(asx_code.upper(), "general")
 
@@ -420,18 +448,444 @@ def _section_unavailable(
     }
 
 
+def _token_count_between(left: str, right: str) -> int:
+    return len(re.findall(r"\w+", left + " " + right))
+
+
+def _sentences(text: str) -> list[str]:
+    clean = _clean_text(text)
+    pieces = re.split(r"(?<=[.!?])\s+|\n+", clean)
+    return [piece.strip() for piece in pieces if piece.strip()]
+
+
+def _is_navigation_or_toc(text: str) -> bool:
+    lower = text.lower()
+    toc_hits = sum(1 for term in ["contents", "table of contents", "directors report", "financial statements"] if term in lower)
+    nav_hits = sum(
+        1
+        for term in [
+            "home",
+            "search",
+            "contact us",
+            "reports and presentations",
+            "shareholder services",
+            "downloads",
+            "read more",
+        ]
+        if term in lower
+    )
+    numbered_sections = len(re.findall(r"\b\d{1,2}\s+[A-Z][A-Za-z /&-]{3,30}", text))
+    return (toc_hits >= 1 and numbered_sections >= 3) or nav_hits >= 4
+
+
+def _profile_for_metric(metric_name: str) -> dict[str, Any]:
+    for sector_profiles in _load_metric_profiles().values():
+        profile = sector_profiles.get(metric_name)
+        if profile:
+            return profile
+    for specs in ASX_SECTOR_METRIC_PATTERNS.values():
+        for name, label, pattern, _supports_claims in specs:
+            if name == metric_name:
+                return {
+                    "accepted_labels": [label, name.replace("_", " ")],
+                    "accepted_units": ["%", "bps", "$m", "$bn", "m", "bn", "cents"],
+                    "accepted_value_patterns": [
+                        r"\b(?:US\$|A\$|\$)?\d+(?:\.\d+)?\s*(?:bn|m|bps|%|per cent|cents|mt|kt|moz)\b"
+                    ],
+                    "required_nearby_terms": [],
+                    "rejected_nearby_terms": [],
+                    "max_label_value_distance_tokens": 10,
+                    "direction_rules": {"supportive": ["increased", "higher"], "adverse": ["decreased", "lower"]},
+                    "legacy_pattern": pattern,
+                }
+    return {}
+
+
+def _label_regex(label: str) -> str:
+    if label.upper() == label and len(label) <= 5:
+        return rf"\b{re.escape(label)}\b"
+    return re.escape(label).replace(r"\ ", r"\s+")
+
+
+def _label_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
+    matches: list[re.Match[str]] = []
+    for label in profile.get("accepted_labels", []) or []:
+        matches.extend(re.finditer(_label_regex(str(label)), text, re.IGNORECASE))
+    return sorted(matches, key=lambda match: match.start())
+
+
+def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
+    matches: list[re.Match[str]] = []
+    for pattern in profile.get("accepted_value_patterns", []) or []:
+        matches.extend(re.finditer(str(pattern), text, re.IGNORECASE))
+    generic_pattern = (
+        r"(?:US\$|A\$|\$)?\d+(?:\.\d+)?\s*"
+        r"(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)"
+    )
+    for match in re.finditer(generic_pattern, text, re.IGNORECASE):
+        _clean_value, unit = _clean_value_and_unit(match.group(0))
+        if _unit_compatible(unit, profile) and all(match.span() != existing.span() for existing in matches):
+            matches.append(match)
+    return sorted(matches, key=lambda match: match.start())
+
+
+def _clean_value_and_unit(raw: str) -> tuple[str, str]:
+    value_match = re.search(r"(?:US\$|A\$|\$)?(?P<value>\d+(?:\.\d+)?)", raw, re.IGNORECASE)
+    clean_value = value_match.group("value") if value_match else "unavailable"
+    lower = raw.lower().replace(" ", "")
+    if "bpts" in lower or "bps" in lower:
+        unit = "bps"
+    elif "percent" in lower or "percent" in lower.replace("per", "per ") or "%" in raw or "per cent" in raw.lower():
+        unit = "per cent" if "per cent" in raw.lower() else "%"
+    elif "cents" in lower or "cps" in lower:
+        unit = "cents" if "cents" in lower else "cps"
+    elif "us$" in lower and "bn" in lower:
+        unit = "US$bn"
+    elif "us$" in lower and "m" in lower:
+        unit = "US$m"
+    elif ("a$" in lower or "$" in raw) and "bn" in lower:
+        unit = "$bn"
+    elif ("a$" in lower or "$" in raw) and "m" in lower:
+        unit = "$m"
+    elif lower.endswith("bn"):
+        unit = "bn"
+    elif lower.endswith("m"):
+        unit = "m"
+    elif lower.endswith("mt"):
+        unit = "mt"
+    elif lower.endswith("kt"):
+        unit = "kt"
+    elif lower.endswith("moz"):
+        unit = "moz"
+    else:
+        unit = "unit unavailable"
+    return clean_value, unit
+
+
+def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
+    accepted = {str(item).lower() for item in profile.get("accepted_units", []) or []}
+    if not accepted:
+        return True
+    normalized = unit.lower()
+    if normalized in accepted:
+        return True
+    if normalized == "per cent" and "%" in accepted:
+        return True
+    return normalized in {"$m", "$bn"} and any(item in accepted for item in {normalized, f"a{normalized}", normalized[1:]})
+
+
+def _direction_from_profile(text: str, profile: dict[str, Any]) -> str:
+    lower = text.lower()
+    rules = profile.get("direction_rules") or {}
+    supportive = [str(item).lower() for item in rules.get("supportive", []) or []]
+    adverse = [str(item).lower() for item in rules.get("adverse", []) or []]
+    supportive_hit = any(term in lower for term in supportive)
+    adverse_hit = any(term in lower for term in adverse)
+    if supportive_hit and adverse_hit:
+        return "mixed"
+    if supportive_hit:
+        return "supportive"
+    if adverse_hit:
+        return "adverse"
+    return "neutral"
+
+
+def _period_references(text: str) -> tuple[str, str]:
+    periods = []
+    for match in re.finditer(r"\b(?:FY)?20\d{2}\b|\bFY\d{2}\b", text, re.IGNORECASE):
+        value = match.group(0).upper()
+        if value.startswith("FY") and len(value) == 4:
+            value = "FY20" + value[-2:]
+        elif value.startswith("20"):
+            value = "FY" + value
+        if value not in periods:
+            periods.append(value)
+    return (periods[0] if periods else "not specified", periods[1] if len(periods) > 1 else "not specified")
+
+
+def _competing_labels_near_value(text: str, metric_name: str, value_start: int) -> list[str]:
+    competitors: list[tuple[int, str]] = []
+    for sector_profiles in _load_metric_profiles().values():
+        for other_metric, profile in sector_profiles.items():
+            if other_metric == metric_name:
+                continue
+            for label_match in _label_matches(text, profile):
+                distance = abs(value_start - label_match.end())
+                if distance <= 80:
+                    competitors.append((distance, other_metric))
+    return [metric for _distance, metric in sorted(competitors)[:3]]
+
+
+def _best_label_value_association(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
+    label_matches = _label_matches(text, profile)
+    if not label_matches:
+        return {}
+    value_matches = _value_matches(text, profile)
+    if not value_matches:
+        return {}
+    rejected_terms = [str(term).lower() for term in profile.get("rejected_nearby_terms", []) or []]
+    max_distance = int(profile.get("max_label_value_distance_tokens") or 10)
+    best: dict[str, Any] = {}
+    for label_match in label_matches:
+        for value_match in value_matches:
+            before = text[min(label_match.end(), value_match.end()) : max(label_match.start(), value_match.start())]
+            token_distance = _token_count_between(before, "")
+            if token_distance > max_distance:
+                continue
+            raw_value = value_match.group(0)
+            clean_value, unit = _clean_value_and_unit(raw_value)
+            window_start = max(0, min(label_match.start(), value_match.start()) - 80)
+            window_end = min(len(text), max(label_match.end(), value_match.end()) + 80)
+            window = text[window_start:window_end]
+            lower_window = window.lower()
+            score = 35
+            score += max(0, 20 - token_distance * 2)
+            score += 20 if _unit_compatible(unit, profile) else -25
+            score += 15
+            score += 10
+            direction = _direction_from_profile(window, profile)
+            if metric_name == "claims_ratio" and unit == "%":
+                try:
+                    if float(clean_value) > 0:
+                        direction = "adverse"
+                except ValueError:
+                    pass
+            if direction != "neutral":
+                score += 5
+            if metric_name in {"ebit_margin", "margins"} and unit == "bps":
+                score += 10
+            competing = _competing_labels_near_value(text, metric_name, value_match.start())
+            if competing:
+                stronger = False
+                own_distance = abs(value_match.start() - label_match.end())
+                for other_metric in competing:
+                    other_profile = _profile_for_metric(other_metric)
+                    for other_label in _label_matches(text, other_profile):
+                        if abs(value_match.start() - other_label.end()) < own_distance:
+                            stronger = True
+                if stronger:
+                    score -= 35
+            rejected_hits = [term for term in rejected_terms if term in lower_window]
+            if rejected_hits:
+                score -= 30
+            if _is_navigation_or_toc(window):
+                score -= 50
+            if "footnote" in lower_window or re.search(r"\bnote\b", lower_window):
+                score -= 30
+            if unit in {"cents", "cps"} and re.search(r"\b1\s*cents?\s+per share\s+\$?m\b", lower_window, re.IGNORECASE):
+                score -= 60
+            reason_parts = [
+                f"label-value distance {token_distance} tokens",
+                f"unit {unit} {'compatible' if _unit_compatible(unit, profile) else 'incompatible'}",
+            ]
+            if competing:
+                reason_parts.append(f"competing labels nearby: {', '.join(competing)}")
+            if rejected_hits:
+                reason_parts.append(f"rejected nearby terms: {', '.join(rejected_hits)}")
+            if unit in {"cents", "cps"} and re.search(r"\b1\s*cents?\s+per share\s+\$?m\b", lower_window, re.IGNORECASE):
+                reason_parts.append("dividend table header or footnote marker")
+            candidate = {
+                "score": max(0, min(100, score)),
+                "clean_metric_value": clean_value,
+                "value_unit": unit,
+                "value_context": f"{text[label_match.start():label_match.end()]} near {raw_value}",
+                "supporting_sentence": text.strip(),
+                "association_reason": "; ".join(reason_parts),
+                "direction": direction,
+                "period_reference": _period_references(text)[0],
+                "comparison_reference": _period_references(text)[1],
+                "label_start": label_match.start(),
+                "value_start": value_match.start(),
+            }
+            if not best:
+                best = candidate
+                continue
+            candidate_high = candidate["score"] >= 80
+            best_high = best["score"] >= 80
+            if candidate_high and best_high:
+                if (candidate["label_start"], candidate["value_start"]) < (best["label_start"], best["value_start"]):
+                    best = candidate
+            elif candidate["score"] > best["score"]:
+                best = candidate
+    return best
+
+
+def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
+    if "|" not in text:
+        return {}
+    for raw_row in re.split(r"\n|(?<=\d[%a-zA-Z])\s+(?=[A-Z][A-Za-z /&-]{2,}\s*\|)", text):
+        row = raw_row.strip()
+        if "|" not in row:
+            continue
+        cells = [_clean_text(cell) for cell in row.split("|")]
+        if len(cells) < 3:
+            continue
+        row_label = cells[0]
+        if not _label_matches(row_label, profile):
+            continue
+        for index, cell in enumerate(cells[1:], start=1):
+            value_match = next(iter(_value_matches(cell, profile)), None)
+            if not value_match:
+                continue
+            clean_value, unit = _clean_value_and_unit(value_match.group(0))
+            column_label = cells[index - 1] if index > 1 else "value"
+            comparison_reference = cells[index + 1] if index + 1 < len(cells) else "not specified"
+            return {
+                "score": 95,
+                "clean_metric_value": clean_value,
+                "value_unit": unit,
+                "value_context": "table row/column label association",
+                "supporting_sentence": row,
+                "association_reason": "table row label matches accepted metric label and value unit is compatible",
+                "direction": _direction_from_profile(row, profile),
+                "period_reference": column_label,
+                "comparison_reference": comparison_reference,
+                "table_title": "unavailable",
+                "row_label": row_label,
+                "column_label": column_label,
+            }
+    return {}
+
+
+def _metric_label_present(text: str, profile: dict[str, Any]) -> bool:
+    return bool(_label_matches(text, profile))
+
+
+def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, Any]:
+    profile = _profile_for_metric(metric_name)
+    clean = _clean_text(text)
+    base = {
+        "clean_metric_value": "unavailable",
+        "value_unit": "unavailable",
+        "value_context": "no high-confidence metric-value association",
+        "metric_value_status": "unavailable",
+        "association_score": 0,
+        "association_reason": "metric label was not found in extracted text",
+        "period_reference": "unavailable",
+        "comparison_reference": "unavailable",
+        "supporting_sentence": "no supporting sentence extracted",
+        "comparison_basis": "unavailable",
+        "direction": "unavailable",
+        "confidence": "low",
+        "confidence_reason": "no supportable metric evidence found",
+        "table_title": "unavailable",
+        "row_label": "unavailable",
+        "column_label": "unavailable",
+        "source_page": "unavailable",
+    }
+    if not profile:
+        return base
+    label_present = _metric_label_present(clean, profile)
+    if _is_navigation_or_toc(clean):
+        return {
+            **base,
+            "metric_value_status": "context_only",
+            "association_reason": "navigation or table-of-contents context is not metric evidence",
+            "supporting_sentence": clean[:240] or base["supporting_sentence"],
+            "direction": "context_only",
+            "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+        }
+    if not label_present:
+        return base
+    best = _extract_table_metric_value(clean, metric_name, profile)
+    if not best:
+        for sentence in _sentences(clean):
+            if not _label_matches(sentence, profile):
+                continue
+            candidate = _best_label_value_association(sentence, metric_name, profile)
+            if not candidate:
+                continue
+            if not best:
+                best = candidate
+                continue
+            candidate_high = candidate["score"] >= 80
+            best_high = best["score"] >= 80
+            if candidate_high and best_high:
+                continue
+            if candidate["score"] > best["score"]:
+                best = candidate
+    support_sentence = clean[:240]
+    for sentence in _sentences(clean):
+        if _label_matches(sentence, profile):
+            support_sentence = sentence[:240]
+            break
+    direction = _direction_from_profile(support_sentence, profile)
+    if not best:
+        status = "direction_extracted" if direction != "neutral" else "metric_mentioned_only"
+        confidence_reason = (
+            "directional wording is present but no compatible clean metric value was attached"
+            if status == "direction_extracted"
+            else "metric label is present but no clean value or direction was extracted"
+        )
+        return {
+            **base,
+            "metric_value_status": status,
+            "association_score": 45 if status == "direction_extracted" else 35,
+            "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+            "supporting_sentence": support_sentence,
+            "comparison_basis": "period-over-period wording in extracted filing/report phrase"
+            if status == "direction_extracted"
+            else "metric mentioned without explicit comparative baseline",
+            "direction": direction,
+            "confidence": "low",
+            "confidence_reason": confidence_reason,
+        }
+    score = int(best["score"])
+    status = "value_extracted" if score >= 80 else ("direction_extracted" if best["direction"] != "neutral" or score >= 50 else "metric_mentioned_only")
+    clean_value = best["clean_metric_value"] if status == "value_extracted" else "unavailable"
+    confidence = "medium" if status == "value_extracted" else "low"
+    return {
+        **base,
+        "clean_metric_value": clean_value,
+        "value_unit": best["value_unit"] if status == "value_extracted" else "unavailable",
+        "value_context": best["value_context"] if status == "value_extracted" else "value association below acceptance threshold",
+        "metric_value_status": status,
+        "association_score": score,
+        "association_reason": best["association_reason"],
+        "period_reference": best.get("period_reference", "not specified"),
+        "comparison_reference": best.get("comparison_reference", "not specified"),
+        "supporting_sentence": best["supporting_sentence"][:240],
+        "comparison_basis": "period-over-period wording in extracted filing/report phrase"
+        if best["direction"] != "neutral"
+        else "metric mentioned without explicit comparative baseline",
+        "direction": best["direction"],
+        "confidence": confidence,
+        "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold"
+        if status == "value_extracted"
+        else "clean value withheld because association score is below accepted threshold",
+        "table_title": best.get("table_title", "unavailable"),
+        "row_label": best.get("row_label", "unavailable"),
+        "column_label": best.get("column_label", "unavailable"),
+        "source_page": "unavailable",
+    }
+
+
 def _extract_sector_metrics(
     text: str,
     source: dict[str, Any],
     excerpt_chars: int,
     sector: str,
 ) -> list[dict[str, Any]]:
-    specs = ASX_SECTOR_METRIC_PATTERNS.get(sector, [])
+    profile_specs = _metric_profiles_for_sector(sector)
+    legacy_specs = ASX_SECTOR_METRIC_PATTERNS.get(sector, [])
+    specs = [
+        (
+            metric_name,
+            str(profile.get("accepted_labels", [metric_name])[0]),
+            "|".join(_label_regex(str(label)) for label in profile.get("accepted_labels", []) or [metric_name]),
+            ASX_SECTOR_METRIC_PATTERNS.get(sector, []),
+        )
+        for metric_name, profile in profile_specs.items()
+    ]
+    if not specs:
+        specs = legacy_specs
     if not specs:
         return []
     clean = _clean_text(text)
     metrics: list[dict[str, Any]] = []
-    for metric_name, metric_label, pattern, supports_claims in specs:
+    legacy_supports = {name: supports_claims for name, _label, _pattern, supports_claims in legacy_specs}
+    for metric_name, metric_label, pattern, supports_claims_or_legacy in specs:
+        supports_claims = legacy_supports.get(metric_name, supports_claims_or_legacy if isinstance(supports_claims_or_legacy, list) else [metric_label])
         section_name = f"sector_metric_{metric_name}"
         match = re.search(pattern, clean, re.IGNORECASE)
         if not match:
@@ -449,10 +903,28 @@ def _extract_sector_metrics(
                     "metric_label": metric_label,
                     "sector": sector,
                     "metric_confidence": "low",
+                    "clean_metric_value": "unavailable",
+                    "value_unit": "unavailable",
+                    "value_context": "metric label unavailable",
+                    "metric_value_status": "unavailable",
+                    "association_score": 0,
+                    "association_reason": reason,
+                    "period_reference": "unavailable",
+                    "comparison_reference": "unavailable",
+                    "supporting_sentence": "no supporting sentence extracted",
+                    "comparison_basis": "unavailable",
+                    "direction": "unavailable",
+                    "confidence": "low",
+                    "confidence_reason": reason,
+                    "table_title": "unavailable",
+                    "row_label": "unavailable",
+                    "column_label": "unavailable",
+                    "source_page": "unavailable",
                 }
             )
             continue
         excerpt = clean[match.start() : match.start() + excerpt_chars].rsplit(" ", 1)[0].strip()
+        association = _extract_metric_value_from_text(excerpt, metric_name)
         metrics.append(
             {
                 "section_name": section_name,
@@ -468,7 +940,9 @@ def _extract_sector_metrics(
                 "metric_name": metric_name,
                 "metric_label": metric_label,
                 "sector": sector,
-                "metric_confidence": "medium",
+                "metric_confidence": association["confidence"],
+                "extracted_value_or_phrase": association["supporting_sentence"],
+                **association,
             }
         )
     return metrics

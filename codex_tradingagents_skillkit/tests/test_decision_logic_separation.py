@@ -373,25 +373,17 @@ def test_sector_metric_direction_audit_records_extracted_basis():
 
     audit = writer._asx_metric_audit_records(records)
 
-    assert audit == [
-        {
-            "metric_name": "ebit_margin",
-            "extracted_value_or_phrase": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
-            "clean_metric_value": "82",
-            "value_unit": "bps",
-            "value_context": "EBIT margin decreasing by a normalised (label_before_value)",
-            "period_reference": "not specified",
-            "comparison_reference": "period-over-period wording in extracted filing/report phrase",
-            "supporting_sentence": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
-            "comparison_basis": "period-over-period wording in extracted filing/report phrase",
-            "direction": "adverse",
-            "confidence": "medium",
-            "confidence_reason": (
-                "source extractor confidence is medium and direction is based on supporting sentence/comparison basis"
-            ),
-            "evidence_id": "financial:WOW.AX:2026-07-02:017",
-        }
-    ]
+    assert audit[0]["metric_name"] == "ebit_margin"
+    assert audit[0]["clean_metric_value"] == "82"
+    assert audit[0]["value_unit"] == "bps"
+    assert audit[0]["metric_value_status"] == "value_extracted"
+    assert int(audit[0]["association_score"]) >= 80
+    assert "unit bps compatible" in audit[0]["association_reason"]
+    assert audit[0]["supporting_sentence"] == "EBIT margin decreasing by a normalised 82 bps to 5.4%."
+    assert audit[0]["direction"] == "adverse"
+    assert audit[0]["confidence"] == "medium"
+    assert audit[0]["evidence_id"] == "financial:WOW.AX:2026-07-02:017"
+    assert audit[0]["table_title"] == "unavailable"
 
 
 def test_navigation_sector_metric_is_context_only_low_confidence():
@@ -416,6 +408,144 @@ def test_navigation_sector_metric_is_context_only_low_confidence():
     assert audit[0]["direction"] == "context_only"
     assert audit[0]["confidence"] == "low"
     assert "navigation/page-list" in audit[0]["confidence_reason"]
+    assert audit[0]["metric_value_status"] == "context_only"
+    assert audit[0]["clean_metric_value"] == "unavailable"
+
+
+def test_metric_audit_rejects_low_association_clean_values():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    record = {
+        "section_kind": "sector_metric",
+        "metric_name": "net_interest_margin",
+        "metric_label": "NIM",
+        "status": "available",
+        "confidence": "medium",
+        "evidence_id": "financial:CBA.AX:2026-07-02:010",
+        "excerpt": "NIM commentary was stable. Operating income increased 5% on FY24.",
+        "clean_metric_value": "5",
+        "value_unit": "%",
+        "association_score": 42,
+        "metric_value_status": "direction_extracted",
+    }
+
+    audit = writer._asx_metric_audit_records([record])
+
+    assert audit[0]["clean_metric_value"] == "unavailable"
+    assert audit[0]["metric_value_status"] == "direction_extracted"
+    assert audit[0]["association_score"] == "42"
+
+
+def test_metric_mentioned_only_is_not_counted_as_supportive_direction():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    record = {
+        "section_kind": "sector_metric",
+        "metric_name": "cet1",
+        "metric_label": "CET1",
+        "status": "available",
+        "direction": "supportive",
+        "metric_value_status": "metric_mentioned_only",
+        "excerpt": "CET1 commentary without a clean value.",
+    }
+
+    assert writer._asx_metric_direction(record) == "neutral"
+
+
+def test_metric_audit_summary_excludes_low_confidence_weak_associations():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "dividends",
+            "metric_label": "Dividends",
+            "status": "available",
+            "confidence": "low",
+            "evidence_id": "financial:WOW.AX:2026-07-02:010",
+            "excerpt": "Dividend 1 cents footnote marker.",
+            "clean_metric_value": "1",
+            "value_unit": "cents",
+            "association_score": 35,
+            "metric_value_status": "context_only",
+        },
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "ebit_margin",
+            "metric_label": "EBIT margin",
+            "status": "available",
+            "confidence": "medium",
+            "evidence_id": "financial:WOW.AX:2026-07-02:011",
+            "excerpt": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+            "clean_metric_value": "82",
+            "value_unit": "bps",
+            "association_score": 92,
+            "metric_value_status": "value_extracted",
+        },
+    ]
+
+    summary = writer._asx_metric_audit_summary(records, "Hold")
+
+    assert "ebit_margin adverse (82 bps; value_extracted; association_score 92" in summary
+    assert "Dividend 1 cents" not in summary
+    assert "dividends" not in summary
+
+
+def test_quality_validator_requires_metric_association_audit_fields(tmp_path: Path):
+    validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
+    evidence_path = tmp_path / "evidence.json"
+    evidence_path.write_text('{"ticker": "WOW.AX"}', encoding="utf-8")
+    report_dir = tmp_path / "reports" / "WOW.AX" / "2026-07-02"
+    manager_path = report_dir / "2_research" / "manager.md"
+    manager_path.parent.mkdir(parents=True)
+    manager_path.write_text(
+        """## Tool Outputs Used
+## Primary Rating Driver
+## Evidence Winner
+## Structured Evidence Matrix
+## Role Evidence Weighting
+## Rating-vs-Rating Reasoning
+10 EMA 95, 50 SMA 90, 200 SMA 80. Sector metric EBIT margin adverse financial:WOW.AX:2026-07-02:011.
+## Debate Outcome Scorecard
+## Market Technicals as Confidence / Timing Modifier
+## Sector Metric Direction Audit
+| metric_name | clean_metric_value | evidence_id |
+|---|---|---|
+| ebit_margin | 82 | financial:WOW.AX:2026-07-02:011 |
+""",
+        encoding="utf-8",
+    )
+
+    errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
+
+    assert "ASX Research Manager report lacks auditable sector metric direction records" in errors
+
+
+def test_quality_validator_rejects_clean_value_below_association_threshold(tmp_path: Path):
+    validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
+    evidence_path = tmp_path / "evidence.json"
+    evidence_path.write_text('{"ticker": "CBA.AX"}', encoding="utf-8")
+    report_dir = tmp_path / "reports" / "CBA.AX" / "2026-07-02"
+    manager_path = report_dir / "2_research" / "manager.md"
+    manager_path.parent.mkdir(parents=True)
+    manager_path.write_text(
+        """## Tool Outputs Used
+## Primary Rating Driver
+## Evidence Winner
+## Structured Evidence Matrix
+## Role Evidence Weighting
+## Rating-vs-Rating Reasoning
+10 EMA 105, 50 SMA 110, 200 SMA 120. Sector metric NIM adverse financial:CBA.AX:2026-07-02:011.
+## Debate Outcome Scorecard
+## Market Technicals as Confidence / Timing Modifier
+## Sector Metric Direction Audit
+| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| net_interest_margin | NIM commentary. Operating income increased 5%. | 5 | % | operating income | direction_extracted | 42 | competing operating income label closer | not specified | not specified | NIM commentary. Operating income increased 5%. | metric mentioned without explicit comparative baseline | neutral | medium | source confidence medium | financial:CBA.AX:2026-07-02:011 |
+""",
+        encoding="utf-8",
+    )
+
+    errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
+
+    assert "ASX metric audit populates clean_metric_value below accepted association threshold" in errors
 
 
 def test_metric_clean_value_unavailable_when_numbers_are_unlabelled():
@@ -432,7 +562,7 @@ def test_metric_clean_value_unavailable_when_numbers_are_unlabelled():
 
     assert value_parts["clean_metric_value"] == "unavailable"
     assert value_parts["value_unit"] == "unavailable"
-    assert value_parts["value_context"] == "no clean labelled value parsed"
+    assert value_parts["value_context"] == "no high-confidence metric-value association"
 
 
 def test_metric_clean_value_keeps_labelled_value_context():
@@ -449,7 +579,8 @@ def test_metric_clean_value_keeps_labelled_value_context():
 
     assert value_parts["clean_metric_value"] == "4.7"
     assert value_parts["value_unit"] == "per cent"
-    assert "unit costs" in value_parts["value_context"].lower()
+    assert "unit cost" in value_parts["value_context"].lower()
+    assert value_parts["metric_value_status"] == "value_extracted"
 
 
 def test_unsupported_commodity_exposure_is_not_supportive():

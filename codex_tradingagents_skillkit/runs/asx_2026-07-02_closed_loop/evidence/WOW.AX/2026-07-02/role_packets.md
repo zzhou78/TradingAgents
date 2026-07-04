@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for WOW.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-04 16:16:16
+# Data retrieved on: 2026-07-05 09:42:57
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0
@@ -394,7 +394,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for WOW.AX
-# Data retrieved on: 2026-07-04 16:16:35
+# Data retrieved on: 2026-07-05 09:43:15
 
 ,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
 0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,
@@ -435,7 +435,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for WOW.AX
-# Data retrieved on: 2026-07-04 16:16:35
+# Data retrieved on: 2026-07-05 09:43:15
 
 Name: Woolworths Group Limited
 Sector: Consumer Defensive
@@ -473,7 +473,7 @@ Free Cash Flow: 2267749888
 
 ```text
 # Balance Sheet data for WOW.AX (quarterly)
-# Data retrieved on: 2026-07-04 16:16:36
+# Data retrieved on: 2026-07-05 09:43:15
 
 ,2025-06-30
 Ordinary Shares Number,1221595333.0
@@ -1084,7 +1084,7 @@ segment would be reported if it was a standalone business. Previously, the Group
 - Filing date: `2025-12-31`
 - URL: https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/h1/2855253.pdf
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1302,7 +1302,7 @@ dividends 1 CENTS PER SHARE $M 2024 interim dividend paid on 11 April 2024 47 57
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Amanda_Bardwell-AVS
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1322,7 +1322,7 @@ dividends 1 CENTS PER SHARE $M 2024 interim dividend paid on 11 April 2024 47 57
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Amanda_Bardwell-AVS
 - Supports claims: inventory
-- Unavailable reason: Inventory was not identified in extracted ASX document text.
+- Unavailable reason: inventory was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1332,7 +1332,7 @@ dividends 1 CENTS PER SHARE $M 2024 interim dividend paid on 11 April 2024 47 57
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Amanda_Bardwell-AVS
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1342,7 +1342,7 @@ dividends 1 CENTS PER SHARE $M 2024 interim dividend paid on 11 April 2024 47 57
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Amanda_Bardwell-AVS
 - Supports claims: dividends
-- Unavailable reason: Dividends was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1511,7 +1511,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Annette_Karantoni-AVS
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1531,7 +1531,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Annette_Karantoni-AVS
 - Supports claims: inventory
-- Unavailable reason: Inventory was not identified in extracted ASX document text.
+- Unavailable reason: inventory was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1541,7 +1541,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Annette_Karantoni-AVS
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1551,7 +1551,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Annette_Karantoni-AVS
 - Supports claims: dividends
-- Unavailable reason: Dividends was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1720,7 +1720,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-New_Zealand_Food-AVS
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1740,7 +1740,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-New_Zealand_Food-AVS
 - Supports claims: inventory
-- Unavailable reason: Inventory was not identified in extracted ASX document text.
+- Unavailable reason: inventory was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1750,7 +1750,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-New_Zealand_Food-AVS
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1760,7 +1760,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-New_Zealand_Food-AVS
 - Supports claims: dividends
-- Unavailable reason: Dividends was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -1929,7 +1929,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Dan_Hake-AVS
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1949,7 +1949,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Dan_Hake-AVS
 - Supports claims: inventory
-- Unavailable reason: Inventory was not identified in extracted ASX document text.
+- Unavailable reason: inventory was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1959,7 +1959,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Dan_Hake-AVS
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -1969,7 +1969,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-Dan_Hake-AVS
 - Supports claims: dividends
-- Unavailable reason: Dividends was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 
@@ -2138,7 +2138,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-WooliesX-AVS
 - Supports claims: sales growth
-- Unavailable reason: Sales growth was not identified in extracted ASX document text.
+- Unavailable reason: sales growth was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2158,7 +2158,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-WooliesX-AVS
 - Supports claims: inventory
-- Unavailable reason: Inventory was not identified in extracted ASX document text.
+- Unavailable reason: inventory was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2168,7 +2168,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-WooliesX-AVS
 - Supports claims: capex
-- Unavailable reason: Capex was not identified in extracted ASX document text.
+- Unavailable reason: capex was not identified in extracted ASX document text.
 
 ### Section: asx_fallback_document / sector_metric
 
@@ -2178,7 +2178,7 @@ Smart Crop Video Viewer
 - Filing date: `2025-12-31`
 - URL: https://woolworthsgroup.scene7.com/s7viewers/html5/SmartCropVideoViewer.html?asset=woolworthsgroupltd/Woolworths_Group_F25_Full_Year_Results-WooliesX-AVS
 - Supports claims: dividends
-- Unavailable reason: Dividends was not identified in extracted ASX document text.
+- Unavailable reason: dividend was not identified in extracted ASX document text.
 
 ### Excerpt: asx_fallback_document
 

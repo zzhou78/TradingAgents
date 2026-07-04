@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 from pathlib import Path
 
 TRADE_DATE_DEFAULT = "2026-07-02"
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def _load_json(path: Path) -> object:
@@ -14,6 +16,20 @@ def _load_json(path: Path) -> object:
 
 def _clean_cell(value: object) -> str:
     return str(value or "").replace("|", "/").replace("\r", " ").replace("\n", " ").strip()
+
+
+def _asx_profile_metric_value(sentence: str, metric_name: str) -> dict[str, object] | None:
+    module_path = SCRIPT_DIR / "financial_document_sources_asx.py"
+    spec = importlib.util.spec_from_file_location("financial_document_sources_asx_for_writer", module_path)
+    if not spec or not spec.loader:
+        return None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    extractor = getattr(module, "_extract_metric_value_from_text", None)
+    if not extractor:
+        return None
+    result = extractor(sentence, metric_name)
+    return result if isinstance(result, dict) else None
 
 
 def _money(value: object) -> str:
@@ -118,6 +134,16 @@ def _asx_decisive_sector_metric(records: list[dict[str, object]]) -> dict[str, o
 def _asx_metric_direction(record: dict[str, object]) -> str:
     if str(record.get("status", "")).lower() != "available":
         return "unavailable"
+    metric_value_status = str(record.get("metric_value_status") or "").lower()
+    if metric_value_status == "context_only":
+        return "context_only"
+    if metric_value_status == "metric_mentioned_only":
+        return "neutral"
+    if metric_value_status == "unavailable":
+        return "unavailable"
+    explicit_direction = str(record.get("direction") or "").lower()
+    if explicit_direction in {"supportive", "adverse", "mixed", "neutral", "context_only", "unavailable"}:
+        return explicit_direction
     metric = str(record.get("metric_name") or record.get("metric_label") or "").lower()
     text = _metric_evidence_text(record).lower()
     if not text.strip():
@@ -286,16 +312,65 @@ def _metric_supporting_sentence(record: dict[str, object]) -> str:
 
 
 def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
+    metric_status = str(record.get("metric_value_status") or "").lower()
+    association_score = _clean_cell(record.get("association_score") or "")
     explicit = record.get("clean_metric_value_if_available") or record.get("clean_metric_value")
-    if explicit:
+    if explicit and _clean_cell(explicit).lower() != "unavailable":
+        if association_score:
+            try:
+                score_value = int(float(association_score))
+            except ValueError:
+                score_value = 0
+            if score_value < 80 or metric_status in {"direction_extracted", "metric_mentioned_only", "context_only", "unavailable"}:
+                return {
+                    "clean_metric_value": "unavailable",
+                    "value_unit": "unavailable",
+                    "value_context": "clean value withheld because association score is below accepted threshold",
+                    "metric_value_status": metric_status or "direction_extracted",
+                    "association_score": association_score,
+                    "association_reason": _clean_cell(record.get("association_reason") or "association score below threshold"),
+                    "period_reference": _clean_cell(record.get("period_reference") or "not specified"),
+                    "comparison_reference": _clean_cell(record.get("comparison_reference") or "not specified"),
+                    "table_title": _clean_cell(record.get("table_title") or "unavailable"),
+                    "row_label": _clean_cell(record.get("row_label") or "unavailable"),
+                    "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+                    "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+                }
         return {
             "clean_metric_value": _clean_cell(explicit),
             "value_unit": _clean_cell(record.get("value_unit") or "explicit"),
             "value_context": _clean_cell(record.get("value_context") or "provided by extractor"),
+            "metric_value_status": metric_status or "value_extracted",
+            "association_score": association_score or "90",
+            "association_reason": _clean_cell(record.get("association_reason") or "label and compatible value are associated in the supporting sentence"),
             "period_reference": _clean_cell(record.get("period_reference") or "not specified"),
             "comparison_reference": _clean_cell(record.get("comparison_reference") or "not specified"),
+            "table_title": _clean_cell(record.get("table_title") or "unavailable"),
+            "row_label": _clean_cell(record.get("row_label") or "unavailable"),
+            "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+            "source_page": _clean_cell(record.get("source_page") or "unavailable"),
         }
     sentence = _metric_supporting_sentence(record)
+    metric_name = str(record.get("metric_name") or "").strip()
+    if metric_name:
+        profile_result = _asx_profile_metric_value(sentence, metric_name)
+        if profile_result:
+            score_text = _clean_cell(profile_result.get("association_score") or "0")
+            status_text = _clean_cell(profile_result.get("metric_value_status") or "unavailable")
+            return {
+                "clean_metric_value": _clean_cell(profile_result.get("clean_metric_value") or "unavailable"),
+                "value_unit": _clean_cell(profile_result.get("value_unit") or "unavailable"),
+                "value_context": _clean_cell(profile_result.get("value_context") or "no high-confidence metric-value association"),
+                "metric_value_status": status_text,
+                "association_score": score_text,
+                "association_reason": _clean_cell(profile_result.get("association_reason") or "profile scorer did not provide a reason"),
+                "period_reference": _clean_cell(profile_result.get("period_reference") or "unavailable"),
+                "comparison_reference": _clean_cell(profile_result.get("comparison_reference") or "unavailable"),
+                "table_title": _clean_cell(profile_result.get("table_title") or "unavailable"),
+                "row_label": _clean_cell(profile_result.get("row_label") or "unavailable"),
+                "column_label": _clean_cell(profile_result.get("column_label") or "unavailable"),
+                "source_page": _clean_cell(profile_result.get("source_page") or "unavailable"),
+            }
     metric_label = _clean_cell(record.get("metric_label") or record.get("metric_name") or "metric")
     patterns = [
         (
@@ -333,15 +408,29 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 "clean_metric_value": value,
                 "value_unit": unit or "unit unavailable",
                 "value_context": f"{context} ({basis})",
+                "metric_value_status": "value_extracted",
+                "association_score": "90",
+                "association_reason": "label and compatible value are associated in the supporting sentence",
                 "period_reference": period_reference,
                 "comparison_reference": comparison_reference,
+                "table_title": "unavailable",
+                "row_label": "unavailable",
+                "column_label": "unavailable",
+                "source_page": "unavailable",
             }
     return {
         "clean_metric_value": "unavailable",
         "value_unit": "unavailable",
         "value_context": "no clean labelled value parsed",
+        "metric_value_status": metric_status or "metric_mentioned_only",
+        "association_score": association_score or "0",
+        "association_reason": _clean_cell(record.get("association_reason") or "no high-confidence metric-value association"),
         "period_reference": "unavailable",
         "comparison_reference": _metric_comparison_basis(record),
+        "table_title": _clean_cell(record.get("table_title") or "unavailable"),
+        "row_label": _clean_cell(record.get("row_label") or "unavailable"),
+        "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+        "source_page": _clean_cell(record.get("source_page") or "unavailable"),
     }
 
 
@@ -399,6 +488,16 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
         direction = _asx_metric_direction(record)
         confidence, confidence_reason = _metric_confidence_and_reason(record, direction)
         value_parts = _metric_value_parts(record)
+        if direction == "context_only":
+            value_parts = {
+                **value_parts,
+                "clean_metric_value": "unavailable",
+                "value_unit": "unavailable",
+                "value_context": "context-only evidence cannot support a clean metric value",
+                "metric_value_status": "context_only",
+                "association_score": "0",
+                "association_reason": "navigation/page-list or table-of-contents context",
+            }
         audit_records.append(
             {
                 "metric_name": metric_name,
@@ -406,6 +505,9 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
                 "clean_metric_value": value_parts["clean_metric_value"],
                 "value_unit": value_parts["value_unit"],
                 "value_context": value_parts["value_context"],
+                "metric_value_status": value_parts["metric_value_status"],
+                "association_score": value_parts["association_score"],
+                "association_reason": value_parts["association_reason"],
                 "period_reference": value_parts["period_reference"],
                 "comparison_reference": value_parts["comparison_reference"],
                 "supporting_sentence": _metric_supporting_sentence(record),
@@ -414,6 +516,10 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
                 "confidence": confidence,
                 "confidence_reason": confidence_reason,
                 "evidence_id": _clean_cell(record.get("evidence_id") or "uncited"),
+                "table_title": value_parts["table_title"],
+                "row_label": value_parts["row_label"],
+                "column_label": value_parts["column_label"],
+                "source_page": value_parts["source_page"],
             }
         )
     return audit_records
@@ -436,10 +542,10 @@ def _asx_best_metric_records(records: list[dict[str, object]]) -> list[dict[str,
 def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
     audit_records = _asx_metric_audit_records(records)
     if not audit_records:
-        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited |"
+        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | 0 | no ASX sector metric records extracted | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited | unavailable | unavailable | unavailable | unavailable |"
     rows = [
-        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for item in audit_records:
         rows.append(
@@ -451,6 +557,9 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                     _clean_cell(item["clean_metric_value"]),
                     _clean_cell(item["value_unit"]),
                     _clean_cell(item["value_context"]),
+                    _clean_cell(item["metric_value_status"]),
+                    _clean_cell(item["association_score"]),
+                    _clean_cell(item["association_reason"]),
                     _clean_cell(item["period_reference"]),
                     _clean_cell(item["comparison_reference"]),
                     _clean_cell(item["supporting_sentence"]),
@@ -459,6 +568,10 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                     _clean_cell(item["confidence"]),
                     _clean_cell(item["confidence_reason"]),
                     _clean_cell(item["evidence_id"]),
+                    _clean_cell(item["table_title"]),
+                    _clean_cell(item["row_label"]),
+                    _clean_cell(item["column_label"]),
+                    _clean_cell(item["source_page"]),
                 ]
             )
             + " |"
@@ -480,7 +593,17 @@ def _asx_metric_audit_summary(records: list[dict[str, object]], manager_rec: str
         item
         for item in audit_records
         if item["direction"] in preferred and item["direction"] not in {"unavailable"}
+        and (
+            item["metric_value_status"] == "value_extracted"
+            or (item["clean_metric_value"] == "unavailable" and item["confidence"] in {"medium", "high"})
+        )
     ][:2]
+    if not selected:
+        selected = [
+            item
+            for item in audit_records
+            if item["direction"] not in {"unavailable", "context_only"} and item["confidence"] != "low"
+        ][:2]
     if not selected:
         selected = audit_records[:2]
     parts = []
@@ -488,7 +611,8 @@ def _asx_metric_audit_summary(records: list[dict[str, object]], manager_rec: str
         value = item["clean_metric_value"]
         value_text = f"{value} {item['value_unit']}".strip() if value != "unavailable" else "value unavailable"
         parts.append(
-            f"{item['metric_name']} {item['direction']} ({value_text}; {item['evidence_id']}; {item['confidence']})"
+            f"{item['metric_name']} {item['direction']} ({value_text}; {item['metric_value_status']}; "
+            f"association_score {item['association_score']}; {item['evidence_id']}; {item['confidence']})"
         )
     return "Metric audit summary: " + "; ".join(parts) + "."
 
@@ -1833,7 +1957,7 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
             f"- Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
             f"- Decisive role evidence: {asx_reasoning['decisive']}\n"
             f"- Sector-specific metric or gap: {asx_reasoning['metric_line']}\n"
-            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, and evidence_id for each ASX sector metric.\n"
+            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, metric_value_status, association_score, association_reason, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, evidence_id, and table context fields for each ASX sector metric.\n"
             f"- Compact metric-audit summary: {asx_reasoning['metric_audit_summary']}\n"
             f"- Evidence-gap confidence cap: {asx_reasoning['confidence_cap']}"
         )

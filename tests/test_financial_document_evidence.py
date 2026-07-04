@@ -77,13 +77,33 @@ def test_build_financial_document_evidence_flattens_sections_exhibits_and_gaps()
                 "url": "https://asx.example/annual.pdf",
                 "extracted_sections": [
                     {
-                        "section_name": "operating_cash_flow",
+                        "section_name": "sector_metric_ebit_margin",
+                        "section_type": "sector_metric",
                         "status": "available",
                         "source_type": "asx_announcement",
                         "filing_date": "2025-08-12",
                         "url": "https://asx.example/annual.pdf",
-                        "excerpt": "Operating cash flow improved.",
-                        "supports_claims": ["operating cash flow"],
+                        "excerpt": "EBIT margin decreasing by 82 bps.",
+                        "supports_claims": ["EBIT margin"],
+                        "metric_name": "ebit_margin",
+                        "metric_label": "EBIT margin",
+                        "sector": "retailers",
+                        "metric_value_status": "value_extracted",
+                        "association_score": 92,
+                        "association_reason": "table row label matches accepted metric label",
+                        "clean_metric_value": "82",
+                        "value_unit": "bps",
+                        "value_context": "table row/column label association",
+                        "period_reference": "FY2025",
+                        "comparison_reference": "FY2024",
+                        "supporting_sentence": "EBIT margin decreasing by 82 bps.",
+                        "comparison_basis": "period-over-period wording",
+                        "direction": "adverse",
+                        "confidence_reason": "clean value accepted",
+                        "table_title": "Segment performance",
+                        "row_label": "EBIT margin",
+                        "column_label": "FY2025",
+                        "source_page": "12",
                     }
                 ],
             },
@@ -117,7 +137,11 @@ def test_build_financial_document_evidence_flattens_sections_exhibits_and_gaps()
     assert "section_unavailable" in by_kind["commitments_capex_contractual_obligations"]["limitations"]
     assert by_kind["8k_cover_page"]["section_name"] == "8-K cover page"
     assert by_kind["exhibit_99_1"]["section_name"] == "Exhibit 99.1"
-    assert by_kind["operating_cash_flow"]["source_type"] == "asx_announcement"
+    assert by_kind["sector_metric"]["source_type"] == "asx_announcement"
+    assert by_kind["sector_metric"]["metric_value_status"] == "value_extracted"
+    assert by_kind["sector_metric"]["association_score"] == 92
+    assert by_kind["sector_metric"]["clean_metric_value"] == "82"
+    assert by_kind["sector_metric"]["row_label"] == "EBIT margin"
     assert by_kind["investor_presentation"]["status"] == "unavailable"
 
     assert len(ledger) == len(records)

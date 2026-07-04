@@ -31,80 +31,80 @@
 | Liquidity / cash-debt evidence | financial:WOW.AX:2026-07-02:007 ASX document | cash_debt_gearing | 2025-12-31 | medium | none |
 | Segment/product evidence | financial:WOW.AX:2026-07-02:008 ASX document | segment_product_performance | 2025-12-31 | medium | none |
 | Cash-flow evidence | financial:WOW.AX:2026-07-02:004 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:016 ASX section record | sector_metric_sales_growth | 2025-12-31 | medium | none |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:016 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | none |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:017 ASX section record | sector_metric_ebit_margin | 2025-12-31 | medium | none |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:018 ASX section record | sector_metric_inventory | 2025-12-31 | medium | none |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:019 ASX section record | sector_metric_capex | 2025-12-31 | medium | none |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:020 ASX section record | sector_metric_dividends | 2025-12-31 | medium | none |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:036 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:018 ASX section record | sector_metric_inventory | 2025-12-31 | medium | none |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:019 ASX section record | sector_metric_capex | 2025-12-31 | low | none |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:020 ASX section record | sector_metric_dividends | 2025-12-31 | low | none |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:036 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:037 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:038 ASX section record | sector_metric_inventory | 2025-12-31 | medium | none |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:039 ASX section record | sector_metric_capex | 2025-12-31 | medium | none |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:040 ASX section record | sector_metric_dividends | 2025-12-31 | medium | none |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:056 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:038 ASX section record | sector_metric_inventory | 2025-12-31 | low | none |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:039 ASX section record | sector_metric_capex | 2025-12-31 | low | none |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:040 ASX section record | sector_metric_dividends | 2025-12-31 | low | none |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:056 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:057 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:058 ASX section record | sector_metric_inventory | 2025-12-31 | low | Inventory was not identified in extracted ASX document text. |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:059 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:060 ASX section record | sector_metric_dividends | 2025-12-31 | low | Dividends was not identified in extracted ASX document text. |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:076 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:058 ASX section record | sector_metric_inventory | 2025-12-31 | low | inventory was not identified in extracted ASX document text. |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:059 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:060 ASX section record | sector_metric_dividends | 2025-12-31 | low | dividend was not identified in extracted ASX document text. |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:076 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:077 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:078 ASX section record | sector_metric_inventory | 2025-12-31 | low | Inventory was not identified in extracted ASX document text. |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:079 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:080 ASX section record | sector_metric_dividends | 2025-12-31 | low | Dividends was not identified in extracted ASX document text. |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:096 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:078 ASX section record | sector_metric_inventory | 2025-12-31 | low | inventory was not identified in extracted ASX document text. |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:079 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:080 ASX section record | sector_metric_dividends | 2025-12-31 | low | dividend was not identified in extracted ASX document text. |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:096 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:097 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:098 ASX section record | sector_metric_inventory | 2025-12-31 | low | Inventory was not identified in extracted ASX document text. |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:099 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:100 ASX section record | sector_metric_dividends | 2025-12-31 | low | Dividends was not identified in extracted ASX document text. |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:116 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:098 ASX section record | sector_metric_inventory | 2025-12-31 | low | inventory was not identified in extracted ASX document text. |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:099 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:100 ASX section record | sector_metric_dividends | 2025-12-31 | low | dividend was not identified in extracted ASX document text. |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:116 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:117 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:118 ASX section record | sector_metric_inventory | 2025-12-31 | low | Inventory was not identified in extracted ASX document text. |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:119 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:120 ASX section record | sector_metric_dividends | 2025-12-31 | low | Dividends was not identified in extracted ASX document text. |
-| ASX sector metric: Sales growth | financial:WOW.AX:2026-07-02:136 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | Sales growth was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:118 ASX section record | sector_metric_inventory | 2025-12-31 | low | inventory was not identified in extracted ASX document text. |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:119 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:120 ASX section record | sector_metric_dividends | 2025-12-31 | low | dividend was not identified in extracted ASX document text. |
+| ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:136 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:137 ASX section record | sector_metric_ebit_margin | 2025-12-31 | low | EBIT margin was not identified in extracted ASX document text. |
-| ASX sector metric: Inventory | financial:WOW.AX:2026-07-02:138 ASX section record | sector_metric_inventory | 2025-12-31 | low | Inventory was not identified in extracted ASX document text. |
-| ASX sector metric: Capex | financial:WOW.AX:2026-07-02:139 ASX section record | sector_metric_capex | 2025-12-31 | low | Capex was not identified in extracted ASX document text. |
-| ASX sector metric: Dividends | financial:WOW.AX:2026-07-02:140 ASX section record | sector_metric_dividends | 2025-12-31 | low | Dividends was not identified in extracted ASX document text. |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:138 ASX section record | sector_metric_inventory | 2025-12-31 | low | inventory was not identified in extracted ASX document text. |
+| ASX sector metric: capex | financial:WOW.AX:2026-07-02:139 ASX section record | sector_metric_capex | 2025-12-31 | low | capex was not identified in extracted ASX document text. |
+| ASX sector metric: dividend | financial:WOW.AX:2026-07-02:140 ASX section record | sector_metric_dividends | 2025-12-31 | low | dividend was not identified in extracted ASX document text. |
 
 ## ASX Sector Metric Evidence
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
 |---|---|---|---|---|---|
-| financial:WOW.AX:2026-07-02:016 | retailers | Sales growth | available | medium | none |
+| financial:WOW.AX:2026-07-02:016 | retailers | sales growth | available | low | none |
 | financial:WOW.AX:2026-07-02:017 | retailers | EBIT margin | available | medium | none |
-| financial:WOW.AX:2026-07-02:018 | retailers | Inventory | available | medium | none |
-| financial:WOW.AX:2026-07-02:019 | retailers | Capex | available | medium | none |
-| financial:WOW.AX:2026-07-02:020 | retailers | Dividends | available | medium | none |
-| financial:WOW.AX:2026-07-02:036 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:018 | retailers | inventory | available | medium | none |
+| financial:WOW.AX:2026-07-02:019 | retailers | capex | available | low | none |
+| financial:WOW.AX:2026-07-02:020 | retailers | dividend | available | low | none |
+| financial:WOW.AX:2026-07-02:036 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:037 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:038 | retailers | Inventory | available | medium | none |
-| financial:WOW.AX:2026-07-02:039 | retailers | Capex | available | medium | none |
-| financial:WOW.AX:2026-07-02:040 | retailers | Dividends | available | medium | none |
-| financial:WOW.AX:2026-07-02:056 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:038 | retailers | inventory | available | low | none |
+| financial:WOW.AX:2026-07-02:039 | retailers | capex | available | low | none |
+| financial:WOW.AX:2026-07-02:040 | retailers | dividend | available | low | none |
+| financial:WOW.AX:2026-07-02:056 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:057 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:058 | retailers | Inventory | unavailable | low | Inventory was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:059 | retailers | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:060 | retailers | Dividends | unavailable | low | Dividends was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:076 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:058 | retailers | inventory | unavailable | low | inventory was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:059 | retailers | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:060 | retailers | dividend | unavailable | low | dividend was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:076 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:077 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:078 | retailers | Inventory | unavailable | low | Inventory was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:079 | retailers | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:080 | retailers | Dividends | unavailable | low | Dividends was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:096 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:078 | retailers | inventory | unavailable | low | inventory was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:079 | retailers | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:080 | retailers | dividend | unavailable | low | dividend was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:096 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:097 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:098 | retailers | Inventory | unavailable | low | Inventory was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:099 | retailers | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:100 | retailers | Dividends | unavailable | low | Dividends was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:116 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:098 | retailers | inventory | unavailable | low | inventory was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:099 | retailers | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:100 | retailers | dividend | unavailable | low | dividend was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:116 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:117 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:118 | retailers | Inventory | unavailable | low | Inventory was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:119 | retailers | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:120 | retailers | Dividends | unavailable | low | Dividends was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:136 | retailers | Sales growth | unavailable | low | Sales growth was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:118 | retailers | inventory | unavailable | low | inventory was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:119 | retailers | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:120 | retailers | dividend | unavailable | low | dividend was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:136 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |
 | financial:WOW.AX:2026-07-02:137 | retailers | EBIT margin | unavailable | low | EBIT margin was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:138 | retailers | Inventory | unavailable | low | Inventory was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:139 | retailers | Capex | unavailable | low | Capex was not identified in extracted ASX document text. |
-| financial:WOW.AX:2026-07-02:140 | retailers | Dividends | unavailable | low | Dividends was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:138 | retailers | inventory | unavailable | low | inventory was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:139 | retailers | capex | unavailable | low | capex was not identified in extracted ASX document text. |
+| financial:WOW.AX:2026-07-02:140 | retailers | dividend | unavailable | low | dividend was not identified in extracted ASX document text. |
 
 ## Evidence gaps
 - ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.

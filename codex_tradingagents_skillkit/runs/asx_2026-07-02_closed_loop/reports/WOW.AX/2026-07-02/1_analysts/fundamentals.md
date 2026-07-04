@@ -18,41 +18,41 @@ Interpretation: structured fundamentals provide ratio and statement context only
 
 ## Sector-Specific Metrics
 - ASX sector identified by collector: retailers.
-- Sales growth: available via financial:WOW.AX:2026-07-02:016; confidence medium.
+- sales growth: available via financial:WOW.AX:2026-07-02:016; confidence low.
 - EBIT margin: available via financial:WOW.AX:2026-07-02:017; confidence medium.
-- Inventory: available via financial:WOW.AX:2026-07-02:018; confidence medium.
-- Capex: available via financial:WOW.AX:2026-07-02:019; confidence medium.
-- Dividends: available via financial:WOW.AX:2026-07-02:020; confidence medium.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:036; Sales growth was not identified in extracted ASX document text.
+- inventory: available via financial:WOW.AX:2026-07-02:018; confidence medium.
+- capex: available via financial:WOW.AX:2026-07-02:019; confidence low.
+- dividend: available via financial:WOW.AX:2026-07-02:020; confidence low.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:036; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:037; EBIT margin was not identified in extracted ASX document text.
-- Inventory: available via financial:WOW.AX:2026-07-02:038; confidence medium.
-- Capex: available via financial:WOW.AX:2026-07-02:039; confidence medium.
-- Dividends: available via financial:WOW.AX:2026-07-02:040; confidence medium.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:056; Sales growth was not identified in extracted ASX document text.
+- inventory: available via financial:WOW.AX:2026-07-02:038; confidence low.
+- capex: available via financial:WOW.AX:2026-07-02:039; confidence low.
+- dividend: available via financial:WOW.AX:2026-07-02:040; confidence low.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:056; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:057; EBIT margin was not identified in extracted ASX document text.
-- Inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:058; Inventory was not identified in extracted ASX document text.
-- Capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:059; Capex was not identified in extracted ASX document text.
-- Dividends: evidence gap disclosed via financial:WOW.AX:2026-07-02:060; Dividends was not identified in extracted ASX document text.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:076; Sales growth was not identified in extracted ASX document text.
+- inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:058; inventory was not identified in extracted ASX document text.
+- capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:059; capex was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:WOW.AX:2026-07-02:060; dividend was not identified in extracted ASX document text.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:076; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:077; EBIT margin was not identified in extracted ASX document text.
-- Inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:078; Inventory was not identified in extracted ASX document text.
-- Capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:079; Capex was not identified in extracted ASX document text.
-- Dividends: evidence gap disclosed via financial:WOW.AX:2026-07-02:080; Dividends was not identified in extracted ASX document text.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:096; Sales growth was not identified in extracted ASX document text.
+- inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:078; inventory was not identified in extracted ASX document text.
+- capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:079; capex was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:WOW.AX:2026-07-02:080; dividend was not identified in extracted ASX document text.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:096; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:097; EBIT margin was not identified in extracted ASX document text.
-- Inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:098; Inventory was not identified in extracted ASX document text.
-- Capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:099; Capex was not identified in extracted ASX document text.
-- Dividends: evidence gap disclosed via financial:WOW.AX:2026-07-02:100; Dividends was not identified in extracted ASX document text.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:116; Sales growth was not identified in extracted ASX document text.
+- inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:098; inventory was not identified in extracted ASX document text.
+- capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:099; capex was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:WOW.AX:2026-07-02:100; dividend was not identified in extracted ASX document text.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:116; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:117; EBIT margin was not identified in extracted ASX document text.
-- Inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:118; Inventory was not identified in extracted ASX document text.
-- Capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:119; Capex was not identified in extracted ASX document text.
-- Dividends: evidence gap disclosed via financial:WOW.AX:2026-07-02:120; Dividends was not identified in extracted ASX document text.
-- Sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:136; Sales growth was not identified in extracted ASX document text.
+- inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:118; inventory was not identified in extracted ASX document text.
+- capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:119; capex was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:WOW.AX:2026-07-02:120; dividend was not identified in extracted ASX document text.
+- sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:136; sales growth was not identified in extracted ASX document text.
 - EBIT margin: evidence gap disclosed via financial:WOW.AX:2026-07-02:137; EBIT margin was not identified in extracted ASX document text.
-- Inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:138; Inventory was not identified in extracted ASX document text.
-- Capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:139; Capex was not identified in extracted ASX document text.
-- Dividends: evidence gap disclosed via financial:WOW.AX:2026-07-02:140; Dividends was not identified in extracted ASX document text.
+- inventory: evidence gap disclosed via financial:WOW.AX:2026-07-02:138; inventory was not identified in extracted ASX document text.
+- capex: evidence gap disclosed via financial:WOW.AX:2026-07-02:139; capex was not identified in extracted ASX document text.
+- dividend: evidence gap disclosed via financial:WOW.AX:2026-07-02:140; dividend was not identified in extracted ASX document text.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

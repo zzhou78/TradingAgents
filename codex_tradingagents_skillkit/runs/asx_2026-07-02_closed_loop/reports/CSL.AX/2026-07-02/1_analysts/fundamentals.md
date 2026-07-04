@@ -18,108 +18,108 @@ Interpretation: structured fundamentals provide ratio and statement context only
 
 ## Sector-Specific Metrics
 - ASX sector identified by collector: healthcare.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:016; Segment revenue was not identified in extracted ASX document text.
-- R&D: available via financial:CSL.AX:2026-07-02:017; confidence medium.
-- Plasma collections: available via financial:CSL.AX:2026-07-02:018; confidence medium.
-- Margins: available via financial:CSL.AX:2026-07-02:019; confidence medium.
-- Debt: available via financial:CSL.AX:2026-07-02:020; confidence medium.
-- Guidance: available via financial:CSL.AX:2026-07-02:021; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:037; Segment revenue was not identified in extracted ASX document text.
-- R&D: available via financial:CSL.AX:2026-07-02:038; confidence medium.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:039; Plasma collections was not identified in extracted ASX document text.
-- Margins: available via financial:CSL.AX:2026-07-02:040; confidence medium.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:041; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:042; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:058; Segment revenue was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:016; segment revenue was not identified in extracted ASX document text.
+- R&D: available via financial:CSL.AX:2026-07-02:017; confidence low.
+- plasma collections: available via financial:CSL.AX:2026-07-02:018; confidence low.
+- margin: available via financial:CSL.AX:2026-07-02:019; confidence low.
+- net debt: available via financial:CSL.AX:2026-07-02:020; confidence low.
+- guidance: available via financial:CSL.AX:2026-07-02:021; confidence low.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:037; segment revenue was not identified in extracted ASX document text.
+- R&D: available via financial:CSL.AX:2026-07-02:038; confidence low.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:039; plasma collections was not identified in extracted ASX document text.
+- margin: available via financial:CSL.AX:2026-07-02:040; confidence low.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:041; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:042; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:058; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:059; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:060; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:061; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:062; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:063; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:079; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:060; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:061; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:062; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:063; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:079; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:080; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:081; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:082; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:083; Debt was not identified in extracted ASX document text.
-- Guidance: available via financial:CSL.AX:2026-07-02:084; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:100; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:081; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:082; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:083; net debt was not identified in extracted ASX document text.
+- guidance: available via financial:CSL.AX:2026-07-02:084; confidence low.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:100; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:101; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:102; Plasma collections was not identified in extracted ASX document text.
-- Margins: available via financial:CSL.AX:2026-07-02:103; confidence medium.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:104; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:105; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:121; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:102; plasma collections was not identified in extracted ASX document text.
+- margin: available via financial:CSL.AX:2026-07-02:103; confidence low.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:104; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:105; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:121; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:122; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:123; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:124; Margins was not identified in extracted ASX document text.
-- Debt: available via financial:CSL.AX:2026-07-02:125; confidence medium.
-- Guidance: available via financial:CSL.AX:2026-07-02:126; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:142; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:123; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:124; margin was not identified in extracted ASX document text.
+- net debt: available via financial:CSL.AX:2026-07-02:125; confidence low.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:126; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:142; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:143; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:144; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:145; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:146; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:147; Guidance was not identified in extracted ASX document text.
-- Segment revenue: available via financial:CSL.AX:2026-07-02:163; confidence medium.
-- R&D: available via financial:CSL.AX:2026-07-02:164; confidence medium.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:165; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:166; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:167; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:168; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:184; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:144; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:145; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:146; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:147; guidance was not identified in extracted ASX document text.
+- segment revenue: available via financial:CSL.AX:2026-07-02:163; confidence low.
+- R&D: available via financial:CSL.AX:2026-07-02:164; confidence low.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:165; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:166; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:167; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:168; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:184; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:185; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:186; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:187; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:188; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:189; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:205; Segment revenue was not identified in extracted ASX document text.
-- R&D: available via financial:CSL.AX:2026-07-02:206; confidence medium.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:207; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:208; Margins was not identified in extracted ASX document text.
-- Debt: available via financial:CSL.AX:2026-07-02:209; confidence medium.
-- Guidance: available via financial:CSL.AX:2026-07-02:210; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:226; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:186; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:187; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:188; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:189; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:205; segment revenue was not identified in extracted ASX document text.
+- R&D: available via financial:CSL.AX:2026-07-02:206; confidence low.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:207; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:208; margin was not identified in extracted ASX document text.
+- net debt: available via financial:CSL.AX:2026-07-02:209; confidence low.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:210; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:226; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:227; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:228; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:229; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:230; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:231; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:247; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:228; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:229; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:230; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:231; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:247; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:248; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:249; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:250; Margins was not identified in extracted ASX document text.
-- Debt: available via financial:CSL.AX:2026-07-02:251; confidence medium.
-- Guidance: available via financial:CSL.AX:2026-07-02:252; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:268; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:249; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:250; margin was not identified in extracted ASX document text.
+- net debt: available via financial:CSL.AX:2026-07-02:251; confidence low.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:252; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:268; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:269; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:270; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:271; Margins was not identified in extracted ASX document text.
-- Debt: available via financial:CSL.AX:2026-07-02:272; confidence medium.
-- Guidance: available via financial:CSL.AX:2026-07-02:273; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:289; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:270; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:271; margin was not identified in extracted ASX document text.
+- net debt: available via financial:CSL.AX:2026-07-02:272; confidence low.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:273; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:289; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:290; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:291; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:292; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:293; Debt was not identified in extracted ASX document text.
-- Guidance: available via financial:CSL.AX:2026-07-02:294; confidence medium.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:310; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:291; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:292; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:293; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:294; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:310; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:311; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:312; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:313; Margins was not identified in extracted ASX document text.
-- Debt: available via financial:CSL.AX:2026-07-02:314; confidence medium.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:315; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:331; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:312; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:313; margin was not identified in extracted ASX document text.
+- net debt: available via financial:CSL.AX:2026-07-02:314; confidence low.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:315; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:331; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:332; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:333; Plasma collections was not identified in extracted ASX document text.
-- Margins: available via financial:CSL.AX:2026-07-02:334; confidence medium.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:335; Debt was not identified in extracted ASX document text.
-- Guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:336; Guidance was not identified in extracted ASX document text.
-- Segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:352; Segment revenue was not identified in extracted ASX document text.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:333; plasma collections was not identified in extracted ASX document text.
+- margin: available via financial:CSL.AX:2026-07-02:334; confidence low.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:335; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:336; guidance was not identified in extracted ASX document text.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-02:352; segment revenue was not identified in extracted ASX document text.
 - R&D: evidence gap disclosed via financial:CSL.AX:2026-07-02:353; R&D was not identified in extracted ASX document text.
-- Plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:354; Plasma collections was not identified in extracted ASX document text.
-- Margins: evidence gap disclosed via financial:CSL.AX:2026-07-02:355; Margins was not identified in extracted ASX document text.
-- Debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:356; Debt was not identified in extracted ASX document text.
-- Guidance: available via financial:CSL.AX:2026-07-02:357; confidence medium.
+- plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:354; plasma collections was not identified in extracted ASX document text.
+- margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:355; margin was not identified in extracted ASX document text.
+- net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:356; net debt was not identified in extracted ASX document text.
+- guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:357; guidance was not identified in extracted ASX document text.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

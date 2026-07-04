@@ -20,3 +20,7 @@
 * Open questions: None for this artifact beyond disclosed evidence gaps.
 * Evidence references: market:CSL.AX:2026-07-02:001, financial:CSL.AX:2026-07-02:001, news:CSL.AX:2026-07-02:001
 * Staleness / expiry: Evidence is valid only for trade date 2026-07-02; refresh before reuse.
+
+## Run-Level Warnings
+- debate winner is always Balanced across a multi-ticker run
+

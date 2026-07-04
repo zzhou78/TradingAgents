@@ -16,7 +16,7 @@
 | financial:MPL.AX:2026-07-02:001 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | income 73 Consolidated statement of financial position 74 Consolidated statement of changes in equity 75 Conso |
 | financial:MPL.AX:2026-07-02:016 | asx_fallback_document | sector_metric_premium_growth | 2025-12-31 | available | premiums, or products or services from our health and wellbeing partners. To help ease the burden of last year |
 | financial:MPL.AX:2026-07-02:017 | asx_fallback_document | sector_metric_claims_ratio | 2025-12-31 | available | claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% Gross profit 1,396.4 1,307. 2 6.8% Manag |
-| financial:MPL.AX:2026-07-02:018 | asx_fallback_document | sector_metric_membership | 2025-12-31 | available | policyholder growth +10.5k (+3.1%) net non-resident policy unit growth Healthcare 52% of Medibank policyholder |
+| financial:MPL.AX:2026-07-02:018 | asx_fallback_document | sector_metric_membership | 2025-12-31 | available | policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m inv |
 | financial:MPL.AX:2026-07-02:019 | asx_fallback_document | sector_metric_capital_adequacy | 2025-12-31 | available | capital adequacy requirement of $250 million for Medibank, with effect from 1 July 2023, following a review of |
 
 ## Claim-Source Table
@@ -27,18 +27,18 @@
 | Liquidity / cash-debt evidence | financial:MPL.AX:2026-07-02:007 ASX document | cash_debt_gearing | 2025-12-31 | medium | none |
 | Segment/product evidence | financial:MPL.AX:2026-07-02:008 ASX document | segment_product_performance | 2025-12-31 | medium | none |
 | Cash-flow evidence | financial:MPL.AX:2026-07-02:004 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
-| ASX sector metric: Premium growth | financial:MPL.AX:2026-07-02:016 ASX section record | sector_metric_premium_growth | 2025-12-31 | medium | none |
-| ASX sector metric: Claims ratio | financial:MPL.AX:2026-07-02:017 ASX section record | sector_metric_claims_ratio | 2025-12-31 | medium | none |
-| ASX sector metric: Membership | financial:MPL.AX:2026-07-02:018 ASX section record | sector_metric_membership | 2025-12-31 | medium | none |
-| ASX sector metric: Capital adequacy | financial:MPL.AX:2026-07-02:019 ASX section record | sector_metric_capital_adequacy | 2025-12-31 | medium | none |
+| ASX sector metric: premium growth | financial:MPL.AX:2026-07-02:016 ASX section record | sector_metric_premium_growth | 2025-12-31 | low | none |
+| ASX sector metric: claims ratio | financial:MPL.AX:2026-07-02:017 ASX section record | sector_metric_claims_ratio | 2025-12-31 | medium | none |
+| ASX sector metric: membership | financial:MPL.AX:2026-07-02:018 ASX section record | sector_metric_membership | 2025-12-31 | medium | none |
+| ASX sector metric: capital adequacy | financial:MPL.AX:2026-07-02:019 ASX section record | sector_metric_capital_adequacy | 2025-12-31 | medium | none |
 
 ## ASX Sector Metric Evidence
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
 |---|---|---|---|---|---|
-| financial:MPL.AX:2026-07-02:016 | health_insurers | Premium growth | available | medium | none |
-| financial:MPL.AX:2026-07-02:017 | health_insurers | Claims ratio | available | medium | none |
-| financial:MPL.AX:2026-07-02:018 | health_insurers | Membership | available | medium | none |
-| financial:MPL.AX:2026-07-02:019 | health_insurers | Capital adequacy | available | medium | none |
+| financial:MPL.AX:2026-07-02:016 | health_insurers | premium growth | available | low | none |
+| financial:MPL.AX:2026-07-02:017 | health_insurers | claims ratio | available | medium | none |
+| financial:MPL.AX:2026-07-02:018 | health_insurers | membership | available | medium | none |
+| financial:MPL.AX:2026-07-02:019 | health_insurers | capital adequacy | available | medium | none |
 
 ## Evidence gaps
 - ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.

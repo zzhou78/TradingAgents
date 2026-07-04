@@ -1,0 +1,289 @@
+banks:
+  net_interest_margin:
+    accepted_labels: ["net interest margin", "NIM"]
+    accepted_units: ["bps", "%"]
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "cash NPAT", "dividend", "CET1"]
+    max_label_value_distance_tokens: 8
+    direction_rules:
+      supportive: ["up", "increased", "higher", "expanded"]
+      adverse: ["down", "decreased", "lower", "compressed"]
+  cet1:
+    accepted_labels: ["CET1", "common equity tier 1"]
+    accepted_units: ["bps", "%"]
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "NIM", "net interest margin", "dividend"]
+    max_label_value_distance_tokens: 8
+    direction_rules:
+      supportive: ["up", "increased", "higher", "strong", "above"]
+      adverse: ["down", "decreased", "lower", "below"]
+  loan_growth:
+    accepted_labels: ["loan growth", "home lending", "business lending", "gross loans"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "dividend", "CET1"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher", "up"]
+      adverse: ["declined", "decreased", "lower", "down"]
+  arrears:
+    accepted_labels: ["arrears", "delinquencies", "delinquency"]
+    accepted_units: ["bps", "%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "dividend"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["reduced", "lower", "decreased"]
+      adverse: ["increased", "higher", "up", "deteriorated"]
+  impairment:
+    accepted_labels: ["impairment", "loan loss", "credit loss"]
+    accepted_units: ["bps", "%", "$m", "A$m"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*m\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "dividend"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["reduced", "lower", "decreased"]
+      adverse: ["increased", "higher", "up"]
+  dividend:
+    accepted_labels: ["dividend", "DPS", "dividend per share"]
+    accepted_units: ["cents", "cps", "%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*cents\\b", "\\b\\d+(?:\\.\\d+)?\\s*cps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["footnote", "note", "operating income", "NIM", "CET1", "tax rate", "franked"]
+    max_label_value_distance_tokens: 8
+    direction_rules:
+      supportive: ["increased", "higher", "up", "franked"]
+      adverse: ["decreased", "lower", "cut", "reduced"]
+  roe:
+    accepted_labels: ["ROE", "return on equity"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["operating income", "dividend"]
+    max_label_value_distance_tokens: 8
+    direction_rules:
+      supportive: ["increased", "higher", "strong", "improved"]
+      adverse: ["decreased", "lower", "weaker"]
+miners:
+  production:
+    accepted_labels: ["production", "produced", "shipments"]
+    accepted_units: ["mt", "kt", "moz", "m"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*(?:mt|kt|moz|m)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["page", "contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["record", "increased", "higher", "up"]
+      adverse: ["decreased", "lower", "down"]
+  realised_price:
+    accepted_labels: ["realised price", "realized price", "average realised"]
+    accepted_units: ["US$/t", "$/t", "%"]
+    accepted_value_patterns: ["\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/t\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["page", "contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["higher", "increased", "up"]
+      adverse: ["lower", "decreased", "down"]
+  unit_cost_aisc:
+    accepted_labels: ["unit cost", "AISC", "all-in sustaining cost", "cash cost"]
+    accepted_units: ["%", "bps", "US$/t", "$/t"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*per cent\\b", "\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/t\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["revenue", "operating income"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["down", "lower", "reduced", "reduction", "lowest-cost"]
+      adverse: ["up", "higher", "increased"]
+  capex:
+    accepted_labels: ["capex", "capital expenditure"]
+    accepted_units: ["$m", "$bn", "US$m", "US$bn"]
+    accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["page", "contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["disciplined", "lower", "reduced"]
+      adverse: ["higher", "increased", "overrun"]
+  reserves_resources:
+    accepted_labels: ["reserves", "resources"]
+    accepted_units: ["mt", "moz", "kt"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*(?:mt|moz|kt)\\b"]
+    required_nearby_terms: ["reserves", "resources"]
+    rejected_nearby_terms: ["reports and presentations", "downloads", "contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["increased", "discovery", "expanded"]
+      adverse: ["depleted", "lower", "reduced"]
+  commodity_exposure:
+    accepted_labels: ["iron ore", "copper", "coal", "potash", "nickel", "commodity exposure"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["reports and presentations", "downloads", "contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["exposure", "producer", "portfolio"]
+      adverse: ["decline", "lower"]
+healthcare:
+  segment_revenue:
+    accepted_labels: ["segment revenue", "revenue by segment", "segment sales"]
+    accepted_units: ["$m", "$bn", "US$m", "US$bn", "%"]
+    accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["segment"]
+    rejected_nearby_terms: ["selling and marketing", "expense", "expenses", "table of contents", "contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["increased", "growth", "higher", "up"]
+      adverse: ["decreased", "lower", "down"]
+  r_and_d:
+    accepted_labels: ["R&D", "research and development"]
+    accepted_units: ["$m", "$bn", "US$m", "US$bn", "%"]
+    accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["selling and marketing"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["investment", "increased", "pipeline"]
+      adverse: ["reduced", "delay"]
+  plasma_collections:
+    accepted_labels: ["plasma collections", "plasma collection", "plasma volume"]
+    accepted_units: ["%", "m"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*m\\b"]
+    required_nearby_terms: ["plasma"]
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["increased", "higher", "growth", "up"]
+      adverse: ["lower", "down", "decreased"]
+  margins:
+    accepted_labels: ["margin", "gross margin", "EBIT margin"]
+    accepted_units: ["%", "bps"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["expanded", "higher", "increased"]
+      adverse: ["compressed", "lower", "decreased", "declined"]
+  debt:
+    accepted_labels: ["net debt", "borrowings", "debt"]
+    accepted_units: ["$m", "$bn", "US$m", "US$bn"]
+    accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["reduced", "lower", "decreased"]
+      adverse: ["increased", "higher", "up"]
+  guidance:
+    accepted_labels: ["guidance", "outlook", "expects", "forecast"]
+    accepted_units: ["%", "$m", "$bn", "US$m", "US$bn"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents", "table of contents", "directors report", "financial statements"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["expects", "forecast", "higher", "growth"]
+      adverse: ["lower", "downgrade", "reduced"]
+health_insurers:
+  premium_growth:
+    accepted_labels: ["premium growth", "premiums", "premium revenue"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["premium"]
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher"]
+      adverse: ["declined", "lower", "down"]
+  claims_ratio:
+    accepted_labels: ["claims ratio", "claims expense", "benefits paid"]
+    accepted_units: ["%", "bps"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"]
+    required_nearby_terms: ["claims"]
+    rejected_nearby_terms: ["premium", "membership"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["lower", "decreased", "reduced"]
+      adverse: ["increased", "higher", "up"]
+  membership:
+    accepted_labels: ["membership", "members", "policyholders"]
+    accepted_units: ["%", "m"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*m\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher"]
+      adverse: ["declined", "lower", "down"]
+  capital_adequacy:
+    accepted_labels: ["capital adequacy", "capital ratio", "regulatory capital", "capital buffer"]
+    accepted_units: ["$m", "$bn", "%"]
+    accepted_value_patterns: ["\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*m\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*bn\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["capital"]
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 12
+    direction_rules:
+      supportive: ["above", "strong", "buffer", "surplus"]
+      adverse: ["below", "weaker", "deficit"]
+retailers:
+  sales_growth:
+    accepted_labels: ["sales growth", "comparable sales", "same-store sales", "total sales"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["sales"]
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher"]
+      adverse: ["declined", "lower", "down"]
+  ebit_margin:
+    accepted_labels: ["EBIT margin", "operating margin"]
+    accepted_units: ["bps", "%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["margin"]
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["expanded", "higher", "increased"]
+      adverse: ["decreasing", "decreased", "lower", "declined", "compressed"]
+  inventory:
+    accepted_labels: ["inventory", "inventories", "stock loss", "shrink"]
+    accepted_units: ["%", "$m", "$bn"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["lower", "reduced", "improved"]
+      adverse: ["higher", "increased", "shrink"]
+  capex:
+    accepted_labels: ["capex", "capital expenditure"]
+    accepted_units: ["$m", "$bn"]
+    accepted_value_patterns: ["\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["disciplined", "lower", "reduced"]
+      adverse: ["higher", "increased"]
+  dividends:
+    accepted_labels: ["dividend", "dividends", "DPS", "dividend per share"]
+    accepted_units: ["cents", "cps", "%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*cents\\b", "\\b\\d+(?:\\.\\d+)?\\s*cps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: []
+    rejected_nearby_terms: ["footnote", "note", "contents", "table of contents", "tax rate", "franked"]
+    max_label_value_distance_tokens: 8
+    direction_rules:
+      supportive: ["increased", "higher", "franked"]
+      adverse: ["decreased", "lower", "cut", "reduced"]

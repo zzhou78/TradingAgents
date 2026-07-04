@@ -622,6 +622,9 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
             "clean_metric_value",
             "value_unit",
             "value_context",
+            "metric_value_status",
+            "association_score",
+            "association_reason",
             "period_reference",
             "comparison_reference",
             "supporting_sentence",
@@ -633,6 +636,33 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
         ]
         if not audit_section or not all(field in audit_section for field in required_audit_fields):
             errors.append("ASX Research Manager report lacks auditable sector metric direction records")
+        else:
+            rows = _markdown_table_rows(audit_section)
+            header = [cell.strip() for cell in rows[0]] if rows else []
+            for row in rows[1:]:
+                if len(row) != len(header):
+                    continue
+                data = dict(zip(header, row, strict=False))
+                clean_value = data.get("clean_metric_value", "").strip().lower()
+                status = data.get("metric_value_status", "").strip().lower()
+                direction = data.get("direction", "").strip().lower()
+                confidence = data.get("confidence", "").strip().lower()
+                try:
+                    association_score = int(float(data.get("association_score", "0").strip() or "0"))
+                except ValueError:
+                    association_score = 0
+                if clean_value not in {"", "unavailable"} and association_score < 80:
+                    errors.append("ASX metric audit populates clean_metric_value below accepted association threshold")
+                    break
+                if clean_value not in {"", "unavailable"} and status != "value_extracted":
+                    errors.append("ASX metric audit populates clean_metric_value without value_extracted status")
+                    break
+                if status == "context_only" and clean_value not in {"", "unavailable"}:
+                    errors.append("ASX metric audit treats context-only text as an extracted metric value")
+                    break
+                if status in {"context_only", "metric_mentioned_only"} and confidence in {"medium", "high"} and direction in {"supportive", "adverse"}:
+                    errors.append("ASX metric audit counts weak metric evidence as strong directional support")
+                    break
     rationale = _section(text, "## Rating Rationale") or text
     if "ASX source coverage is uneven" in rationale and not (
         all(term in rationale for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_sector_metric
