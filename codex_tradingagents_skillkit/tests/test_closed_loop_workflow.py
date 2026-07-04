@@ -121,3 +121,26 @@ def test_passed_quality_gate_requires_closed_loop_status_artifact(tmp_path: Path
 
     assert "closed_loop_status.json missing for completed run" in errors
     assert "quality_gate.json does not reference closed_loop_status.json" in errors
+
+
+def test_run_warnings_are_written_to_quality_review_without_failure(tmp_path: Path):
+    module = _load_closed_loop()
+    report_dir = tmp_path / "run" / "reports" / "AAPL" / "2026-07-02"
+    quality_dir = report_dir / "6_quality"
+    quality_dir.mkdir(parents=True)
+    review_path = quality_dir / "quality_review.md"
+    review_path.write_text(
+        "# Quality Reviewer Report\n\n## Quality Gate Findings\n- Validators passed.\n",
+        encoding="utf-8",
+    )
+    workflow_payload = {
+        "run_quality_warnings": ["debate winner is always Balanced across a multi-ticker run"],
+        "runs": [{"ticker": "AAPL", "report_dir": str(report_dir)}],
+    }
+
+    patched = module._patch_quality_reviews_with_warnings(workflow_payload)
+
+    assert patched == [str(review_path)]
+    text = review_path.read_text(encoding="utf-8")
+    assert "## Run-Level Warnings" in text
+    assert "debate winner is always Balanced" in text

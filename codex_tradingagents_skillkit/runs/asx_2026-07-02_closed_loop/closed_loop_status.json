@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
   "status": "review_ready_paper_study",
-  "generated_at": "2026-07-04T16:45:06+10:00",
+  "generated_at": "2026-07-04T17:13:53+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
@@ -31,8 +31,8 @@
           "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:2026-07-04T16:13:43+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-          "status": "pending",
-          "workflow_status": "pending"
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
         },
         "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\BHP.AX\\2026-07-02\\workflow_state.json",
         "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\BHP.AX\\2026-07-02",
@@ -232,8 +232,8 @@
           "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-04T16:13:43+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-          "status": "pending",
-          "workflow_status": "pending"
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
         },
         "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CBA.AX\\2026-07-02\\workflow_state.json",
         "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CBA.AX\\2026-07-02",
@@ -433,8 +433,8 @@
           "run_id": "asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-04T16:13:43+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-          "status": "pending",
-          "workflow_status": "pending"
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
         },
         "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\workflow_state.json",
         "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02",
@@ -634,8 +634,8 @@
           "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-04T16:13:43+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-          "status": "pending",
-          "workflow_status": "pending"
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
         },
         "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\workflow_state.json",
         "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\MPL.AX\\2026-07-02",
@@ -835,8 +835,8 @@
           "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-04T16:13:43+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-          "status": "pending",
-          "workflow_status": "pending"
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
         },
         "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\workflow_state.json",
         "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\WOW.AX\\2026-07-02",
@@ -1023,6 +1023,7 @@
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\MPL.AX\\2026-07-02\\6_quality\\quality_gate.json",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\WOW.AX\\2026-07-02\\6_quality\\quality_gate.json"
   ],
+  "patched_quality_reviews": [],
   "written_quality_gates": [
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\BHP.AX\\2026-07-02\\6_quality\\quality_gate.json",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CBA.AX\\2026-07-02\\6_quality\\quality_gate.json",

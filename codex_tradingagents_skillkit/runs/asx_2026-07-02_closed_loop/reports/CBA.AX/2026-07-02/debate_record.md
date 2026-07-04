@@ -65,18 +65,18 @@ Primary rating driver: mixed
 Market technicals are treated as a confidence and timing modifier, not as the main investment-rating engine.
 
 ## Evidence Winner
-Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none.
+Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 0 context-only, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none.
 
 ## Structured Evidence Matrix
 | Role | Evidence ID | Direction | Materiality | Confidence | Tool output | Weight | Reason | Independence group ID |
 |---|---|---|---|---|---|---:|---|---|
-| Market Analyst | market:CBA.AX:2026-07-02:001 | negative | high | medium | market snapshot | -1 | Hold is driven by mixed: Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner. | market:CBA.AX:2026-07-02:trend |
+| Market Analyst | market:CBA.AX:2026-07-02:001 | negative | high | medium | market snapshot | -1 | Hold is driven by mixed: Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 0 context-only, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner. | market:CBA.AX:2026-07-02:trend |
 | Financial Report Analyst | financial:CBA.AX:2026-07-02:023 | positive | high | medium | filing section extraction | +2 | ASX document and sector-metric records support financial review with gaps disclosed | event:CBA.AX:2026-07-02:financial-report |
 | News Analyst | news:CBA.AX:2026-07-02:001 | positive | medium | medium | article evidence card | +1 | Direct company evidence, not repeated snippet-only headlines | event:CBA.AX:2026-07-02:earnings |
 | Sentiment Analyst | social:CBA.AX:2026-07-02:001 | mixed | low | low | social summary | 0 | Retail-only reaction is noisy and not independent fundamental evidence | reaction:CBA.AX:2026-07-02:retail |
 | Bear Researcher | fundamentals:CBA.AX:2026-07-02:001 | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:CBA.AX:2026-07-02:valuation-trend |
 
-Score calculation / component weights: Sector metric direction mix (7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral), +1 official financial-report sections (2 available / 0 gap-labelled core sections), -2 market setup as timing/confidence modifier (negative across 10 EMA, 50 SMA, and 200 SMA), -1 evidence-gap/source-depth cap, 0 retail sentiment = Hold driven by mixed.
+Score calculation / component weights: Sector metric direction mix (7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 0 context-only), +1 official financial-report sections (2 available / 0 gap-labelled core sections), -2 market setup as timing/confidence modifier (negative across 10 EMA, 50 SMA, and 200 SMA), -1 evidence-gap/source-depth cap, 0 retail sentiment = Hold driven by mixed.
 
 ## Role Evidence Weighting
 - Financial report / sector metrics: primary evidence group for ASX where available; filing and fundamentals evidence is not counted again through Bull/Bear restatement.
@@ -93,22 +93,22 @@ Hold is selected because supportive sector metrics are offset by adverse or non-
 1. Why not Buy / Overweight? Buy/Overweight is not selected because 2 adverse sector-metric reading(s) (Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042)) offset the supportive case (NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039)).
 2. Why not Sell / Underweight? Sell/Underweight is not selected because 5 supportive sector-metric reading(s) (NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039)) prevent a completed negative official-source case.
 3. Which role evidence was decisive? Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038) plus Fundamentals/Financial section context; Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) modifies timing; News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
-4. Which sector-specific financial metrics mattered? banks metric direction mix: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral. supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Highlighted metric: NIM is available / supportive via financial:CBA.AX:2026-07-02:038.
+4. Which sector-specific financial metrics mattered? banks metric direction mix: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 0 context-only. supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Highlighted metric: NIM is available / supportive via financial:CBA.AX:2026-07-02:038.
 5. Which evidence gaps capped confidence? Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
 ## Sector Metric Direction Audit
-Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+Direction is based on the extracted phrase, supporting sentence, clean value, and comparison basis below, not metric presence alone. Navigation/page-list snippets are downgraded to low-confidence context-only evidence.
 
-| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
-|---|---|---|---|---|---|
-| net_interest_margin | NIM | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:016 |
-| cet1 | CET1 | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:017 |
-| loan_growth | loan growth | period-over-period wording in extracted filing/report phrase | unavailable | low | financial:CBA.AX:2026-07-02:018 |
-| arrears | arrears | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:019 |
-| impairment | impairment | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:020 |
-| dividend | dividend | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:021 |
-| roe | ROE | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:022 |
+| metric_name | extracted_value_or_phrase | clean_metric_value_if_available | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |
+|---|---|---|---|---|---|---|---|---|
+| net_interest_margin | NIM | unavailable | NIM | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:016 |
+| cet1 | CET1 | 1 | CET1 | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:017 |
+| loan_growth | loan growth | unavailable | loan growth | period-over-period wording in extracted filing/report phrase | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:018 |
+| arrears | arrears | unavailable | arrears | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:019 |
+| impairment | impairment | unavailable | impairment | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:020 |
+| dividend | dividend | unavailable | dividend | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:021 |
+| roe | ROE | unavailable | ROE | metric mentioned without explicit comparative baseline | unavailable | low | metric was unavailable or no supportable extracted phrase was found | financial:CBA.AX:2026-07-02:022 |
 
 ## Debate Outcome Scorecard
 | Field | Outcome |

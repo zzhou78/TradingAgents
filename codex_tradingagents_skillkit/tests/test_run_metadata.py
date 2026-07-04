@@ -7,6 +7,7 @@ from pathlib import Path
 BUNDLE = Path(__file__).resolve().parents[1]
 MODULE_PATH = BUNDLE / "scripts" / "collect_role_evidence.py"
 WORKFLOW_MODULE_PATH = BUNDLE / "scripts" / "run_codex_role_workflow.py"
+QUALITY_VALIDATOR_PATH = BUNDLE / "scripts" / "validate_quality_review.py"
 
 
 def _load_module():
@@ -19,6 +20,14 @@ def _load_module():
 
 def _load_workflow_module():
     spec = importlib.util.spec_from_file_location("run_codex_role_workflow", WORKFLOW_MODULE_PATH)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _load_quality_validator():
+    spec = importlib.util.spec_from_file_location("validate_quality_review", QUALITY_VALIDATOR_PATH)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -194,3 +203,38 @@ def test_run_metadata_requires_market_field(tmp_path: Path):
     }
 
     assert "run_metadata.json missing required field: market" in module._run_metadata_errors(workflow_path, workflow)
+
+
+def test_closed_loop_review_ready_status_requires_nested_metadata_match(tmp_path: Path):
+    validator = _load_quality_validator()
+    output_dir = tmp_path / "us_2026-07-02_closed_loop"
+    output_dir.mkdir()
+    (output_dir / "run_metadata.json").write_text(
+        json.dumps({"status": "pending", "workflow_status": "pending"}),
+        encoding="utf-8",
+    )
+    (output_dir / "closed_loop_status.json").write_text(
+        json.dumps(
+            {
+                "status": "review_ready_paper_study",
+                "workflow": {
+                    "runs": [
+                        {
+                            "ticker": "AAPL",
+                            "status": "review_ready_paper_study",
+                            "run_metadata": {"status": "pending", "workflow_status": "pending"},
+                        }
+                    ]
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    errors = validator.validate_run_dir(output_dir)
+
+    assert "run_metadata.json status does not match closed_loop_status.json status" in errors
+    assert (
+        "closed_loop_status.json nested run_metadata.workflow_status for AAPL does not match outer run status"
+        in errors
+    )

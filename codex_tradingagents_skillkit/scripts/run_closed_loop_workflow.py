@@ -56,9 +56,23 @@ def _update_run_metadata_status(output_dir: Path, status: str) -> str:
         return ""
     if not isinstance(metadata, dict):
         return ""
+    metadata["status"] = status
     metadata["workflow_status"] = status
     path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
     return str(path)
+
+
+def _sync_nested_run_metadata_status(workflow_payload: dict[str, Any], status: str) -> None:
+    if status != "review_ready_paper_study":
+        return
+    for run in workflow_payload.get("runs", []):
+        if not isinstance(run, dict) or run.get("status") != status:
+            continue
+        run_metadata = run.get("run_metadata")
+        if not isinstance(run_metadata, dict):
+            continue
+        run_metadata["status"] = status
+        run_metadata["workflow_status"] = status
 
 
 def _patch_quality_gates_with_status(output_dir: Path, status_path: Path) -> list[str]:
@@ -103,6 +117,31 @@ def _write_passed_quality_gates(workflow_payload: dict[str, Any], status_path: P
         gate_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         written.append(str(gate_path))
     return written
+
+
+def _patch_quality_reviews_with_warnings(workflow_payload: dict[str, Any]) -> list[str]:
+    warnings = [str(item) for item in workflow_payload.get("run_quality_warnings", []) if item]
+    if not warnings:
+        return []
+    patched: list[str] = []
+    warning_block = "\n".join(f"- {warning}" for warning in warnings)
+    for run in workflow_payload.get("runs", []):
+        if not isinstance(run, dict):
+            continue
+        report_dir = Path(str(run.get("report_dir") or ""))
+        review_path = report_dir / "6_quality" / "quality_review.md"
+        if not review_path.exists():
+            continue
+        text = review_path.read_text(encoding="utf-8")
+        section = "## Run-Level Warnings"
+        replacement = f"{section}\n{warning_block}\n\n"
+        if section in text:
+            text = text.split(section, 1)[0].rstrip() + "\n\n" + replacement
+        else:
+            text = text.rstrip() + "\n\n" + replacement
+        review_path.write_text(text, encoding="utf-8")
+        patched.append(str(review_path))
+    return patched
 
 
 def run_closed_loop(
@@ -162,14 +201,18 @@ def run_closed_loop(
             remediation_plans = run_quality_remediation(output_dir=output_dir)
             break
 
+    status = _status_from_runs(workflow_payload["runs"], remediation_plans)
+    _sync_nested_run_metadata_status(workflow_payload, status)
+    patched_quality_reviews = _patch_quality_reviews_with_warnings(workflow_payload)
     payload = {
         "output_dir": str(output_dir),
-        "status": _status_from_runs(workflow_payload["runs"], remediation_plans),
+        "status": status,
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "commands": commands,
         "workflow": workflow_payload,
         "remediation_plans": remediation_plans,
         "patched_quality_gates": patched_quality_gates,
+        "patched_quality_reviews": patched_quality_reviews,
         "written_quality_gates": _write_passed_quality_gates(workflow_payload, provisional_status_path),
         "closed_loop_rule": "continue from next_remediation_task.md until quality passes or a true external blocker is documented",
     }

@@ -619,9 +619,12 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
         required_audit_fields = [
             "metric_name",
             "extracted_value_or_phrase",
+            "clean_metric_value_if_available",
+            "supporting_sentence",
             "comparison_basis",
             "direction",
             "confidence",
+            "confidence_reason",
             "evidence_id",
         ]
         if not audit_section or not all(field in audit_section for field in required_audit_fields):
@@ -1137,8 +1140,49 @@ def validate_run_warnings(output_dir: Path) -> list[str]:
     return warnings
 
 
+def _closed_loop_status_consistency_errors(output_dir: Path) -> list[str]:
+    path = output_dir / "closed_loop_status.json"
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return ["closed_loop_status.json is not valid JSON"]
+    if not isinstance(payload, dict):
+        return ["closed_loop_status.json is not a JSON object"]
+    outer_status = str(payload.get("status") or "")
+    if outer_status != "review_ready_paper_study":
+        return []
+    errors: list[str] = []
+    root_metadata_path = output_dir / "run_metadata.json"
+    if root_metadata_path.exists():
+        try:
+            root_metadata = json.loads(root_metadata_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            root_metadata = {}
+        if isinstance(root_metadata, dict):
+            for field in ["status", "workflow_status"]:
+                if root_metadata.get(field) != outer_status:
+                    errors.append(f"run_metadata.json {field} does not match closed_loop_status.json status")
+    for run in payload.get("workflow", {}).get("runs", []):
+        if not isinstance(run, dict) or run.get("status") != outer_status:
+            continue
+        run_metadata = run.get("run_metadata")
+        if not isinstance(run_metadata, dict):
+            errors.append("closed_loop_status.json run is missing nested run_metadata")
+            continue
+        ticker = str(run.get("ticker") or "unknown")
+        for field in ["status", "workflow_status"]:
+            if run_metadata.get(field) != outer_status:
+                errors.append(
+                    f"closed_loop_status.json nested run_metadata.{field} for {ticker} does not match outer run status"
+                )
+    return errors
+
+
 def validate_run_dir(output_dir: Path) -> list[str]:
     errors: list[str] = []
+    errors.extend(_closed_loop_status_consistency_errors(output_dir))
     entries = _run_entries(output_dir)
 
     for left_index, left in enumerate(entries):

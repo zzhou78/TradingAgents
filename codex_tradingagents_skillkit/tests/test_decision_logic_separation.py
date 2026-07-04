@@ -75,6 +75,46 @@ def test_buy_requires_research_alignment_and_confirmed_setup():
     assert "BUY requires Research Manager Buy/Overweight" in setup["threshold_rule"]
 
 
+def test_fixture_a_overweight_confirmed_setup_trader_buy():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    setup = writer._trader_setup_assessment(
+        manager_rec="Overweight",
+        close=112.0,
+        ema_10=108.0,
+        sma_50=104.0,
+        sma_200=99.0,
+        rsi=62.0,
+        macd=0.8,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert setup["setup_score"] >= 4
+    assert setup["buy_confirmation"] is True
+    assert setup["action"] == "BUY"
+
+
+def test_fixture_b_underweight_confirmed_downside_trader_sell():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    setup = writer._trader_setup_assessment(
+        manager_rec="Underweight",
+        close=88.0,
+        ema_10=93.0,
+        sma_50=97.0,
+        sma_200=103.0,
+        rsi=33.0,
+        macd=-0.9,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert setup["setup_score"] <= -4
+    assert setup["sell_confirmation"] is True
+    assert setup["action"] == "SELL"
+
+
 def test_positive_score_can_remain_hold_without_confirmation():
     writer = _load_module(WRITER, "write_codex_session_role_reports")
 
@@ -94,6 +134,46 @@ def test_positive_score_can_remain_hold_without_confirmation():
     assert setup["action"] == "HOLD"
     assert setup["buy_confirmation"] is False
     assert "lacks execution confirmation" in setup["hold_explanation"]
+
+
+def test_fixture_c_overweight_high_score_missing_confirmation_trader_hold():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    setup = writer._trader_setup_assessment(
+        manager_rec="Overweight",
+        close=110.0,
+        ema_10=105.0,
+        sma_50=100.0,
+        sma_200=95.0,
+        rsi=49.0,
+        macd=0.0,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert setup["setup_score"] >= 4
+    assert setup["buy_confirmation"] is False
+    assert setup["action"] == "HOLD"
+
+
+def test_fixture_d_underweight_weak_score_no_breakdown_trader_hold():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    setup = writer._trader_setup_assessment(
+        manager_rec="Underweight",
+        close=102.0,
+        ema_10=103.0,
+        sma_50=104.0,
+        sma_200=95.0,
+        rsi=48.0,
+        macd=0.1,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert setup["setup_score"] > -4
+    assert setup["sell_confirmation"] is False
+    assert setup["action"] == "HOLD"
 
 
 def test_overweight_confirmed_buy_fixture_preserves_portfolio_rating():
@@ -269,12 +349,54 @@ def test_sector_metric_direction_audit_records_extracted_basis():
         {
             "metric_name": "ebit_margin",
             "extracted_value_or_phrase": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+            "clean_metric_value_if_available": "82 bps, 5.4%",
+            "supporting_sentence": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
             "comparison_basis": "period-over-period wording in extracted filing/report phrase",
             "direction": "adverse",
             "confidence": "medium",
+            "confidence_reason": (
+                "source extractor confidence is medium and direction is based on supporting sentence/comparison basis"
+            ),
             "evidence_id": "financial:WOW.AX:2026-07-02:017",
         }
     ]
+
+
+def test_navigation_sector_metric_is_context_only_low_confidence():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "reserves_resources",
+            "metric_label": "Reserves/resources",
+            "status": "available",
+            "confidence": "medium",
+            "evidence_id": "financial:BHP.AX:2026-07-02:030",
+            "excerpt": (
+                "Home Search Contact us All investor resources Reports and presentations "
+                "Frequently Asked Questions Key contacts Downloads resources"
+            ),
+        }
+    ]
+
+    audit = writer._asx_metric_audit_records(records)
+
+    assert audit[0]["direction"] == "context_only"
+    assert audit[0]["confidence"] == "low"
+    assert "navigation/page-list" in audit[0]["confidence_reason"]
+
+
+def test_unsupported_commodity_exposure_is_not_supportive():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    record = {
+        "section_kind": "sector_metric",
+        "metric_name": "commodity_exposure",
+        "metric_label": "Commodity exposure",
+        "status": "available",
+        "excerpt": "Copper Iron ore Potash Reports Presentations Shareholder services",
+    }
+
+    assert writer._asx_metric_direction(record) == "context_only"
 
 
 def test_execution_caution_wording_is_market_specific():

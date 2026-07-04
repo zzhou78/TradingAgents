@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 TRADE_DATE_DEFAULT = "2026-07-02"
@@ -118,15 +119,16 @@ def _asx_metric_direction(record: dict[str, object]) -> str:
     if str(record.get("status", "")).lower() != "available":
         return "unavailable"
     metric = str(record.get("metric_name") or record.get("metric_label") or "").lower()
-    text = " ".join(
-        [
-            str(record.get("metric_label") or ""),
-            str(record.get("excerpt") or ""),
-            " ".join(str(item) for item in record.get("supports_claims", []) or []),
-        ]
-    ).lower()
+    text = _metric_evidence_text(record).lower()
     if not text.strip():
         return "unavailable"
+    supporting_sentence = _metric_supporting_sentence(record).lower()
+    if _is_navigation_or_page_list_text(text) or _is_navigation_or_page_list_text(supporting_sentence):
+        return "context_only"
+    if metric in {"reserves_resources", "commodity_exposure"} and not _has_supportable_resource_or_exposure_text(
+        metric, supporting_sentence
+    ):
+        return "context_only"
 
     adverse_patterns = [
         "decreasing",
@@ -180,6 +182,136 @@ def _asx_metric_direction(record: dict[str, object]) -> str:
     return "neutral"
 
 
+def _metric_evidence_text(record: dict[str, object]) -> str:
+    return " ".join(
+        [
+            str(record.get("metric_label") or ""),
+            str(record.get("extracted_value_or_phrase") or ""),
+            str(record.get("value") or ""),
+            str(record.get("excerpt") or ""),
+            " ".join(str(item) for item in record.get("supports_claims", []) or []),
+        ]
+    )
+
+
+def _metric_support_text(record: dict[str, object]) -> str:
+    return " ".join(
+        [
+            str(record.get("extracted_value_or_phrase") or ""),
+            str(record.get("value") or ""),
+            str(record.get("excerpt") or ""),
+            " ".join(str(item) for item in record.get("supports_claims", []) or []),
+        ]
+    )
+
+
+def _is_navigation_or_page_list_text(text: str) -> bool:
+    lower = text.lower()
+    navigation_terms = [
+        "home",
+        "search",
+        "contact us",
+        "shareholder online services",
+        "frequently asked questions",
+        "key contacts",
+        "all investor resources",
+        "reports and presentations",
+        "read more",
+        "downloads",
+    ]
+    signal_terms = [
+        "increased",
+        "decreased",
+        "growth",
+        "margin",
+        "production",
+        "cash flow",
+        "net debt",
+        "unit cost",
+        "profit",
+        "revenue",
+        "dividend",
+        "guidance",
+    ]
+    navigation_hits = sum(1 for term in navigation_terms if term in lower)
+    signal_hits = sum(1 for term in signal_terms if term in lower)
+    return navigation_hits >= 4 and signal_hits <= 1
+
+
+def _has_supportable_resource_or_exposure_text(metric: str, text: str) -> bool:
+    has_number = bool(re.search(r"\b\d+(?:\.\d+)?\s*(?:mt|moz|kt|bn|m|%)?\b", text, re.IGNORECASE))
+    if metric == "reserves_resources":
+        return any(word in text for word in ["reserve", "reserves", "resource", "resources"]) and (
+            has_number or any(word in text for word in ["deposit", "discovery", "resource mix", "portfolio"])
+        )
+    if metric == "commodity_exposure":
+        commodity_terms = ["copper", "iron ore", "coal", "potash", "uranium", "gold", "nickel", "plasma", "premium"]
+        has_commodity = any(term in text for term in commodity_terms)
+        has_exposure_statement = any(
+            phrase in text
+            for phrase in [
+                "exposure",
+                "portfolio",
+                "producer of",
+                "major producer",
+                "resource mix",
+                "assets in",
+                "used in",
+            ]
+        )
+        return has_commodity and has_exposure_statement
+    return True
+
+
+def _metric_supporting_sentence(record: dict[str, object]) -> str:
+    phrase = _clean_cell(record.get("extracted_value_or_phrase") or record.get("value") or "")
+    if phrase:
+        return phrase[:240]
+    text = _clean_cell(record.get("excerpt") or "")
+    if not text:
+        claims = record.get("supports_claims")
+        if isinstance(claims, list) and claims:
+            return _clean_cell(claims[0])[:240]
+        return "no supporting sentence extracted"
+    metric_terms = [
+        str(record.get("metric_label") or "").lower(),
+        str(record.get("metric_name") or "").replace("_", " ").lower(),
+    ]
+    sentences = [sentence.strip() for sentence in re.split(r"(?<=[.!?])\s+", text) if sentence.strip()]
+    for sentence in sentences:
+        lower = sentence.lower()
+        if any(term and term in lower for term in metric_terms):
+            return sentence[:240]
+    return sentences[0][:240] if sentences else text[:240]
+
+
+def _clean_metric_value(record: dict[str, object]) -> str:
+    explicit = record.get("clean_metric_value_if_available") or record.get("clean_metric_value")
+    if explicit:
+        return _clean_cell(explicit)
+    phrase = _metric_supporting_sentence(record)
+    matches = re.findall(
+        r"(?:US\$|A\$|\$)?\d+(?:\.\d+)?\s*(?:bn|m|mt|kt|moz|bps|%|per cent|cents|usc)?",
+        phrase,
+        flags=re.IGNORECASE,
+    )
+    return ", ".join(matches[:3]) if matches else "unavailable"
+
+
+def _metric_confidence_and_reason(record: dict[str, object], direction: str) -> tuple[str, str]:
+    base = _clean_cell(record.get("confidence") or "low").lower()
+    text = _metric_evidence_text(record)
+    if direction == "context_only" or _is_navigation_or_page_list_text(text):
+        return "low", "downgraded because extracted text is navigation/page-list context rather than metric evidence"
+    if direction == "unavailable":
+        return "low", "metric was unavailable or no supportable extracted phrase was found"
+    if _clean_metric_value(record) == "unavailable" and _metric_comparison_basis(record) == "metric mentioned without explicit comparative baseline":
+        return "low", "metric mention lacks a clean value and explicit comparison baseline"
+    if base in {"high", "medium", "low"}:
+        return base, f"source extractor confidence is {base} and direction is based on supporting sentence/comparison basis"
+    return "low", "source extractor did not provide a recognized confidence value"
+
+
 def _metric_phrase(record: dict[str, object]) -> str:
     value = record.get("extracted_value_or_phrase") or record.get("value")
     if value not in {None, ""}:
@@ -215,13 +347,18 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
         if not metric_name or metric_name in seen:
             continue
         seen.add(metric_name)
+        direction = _asx_metric_direction(record)
+        confidence, confidence_reason = _metric_confidence_and_reason(record, direction)
         audit_records.append(
             {
                 "metric_name": metric_name,
                 "extracted_value_or_phrase": _metric_phrase(record),
+                "clean_metric_value_if_available": _clean_metric_value(record),
+                "supporting_sentence": _metric_supporting_sentence(record),
                 "comparison_basis": _metric_comparison_basis(record),
-                "direction": _asx_metric_direction(record),
-                "confidence": _clean_cell(record.get("confidence") or "low"),
+                "direction": direction,
+                "confidence": confidence,
+                "confidence_reason": confidence_reason,
                 "evidence_id": _clean_cell(record.get("evidence_id") or "uncited"),
             }
         )
@@ -231,10 +368,10 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
 def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
     audit_records = _asx_metric_audit_records(records)
     if not audit_records:
-        return "| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |\n|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | low | uncited |"
+        return "| metric_name | extracted_value_or_phrase | clean_metric_value_if_available | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |\n|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited |"
     rows = [
-        "| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |",
-        "|---|---|---|---|---|---|",
+        "| metric_name | extracted_value_or_phrase | clean_metric_value_if_available | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for item in audit_records:
         rows.append(
@@ -243,9 +380,12 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                 [
                     _clean_cell(item["metric_name"]),
                     _clean_cell(item["extracted_value_or_phrase"]),
+                    _clean_cell(item["clean_metric_value_if_available"]),
+                    _clean_cell(item["supporting_sentence"]),
                     _clean_cell(item["comparison_basis"]),
                     _clean_cell(item["direction"]),
                     _clean_cell(item["confidence"]),
+                    _clean_cell(item["confidence_reason"]),
                     _clean_cell(item["evidence_id"]),
                 ]
             )
@@ -256,7 +396,7 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
 
 def _asx_metric_direction_counts(records: list[dict[str, object]]) -> dict[str, int]:
     by_metric: dict[str, str] = {}
-    rank = {"adverse": 5, "supportive": 4, "mixed": 3, "neutral": 2, "unavailable": 1}
+    rank = {"adverse": 5, "supportive": 4, "mixed": 3, "neutral": 2, "unavailable": 1, "context_only": 0}
     for record in _asx_sector_metric_records(records):
         metric_name = str(record.get("metric_name") or record.get("metric_label") or "")
         if not metric_name:
@@ -386,7 +526,8 @@ def _asx_research_reasoning(
     metric_breadth = (
         f"{available_metrics} available / {unavailable_metrics} gap-labelled; "
         f"{direction_counts.get('supportive', 0)} supportive, {direction_counts.get('adverse', 0)} adverse, "
-        f"{direction_counts.get('mixed', 0)} mixed, {direction_counts.get('neutral', 0)} neutral"
+        f"{direction_counts.get('mixed', 0)} mixed, {direction_counts.get('neutral', 0)} neutral, "
+        f"{direction_counts.get('context_only', 0)} context-only"
     )
     metric_audit_table = _asx_metric_audit_table(financial_records)
     supportive_examples = _asx_metric_examples(financial_records, {"supportive"})
@@ -1544,7 +1685,7 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
             f"- Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
             f"- Decisive role evidence: {asx_reasoning['decisive']}\n"
             f"- Sector-specific metric or gap: {asx_reasoning['metric_line']}\n"
-            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, comparison_basis, direction, confidence, and evidence_id for each ASX sector metric.\n"
+            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value_if_available, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, and evidence_id for each ASX sector metric.\n"
             f"- Evidence-gap confidence cap: {asx_reasoning['confidence_cap']}"
         )
     trader_setup = _trader_setup_assessment(
@@ -1578,7 +1719,7 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
     ]
     sector_metric_audit_section = (
         "## Sector Metric Direction Audit\n"
-        "Direction is based on the extracted phrase and comparison basis below, not metric presence alone.\n\n"
+        "Direction is based on the extracted phrase, supporting sentence, clean value, and comparison basis below, not metric presence alone. Navigation/page-list snippets are downgraded to low-confidence context-only evidence.\n\n"
         f"{asx_reasoning['metric_audit_table']}\n"
         if is_asx
         else ""
