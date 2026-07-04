@@ -41,6 +41,7 @@ Complete report assembly:
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
 - I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, `### Fundamentals Analyst`, `### Financial Report Analyst`, and `### Industry / Theme Discovery Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
+- The complete report Research Manager section must preserve the role's actual rating-vs-rating reasoning. For ASX tickers it must include the ticker-specific 10 EMA / 50 SMA / 200 SMA setup, decisive role evidence, at least one sector metric or explicit evidence gap, and why not Buy/Overweight and why not Sell/Underweight. Generic ASX source-coverage wording may appear only as an evidence-gap note.
 - III. Trading Team Plan: `### Trader Proposal` and the `FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL**` line.
 - For any Buy or Sell final proposal, the Trader Proposal must include `**Paper-study price framework**` with a reference price or entry zone, invalidation level, and first confirmation or target level. Hold may instead list watch levels.
 - IV. Risk Management Team Debate: `### Aggressive Risk Analyst Round 1 - Opportunity Case`, `### Conservative Risk Analyst Round 1 - Response to Aggressive`, and `### Neutral Risk Analyst Round 1 - Weighing`.

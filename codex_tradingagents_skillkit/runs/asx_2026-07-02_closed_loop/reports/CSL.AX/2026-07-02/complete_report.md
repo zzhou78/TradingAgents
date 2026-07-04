@@ -39,7 +39,14 @@ Industry/theme evidence identifies ASX company fundamentals / Official announcem
 
 ### Research Manager Decision - Evidence Weighing
 **Recommendation**: Hold
-Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold beats Buy because ASX source coverage is uneven and any missing MD&A, cash-flow, or segment section must be treated as an evidence gap; it beats Sell where available official-source records still support a reviewable base case and the quality gate has not identified a completed negative fundamental case.
+Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold is ticker-specific here: latest close 117.75 is above the 10 EMA (114.56), above the 50 SMA (109.07), and below the 200 SMA (155.14). The short/intermediate rebound improves the case versus Underweight, but the close remains below the 200 SMA, so long-term confirmation is still missing.
+
+- Rating-vs-rating summary: Hold is retained for ticker-specific reasons: The short/intermediate rebound improves the case versus Underweight, but the close remains below the 200 SMA, so long-term confirmation is still missing.
+- Why not Buy / Overweight? Buy/Overweight is not selected because CSL.AX has a short/intermediate rebound but still below the 200 SMA setup and sector metric coverage is 6 available / 0 gap-labelled; that is not enough for an aggressive rating.
+- Why not Sell / Underweight? Sell/Underweight is not selected because the close has recovered above the 10 EMA and 50 SMA; the 200 SMA gap keeps conviction capped rather than forcing a Sell.
+- Decisive role evidence: Decisive evidence is Market Analyst (market:CSL.AX:2026-07-02:001, market:CSL.AX:2026-07-02:002, market:CSL.AX:2026-07-02:003, market:CSL.AX:2026-07-02:004) plus Financial Report Analyst / ASX sector metrics (financial:CSL.AX:2026-07-02:017); News (news:CSL.AX:2026-07-02:001) is contextual and Sentiment is low weight.
+- Sector-specific metric or gap: healthcare metric evidence: R&D is available via financial:CSL.AX:2026-07-02:017.
+- Evidence-gap confidence cap: Confidence is capped by role-level source limitations and low-confidence retail sentiment from social:CSL.AX:2026-07-02:001, not by sector metrics alone.
 
 ### Trader
 **Action**: HOLD

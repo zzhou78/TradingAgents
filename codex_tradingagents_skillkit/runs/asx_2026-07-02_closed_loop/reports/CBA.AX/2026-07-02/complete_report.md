@@ -39,7 +39,14 @@ Industry/theme evidence identifies ASX company fundamentals / Official announcem
 
 ### Research Manager Decision - Evidence Weighing
 **Recommendation**: Hold
-Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold beats Buy because ASX source coverage is uneven and any missing MD&A, cash-flow, or segment section must be treated as an evidence gap; it beats Sell where available official-source records still support a reviewable base case and the quality gate has not identified a completed negative fundamental case.
+Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold is ticker-specific here: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case.
+
+- Rating-vs-rating summary: Hold is retained for ticker-specific reasons: The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case.
+- Why not Buy / Overweight? Buy/Overweight is not selected because CBA.AX has a negative across 10 EMA, 50 SMA, and 200 SMA setup and sector metric coverage is 7 available / 0 gap-labelled; that is not enough for an aggressive rating.
+- Why not Sell / Underweight? Sell/Underweight is not selected because financial:CBA.AX:2026-07-02:023 and financial:CBA.AX:2026-07-02:038 still provide official-source financial context; the negative market setup is decisive for caution but not enough by itself for a directional Sell.
+- Decisive role evidence: Decisive evidence is Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) plus Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038); News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
+- Sector-specific metric or gap: banks metric evidence: NIM is available via financial:CBA.AX:2026-07-02:038.
+- Evidence-gap confidence cap: Confidence is capped by role-level source limitations and low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, not by sector metrics alone.
 
 ### Trader
 **Action**: HOLD

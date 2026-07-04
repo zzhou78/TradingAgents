@@ -599,6 +599,54 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
     return errors
 
 
+def _asx_complete_report_research_manager_errors(report_dir: Path, evidence_path: Path | None) -> list[str]:
+    if not _is_asx_evidence(evidence_path):
+        return []
+    manager_path = report_dir / "2_research" / "manager.md"
+    complete_path = report_dir / "complete_report.md"
+    if not manager_path.exists() or not complete_path.exists():
+        return []
+    manager_text = _read(manager_path)
+    complete_text = _read(complete_path)
+    if _is_pending(manager_text) or _is_pending(complete_text):
+        return []
+    if "Rating-vs-Rating Reasoning" not in manager_text:
+        return []
+
+    research_section = _section(complete_text, "### Research Manager Decision - Evidence Weighing")
+    if not research_section:
+        return ["complete_report.md omits Research Manager Decision - Evidence Weighing section"]
+
+    errors: list[str] = []
+    recommendation = _recommendation_from_research(manager_text)
+    if recommendation and not re.search(rf"\*\*Recommendation\*\*\s*:\s*{re.escape(recommendation)}\b", research_section, re.IGNORECASE):
+        errors.append("complete_report.md Research Manager section does not include the actual Research Manager recommendation")
+    if not all(term in research_section for term in ["10 EMA", "50 SMA", "200 SMA"]):
+        errors.append("complete_report.md Research Manager section does not reflect ticker-specific moving-average setup")
+    has_sector_metric_or_gap = bool(
+        re.search(
+            r"sector-specific metric|sector metric|evidence gap|NIM|CET1|loan growth|arrears|impairment|ROE|production|realised price|unit cost|AISC|reserves|commodity exposure|segment revenue|R&D|plasma collections|premium growth|claims ratio|membership|capital adequacy|sales growth|EBIT margin|inventory|capex|dividends?",
+            research_section,
+            re.IGNORECASE,
+        )
+    )
+    if not has_sector_metric_or_gap:
+        errors.append("complete_report.md Research Manager section lacks sector metric or explicit evidence gap")
+    has_rating_vs_rating = bool(
+        re.search(r"why not buy|buy\s*/\s*overweight|rating-vs-rating|why not sell|sell\s*/\s*underweight", research_section, re.IGNORECASE)
+    )
+    if not has_rating_vs_rating:
+        errors.append("complete_report.md Research Manager section lacks concise rating-vs-rating reasoning")
+    has_decisive_evidence = bool(re.search(r"decisive role evidence|market analyst|financial report analyst", research_section, re.IGNORECASE))
+    if not has_decisive_evidence:
+        errors.append("complete_report.md Research Manager section lacks decisive role evidence")
+    if "ASX source coverage is uneven" in research_section and not (
+        all(term in research_section for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_rating_vs_rating and has_sector_metric_or_gap
+    ):
+        errors.append("complete_report.md uses generic ASX source coverage as the main Research Manager rationale")
+    return errors
+
+
 def _research_manager_quality_errors(research_path: Path) -> list[str]:
     if not research_path.exists():
         return []
@@ -843,6 +891,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     errors.extend(_debate_quality_errors(bull, bear))
     errors.extend(_research_manager_quality_errors(manager))
     errors.extend(_asx_research_specificity_errors(manager, evidence_path))
+    errors.extend(_asx_complete_report_research_manager_errors(report_dir, evidence_path))
     errors.extend(_trader_quality_errors(trader))
     errors.extend(_risk_portfolio_quality_errors(report_dir))
     errors.extend(_debate_record_quality_errors(report_dir))

@@ -39,7 +39,14 @@ Industry/theme evidence identifies ASX company fundamentals / Official announcem
 
 ### Research Manager Decision - Evidence Weighing
 **Recommendation**: Hold
-Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold beats Buy because ASX source coverage is uneven and any missing MD&A, cash-flow, or segment section must be treated as an evidence gap; it beats Sell where available official-source records still support a reviewable base case and the quality gate has not identified a completed negative fundamental case.
+Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold is ticker-specific here: latest close 59.57 is below the 10 EMA (60.14), below the 50 SMA (59.75), and above the 200 SMA (49.84). Near-term weakness blocks Buy/Overweight, while the close above the 200 SMA keeps the Research Manager from treating the setup as a completed long-term breakdown.
+
+- Rating-vs-rating summary: Hold is retained for ticker-specific reasons: Near-term weakness blocks Buy/Overweight, while the close above the 200 SMA keeps the Research Manager from treating the setup as a completed long-term breakdown.
+- Why not Buy / Overweight? Buy/Overweight is not selected because BHP.AX has a near-term weakness while long-term support remains intact above the 200 SMA setup and sector metric coverage is 5 available / 1 gap-labelled; that is not enough for an aggressive rating.
+- Why not Sell / Underweight? Sell/Underweight is not selected because long-term support remains intact above the 200 SMA; the negative short/intermediate setup is a confidence cap rather than a full Sell trigger.
+- Decisive role evidence: Decisive evidence is Market Analyst (market:BHP.AX:2026-07-02:001, market:BHP.AX:2026-07-02:002, market:BHP.AX:2026-07-02:003, market:BHP.AX:2026-07-02:004) plus Financial Report Analyst / ASX sector metrics (financial:BHP.AX:2026-07-02:016); News (news:BHP.AX:2026-07-02:001) is contextual and Sentiment is low weight.
+- Sector-specific metric or gap: miners metric evidence: Production is available via financial:BHP.AX:2026-07-02:016.
+- Evidence-gap confidence cap: Confidence is capped by 1 unavailable sector metric/gap labels and low-confidence retail sentiment from social:BHP.AX:2026-07-02:001.
 
 ### Trader
 **Action**: HOLD

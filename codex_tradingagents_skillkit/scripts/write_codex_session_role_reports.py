@@ -1014,6 +1014,14 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
         "5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.\n"
         f"6. Market setup impact: {regime}.\n"
     )
+    complete_research_summary = (
+        f"Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. {policy['why']}\n\n"
+        f"- Why not Buy / Overweight? {policy['why']}\n"
+        f"- Why not Sell / Underweight? {manager_rec} is not a Sell because the evidence mix is not a clean long-term breakdown or negative fundamental case.\n"
+        "- Decisive role evidence: Market and Financial Report evidence outweighed low-confidence social evidence.\n"
+        "- Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.\n"
+        f"- Market setup impact: {regime}."
+    )
     if is_asx:
         market_matrix_direction = "negative" if "negative across" in asx_reasoning["market_setup"] else "mixed"
         if "positive across" in asx_reasoning["market_setup"]:
@@ -1033,6 +1041,16 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
             f"4. Which sector-specific financial metrics mattered? {asx_reasoning['metric_line']}\n"
             f"5. Which evidence gaps capped confidence? {asx_reasoning['confidence_cap']}\n"
             f"6. How market setup changed the final rating. {asx_reasoning['market_effect']}\n"
+        )
+        complete_research_summary = (
+            "Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. "
+            f"{asx_reasoning['summary']}\n\n"
+            f"- Rating-vs-rating summary: Hold is retained for ticker-specific reasons: {asx_reasoning['market_effect']}\n"
+            f"- Why not Buy / Overweight? {asx_reasoning['why_not_buy']}\n"
+            f"- Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
+            f"- Decisive role evidence: {asx_reasoning['decisive']}\n"
+            f"- Sector-specific metric or gap: {asx_reasoning['metric_line']}\n"
+            f"- Evidence-gap confidence cap: {asx_reasoning['confidence_cap']}"
         )
     matrix_rows = [
         f"| Market Analyst | {refs['close']} | {market_matrix_direction} | high | medium | market snapshot | {market_matrix_weight} | {market_matrix_reason} | market:{ticker}:{trade_date}:trend |",
@@ -1225,7 +1243,7 @@ Industry/theme evidence identifies {policy['theme1']} / {policy['subtheme1']} an
 
 ### Research Manager Decision - Evidence Weighing
 **Recommendation**: {manager_rec}
-Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. {policy['why']}
+{complete_research_summary}
 
 ### Trader
 **Action**: {trader_action}

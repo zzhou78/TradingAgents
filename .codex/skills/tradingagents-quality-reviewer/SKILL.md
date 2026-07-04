@@ -73,6 +73,7 @@ Fail the report when:
 - ASX Research Manager report omits ticker-specific moving-average facts, sector metric evidence, or explicit evidence gaps;
 - multiple tickers in the same run use near-identical Research Manager rationale despite materially different market, financial, or sector evidence;
 - generic "ASX source coverage is uneven" is the sole reason for Hold;
+- complete_report.md omits or dilutes the Research Manager's rating-vs-rating reasoning, especially for ASX tickers where the final report must carry the actual 10 EMA / 50 SMA / 200 SMA setup, decisive role evidence, sector metric or evidence gap, and why-not-Buy / why-not-Sell reasoning;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;
 - bull or bear debate lacks falsification conditions or direct response;

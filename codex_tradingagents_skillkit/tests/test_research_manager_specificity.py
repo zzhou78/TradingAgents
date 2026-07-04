@@ -111,3 +111,36 @@ def test_generic_asx_source_coverage_cannot_be_sole_hold_reason(tmp_path: Path):
     errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
 
     assert "generic ASX source coverage cannot be the sole reason for Hold" in errors
+
+
+def test_asx_complete_report_must_reflect_manager_rating_vs_rating_reasoning(tmp_path: Path):
+    validator = _load_quality_validator()
+    evidence_path, report_dir = _write_asx_evidence(tmp_path / "run", "CBA.AX", (100.0, 105.0, 110.0, 120.0))
+    manager_path = report_dir / "2_research" / "manager.md"
+    manager_path.write_text(
+        _manager_text(
+            "Hold is ticker-specific here: latest close 100.00 is below the 10 EMA (105.00), below the 50 SMA "
+            "(110.00), and below the 200 SMA (120.00). Why not Buy / Overweight? The all-below-average setup "
+            "blocks Buy. Why not Sell / Underweight? CET1 sector metric evidence is available via "
+            "financial:CBA.AX:2026-07-02:001 and prevents a completed Sell case. Decisive role evidence is Market "
+            "Analyst plus Financial Report Analyst."
+        ),
+        encoding="utf-8",
+    )
+    (report_dir / "complete_report.md").write_text(
+        "# Complete Codex TradingAgents Report - CBA.AX\n\n"
+        "### Research Manager Decision - Evidence Weighing\n"
+        "**Recommendation**: Hold\n"
+        "Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. "
+        "Hold beats Buy because ASX source coverage is uneven and beats Sell where official-source records still "
+        "support a reviewable base case.\n\n"
+        "### Trader\n"
+        "FINAL TRANSACTION PROPOSAL: **HOLD**\n",
+        encoding="utf-8",
+    )
+
+    errors = validator._asx_complete_report_research_manager_errors(report_dir, evidence_path)
+
+    assert "complete_report.md Research Manager section does not reflect ticker-specific moving-average setup" in errors
+    assert "complete_report.md Research Manager section lacks sector metric or explicit evidence gap" in errors
+    assert "complete_report.md uses generic ASX source coverage as the main Research Manager rationale" in errors
