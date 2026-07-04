@@ -285,17 +285,68 @@ def _metric_supporting_sentence(record: dict[str, object]) -> str:
     return sentences[0][:240] if sentences else text[:240]
 
 
-def _clean_metric_value(record: dict[str, object]) -> str:
+def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
     explicit = record.get("clean_metric_value_if_available") or record.get("clean_metric_value")
     if explicit:
-        return _clean_cell(explicit)
-    phrase = _metric_supporting_sentence(record)
-    matches = re.findall(
-        r"(?:US\$|A\$|\$)?\d+(?:\.\d+)?\s*(?:bn|m|mt|kt|moz|bps|%|per cent|cents|usc)?",
-        phrase,
-        flags=re.IGNORECASE,
-    )
-    return ", ".join(matches[:3]) if matches else "unavailable"
+        return {
+            "clean_metric_value": _clean_cell(explicit),
+            "value_unit": _clean_cell(record.get("value_unit") or "explicit"),
+            "value_context": _clean_cell(record.get("value_context") or "provided by extractor"),
+            "period_reference": _clean_cell(record.get("period_reference") or "not specified"),
+            "comparison_reference": _clean_cell(record.get("comparison_reference") or "not specified"),
+        }
+    sentence = _metric_supporting_sentence(record)
+    metric_label = _clean_cell(record.get("metric_label") or record.get("metric_name") or "metric")
+    patterns = [
+        (
+            re.compile(
+                r"(?P<context>\b[A-Za-z][A-Za-z /&-]{0,60}?)\s+(?P<value>(?:US\$|A\$|\$)?\d+(?:\.\d+)?)(?:\s*(?P<unit>bn|m|mt|kt|moz|bps|%|per cent|cents|usc))",
+                re.IGNORECASE,
+            ),
+            "label_before_value",
+        ),
+        (
+            re.compile(
+                r"(?P<value>(?:US\$|A\$|\$)?\d+(?:\.\d+)?)(?:\s*(?P<unit>bn|m|mt|kt|moz|bps|%|per cent|cents|usc))\s+(?P<context>[A-Za-z][A-Za-z /&-]{0,60})",
+                re.IGNORECASE,
+            ),
+            "value_before_label",
+        ),
+    ]
+    for pattern, basis in patterns:
+        for match in pattern.finditer(sentence):
+            context = _clean_cell(match.group("context"))
+            value = _clean_cell(match.group("value"))
+            unit = _clean_cell(match.group("unit") or "")
+            if not context or context.lower() in {"in", "at", "by", "for", "of", "and"}:
+                continue
+            label_missing = metric_label.lower().split()[0] not in context.lower()
+            metric_tokens_missing = not any(
+                token in context.lower()
+                for token in str(record.get("metric_name") or "").replace("_", " ").lower().split()
+            )
+            if label_missing and metric_tokens_missing and len(context.split()) < 2:
+                continue
+            period_reference = "FY2025" if "fy2025" in sentence.lower() else "not specified"
+            comparison_reference = _metric_comparison_basis(record)
+            return {
+                "clean_metric_value": value,
+                "value_unit": unit or "unit unavailable",
+                "value_context": f"{context} ({basis})",
+                "period_reference": period_reference,
+                "comparison_reference": comparison_reference,
+            }
+    return {
+        "clean_metric_value": "unavailable",
+        "value_unit": "unavailable",
+        "value_context": "no clean labelled value parsed",
+        "period_reference": "unavailable",
+        "comparison_reference": _metric_comparison_basis(record),
+    }
+
+
+def _clean_metric_value(record: dict[str, object]) -> str:
+    return _metric_value_parts(record)["clean_metric_value"]
 
 
 def _metric_confidence_and_reason(record: dict[str, object], direction: str) -> tuple[str, str]:
@@ -341,19 +392,22 @@ def _metric_comparison_basis(record: dict[str, object]) -> str:
 
 def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str, str]]:
     audit_records: list[dict[str, str]] = []
-    seen: set[str] = set()
-    for record in _asx_sector_metric_records(records):
+    for record in _asx_best_metric_records(records):
         metric_name = str(record.get("metric_name") or record.get("metric_label") or "")
-        if not metric_name or metric_name in seen:
+        if not metric_name:
             continue
-        seen.add(metric_name)
         direction = _asx_metric_direction(record)
         confidence, confidence_reason = _metric_confidence_and_reason(record, direction)
+        value_parts = _metric_value_parts(record)
         audit_records.append(
             {
                 "metric_name": metric_name,
                 "extracted_value_or_phrase": _metric_phrase(record),
-                "clean_metric_value_if_available": _clean_metric_value(record),
+                "clean_metric_value": value_parts["clean_metric_value"],
+                "value_unit": value_parts["value_unit"],
+                "value_context": value_parts["value_context"],
+                "period_reference": value_parts["period_reference"],
+                "comparison_reference": value_parts["comparison_reference"],
                 "supporting_sentence": _metric_supporting_sentence(record),
                 "comparison_basis": _metric_comparison_basis(record),
                 "direction": direction,
@@ -365,13 +419,27 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
     return audit_records
 
 
+def _asx_best_metric_records(records: list[dict[str, object]]) -> list[dict[str, object]]:
+    rank = {"adverse": 6, "supportive": 5, "mixed": 4, "neutral": 3, "unavailable": 2, "context_only": 1}
+    best: dict[str, dict[str, object]] = {}
+    for record in _asx_sector_metric_records(records):
+        metric_name = str(record.get("metric_name") or record.get("metric_label") or "")
+        if not metric_name:
+            continue
+        direction = _asx_metric_direction(record)
+        current = best.get(metric_name)
+        if current is None or rank[direction] > rank[_asx_metric_direction(current)]:
+            best[metric_name] = record
+    return list(best.values())
+
+
 def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
     audit_records = _asx_metric_audit_records(records)
     if not audit_records:
-        return "| metric_name | extracted_value_or_phrase | clean_metric_value_if_available | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |\n|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited |"
+        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited |"
     rows = [
-        "| metric_name | extracted_value_or_phrase | clean_metric_value_if_available | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |",
-        "|---|---|---|---|---|---|---|---|---|",
+        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for item in audit_records:
         rows.append(
@@ -380,7 +448,11 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                 [
                     _clean_cell(item["metric_name"]),
                     _clean_cell(item["extracted_value_or_phrase"]),
-                    _clean_cell(item["clean_metric_value_if_available"]),
+                    _clean_cell(item["clean_metric_value"]),
+                    _clean_cell(item["value_unit"]),
+                    _clean_cell(item["value_context"]),
+                    _clean_cell(item["period_reference"]),
+                    _clean_cell(item["comparison_reference"]),
                     _clean_cell(item["supporting_sentence"]),
                     _clean_cell(item["comparison_basis"]),
                     _clean_cell(item["direction"]),
@@ -392,6 +464,33 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
             + " |"
         )
     return "\n".join(rows)
+
+
+def _asx_metric_audit_summary(records: list[dict[str, object]], manager_rec: str) -> str:
+    audit_records = _asx_metric_audit_records(records)
+    if not audit_records:
+        return "Metric audit summary: no ASX sector metric audit rows were available."
+    if manager_rec in {"Buy", "Overweight"}:
+        preferred = {"supportive", "adverse"}
+    elif manager_rec in {"Sell", "Underweight"}:
+        preferred = {"adverse", "supportive"}
+    else:
+        preferred = {"supportive", "adverse", "mixed", "neutral", "context_only"}
+    selected = [
+        item
+        for item in audit_records
+        if item["direction"] in preferred and item["direction"] not in {"unavailable"}
+    ][:2]
+    if not selected:
+        selected = audit_records[:2]
+    parts = []
+    for item in selected:
+        value = item["clean_metric_value"]
+        value_text = f"{value} {item['value_unit']}".strip() if value != "unavailable" else "value unavailable"
+        parts.append(
+            f"{item['metric_name']} {item['direction']} ({value_text}; {item['evidence_id']}; {item['confidence']})"
+        )
+    return "Metric audit summary: " + "; ".join(parts) + "."
 
 
 def _asx_metric_direction_counts(records: list[dict[str, object]]) -> dict[str, int]:
@@ -656,6 +755,7 @@ def _asx_research_reasoning(
         "metric_label": metric_label,
         "metric_breadth": metric_breadth,
         "metric_audit_table": metric_audit_table,
+        "metric_audit_summary": _asx_metric_audit_summary(financial_records, manager_rec),
         "section_breadth": section_breadth,
         "summary": (
             f"{manager_rec} is driven by {primary_driver}: {evidence_winner} {market_effect}"
@@ -681,6 +781,54 @@ def _trader_implication_from_action(action: str, manager_rec: str) -> str:
     if manager_rec in {"Buy", "Overweight", "Sell", "Underweight"}:
         return "timing-gated HOLD"
     return "HOLD"
+
+
+def _portfolio_risk_profile(
+    *,
+    ticker: str,
+    manager_rec: str,
+    trader_action: str,
+    policy: dict[str, str],
+    asx_reasoning: dict[str, str],
+    is_asx: bool,
+    close: float,
+    confirm: float,
+    invalid: float,
+    refs: dict[str, object],
+) -> dict[str, str]:
+    if is_asx and asx_reasoning:
+        opportunity = (
+            f"{asx_reasoning['metric_line']} This is the strongest concrete opportunity because it is tied "
+            f"to Financial Report Analyst evidence {asx_reasoning['metric_id']} rather than generic sector language."
+        )
+        risk = (
+            f"{asx_reasoning['confidence_cap']} Market timing risk is explicit at close {_money(close)} versus "
+            f"confirmation {_money(confirm)} and invalidation/caution {_money(invalid)}."
+        )
+    else:
+        opportunity = (
+            f"{policy['bull_theme']} supported by filing/segment evidence {refs['exhibit']} and {refs['segment']}; "
+            f"confirmation improves above {_money(confirm)}."
+        )
+        risk = (
+            f"{policy['bear_theme']} supported by market/fundamental evidence {refs['macd']} and {refs['fund']}; "
+            f"risk worsens below {_money(invalid)}."
+        )
+    if trader_action == "BUY":
+        stronger_side = "Aggressive Risk was stronger because research alignment and execution confirmation both supported BUY."
+    elif trader_action == "SELL":
+        stronger_side = "Conservative Risk was stronger because research alignment and downside confirmation both supported SELL."
+    elif manager_rec in {"Buy", "Overweight", "Sell", "Underweight"}:
+        stronger_side = (
+            "Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD."
+        )
+    else:
+        stronger_side = "Neutral Risk was stronger because evidence remains mixed and no directional setup is complete."
+    return {
+        "opportunity": opportunity,
+        "risk": risk,
+        "stronger_side": stronger_side,
+    }
 
 
 def _debate_outcome_scorecard(
@@ -1685,7 +1833,8 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
             f"- Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
             f"- Decisive role evidence: {asx_reasoning['decisive']}\n"
             f"- Sector-specific metric or gap: {asx_reasoning['metric_line']}\n"
-            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value_if_available, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, and evidence_id for each ASX sector metric.\n"
+            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, and evidence_id for each ASX sector metric.\n"
+            f"- Compact metric-audit summary: {asx_reasoning['metric_audit_summary']}\n"
             f"- Evidence-gap confidence cap: {asx_reasoning['confidence_cap']}"
         )
     trader_setup = _trader_setup_assessment(
@@ -1700,6 +1849,18 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
         is_asx=is_asx,
     )
     trader_action = str(trader_setup["action"])
+    portfolio_risk = _portfolio_risk_profile(
+        ticker=ticker,
+        manager_rec=manager_rec,
+        trader_action=trader_action,
+        policy=policy,
+        asx_reasoning=asx_reasoning,
+        is_asx=is_asx,
+        close=close,
+        confirm=confirm,
+        invalid=invalid,
+        refs=refs,
+    )
     debate_scorecard = _debate_outcome_scorecard(
         ticker=ticker,
         trade_date=trade_date,
@@ -1886,7 +2047,7 @@ Aggressive has a valid upside case, but it needs trend confirmation and cannot l
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: {portfolio_risk['stronger_side']} The concrete opportunity is {portfolio_risk['opportunity']} The concrete risk is {portfolio_risk['risk']}
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.
@@ -1903,7 +2064,7 @@ Stronger risk side: balanced with a conservative sizing bias. The stronger argum
 - Risk debate outputs and evidence: {refs['close']}, {refs['exhibit']}, {best_news_id}.
 
 ## Risk debate impact
-The risk debate tempers position implementation. Aggressive evidence supports the research stance where sector/financial evidence wins, but Conservative and Neutral risk analysts require setup confirmation, evidence-gap discipline, and social-evidence discounting before a directional paper action. Stronger risk side: balanced with a conservative sizing bias; Neutral Risk was stronger than one-sided Aggressive or Conservative risk because it reconciled research quality with Trader timing gates.
+The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: {portfolio_risk['opportunity']} Strongest concrete risk: {portfolio_risk['risk']} Stronger risk side: {portfolio_risk['stronger_side']}
 
 ## Final Portfolio Decision
 **Rating**: {portfolio_rating}
@@ -1990,7 +2151,7 @@ Aggressive risk supports the upside case but identifies failure points. Conserva
 
 ### Portfolio Manager
 **Rating**: {portfolio_rating}
-Risk debate impact: risk evidence tempers implementation; no broker/order tools are used. Stronger risk side: balanced with a conservative sizing bias, because Neutral Risk reconciles Aggressive upside evidence with Conservative evidence-gap and timing concerns. Portfolio stance preserves the separation between Research Manager rating ({manager_rec}) and Trader action ({trader_action}). {trader_setup['tension']}
+Risk debate impact: strongest concrete opportunity is {portfolio_risk['opportunity']} Strongest concrete risk is {portfolio_risk['risk']} Stronger risk side: {portfolio_risk['stronger_side']} Portfolio stance preserves the separation between Research Manager rating ({manager_rec}) and Trader action ({trader_action}). {trader_setup['tension']}
 
 ## Evidence Gaps
 - This is a paper-study report-writing workflow, not investment advice or a trading instruction.

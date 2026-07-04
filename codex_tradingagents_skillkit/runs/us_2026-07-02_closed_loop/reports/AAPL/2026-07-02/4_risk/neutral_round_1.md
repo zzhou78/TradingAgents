@@ -10,7 +10,7 @@
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD. The concrete opportunity is strong product/services economics and intact long-term trend supported by filing/segment evidence financial:AAPL:2026-07-02:022 and financial:AAPL:2026-07-02:015; confirmation improves above 313.00. The concrete risk is premium valuation and negative MACD keep timing risk real supported by market/fundamental evidence market:AAPL:2026-07-02:006 and fundamentals:AAPL:2026-07-02:001; risk worsens below 293.46.
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.

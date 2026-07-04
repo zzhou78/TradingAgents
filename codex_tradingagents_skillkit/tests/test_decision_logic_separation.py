@@ -92,6 +92,9 @@ def test_fixture_a_overweight_confirmed_setup_trader_buy():
 
     assert setup["setup_score"] >= 4
     assert setup["buy_confirmation"] is True
+    assert setup["trend"] > 0
+    assert setup["momentum"] > 0
+    assert setup["support_resistance"] > 0
     assert setup["action"] == "BUY"
 
 
@@ -112,6 +115,9 @@ def test_fixture_b_underweight_confirmed_downside_trader_sell():
 
     assert setup["setup_score"] <= -4
     assert setup["sell_confirmation"] is True
+    assert setup["trend"] < 0
+    assert setup["momentum"] < 0
+    assert setup["support_resistance"] < 0
     assert setup["action"] == "SELL"
 
 
@@ -153,6 +159,7 @@ def test_fixture_c_overweight_high_score_missing_confirmation_trader_hold():
 
     assert setup["setup_score"] >= 4
     assert setup["buy_confirmation"] is False
+    assert setup["momentum"] == 0
     assert setup["action"] == "HOLD"
 
 
@@ -173,6 +180,7 @@ def test_fixture_d_underweight_weak_score_no_breakdown_trader_hold():
 
     assert setup["setup_score"] > -4
     assert setup["sell_confirmation"] is False
+    assert not (setup["trend"] < 0 and setup["momentum"] < 0 and setup["support_resistance"] < 0)
     assert setup["action"] == "HOLD"
 
 
@@ -309,6 +317,26 @@ def test_complete_report_hiding_rating_action_tension_fails(tmp_path: Path):
     assert "complete_report.md hides rating/action tension" in errors
 
 
+def test_portfolio_risk_impact_requires_concrete_risk_and_opportunity(tmp_path: Path):
+    validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
+    report_dir = tmp_path / "reports" / "AAPL" / "2026-07-02"
+    portfolio_dir = report_dir / "5_portfolio"
+    portfolio_dir.mkdir(parents=True)
+    (portfolio_dir / "decision.md").write_text(
+        "# Portfolio Manager Decision\n\n"
+        "## Tool Outputs Used\n\n- risk debate\n\n"
+        "## Risk debate impact\n"
+        "The risk debate tempers implementation. Stronger risk side: balanced with a conservative sizing bias.\n\n"
+        "## Final Portfolio Decision\n\n**Rating**: Hold\n",
+        encoding="utf-8",
+    )
+
+    errors = validator._risk_portfolio_quality_errors(report_dir)
+
+    assert "Portfolio Manager does not name the strongest concrete opportunity" in errors
+    assert "Portfolio Manager does not name the strongest concrete risk" in errors
+
+
 def test_sector_metric_availability_is_not_automatically_supportive():
     writer = _load_module(WRITER, "write_codex_session_role_reports")
 
@@ -349,7 +377,11 @@ def test_sector_metric_direction_audit_records_extracted_basis():
         {
             "metric_name": "ebit_margin",
             "extracted_value_or_phrase": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
-            "clean_metric_value_if_available": "82 bps, 5.4%",
+            "clean_metric_value": "82",
+            "value_unit": "bps",
+            "value_context": "EBIT margin decreasing by a normalised (label_before_value)",
+            "period_reference": "not specified",
+            "comparison_reference": "period-over-period wording in extracted filing/report phrase",
             "supporting_sentence": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
             "comparison_basis": "period-over-period wording in extracted filing/report phrase",
             "direction": "adverse",
@@ -386,6 +418,40 @@ def test_navigation_sector_metric_is_context_only_low_confidence():
     assert "navigation/page-list" in audit[0]["confidence_reason"]
 
 
+def test_metric_clean_value_unavailable_when_numbers_are_unlabelled():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    record = {
+        "section_kind": "sector_metric",
+        "metric_name": "production",
+        "metric_label": "Production",
+        "status": "available",
+        "excerpt": "production, including highest copper production in 17 years and record Q4 production.",
+    }
+
+    value_parts = writer._metric_value_parts(record)
+
+    assert value_parts["clean_metric_value"] == "unavailable"
+    assert value_parts["value_unit"] == "unavailable"
+    assert value_parts["value_context"] == "no clean labelled value parsed"
+
+
+def test_metric_clean_value_keeps_labelled_value_context():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    record = {
+        "section_kind": "sector_metric",
+        "metric_name": "unit_cost_aisc",
+        "metric_label": "Unit cost",
+        "status": "available",
+        "excerpt": "Across the group, unit costs at our major assets were down 4.7 per cent year-on-year.",
+    }
+
+    value_parts = writer._metric_value_parts(record)
+
+    assert value_parts["clean_metric_value"] == "4.7"
+    assert value_parts["value_unit"] == "per cent"
+    assert "unit costs" in value_parts["value_context"].lower()
+
+
 def test_unsupported_commodity_exposure_is_not_supportive():
     writer = _load_module(WRITER, "write_codex_session_role_reports")
     record = {
@@ -397,6 +463,35 @@ def test_unsupported_commodity_exposure_is_not_supportive():
     }
 
     assert writer._asx_metric_direction(record) == "context_only"
+
+
+def test_metric_audit_summary_uses_top_directional_rows():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "unit_cost_aisc",
+            "metric_label": "Unit cost",
+            "status": "available",
+            "confidence": "medium",
+            "evidence_id": "financial:BHP.AX:2026-07-02:018",
+            "excerpt": "unit cost reduction and WAIO remains the lowest-cost major iron ore producer in the world.",
+        },
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "capex",
+            "metric_label": "Capex",
+            "status": "unavailable",
+            "confidence": "low",
+            "evidence_id": "financial:BHP.AX:2026-07-02:019",
+            "unavailable_reason": "not found",
+        },
+    ]
+
+    summary = writer._asx_metric_audit_summary(records, "Overweight")
+
+    assert "unit_cost_aisc supportive" in summary
+    assert "financial:BHP.AX:2026-07-02:018" in summary
 
 
 def test_execution_caution_wording_is_market_specific():

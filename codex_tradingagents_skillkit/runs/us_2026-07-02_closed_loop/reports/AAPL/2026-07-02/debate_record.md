@@ -180,7 +180,7 @@ Aggressive has a valid upside case, but it needs trend confirmation and cannot l
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD. The concrete opportunity is strong product/services economics and intact long-term trend supported by filing/segment evidence financial:AAPL:2026-07-02:022 and financial:AAPL:2026-07-02:015; confirmation improves above 313.00. The concrete risk is premium valuation and negative MACD keep timing risk real supported by market/fundamental evidence market:AAPL:2026-07-02:006 and fundamentals:AAPL:2026-07-02:001; risk worsens below 293.46.
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.
@@ -195,7 +195,7 @@ Stronger risk side: balanced with a conservative sizing bias. The stronger argum
 - Risk debate outputs and evidence: market:AAPL:2026-07-02:001, financial:AAPL:2026-07-02:022, news:AAPL:2026-07-02:040.
 
 ## Risk debate impact
-The risk debate tempers position implementation. Aggressive evidence supports the research stance where sector/financial evidence wins, but Conservative and Neutral risk analysts require setup confirmation, evidence-gap discipline, and social-evidence discounting before a directional paper action. Stronger risk side: balanced with a conservative sizing bias; Neutral Risk was stronger than one-sided Aggressive or Conservative risk because it reconciled research quality with Trader timing gates.
+The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: strong product/services economics and intact long-term trend supported by filing/segment evidence financial:AAPL:2026-07-02:022 and financial:AAPL:2026-07-02:015; confirmation improves above 313.00. Strongest concrete risk: premium valuation and negative MACD keep timing risk real supported by market/fundamental evidence market:AAPL:2026-07-02:006 and fundamentals:AAPL:2026-07-02:001; risk worsens below 293.46. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD.
 
 ## Final Portfolio Decision
 **Rating**: Overweight

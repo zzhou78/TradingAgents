@@ -619,7 +619,11 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
         required_audit_fields = [
             "metric_name",
             "extracted_value_or_phrase",
-            "clean_metric_value_if_available",
+            "clean_metric_value",
+            "value_unit",
+            "value_context",
+            "period_reference",
+            "comparison_reference",
             "supporting_sentence",
             "comparison_basis",
             "direction",
@@ -906,6 +910,14 @@ def _risk_portfolio_quality_errors(report_dir: Path) -> list[str]:
         risk_impact = _section(portfolio_text, "## Risk debate impact")
         if risk_impact and not re.search(r"stronger risk side|Aggressive .*stronger|Conservative .*stronger|Neutral .*stronger", risk_impact, re.IGNORECASE | re.DOTALL):
             errors.append("Portfolio Manager says risk debate tempers action but does not explain which risk side was stronger")
+        if risk_impact and not re.search(r"strongest concrete opportunity", risk_impact, re.IGNORECASE):
+            errors.append("Portfolio Manager does not name the strongest concrete opportunity")
+        if risk_impact and not re.search(r"strongest concrete risk", risk_impact, re.IGNORECASE):
+            errors.append("Portfolio Manager does not name the strongest concrete risk")
+        if risk_impact and re.search(r"balanced with a conservative sizing bias", risk_impact, re.IGNORECASE) and not re.search(
+            r"evidence|market|financial|metric|confirmation|invalidation", risk_impact, re.IGNORECASE
+        ):
+            errors.append("Portfolio Manager repeats generic balanced sizing language without concrete risk evidence")
     return errors
 
 

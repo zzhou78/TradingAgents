@@ -180,7 +180,7 @@ Aggressive has a valid upside case, but it needs trend confirmation and cannot l
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD. The concrete opportunity is cloud and AI revenue growth remains strong supported by filing/segment evidence financial:MSFT:2026-07-02:022 and financial:MSFT:2026-07-02:015; confirmation improves above 397.02. The concrete risk is price remains below the 50 SMA and 200 SMA despite the rebound above the 10 EMA supported by market/fundamental evidence market:MSFT:2026-07-02:006 and fundamentals:MSFT:2026-07-02:001; risk worsens below 379.28.
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.
@@ -195,7 +195,7 @@ Stronger risk side: balanced with a conservative sizing bias. The stronger argum
 - Risk debate outputs and evidence: market:MSFT:2026-07-02:001, financial:MSFT:2026-07-02:022, news:MSFT:2026-07-02:033.
 
 ## Risk debate impact
-The risk debate tempers position implementation. Aggressive evidence supports the research stance where sector/financial evidence wins, but Conservative and Neutral risk analysts require setup confirmation, evidence-gap discipline, and social-evidence discounting before a directional paper action. Stronger risk side: balanced with a conservative sizing bias; Neutral Risk was stronger than one-sided Aggressive or Conservative risk because it reconciled research quality with Trader timing gates.
+The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: cloud and AI revenue growth remains strong supported by filing/segment evidence financial:MSFT:2026-07-02:022 and financial:MSFT:2026-07-02:015; confirmation improves above 397.02. Strongest concrete risk: price remains below the 50 SMA and 200 SMA despite the rebound above the 10 EMA supported by market/fundamental evidence market:MSFT:2026-07-02:006 and fundamentals:MSFT:2026-07-02:001; risk worsens below 379.28. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD.
 
 ## Final Portfolio Decision
 **Rating**: Underweight

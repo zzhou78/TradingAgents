@@ -68,7 +68,7 @@ Aggressive risk supports the upside case but identifies failure points. Conserva
 
 ### Portfolio Manager
 **Rating**: Underweight
-Risk debate impact: risk evidence tempers implementation; no broker/order tools are used. Stronger risk side: balanced with a conservative sizing bias, because Neutral Risk reconciles Aggressive upside evidence with Conservative evidence-gap and timing concerns. Portfolio stance preserves the separation between Research Manager rating (Underweight) and Trader action (HOLD). Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+Risk debate impact: strongest concrete opportunity is cloud and AI revenue growth remains strong supported by filing/segment evidence financial:MSFT:2026-07-02:022 and financial:MSFT:2026-07-02:015; confirmation improves above 397.02. Strongest concrete risk is price remains below the 50 SMA and 200 SMA despite the rebound above the 10 EMA supported by market/fundamental evidence market:MSFT:2026-07-02:006 and fundamentals:MSFT:2026-07-02:001; risk worsens below 379.28. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD. Portfolio stance preserves the separation between Research Manager rating (Underweight) and Trader action (HOLD). Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ## Evidence Gaps
 - This is a paper-study report-writing workflow, not investment advice or a trading instruction.

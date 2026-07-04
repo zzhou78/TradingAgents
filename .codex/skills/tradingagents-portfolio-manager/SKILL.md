@@ -36,6 +36,7 @@ Output:
 - Final portfolio stance should synthesize Research Manager rating, Trader action, aggressive/conservative/neutral risk debate, evidence gaps, and uncertainty.
 - State Risk debate impact.
 - In Risk debate impact, state whether Aggressive, Conservative, or Neutral risk was stronger and why.
+- In Risk debate impact, name the strongest concrete opportunity and strongest concrete risk for the ticker. Avoid generic "balanced with conservative sizing bias" wording unless specific risk evidence supports it.
 - State financial-report impact if material, or say it was unavailable/immaterial.
 - State industry/theme impact if material, or say it was unavailable/immaterial.
 - Distinguish technical/momentum Sell from fundamental Sell.

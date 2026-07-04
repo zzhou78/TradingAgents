@@ -10,7 +10,7 @@
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: Neutral Risk was stronger because evidence remains mixed and no directional setup is complete. The concrete opportunity is healthcare metric direction mix: 6 available / 0 gap-labelled; 5 supportive, 1 adverse, 0 mixed, 0 neutral, 0 context-only. supportive examples: R&D (supportive, financial:CSL.AX:2026-07-02:017); Plasma collections (supportive, financial:CSL.AX:2026-07-02:018); adverse examples: Debt (adverse, financial:CSL.AX:2026-07-02:020); mixed/neutral examples: Guidance (mixed, financial:CSL.AX:2026-07-02:126); R&D (mixed, financial:CSL.AX:2026-07-02:206). Highlighted metric: R&D is available / supportive via financial:CSL.AX:2026-07-02:017. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:CSL.AX:2026-07-02:017 rather than generic sector language. The concrete risk is Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CSL.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 117.75 versus confirmation 119.59 and invalidation/caution 114.56.
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.

@@ -10,7 +10,7 @@
 - Sentiment evidence quality: low; retail-only, noisy, and not decision-grade alone.
 
 ## Stronger Risk Side
-Stronger risk side: balanced with a conservative sizing bias. The stronger argument depends on whether market confirmation follows: until then, the final portfolio stance should respect Research Manager direction but keep Trader action at Hold.
+Stronger risk side: Neutral Risk was stronger because evidence remains mixed and no directional setup is complete. The concrete opportunity is health_insurers metric direction mix: 4 available / 0 gap-labelled; 3 supportive, 1 adverse, 0 mixed, 0 neutral, 0 context-only. supportive examples: Premium growth (supportive, financial:MPL.AX:2026-07-02:016); Membership (supportive, financial:MPL.AX:2026-07-02:018); adverse examples: Claims ratio (adverse, financial:MPL.AX:2026-07-02:017); mixed/neutral examples: none. Highlighted metric: Premium growth is available / supportive via financial:MPL.AX:2026-07-02:016. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:MPL.AX:2026-07-02:016 rather than generic sector language. The concrete risk is Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 4.99 versus confirmation 5.04 and invalidation/caution 4.94.
 
 ## Evidence Gaps
 - No options-implied risk, borrow/short-interest feed, or intraday volatility surface was available.

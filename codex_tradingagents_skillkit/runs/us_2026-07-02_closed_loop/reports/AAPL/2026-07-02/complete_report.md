@@ -68,7 +68,7 @@ Aggressive risk supports the upside case but identifies failure points. Conserva
 
 ### Portfolio Manager
 **Rating**: Overweight
-Risk debate impact: risk evidence tempers implementation; no broker/order tools are used. Stronger risk side: balanced with a conservative sizing bias, because Neutral Risk reconciles Aggressive upside evidence with Conservative evidence-gap and timing concerns. Portfolio stance preserves the separation between Research Manager rating (Overweight) and Trader action (HOLD). Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+Risk debate impact: strongest concrete opportunity is strong product/services economics and intact long-term trend supported by filing/segment evidence financial:AAPL:2026-07-02:022 and financial:AAPL:2026-07-02:015; confirmation improves above 313.00. Strongest concrete risk is premium valuation and negative MACD keep timing risk real supported by market/fundamental evidence market:AAPL:2026-07-02:006 and fundamentals:AAPL:2026-07-02:001; risk worsens below 293.46. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD. Portfolio stance preserves the separation between Research Manager rating (Overweight) and Trader action (HOLD). Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ## Evidence Gaps
 - This is a paper-study report-writing workflow, not investment advice or a trading instruction.

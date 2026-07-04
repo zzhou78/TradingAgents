@@ -81,8 +81,8 @@ Fail the report when:
 - In a multi-ticker run, warn, but do not hard-fail, if every ticker's debate winner is Balanced despite materially different evidence unless the run claims strong differentiation;
 - Fail if Trader omits explicit setup thresholds, uses ASX-specific execution wording in US reports, or omits ASX-specific liquidity/spread/event caution in `.AX` reports;
 - Fail if `closed_loop_status.json` is `review_ready_paper_study` but root or nested run metadata status fields disagree; report run-level warnings in `run_quality_warnings` and `quality_review.md` without failing unless configured;
-- Fail if ASX sector metric audit rows omit clean value, supporting sentence, comparison basis, direction, confidence reason, or evidence ID; downgrade navigation/page-list snippets and unsupported reserves/resources or commodity-exposure snippets instead of treating them as supportive;
-- Portfolio Manager says the risk debate tempers action but does not explain whether Aggressive, Conservative, or Neutral risk was stronger;
+- Fail if ASX sector metric audit rows omit clean value, value unit, value context, period reference, comparison reference, supporting sentence, comparison basis, direction, confidence reason, or evidence ID; downgrade navigation/page-list snippets and unsupported reserves/resources or commodity-exposure snippets instead of treating them as supportive;
+- Portfolio Manager says the risk debate tempers action but does not explain whether Aggressive, Conservative, or Neutral risk was stronger, or omits the strongest concrete opportunity and strongest concrete risk;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;
 - bull or bear debate lacks falsification conditions or direct response;
