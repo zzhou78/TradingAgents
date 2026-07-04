@@ -32,7 +32,10 @@ Output:
 - `PortfolioDecision` and final decision text for the TradingAgents study flow.
 - Include `## Tool Outputs Used`.
 - Synthesize the risk debate and do not merely repeat the Trader.
+- Preserve rating/action tension. Distinguish Research Manager investment rating from Trader paper-study action and explain when they differ.
+- Final portfolio stance should synthesize Research Manager rating, Trader action, aggressive/conservative/neutral risk debate, evidence gaps, and uncertainty.
 - State Risk debate impact.
+- In Risk debate impact, state whether Aggressive, Conservative, or Neutral risk was stronger and why.
 - State financial-report impact if material, or say it was unavailable/immaterial.
 - State industry/theme impact if material, or say it was unavailable/immaterial.
 - Distinguish technical/momentum Sell from fundamental Sell.

@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for AAPL from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-03 07:42:04
+# Data retrieved on: 2026-07-04 16:13:47
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,307.46,315.45,306.69,315.2,44534700,0.0,0.0
@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-29,286.73,288.37,279.85,281.74,66427000,0.0,0.0
 2026-06-30,281.17,289.94,280.7,289.36,65100200,0.0,0.0
 2026-07-01,293.44,296.59,289.2,294.38,50164200,0.0,0.0
-2026-07-02,294.08,309.42,293.68,308.63,71900726,0.0,0.0
+2026-07-02,294.12,309.42,293.68,308.63,75400600,0.0,0.0
 
 ```
 
@@ -59,11 +59,11 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 
 | Field | Value |
 |---|---:|
-| Open | 294.08 |
+| Open | 294.12 |
 | High | 309.42 |
 | Low | 293.68 |
 | Close | 308.63 |
-| Volume | 71900726 |
+| Volume | 75400600 |
 
 ### Verified technical indicators (latest row)
 
@@ -169,37 +169,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## close_200_sma values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 270.3212233734131
-2026-07-01: 269.95823455810546
-2026-06-30: 269.6533828735352
-2026-06-29: 269.3534882354736
+2026-07-02: 270.32122268676756
+2026-07-01: 269.958233795166
+2026-06-30: 269.65338218688964
+2026-06-29: 269.3534875488281
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 269.07553932189944
-2026-06-25: 268.825083694458
-2026-06-24: 268.63537826538084
-2026-06-23: 268.36504730224607
-2026-06-22: 268.0890651702881
+2026-06-26: 269.07553855896
+2026-06-25: 268.8250829315186
+2026-06-24: 268.63537750244143
+2026-06-23: 268.36504653930666
+2026-06-22: 268.08906440734864
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 267.7930014038086
-2026-06-17: 267.4483110046387
-2026-06-16: 267.12598648071287
-2026-06-15: 266.7893061065674
+2026-06-18: 267.79300064086914
+2026-06-17: 267.44831031799316
+2026-06-16: 267.1259857940674
+2026-06-15: 266.78930549621583
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 266.456404876709
-2026-06-11: 266.1440702819824
-2026-06-10: 265.7985160827637
-2026-06-09: 265.4762033843994
-2026-06-08: 265.14478103637697
+2026-06-12: 266.4564042663574
+2026-06-11: 266.14406967163086
+2026-06-10: 265.79851547241213
+2026-06-09: 265.4762028503418
+2026-06-08: 265.14478050231935
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 264.7639429473877
-2026-06-04: 264.3767908477783
-2026-06-03: 263.9718339538574
-2026-06-02: 263.5752172088623
+2026-06-05: 264.7639424133301
+2026-06-04: 264.37679023742675
+2026-06-03: 263.97183326721193
+2026-06-02: 263.5752164459229
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 60.27663364492215
-2026-07-01: 50.98610400673071
-2026-06-30: 46.92554495972416
-2026-06-29: 39.90868304269852
+2026-07-02: 60.27663364497157
+2026-07-01: 50.986104006751866
+2026-06-30: 46.92554495972823
+2026-06-29: 39.908683042666254
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 41.264905242307684
-2026-06-25: 32.21626505812657
-2026-06-24: 45.840823826607476
-2026-06-23: 47.09933626873505
-2026-06-22: 49.92659056466269
+2026-06-26: 41.2649052422817
+2026-06-25: 32.21626505803983
+2026-06-24: 45.84082382660562
+2026-06-23: 47.09933626874467
+2026-06-22: 49.92659056470036
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 50.97504659404196
-2026-06-17: 48.923302739465434
-2026-06-16: 52.16066007332453
-2026-06-15: 49.501004067615725
+2026-06-18: 50.97504659409082
+2026-06-17: 48.92330273949514
+2026-06-16: 52.16066007339188
+2026-06-15: 49.501004067655884
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 44.08616263343392
-2026-06-11: 48.165714553439216
-2026-06-10: 43.82118744758689
-2026-06-09: 42.68676354492345
-2026-06-08: 53.36306102168121
+2026-06-12: 44.08616263340864
+2026-06-11: 48.165714553469
+2026-06-10: 43.82118744755291
+2026-06-09: 42.68676354487113
+2026-06-08: 53.36306102182349
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 60.81720503236683
-2026-06-04: 66.61215956332698
-2026-06-03: 65.85891278481414
-2026-06-02: 73.72449671385812
+2026-06-05: 60.81720503269423
+2026-06-04: 66.6121595638263
+2026-06-03: 65.85891278530602
+2026-06-02: 73.72449671462738
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -0.6719229842977938
-2026-07-01: -2.2480108880877196
-2026-06-30: -2.7760647450983242
-2026-06-29: -2.8985451012995327
+2026-07-02: -0.6719229842857999
+2026-07-01: -2.2480108880747594
+2026-06-30: -2.7760647450843408
+2026-06-29: -2.8985451012844123
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -2.236859869809223
-2026-06-25: -1.567482718992835
-2026-06-24: 0.1883770902118158
-2026-06-23: 0.601153416568593
-2026-06-22: 0.995043753678658
+2026-06-26: -2.2368598697929087
+2026-06-25: -1.5674827189752136
+2026-06-24: 0.18837709023085836
+2026-06-23: 0.6011534165891703
+2026-06-22: 0.9950437537009407
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 1.2073881830479536
-2026-06-17: 1.359036699325884
-2026-06-16: 1.7425727504418091
-2026-06-15: 1.8717781256210628
+2026-06-18: 1.2073881830719984
+2026-06-17: 1.3590366993518046
+2026-06-16: 1.742572750469776
+2026-06-15: 1.8717781256512467
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 2.2965902156987
-2026-06-11: 3.344019023016074
-2026-06-10: 4.174096969475443
-2026-06-09: 5.585229638656017
-2026-06-08: 7.409980962830787
+2026-06-12: 2.296590215731328
+2026-06-11: 3.3440190230513736
+2026-06-10: 4.174096969513528
+2026-06-09: 5.585229638697172
+2026-06-08: 7.409980962875238
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 8.512261726028385
-2026-06-04: 9.204813881574296
-2026-06-03: 9.558799848534477
-2026-06-02: 9.970341336492993
+2026-06-05: 8.512261726076417
+2026-06-04: 9.204813881626137
+2026-06-03: 9.558799848590525
+2026-06-02: 9.970341336553531
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 8.735632087121148
-2026-07-01: 8.19683295905715
-2026-06-30: 8.258898253533903
-2026-06-29: 8.18342963962305
+2026-07-02: 8.73563208711917
+2026-07-01: 8.196832959055019
+2026-06-30: 8.258898253531607
+2026-06-29: 8.183429639620575
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 8.15754045700391
-2026-06-25: 7.881965049700123
-2026-06-24: 7.001348009502777
-2026-06-23: 7.019912489801068
-2026-06-22: 6.986057914196823
+2026-06-26: 8.157540457001245
+2026-06-25: 7.881965049697255
+2026-06-24: 7.001348009499688
+2026-06-23: 7.019912489797741
+2026-06-22: 6.98605791419324
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 7.088062087434319
-2026-06-17: 7.25252746284994
-2026-06-16: 7.217335577480224
-2026-06-15: 7.271745255315241
+2026-06-18: 7.08806208743046
+2026-06-17: 7.252527462845784
+2026-06-16: 7.2173355774757475
+2026-06-15: 7.271745255310421
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 7.3195722829176155
-2026-06-11: 7.304153263815125
-2026-06-10: 7.296010925484797
-2026-06-09: 7.290319833815359
-2026-06-08: 6.792651377522309
+2026-06-12: 7.319572282912424
+2026-06-11: 7.304153263809534
+2026-06-10: 7.296010925478777
+2026-06-09: 7.2903198338088755
+2026-06-08: 6.792651377515328
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 6.0667029858894095
-2026-06-04: 5.916447867015518
-2026-06-03: 6.072327345367673
-2026-06-02: 5.917122038250523
+2026-06-05: 6.06670298588189
+2026-06-04: 5.91644786700742
+2026-06-03: 6.072327345358953
+2026-06-02: 5.917122038241131
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -343,38 +343,9 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 - Status: `ok`
 
 ```text
-Bullish: 5 (17%) · Bearish: 1 (3%) · Unlabeled: 24 · Total: 30 most-recent messages
+Bullish: 0 (0%) · Bearish: 0 (0%) · Unlabeled: 0 · Total: 0 messages on or before 2026-07-02
 
-[2026-07-02T21:36:31Z · @Judy11 · no-label] $AAPL should have bought at 279. Not here. No thanks
-[2026-07-02T21:34:05Z · @SwingTraderPro1 · no-label] The memory market narrative is getting seriously misunderstood right now.    While most of the market has moved on emotionally, $MU is still structurally positioned in a way that challenges the typical “chip cycle” assumptions.    There’s a strong case being made that Micron’s ne…
-[2026-07-02T21:25:16Z · @cubie · no-label] @Jeremymartin007 @simon58 @judgeyoung2 @jenbunn @ribbey @EBE_day @TraderRapp @Godreal1 @tonyctl @zuby34   thats was best $AAPL poot.time and cubie left 2400 more on da table covering 2 minutes early,  on the first trade  , what a day,  then obviously saw  barcode rest of day smh🙄
-[2026-07-02T21:24:14Z · @DarkFlowSignals · no-label] $AAPL Soft jobs print rotated money out of tech and into safety today, but the tape steadied into the close instead of breaking down. $AAPL $290C 7/24 tagged a fresh high, up ~+195%, green while the rest of tech sold off, the name holding green on a red day is the one carrying th…
-[2026-07-02T21:18:56Z · @jd7138 · no-label] $AAPL $BABA $META $SPY $TSLA I bet he gets mad at a softball question and blames someone that isn’t him for his own decisions. Let me know if I’m right 😂✌️
-[2026-07-02T21:14:33Z · @bullishforeverbrah · Bearish] $AAPL tim cuck
-[2026-07-02T21:13:07Z · @mz08 · Bullish] $ZCMD $SDOT  $MSFT  $AAPL  $AMD
-[2026-07-02T21:04:40Z · @BreakoutLife · no-label] Market today shows clear dispersion between AI-linked hardware weakness and broader market resilience.    $SNDK is under pressure, down around -14%, reflecting continued volatility in AI-related semiconductor exposure.    In contrast, $AAPL is up roughly +5%, showing relative sta…
-[2026-07-02T21:00:34Z · @jujets · no-label] $AAPL the youth of the world Love the I Phone!! Families will continue and grow in the Apple ECO ! Great Products and Services !!
-[2026-07-02T20:57:44Z · @TalkMarkets · no-label] Meet The Company Every #AI Chip Passes Through $AAPL $AMD $CDNS $NVDA $SNPS https://talkmarkets.com/article/meet-the-company-every-ai-chip-passes-through-1783025813
-[2026-07-02T20:56:30Z · @thebig2na · no-label] $AAPL long on Apple until 15 minutes before earnings release, not gambling…
-[2026-07-02T20:54:59Z · @thebig2na · no-label] $AAPL follow profits, what would you do?
-[2026-07-02T20:54:48Z · @BananaBrawler · Bullish] Appreciate @ApolloAlerts, his recent calls helped me bring in $10K .     He’s been on an absolutely on FIRE lately. Give him a follow❤️    Watching: $SLS $ASTS $BATL $AAPL
-[2026-07-02T20:53:45Z · @micheln1 · no-label] $AAPL so it favours China instead of the USA and it goes up 😂🤣😂
-[2026-07-02T20:53:18Z · @thebig2na · Bullish] $AAPL duhh
-[2026-07-02T20:53:10Z · @JaeBTrading · no-label] $AAPL thanks bulls🫡 good ol thursday🤝🏾
-[2026-07-02T20:52:37Z · @thebig2na · no-label] $AAPL I’m up 77%, all thanks to Apple, don’t play the short game, think long term
-[2026-07-02T20:51:01Z · @thebig2na · no-label] $AAPL told you about the iPhone Fold and the absolutely crazy interest, people(including myself) will absolutely buy a completely new iPhone design, DUE YOUR OWN DILIGENCE.   Can’t stress this enough…
-[2026-07-02T20:50:52Z · @rammit · Bullish] $AAPL rest of the market has been following aapl by a couple days so Im good
-[2026-07-02T20:49:36Z · @GoodNewsBull · no-label] $SPY Lets see is Trump says anything in his interview coming at 5pm that would be of interest to holders of these  $BABA $META $TSLA $AAPL     Curious since it was taped earlier today &amp;,.. well,... you know #FrontRunners
-[2026-07-02T20:48:50Z · @BreakoutLife · no-label] $AAPL printing a powerful right-side breakout today, surging nearly 5% to clear the key $308 level with massive volume.    The macro tape is reacting to major fundamental catalysts: Apple reportedly raised its foldable iPhone production target to 10M units and lined up supply com…
-[2026-07-02T20:35:23Z · @MrMuffinMaker · no-label] $AAPL Folding phones came out in 2018, EIGHT YEARS AGO. This added $300B in market cap on this news. Amazing!
-[2026-07-02T20:30:15Z · @notreload_ai · no-label] $AAPL shares surged nearly 5% on plans for multiple new iPhones in 2026-2027, including the first foldable iPhone. Strong production outlook helps Apple navigate global memory chip shortage. https://notreload.xyz/apple-stock-surges-on-5-new-iphones-foldable-plans/
-[2026-07-02T20:28:59Z · @AnchoredWealth · no-label] $AAPL Back to under 300 next week, or it will surprise us this once lol
-[2026-07-02T20:28:21Z · @ResearchTrends09 · no-label] $AAPL  is anyone out there know this brother and sister tandem who were major actors and actresses?  Anyone know their last name or first names?
-[2026-07-02T20:25:13Z · @hatsam · no-label] $AAPL what’re your predictions before Monday open?
-[2026-07-02T20:23:19Z · @DollarRollers · no-label] LABT is starting to squeeze up now 🚀      Could potentially be the next squeezer.       The same guys who ran  SDOT 1000% recently are now running LABT up!      Micro-float squeezer getting some big attention, Don&#39;t miss!     $IREN $AAPL $FUBO $TMC &lt;&lt;
-[2026-07-02T20:21:19Z · @PhoTime · no-label] $AAPL diamonds are forever ❤️
-[2026-07-02T20:18:56Z · @knash · no-label] $AAPL hit the 100dma and said, ok enough already.
-[2026-07-02T20:18:46Z · @PhoTime · Bullish] $AAPL ahhh finally, this is where it’s supposed to be. Nice
+As-of filter: removed 30 post-trade-date social items after 2026-07-02.
 ```
 
 ### Tool: fetch_reddit_posts
@@ -382,19 +353,13 @@ Bullish: 5 (17%) · Bearish: 1 (3%) · Unlabeled: 24 · Total: 30 most-recent me
 - Status: `ok`
 
 ```text
-r/wallstreetbets — 4 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
-  [2026-06-30] ASML is my first 200% gain ever. Bought during the April 2025 dip.
-    body excerpt: submitted by /u/razeusv2 [link] [comments]
-  [2026-06-28] Webull glitch
-    body excerpt: My all stocks has doubled the value
-  [2026-06-27] MU $2000 is no longer a meme
-    body excerpt: MU just dropped numbers that broke the old memory playbook. Q3 did $41.46B in revenue, up from $9.3B a year ago, EPS $25.11 when the street was looking for like $20. The part that actually got me was the margin, 85%, nobody had that modeled…
-  [2026-06-25] That was fun
-    body excerpt: submitted by /u/MountainAlive [link] [comments]
+r/wallstreetbets: <no posts found mentioning AAPL in the past 7 days>
 
 r/stocks: <no posts found mentioning AAPL in the past 7 days>
 
-r/investing: <no posts found mentioning AAPL in the past 7 days>
+r/investing — 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
+  [2026-06-27] Help with Bloomberg function please!
+    body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's say Fidelity manages portfolios with AAPL in it and one of the Fidelity portfolios is owned by …
 ```
 
 ## Role: news
@@ -408,85 +373,9 @@ r/investing: <no posts found mentioning AAPL in the past 7 days>
 ```text
 ## AAPL News, from 2026-06-25 to 2026-07-02:
 
-### Inside Securitize's SPAC IPO and tokenization strategy (source: Yahoo Finance Video)
-Securitize CEO Carlos Domingo joins Yahoo Finance to discuss the company's planned IPO via SPAC, why financial markets need a tokenization platform, and how investors could benefit.
-Link: https://finance.yahoo.com/video/inside-securitizes-spac-ipo-tokenization-203100628.html
-
 ### Here's how much more expensive your devices have gotten thanks to AI (source: Yahoo Finance)
 The AI price increase is coming for your wallet.
 Link: https://finance.yahoo.com/technology/article/heres-how-much-more-expensive-your-devices-have-gotten-thanks-to-ai-121100267.html
-
-### Dow Jones Futures: Dow Hits High But AI Tumbles; Apple, Robinhood Are Buys As Tesla, Sandisk Dive (source: Investor's Business Daily)
-The stock market had strong weekly gains, but it didn't feel that way with Sandisk and other AI plays selling off Thursday.
-Link: https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-tumbles-apple-robinhood-buy-signals-tesla-sandisk-dive/?src=A00220&yptr=yahoo
-
-### Stock Market Today: Dow Runs 590 Points To New High But Meta, Chip, Optical Stocks Slammed (source: Investor's Business Daily)
-Stock Market Today: The Dow Jones index bolts higher in a mixed finish Thursday. Tesla stock skids despite strong quarterly deliveries.
-Link: https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-jobs-report-tesla-deliveries-tsla-stock/?src=A00220&yptr=yahoo
-
-### Update: Dow Rises to Record as Wall Street Logs Weekly Gains (source: MT Newswires)
-(Updates with market moves at the end of the day.) The Dow Jones Industrial Average rose to a rec
-Link: https://finance.yahoo.com/markets/stocks/articles/dow-rises-record-wall-street-205758332.html
-
-### Update: US Equity Indexes Mixed as Weak Jobs Data Trigger Rotation Out of Growth Stocks (source: MT Newswires)
-(Updates with index/price moves, macroeconomic data, and company news from the first paragraph.)
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-weak-203815003.html
-
-### US Equity Indexes Rise This Week as Mag-7 Gains Help Offset Chipmakers-Led Decline in Technology (source: MT Newswires)
-US equity indexes rose this week as gains in communication services and consumer cyclicals helped of
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-rise-week-202332283.html
-
-### US Equity Markets Mixed Amid Weak Jobs Data (source: MT Newswires)
-US equity indexes were mixed Thursday after nonfarm payrolls data showed a decline in new jobs. *
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-markets-mixed-amid-201327723.html
-
-### FOMO Turns Into Different Kind Of Fear As The Nasdaq Sells Off (source: Investor's Business Daily)
-As Micron flies, Apple rebounds up and Nvidia sets up, avoid the fear of missing out and the fear of messing up.
-Link: https://www.investors.com/how-to-invest/how-to-invest-in-stocks-fomo-vs-fomu-nvidia-apple-micron-ipo-stocks/?src=A00220&yptr=yahoo
-
-### Sector Update: Tech Stocks Fall Late Afternoon (source: MT Newswires)
-Tech stocks were lower late Thursday afternoon, with the State Street Technology Select Sector SPDR
-Link: https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-192933263.html
-
-### Apple's Foldable iPhone Push Gets Bigger (source: GuruFocus.com)
-Suppliers reportedly preparing higher production volume.
-Link: https://finance.yahoo.com/technology/articles/apples-foldable-iphone-push-gets-191639066.html
-
-### Africa's Largest Centralized Exchange Integrates Hyperliquid Perps (source: Bankless)
-VALR will become the first major regulated exchange to natively integrate Hyperliquid, sourcing onchain liquidity for 200+ perps markets.
-Link: https://www.bankless.com/read/news/africas-largest-centralized-exchange-integrates-hyperliquid-perps
-
-### Equity Markets Mixed Intraday After Jobs Report (source: MT Newswires)
-US benchmark equity indexes were mixed intraday as traders assessed the latest jobs report. The N
-Link: https://finance.yahoo.com/markets/stocks/articles/equity-markets-mixed-intraday-jobs-182349550.html
-
-### Intel Sinks 6% Even as HSBC Sees 60% Upside, AMD Slides 5% as Chip Stocks Pull Back (source: 24/7 Wall St.)
-Intel (NASDAQ:INTC) shares are down 6% to $119.83 at midday Thursday, leading a sharp pullback across chip names. Advanced Micro Devices (NASDAQ:AMD) stock is off 5% to $511.67, and the iShares Semiconductor ETF (NASDAQ:SOXX) is down 6% to $561.49. The moves are notable because the news flow into Thursday was constructive. Intel just picked up ... Intel Sinks 6% Even as HSBC Sees 60% Upside, AMD Slides 5% as Chip Stocks Pull Back
-Link: https://247wallst.com/investing/2026/07/02/intel-sinks-6-even-as-hsbc-sees-60-upside-amd-slides-5-as-chip-stocks-pull-back/
-
-### Apple Eyes Foldable iPhone Production Boost (source: GuruFocus.com)
-The company raised foldable iPhone production plans to about 10 million units.
-Link: https://finance.yahoo.com/markets/stocks/articles/apple-eyes-foldable-iphone-production-180040204.html
-
-### Trump Financial Disclosure Shows 21,000 Trades in 2025 (source: Bloomberg)
-(Bloomberg) -- President Donald Trump made more than 21,000 securities trades in his first year back in office, often in intense bursts tied to market events he created.Most Read from BloombergExxon to Change Name for First Time in Decades After RedomicileMeta Is Planning a Cloud Business to Sell AI Computing PowerGermany Rejects Trump’s Demands for NATO Loyalty to WashingtonRussia Indicates Ukraine Fired Long-Range Ballistic MissileKrafton Agrees to Pay ‘Subnautica 2’ Bonuses as Developer’s CEO
-Link: https://finance.yahoo.com/markets/stocks/articles/trump-financial-disclosure-shows-21-175843508.html
-
-### Tech Buybacks Could Fuel the Next Leg of the Rally (source: Barrons.com)
-Analysts say technology companies are generating record cash flows. More aggressive buybacks from companies such as Nvidia and Apple could provide another tailwind for investors.
-Link: https://www.barrons.com/articles/tech-buybacks-nvidia-apple-stock-rally-c30c1432?siteid=yhoof2&yptr=yahoo
-
-### Update: US Equity Indexes Mixed Following Weakest Jobs Report in Four Months (source: MT Newswires)
-(Updates with index/price moves, macroeconomic data, and company/geopolitical news from the first pa
-Link: https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-following-173319110.html
-
-### SpaceX IPO Fireworks Are Triumph Of American Innovation, But China Threat Looms (source: Investor's Business Daily)
-The U.S. innovation engine, from the Model T to SpaceX and AI, continues to be a rocket for America's economy. But China is a growing rival.
-Link: https://www.investors.com/news/u-s-innovation-spacex-ai-rocket-for-america-economy-china-rival/?src=A00220&yptr=yahoo
-
-### Apple's Foldable iPhone Saves the S&P 500 From a Chip-Fueled Rout (source: Motley Fool)
-A weak jobs report met a strong Apple rally on Thursday. Here's why the major indexes couldn't agree on a direction.
-Link: https://www.fool.com/investing/2026/07/02/apples-foldable-iphone-saves-the-sp-500-from-a-chi/
 
 
 ```
@@ -505,7 +394,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-07-03 07:42:18
+# Data retrieved on: 2026-07-04 16:14:01
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
@@ -526,9 +415,9 @@ No global news found between 2026-06-25 and 2026-07-02
 15,131576,,,,COOK TIMOTHY D,Chief Executive Officer,,2026-04-01,D
 16,60208,,,,NEWSTEAD JENNIFER,General Counsel,,2026-03-13,D
 17,1113,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-02-26,D
-18,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
-19,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
-20,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
+18,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
+19,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
+20,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
 21,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
 22,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
 23,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
@@ -536,8 +425,8 @@ No global news found between 2026-06-25 and 2026-07-02
 25,3750,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2025-11-12,D
 26,3752,1017655.0,,Sale at price 271.23 per share.,KONDO CHRISTOPHER,Officer,,2025-11-07,D
 27,4199,1038787.0,,Sale at price 245.89 - 248.73 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-10-16,D
-28,7371,,,,KONDO CHRISTOPHER,Officer,,2025-10-15,D
-29,16457,,,,PAREKH KEVAN,Chief Financial Officer,,2025-10-15,D
+28,16457,,,,PAREKH KEVAN,Chief Financial Officer,,2025-10-15,D
+29,7371,,,,KONDO CHRISTOPHER,Officer,,2025-10-15,D
 30,43013,11071078.0,,Sale at price 257.36 - 258.08 per share.,O'BRIEN DEIRDRE,Officer,,2025-10-02,D
 31,47125,12101154.0,,Sale at price 254.83 - 257.54 per share.,ADAMS KATHERINE L,General Counsel,,2025-10-02,D
 32,129963,33375723.0,,Sale at price 254.83 - 257.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-10-02,D
@@ -550,8 +439,8 @@ No global news found between 2026-06-25 and 2026-07-02
 39,34821,7772047.0,,Sale at price 223.20 per share.,O'BRIEN DEIRDRE,Officer,,2025-08-08,D
 40,4486,933955.0,,Sale at price 208.19 per share.,KONDO CHRISTOPHER,Officer,,2025-05-12,D
 41,4570,941420.0,,Sale at price 206.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-04-23,D
-42,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
-43,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
+42,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
+43,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
 44,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
 45,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
 46,108136,24184658.0,,Sale at price 221.77 - 224.76 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-04-02,D
@@ -560,9 +449,9 @@ No global news found between 2026-06-25 and 2026-07-02
 49,74535,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-01,D
 50,218568,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-04-01,D
 51,1516,343147.0,,Sale at price 226.35 per share.,LEVINSON ARTHUR D,Director,,2025-02-03,D
-52,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
-53,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
-54,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
+52,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
+53,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
+54,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
 55,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
 56,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
 57,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
@@ -573,15 +462,15 @@ No global news found between 2026-06-25 and 2026-07-02
 62,8000,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-11-05,D
 63,8115,,,,KONDO CHRISTOPHER,Officer,,2024-10-15,D
 64,59305,13433769.0,,Sale at price 226.52 per share.,MAESTRI LUCA,Chief Financial Officer,,2024-10-04,D
-65,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
-66,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
-67,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
-68,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
-69,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
-70,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
-71,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
+65,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
+66,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
+67,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
+68,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
+69,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
+70,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
+71,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
 72,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
-73,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
+73,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
 74,8706,1958850.0,,Sale at price 225.00 per share.,KONDO CHRISTOPHER,Officer,,2024-08-15,D
 75,5178,1121037.0,,Sale at price 216.50 per share.,KONDO CHRISTOPHER,Officer,,2024-08-09,D
 76,4500,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-07,D
@@ -599,7 +488,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-07-03 07:42:18
+# Data retrieved on: 2026-07-04 16:14:01
 
 Name: Apple Inc.
 Sector: Technology
@@ -607,16 +496,16 @@ Industry: Consumer Electronics
 Market Cap: 4532958920704
 PE Ratio (TTM): 37.319225
 Forward PE: 32.119114
-PEG Ratio: 2.34
+PEG Ratio: 2.49
 Price to Book: 42.511017
 EPS (TTM): 8.27
 Forward EPS: 9.60892
-Dividend Yield: 0.37
-Beta: 1.086
+Dividend Yield: 0.35
+Beta: 1.097
 52 Week High: 317.4
 52 Week Low: 201.5
-50 Day Average: 292.6738
-200 Day Average: 270.3318
+50 Day Average: 293.523
+200 Day Average: 270.69144
 Revenue (TTM): 451442016256
 Gross Profit: 216070995968
 EBITDA: 159975997440
@@ -637,7 +526,7 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:18
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,
@@ -714,7 +603,7 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:19
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,
@@ -772,7 +661,7 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:19
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0

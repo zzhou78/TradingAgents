@@ -49,7 +49,7 @@ TASKS = {
     "research_manager_task.md": {
         "skill": "tradingagents-research-manager",
         "output_key": "research_manager",
-        "instruction": "Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate by evidence quality and independence group; do not count repeated role mentions or related news/social reactions as separate independent facts.",
+        "instruction": "Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate by evidence quality and independence group; do not count repeated role mentions or related news/social reactions as separate independent facts. Include a concise Debate Outcome Scorecard and state whether the debate changed the pre-debate analyst evidence rating.",
     },
     "trader_task.md": {
         "skill": "tradingagents-trader",
@@ -74,7 +74,7 @@ TASKS = {
     "portfolio_manager_task.md": {
         "skill": "tradingagents-portfolio-manager",
         "output_key": "portfolio_manager",
-        "instruction": "Synthesize the trader proposal and risk debate into the final paper portfolio decision.",
+        "instruction": "Synthesize the trader proposal and risk debate into the final paper portfolio decision. Explain whether Aggressive, Conservative, or Neutral risk was stronger and how that affected implementation.",
     },
     "complete_report_task.md": {
         "skill": "tradingagents-run-persistence",
@@ -134,8 +134,10 @@ Every major claim must cite a source section or exhibit. Mark missing capex, gui
     "tradingagents-research-manager": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Structured Evidence Matrix`
+- `## Debate Outcome Scorecard`
+- `## Debate Change Assessment`
 
-The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, evidence gaps, and independence groups. Explain why Sell vs Hold vs Underweight wins when relevant. Related event facts, social reactions, price reactions, and repeated debate mentions must be weighted as related evidence, not raw duplicate confirmations.""",
+The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, evidence gaps, and independence groups. The scorecard must state Bull/Bear evidence quality, strongest evidence IDs, which side answered better, weaker/duplicated evidence, most important evidence gap, debate winner, rating implication, and trader implication. Explain why Sell vs Hold vs Underweight wins when relevant. Related event facts, social reactions, price reactions, and repeated debate mentions must be weighted as related evidence, not raw duplicate confirmations.""",
     "tradingagents-bull-researcher": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Strongest Bull Evidence`

@@ -40,7 +40,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for CBA.AX
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D
@@ -67,8 +67,8 @@ No global news found between 2026-06-25 and 2026-07-02
 21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D
 22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D
 23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D
-24,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
-25,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
+24,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
+25,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
 26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D
 27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D
 28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D
@@ -77,11 +77,11 @@ No global news found between 2026-06-25 and 2026-07-02
 31,37,3486.0,,Acquisition at price 94.24 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-03-28,D
 32,6748,,,,Lewis (Sian),Former,,2025-02-16,D
 33,10000,,,,Williams (Nigel),Former,,2025-02-16,D
-34,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D
-35,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D
+34,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D
+35,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D
 36,57,5628.0,,Purchase at price 98.75 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2024-11-15,D
-37,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D
-38,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D
+37,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D
+38,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D
 39,2458,,,,Howitt (Katherine Neisha),Independent Non-Executive Director,,2024-10-01,D
 40,59,5762.0,,Acquisition at price 97.66 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-09-27,D
 41,102,9368.0,,Other at price 91.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-08-16,D

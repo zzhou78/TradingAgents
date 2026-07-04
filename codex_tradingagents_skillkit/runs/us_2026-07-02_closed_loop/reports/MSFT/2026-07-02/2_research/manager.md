@@ -4,6 +4,14 @@
 - Analyst reports for market, sentiment, news, fundamentals, financial report, and industry/theme discovery.
 - Debate reports from Bull and Bear researchers.
 
+## Primary Rating Driver
+Primary rating driver: mixed
+
+Market technicals are treated as a confidence and timing modifier, not as the main investment-rating engine.
+
+## Evidence Winner
+Market, financial-report, news, fundamentals, and valuation evidence are mixed.
+
 ## Structured Evidence Matrix
 | Role | Evidence ID | Direction | Materiality | Confidence | Tool output | Weight | Reason | Independence group ID |
 |---|---|---|---|---|---|---:|---|---|
@@ -14,6 +22,12 @@
 | Bear Researcher | fundamentals:MSFT:2026-07-02:001 | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:MSFT:2026-07-02:valuation-trend |
 
 Score calculation / component weights: -2 market trend, +2 financial quality, +1 earnings/news, 0 low-confidence retail sentiment, -1 capex/trend risk = 0 with negative technical skew.
+
+## Role Evidence Weighting
+- Financial report / sector metrics: primary evidence group for ASX where available; filing and fundamentals evidence is not counted again through Bull/Bear restatement.
+- Market technicals: capped timing/confidence modifier.
+- News: contextual event evidence unless a direct material event is identified.
+- Sentiment: low-confidence retail reaction with zero standalone decision weight.
 
 ## Rating Rationale
 **Recommendation**: Underweight
@@ -27,6 +41,29 @@ Underweight beats Hold because the strongest financial evidence is positive, but
 4. Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.
 5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
 6. Market setup impact: short rebound inside a still-negative intermediate and long-term trend.
+
+## Debate Outcome Scorecard
+| Field | Outcome |
+|---|---|
+| Bull evidence quality | medium |
+| Bear evidence quality | high |
+| Strongest Bull evidence ID | financial:MSFT:2026-07-02:022 |
+| Strongest Bear evidence ID | fundamentals:MSFT:2026-07-02:001 |
+| Which side directly answered the other side better? | Bear |
+| Which side relied on weaker or duplicated evidence? | Bull relied more on continuation evidence than confirmed downside falsification |
+| Which evidence gap matters most? | Low-confidence social evidence and as-of-date-limited news/filing coverage cap conviction. |
+| Debate winner | Bear |
+| Rating implication | Underweight |
+| Trader implication | timing-gated HOLD |
+
+## Debate Change Assessment
+- Pre-debate analyst evidence rating: Underweight.
+- Changed by debate? No.
+- Explanation: Pre-debate analyst evidence was adverse; debate confirmed Bear evidence quality without turning the research rating into an automatic Sell action.
+- Scorecard ID: debate:MSFT:2026-07-02:outcome-scorecard
+
+## Market Technicals as Confidence / Timing Modifier
+Market setup is a timing modifier: short rebound inside a still-negative intermediate and long-term trend.
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.

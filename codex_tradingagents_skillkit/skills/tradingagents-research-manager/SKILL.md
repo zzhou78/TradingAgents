@@ -26,17 +26,21 @@ Procedure:
 2. Decide which side is better supported, or whether the evidence is mixed.
 3. Assign one of the role's ratings: `Buy`, `Overweight`, `Hold`, `Underweight`, or `Sell`.
 4. Write strategic actions that explain what a downstream trader should do with the conclusion.
-5. State whether the rating is primarily driven by technical, valuation, fundamental, financial report / management commentary, news, industry/theme, or mixed evidence.
+5. State whether the rating is primarily driven by `financial_report`, `fundamentals`, `valuation`, `sector_metric`, `material_news`, `market_technical`, `evidence_gap`, or `mixed`.
 6. Preserve unresolved uncertainties rather than forcing false precision.
 7. Weigh independence groups, not repeated role mentions. News event facts, social reaction to the same event, Bull/Bear restatements, and Risk restatements are related evidence unless they cite distinct independence groups.
+8. Decide the investment rating from the evidence winner. Moving averages may affect confidence, timing, confirmation, invalidation, or trend conflict, but they must not mechanically map to Buy/Overweight/Hold/Underweight/Sell unless the research case is explicitly technical.
 
 Output:
 - `ResearchPlan`: rating, rationale, key evidence, risks, and strategic actions for the trader.
 - Include `## Tool Outputs Used` listing the role reports, evidence packets, validators, or source files used.
 - Include `## Structured Evidence Matrix` comparing Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence with weight, confidence, and evidence gap, plus an independence group for every material line.
 - Include strongest Bull evidence, strongest Bear evidence, which side has better evidence, and why the final rating was selected.
+- Include `## Debate Outcome Scorecard` without expanding the visible debate sequence by default. The scorecard must include: Bull evidence quality, Bear evidence quality, strongest Bull evidence ID, strongest Bear evidence ID, which side directly answered the other side better, which side relied on weaker or duplicated evidence, most material evidence gap, debate winner, rating implication, and Trader implication.
+- Explain whether the debate changed the rating from the pre-debate analyst evidence. If it did not change the rating, state that the debate clarified evidence quality and independence groups rather than changing the rating.
 - Show the scoring rule and score components when a numeric evidence score is used. Explicitly justify why Sell wins over Hold or Underweight, or why Hold/Underweight is selected instead of Sell when long-term support still holds.
 - Identify the primary driver of rating.
+- Include `## Primary Rating Driver`, `## Evidence Winner`, `## Role Evidence Weighting`, and `## Market Technicals as Confidence / Timing Modifier`.
 - Explain the impact of Fundamentals Analyst, Financial Report Analyst, and Industry / Theme Discovery Analyst evidence, or state that the evidence is unavailable or immaterial.
 - Explain rating/action tension when relevant.
 - Explain why Sell beats Underweight/Hold, or why Underweight/Hold beats Sell.
@@ -48,6 +52,8 @@ Output:
   5. Which evidence gaps capped confidence?
   6. How market setup changed the final rating.
 - For ASX tickers, do not use generic "ASX source coverage is uneven" language as the sole reason for Hold. Cite the actual moving-average setup and at least one sector-specific financial metric or explicit evidence gap.
+- For ASX tickers, do not treat sector metric availability as automatically supportive. Weigh metric direction and quality: supportive, adverse, mixed, neutral, or unavailable.
+- Hold is valid only when evidence is genuinely balanced. Timing uncertainty belongs mainly to Trader and should not by itself force Hold.
 
 ## RoleExecutionContract Rules
 

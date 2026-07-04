@@ -14,7 +14,7 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-07-03 07:42:42
+# Data retrieved on: 2026-07-04 16:14:26
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -22,15 +22,16 @@ Industry: Software - Infrastructure
 Market Cap: 2900729528320
 PE Ratio (TTM): 23.257294
 Forward PE: 20.160732
-PEG Ratio: 1.15
+PEG Ratio: 1.2
 Price to Book: 7.000914
 EPS (TTM): 16.79
 Forward EPS: 19.36884
-Beta: 1.103
+Dividend Yield: 0.93
+Beta: 1.13
 52 Week High: 555.45
 52 Week Low: 349.2
-50 Day Average: 408.2688
-200 Day Average: 446.06046
+50 Day Average: 407.5954
+200 Day Average: 445.4361
 Revenue (TTM): 318272995328
 Gross Profit: 217409994752
 EBITDA: 184457003008
@@ -51,7 +52,7 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:26
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,
@@ -142,7 +143,7 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,
@@ -214,7 +215,7 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0

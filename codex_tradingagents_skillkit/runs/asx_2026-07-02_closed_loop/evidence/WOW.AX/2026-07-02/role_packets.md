@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for WOW.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-03 07:46:19
+# Data retrieved on: 2026-07-04 16:16:16
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0
@@ -394,7 +394,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for WOW.AX
-# Data retrieved on: 2026-07-03 07:46:37
+# Data retrieved on: 2026-07-04 16:16:35
 
 ,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
 0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,
@@ -406,9 +406,9 @@ No global news found between 2026-06-25 and 2026-07-02
 6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,
 7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,
 8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,
-9,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
-10,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
-11,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
+9,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
+10,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
+11,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
 12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0
 13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0
 14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,
@@ -435,24 +435,24 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for WOW.AX
-# Data retrieved on: 2026-07-03 07:46:38
+# Data retrieved on: 2026-07-04 16:16:35
 
 Name: Woolworths Group Limited
 Sector: Consumer Defensive
 Industry: Grocery Stores
-Market Cap: 48069926912
-PE Ratio (TTM): 80.306114
-Forward PE: 27.886242
+Market Cap: 48595214336
+PE Ratio (TTM): 81.18367
+Forward PE: 28.190971
 PEG Ratio: 2.16
-Price to Book: 10.371639
+Price to Book: 10.484976
 EPS (TTM): 0.49
 Forward EPS: 1.41109
-Dividend Yield: 2.29
-Beta: 0.29
+Dividend Yield: 2.26
+Beta: 0.27
 52 Week High: 40.75
 52 Week Low: 25.51
-50 Day Average: 36.1366
-200 Day Average: 32.37915
+50 Day Average: 36.1744
+200 Day Average: 32.4441
 Revenue (TTM): 70282002432
 Gross Profit: 19207999488
 EBITDA: 3300000000
@@ -473,7 +473,7 @@ Free Cash Flow: 2267749888
 
 ```text
 # Balance Sheet data for WOW.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:46:38
+# Data retrieved on: 2026-07-04 16:16:36
 
 ,2025-06-30
 Ordinary Shares Number,1221595333.0

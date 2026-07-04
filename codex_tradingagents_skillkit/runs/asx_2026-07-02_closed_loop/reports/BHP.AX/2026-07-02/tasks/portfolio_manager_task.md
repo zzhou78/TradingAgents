@@ -51,7 +51,7 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loo
 
 ## Instruction
 
-Synthesize the trader proposal and risk debate into the final paper portfolio decision.
+Synthesize the trader proposal and risk debate into the final paper portfolio decision. Explain whether Aggressive, Conservative, or Neutral risk was stronger and how that affected implementation.
 
 ## Required Tool-Using Expert Workflow
 

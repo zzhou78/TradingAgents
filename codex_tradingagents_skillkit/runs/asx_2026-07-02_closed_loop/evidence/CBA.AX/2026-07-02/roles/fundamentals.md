@@ -14,24 +14,24 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for CBA.AX
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 Name: Commonwealth Bank of Australia
 Sector: Financial Services
 Industry: Banks - Diversified
-Market Cap: 269446021120
-PE Ratio (TTM): 25.906754
-Forward PE: 23.969215
+Market Cap: 275933888512
+PE Ratio (TTM): 26.61613
+Forward PE: 24.546358
 PEG Ratio: 3.49
-Price to Book: 3.488785
-EPS (TTM): 6.22
+Price to Book: 3.5727897
+EPS (TTM): 6.2
 Forward EPS: 6.72279
-Dividend Yield: 3.07
-Beta: 0.802
+Dividend Yield: 3.0
+Beta: 0.803
 52 Week High: 185.59
 52 Week Low: 146.98
-50 Day Average: 165.26
-200 Day Average: 165.40845
+50 Day Average: 165.0706
+200 Day Average: 165.4109
 Revenue (TTM): 28466999296
 Gross Profit: 28466999296
 Net Income: 10403000320
@@ -48,7 +48,7 @@ Book Value: 46.188
 
 ```text
 # Balance Sheet data for CBA.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,1338636.0,1620212.0,1463595.0

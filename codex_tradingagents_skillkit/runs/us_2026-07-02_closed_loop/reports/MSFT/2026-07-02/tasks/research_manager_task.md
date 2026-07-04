@@ -48,7 +48,7 @@ Memory update file: `codex_tradingagents_skillkit\runs\us_2026-07-02_closed_loop
 
 ## Instruction
 
-Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate by evidence quality and independence group; do not count repeated role mentions or related news/social reactions as separate independent facts.
+Weigh the completed analyst reports, Financial Report Analyst report, Industry / Theme Discovery Analyst report, and Bull/Bear debate by evidence quality and independence group; do not count repeated role mentions or related news/social reactions as separate independent facts. Include a concise Debate Outcome Scorecard and state whether the debate changed the pre-debate analyst evidence rating.
 
 ## Required Tool-Using Expert Workflow
 
@@ -64,8 +64,10 @@ Weigh the completed analyst reports, Financial Report Analyst report, Industry /
 Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Structured Evidence Matrix`
+- `## Debate Outcome Scorecard`
+- `## Debate Change Assessment`
 
-The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, evidence gaps, and independence groups. Explain why Sell vs Hold vs Underweight wins when relevant. Related event facts, social reactions, price reactions, and repeated debate mentions must be weighted as related evidence, not raw duplicate confirmations.
+The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, financial-report, and industry/theme evidence, including weight, confidence, evidence gaps, and independence groups. The scorecard must state Bull/Bear evidence quality, strongest evidence IDs, which side answered better, weaker/duplicated evidence, most important evidence gap, debate winner, rating implication, and trader implication. Explain why Sell vs Hold vs Underweight wins when relevant. Related event facts, social reactions, price reactions, and repeated debate mentions must be weighted as related evidence, not raw duplicate confirmations.
 
 ## RoleExecutionContract
 
@@ -108,6 +110,8 @@ The matrix must compare Bull, Bear, market, sentiment, news, fundamentals, finan
     "Tool Outputs Used",
     "Structured Evidence Matrix",
     "Rating Rationale",
+    "Debate Outcome Scorecard",
+    "Debate Change Assessment",
     "Evidence Gaps",
     "Memory Update"
   ],

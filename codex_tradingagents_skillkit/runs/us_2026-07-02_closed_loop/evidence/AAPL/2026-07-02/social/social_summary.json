@@ -2,9 +2,11 @@
   "social_summary": {
     "ticker": "AAPL",
     "trade_date": "2026-07-02",
-    "total_items_reviewed": 42,
-    "usable_items": 30,
-    "source_limitations": [],
+    "total_items_reviewed": 7,
+    "usable_items": 2,
+    "source_limitations": [
+      "social coverage is noisy or sparse"
+    ],
     "final_sentiment_judgment": "pending_codex_interpretation"
   },
   "sources": [
@@ -14,42 +16,16 @@
       "status": "available",
       "source_confidence_category": "ticker_specific_retail_platform",
       "retail_only": true,
-      "items_reviewed": 31,
-      "usable_ticker_relevant_items": 29,
-      "bullish_count": 8,
-      "bearish_count": 2,
-      "neutral_count": 19,
-      "confidence": "medium",
-      "limitations": [],
-      "representative_items": [
-        {
-          "text_excerpt": "[2026-07-02T21:36:31Z \u00b7 @Judy11 \u00b7 no-label] $AAPL should have bought at 279. Not here. No thanks",
-          "classification": "directly ticker-relevant",
-          "label": "neutral",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "neutral",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        },
-        {
-          "text_excerpt": "[2026-07-02T21:25:16Z \u00b7 @cubie \u00b7 no-label] @Jeremymartin007 @simon58 @judgeyoung2 @jenbunn @ribbey @EBE_day @TraderRapp @Godreal1 @tonyctl @zuby34   thats was best $AAPL poot.time and cubie left 2400 more on da table covering 2 minutes earl",
-          "classification": "directly ticker-relevant",
-          "label": "neutral",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "neutral",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        },
-        {
-          "text_excerpt": "[2026-07-02T21:24:14Z \u00b7 @DarkFlowSignals \u00b7 no-label] $AAPL Soft jobs print rotated money out of tech and into safety today, but the tape steadied into the close instead of breaking down. $AAPL $290C 7/24 tagged a fresh high, up ~+195%, gree",
-          "classification": "directly ticker-relevant",
-          "label": "neutral",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "neutral",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        }
+      "items_reviewed": 2,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
       ],
+      "representative_items": [],
       "quality_weighted_balance": "pending_codex_interpretation",
       "final_sentiment_judgment": "pending_codex_interpretation"
     },
@@ -59,16 +35,25 @@
       "status": "available",
       "source_confidence_category": "broad_social_discussion",
       "retail_only": true,
-      "items_reviewed": 11,
-      "usable_ticker_relevant_items": 1,
+      "items_reviewed": 5,
+      "usable_ticker_relevant_items": 2,
       "bullish_count": 0,
       "bearish_count": 0,
-      "neutral_count": 1,
+      "neutral_count": 2,
       "confidence": "low",
       "limitations": [],
       "representative_items": [
         {
-          "text_excerpt": "r/wallstreetbets \u2014 4 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
+          "text_excerpt": "r/investing \u2014 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's say Fidelity manages portfolios with AAPL in it and one of the Fidelity portfolio",
           "classification": "directly ticker-relevant",
           "label": "neutral",
           "ticker_relevance": "direct_company",

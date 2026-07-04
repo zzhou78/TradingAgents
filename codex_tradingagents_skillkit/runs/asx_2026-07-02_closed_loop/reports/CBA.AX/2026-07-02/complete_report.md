@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-02
 Evidence as of: 2026-07-02
-Run executed at: 2026-07-03T07:43:50+10:00
-Run ID: asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-03T07:43:50+10:00
+Run executed at: 2026-07-04T16:13:43+10:00
+Run ID: asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-04T16:13:43+10:00
 Run folder: asx_2026-07-02_closed_loop
 
 ## Tool Outputs Used
@@ -18,6 +18,12 @@ Run folder: asx_2026-07-02_closed_loop
 **Rating**: Hold
 Reference price: 161.14
 FINAL TRANSACTION PROPOSAL: **HOLD**
+
+Research Manager Rating: Hold
+Trader Action: HOLD
+Portfolio Rating: Hold
+Primary rating driver: mixed
+Rating/action tension: Rating and action are aligned by current setup quality.
 
 ### Market Analyst
 Latest close 161.14 is below the 10 EMA 162.47, below the 50 SMA 165.51, and below the 200 SMA 164.47. Evidence: market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004.
@@ -39,18 +45,24 @@ Industry/theme evidence identifies ASX company fundamentals / Official announcem
 
 ### Research Manager Decision - Evidence Weighing
 **Recommendation**: Hold
-Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold is ticker-specific here: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case.
+Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Hold is driven by mixed: Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
-- Rating-vs-rating summary: Hold is retained for ticker-specific reasons: The all-below-average setup blocks Buy/Overweight and is the closest path to Underweight; Hold is retained only because official financial records and sector metrics prevent a completed Sell case.
-- Why not Buy / Overweight? Buy/Overweight is not selected because CBA.AX has a negative across 10 EMA, 50 SMA, and 200 SMA setup and sector metric coverage is 7 available / 0 gap-labelled; that is not enough for an aggressive rating.
-- Why not Sell / Underweight? Sell/Underweight is not selected because financial:CBA.AX:2026-07-02:023 and financial:CBA.AX:2026-07-02:038 still provide official-source financial context; the negative market setup is decisive for caution but not enough by itself for a directional Sell.
-- Decisive role evidence: Decisive evidence is Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) plus Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038); News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
-- Sector-specific metric or gap: banks metric evidence: NIM is available via financial:CBA.AX:2026-07-02:038.
-- Evidence-gap confidence cap: Confidence is capped by role-level source limitations and low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, not by sector metrics alone.
+- Primary rating driver: mixed.
+- Evidence winner: Financial-report and sector evidence are mixed: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral, 2 available / 0 gap-labelled core sections, supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none.
+- Rating-vs-rating summary: Hold is retained for evidence-led reasons; market setup affects confidence/timing only. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
+- Why not Buy / Overweight? Buy/Overweight is not selected because 2 adverse sector-metric reading(s) (Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042)) offset the supportive case (NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039)).
+- Why not Sell / Underweight? Sell/Underweight is not selected because 5 supportive sector-metric reading(s) (NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039)) prevent a completed negative official-source case.
+- Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038) plus Fundamentals/Financial section context; Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) modifies timing; News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
+- Sector-specific metric or gap: banks metric direction mix: 7 available / 0 gap-labelled; 5 supportive, 2 adverse, 0 mixed, 0 neutral. supportive examples: NIM (supportive, financial:CBA.AX:2026-07-02:038); CET1 (supportive, financial:CBA.AX:2026-07-02:039); adverse examples: Arrears (adverse, financial:CBA.AX:2026-07-02:041); Impairment (adverse, financial:CBA.AX:2026-07-02:042); mixed/neutral examples: none. Highlighted metric: NIM is available / supportive via financial:CBA.AX:2026-07-02:038.
+- Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, and medium-confidence extraction depth.
+Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 
 ### Trader
 **Action**: HOLD
-Reference price: 161.14. Confirmation level: 162.69. Invalidation / caution level: 159.58.
+Setup quality: Setup score -4: research alignment +0, trend -2, momentum -1, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+Research alignment: +0. Trend/momentum/volatility: trend -2, momentum -1, volatility/event risk -1.
+Reward/risk and levels: reward/risk +1; reference price 161.14, confirmation level 162.69, invalidation / caution level 159.58.
+Rating-action tension: Rating and action are aligned by current setup quality.
 FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ### Risk Debate
@@ -58,7 +70,7 @@ Aggressive risk supports the upside case but identifies failure points. Conserva
 
 ### Portfolio Manager
 **Rating**: Hold
-Risk debate impact: risk evidence tempers implementation; no broker/order tools are used.
+Risk debate impact: risk evidence tempers implementation; no broker/order tools are used. Stronger risk side: balanced with a conservative sizing bias, because Neutral Risk reconciles Aggressive upside evidence with Conservative evidence-gap and timing concerns. Portfolio stance preserves the separation between Research Manager rating (Hold) and Trader action (HOLD). Rating and action are aligned by current setup quality.
 
 ## Evidence Gaps
 - This is a paper-study report-writing workflow, not investment advice or a trading instruction.

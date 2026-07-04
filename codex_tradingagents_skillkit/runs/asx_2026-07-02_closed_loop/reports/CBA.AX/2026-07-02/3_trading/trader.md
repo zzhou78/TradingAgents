@@ -7,7 +7,32 @@
 ## Action Consistency Check
 **Action**: HOLD
 
-The action is consistent with the evidence because the Research Manager stance is Hold, but the trade implementation should not force a directional order when the evidence mix is not a clean Buy or Sell setup. A Sell would require a fresh breakdown or materially negative setup; a Buy would require clearer trend confirmation and risk/reward. Current close is 161.14, 10 EMA 162.47, 50 SMA 165.51, 200 SMA 164.47.
+The action is based on setup quality after the Research Manager rating, not on moving averages alone. Rating and action are aligned by current setup quality.
+
+## Setup Quality Assessment
+Setup score -4: research alignment +0, trend -2, momentum -1, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+
+## Research Rating Alignment
+Research Manager rating: Hold
+Trader action: HOLD
+Reason for agreement or difference: Rating and action are aligned by current setup quality.
+
+## Trend / Momentum / Volatility
+- Trend regime: latest close 161.14 is below the 10 EMA, below the 50 SMA, and below the 200 SMA; trend component -2.
+- Momentum: RSI 44.79, MACD -0.71; momentum component -1.
+- Volatility: ATR 3.11; ASX event/liquidity caution component -1.
+
+## Support / Resistance / Confirmation / Invalidation
+Reference price: 161.14. Confirmation level: 162.69. Invalidation / caution level: 159.58.
+
+## Reward-Risk Assessment
+Reward/risk component: +1. The setup requires confirmation because a paper-study action is valid only when research alignment, trend/momentum, support/resistance, reward/risk, volatility/event risk, and volume confirmation are coherent.
+
+## Event Risk and Liquidity Check
+ASX execution caution is included where applicable. No broker/order book, spread feed, ex-date calendar, or live liquidity tool was used, so event/liquidity uncertainty limits confidence.
+
+## Rating-Action Tension
+Rating and action are aligned by current setup quality.
 
 ## Paper-study price framework
 Reference price: 161.14 using market:CBA.AX:2026-07-02:001 from source date 2026-07-02. Confirmation level: 162.69 using ATR and trend-level spacing (market:CBA.AX:2026-07-02:007). Invalidation / caution level: 159.58. This is a paper-study framework and not an entry order.

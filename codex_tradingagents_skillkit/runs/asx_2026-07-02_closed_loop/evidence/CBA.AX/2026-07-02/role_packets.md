@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for CBA.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-03 07:44:12
+# Data retrieved on: 2026-07-04 16:14:08
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,161.0,163.29,160.14,163.0,2110667,0.0,0.0
@@ -199,7 +199,7 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 2026-06-05: 164.9040604400635
 2026-06-04: 164.95708961486815
 2026-06-03: 164.98906120300293
-2026-06-02: 164.99639350891113
+2026-06-02: 164.9963934326172
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 44.792431976624684
-2026-07-01: 43.75830957978562
-2026-06-30: 52.40674694248864
-2026-06-29: 50.02546588566846
+2026-07-02: 44.792431976624336
+2026-07-01: 43.75830957978521
+2026-06-30: 52.40674694248867
+2026-06-29: 50.02546588566834
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 46.08186889924467
-2026-06-25: 47.57268779487557
-2026-06-24: 52.41198161661917
-2026-06-23: 51.13099216183647
-2026-06-22: 49.385941174655756
+2026-06-26: 46.08186889924427
+2026-06-25: 47.57268779487526
+2026-06-24: 52.41198161661921
+2026-06-23: 51.130992161836396
+2026-06-22: 49.38594117465554
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 47.1745421450811
-2026-06-18: 46.81133951093342
-2026-06-17: 49.566386369431584
-2026-06-16: 45.91140178994996
-2026-06-15: 45.73177407542385
+2026-06-19: 47.17454214508068
+2026-06-18: 46.811339510932974
+2026-06-17: 49.56638636943136
+2026-06-16: 45.911401789949366
+2026-06-15: 45.73177407542324
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 41.13358676688099
-2026-06-11: 34.10746056762961
-2026-06-10: 39.52268354438812
-2026-06-09: 39.892170675954034
+2026-06-12: 41.13358676687982
+2026-06-11: 34.10746056762745
+2026-06-10: 39.52268354438638
+2026-06-09: 39.89217067595233
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 40.50757174465895
-2026-06-04: 44.8351379880593
-2026-06-03: 46.51456762553227
-2026-06-02: 43.1348583253987
+2026-06-05: 40.507571744657305
+2026-06-04: 44.83513798805817
+2026-06-03: 46.514567625531384
+2026-06-02: 43.134858325397154
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -0.707670969268861
-2026-07-01: -0.624910365052159
-2026-06-30: -0.46844230658180663
-2026-06-29: -0.6579911253481328
+2026-07-02: -0.7076709692689747
+2026-07-01: -0.6249103650522443
+2026-06-30: -0.4684423065818635
+2026-06-29: -0.6579911253481612
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -0.7875177605996839
-2026-06-25: -0.7794955077631585
-2026-06-24: -0.8271536973821014
-2026-06-23: -1.0887511782099466
-2026-06-22: -1.3477551310618878
+2026-06-26: -0.7875177605997408
+2026-06-25: -0.7794955077632153
+2026-06-24: -0.8271536973821867
+2026-06-23: -1.088751178209975
+2026-06-22: -1.3477551310619447
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: -1.5772797909802705
-2026-06-18: -1.7444571110891616
-2026-06-17: -1.9151533372105973
-2026-06-16: -2.255859044981378
-2026-06-15: -2.471583466719892
+2026-06-19: -1.5772797909803558
+2026-06-18: -1.7444571110892468
+2026-06-17: -1.9151533372106826
+2026-06-16: -2.255859044981463
+2026-06-15: -2.4715834667200056
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -2.701811152015523
-2026-06-11: -2.724220996053333
-2026-06-10: -2.3985812644610576
-2026-06-09: -2.3370042980297967
+2026-06-12: -2.701811152015665
+2026-06-11: -2.724220996053475
+2026-06-10: -2.3985812644611997
+2026-06-09: -2.337004298029939
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: -2.248852276767991
-2026-06-04: -2.1463911137152536
-2026-06-03: -2.2725388176540378
-2026-06-02: -2.5053666526802374
+2026-06-05: -2.248852276768133
+2026-06-04: -2.1463911137153957
+2026-06-03: -2.27253881765418
+2026-06-02: -2.5053666526803795
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 3.111057275796253
-2026-07-01: 3.108060977374931
-2026-06-30: 3.0140655270918724
-2026-06-29: 3.0574554177726174
+2026-07-02: 3.111057275796207
+2026-07-01: 3.108060977374881
+2026-06-30: 3.0140655270918186
+2026-06-29: 3.0574554177725592
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 3.135721735591064
-2026-06-25: 3.2292389330253526
-2026-06-24: 3.246103888886077
-2026-06-23: 3.2511893668172176
-2026-06-22: 3.359742676734648
+2026-06-26: 3.1357217355910016
+2026-06-25: 3.2292389330252855
+2026-06-24: 3.2461038888860045
+2026-06-23: 3.25118936681714
+2026-06-22: 3.359742676734564
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 3.4797226478867125
-2026-06-18: 3.5889322701400177
-2026-06-17: 3.59346561558949
-2026-06-16: 3.672194350217167
-2026-06-15: 3.646209722784954
+2026-06-19: 3.479722647886622
+2026-06-18: 3.5889322701399196
+2026-06-17: 3.5934656155893845
+2026-06-16: 3.6721943502170533
+2026-06-15: 3.646209722784832
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 3.6889941940238207
-2026-06-11: 3.674301064116999
-2026-06-10: 3.6630928902630178
-2026-06-09: 3.7371771934953895
+2026-06-12: 3.6889941940236888
+2026-06-11: 3.674301064116857
+2026-06-10: 3.663092890262865
+2026-06-09: 3.737177193495225
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 3.7446524091759246
-2026-06-04: 3.6880875385326064
-2026-06-03: 3.7264017767730953
-2026-06-02: 3.822279165175713
+2026-06-05: 3.7446524091757474
+2026-06-04: 3.6880875385324154
+2026-06-03: 3.7264017767728896
+2026-06-02: 3.822279165175492
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -390,7 +390,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for CBA.AX
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D
@@ -417,8 +417,8 @@ No global news found between 2026-06-25 and 2026-07-02
 21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D
 22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D
 23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D
-24,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
-25,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
+24,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D
+25,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D
 26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D
 27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D
 28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D
@@ -427,11 +427,11 @@ No global news found between 2026-06-25 and 2026-07-02
 31,37,3486.0,,Acquisition at price 94.24 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-03-28,D
 32,6748,,,,Lewis (Sian),Former,,2025-02-16,D
 33,10000,,,,Williams (Nigel),Former,,2025-02-16,D
-34,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D
-35,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D
+34,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D
+35,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D
 36,57,5628.0,,Purchase at price 98.75 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2024-11-15,D
-37,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D
-38,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D
+37,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D
+38,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D
 39,2458,,,,Howitt (Katherine Neisha),Independent Non-Executive Director,,2024-10-01,D
 40,59,5762.0,,Acquisition at price 97.66 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-09-27,D
 41,102,9368.0,,Other at price 91.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-08-16,D
@@ -451,24 +451,24 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for CBA.AX
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 Name: Commonwealth Bank of Australia
 Sector: Financial Services
 Industry: Banks - Diversified
-Market Cap: 269446021120
-PE Ratio (TTM): 25.906754
-Forward PE: 23.969215
+Market Cap: 275933888512
+PE Ratio (TTM): 26.61613
+Forward PE: 24.546358
 PEG Ratio: 3.49
-Price to Book: 3.488785
-EPS (TTM): 6.22
+Price to Book: 3.5727897
+EPS (TTM): 6.2
 Forward EPS: 6.72279
-Dividend Yield: 3.07
-Beta: 0.802
+Dividend Yield: 3.0
+Beta: 0.803
 52 Week High: 185.59
 52 Week Low: 146.98
-50 Day Average: 165.26
-200 Day Average: 165.40845
+50 Day Average: 165.0706
+200 Day Average: 165.4109
 Revenue (TTM): 28466999296
 Gross Profit: 28466999296
 Net Income: 10403000320
@@ -485,7 +485,7 @@ Book Value: 46.188
 
 ```text
 # Balance Sheet data for CBA.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:44:31
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,1338636.0,1620212.0,1463595.0

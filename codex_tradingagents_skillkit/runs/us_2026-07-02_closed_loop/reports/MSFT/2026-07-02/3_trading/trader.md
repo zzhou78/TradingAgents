@@ -7,7 +7,32 @@
 ## Action Consistency Check
 **Action**: HOLD
 
-The action is consistent with the evidence because the Research Manager stance is Underweight, but the trade implementation should not force a directional order when the evidence mix is not a clean Buy or Sell setup. A Sell would require a fresh breakdown or materially negative setup; a Buy would require clearer trend confirmation and risk/reward. Current close is 390.49, 10 EMA 379.28, 50 SMA 407.22, 200 SMA 443.78.
+The action is based on setup quality after the Research Manager rating, not on moving averages alone. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+
+## Setup Quality Assessment
+Setup score -1: research alignment -2, trend +0, momentum +0, support/resistance +0, reward/risk +1, volatility/event risk +0, volume confirmation +0.
+
+## Research Rating Alignment
+Research Manager rating: Underweight
+Trader action: HOLD
+Reason for agreement or difference: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+
+## Trend / Momentum / Volatility
+- Trend regime: latest close 390.49 is above the 10 EMA, below the 50 SMA, and below the 200 SMA; trend component +0.
+- Momentum: RSI 49.85, MACD -9.80; momentum component +0.
+- Volatility: ATR 13.06; ASX event/liquidity caution component +0.
+
+## Support / Resistance / Confirmation / Invalidation
+Reference price: 390.49. Confirmation level: 397.02. Invalidation / caution level: 379.28.
+
+## Reward-Risk Assessment
+Reward/risk component: +1. The setup requires confirmation because a paper-study action is valid only when research alignment, trend/momentum, support/resistance, reward/risk, volatility/event risk, and volume confirmation are coherent.
+
+## Event Risk and Liquidity Check
+ASX execution caution is included where applicable. No broker/order book, spread feed, ex-date calendar, or live liquidity tool was used, so event/liquidity uncertainty limits confidence.
+
+## Rating-Action Tension
+Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ## Paper-study price framework
 Reference price: 390.49 using market:MSFT:2026-07-02:001 from source date 2026-07-02. Confirmation level: 397.02 using ATR and trend-level spacing (market:MSFT:2026-07-02:007). Invalidation / caution level: 379.28. This is a paper-study framework and not an entry order.

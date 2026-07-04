@@ -4,6 +4,14 @@
 - Analyst reports for market, sentiment, news, fundamentals, financial report, and industry/theme discovery.
 - Debate reports from Bull and Bear researchers.
 
+## Primary Rating Driver
+Primary rating driver: mixed
+
+Market technicals are treated as a confidence and timing modifier, not as the main investment-rating engine.
+
+## Evidence Winner
+Market, financial-report, news, fundamentals, and valuation evidence are mixed.
+
 ## Structured Evidence Matrix
 | Role | Evidence ID | Direction | Materiality | Confidence | Tool output | Weight | Reason | Independence group ID |
 |---|---|---|---|---|---|---:|---|---|
@@ -14,6 +22,12 @@
 | Bear Researcher | fundamentals:AAPL:2026-07-02:001 | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:AAPL:2026-07-02:valuation-trend |
 
 Score calculation / component weights: +1 market, +2 financial quality, +1 earnings/news, 0 low-confidence retail sentiment, -1 valuation/timing risk = +3.
+
+## Role Evidence Weighting
+- Financial report / sector metrics: primary evidence group for ASX where available; filing and fundamentals evidence is not counted again through Bull/Bear restatement.
+- Market technicals: capped timing/confidence modifier.
+- News: contextual event evidence unless a direct material event is identified.
+- Sentiment: low-confidence retail reaction with zero standalone decision weight.
 
 ## Rating Rationale
 **Recommendation**: Overweight
@@ -27,6 +41,29 @@ Overweight beats Hold because multiple direct filing and earnings-release record
 4. Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.
 5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
 6. Market setup impact: constructive but not trend-confirmed because MACD remains negative.
+
+## Debate Outcome Scorecard
+| Field | Outcome |
+|---|---|
+| Bull evidence quality | high |
+| Bear evidence quality | medium |
+| Strongest Bull evidence ID | financial:AAPL:2026-07-02:022 |
+| Strongest Bear evidence ID | fundamentals:AAPL:2026-07-02:001 |
+| Which side directly answered the other side better? | Bull |
+| Which side relied on weaker or duplicated evidence? | Bear relied more on timing/valuation caution than direct deterioration evidence |
+| Which evidence gap matters most? | Low-confidence social evidence and as-of-date-limited news/filing coverage cap conviction. |
+| Debate winner | Bull |
+| Rating implication | Overweight |
+| Trader implication | timing-gated HOLD |
+
+## Debate Change Assessment
+- Pre-debate analyst evidence rating: Overweight.
+- Changed by debate? No.
+- Explanation: Pre-debate analyst evidence was constructive but not execution-ready; debate confirmed Bull evidence quality without overriding Trader timing gates.
+- Scorecard ID: debate:AAPL:2026-07-02:outcome-scorecard
+
+## Market Technicals as Confidence / Timing Modifier
+Market setup is a timing modifier: constructive but not trend-confirmed because MACD remains negative.
 
 ## Evidence Gaps
 - No final investment judgment is made by Python. This recommendation is Codex interpretation of collected evidence.

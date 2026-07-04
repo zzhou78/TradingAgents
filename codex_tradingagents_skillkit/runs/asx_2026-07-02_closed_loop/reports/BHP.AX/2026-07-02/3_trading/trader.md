@@ -1,13 +1,38 @@
 # Trader Report - BHP.AX
 
 ## Tool Outputs Used
-- Research Manager recommendation: Hold.
+- Research Manager recommendation: Overweight.
 - Market reference metrics: market:BHP.AX:2026-07-02:001, market:BHP.AX:2026-07-02:002, market:BHP.AX:2026-07-02:003, market:BHP.AX:2026-07-02:004, market:BHP.AX:2026-07-02:007.
 
 ## Action Consistency Check
 **Action**: HOLD
 
-The action is consistent with the evidence because the Research Manager stance is Hold, but the trade implementation should not force a directional order when the evidence mix is not a clean Buy or Sell setup. A Sell would require a fresh breakdown or materially negative setup; a Buy would require clearer trend confirmation and risk/reward. Current close is 59.57, 10 EMA 60.14, 50 SMA 59.75, 200 SMA 49.84.
+The action is based on setup quality after the Research Manager rating, not on moving averages alone. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+
+## Setup Quality Assessment
+Setup score +0: research alignment +2, trend -1, momentum +0, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+
+## Research Rating Alignment
+Research Manager rating: Overweight
+Trader action: HOLD
+Reason for agreement or difference: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
+
+## Trend / Momentum / Volatility
+- Trend regime: latest close 59.57 is below the 10 EMA, below the 50 SMA, and above the 200 SMA; trend component -1.
+- Momentum: RSI 45.83, MACD -0.24; momentum component +0.
+- Volatility: ATR 1.39; ASX event/liquidity caution component -1.
+
+## Support / Resistance / Confirmation / Invalidation
+Reference price: 59.57. Confirmation level: 60.27. Invalidation / caution level: 58.88.
+
+## Reward-Risk Assessment
+Reward/risk component: +1. The setup requires confirmation because a paper-study action is valid only when research alignment, trend/momentum, support/resistance, reward/risk, volatility/event risk, and volume confirmation are coherent.
+
+## Event Risk and Liquidity Check
+ASX execution caution is included where applicable. No broker/order book, spread feed, ex-date calendar, or live liquidity tool was used, so event/liquidity uncertainty limits confidence.
+
+## Rating-Action Tension
+Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ## Paper-study price framework
 Reference price: 59.57 using market:BHP.AX:2026-07-02:001 from source date 2026-07-02. Confirmation level: 60.27 using ATR and trend-level spacing (market:BHP.AX:2026-07-02:007). Invalidation / caution level: 58.88. This is a paper-study framework and not an entry order.

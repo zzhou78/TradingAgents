@@ -37,6 +37,7 @@ Procedure:
 14. For ASX PDFs, use extracted text and tables where available. Prefer `pdfplumber` table extraction when installed, then fall back to text-only PDF extraction.
 15. Apply ASX sector-specific checks where relevant: banks use NIM, CET1, loan growth, arrears, impairment, dividend, ROE; miners/resources use production, realised price, AISC/costs, reserves/resources, capex, commodity exposure; healthcare uses segment revenue, R&D, plasma collections, margins, debt, guidance; insurers/health insurers use premium growth, claims ratio, membership, capital adequacy; retailers use sales growth, EBIT margin, inventory, capex, dividends.
 16. Every ASX sector metric must be available with a source section or explicitly gap-labelled with metric confidence.
+17. Metric availability is not the same as metric support. Where possible, classify metric direction as supportive, adverse, mixed, neutral, or unavailable based on extracted values and wording; disclose when only metric presence was found.
 
 ## RoleExecutionContract Rules
 

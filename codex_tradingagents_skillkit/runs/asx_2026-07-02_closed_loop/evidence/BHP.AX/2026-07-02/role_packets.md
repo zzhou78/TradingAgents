@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for BHP.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-03 07:43:51
+# Data retrieved on: 2026-07-04 16:13:47
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,63.4,63.58,62.55,63.37,7621289,0.0,0.0
@@ -213,35 +213,35 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ## rsi values from 2026-06-02 to 2026-07-02:
 
 2026-07-02: 45.82701179049862
-2026-07-01: 47.16629410380276
+2026-07-01: 47.16629410380277
 2026-06-30: 44.94664624468937
 2026-06-29: 46.40894766027351
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
 2026-06-26: 43.00634621156326
-2026-06-25: 41.037874507875756
+2026-06-25: 41.03787450787576
 2026-06-24: 43.978830720215036
-2026-06-23: 45.2699016150717
-2026-06-22: 46.538541742921865
+2026-06-23: 45.26990161507171
+2026-06-22: 46.53854174292188
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: 49.80979405593098
-2026-06-18: 64.19912411175075
+2026-06-18: 64.19912411175076
 2026-06-17: 66.91117324960935
-2026-06-16: 65.939479664536
+2026-06-16: 65.93947966453601
 2026-06-15: 65.91623891142181
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 60.250817958303536
-2026-06-11: 53.44897611637591
-2026-06-10: 51.26775131928376
-2026-06-09: 50.839965962331505
+2026-06-12: 60.25081795830355
+2026-06-11: 53.448976116375924
+2026-06-10: 51.267751319283775
+2026-06-09: 50.83996596233151
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 55.188620082562764
+2026-06-05: 55.18862008256278
 2026-06-04: 61.7885431657325
-2026-06-03: 72.70933934060318
+2026-06-03: 72.7093393406032
 2026-06-02: 68.99548085289136
 
 
@@ -430,7 +430,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-03 07:44:05
+# Data retrieved on: 2026-07-04 16:14:01
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
@@ -447,24 +447,24 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for BHP.AX
-# Data retrieved on: 2026-07-03 07:44:06
+# Data retrieved on: 2026-07-04 16:14:01
 
 Name: BHP Group Limited
 Sector: Basic Materials
 Industry: Other Industrial Metals & Mining
-Market Cap: 302656716800
-PE Ratio (TTM): 20.400684
-Forward PE: 15.537713
+Market Cap: 307381764096
+PE Ratio (TTM): 20.719177
+Forward PE: 15.864491
 PEG Ratio: 2.93
-Price to Book: 4.137082
+Price to Book: 4.2016697
 EPS (TTM): 2.92
-Forward EPS: 3.8338976
-Dividend Yield: 3.29
-Beta: 0.825
+Forward EPS: 3.813548
+Dividend Yield: 3.24
+Beta: 0.831
 52 Week High: 65.98
 52 Week Low: 37.56
-50 Day Average: 59.8534
-200 Day Average: 50.6758
+50 Day Average: 59.9414
+200 Day Average: 50.7672
 Revenue (TTM): 53987999744
 Gross Profit: 44856000512
 EBITDA: 26292000768
@@ -485,7 +485,7 @@ Free Cash Flow: 8137124864
 
 ```text
 # Balance Sheet data for BHP.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:44:06
+# Data retrieved on: 2026-07-04 16:14:01
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,,701522.0,

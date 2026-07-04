@@ -2,9 +2,11 @@
   "social_summary": {
     "ticker": "MSFT",
     "trade_date": "2026-07-02",
-    "total_items_reviewed": 32,
-    "usable_items": 29,
-    "source_limitations": [],
+    "total_items_reviewed": 3,
+    "usable_items": 0,
+    "source_limitations": [
+      "social coverage has no usable ticker-relevant items"
+    ],
     "final_sentiment_judgment": "pending_codex_interpretation"
   },
   "sources": [
@@ -14,42 +16,16 @@
       "status": "available",
       "source_confidence_category": "ticker_specific_retail_platform",
       "retail_only": true,
-      "items_reviewed": 31,
-      "usable_ticker_relevant_items": 29,
-      "bullish_count": 8,
-      "bearish_count": 5,
-      "neutral_count": 16,
-      "confidence": "medium",
-      "limitations": [],
-      "representative_items": [
-        {
-          "text_excerpt": "[2026-07-02T21:35:40Z \u00b7 @NetflixUser \u00b7 Bullish] $MSFT bought calls at close for next week!",
-          "classification": "directly ticker-relevant",
-          "label": "bullish",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "bullish",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        },
-        {
-          "text_excerpt": "[2026-07-02T21:27:35Z \u00b7 @AStrokeOfLuck \u00b7 no-label] $MSFT",
-          "classification": "directly ticker-relevant",
-          "label": "neutral",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "neutral",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        },
-        {
-          "text_excerpt": "[2026-07-02T21:22:15Z \u00b7 @ShowMeThaMonay \u00b7 Bullish] $MSFT Atleast $400 next week.",
-          "classification": "directly ticker-relevant",
-          "label": "bullish",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "bullish",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        }
+      "items_reviewed": 2,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
       ],
+      "representative_items": [],
       "quality_weighted_balance": "pending_codex_interpretation",
       "final_sentiment_judgment": "pending_codex_interpretation"
     },

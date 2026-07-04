@@ -14,7 +14,7 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-07-03 07:42:18
+# Data retrieved on: 2026-07-04 16:14:01
 
 Name: Apple Inc.
 Sector: Technology
@@ -22,16 +22,16 @@ Industry: Consumer Electronics
 Market Cap: 4532958920704
 PE Ratio (TTM): 37.319225
 Forward PE: 32.119114
-PEG Ratio: 2.34
+PEG Ratio: 2.49
 Price to Book: 42.511017
 EPS (TTM): 8.27
 Forward EPS: 9.60892
-Dividend Yield: 0.37
-Beta: 1.086
+Dividend Yield: 0.35
+Beta: 1.097
 52 Week High: 317.4
 52 Week Low: 201.5
-50 Day Average: 292.6738
-200 Day Average: 270.3318
+50 Day Average: 293.523
+200 Day Average: 270.69144
 Revenue (TTM): 451442016256
 Gross Profit: 216070995968
 EBITDA: 159975997440
@@ -52,7 +52,7 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:18
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,
@@ -129,7 +129,7 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:19
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,
@@ -187,7 +187,7 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-07-03 07:42:19
+# Data retrieved on: 2026-07-04 16:14:02
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0

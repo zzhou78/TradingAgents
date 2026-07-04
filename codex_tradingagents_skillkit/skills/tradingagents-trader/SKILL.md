@@ -33,11 +33,15 @@ Procedure:
 6. Safety boundaries must not change the Buy / Hold / Sell action.
 7. Do not cite paper-study status as a reason to avoid Buy or Sell.
 8. The action rationale must come from market evidence, research manager input, and risk evidence.
+9. Trader decides paper-study action, not investment rating. Given the Research Manager rating, ask whether there is a disciplined setup today.
+10. Do not decide BUY/HOLD/SELL from 10 EMA / 50 SMA / 200 SMA alone. Use research alignment, trend, momentum, support/resistance, reward/risk, volatility/event risk, volume, and liquidity/spread/event caution where available.
 
 Output:
 - `TraderProposal`: action, reasoning, paper-study price framework for Buy/Sell actions, optional sizing notes, and risk notes.
 - Include `## Tool Outputs Used`.
 - Include `## Action Consistency Check`.
+- Include `## Setup Quality Assessment`, `## Research Rating Alignment`, `## Trend / Momentum / Volatility`, `## Support / Resistance / Confirmation / Invalidation`, `## Reward-Risk Assessment`, `## Event Risk and Liquidity Check`, and `## Rating-Action Tension`.
+- State Research Manager rating, Trader action, and the reason for agreement or difference.
 - Include a consistency check before the final proposal. If action is Sell, identify whether price broke below longer-term support or name the separate materially negative setup. If long-term support still holds and no material negative setup is documented, prefer Hold over Sell.
 - FINAL TRANSACTION PROPOSAL must match `**Action**`.
 - Sell requires below 200 SMA or explicit material negative setup.

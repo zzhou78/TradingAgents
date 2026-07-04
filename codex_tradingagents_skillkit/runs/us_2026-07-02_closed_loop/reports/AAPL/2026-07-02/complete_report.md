@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-02
 Evidence as of: 2026-07-02
-Run executed at: 2026-07-03T07:42:02+10:00
-Run ID: us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-03T07:42:02+10:00
+Run executed at: 2026-07-04T16:13:43+10:00
+Run ID: us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-04T16:13:43+10:00
 Run folder: us_2026-07-02_closed_loop
 
 ## Tool Outputs Used
@@ -18,6 +18,12 @@ Run folder: us_2026-07-02_closed_loop
 **Rating**: Overweight
 Reference price: 308.63
 FINAL TRANSACTION PROPOSAL: **HOLD**
+
+Research Manager Rating: Overweight
+Trader Action: HOLD
+Portfolio Rating: Overweight
+Primary rating driver: mixed
+Rating/action tension: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ### Market Analyst
 Latest close 308.63 is above the 10 EMA 293.59, above the 50 SMA 293.46, and above the 200 SMA 270.32. Evidence: market:AAPL:2026-07-02:001, market:AAPL:2026-07-02:002, market:AAPL:2026-07-02:003, market:AAPL:2026-07-02:004.
@@ -41,9 +47,19 @@ Industry/theme evidence identifies Platform monetization / Services and installe
 **Recommendation**: Overweight
 Research Manager weighs market, financial-report, news, theme, and sentiment evidence by independence group. Overweight beats Hold because multiple direct filing and earnings-release records show business strength while the latest close is above the 10 EMA, 50 SMA, and 200 SMA; it does not become Buy because MACD is negative and social evidence is low-confidence retail color.
 
+- Why not Buy / Overweight? Overweight beats Hold because multiple direct filing and earnings-release records show business strength while the latest close is above the 10 EMA, 50 SMA, and 200 SMA; it does not become Buy because MACD is negative and social evidence is low-confidence retail color.
+- Why not Sell / Underweight? Overweight is not a Sell because the evidence mix is not a clean long-term breakdown or negative fundamental case.
+- Decisive role evidence: Market and Financial Report evidence outweighed low-confidence social evidence.
+- Sector-specific financial metrics: not applicable for non-ASX tickers in this workflow.
+- Market setup impact: constructive but not trend-confirmed because MACD remains negative.
+Debate outcome scorecard: Debate winner: Bull. Rating implication: Overweight. Trader implication: timing-gated HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence was constructive but not execution-ready; debate confirmed Bull evidence quality without overriding Trader timing gates.
+
 ### Trader
 **Action**: HOLD
-Reference price: 308.63. Confirmation level: 313.00. Invalidation / caution level: 293.46.
+Setup quality: Setup score +6: research alignment +2, trend +2, momentum +0, support/resistance +1, reward/risk +1, volatility/event risk +0, volume confirmation +0.
+Research alignment: +2. Trend/momentum/volatility: trend +2, momentum +0, volatility/event risk +0.
+Reward/risk and levels: reward/risk +1; reference price 308.63, confirmation level 313.00, invalidation / caution level 293.46.
+Rating-action tension: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ### Risk Debate
@@ -51,7 +67,7 @@ Aggressive risk supports the upside case but identifies failure points. Conserva
 
 ### Portfolio Manager
 **Rating**: Overweight
-Risk debate impact: risk evidence tempers implementation; no broker/order tools are used.
+Risk debate impact: risk evidence tempers implementation; no broker/order tools are used. Stronger risk side: balanced with a conservative sizing bias, because Neutral Risk reconciles Aggressive upside evidence with Conservative evidence-gap and timing concerns. Portfolio stance preserves the separation between Research Manager rating (Overweight) and Trader action (HOLD). Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
 ## Evidence Gaps
 - This is a paper-study report-writing workflow, not investment advice or a trading instruction.

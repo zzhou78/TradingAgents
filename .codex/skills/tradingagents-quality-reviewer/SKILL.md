@@ -74,6 +74,12 @@ Fail the report when:
 - multiple tickers in the same run use near-identical Research Manager rationale despite materially different market, financial, or sector evidence;
 - generic "ASX source coverage is uneven" is the sole reason for Hold;
 - complete_report.md omits or dilutes the Research Manager's rating-vs-rating reasoning, especially for ASX tickers where the final report must carry the actual 10 EMA / 50 SMA / 200 SMA setup, decisive role evidence, sector metric or evidence gap, and why-not-Buy / why-not-Sell reasoning;
+- Research Manager rating is basically a moving-average rule, Trader BUY/SELL is triggered only by price above/below moving averages, complete_report.md hides rating/action tension, or all roles collapse into the same technical signal;
+- Research Manager treats ASX sector metric availability as automatically supportive without classifying metric direction or evidence quality;
+- Trader omits setup score components: research alignment, trend/momentum/volatility, support/resistance, confirmation, invalidation, reward/risk, event risk, liquidity/spread caution where available;
+- Research Manager omits the Debate Outcome Scorecard, gives Hold without Bull/Bear/Balanced winner, fails to state whether debate changed the pre-debate analyst evidence rating, or lets Bull and Bear cite the same evidence without independence-group treatment;
+- In a multi-ticker run, warn if every ticker's debate winner is Balanced despite materially different evidence;
+- Portfolio Manager says the risk debate tempers action but does not explain whether Aggressive, Conservative, or Neutral risk was stronger;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;
 - bull or bear debate lacks falsification conditions or direct response;

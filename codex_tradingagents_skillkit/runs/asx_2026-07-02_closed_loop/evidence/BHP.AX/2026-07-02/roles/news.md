@@ -80,7 +80,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-03 07:44:05
+# Data retrieved on: 2026-07-04 16:14:01
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D

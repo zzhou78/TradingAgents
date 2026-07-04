@@ -13,89 +13,7 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 - Status: `ok`
 
 ```text
-## MSFT News, from 2026-06-25 to 2026-07-02:
-
-### Stock analysts may be setting up the market for a summer failure (source: Yahoo Finance)
-There is such a thing as being too bullish.
-Link: https://finance.yahoo.com/markets/article/stock-analysts-may-be-setting-up-the-market-for-a-summer-failure-135125532.html
-
-### The average investor is running away from 'Magnificent 7' stocks (source: Yahoo Finance)
-No retail love for the "Magnificent Seven" is persisting.
-Link: https://finance.yahoo.com/markets/stocks/article/the-average-investor-is-running-away-from-magnificent-7-stocks-120204013.html
-
-### Should Long-Term Investors Buy Microsoft (MSFT) Instead of SpaceX (SPCX) (source: Insider Monkey)
-We just covered Avoid SpaceX and Buy These 11 Stocks Instead. Microsoft (NASDAQ:MSFT) ranks #1 (see Avoid SpaceX and Buy These 5 Stocks Instead). Number of Hedge Fund Investors: 282 Microsoft (NASDAQ:MSFT) is down 22 percent year-to-date, and Redditors believe now is the time to buy the stock instead of chasing hype like SpaceX. Bulls […]
-Link: https://finance.yahoo.com/markets/stocks/articles/long-term-investors-buy-microsoft-212439742.html
-
-### Meta just picked a fight with Amazon's cash cow (source: TheStreet)
-Wall Street does not punish companies for spending money. It punishes them for spending money without a story. Give investors a believable path from this year's bills to next year's profits and they will forgive almost any number on the capital expenditure line. Take that story away, and every ...
-Link: https://www.thestreet.com/markets/meta-just-picked-a-fight-with-amazons-cash-cow
-
-### Is Microsoft Corporation (MSFT) Stock Impacted by Reported Xbox Restructuring and Gaming Division Changes? (source: Insider Monkey)
-We recently compiled a list of the 10 Most Undervalued Dow Stocks to Buy According to Wall Street Analysts. Microsoft Corporation (NASDAQ:MSFT) is among the most undervalued stocks. TheFly reported on June 30 that, according to a report by The Verge’s Tom Warren, MSFT is considering canceling its upcoming Marvel’s Blade game as part of planned […]
-Link: https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-stock-impacted-195630678.html
-
-### Microsoft Unveils 6,000-Employee AI Deployment Organization (source: GuruFocus.com)
-New team will help businesses implement AI while reducing costs and shaping Microsoft's future products.
-Link: https://finance.yahoo.com/technology/ai/articles/microsoft-unveils-6-000-employee-193951787.html
-
-### Sector Update: Tech Stocks Fall Late Afternoon (source: MT Newswires)
-Tech stocks were lower late Thursday afternoon, with the State Street Technology Select Sector SPDR
-Link: https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-192933263.html
-
-### Microsoft to invest $2.5B in new AI implementation business (source: Proactive)
-Microsoft Corp (NASDAQ:MSFT) announced a $2.5 billion investment to launch Microsoft Frontier Company, a new operating business focused on helping organizations deploy artificial intelligence at scale by embedding engineering and industry experts directly within customer operations. The...
-Link: https://www.proactiveinvestors.com/companies/news/1094887/microsoft-to-invest-2-5b-in-new-ai-implementation-business-1094887.html
-
-### Microsoft Invests $2.5 Billion in New AI Implementation Business (source: MT Newswires)
-Microsoft (MSFT) is launching a new business unit with a $2.5 billion investment that will help clie
-Link: https://finance.yahoo.com/technology/ai/articles/microsoft-invests-2-5-billion-192515066.html
-
-### Sector Update: Energy (source: MT Newswires)
-Energy stocks were higher late Thursday afternoon, with the NYSE Energy Sector Index rising 0.8% and
-Link: https://finance.yahoo.com/energy/articles/sector-energy-192449734.html
-
-### Chevron (CVX) Stock Looks Near Fair Value With Strong Returns But Rich Earnings (source: Simply Wall St.)
-Chevron stock has almost doubled investors' money over the past five years, yet recent share price weakness and a mixed valuation score suggest it may no longer be an obvious bargain at around US$165.69. Chevron has delivered a 97.6% total return over five years, which puts the recent short term pullback into context and raises the question of how much of the story is already in the price. The long term power deal with Microsoft for Project Kilby can support expectations for durable cash...
-Link: https://finance.yahoo.com/markets/stocks/articles/chevron-cvx-stock-looks-near-191356823.html
-
-### Americans Hate AI Data Centers. For Stocks, the Trouble Is Just Beginning. (source: Barrons.com)
-More than six dozen data-center projects were blocked or delayed in the first quarter due to locals’ opposition. Public pushback is becoming a risk factor for AI companies and their shares.
-Link: https://www.barrons.com/articles/ai-data-centers-backlash-stocks-8d564b5f?siteid=yhoof2&yptr=yahoo
-
-### WealthStack Roundup: Orion Achieves ISO 42001 AI Certification (source: Wealth Management)
-The advisor technology firm joins a small group of firms globally with the AI management system standard, including Nitrogen.
-Link: https://www.wealthmanagement.com/artificial-intelligence/orion-achieves-iso-42001-ai-certification
-
-### Why Microsoft Stock Is Rebounding After Its Worst First Half Since 2000 (source: Barrons.com)
-FEATURE  Microsoft stock is having a terrible year but it’s starting to get a boost for an unlikely reason. The tech giant fell 23% in the first six months of the year, its worst first half since 2000.
-Link: https://www.barrons.com/articles/microsoft-stock-price-tech-slump-34057414?siteid=yhoof2&yptr=yahoo
-
-### Google, Disney Intellectual Property Licensing Partner Teases Breakout. Top Funds Buy In. (source: Investor's Business Daily)
-Boasting multiyear partnerships with Google, Disney and more, intellectual property licensing firm Adeia tests new buy zone.
-Link: https://www.investors.com/research/ibd-stock-analysis/adeia-intellectual-property-licensing-google-disney-netflix-microsoft/?src=A00220&yptr=yahoo
-
-### Are You Prepared for IBM’s $260 Price Swing? (source: Trefis)
-The market is pricing a vast range of possibilities for the tech giant's next chapter, and if you hold the shares, you're buckled in for the entire ride.
-Link: https://www.trefis.com/articles/605381/are-you-prepared-for-ibms-260-price-swing/2026-07-02
-
-### Trump Financial Disclosure Shows 21,000 Trades in 2025 (source: Bloomberg)
-(Bloomberg) -- President Donald Trump made more than 21,000 securities trades in his first year back in office, often in intense bursts tied to market events he created.Most Read from BloombergExxon to Change Name for First Time in Decades After RedomicileMeta Is Planning a Cloud Business to Sell AI Computing PowerGermany Rejects Trump’s Demands for NATO Loyalty to WashingtonRussia Indicates Ukraine Fired Long-Range Ballistic MissileKrafton Agrees to Pay ‘Subnautica 2’ Bonuses as Developer’s CEO
-Link: https://finance.yahoo.com/markets/stocks/articles/trump-financial-disclosure-shows-21-175843508.html
-
-### Sector Update: Tech Stocks Fall Thursday Afternoon (source: MT Newswires)
-Tech stocks were lower Thursday afternoon, with the State Street Technology Select Sector SPDR ETF (
-Link: https://finance.yahoo.com/technology/articles/sector-tech-stocks-fall-thursday-174004160.html
-
-### This ‘Dividend’ ETF Pays Just 1.2% | So Why Do Serious Investors Keep Buying It? (source: 24/7 Wall St.)
-The WisdomTree U.S. Quality Dividend Growth Fund (NASDAQ:DGRW) pays a trailing yield of roughly 1.28%, which sounds thin for something with “Dividend” in its name and downright embarrassing next to the 3%-plus yields on traditional income ETFs. And yet DGRW keeps pulling in serious institutional capital. PNC, Bank of America, and Ameriprise all lifted their ... This ‘Dividend’ ETF Pays Just 1.2% | So Why Do Serious Investors Keep Buying It?
-Link: https://247wallst.com/personal-finance/2026/07/02/this-dividend-etf-pays-just-1-2-so-why-do-serious-investors-keep-buying-it/
-
-### Meta Wants to Sell You Its AI Compute. AWS, Azure, and Google Just Got a New Rival (source: 24/7 Wall St.)
-The most expensive infrastructure buildout in corporate history just found a possible second act. On Wednesday, CNBC’s Julia Boorstin reported that “Sources close to the situation do confirm that META is working on building a cloud infrastructure business to sell AI compute.” The stock responded, jumping 7.56% on July 1 as investors digested the idea ... Meta Wants to Sell You Its AI Compute. AWS, Azure, and Google Just Got a New Rival
-Link: https://247wallst.com/investing/2026/07/02/meta-wants-to-sell-you-its-ai-compute-aws-azure-and-google-just-got-a-new-rival/
-
-
+No news found for MSFT between 2026-06-25 and 2026-07-02
 ```
 
 ### Tool: get_global_news
@@ -112,7 +30,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-07-03 07:42:42
+# Data retrieved on: 2026-07-04 16:14:26
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D

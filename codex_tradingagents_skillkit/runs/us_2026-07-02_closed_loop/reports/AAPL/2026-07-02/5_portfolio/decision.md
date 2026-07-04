@@ -6,12 +6,18 @@
 - Risk debate outputs and evidence: market:AAPL:2026-07-02:001, financial:AAPL:2026-07-02:022, news:AAPL:2026-07-02:040.
 
 ## Risk debate impact
-The risk debate tempers position implementation. Aggressive evidence supports the research stance, but Conservative and Neutral risk analysts require confirmation and prevent a forced directional trade. Social sentiment is low confidence and receives no standalone allocation weight.
+The risk debate tempers position implementation. Aggressive evidence supports the research stance where sector/financial evidence wins, but Conservative and Neutral risk analysts require setup confirmation, evidence-gap discipline, and social-evidence discounting before a directional paper action. Stronger risk side: balanced with a conservative sizing bias; Neutral Risk was stronger than one-sided Aggressive or Conservative risk because it reconciled research quality with Trader timing gates.
 
 ## Final Portfolio Decision
 **Rating**: Overweight
 
-Research decision: Overweight. Trader action: HOLD. Portfolio decision: maintain Overweight paper-study stance, with no real trade execution and no broker/order tooling.
+Research decision: Overweight. Trader action: HOLD. Portfolio decision: maintain Overweight paper-study stance while preserving rating/action tension. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action. No real trade execution or broker/order tooling is used.
+
+## Rating-Action Tension
+- Research Manager rating: Overweight
+- Trader action: HOLD
+- Portfolio stance: Overweight
+- Interpretation: research evidence and trade timing are separate decisions; the portfolio stance reflects research quality and risk debate, not just the immediate Trader action.
 
 ## Evidence Gaps
 - Portfolio sizing, tax constraints, mandate constraints, and liquidity limits are not modeled.

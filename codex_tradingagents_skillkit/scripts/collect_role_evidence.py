@@ -246,7 +246,15 @@ ROLE_CONTRACT_CONFIGS = {
         "forbidden_inputs": ["unexplained_rating_score", "uncited_memory", "double_counted_role_mentions"],
         "required_tools": ["stage_input_evidence", "evidence_matrix_validator"],
         "optional_tools": ["scoring_arithmetic_check"],
-        "required_output_sections": ["Tool Outputs Used", "Structured Evidence Matrix", "Rating Rationale", "Evidence Gaps", "Memory Update"],
+        "required_output_sections": [
+            "Tool Outputs Used",
+            "Structured Evidence Matrix",
+            "Rating Rationale",
+            "Debate Outcome Scorecard",
+            "Debate Change Assessment",
+            "Evidence Gaps",
+            "Memory Update",
+        ],
         "required_evidence_citations": [
             "evidence_id",
             "direction",

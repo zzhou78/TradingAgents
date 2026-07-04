@@ -14,24 +14,24 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for WOW.AX
-# Data retrieved on: 2026-07-03 07:46:38
+# Data retrieved on: 2026-07-04 16:16:35
 
 Name: Woolworths Group Limited
 Sector: Consumer Defensive
 Industry: Grocery Stores
-Market Cap: 48069926912
-PE Ratio (TTM): 80.306114
-Forward PE: 27.886242
+Market Cap: 48595214336
+PE Ratio (TTM): 81.18367
+Forward PE: 28.190971
 PEG Ratio: 2.16
-Price to Book: 10.371639
+Price to Book: 10.484976
 EPS (TTM): 0.49
 Forward EPS: 1.41109
-Dividend Yield: 2.29
-Beta: 0.29
+Dividend Yield: 2.26
+Beta: 0.27
 52 Week High: 40.75
 52 Week Low: 25.51
-50 Day Average: 36.1366
-200 Day Average: 32.37915
+50 Day Average: 36.1744
+200 Day Average: 32.4441
 Revenue (TTM): 70282002432
 Gross Profit: 19207999488
 EBITDA: 3300000000
@@ -52,7 +52,7 @@ Free Cash Flow: 2267749888
 
 ```text
 # Balance Sheet data for WOW.AX (quarterly)
-# Data retrieved on: 2026-07-03 07:46:38
+# Data retrieved on: 2026-07-04 16:16:36
 
 ,2025-06-30
 Ordinary Shares Number,1221595333.0

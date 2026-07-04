@@ -44,7 +44,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for WOW.AX
-# Data retrieved on: 2026-07-03 07:46:37
+# Data retrieved on: 2026-07-04 16:16:35
 
 ,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
 0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,
@@ -56,9 +56,9 @@ No global news found between 2026-06-25 and 2026-07-02
 6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,
 7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,
 8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,
-9,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
-10,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
-11,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
+9,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,
+10,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,
+11,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,
 12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0
 13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0
 14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,

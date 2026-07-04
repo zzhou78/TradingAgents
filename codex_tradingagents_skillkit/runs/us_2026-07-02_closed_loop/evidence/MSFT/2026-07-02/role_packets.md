@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for MSFT from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-03 07:42:23
+# Data retrieved on: 2026-07-04 16:14:07
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,446.88,453.5,440.43,441.31,37036800,0.0,0.0
@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-29,377.5,380.5,359.9,368.57,51229900,0.0,0.0
 2026-06-30,371.03,374.15,367.45,373.02,44945700,0.0,0.0
 2026-07-01,380.83,388.83,374.89,384.28,48065800,0.0,0.0
-2026-07-02,384.48,392.19,383.7,390.49,40690198,0.0,0.0
+2026-07-02,384.48,392.2,383.7,390.49,42194400,0.0,0.0
 
 ```
 
@@ -60,10 +60,10 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 | Field | Value |
 |---|---:|
 | Open | 384.48 |
-| High | 392.19 |
+| High | 392.20 |
 | Low | 383.70 |
 | Close | 390.49 |
-| Volume | 40690198 |
+| Volume | 42194400 |
 
 ### Verified technical indicators (latest row)
 
@@ -169,37 +169,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## close_200_sma values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 443.7846463012695
-2026-07-01: 444.3927795410156
-2026-06-30: 445.00483459472656
-2026-06-29: 445.62901947021487
+2026-07-02: 443.7846469116211
+2026-07-01: 444.39278015136716
+2026-06-30: 445.0048352050781
+2026-06-29: 445.6290200805664
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 446.2722744750977
-2026-06-25: 446.8837908935547
-2026-06-24: 447.5949641418457
-2026-06-23: 448.22708801269533
-2026-06-22: 448.8812538146973
+2026-06-26: 446.2722749328613
+2026-06-25: 446.88379150390625
+2026-06-24: 447.5949649047852
+2026-06-23: 448.22708892822266
+2026-06-22: 448.8812547302246
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 449.55540206909177
-2026-06-17: 450.1681074523926
-2026-06-16: 450.79106353759767
-2026-06-15: 451.35407684326174
+2026-06-18: 449.55540283203123
+2026-06-17: 450.16810821533204
+2026-06-16: 450.79106430053713
+2026-06-15: 451.35407760620114
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 451.87303131103516
-2026-06-11: 452.4137336730957
-2026-06-10: 452.9674662780762
-2026-06-09: 453.50085556030274
-2026-06-08: 453.98913864135744
+2026-06-12: 451.8730320739746
+2026-06-11: 452.41373443603516
+2026-06-10: 452.96746704101565
+2026-06-09: 453.5008563232422
+2026-06-08: 453.98913940429685
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 454.4390014648437
-2026-06-04: 454.88430358886717
-2026-06-03: 455.309065246582
-2026-06-02: 455.7526054382324
+2026-06-05: 454.43900207519533
+2026-06-04: 454.88430404663086
+2026-06-03: 455.3090660095215
+2026-06-02: 455.7526062011719
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 49.84993446460054
-2026-07-01: 46.988347799021305
-2026-06-30: 41.354097251031156
-2026-06-29: 38.973887133203995
+2026-07-02: 49.8499344663945
+2026-07-01: 46.98834780022507
+2026-06-30: 41.35409725085432
+2026-06-29: 38.973887132356836
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 40.482414506593074
-2026-06-25: 28.762928836252733
-2026-06-24: 32.48810369793399
-2026-06-23: 35.34181917324473
-2026-06-22: 30.958966952046392
+2026-06-26: 40.48241450614968
+2026-06-25: 28.762928831662656
+2026-06-24: 32.48810369420688
+2026-06-23: 35.34181917040478
+2026-06-22: 30.958966947022137
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 34.98244572539073
-2026-06-17: 34.66208738817314
-2026-06-16: 40.27273126757345
-2026-06-15: 42.83146004089437
+2026-06-18: 34.98244572177964
+2026-06-17: 34.66208738437894
+2026-06-16: 40.27273126652912
+2026-06-15: 42.831460041415326
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 37.19546537797987
-2026-06-11: 36.93946990063332
-2026-06-10: 39.567810830688984
-2026-06-09: 41.95688626775253
-2026-06-08: 45.46670117830545
+2026-06-12: 37.19546537460397
+2026-06-11: 36.93946989706358
+2026-06-10: 39.56781082884555
+2026-06-09: 41.956886267706494
+2026-06-08: 45.46670118129425
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 47.657657044824326
-2026-06-04: 53.147087564385984
-2026-06-03: 52.832337291069265
-2026-06-02: 60.22430302388075
+2026-06-05: 47.65765704994541
+2026-06-04: 53.14708757565233
+2026-06-03: 52.83233730209063
+2026-06-02: 60.22430304502887
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -9.795341510284516
-2026-07-01: -11.597025564163175
-2026-06-30: -13.09565552748154
-2026-06-29: -13.671496333217249
+2026-07-02: -9.795341507183082
+2026-07-01: -11.597025560813734
+2026-06-30: -13.095655523864309
+2026-06-29: -13.671496329310855
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -13.754531424765162
-2026-06-25: -14.108447863077345
-2026-06-24: -12.30434047485545
-2026-06-23: -11.108635316868003
-2026-06-22: -10.284319883763033
+2026-06-26: -13.754531420546527
+2026-06-25: -14.108447858521401
+2026-06-24: -12.304340469935426
+2026-06-23: -11.108635311554679
+2026-06-22: -10.28431987802503
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: -8.410602911205444
-2026-06-17: -7.124649684398605
-2026-06-16: -5.3297845647283
-2026-06-15: -4.480485387350825
+2026-06-18: -8.410602905008886
+2026-06-17: -7.124649677706827
+2026-06-16: -5.32978455750191
+2026-06-15: -4.480485379547133
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -3.935084284096888
-2026-06-11: -2.263314570447676
-2026-06-10: -0.05588090908685217
-2026-06-09: 2.0476574414265087
-2026-06-08: 4.086751327132561
+2026-06-12: -3.935084275669851
+2026-06-11: -2.263314561347613
+2026-06-10: -0.05588089926015982
+2026-06-09: 2.047657452037811
+2026-06-08: 4.086751338590943
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 5.7817888709538465
-2026-06-04: 7.359208409075336
-2026-06-03: 8.106838016412667
-2026-06-02: 9.015457655874286
+2026-06-05: 5.781788883326726
+2026-06-04: 7.359208422435415
+2026-06-03: 8.106838030838446
+2026-06-02: 9.015457671450463
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 13.063194346001032
-2026-07-01: 13.414979277664573
-2026-06-30: 13.23074710220848
-2026-06-29: 13.733113672420437
+2026-07-02: 13.06390933227686
+2026-07-01: 13.41497928091354
+2026-06-30: 13.230747105707371
+2026-06-29: 13.733113676188472
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 13.204891177720807
-2026-06-25: 12.391421362214956
-2026-06-24: 12.093839986381733
-2026-06-23: 11.939519515832972
-2026-06-22: 12.09794371837301
+2026-06-26: 13.20489118177869
+2026-06-25: 12.391421366584984
+2026-06-24: 12.093839991087915
+2026-06-23: 11.939519520901168
+2026-06-22: 12.097943723831065
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 11.908554961432957
-2026-06-17: 12.202290240166983
-2026-06-16: 11.87092954725315
-2026-06-15: 12.086385102871185
+2026-06-18: 11.908554967310863
+2026-06-17: 12.202290246497036
+2026-06-16: 11.870929554070129
+2026-06-15: 12.086385110212547
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 12.169183205736276
-2026-06-11: 12.376812589200366
-2026-06-10: 12.30118391517251
-2026-06-09: 12.641274609969434
-2026-06-08: 12.575218810736313
+2026-06-12: 12.169183213642357
+2026-06-11: 12.376812597714608
+2026-06-10: 12.301183924341693
+2026-06-09: 12.641274619843939
+2026-06-08: 12.575218821370395
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 12.881004403599443
-2026-06-04: 12.712619563551804
-2026-06-03: 12.941283358103867
-2026-06-02: 12.624459188835415
+2026-06-05: 12.881004415051532
+2026-06-04: 12.712619575884823
+2026-06-03: 12.941283371385579
+2026-06-02: 12.624459203138796
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -343,38 +343,9 @@ ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and 
 - Status: `ok`
 
 ```text
-Bullish: 7 (23%) · Bearish: 1 (3%) · Unlabeled: 22 · Total: 30 most-recent messages
+Bullish: 0 (0%) · Bearish: 0 (0%) · Unlabeled: 0 · Total: 0 messages on or before 2026-07-02
 
-[2026-07-02T21:35:40Z · @NetflixUser · Bullish] $MSFT bought calls at close for next week!
-[2026-07-02T21:34:05Z · @SwingTraderPro1 · no-label] The memory market narrative is getting seriously misunderstood right now.    While most of the market has moved on emotionally, $MU is still structurally positioned in a way that challenges the typical “chip cycle” assumptions.    There’s a strong case being made that Micron’s ne…
-[2026-07-02T21:27:35Z · @AStrokeOfLuck · no-label] $MSFT
-[2026-07-02T21:22:15Z · @ShowMeThaMonay · Bullish] $MSFT Atleast $400 next week.
-[2026-07-02T21:20:26Z · @jcrsbarb · Bullish] $MSFT
-[2026-07-02T21:19:27Z · @hkm_trader · no-label] $TSLA what scams r going on $MSFT $QQQ
-[2026-07-02T21:13:07Z · @mz08 · Bullish] $ZCMD $SDOT  $MSFT  $AAPL  $AMD
-[2026-07-02T21:08:59Z · @mz08 · Bullish] $ZCMD $NVDA  $MSFT  $SPCX
-[2026-07-02T21:07:19Z · @TalkMarkets · no-label] #Magnificent7 Weekly Report - Cloud Pivot Changes The Calculus $GOOGL $META $MSFT $NVDA $TSLA https://talkmarkets.com/article/magnificent-7-weekly-report-july-2-2026-1783026343
-[2026-07-02T20:57:25Z · @SmartMoneyRadar · no-label] My $IREN thesis:  Even without a major compute partnership with $MSFT, $NVDA, Mirantis, or any hyperscaler/software giant, I believe IREN’s bare-metal AI infrastructure alone could ultimately support a ~$25B valuation.    That would imply a long-term fair value closer to ~$80 per…
-[2026-07-02T20:51:23Z · @micheln1 · no-label] $MSFT lol makes no sense
-[2026-07-02T20:46:56Z · @stockandsex · no-label] $MSFT next week
-[2026-07-02T20:42:18Z · @Diceroller1 · Bullish] $MSFT 400 on Monday
-[2026-07-02T20:29:56Z · @EddieHayes · no-label] $MSFT    15 years of compounding in one snapshot:    Then:  • Stock: $47.44  • Revenue: $22.96B  • FCF: $10.55B  • EPS: $0.85    Now:  • Stock: $390.60  • Revenue: $281.72B  • FCF: $71.61B  • EPS: $13.64    Price moves in cycles.  The business compounds in structure, scale, and c…
-[2026-07-02T20:24:27Z · @MorganHoratio · no-label] THESE ARE THE BEST MILLIONAIRE MAKERS TODAY: (70% probability this selloff is a correction trap)    1. $NVDA  2. $META  3. $MSFT  4. $AVGO  5. $MU    Data prints a 70% probability that this localized macro selloff is a technical correction trap! Elite smart money is deploying agg…
-[2026-07-02T20:22:51Z · @DollarRollers · no-label] LABT is starting to squeeze up now 🚀      Could potentially be the next squeezer.       The same guys who ran  SDOT 1000% recently are now running LABT up!      Micro-float squeezer getting some big attention, Don&#39;t miss!     $MSFT $SOUN $MSFT $POET dips
-[2026-07-02T20:22:28Z · @spacechimp · no-label] $MSFT
-[2026-07-02T20:22:08Z · @spacechimp · no-label] $MSFT
-[2026-07-02T20:20:37Z · @MissionImpossibl · no-label] $META $AMZN $MSFT $AMZN $ORCLgame is rigged right now . Blame the 5 corrupt sponsors.  if they don’t play by the rulebook , everyone is going to loose .. don’t show investors dotcom nightmares .
-[2026-07-02T20:19:23Z · @frankjohnson123 · no-label] $MSFT $$META $ADOBE $COST $BLK Check out my completely FREE youtube channel I just launched last week. I am a professional swing trader. I show my complete swing trade portfolio, shares, money, charts I use, everything 100% transparent with my position entries with multiple weekl…
-[2026-07-02T20:13:41Z · @MountCapital · Bearish] $MSFT nope. it means he will increase capex  to waste more. He is famous for that
-[2026-07-02T20:13:12Z · @AnaIyze · no-label] $MSFT how on earth is apple so much stronger , one tiny drop on them and explosive V back to ATH’s
-[2026-07-02T20:13:03Z · @FatmanEZ · no-label] $MSFT nice move here on the 400$ calls today. Even the ones on 07-08 bought 1.5 and below. The August 21 400$ calls SCREAMING LFG
-[2026-07-02T20:12:38Z · @Stockmarketinvest · no-label] $META Zuckerberg telling you ai agents isn’t going as expected and them selling compute means capex cut coming the first out of big tech $SPY $GOOG $MSFT $AMZN
-[2026-07-02T20:12:24Z · @VB_TrappinStockz · no-label] $MSFT had a feeling they would take under $390 in after hours
-[2026-07-02T20:11:23Z · @AlphaVisionn · no-label] $IREN thesis: even without a big partnership from $MSFT, $NVDA, Mirantis, or another hyperscaler, the bare-metal AI infrastructure story alone could still support a ~$25B valuation.    If that holds, $IREN could be around $80/share.
-[2026-07-02T20:11:19Z · @VB_TrappinStockz · no-label] @Nasdaq_Frontier  $NVDA $GOOG $MSFT can’t choose just one lol
-[2026-07-02T20:09:49Z · @Tonicap85 · Bullish] $MSFT bears are slowly cooking
-[2026-07-02T20:06:04Z · @Nasdaq_Frontier · no-label] WHAT’S INSIDE TRUMP’S DISCLOSED $3.8B PORTFOLIO    • Real estate &amp; golf (37%)    • Stocks (19%) including    AAPL ,$NVDA ,$GOOGL ,$AVGO, $MSFT, $META TSLA     • Bonds &amp; notes (19%) split between municipal, corporate &amp; U.S. government bonds    • Crypto (6%) led by Worl…
-[2026-07-02T20:04:39Z · @FibonacciTrader_ · no-label] $MSFT - a 15-year compounding snapshot that tells the real story behind price action.    Back then:  • ~$47 stock price  • $22.96B revenue  • $10.55B FCF  • $0.85 EPS    Today:  • ~$390 stock price  • $281.72B revenue  • $71.61B FCF  • $13.64 EPS    The chart moves up and down, t…
+As-of filter: removed 30 post-trade-date social items after 2026-07-02.
 ```
 
 ### Tool: fetch_reddit_posts
@@ -394,89 +365,7 @@ Bullish: 7 (23%) · Bearish: 1 (3%) · Unlabeled: 22 · Total: 30 most-recent me
 - Status: `ok`
 
 ```text
-## MSFT News, from 2026-06-25 to 2026-07-02:
-
-### Stock analysts may be setting up the market for a summer failure (source: Yahoo Finance)
-There is such a thing as being too bullish.
-Link: https://finance.yahoo.com/markets/article/stock-analysts-may-be-setting-up-the-market-for-a-summer-failure-135125532.html
-
-### The average investor is running away from 'Magnificent 7' stocks (source: Yahoo Finance)
-No retail love for the "Magnificent Seven" is persisting.
-Link: https://finance.yahoo.com/markets/stocks/article/the-average-investor-is-running-away-from-magnificent-7-stocks-120204013.html
-
-### Should Long-Term Investors Buy Microsoft (MSFT) Instead of SpaceX (SPCX) (source: Insider Monkey)
-We just covered Avoid SpaceX and Buy These 11 Stocks Instead. Microsoft (NASDAQ:MSFT) ranks #1 (see Avoid SpaceX and Buy These 5 Stocks Instead). Number of Hedge Fund Investors: 282 Microsoft (NASDAQ:MSFT) is down 22 percent year-to-date, and Redditors believe now is the time to buy the stock instead of chasing hype like SpaceX. Bulls […]
-Link: https://finance.yahoo.com/markets/stocks/articles/long-term-investors-buy-microsoft-212439742.html
-
-### Meta just picked a fight with Amazon's cash cow (source: TheStreet)
-Wall Street does not punish companies for spending money. It punishes them for spending money without a story. Give investors a believable path from this year's bills to next year's profits and they will forgive almost any number on the capital expenditure line. Take that story away, and every ...
-Link: https://www.thestreet.com/markets/meta-just-picked-a-fight-with-amazons-cash-cow
-
-### Is Microsoft Corporation (MSFT) Stock Impacted by Reported Xbox Restructuring and Gaming Division Changes? (source: Insider Monkey)
-We recently compiled a list of the 10 Most Undervalued Dow Stocks to Buy According to Wall Street Analysts. Microsoft Corporation (NASDAQ:MSFT) is among the most undervalued stocks. TheFly reported on June 30 that, according to a report by The Verge’s Tom Warren, MSFT is considering canceling its upcoming Marvel’s Blade game as part of planned […]
-Link: https://finance.yahoo.com/markets/stocks/articles/microsoft-corporation-msft-stock-impacted-195630678.html
-
-### Microsoft Unveils 6,000-Employee AI Deployment Organization (source: GuruFocus.com)
-New team will help businesses implement AI while reducing costs and shaping Microsoft's future products.
-Link: https://finance.yahoo.com/technology/ai/articles/microsoft-unveils-6-000-employee-193951787.html
-
-### Sector Update: Tech Stocks Fall Late Afternoon (source: MT Newswires)
-Tech stocks were lower late Thursday afternoon, with the State Street Technology Select Sector SPDR
-Link: https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-192933263.html
-
-### Microsoft to invest $2.5B in new AI implementation business (source: Proactive)
-Microsoft Corp (NASDAQ:MSFT) announced a $2.5 billion investment to launch Microsoft Frontier Company, a new operating business focused on helping organizations deploy artificial intelligence at scale by embedding engineering and industry experts directly within customer operations. The...
-Link: https://www.proactiveinvestors.com/companies/news/1094887/microsoft-to-invest-2-5b-in-new-ai-implementation-business-1094887.html
-
-### Microsoft Invests $2.5 Billion in New AI Implementation Business (source: MT Newswires)
-Microsoft (MSFT) is launching a new business unit with a $2.5 billion investment that will help clie
-Link: https://finance.yahoo.com/technology/ai/articles/microsoft-invests-2-5-billion-192515066.html
-
-### Sector Update: Energy (source: MT Newswires)
-Energy stocks were higher late Thursday afternoon, with the NYSE Energy Sector Index rising 0.8% and
-Link: https://finance.yahoo.com/energy/articles/sector-energy-192449734.html
-
-### Chevron (CVX) Stock Looks Near Fair Value With Strong Returns But Rich Earnings (source: Simply Wall St.)
-Chevron stock has almost doubled investors' money over the past five years, yet recent share price weakness and a mixed valuation score suggest it may no longer be an obvious bargain at around US$165.69. Chevron has delivered a 97.6% total return over five years, which puts the recent short term pullback into context and raises the question of how much of the story is already in the price. The long term power deal with Microsoft for Project Kilby can support expectations for durable cash...
-Link: https://finance.yahoo.com/markets/stocks/articles/chevron-cvx-stock-looks-near-191356823.html
-
-### Americans Hate AI Data Centers. For Stocks, the Trouble Is Just Beginning. (source: Barrons.com)
-More than six dozen data-center projects were blocked or delayed in the first quarter due to locals’ opposition. Public pushback is becoming a risk factor for AI companies and their shares.
-Link: https://www.barrons.com/articles/ai-data-centers-backlash-stocks-8d564b5f?siteid=yhoof2&yptr=yahoo
-
-### WealthStack Roundup: Orion Achieves ISO 42001 AI Certification (source: Wealth Management)
-The advisor technology firm joins a small group of firms globally with the AI management system standard, including Nitrogen.
-Link: https://www.wealthmanagement.com/artificial-intelligence/orion-achieves-iso-42001-ai-certification
-
-### Why Microsoft Stock Is Rebounding After Its Worst First Half Since 2000 (source: Barrons.com)
-FEATURE  Microsoft stock is having a terrible year but it’s starting to get a boost for an unlikely reason. The tech giant fell 23% in the first six months of the year, its worst first half since 2000.
-Link: https://www.barrons.com/articles/microsoft-stock-price-tech-slump-34057414?siteid=yhoof2&yptr=yahoo
-
-### Google, Disney Intellectual Property Licensing Partner Teases Breakout. Top Funds Buy In. (source: Investor's Business Daily)
-Boasting multiyear partnerships with Google, Disney and more, intellectual property licensing firm Adeia tests new buy zone.
-Link: https://www.investors.com/research/ibd-stock-analysis/adeia-intellectual-property-licensing-google-disney-netflix-microsoft/?src=A00220&yptr=yahoo
-
-### Are You Prepared for IBM’s $260 Price Swing? (source: Trefis)
-The market is pricing a vast range of possibilities for the tech giant's next chapter, and if you hold the shares, you're buckled in for the entire ride.
-Link: https://www.trefis.com/articles/605381/are-you-prepared-for-ibms-260-price-swing/2026-07-02
-
-### Trump Financial Disclosure Shows 21,000 Trades in 2025 (source: Bloomberg)
-(Bloomberg) -- President Donald Trump made more than 21,000 securities trades in his first year back in office, often in intense bursts tied to market events he created.Most Read from BloombergExxon to Change Name for First Time in Decades After RedomicileMeta Is Planning a Cloud Business to Sell AI Computing PowerGermany Rejects Trump’s Demands for NATO Loyalty to WashingtonRussia Indicates Ukraine Fired Long-Range Ballistic MissileKrafton Agrees to Pay ‘Subnautica 2’ Bonuses as Developer’s CEO
-Link: https://finance.yahoo.com/markets/stocks/articles/trump-financial-disclosure-shows-21-175843508.html
-
-### Sector Update: Tech Stocks Fall Thursday Afternoon (source: MT Newswires)
-Tech stocks were lower Thursday afternoon, with the State Street Technology Select Sector SPDR ETF (
-Link: https://finance.yahoo.com/technology/articles/sector-tech-stocks-fall-thursday-174004160.html
-
-### This ‘Dividend’ ETF Pays Just 1.2% | So Why Do Serious Investors Keep Buying It? (source: 24/7 Wall St.)
-The WisdomTree U.S. Quality Dividend Growth Fund (NASDAQ:DGRW) pays a trailing yield of roughly 1.28%, which sounds thin for something with “Dividend” in its name and downright embarrassing next to the 3%-plus yields on traditional income ETFs. And yet DGRW keeps pulling in serious institutional capital. PNC, Bank of America, and Ameriprise all lifted their ... This ‘Dividend’ ETF Pays Just 1.2% | So Why Do Serious Investors Keep Buying It?
-Link: https://247wallst.com/personal-finance/2026/07/02/this-dividend-etf-pays-just-1-2-so-why-do-serious-investors-keep-buying-it/
-
-### Meta Wants to Sell You Its AI Compute. AWS, Azure, and Google Just Got a New Rival (source: 24/7 Wall St.)
-The most expensive infrastructure buildout in corporate history just found a possible second act. On Wednesday, CNBC’s Julia Boorstin reported that “Sources close to the situation do confirm that META is working on building a cloud infrastructure business to sell AI compute.” The stock responded, jumping 7.56% on July 1 as investors digested the idea ... Meta Wants to Sell You Its AI Compute. AWS, Azure, and Google Just Got a New Rival
-Link: https://247wallst.com/investing/2026/07/02/meta-wants-to-sell-you-its-ai-compute-aws-azure-and-google-just-got-a-new-rival/
-
-
+No news found for MSFT between 2026-06-25 and 2026-07-02
 ```
 
 ### Tool: get_global_news
@@ -493,7 +382,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-07-03 07:42:42
+# Data retrieved on: 2026-07-04 16:14:26
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D
@@ -610,7 +499,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-07-03 07:42:42
+# Data retrieved on: 2026-07-04 16:14:26
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -618,15 +507,16 @@ Industry: Software - Infrastructure
 Market Cap: 2900729528320
 PE Ratio (TTM): 23.257294
 Forward PE: 20.160732
-PEG Ratio: 1.15
+PEG Ratio: 1.2
 Price to Book: 7.000914
 EPS (TTM): 16.79
 Forward EPS: 19.36884
-Beta: 1.103
+Dividend Yield: 0.93
+Beta: 1.13
 52 Week High: 555.45
 52 Week Low: 349.2
-50 Day Average: 408.2688
-200 Day Average: 446.06046
+50 Day Average: 407.5954
+200 Day Average: 445.4361
 Revenue (TTM): 318272995328
 Gross Profit: 217409994752
 EBITDA: 184457003008
@@ -647,7 +537,7 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:26
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,
@@ -738,7 +628,7 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,
@@ -810,7 +700,7 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-07-03 07:42:43
+# Data retrieved on: 2026-07-04 16:14:27
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0

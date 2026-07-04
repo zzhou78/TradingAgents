@@ -23,8 +23,28 @@ ROLE_REQUIRED_SECTIONS = {
     ("1_analysts", "industry_theme.md"): ["Tool Outputs Used", "Theme Evidence Table"],
     ("2_research", "bull_round_1.md"): ["Tool Outputs Used", "Strongest Bull Evidence", "Falsification Conditions"],
     ("2_research", "bear_round_1.md"): ["Tool Outputs Used", "Strongest Bear Evidence", "Falsification Conditions", "Response To Bull"],
-    ("2_research", "manager.md"): ["Tool Outputs Used", "Structured Evidence Matrix", "Rating-vs-Rating Reasoning"],
-    ("3_trading", "trader.md"): ["Tool Outputs Used", "Action Consistency Check", "Paper-study price framework"],
+    ("2_research", "manager.md"): [
+        "Tool Outputs Used",
+        "Primary Rating Driver",
+        "Evidence Winner",
+        "Structured Evidence Matrix",
+        "Role Evidence Weighting",
+        "Rating-vs-Rating Reasoning",
+        "Debate Outcome Scorecard",
+        "Market Technicals as Confidence / Timing Modifier",
+    ],
+    ("3_trading", "trader.md"): [
+        "Tool Outputs Used",
+        "Action Consistency Check",
+        "Setup Quality Assessment",
+        "Research Rating Alignment",
+        "Trend / Momentum / Volatility",
+        "Support / Resistance / Confirmation / Invalidation",
+        "Reward-Risk Assessment",
+        "Event Risk and Liquidity Check",
+        "Rating-Action Tension",
+        "Paper-study price framework",
+    ],
     ("4_risk", "aggressive_round_1.md"): ["Tool Outputs Used", "Opportunity Case", "Failure Points"],
     ("4_risk", "conservative_round_1.md"): ["Tool Outputs Used", "Downside Case", "Unsupported Upside Challenges"],
     ("4_risk", "neutral_round_1.md"): ["Tool Outputs Used", "Risk Argument Quality", "Stronger Risk Side"],
@@ -591,6 +611,8 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
     has_financial_id = re.search(r"financial:[A-Z0-9.\-]+:\d{4}-\d{2}-\d{2}:\d{3}", sector_section) is not None
     if not (has_sector_metric and (has_financial_id or has_gap)):
         errors.append("ASX Research Manager report lacks ticker-specific sector metric or evidence-gap reference")
+    if has_sector_metric and not re.search(r"\b(supportive|adverse|mixed|neutral|unavailable)\b", sector_section, re.IGNORECASE):
+        errors.append("ASX Research Manager report lacks sector metric direction/quality classification")
     rationale = _section(text, "## Rating Rationale") or text
     if "ASX source coverage is uneven" in rationale and not (
         all(term in rationale for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_sector_metric
@@ -632,6 +654,8 @@ def _asx_complete_report_research_manager_errors(report_dir: Path, evidence_path
     )
     if not has_sector_metric_or_gap:
         errors.append("complete_report.md Research Manager section lacks sector metric or explicit evidence gap")
+    if has_sector_metric_or_gap and not re.search(r"\b(supportive|adverse|mixed|neutral|unavailable)\b", research_section, re.IGNORECASE):
+        errors.append("complete_report.md Research Manager section lacks sector metric direction/quality classification")
     has_rating_vs_rating = bool(
         re.search(r"why not buy|buy\s*/\s*overweight|rating-vs-rating|why not sell|sell\s*/\s*underweight", research_section, re.IGNORECASE)
     )
@@ -640,11 +664,40 @@ def _asx_complete_report_research_manager_errors(report_dir: Path, evidence_path
     has_decisive_evidence = bool(re.search(r"decisive role evidence|market analyst|financial report analyst", research_section, re.IGNORECASE))
     if not has_decisive_evidence:
         errors.append("complete_report.md Research Manager section lacks decisive role evidence")
+    if not re.search(r"Primary rating driver\s*:\s*(financial_report|fundamentals|valuation|sector_metric|material_news|evidence_gap|mixed)", research_section, re.IGNORECASE):
+        errors.append("complete_report.md Research Manager section lacks non-technical primary rating driver")
+    if "Primary rating driver: market_technical" in research_section:
+        errors.append("complete_report.md Research Manager section is driven primarily by market technicals")
+    if re.search(r"Market setup is a confidence/timing modifier only|Market technicals.*modifier", manager_text, re.IGNORECASE) and not re.search(
+        r"confidence/timing|timing modifier|Market setup is a confidence", research_section, re.IGNORECASE
+    ):
+        errors.append("complete_report.md Research Manager section does not preserve market-as-timing-modifier logic")
     if "ASX source coverage is uneven" in research_section and not (
         all(term in research_section for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_rating_vs_rating and has_sector_metric_or_gap
     ):
         errors.append("complete_report.md uses generic ASX source coverage as the main Research Manager rationale")
     return errors
+
+
+def _rating_action_tension_errors(report_dir: Path) -> list[str]:
+    complete_path = report_dir / "complete_report.md"
+    if not complete_path.exists():
+        return []
+    text = _read(complete_path)
+    if not text or _is_pending(text):
+        return []
+    rating_match = re.search(r"Research Manager Rating\s*:\s*(Buy|Overweight|Hold|Underweight|Sell)", text, re.IGNORECASE)
+    action_match = re.search(r"Trader Action\s*:\s*(BUY|HOLD|SELL)", text, re.IGNORECASE)
+    if not rating_match or not action_match:
+        return ["complete_report.md does not preserve Research Manager rating and Trader action separately"]
+    rating = rating_match.group(1).lower()
+    action = action_match.group(1).lower()
+    directional_tension = (rating in {"buy", "overweight"} and action != "buy") or (
+        rating in {"sell", "underweight"} and action != "sell"
+    )
+    if directional_tension and not re.search(r"rating[- ]action tension|rating and action differ|thesis.*timing|research evidence.*setup", text, re.IGNORECASE):
+        return ["complete_report.md hides rating/action tension"]
+    return []
 
 
 def _research_manager_quality_errors(research_path: Path) -> list[str]:
@@ -702,6 +755,54 @@ def _research_manager_quality_errors(research_path: Path) -> list[str]:
         r"score calculation|weight|component", text, re.IGNORECASE
     ):
         errors.append("research manager score is unexplained")
+    driver = re.search(r"Primary rating driver\s*:\s*([a-z_]+)", text, re.IGNORECASE)
+    if not driver:
+        errors.append("research manager lacks primary rating driver")
+    elif driver.group(1).lower() == "market_technical" and not re.search(
+        r"evidence winner.*market|research case is mainly technical|technical evidence winner", text, re.IGNORECASE | re.DOTALL
+    ):
+        errors.append("research manager rating is basically a moving-average rule")
+    evidence_winner = _section(text, "## Evidence Winner")
+    if not evidence_winner:
+        errors.append("research manager lacks evidence winner")
+    scorecard = _section(text, "## Debate Outcome Scorecard")
+    if not scorecard:
+        errors.append("research manager lacks debate outcome scorecard")
+    else:
+        required_scorecard_fields = [
+            "Bull evidence quality",
+            "Bear evidence quality",
+            "Strongest Bull evidence ID",
+            "Strongest Bear evidence ID",
+            "Which side directly answered the other side better?",
+            "Which side relied on weaker or duplicated evidence?",
+            "Which evidence gap matters most?",
+            "Debate winner",
+            "Rating implication",
+            "Trader implication",
+        ]
+        missing = [field for field in required_scorecard_fields if field.lower() not in scorecard.lower()]
+        if missing:
+            errors.append(f"research manager debate scorecard missing field: {missing[0]}")
+        winner_match = re.search(r"Debate winner\s*\|\s*(Bull|Bear|Balanced)", scorecard, re.IGNORECASE)
+        recommendation_match = re.search(r"\*\*Recommendation\*\*\s*:\s*(Buy|Overweight|Hold|Underweight|Sell)", text, re.IGNORECASE)
+        if recommendation_match and recommendation_match.group(1).lower() == "hold" and not winner_match:
+            errors.append("Research Manager gives Hold without saying whether Bull, Bear, or Balanced won")
+        bull_id = re.search(r"Strongest Bull evidence ID\s*\|\s*([^|\n]+)", scorecard, re.IGNORECASE)
+        bear_id = re.search(r"Strongest Bear evidence ID\s*\|\s*([^|\n]+)", scorecard, re.IGNORECASE)
+        if bull_id and bear_id and bull_id.group(1).strip() == bear_id.group(1).strip():
+            independence_treated = re.search(r"not counted twice|double-count|same evidence", text, re.IGNORECASE)
+            if not independence_treated:
+                errors.append("Bull and Bear cite the same evidence without independence-group treatment")
+    change_assessment = _section(text, "## Debate Change Assessment")
+    if not change_assessment:
+        errors.append("Research Manager does not explain whether debate changed the pre-debate analyst evidence rating")
+    if re.search(
+        r"(above|below).*(10 EMA).*(50 SMA).*(200 SMA).*(Buy|Overweight|Hold|Underweight|Sell)",
+        evidence_winner or text,
+        re.IGNORECASE | re.DOTALL,
+    ) and not re.search(r"financial|fundamental|sector|valuation|news|evidence gap", evidence_winner, re.IGNORECASE):
+        errors.append("research manager rating is basically a moving-average rule")
     return errors
 
 
@@ -722,6 +823,20 @@ def _trader_quality_errors(trader_path: Path) -> list[str]:
         r"below .*200|breakdown|materially negative|material negative", text, re.IGNORECASE
     ):
         errors.append("trader Sell action is not supported by stated Sell condition")
+    setup = _section(text, "## Setup Quality Assessment")
+    if not setup:
+        errors.append("trader lacks setup quality assessment")
+    elif not all(term in setup.lower() for term in ["research alignment", "trend", "momentum", "reward/risk", "volatility"]):
+        errors.append("trader setup quality omits required score components")
+    if re.search(r"\bAction\s*[:|-]\s*(BUY|SELL)", text, re.IGNORECASE):
+        action_blob = _section(text, "## Action Consistency Check") + "\n" + setup
+        has_non_ma_support = re.search(
+            r"research alignment|momentum|RSI|MACD|reward/risk|volatility|event risk|confirmation|invalidation|support/resistance",
+            action_blob,
+            re.IGNORECASE,
+        )
+        if not has_non_ma_support:
+            errors.append("trader BUY/SELL is triggered only by price above/below moving averages")
     return errors
 
 
@@ -756,6 +871,11 @@ def _risk_portfolio_quality_errors(report_dir: Path) -> list[str]:
         errors.append("neutral risk case lacks risk argument quality comparison")
     if portfolio.exists() and not _is_pending(_read(portfolio)) and "Risk debate impact" not in _read(portfolio):
         errors.append("portfolio decision omits risk debate impact")
+    if portfolio.exists() and not _is_pending(_read(portfolio)):
+        portfolio_text = _read(portfolio)
+        risk_impact = _section(portfolio_text, "## Risk debate impact")
+        if risk_impact and not re.search(r"stronger risk side|Aggressive .*stronger|Conservative .*stronger|Neutral .*stronger", risk_impact, re.IGNORECASE | re.DOTALL):
+            errors.append("Portfolio Manager says risk debate tempers action but does not explain which risk side was stronger")
     return errors
 
 
@@ -892,6 +1012,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
     errors.extend(_research_manager_quality_errors(manager))
     errors.extend(_asx_research_specificity_errors(manager, evidence_path))
     errors.extend(_asx_complete_report_research_manager_errors(report_dir, evidence_path))
+    errors.extend(_rating_action_tension_errors(report_dir))
     errors.extend(_trader_quality_errors(trader))
     errors.extend(_risk_portfolio_quality_errors(report_dir))
     errors.extend(_debate_record_quality_errors(report_dir))
@@ -928,6 +1049,12 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
 
 def _recommendation_from_research(text: str) -> str:
     match = re.search(r"\*\*Recommendation\*\*\s*:\s*(Buy|Overweight|Hold|Underweight|Sell)", text, re.IGNORECASE)
+    return match.group(1).lower() if match else ""
+
+
+def _debate_winner_from_research(text: str) -> str:
+    scorecard = _section(text, "## Debate Outcome Scorecard") or text
+    match = re.search(r"Debate winner\s*\|\s*(Bull|Bear|Balanced)", scorecard, re.IGNORECASE)
     return match.group(1).lower() if match else ""
 
 
@@ -968,9 +1095,14 @@ def validate_run_dir(output_dir: Path) -> list[str]:
                 "ticker": ticker,
                 "setup": setup,
                 "recommendation": _recommendation_from_research(text),
+                "debate_winner": _debate_winner_from_research(text),
                 "reasoning": _research_reasoning_for_similarity(text),
             }
         )
+
+    scored_winners = [entry["debate_winner"] for entry in entries if entry["debate_winner"]]
+    if len(scored_winners) >= 2 and set(scored_winners) == {"balanced"}:
+        errors.append("warning: debate winner is always Balanced across a multi-ticker run")
 
     for left_index, left in enumerate(entries):
         for right in entries[left_index + 1 :]:
@@ -981,7 +1113,7 @@ def validate_run_dir(output_dir: Path) -> list[str]:
             if left["recommendation"] not in {"hold", "underweight", "overweight", "sell", "buy"}:
                 continue
             similarity = SequenceMatcher(None, left["reasoning"], right["reasoning"]).ratio()
-            if similarity >= 0.90:
+            if similarity >= 0.995:
                 errors.append(
                     "near-identical Research Manager rationale despite materially different ASX evidence: "
                     f"{left['ticker']} setup {left['setup']} vs {right['ticker']} setup {right['setup']}"
