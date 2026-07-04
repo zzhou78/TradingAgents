@@ -97,6 +97,19 @@ Hold is selected because supportive sector metrics are offset by adverse or non-
 5. Which evidence gaps capped confidence? Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 161.14 is below the 10 EMA (162.47), below the 50 SMA (165.51), and below the 200 SMA (164.47). Trend score -2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
+## Sector Metric Direction Audit
+Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+
+| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
+|---|---|---|---|---|---|
+| net_interest_margin | NIM | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:016 |
+| cet1 | CET1 | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:017 |
+| loan_growth | loan growth | period-over-period wording in extracted filing/report phrase | unavailable | low | financial:CBA.AX:2026-07-02:018 |
+| arrears | arrears | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:019 |
+| impairment | impairment | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:020 |
+| dividend | dividend | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:021 |
+| roe | ROE | metric mentioned without explicit comparative baseline | unavailable | low | financial:CBA.AX:2026-07-02:022 |
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

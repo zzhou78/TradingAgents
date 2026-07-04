@@ -42,6 +42,8 @@ Overweight beats Hold because multiple direct filing and earnings-release record
 5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
 6. Market setup impact: constructive but not trend-confirmed because MACD remains negative.
 
+
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

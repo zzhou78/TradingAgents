@@ -71,6 +71,50 @@ def test_buy_requires_research_alignment_and_confirmed_setup():
 
     assert setup["action"] == "BUY"
     assert setup["setup_score"] >= 4
+    assert setup["buy_confirmation"] is True
+    assert "BUY requires Research Manager Buy/Overweight" in setup["threshold_rule"]
+
+
+def test_positive_score_can_remain_hold_without_confirmation():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    setup = writer._trader_setup_assessment(
+        manager_rec="Overweight",
+        close=110.0,
+        ema_10=105.0,
+        sma_50=100.0,
+        sma_200=95.0,
+        rsi=48.0,
+        macd=0.1,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert setup["setup_score"] >= 4
+    assert setup["action"] == "HOLD"
+    assert setup["buy_confirmation"] is False
+    assert "lacks execution confirmation" in setup["hold_explanation"]
+
+
+def test_overweight_confirmed_buy_fixture_preserves_portfolio_rating():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    manager_rec = "Overweight"
+    setup = writer._trader_setup_assessment(
+        manager_rec=manager_rec,
+        close=120.0,
+        ema_10=110.0,
+        sma_50=105.0,
+        sma_200=100.0,
+        rsi=64.0,
+        macd=1.1,
+        atr=2.0,
+        is_asx=False,
+    )
+    portfolio_rating = manager_rec
+
+    assert setup["action"] == "BUY"
+    assert portfolio_rating == "Overweight"
 
 
 def test_sell_requires_research_alignment_and_confirmed_breakdown():
@@ -90,6 +134,38 @@ def test_sell_requires_research_alignment_and_confirmed_breakdown():
 
     assert setup["action"] == "SELL"
     assert setup["setup_score"] <= -4
+    assert setup["sell_confirmation"] is True
+
+
+def test_underweight_downside_fixture_supports_sell_or_timing_gated_hold():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    confirmed = writer._trader_setup_assessment(
+        manager_rec="Underweight",
+        close=88.0,
+        ema_10=94.0,
+        sma_50=98.0,
+        sma_200=104.0,
+        rsi=34.0,
+        macd=-0.8,
+        atr=2.0,
+        is_asx=False,
+    )
+    unconfirmed = writer._trader_setup_assessment(
+        manager_rec="Underweight",
+        close=98.0,
+        ema_10=100.0,
+        sma_50=101.0,
+        sma_200=92.0,
+        rsi=49.0,
+        macd=0.1,
+        atr=2.0,
+        is_asx=False,
+    )
+
+    assert confirmed["action"] == "SELL"
+    assert unconfirmed["action"] == "HOLD"
+    assert "Rating and action differ" in unconfirmed["tension"]
 
 
 def test_research_manager_moving_average_primary_rating_fails(tmp_path: Path):
@@ -171,6 +247,42 @@ def test_sector_metric_availability_is_not_automatically_supportive():
 
     assert writer._asx_metric_direction(neutral) == "neutral"
     assert writer._asx_metric_direction(adverse) == "adverse"
+
+
+def test_sector_metric_direction_audit_records_extracted_basis():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "ebit_margin",
+            "metric_label": "EBIT margin",
+            "status": "available",
+            "confidence": "medium",
+            "evidence_id": "financial:WOW.AX:2026-07-02:017",
+            "excerpt": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+        }
+    ]
+
+    audit = writer._asx_metric_audit_records(records)
+
+    assert audit == [
+        {
+            "metric_name": "ebit_margin",
+            "extracted_value_or_phrase": "EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+            "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+            "direction": "adverse",
+            "confidence": "medium",
+            "evidence_id": "financial:WOW.AX:2026-07-02:017",
+        }
+    ]
+
+
+def test_execution_caution_wording_is_market_specific():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+
+    assert "ASX-specific" in writer._market_execution_caution(is_asx=True)
+    assert "Generic execution/liquidity caution" in writer._market_execution_caution(is_asx=False)
+    assert "ASX-specific" not in writer._market_execution_caution(is_asx=False)
 
 
 def test_research_rating_uses_metric_direction_not_availability():

@@ -322,11 +322,13 @@ def summarize(output_dir: Path, workflow: Path | None = None) -> dict[str, Any]:
         raise FileNotFoundError(f"No workflow_state.json files found under {output_dir}")
     runs = [summarize_workflow(path) for path in paths]
     run_quality_errors: list[str] = []
+    run_quality_warnings: list[str] = []
     if workflow is None:
         try:
-            from validate_quality_review import validate_run_dir
+            from validate_quality_review import validate_run_dir, validate_run_warnings
 
             run_quality_errors = validate_run_dir(output_dir)
+            run_quality_warnings = validate_run_warnings(output_dir)
         except Exception as exc:  # pragma: no cover - defensive CLI reporting
             run_quality_errors = [f"run-level quality validation failed to run: {exc}"]
         if run_quality_errors:
@@ -336,10 +338,17 @@ def summarize(output_dir: Path, workflow: Path | None = None) -> dict[str, Any]:
                     run["complete"] = False
                     run["review_ready"] = False
                     run["status"] = "remediation_required"
-    return {"output_dir": str(output_dir), "runs": runs, "run_quality_errors": run_quality_errors}
+    return {
+        "output_dir": str(output_dir),
+        "runs": runs,
+        "run_quality_errors": run_quality_errors,
+        "run_quality_warnings": run_quality_warnings,
+    }
 
 
 def _print_text(payload: dict[str, Any]) -> None:
+    for warning in payload.get("run_quality_warnings", []):
+        print(f"Workflow warning: {warning}")
     for run in payload["runs"]:
         print(f"{run['ticker']} {run['trade_date']}: {run['complete_stages']}/{run['total_stages']} stages complete")
         next_stage = run.get("next_stage")

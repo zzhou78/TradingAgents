@@ -155,10 +155,12 @@ The Bear case must cite strongest evidence, avoid generic pessimism, and directl
     "tradingagents-trader": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Action Consistency Check`
+- `## Setup Quality Assessment`
+- `## Setup Thresholds`
 - `## Paper-study price framework`
 - `FINAL TRANSACTION PROPOSAL`
 
-The final transaction proposal must match the reasoning and cite the Research Manager and market evidence used.""",
+The final transaction proposal must match the reasoning and cite the Research Manager and market evidence used. Explicitly state BUY/HOLD/SELL setup score thresholds and explain why a high positive or negative score can remain HOLD when research alignment or execution confirmation is missing.""",
     "tradingagents-aggressive-risk-analyst": """Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Opportunity Case`

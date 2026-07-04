@@ -9,8 +9,15 @@
 
 The action is based on setup quality after the Research Manager rating, not on moving averages alone. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.
 
+Threshold result: HOLD score band. score is inside the HOLD band or directional research/execution gates are incomplete
+
 ## Setup Quality Assessment
-Setup score +0: research alignment +2, trend -1, momentum +0, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+Setup score +0: research alignment +2, trend -1, momentum +0, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0. Score band: HOLD score band.
+
+## Setup Thresholds
+BUY requires Research Manager Buy/Overweight, setup score >= +4, and execution confirmation from positive trend, momentum, and support/resistance. SELL requires Research Manager Sell/Underweight, setup score <= -4, and downside execution confirmation from negative trend, momentum, and support/resistance. HOLD applies when score is between -3 and +3, or when a directional score lacks research alignment or execution confirmation.
+
+A positive score such as +6 can remain HOLD when confirmation is missing, because the score alone is not sufficient. BUY/SELL require both Research Manager alignment and execution confirmation.
 
 ## Research Rating Alignment
 Research Manager rating: Overweight
@@ -29,7 +36,7 @@ Reference price: 59.57. Confirmation level: 60.27. Invalidation / caution level:
 Reward/risk component: +1. The setup requires confirmation because a paper-study action is valid only when research alignment, trend/momentum, support/resistance, reward/risk, volatility/event risk, and volume confirmation are coherent.
 
 ## Event Risk and Liquidity Check
-ASX execution caution is included where applicable. No broker/order book, spread feed, ex-date calendar, or live liquidity tool was used, so event/liquidity uncertainty limits confidence.
+ASX-specific liquidity/spread/event caution is included. No broker order book, ASX depth feed, ex-date calendar, or live spread tool was used, so execution confidence remains capped.
 
 ## Rating-Action Tension
 Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.

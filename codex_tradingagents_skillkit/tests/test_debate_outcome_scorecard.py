@@ -179,12 +179,18 @@ def test_multi_ticker_all_balanced_debate_winner_warns(tmp_path: Path):
         (research_dir / "manager.md").write_text(
             "# Research Manager\n\n"
             "## Rating-vs-Rating Reasoning\n\n"
-            f"Hold for {ticker} based on ticker-specific evidence.\n\n"
-            "## Debate Outcome Scorecard\n\n| Field | Outcome |\n|---|---|\n| Debate winner | Balanced |\n\n"
-            "**Recommendation**: Hold\n",
+            + (
+                "Hold for CBA.AX because the bank setup is below all major moving averages and capital metrics are mixed.\n\n"
+                if ticker == "CBA.AX"
+                else "Hold for WOW.AX because the retailer setup is above all major moving averages but margin metrics are mixed.\n\n"
+            )
+            + "## Debate Outcome Scorecard\n\n| Field | Outcome |\n|---|---|\n| Debate winner | Balanced |\n\n"
+            + "**Recommendation**: Hold\n",
             encoding="utf-8",
         )
 
     errors = validator.validate_run_dir(output_dir)
+    warnings = validator.validate_run_warnings(output_dir)
 
-    assert "warning: debate winner is always Balanced across a multi-ticker run" in errors
+    assert errors == []
+    assert "debate winner is always Balanced across a multi-ticker run" in warnings

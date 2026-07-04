@@ -78,7 +78,8 @@ Fail the report when:
 - Research Manager treats ASX sector metric availability as automatically supportive without classifying metric direction or evidence quality;
 - Trader omits setup score components: research alignment, trend/momentum/volatility, support/resistance, confirmation, invalidation, reward/risk, event risk, liquidity/spread caution where available;
 - Research Manager omits the Debate Outcome Scorecard, gives Hold without Bull/Bear/Balanced winner, fails to state whether debate changed the pre-debate analyst evidence rating, or lets Bull and Bear cite the same evidence without independence-group treatment;
-- In a multi-ticker run, warn if every ticker's debate winner is Balanced despite materially different evidence;
+- In a multi-ticker run, warn, but do not hard-fail, if every ticker's debate winner is Balanced despite materially different evidence unless the run claims strong differentiation;
+- Fail if Trader omits explicit setup thresholds, uses ASX-specific execution wording in US reports, or omits ASX-specific liquidity/spread/event caution in `.AX` reports;
 - Portfolio Manager says the risk debate tempers action but does not explain whether Aggressive, Conservative, or Neutral risk was stronger;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;

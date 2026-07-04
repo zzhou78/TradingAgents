@@ -42,6 +42,18 @@ Overweight beats Hold because miners sector metrics have multiple supportive dir
 5. Which evidence gaps capped confidence? Confidence is capped by 1 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:BHP.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 59.57 is below the 10 EMA (60.14), below the 50 SMA (59.75), and above the 200 SMA (49.84). Trend score -1 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
+## Sector Metric Direction Audit
+Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+
+| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
+|---|---|---|---|---|---|
+| production | production, including highest copper production in 17 years at Escondida, a record at Spence and record Q4 production at Copper South Australia. 5% Reduction in operational GHG emi | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:BHP.AX:2026-07-02:016 |
+| realised_price | average realised prices for major assets including Escondida, Spence, Copper SA, WAIO and BMA. We have world-leading assets and we operate them well – underpinned by the sustained | metric mentioned without explicit comparative baseline | supportive | medium | financial:BHP.AX:2026-07-02:017 |
+| unit_cost_aisc | unit cost reduction and WAIO remains the lowest-cost major iron ore producer in the world. Across the group, unit costs at our major assets were down 4.7 per cent year-on-year. 5 V | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:BHP.AX:2026-07-02:018 |
+| capex | capex | metric mentioned without explicit comparative baseline | unavailable | low | financial:BHP.AX:2026-07-02:019 |
+| reserves_resources | resources All investor resources Financial results & Operational reviews Annual reports Economic Contribution report Presentations & Briefings Economic & Commodity Outlook Dividend | metric mentioned without explicit comparative baseline | supportive | medium | financial:BHP.AX:2026-07-02:020 |
+| commodity_exposure | Copper Metallurgical coal Nickel Potash Iron ore Australia Brazil Canada - Jansen Chile Peru - Antamina United States Offices 2026 Financial Results 2025 Financial Results 2024 Fin | metric mentioned without explicit comparative baseline | supportive | medium | financial:BHP.AX:2026-07-02:021 |
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

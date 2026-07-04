@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
   "status": "review_ready_paper_study",
-  "generated_at": "2026-07-04T16:20:11+10:00",
+  "generated_at": "2026-07-04T16:45:06+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
@@ -1012,7 +1012,8 @@
         "review_ready": true
       }
     ],
-    "run_quality_errors": []
+    "run_quality_errors": [],
+    "run_quality_warnings": []
   },
   "remediation_plans": [],
   "patched_quality_gates": [

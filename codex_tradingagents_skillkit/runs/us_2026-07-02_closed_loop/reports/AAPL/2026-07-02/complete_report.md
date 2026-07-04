@@ -56,7 +56,8 @@ Debate outcome scorecard: Debate winner: Bull. Rating implication: Overweight. T
 
 ### Trader
 **Action**: HOLD
-Setup quality: Setup score +6: research alignment +2, trend +2, momentum +0, support/resistance +1, reward/risk +1, volatility/event risk +0, volume confirmation +0.
+Setup quality: Setup score +6: research alignment +2, trend +2, momentum +0, support/resistance +1, reward/risk +1, volatility/event risk +0, volume confirmation +0. Score band: BUY-capable score band.
+Setup thresholds: BUY requires Research Manager Buy/Overweight, setup score >= +4, and execution confirmation from positive trend, momentum, and support/resistance. SELL requires Research Manager Sell/Underweight, setup score <= -4, and downside execution confirmation from negative trend, momentum, and support/resistance. HOLD applies when score is between -3 and +3, or when a directional score lacks research alignment or execution confirmation.
 Research alignment: +2. Trend/momentum/volatility: trend +2, momentum +0, volatility/event risk +0.
 Reward/risk and levels: reward/risk +1; reference price 308.63, confirmation level 313.00, invalidation / caution level 293.46.
 Rating-action tension: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.

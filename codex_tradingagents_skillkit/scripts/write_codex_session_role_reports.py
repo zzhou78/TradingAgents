@@ -180,6 +180,80 @@ def _asx_metric_direction(record: dict[str, object]) -> str:
     return "neutral"
 
 
+def _metric_phrase(record: dict[str, object]) -> str:
+    value = record.get("extracted_value_or_phrase") or record.get("value")
+    if value not in {None, ""}:
+        return _clean_cell(value)
+    excerpt = _clean_cell(record.get("excerpt") or "")
+    if excerpt:
+        return excerpt[:180]
+    claims = record.get("supports_claims")
+    if isinstance(claims, list) and claims:
+        return _clean_cell(claims[0])[:180]
+    return "no extracted phrase available"
+
+
+def _metric_comparison_basis(record: dict[str, object]) -> str:
+    explicit = record.get("comparison_basis")
+    if explicit:
+        return _clean_cell(explicit)
+    phrase = _metric_phrase(record).lower()
+    if any(word in phrase for word in ["increased", "increase", "decreased", "declined", "decreasing", "reduced", "reduction", "growth"]):
+        return "period-over-period wording in extracted filing/report phrase"
+    if any(word in phrase for word in ["record", "strong", "weak", "higher", "lower"]):
+        return "management-comparison wording in extracted filing/report phrase"
+    if phrase == "no extracted phrase available":
+        return "unavailable"
+    return "metric mentioned without explicit comparative baseline"
+
+
+def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str, str]]:
+    audit_records: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in _asx_sector_metric_records(records):
+        metric_name = str(record.get("metric_name") or record.get("metric_label") or "")
+        if not metric_name or metric_name in seen:
+            continue
+        seen.add(metric_name)
+        audit_records.append(
+            {
+                "metric_name": metric_name,
+                "extracted_value_or_phrase": _metric_phrase(record),
+                "comparison_basis": _metric_comparison_basis(record),
+                "direction": _asx_metric_direction(record),
+                "confidence": _clean_cell(record.get("confidence") or "low"),
+                "evidence_id": _clean_cell(record.get("evidence_id") or "uncited"),
+            }
+        )
+    return audit_records
+
+
+def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
+    audit_records = _asx_metric_audit_records(records)
+    if not audit_records:
+        return "| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |\n|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | low | uncited |"
+    rows = [
+        "| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |",
+        "|---|---|---|---|---|---|",
+    ]
+    for item in audit_records:
+        rows.append(
+            "| "
+            + " | ".join(
+                [
+                    _clean_cell(item["metric_name"]),
+                    _clean_cell(item["extracted_value_or_phrase"]),
+                    _clean_cell(item["comparison_basis"]),
+                    _clean_cell(item["direction"]),
+                    _clean_cell(item["confidence"]),
+                    _clean_cell(item["evidence_id"]),
+                ]
+            )
+            + " |"
+        )
+    return "\n".join(rows)
+
+
 def _asx_metric_direction_counts(records: list[dict[str, object]]) -> dict[str, int]:
     by_metric: dict[str, str] = {}
     rank = {"adverse": 5, "supportive": 4, "mixed": 3, "neutral": 2, "unavailable": 1}
@@ -314,6 +388,7 @@ def _asx_research_reasoning(
         f"{direction_counts.get('supportive', 0)} supportive, {direction_counts.get('adverse', 0)} adverse, "
         f"{direction_counts.get('mixed', 0)} mixed, {direction_counts.get('neutral', 0)} neutral"
     )
+    metric_audit_table = _asx_metric_audit_table(financial_records)
     supportive_examples = _asx_metric_examples(financial_records, {"supportive"})
     adverse_examples = _asx_metric_examples(financial_records, {"adverse"})
     neutral_examples = _asx_metric_examples(financial_records, {"mixed", "neutral"})
@@ -439,6 +514,7 @@ def _asx_research_reasoning(
         "metric_id": metric_id,
         "metric_label": metric_label,
         "metric_breadth": metric_breadth,
+        "metric_audit_table": metric_audit_table,
         "section_breadth": section_breadth,
         "summary": (
             f"{manager_rec} is driven by {primary_driver}: {evidence_winner} {market_effect}"
@@ -556,6 +632,22 @@ def _debate_outcome_scorecard(
     }
 
 
+BUY_SETUP_SCORE_THRESHOLD = 4
+SELL_SETUP_SCORE_THRESHOLD = -4
+
+
+def _market_execution_caution(is_asx: bool) -> str:
+    if is_asx:
+        return (
+            "ASX-specific liquidity/spread/event caution is included. No broker order book, ASX depth feed, "
+            "ex-date calendar, or live spread tool was used, so execution confidence remains capped."
+        )
+    return (
+        "Generic execution/liquidity caution is included. No broker order book, intraday liquidity feed, "
+        "options chain, or live spread tool was used, so execution confidence remains capped."
+    )
+
+
 def _trader_setup_assessment(
     *,
     manager_rec: str,
@@ -579,17 +671,50 @@ def _trader_setup_assessment(
     volatility_event = -1 if is_asx else 0
     volume_confirmation = 0
     setup_score = alignment + trend + momentum + support_resistance + reward_risk + volatility_event + volume_confirmation
-    if manager_rec in {"Buy", "Overweight"} and setup_score >= 4 and trend > 0 and momentum > 0:
+    buy_research_aligned = manager_rec in {"Buy", "Overweight"}
+    sell_research_aligned = manager_rec in {"Sell", "Underweight"}
+    buy_confirmation = trend > 0 and momentum > 0 and support_resistance > 0
+    sell_confirmation = trend < 0 and momentum < 0 and support_resistance < 0
+    if buy_research_aligned and setup_score >= BUY_SETUP_SCORE_THRESHOLD and buy_confirmation:
         action = "BUY"
-    elif manager_rec in {"Sell", "Underweight"} and setup_score <= -4 and trend < 0 and momentum < 0:
+    elif sell_research_aligned and setup_score <= SELL_SETUP_SCORE_THRESHOLD and sell_confirmation:
         action = "SELL"
     else:
         action = "HOLD"
+    if setup_score >= BUY_SETUP_SCORE_THRESHOLD:
+        score_band = "BUY-capable score band"
+    elif setup_score <= SELL_SETUP_SCORE_THRESHOLD:
+        score_band = "SELL-capable score band"
+    else:
+        score_band = "HOLD score band"
+    missing_gates: list[str] = []
+    if action == "HOLD":
+        if setup_score >= BUY_SETUP_SCORE_THRESHOLD and not buy_research_aligned:
+            missing_gates.append("positive setup score lacks Buy/Overweight research alignment")
+        if setup_score >= BUY_SETUP_SCORE_THRESHOLD and buy_research_aligned and not buy_confirmation:
+            missing_gates.append("positive setup score lacks execution confirmation from trend, momentum, and support/resistance")
+        if setup_score <= SELL_SETUP_SCORE_THRESHOLD and not sell_research_aligned:
+            missing_gates.append("negative setup score lacks Sell/Underweight research alignment")
+        if setup_score <= SELL_SETUP_SCORE_THRESHOLD and sell_research_aligned and not sell_confirmation:
+            missing_gates.append("negative setup score lacks downside execution confirmation from trend, momentum, and support/resistance")
+    hold_explanation = (
+        "; ".join(missing_gates)
+        if missing_gates
+        else "score is inside the HOLD band or directional research/execution gates are incomplete"
+    )
     tension = (
         "Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action."
-        if (manager_rec in {"Buy", "Overweight"} and action != "BUY")
-        or (manager_rec in {"Sell", "Underweight"} and action != "SELL")
+        if (buy_research_aligned and action != "BUY")
+        or (sell_research_aligned and action != "SELL")
         else "Rating and action are aligned by current setup quality."
+    )
+    threshold_rule = (
+        f"BUY requires Research Manager Buy/Overweight, setup score >= +{BUY_SETUP_SCORE_THRESHOLD}, "
+        "and execution confirmation from positive trend, momentum, and support/resistance. "
+        f"SELL requires Research Manager Sell/Underweight, setup score <= {SELL_SETUP_SCORE_THRESHOLD}, "
+        "and downside execution confirmation from negative trend, momentum, and support/resistance. "
+        f"HOLD applies when score is between {SELL_SETUP_SCORE_THRESHOLD + 1} and +{BUY_SETUP_SCORE_THRESHOLD - 1}, "
+        "or when a directional score lacks research alignment or execution confirmation."
     )
     return {
         "action": action,
@@ -601,11 +726,16 @@ def _trader_setup_assessment(
         "reward_risk": reward_risk,
         "volatility_event": volatility_event,
         "volume_confirmation": volume_confirmation,
+        "buy_confirmation": buy_confirmation,
+        "sell_confirmation": sell_confirmation,
+        "score_band": score_band,
+        "hold_explanation": hold_explanation,
+        "threshold_rule": threshold_rule,
         "tension": tension,
         "summary": (
             f"Setup score {setup_score:+d}: research alignment {alignment:+d}, trend {trend:+d}, momentum {momentum:+d}, "
             f"support/resistance {support_resistance:+d}, reward/risk {reward_risk:+d}, volatility/event risk {volatility_event:+d}, "
-            f"volume confirmation {volume_confirmation:+d}."
+            f"volume confirmation {volume_confirmation:+d}. Score band: {score_band}."
         ),
     }
 
@@ -1308,6 +1438,7 @@ Impact label: mixed-to-positive, supported by {best_news_id}. The strongest usab
     )
     confirm = max(close + atr * 0.5, ema_10)
     invalid = min(close - atr * 0.5, sma_50 if ticker.upper() == "AAPL" else ema_10)
+    execution_caution = _market_execution_caution(is_asx)
     (report_dir / "2_research" / "bull_round_1.md").write_text(
         f"""# Bull Researcher Round 1 - {ticker}
 
@@ -1413,6 +1544,7 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
             f"- Why not Sell / Underweight? {asx_reasoning['why_not_sell']}\n"
             f"- Decisive role evidence: {asx_reasoning['decisive']}\n"
             f"- Sector-specific metric or gap: {asx_reasoning['metric_line']}\n"
+            "- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, comparison_basis, direction, confidence, and evidence_id for each ASX sector metric.\n"
             f"- Evidence-gap confidence cap: {asx_reasoning['confidence_cap']}"
         )
     trader_setup = _trader_setup_assessment(
@@ -1444,6 +1576,13 @@ Bull's strongest argument is direct earnings and segment evidence. Bear's answer
         f"| Sentiment Analyst | {first_social_id} | mixed | low | low | social summary | 0 | Retail-only reaction is noisy and not independent fundamental evidence | reaction:{ticker}:{trade_date}:retail |",
         f"| Bear Researcher | {refs['fund']} | negative | medium | medium | fundamentals packet | -1 | Valuation/timing risk keeps action from becoming aggressive | risk:{ticker}:{trade_date}:valuation-trend |",
     ]
+    sector_metric_audit_section = (
+        "## Sector Metric Direction Audit\n"
+        "Direction is based on the extracted phrase and comparison basis below, not metric presence alone.\n\n"
+        f"{asx_reasoning['metric_audit_table']}\n"
+        if is_asx
+        else ""
+    )
     (report_dir / "2_research" / "manager.md").write_text(
         f"""# Research Manager Report - {ticker}
 
@@ -1479,6 +1618,8 @@ Score calculation / component weights: {score_line}.
 
 {rating_vs_rating_section.rstrip()}
 
+{sector_metric_audit_section.rstrip()}
+
 {debate_scorecard['markdown']}
 
 ## Market Technicals as Confidence / Timing Modifier
@@ -1504,8 +1645,15 @@ Score calculation / component weights: {score_line}.
 
 The action is based on setup quality after the Research Manager rating, not on moving averages alone. {trader_setup['tension']}
 
+Threshold result: {trader_setup['score_band']}. {trader_setup['hold_explanation'] if trader_action == 'HOLD' else 'Directional research alignment and execution confirmation both pass.'}
+
 ## Setup Quality Assessment
 {trader_setup['summary']}
+
+## Setup Thresholds
+{trader_setup['threshold_rule']}
+
+A positive score such as +6 can remain HOLD when confirmation is missing, because the score alone is not sufficient. BUY/SELL require both Research Manager alignment and execution confirmation.
 
 ## Research Rating Alignment
 Research Manager rating: {manager_rec}
@@ -1524,7 +1672,7 @@ Reference price: {_money(close)}. Confirmation level: {_money(confirm)}. Invalid
 Reward/risk component: {trader_setup['reward_risk']:+d}. The setup requires confirmation because a paper-study action is valid only when research alignment, trend/momentum, support/resistance, reward/risk, volatility/event risk, and volume confirmation are coherent.
 
 ## Event Risk and Liquidity Check
-ASX execution caution is included where applicable. No broker/order book, spread feed, ex-date calendar, or live liquidity tool was used, so event/liquidity uncertainty limits confidence.
+{execution_caution}
 
 ## Rating-Action Tension
 {trader_setup['tension']}
@@ -1690,6 +1838,7 @@ Debate outcome scorecard: {debate_scorecard['concise']}
 ### Trader
 **Action**: {trader_action}
 Setup quality: {trader_setup['summary']}
+Setup thresholds: {trader_setup['threshold_rule']}
 Research alignment: {trader_setup['alignment']:+d}. Trend/momentum/volatility: trend {trader_setup['trend']:+d}, momentum {trader_setup['momentum']:+d}, volatility/event risk {trader_setup['volatility_event']:+d}.
 Reward/risk and levels: reward/risk {trader_setup['reward_risk']:+d}; reference price {_money(close)}, confirmation level {_money(confirm)}, invalidation / caution level {_money(invalid)}.
 Rating-action tension: {trader_setup['tension']}

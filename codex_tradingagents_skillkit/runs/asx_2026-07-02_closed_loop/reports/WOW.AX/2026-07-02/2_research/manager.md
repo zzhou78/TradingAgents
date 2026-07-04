@@ -42,6 +42,17 @@ Hold is selected because supportive sector metrics are offset by adverse or non-
 5. Which evidence gaps capped confidence? Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:WOW.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 39.35 is above the 10 EMA (39.31), above the 50 SMA (36.18), and above the 200 SMA (31.99). Trend score +2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
+## Sector Metric Direction Audit
+Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+
+| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
+|---|---|---|---|---|---|
+| sales_growth | comparable sales), by adjusting for non-recurring or uncontrollable factors which affect IFRS measures, to aid the user in understanding the Woolworths Group’s performance. Consequ | metric mentioned without explicit comparative baseline | supportive | medium | financial:WOW.AX:2026-07-02:016 |
+| ebit_margin | EBIT margin decreasing by a normalised 82 bps to 5.4%. In H2, EBIT declined by a normalised 8.1% with an EBIT margin of 5.5%. F25 EBIT was impacted by supply chain commissioning an | period-over-period wording in extracted filing/report phrase | adverse | medium | financial:WOW.AX:2026-07-02:017 |
+| inventory | Inventories 4,169 4,187 (18) Trade payables (6,016) (5,815) (201) Net investment in inventory (1,847) (1,628) (219) Trade, other receivables and prepayments 1,390 1,358 32 Other cr | metric mentioned without explicit comparative baseline | adverse | medium | financial:WOW.AX:2026-07-02:018 |
+| capex | capex for energy efficiency and emissions reduction. Across the value chain, increased cost of goods due to higher commodity prices. • Scope 1 and 2 emissions reduction targets are | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:WOW.AX:2026-07-02:019 |
+| dividends | dividends 1 CENTS PER SHARE $M 2025 interim dividend paid on 23 April 2025 39 476 2025 final dividend declared on 27 August 2025 2,3 45 5504 1 All dividends are fully franked at a | metric mentioned without explicit comparative baseline | supportive | medium | financial:WOW.AX:2026-07-02:020 |
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

@@ -54,12 +54,14 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Why not Sell / Underweight? Sell/Underweight is not selected because the evidence winner is Production and related official-source financial context, not a deteriorating financial-report or sector-metric case.
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:BHP.AX:2026-07-02:016) plus Fundamentals/Financial section context; Market Analyst (market:BHP.AX:2026-07-02:001, market:BHP.AX:2026-07-02:002, market:BHP.AX:2026-07-02:003, market:BHP.AX:2026-07-02:004) modifies timing; News (news:BHP.AX:2026-07-02:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: miners metric direction mix: 5 available / 1 gap-labelled; 5 supportive, 0 adverse, 0 mixed, 0 neutral. supportive examples: Production (supportive, financial:BHP.AX:2026-07-02:016); Realised price (supportive, financial:BHP.AX:2026-07-02:017); adverse examples: none; mixed/neutral examples: none. Highlighted metric: Production is available / supportive via financial:BHP.AX:2026-07-02:016.
+- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, comparison_basis, direction, confidence, and evidence_id for each ASX sector metric.
 - Evidence-gap confidence cap: Confidence is capped by 1 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:BHP.AX:2026-07-02:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Bull. Rating implication: Overweight. Trader implication: timing-gated HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence was constructive but not execution-ready; debate confirmed Bull evidence quality without overriding Trader timing gates.
 
 ### Trader
 **Action**: HOLD
-Setup quality: Setup score +0: research alignment +2, trend -1, momentum +0, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+Setup quality: Setup score +0: research alignment +2, trend -1, momentum +0, support/resistance -1, reward/risk +1, volatility/event risk -1, volume confirmation +0. Score band: HOLD score band.
+Setup thresholds: BUY requires Research Manager Buy/Overweight, setup score >= +4, and execution confirmation from positive trend, momentum, and support/resistance. SELL requires Research Manager Sell/Underweight, setup score <= -4, and downside execution confirmation from negative trend, momentum, and support/resistance. HOLD applies when score is between -3 and +3, or when a directional score lacks research alignment or execution confirmation.
 Research alignment: +2. Trend/momentum/volatility: trend -1, momentum +0, volatility/event risk -1.
 Reward/risk and levels: reward/risk +1; reference price 59.57, confirmation level 60.27, invalidation / caution level 58.88.
 Rating-action tension: Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action.

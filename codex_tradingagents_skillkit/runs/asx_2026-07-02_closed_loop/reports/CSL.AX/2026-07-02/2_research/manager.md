@@ -42,6 +42,18 @@ Hold is selected because supportive sector metrics are offset by adverse or non-
 5. Which evidence gaps capped confidence? Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CSL.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 117.75 is above the 10 EMA (114.56), above the 50 SMA (109.07), and below the 200 SMA (155.14). Trend score +0 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
+## Sector Metric Direction Audit
+Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+
+| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
+|---|---|---|---|---|---|
+| segment_revenue | segment revenue | metric mentioned without explicit comparative baseline | unavailable | low | financial:CSL.AX:2026-07-02:016 |
+| r_and_d | R&D, our portfolio and re-establishing the organisation with a leaner, more agile design. We must accelerate initiatives across a smaller number of sites and with fewer layers of m | metric mentioned without explicit comparative baseline | supportive | medium | financial:CSL.AX:2026-07-02:017 |
+| plasma_collections | plasma collection networks, with collection centres in the US and Europe. Plasma collected at CSL Plasma facilities is used by CSL Behring for the purpose of manufacturing and deli | metric mentioned without explicit comparative baseline | supportive | medium | financial:CSL.AX:2026-07-02:018 |
+| margins | margin and increase plasma volumes at a lower cost per litre. Our purpose and our people My final priority is to enable our people to deliver this exciting new future. We will cont | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:CSL.AX:2026-07-02:019 |
+| debt | debt for future growth 14 Performance WHAT CSL DOES THE VALUE CSL CREATES Provide a safe, rewarding and productive workplace for promising futures Powered by research and developme | period-over-period wording in extracted filing/report phrase | adverse | medium | financial:CSL.AX:2026-07-02:020 |
+| guidance | Outlook 16 Global Manufacturing Presence 19 Platforms, Therapeutic Areas and Product Portfolio 20 Material Risks 24 Healthier World Healthier Communities 27 Healthier Environment 3 | metric mentioned without explicit comparative baseline | supportive | medium | financial:CSL.AX:2026-07-02:021 |
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

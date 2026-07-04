@@ -63,10 +63,12 @@ Translate the Research Manager plan into a paper Trader Proposal with a matching
 Role-specific required sections:
 - `## Tool Outputs Used`
 - `## Action Consistency Check`
+- `## Setup Quality Assessment`
+- `## Setup Thresholds`
 - `## Paper-study price framework`
 - `FINAL TRANSACTION PROPOSAL`
 
-The final transaction proposal must match the reasoning and cite the Research Manager and market evidence used.
+The final transaction proposal must match the reasoning and cite the Research Manager and market evidence used. Explicitly state BUY/HOLD/SELL setup score thresholds and explain why a high positive or negative score can remain HOLD when research alignment or execution confirmation is missing.
 
 ## RoleExecutionContract
 

@@ -97,6 +97,16 @@ Hold is selected because supportive sector metrics are offset by adverse or non-
 5. Which evidence gaps capped confidence? Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth.
 6. How market setup changed the final rating. Market setup is a confidence/timing modifier only: latest close 4.99 is above the 10 EMA (4.94), above the 50 SMA (4.77), and above the 200 SMA (4.63). Trend score +2 changes Trader timing and Research Manager confidence, but it is not the evidence winner.
 
+## Sector Metric Direction Audit
+Direction is based on the extracted phrase and comparison basis below, not metric presence alone.
+
+| metric_name | extracted_value_or_phrase | comparison_basis | direction | confidence | evidence_id |
+|---|---|---|---|---|---|
+| premium_growth | premiums, or products or services from our health and wellbeing partners. To help ease the burden of last year’s natural disasters, we made financial and hardship support available | metric mentioned without explicit comparative baseline | supportive | medium | financial:MPL.AX:2026-07-02:016 |
+| claims_ratio | claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% Gross profit 1,396.4 1,307. 2 6.8% Management expenses (654.9) (614.9) 6.5% Operating profit1 741.5 692.3 7.1% | metric mentioned without explicit comparative baseline | adverse | medium | financial:MPL.AX:2026-07-02:017 |
+| membership | policyholder growth +10.5k (+3.1%) net non-resident policy unit growth Healthcare 52% of Medibank policyholders engaged with health and wellbeing services 931k (+13%) Live Better r | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:MPL.AX:2026-07-02:018 |
+| capital_adequacy | capital adequacy requirement of $250 million for Medibank, with effect from 1 July 2023, following a review of the 2022 cybercrime event. As a result, we have temporarily increased | period-over-period wording in extracted filing/report phrase | supportive | medium | financial:MPL.AX:2026-07-02:019 |
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

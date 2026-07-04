@@ -37,6 +37,7 @@ ROLE_REQUIRED_SECTIONS = {
         "Tool Outputs Used",
         "Action Consistency Check",
         "Setup Quality Assessment",
+        "Setup Thresholds",
         "Research Rating Alignment",
         "Trend / Momentum / Volatility",
         "Support / Resistance / Confirmation / Invalidation",
@@ -613,6 +614,18 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
         errors.append("ASX Research Manager report lacks ticker-specific sector metric or evidence-gap reference")
     if has_sector_metric and not re.search(r"\b(supportive|adverse|mixed|neutral|unavailable)\b", sector_section, re.IGNORECASE):
         errors.append("ASX Research Manager report lacks sector metric direction/quality classification")
+    audit_section = _section(text, "## Sector Metric Direction Audit")
+    if has_sector_metric:
+        required_audit_fields = [
+            "metric_name",
+            "extracted_value_or_phrase",
+            "comparison_basis",
+            "direction",
+            "confidence",
+            "evidence_id",
+        ]
+        if not audit_section or not all(field in audit_section for field in required_audit_fields):
+            errors.append("ASX Research Manager report lacks auditable sector metric direction records")
     rationale = _section(text, "## Rating Rationale") or text
     if "ASX source coverage is uneven" in rationale and not (
         all(term in rationale for term in ["10 EMA", "50 SMA", "200 SMA"]) and has_sector_metric
@@ -828,6 +841,20 @@ def _trader_quality_errors(trader_path: Path) -> list[str]:
         errors.append("trader lacks setup quality assessment")
     elif not all(term in setup.lower() for term in ["research alignment", "trend", "momentum", "reward/risk", "volatility"]):
         errors.append("trader setup quality omits required score components")
+    thresholds = _section(text, "## Setup Thresholds")
+    if not thresholds:
+        errors.append("trader lacks explicit setup thresholds")
+    elif not all(term in thresholds.upper() for term in ["BUY", "HOLD", "SELL"]) or not re.search(
+        r"confirmation|alignment", thresholds, re.IGNORECASE
+    ):
+        errors.append("trader setup thresholds omit action bands or confirmation gates")
+    ticker = trader_path.parents[2].name.upper() if len(trader_path.parents) > 2 else ""
+    event_liquidity = _section(text, "## Event Risk and Liquidity Check")
+    if ticker.endswith(".AX"):
+        if not re.search(r"ASX-specific liquidity/spread/event caution", event_liquidity, re.IGNORECASE):
+            errors.append("ASX trader report omits ASX-specific liquidity/spread/event caution")
+    elif re.search(r"ASX-specific|ASX execution caution", event_liquidity, re.IGNORECASE):
+        errors.append("US trader report uses ASX-specific execution wording")
     if re.search(r"\bAction\s*[:|-]\s*(BUY|SELL)", text, re.IGNORECASE):
         action_blob = _section(text, "## Action Consistency Check") + "\n" + setup
         has_non_ma_support = re.search(
@@ -1068,8 +1095,7 @@ def _research_reasoning_for_similarity(text: str) -> str:
     return re.sub(r"\s+", " ", section.lower()).strip()
 
 
-def validate_run_dir(output_dir: Path) -> list[str]:
-    errors: list[str] = []
+def _run_entries(output_dir: Path) -> list[dict[str, str]]:
     entries: list[dict[str, str]] = []
     for workflow_path in sorted((output_dir / "evidence").glob("*/*/workflow_state.json")):
         try:
@@ -1099,10 +1125,21 @@ def validate_run_dir(output_dir: Path) -> list[str]:
                 "reasoning": _research_reasoning_for_similarity(text),
             }
         )
+    return entries
 
+
+def validate_run_warnings(output_dir: Path) -> list[str]:
+    warnings: list[str] = []
+    entries = _run_entries(output_dir)
     scored_winners = [entry["debate_winner"] for entry in entries if entry["debate_winner"]]
     if len(scored_winners) >= 2 and set(scored_winners) == {"balanced"}:
-        errors.append("warning: debate winner is always Balanced across a multi-ticker run")
+        warnings.append("debate winner is always Balanced across a multi-ticker run")
+    return warnings
+
+
+def validate_run_dir(output_dir: Path) -> list[str]:
+    errors: list[str] = []
+    entries = _run_entries(output_dir)
 
     for left_index, left in enumerate(entries):
         for right in entries[left_index + 1 :]:
@@ -1131,6 +1168,11 @@ def main(argv: list[str] | None = None) -> int:
     errors = validate_report_dir(args.report_dir, args.evidence)
     if args.run_dir:
         errors.extend(validate_run_dir(args.run_dir))
+    warnings = validate_run_warnings(args.run_dir) if args.run_dir else []
+    if warnings:
+        print("Quality review validation warnings:")
+        for warning in warnings:
+            print(f"- {warning}")
     if errors:
         print("Quality review validation failed:")
         for error in errors:

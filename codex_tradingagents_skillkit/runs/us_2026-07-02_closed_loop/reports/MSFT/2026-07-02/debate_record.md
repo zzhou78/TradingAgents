@@ -97,6 +97,8 @@ Underweight beats Hold because the strongest financial evidence is positive, but
 5. Evidence gaps capping confidence: social data is low confidence and news/filing evidence remains as-of-date limited.
 6. Market setup impact: short rebound inside a still-negative intermediate and long-term trend.
 
+
+
 ## Debate Outcome Scorecard
 | Field | Outcome |
 |---|---|

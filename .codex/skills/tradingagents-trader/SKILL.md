@@ -40,11 +40,13 @@ Output:
 - `TraderProposal`: action, reasoning, paper-study price framework for Buy/Sell actions, optional sizing notes, and risk notes.
 - Include `## Tool Outputs Used`.
 - Include `## Action Consistency Check`.
-- Include `## Setup Quality Assessment`, `## Research Rating Alignment`, `## Trend / Momentum / Volatility`, `## Support / Resistance / Confirmation / Invalidation`, `## Reward-Risk Assessment`, `## Event Risk and Liquidity Check`, and `## Rating-Action Tension`.
+- Include `## Setup Quality Assessment`, `## Setup Thresholds`, `## Research Rating Alignment`, `## Trend / Momentum / Volatility`, `## Support / Resistance / Confirmation / Invalidation`, `## Reward-Risk Assessment`, `## Event Risk and Liquidity Check`, and `## Rating-Action Tension`.
+- `## Setup Thresholds` must state the BUY/HOLD/SELL score bands and the confirmation gates. A positive score such as +6 can remain HOLD when trend, momentum, support/resistance confirmation, or Research Manager alignment is missing.
 - State Research Manager rating, Trader action, and the reason for agreement or difference.
 - Include a consistency check before the final proposal. If action is Sell, identify whether price broke below longer-term support or name the separate materially negative setup. If long-term support still holds and no material negative setup is documented, prefer Hold over Sell.
 - FINAL TRANSACTION PROPOSAL must match `**Action**`.
 - Sell requires below 200 SMA or explicit material negative setup.
+- Use market-specific execution language: generic liquidity/execution caution for US tickers; ASX-specific liquidity/spread/event caution only for `.AX` tickers.
 
 ## RoleExecutionContract Rules
 

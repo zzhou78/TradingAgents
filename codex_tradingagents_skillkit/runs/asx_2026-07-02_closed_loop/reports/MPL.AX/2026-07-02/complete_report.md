@@ -54,12 +54,14 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Why not Sell / Underweight? Sell/Underweight is not selected because 3 supportive sector-metric reading(s) (Premium growth (supportive, financial:MPL.AX:2026-07-02:016); Membership (supportive, financial:MPL.AX:2026-07-02:018)) prevent a completed negative official-source case.
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:MPL.AX:2026-07-02:016) plus Fundamentals/Financial section context; Market Analyst (market:MPL.AX:2026-07-02:001, market:MPL.AX:2026-07-02:002, market:MPL.AX:2026-07-02:003, market:MPL.AX:2026-07-02:004) modifies timing; News (news:MPL.AX:2026-07-02:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: health_insurers metric direction mix: 4 available / 0 gap-labelled; 3 supportive, 1 adverse, 0 mixed, 0 neutral. supportive examples: Premium growth (supportive, financial:MPL.AX:2026-07-02:016); Membership (supportive, financial:MPL.AX:2026-07-02:018); adverse examples: Claims ratio (adverse, financial:MPL.AX:2026-07-02:017); mixed/neutral examples: none. Highlighted metric: Premium growth is available / supportive via financial:MPL.AX:2026-07-02:016.
+- Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, comparison_basis, direction, confidence, and evidence_id for each ASX sector metric.
 - Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 
 ### Trader
 **Action**: HOLD
-Setup quality: Setup score +4: research alignment +0, trend +2, momentum +1, support/resistance +1, reward/risk +1, volatility/event risk -1, volume confirmation +0.
+Setup quality: Setup score +4: research alignment +0, trend +2, momentum +1, support/resistance +1, reward/risk +1, volatility/event risk -1, volume confirmation +0. Score band: BUY-capable score band.
+Setup thresholds: BUY requires Research Manager Buy/Overweight, setup score >= +4, and execution confirmation from positive trend, momentum, and support/resistance. SELL requires Research Manager Sell/Underweight, setup score <= -4, and downside execution confirmation from negative trend, momentum, and support/resistance. HOLD applies when score is between -3 and +3, or when a directional score lacks research alignment or execution confirmation.
 Research alignment: +0. Trend/momentum/volatility: trend +2, momentum +1, volatility/event risk -1.
 Reward/risk and levels: reward/risk +1; reference price 4.99, confirmation level 5.04, invalidation / caution level 4.94.
 Rating-action tension: Rating and action are aligned by current setup quality.
