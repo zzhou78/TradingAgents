@@ -42,14 +42,14 @@
 | ASX sector metric: CET1 | financial:CBA.AX:2026-07-02:039 ASX section record | sector_metric_cet1 | 2025-12-31 | low | none |
 | ASX sector metric: loan growth | financial:CBA.AX:2026-07-02:040 ASX section record | sector_metric_loan_growth | 2025-12-31 | low | none |
 | ASX sector metric: arrears | financial:CBA.AX:2026-07-02:041 ASX section record | sector_metric_arrears | 2025-12-31 | low | none |
-| ASX sector metric: impairment | financial:CBA.AX:2026-07-02:042 ASX section record | sector_metric_impairment | 2025-12-31 | medium | none |
+| ASX sector metric: impairment | financial:CBA.AX:2026-07-02:042 ASX section record | sector_metric_impairment | 2025-12-31 | low | none |
 | ASX sector metric: dividend | financial:CBA.AX:2026-07-02:043 ASX section record | sector_metric_dividend | 2025-12-31 | low | none |
 | ASX sector metric: ROE | financial:CBA.AX:2026-07-02:044 ASX section record | sector_metric_roe | 2025-12-31 | low | none |
 | ASX sector metric: net interest margin | financial:CBA.AX:2026-07-02:060 ASX section record | sector_metric_net_interest_margin | 2025-12-31 | low | none |
 | ASX sector metric: CET1 | financial:CBA.AX:2026-07-02:061 ASX section record | sector_metric_cet1 | 2025-12-31 | low | none |
 | ASX sector metric: loan growth | financial:CBA.AX:2026-07-02:062 ASX section record | sector_metric_loan_growth | 2025-12-31 | low | none |
 | ASX sector metric: arrears | financial:CBA.AX:2026-07-02:063 ASX section record | sector_metric_arrears | 2025-12-31 | low | none |
-| ASX sector metric: impairment | financial:CBA.AX:2026-07-02:064 ASX section record | sector_metric_impairment | 2025-12-31 | medium | none |
+| ASX sector metric: impairment | financial:CBA.AX:2026-07-02:064 ASX section record | sector_metric_impairment | 2025-12-31 | low | none |
 | ASX sector metric: dividend | financial:CBA.AX:2026-07-02:065 ASX section record | sector_metric_dividend | 2025-12-31 | low | none |
 | ASX sector metric: ROE | financial:CBA.AX:2026-07-02:066 ASX section record | sector_metric_roe | 2025-12-31 | low | none |
 
@@ -67,14 +67,14 @@
 | financial:CBA.AX:2026-07-02:039 | banks | CET1 | available | low | none |
 | financial:CBA.AX:2026-07-02:040 | banks | loan growth | available | low | none |
 | financial:CBA.AX:2026-07-02:041 | banks | arrears | available | low | none |
-| financial:CBA.AX:2026-07-02:042 | banks | impairment | available | medium | none |
+| financial:CBA.AX:2026-07-02:042 | banks | impairment | available | low | none |
 | financial:CBA.AX:2026-07-02:043 | banks | dividend | available | low | none |
 | financial:CBA.AX:2026-07-02:044 | banks | ROE | available | low | none |
 | financial:CBA.AX:2026-07-02:060 | banks | net interest margin | available | low | none |
 | financial:CBA.AX:2026-07-02:061 | banks | CET1 | available | low | none |
 | financial:CBA.AX:2026-07-02:062 | banks | loan growth | available | low | none |
 | financial:CBA.AX:2026-07-02:063 | banks | arrears | available | low | none |
-| financial:CBA.AX:2026-07-02:064 | banks | impairment | available | medium | none |
+| financial:CBA.AX:2026-07-02:064 | banks | impairment | available | low | none |
 | financial:CBA.AX:2026-07-02:065 | banks | dividend | available | low | none |
 | financial:CBA.AX:2026-07-02:066 | banks | ROE | available | low | none |
 

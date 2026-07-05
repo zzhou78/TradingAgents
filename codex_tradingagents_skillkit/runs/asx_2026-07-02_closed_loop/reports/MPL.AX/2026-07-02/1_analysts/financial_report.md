@@ -30,7 +30,7 @@
 | ASX sector metric: premium growth | financial:MPL.AX:2026-07-02:016 ASX section record | sector_metric_premium_growth | 2025-12-31 | low | none |
 | ASX sector metric: claims ratio | financial:MPL.AX:2026-07-02:017 ASX section record | sector_metric_claims_ratio | 2025-12-31 | medium | none |
 | ASX sector metric: membership | financial:MPL.AX:2026-07-02:018 ASX section record | sector_metric_membership | 2025-12-31 | medium | none |
-| ASX sector metric: capital adequacy | financial:MPL.AX:2026-07-02:019 ASX section record | sector_metric_capital_adequacy | 2025-12-31 | medium | none |
+| ASX sector metric: capital adequacy | financial:MPL.AX:2026-07-02:019 ASX section record | sector_metric_capital_adequacy | 2025-12-31 | low | none |
 
 ## ASX Sector Metric Evidence
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
@@ -38,7 +38,7 @@
 | financial:MPL.AX:2026-07-02:016 | health_insurers | premium growth | available | low | none |
 | financial:MPL.AX:2026-07-02:017 | health_insurers | claims ratio | available | medium | none |
 | financial:MPL.AX:2026-07-02:018 | health_insurers | membership | available | medium | none |
-| financial:MPL.AX:2026-07-02:019 | health_insurers | capital adequacy | available | medium | none |
+| financial:MPL.AX:2026-07-02:019 | health_insurers | capital adequacy | available | low | none |
 
 ## Evidence gaps
 - ASX financial-report claims use official ASX/company IR section records and sector metrics, not SEC exhibit assumptions.

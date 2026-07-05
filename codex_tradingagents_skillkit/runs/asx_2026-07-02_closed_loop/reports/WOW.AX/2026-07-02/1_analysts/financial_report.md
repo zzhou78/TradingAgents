@@ -33,7 +33,7 @@
 | Cash-flow evidence | financial:WOW.AX:2026-07-02:004 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
 | ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:016 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | none |
 | ASX sector metric: EBIT margin | financial:WOW.AX:2026-07-02:017 ASX section record | sector_metric_ebit_margin | 2025-12-31 | medium | none |
-| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:018 ASX section record | sector_metric_inventory | 2025-12-31 | medium | none |
+| ASX sector metric: inventory | financial:WOW.AX:2026-07-02:018 ASX section record | sector_metric_inventory | 2025-12-31 | low | none |
 | ASX sector metric: capex | financial:WOW.AX:2026-07-02:019 ASX section record | sector_metric_capex | 2025-12-31 | low | none |
 | ASX sector metric: dividend | financial:WOW.AX:2026-07-02:020 ASX section record | sector_metric_dividends | 2025-12-31 | low | none |
 | ASX sector metric: sales growth | financial:WOW.AX:2026-07-02:036 ASX section record | sector_metric_sales_growth | 2025-12-31 | low | sales growth was not identified in extracted ASX document text. |
@@ -72,7 +72,7 @@
 |---|---|---|---|---|---|
 | financial:WOW.AX:2026-07-02:016 | retailers | sales growth | available | low | none |
 | financial:WOW.AX:2026-07-02:017 | retailers | EBIT margin | available | medium | none |
-| financial:WOW.AX:2026-07-02:018 | retailers | inventory | available | medium | none |
+| financial:WOW.AX:2026-07-02:018 | retailers | inventory | available | low | none |
 | financial:WOW.AX:2026-07-02:019 | retailers | capex | available | low | none |
 | financial:WOW.AX:2026-07-02:020 | retailers | dividend | available | low | none |
 | financial:WOW.AX:2026-07-02:036 | retailers | sales growth | unavailable | low | sales growth was not identified in extracted ASX document text. |

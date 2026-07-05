@@ -279,6 +279,31 @@ ASX_REQUIRED_SECTOR_METRICS = {
     "retailers": {"sales_growth", "ebit_margin", "inventory", "capex", "dividends"},
 }
 
+DENSE_FINANCIAL_ROW_LABELS = [
+    "inventories",
+    "inventory",
+    "trade payables",
+    "receivables",
+    "net investment in inventory",
+    "claims expense",
+    "gross profit",
+    "management expenses",
+    "operating profit",
+    "sales",
+    "ebit",
+    "revenue",
+    "assets",
+    "liabilities",
+]
+
+
+def _dense_financial_numeric_text(text: str) -> bool:
+    numeric_count = len(re.findall(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?", text, re.IGNORECASE))
+    lower = text.lower()
+    label_hits = sum(1 for label in DENSE_FINANCIAL_ROW_LABELS if re.search(rf"\b{re.escape(label)}\b", lower))
+    repeated_values = bool(re.search(r"\b[A-Za-z][A-Za-z /&-]{2,}\s+\(?[\d,]+(?:\.\d+)?\)?\s+\(?[\d,]+(?:\.\d+)?\)?\s+\(?-?[\d,]+(?:\.\d+)?\)?", text))
+    return numeric_count > 4 and label_hits >= 2 and repeated_values
+
 
 def _asx_sector_metric_quality_errors(evidence_path: Path | None, records: list[dict[str, object]]) -> list[str]:
     if not _is_asx_evidence(evidence_path):
@@ -651,6 +676,9 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
                     association_score = int(float(data.get("association_score", "0").strip() or "0"))
                 except ValueError:
                     association_score = 0
+                row_label = data.get("row_label", "").strip().lower()
+                column_label = data.get("column_label", "").strip().lower()
+                support_text = data.get("supporting_sentence", "") or data.get("extracted_value_or_phrase", "")
                 if clean_value not in {"", "unavailable"} and association_score < 80:
                     errors.append("ASX metric audit populates clean_metric_value below accepted association threshold")
                     break
@@ -660,7 +688,15 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
                 if status == "context_only" and clean_value not in {"", "unavailable"}:
                     errors.append("ASX metric audit treats context-only text as an extracted metric value")
                     break
-                if status in {"context_only", "metric_mentioned_only"} and confidence in {"medium", "high"} and direction in {"supportive", "adverse"}:
+                if (
+                    association_score >= 90
+                    and _dense_financial_numeric_text(support_text)
+                    and row_label in {"", "unavailable"}
+                    and column_label in {"", "unavailable"}
+                ):
+                    errors.append("ASX metric audit has high association score on dense numeric text without row/column mapping")
+                    break
+                if status in {"context_only", "metric_mentioned_only", "table_row_unparsed"} and confidence in {"medium", "high"} and direction in {"supportive", "adverse"}:
                     errors.append("ASX metric audit counts weak metric evidence as strong directional support")
                     break
     rationale = _section(text, "## Rating Rationale") or text

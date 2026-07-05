@@ -21,7 +21,7 @@ Interpretation: structured fundamentals provide ratio and statement context only
 - premium growth: available via financial:MPL.AX:2026-07-02:016; confidence low.
 - claims ratio: available via financial:MPL.AX:2026-07-02:017; confidence medium.
 - membership: available via financial:MPL.AX:2026-07-02:018; confidence medium.
-- capital adequacy: available via financial:MPL.AX:2026-07-02:019; confidence medium.
+- capital adequacy: available via financial:MPL.AX:2026-07-02:019; confidence low.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

@@ -466,6 +466,20 @@ def test_metric_value_rejects_competing_label_value():
     assert cet1["clean_metric_value"] == "unavailable"
 
 
+def test_dense_parser_rejects_metric_label_with_later_narrative_numbers():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "home lending flow in Australia. We continue to look for ways to provide value to our customers. "
+        "CommBank Yello supported more than 360,000 customers across 75 offers in 2025.",
+        "loan_growth",
+    )
+
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["metric_value_status"] != "value_extracted"
+
+
 def test_metric_value_downgrades_table_of_contents_context():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -624,6 +638,43 @@ def test_wow_ebit_margin_prefers_82_bps_change_over_later_percentage():
     assert result["clean_metric_value"] == "82"
     assert result["value_unit"] == "bps"
     assert result["direction"] == "adverse"
+
+
+def test_dense_working_capital_inventory_row_is_not_nearest_number_extracted():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Inventories 4,169 4,187 (18) Trade payables (6,016) (5,815) (201) "
+        "Net investment in inventory increased by 44 $m compared with FY24.",
+        "inventory",
+    )
+
+    assert result["metric_value_status"] == "table_row_unparsed"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["association_score"] < 80
+    assert "dense" in result["association_reason"].lower()
+
+
+def test_pipe_table_inventory_row_preserves_row_column_period_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Metric | FY2025 $m | FY2024 $m | Variance $m\n"
+        "Inventories | 4,169 | 4,187 | (18)\n"
+        "Trade payables | (6,016) | (5,815) | (201)",
+        "inventory",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "4169"
+    assert result["value_unit"] == "$m"
+    assert result["row_label"] == "Inventories"
+    assert result["column_label"] == "FY2025 $m"
+    assert result["current_period_value"] == "4169"
+    assert result["prior_period_value"] == "4187"
+    assert result["variance_value"] == "-18"
 
 
 def test_mpl_claims_ratio_prefers_claims_expense_change_over_later_percentages():

@@ -28,7 +28,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -60,7 +60,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -90,7 +90,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -119,7 +119,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -147,7 +147,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -178,7 +178,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -209,7 +209,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -238,7 +238,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -267,7 +267,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -296,7 +296,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -325,7 +325,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -353,7 +353,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -383,7 +383,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -414,7 +414,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -444,7 +444,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -466,30 +466,34 @@
       "production"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "direction_extracted",
-    "association_score": 45,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
-    "supporting_sentence": "production, including highest copper production in 17 years at Escondida, a record at Spence and record Q4 production at Copper South Australia.",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "17",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
+    "supporting_sentence": "production, including highest copper production in 17 years at Escondida, a record at Spence and record Q4 production at Copper South Australia. 5% Reduction in operational GHG emissions (Scopes 1 and 2 emissions from our operated",
     "comparison_basis": "period-over-period wording in extracted filing/report phrase",
     "direction": "supportive",
-    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "production, including highest copper production in 17 years at Escondida, a reco",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "17",
+    "prior_period_value": "4",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:017",
@@ -516,24 +520,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "average realised prices for major assets including Escondida, Spence, Copper SA, WAIO and BMA.",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:018",
@@ -555,30 +563,34 @@
       "AISC"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "value_extracted",
-    "association_score": 91,
-    "association_reason": "label-value distance 7 tokens; unit per cent compatible",
-    "clean_metric_value": "4.7",
-    "value_unit": "per cent",
-    "value_context": "unit cost near 4.7 per cent",
-    "period_reference": "not specified",
-    "comparison_reference": "not specified",
-    "supporting_sentence": "Across the group, unit costs at our major assets were down 4.7 per cent year-on-year.",
-    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
-    "direction": "mixed",
-    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "unit cost reduction and WAIO remains the lowest-cost major iron ore producer in the world.",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
+    "direction": "supportive",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:019",
@@ -607,7 +619,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -652,24 +664,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "resources All investor resources Financial results & Operational reviews Annual reports Economic Contribution report Presentations & Briefings Economic & Commodity Outlook Dividends Shareholder online services Annual General meetings Shareh",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:021",
@@ -690,30 +706,34 @@
       "commodity exposure"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "2026",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
     "supporting_sentence": "Copper Metallurgical coal Nickel Potash Iron ore Australia Brazil Canada - Jansen Chile Peru - Antamina United States Offices 2026 Financial Results 2025 Financial Results 2024 Financial Results 2023 Financial Results Annual Report 2025 Eco",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "Copper Metallurgical coal Nickel Potash Iron ore Australia Brazil Canada - Janse",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "2026",
+    "prior_period_value": "2025",
+    "variance_value": "2024",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:022",
@@ -744,7 +764,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -776,7 +796,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -806,7 +826,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -835,7 +855,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -863,7 +883,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -894,7 +914,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -925,7 +945,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -954,7 +974,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -983,7 +1003,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1012,7 +1032,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1041,7 +1061,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1069,7 +1089,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1099,7 +1119,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1130,7 +1150,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1160,7 +1180,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1182,30 +1202,34 @@
       "production"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "direction_extracted",
-    "association_score": 45,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
-    "supporting_sentence": "production, including highest copper production in 17 years at Escondida, a record at Spence and record Q4 production at Copper South Australia.",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "17",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
+    "supporting_sentence": "production, including highest copper production in 17 years at Escondida, a record at Spence and record Q4 production at Copper South Australia. 5% Reduction in operational GHG emissions (Scopes 1 and 2 emissions from our operated",
     "comparison_basis": "period-over-period wording in extracted filing/report phrase",
     "direction": "supportive",
-    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "production, including highest copper production in 17 years at Escondida, a reco",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "17",
+    "prior_period_value": "4",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:038",
@@ -1232,24 +1256,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "average realised prices for major assets including Escondida, Spence, Copper SA, WAIO and BMA.",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:039",
@@ -1271,30 +1299,34 @@
       "AISC"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "value_extracted",
-    "association_score": 91,
-    "association_reason": "label-value distance 7 tokens; unit per cent compatible",
-    "clean_metric_value": "4.7",
-    "value_unit": "per cent",
-    "value_context": "unit cost near 4.7 per cent",
-    "period_reference": "not specified",
-    "comparison_reference": "not specified",
-    "supporting_sentence": "Across the group, unit costs at our major assets were down 4.7 per cent year-on-year.",
-    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
-    "direction": "mixed",
-    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "unit cost reduction and WAIO remains the lowest-cost major iron ore producer in the world.",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
+    "direction": "supportive",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:040",
@@ -1323,7 +1355,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -1368,24 +1400,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "resources All investor resources Financial results & Operational reviews Annual reports Economic Contribution report Presentations & Briefings Economic & Commodity Outlook Dividends Shareholder online services Annual General meetings Shareh",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:BHP.AX:2026-07-02:042",
@@ -1406,29 +1442,33 @@
       "commodity exposure"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:40:48+10:00",
+    "retrieval_time": "2026-07-05T12:58:52+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "2026",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
     "supporting_sentence": "Copper Metallurgical coal Nickel Potash Iron ore Australia Brazil Canada - Jansen Chile Peru - Antamina United States Offices 2026 Financial Results 2025 Financial Results 2024 Financial Results 2023 Financial Results Annual Report 2025 Eco",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "Copper Metallurgical coal Nickel Potash Iron ore Australia Brazil Canada - Janse",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "2026",
+    "prior_period_value": "2025",
+    "variance_value": "2024",
+    "variance_percent": "unavailable"
   }
 ]

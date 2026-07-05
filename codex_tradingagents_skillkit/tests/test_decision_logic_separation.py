@@ -548,6 +548,40 @@ def test_quality_validator_rejects_clean_value_below_association_threshold(tmp_p
     assert "ASX metric audit populates clean_metric_value below accepted association threshold" in errors
 
 
+def test_quality_validator_rejects_dense_high_score_without_row_mapping(tmp_path: Path):
+    validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
+    evidence_path = tmp_path / "evidence.json"
+    evidence_path.write_text('{"ticker": "WOW.AX"}', encoding="utf-8")
+    report_dir = tmp_path / "reports" / "WOW.AX" / "2026-07-02"
+    manager_path = report_dir / "2_research" / "manager.md"
+    manager_path.parent.mkdir(parents=True)
+    dense_sentence = (
+        "Inventories 4,169 4,187 (18) Trade payables (6,016) (5,815) (201) "
+        "Net investment in inventory increased by 44 $m compared with FY24."
+    )
+    manager_path.write_text(
+        f"""## Tool Outputs Used
+## Primary Rating Driver
+## Evidence Winner
+## Structured Evidence Matrix
+## Role Evidence Weighting
+## Rating-vs-Rating Reasoning
+10 EMA 95, 50 SMA 90, 200 SMA 80. Sector metric inventory adverse financial:WOW.AX:2026-07-02:011.
+## Debate Outcome Scorecard
+## Market Technicals as Confidence / Timing Modifier
+## Sector Metric Direction Audit
+| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| inventory | {dense_sentence} | 44 | $m | inventory near 44 $m | value_extracted | 95 | label-value distance 3 tokens; unit $m compatible | FY2025 | FY2024 | {dense_sentence} | period-over-period wording in extracted filing/report phrase | adverse | medium | clean value accepted | financial:WOW.AX:2026-07-02:011 | unavailable | unavailable | unavailable | unavailable |
+""",
+        encoding="utf-8",
+    )
+
+    errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
+
+    assert "ASX metric audit has high association score on dense numeric text without row/column mapping" in errors
+
+
 def test_metric_clean_value_unavailable_when_numbers_are_unlabelled():
     writer = _load_module(WRITER, "write_codex_session_role_reports")
     record = {

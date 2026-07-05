@@ -26,6 +26,10 @@ ASX_METRIC_AUDIT_FIELDS = [
     "row_label",
     "column_label",
     "source_page",
+    "current_period_value",
+    "prior_period_value",
+    "variance_value",
+    "variance_percent",
 ]
 
 

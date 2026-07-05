@@ -137,7 +137,7 @@ def _asx_metric_direction(record: dict[str, object]) -> str:
     metric_value_status = str(record.get("metric_value_status") or "").lower()
     if metric_value_status == "context_only":
         return "context_only"
-    if metric_value_status == "metric_mentioned_only":
+    if metric_value_status in {"metric_mentioned_only", "table_row_unparsed"}:
         return "neutral"
     if metric_value_status == "unavailable":
         return "unavailable"
@@ -321,7 +321,7 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 score_value = int(float(association_score))
             except ValueError:
                 score_value = 0
-            if score_value < 80 or metric_status in {"direction_extracted", "metric_mentioned_only", "context_only", "unavailable"}:
+            if score_value < 80 or metric_status in {"direction_extracted", "metric_mentioned_only", "context_only", "table_row_unparsed", "unavailable"}:
                 return {
                     "clean_metric_value": "unavailable",
                     "value_unit": "unavailable",
@@ -335,6 +335,10 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                     "row_label": _clean_cell(record.get("row_label") or "unavailable"),
                     "column_label": _clean_cell(record.get("column_label") or "unavailable"),
                     "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+                    "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
+                    "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
+                    "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
+                    "variance_percent": _clean_cell(record.get("variance_percent") or "unavailable"),
                 }
         return {
             "clean_metric_value": _clean_cell(explicit),
@@ -349,6 +353,10 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
             "row_label": _clean_cell(record.get("row_label") or "unavailable"),
             "column_label": _clean_cell(record.get("column_label") or "unavailable"),
             "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+            "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
+            "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
+            "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
+            "variance_percent": _clean_cell(record.get("variance_percent") or "unavailable"),
         }
     sentence = _metric_supporting_sentence(record)
     metric_name = str(record.get("metric_name") or "").strip()
@@ -370,6 +378,10 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 "row_label": _clean_cell(profile_result.get("row_label") or "unavailable"),
                 "column_label": _clean_cell(profile_result.get("column_label") or "unavailable"),
                 "source_page": _clean_cell(profile_result.get("source_page") or "unavailable"),
+                "current_period_value": _clean_cell(profile_result.get("current_period_value") or "unavailable"),
+                "prior_period_value": _clean_cell(profile_result.get("prior_period_value") or "unavailable"),
+                "variance_value": _clean_cell(profile_result.get("variance_value") or "unavailable"),
+                "variance_percent": _clean_cell(profile_result.get("variance_percent") or "unavailable"),
             }
     metric_label = _clean_cell(record.get("metric_label") or record.get("metric_name") or "metric")
     patterns = [
@@ -417,6 +429,10 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 "row_label": "unavailable",
                 "column_label": "unavailable",
                 "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable",
             }
     return {
         "clean_metric_value": "unavailable",
@@ -431,6 +447,10 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
         "row_label": _clean_cell(record.get("row_label") or "unavailable"),
         "column_label": _clean_cell(record.get("column_label") or "unavailable"),
         "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+        "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
+        "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
+        "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
+        "variance_percent": _clean_cell(record.get("variance_percent") or "unavailable"),
     }
 
 
@@ -441,6 +461,8 @@ def _clean_metric_value(record: dict[str, object]) -> str:
 def _metric_confidence_and_reason(record: dict[str, object], direction: str) -> tuple[str, str]:
     base = _clean_cell(record.get("confidence") or "low").lower()
     text = _metric_evidence_text(record)
+    if str(record.get("metric_value_status") or "").lower() == "table_row_unparsed":
+        return "low", "metric row appears present, but dense table values were not safely mapped to columns"
     if direction == "context_only" or _is_navigation_or_page_list_text(text):
         return "low", "downgraded because extracted text is navigation/page-list context rather than metric evidence"
     if direction == "unavailable":
@@ -520,6 +542,10 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
                 "row_label": value_parts["row_label"],
                 "column_label": value_parts["column_label"],
                 "source_page": value_parts["source_page"],
+                "current_period_value": value_parts["current_period_value"],
+                "prior_period_value": value_parts["prior_period_value"],
+                "variance_value": value_parts["variance_value"],
+                "variance_percent": value_parts["variance_percent"],
             }
         )
     return audit_records
@@ -542,10 +568,10 @@ def _asx_best_metric_records(records: list[dict[str, object]]) -> list[dict[str,
 def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
     audit_records = _asx_metric_audit_records(records)
     if not audit_records:
-        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | 0 | no ASX sector metric records extracted | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited | unavailable | unavailable | unavailable | unavailable |"
+        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page | current_period_value | prior_period_value | variance_value | variance_percent |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | 0 | no ASX sector metric records extracted | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable |"
     rows = [
-        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page | current_period_value | prior_period_value | variance_value | variance_percent |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for item in audit_records:
         rows.append(
@@ -572,6 +598,10 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                     _clean_cell(item["row_label"]),
                     _clean_cell(item["column_label"]),
                     _clean_cell(item["source_page"]),
+                    _clean_cell(item["current_period_value"]),
+                    _clean_cell(item["prior_period_value"]),
+                    _clean_cell(item["variance_value"]),
+                    _clean_cell(item["variance_percent"]),
                 ]
             )
             + " |"

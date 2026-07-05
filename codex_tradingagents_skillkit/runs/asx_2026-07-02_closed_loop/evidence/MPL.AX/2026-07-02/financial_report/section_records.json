@@ -26,7 +26,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -56,7 +56,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -86,7 +86,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -115,7 +115,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -145,7 +145,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -174,7 +174,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -205,7 +205,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -234,7 +234,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -263,7 +263,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -292,7 +292,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -321,7 +321,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -349,7 +349,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -377,7 +377,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -408,7 +408,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -438,7 +438,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -466,7 +466,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -483,7 +483,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:017",
@@ -510,24 +514,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "value_extracted",
-    "association_score": 87,
-    "association_reason": "label-value distance 9 tokens; unit % compatible",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
     "clean_metric_value": "3.3",
     "value_unit": "%",
-    "value_context": "claims expense near 3.3%",
-    "period_reference": "not specified",
-    "comparison_reference": "not specified",
-    "supporting_sentence": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3% Gross profit 1,396.4 1,307.",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "variance_percent",
+    "comparison_reference": "prior_period_value",
+    "supporting_sentence": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3%",
     "comparison_basis": "period-over-period wording in extracted filing/report phrase",
     "direction": "adverse",
     "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3%",
+    "column_label": "variance_percent",
+    "source_page": "unavailable",
+    "current_period_value": "-6814.6",
+    "prior_period_value": "-6595.8",
+    "variance_value": "unavailable",
+    "variance_percent": "3.3"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:018",
@@ -554,7 +562,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "value_extracted",
     "association_score": 86,
@@ -571,7 +579,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:MPL.AX:2026-07-02:019",
@@ -592,29 +604,33 @@
       "capital adequacy"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:56+10:00",
+    "retrieval_time": "2026-07-05T13:01:04+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "value_extracted",
-    "association_score": 96,
-    "association_reason": "label-value distance 2 tokens; unit $m compatible",
-    "clean_metric_value": "250",
-    "value_unit": "$m",
-    "value_context": "capital adequacy near $250 m",
-    "period_reference": "FY2023",
-    "comparison_reference": "FY2022",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
     "supporting_sentence": "capital adequacy requirement of $250 million for Medibank, with effect from 1 July 2023, following a review of the 2022 cybercrime event.",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   }
 ]

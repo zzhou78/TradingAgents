@@ -2,15 +2,15 @@
   "ticker": "CBA.AX",
   "trade_date": "2026-07-02",
   "evidence_as_of_date": "2026-07-02",
-  "run_executed_at": "2026-07-05T09:40:28+10:00",
+  "run_executed_at": "2026-07-05T12:58:32+10:00",
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-  "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T09:40:28+10:00",
+  "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T12:58:32+10:00",
   "authoritative_result_folder": true,
   "status": "pending",
   "run_metadata": {
     "trade_date": "2026-07-02",
     "evidence_as_of_date": "2026-07-02",
-    "run_executed_at": "2026-07-05T09:40:28+10:00",
+    "run_executed_at": "2026-07-05T12:58:32+10:00",
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "market": "ASX",
     "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -21,7 +21,7 @@
       "MPL.AX",
       "WOW.AX"
     ],
-    "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T09:40:28+10:00",
+    "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T12:58:32+10:00",
     "authoritative_result_folder": true,
     "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "status": "pending",
@@ -45,7 +45,7 @@
             "start_date": "2026-06-02",
             "end_date": "2026-07-02"
           },
-          "output": "# Stock data for CBA.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 09:40:49\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,161.0,163.29,160.14,163.0,2110667,0.0,0.0\r\n2026-06-03,163.75,165.44,162.96,164.76,1780123,0.0,0.0\r\n2026-06-04,164.86,164.89,161.7,163.73,1528064,0.0,0.0\r\n2026-06-05,164.48,164.48,160.0,160.9,2383963,0.0,0.0\r\n2026-06-09,160.43,161.96,158.32,160.48,2993060,0.0,0.0\r\n2026-06-10,159.92,161.5,158.8,160.24,2717126,0.0,0.0\r\n2026-06-11,158.6,159.09,156.42,156.42,2555692,0.0,0.0\r\n2026-06-12,158.16,160.3,157.71,159.51,1819896,0.0,0.0\r\n2026-06-15,160.0,162.6,159.91,161.79,1736947,0.0,0.0\r\n2026-06-16,159.25,162.22,158.21,161.88,1409081,0.0,0.0\r\n2026-06-17,162.0,164.17,161.6,163.71,1958334,0.0,0.0\r\n2026-06-18,164.42,165.45,161.92,162.23,2730130,0.0,0.0\r\n2026-06-19,162.15,162.4,160.34,162.4,4968164,0.0,0.0\r\n2026-06-22,162.4,164.13,162.33,163.41,1520823,0.0,0.0\r\n2026-06-23,163.5,164.9,163.06,164.21,2277025,0.0,0.0\r\n2026-06-24,166.38,167.39,164.27,164.79,2754085,0.0,0.0\r\n2026-06-25,164.79,165.65,162.64,162.7,2761711,0.0,0.0\r\n2026-06-26,162.0,163.2,161.28,162.02,2280044,0.0,0.0\r\n2026-06-29,162.49,163.78,161.74,163.61,1791605,0.0,0.0\r\n2026-06-30,164.4,166.06,163.7,164.62,2549888,0.0,0.0\r\n2026-07-01,164.2,164.25,160.29,160.73,2322125,0.0,0.0\r\n2026-07-02,160.0,162.02,158.87,161.14,2177202,0.0,0.0\r\n"
+          "output": "# Stock data for CBA.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 12:58:53\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,161.0,163.29,160.14,163.0,2110667,0.0,0.0\r\n2026-06-03,163.75,165.44,162.96,164.76,1780123,0.0,0.0\r\n2026-06-04,164.86,164.89,161.7,163.73,1528064,0.0,0.0\r\n2026-06-05,164.48,164.48,160.0,160.9,2383963,0.0,0.0\r\n2026-06-09,160.43,161.96,158.32,160.48,2993060,0.0,0.0\r\n2026-06-10,159.92,161.5,158.8,160.24,2717126,0.0,0.0\r\n2026-06-11,158.6,159.09,156.42,156.42,2555692,0.0,0.0\r\n2026-06-12,158.16,160.3,157.71,159.51,1819896,0.0,0.0\r\n2026-06-15,160.0,162.6,159.91,161.79,1736947,0.0,0.0\r\n2026-06-16,159.25,162.22,158.21,161.88,1409081,0.0,0.0\r\n2026-06-17,162.0,164.17,161.6,163.71,1958334,0.0,0.0\r\n2026-06-18,164.42,165.45,161.92,162.23,2730130,0.0,0.0\r\n2026-06-19,162.15,162.4,160.34,162.4,4968164,0.0,0.0\r\n2026-06-22,162.4,164.13,162.33,163.41,1520823,0.0,0.0\r\n2026-06-23,163.5,164.9,163.06,164.21,2277025,0.0,0.0\r\n2026-06-24,166.38,167.39,164.27,164.79,2754085,0.0,0.0\r\n2026-06-25,164.79,165.65,162.64,162.7,2761711,0.0,0.0\r\n2026-06-26,162.0,163.2,161.28,162.02,2280044,0.0,0.0\r\n2026-06-29,162.49,163.78,161.74,163.61,1791605,0.0,0.0\r\n2026-06-30,164.4,166.06,163.7,164.62,2549888,0.0,0.0\r\n2026-07-01,164.2,164.25,160.29,160.73,2322125,0.0,0.0\r\n2026-07-02,160.0,162.02,158.87,161.14,2177202,0.0,0.0\r\n"
         },
         "get_verified_market_snapshot": {
           "status": "ok",
@@ -167,7 +167,7 @@
           "args": {
             "ticker": "CBA.AX"
           },
-          "output": "# Insider Transactions data for CBA.AX\n# Data retrieved on: 2026-07-05 09:41:07\n\n,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership\r\n0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D\r\n1,312,35771.0,,Purchase at price 114.65 per share.,McAloon (Jane Frances),Director (Non-Executive),,2026-05-18,D\r\n2,530,59599.0,,Purchase at price 112.45 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-05-15,D\r\n3,54,6033.0,,Other at price 111.73 per share.,Currie (Alistair),Director (Non-Executive),,2026-05-14,D\r\n4,74,8267.0,,Other at price 111.73 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-05-14,D\r\n5,6,717.0,,Acquisition at price 119.53 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-03-30,D\r\n6,37,4422.0,,Acquisition at price 119.53 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-03-30,D\r\n7,62,7804.0,,Purchase at price 125.88 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-02-17,D\r\n8,40,4862.0,,Other at price 121.56 per share.,Currie (Alistair),Director (Non-Executive),,2026-02-12,D\r\n9,67,8144.0,,Other at price 121.56 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-02-12,D\r\n10,700,87636.0,,Purchase at price 125.19 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-02-12,D\r\n11,48,4888.0,,Purchase at price 101.85 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-17,D\r\n12,41,4228.0,,Purchase at price 103.12 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-14,D\r\n13,28,2952.0,,Other at price 105.46 per share.,Currie (Alistair),Director (Non-Executive),,2025-11-12,D\r\n14,50,5273.0,,Other at price 105.46 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-11-12,D\r\n15,300,,,,McAloon (Jane Frances),Director (Non-Executive),,2025-10-01,D\r\n16,58,6429.0,,Acquisition at price 110.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-09-29,D\r\n17,39,4323.0,,Acquisition at price 110.85 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-09-29,D\r\n18,20490,,,,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n19,20490,2239804.0,,Sale at price 109.31 per share.,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n20,49,5356.0,,Purchase at price 109.32 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-08-14,D\r\n21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D\r\n22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D\r\n23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D\r\n24,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D\r\n25,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D\r\n26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D\r\n27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D\r\n28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D\r\n29,67,7247.0,,Other at price 108.17 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-05-15,D\r\n30,53,4994.0,,Acquisition at price 94.24 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-03-28,D\r\n31,37,3486.0,,Acquisition at price 94.24 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-03-28,D\r\n32,6748,,,,Lewis (Sian),Former,,2025-02-16,D\r\n33,10000,,,,Williams (Nigel),Former,,2025-02-16,D\r\n34,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D\r\n35,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D\r\n36,57,5628.0,,Purchase at price 98.75 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2024-11-15,D\r\n37,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D\r\n38,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D\r\n39,2458,,,,Howitt (Katherine Neisha),Independent Non-Executive Director,,2024-10-01,D\r\n40,59,5762.0,,Acquisition at price 97.66 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-09-27,D\r\n41,102,9368.0,,Other at price 91.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-08-16,D\r\n42,75,6888.0,,Other at price 91.85 per share.,Templeman-Jones (Anne),Independent Non-Executive Director,,2024-08-16,D\r\n43,125,11481.0,,Other at price 91.85 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-08-16,D\r\n44,19220,88.0,,Sale at price 0.00 per share.,Comyn (Matthew),Chief Executive Officer,,2024-08-15,D\r\n"
+          "output": "# Insider Transactions data for CBA.AX\n# Data retrieved on: 2026-07-05 12:59:10\n\n,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership\r\n0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D\r\n1,312,35771.0,,Purchase at price 114.65 per share.,McAloon (Jane Frances),Director (Non-Executive),,2026-05-18,D\r\n2,530,59599.0,,Purchase at price 112.45 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-05-15,D\r\n3,54,6033.0,,Other at price 111.73 per share.,Currie (Alistair),Director (Non-Executive),,2026-05-14,D\r\n4,74,8267.0,,Other at price 111.73 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-05-14,D\r\n5,6,717.0,,Acquisition at price 119.53 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-03-30,D\r\n6,37,4422.0,,Acquisition at price 119.53 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-03-30,D\r\n7,62,7804.0,,Purchase at price 125.88 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2026-02-17,D\r\n8,40,4862.0,,Other at price 121.56 per share.,Currie (Alistair),Director (Non-Executive),,2026-02-12,D\r\n9,67,8144.0,,Other at price 121.56 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2026-02-12,D\r\n10,700,87636.0,,Purchase at price 125.19 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-02-12,D\r\n11,48,4888.0,,Purchase at price 101.85 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-17,D\r\n12,41,4228.0,,Purchase at price 103.12 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-11-14,D\r\n13,28,2952.0,,Other at price 105.46 per share.,Currie (Alistair),Director (Non-Executive),,2025-11-12,D\r\n14,50,5273.0,,Other at price 105.46 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-11-12,D\r\n15,300,,,,McAloon (Jane Frances),Director (Non-Executive),,2025-10-01,D\r\n16,58,6429.0,,Acquisition at price 110.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-09-29,D\r\n17,39,4323.0,,Acquisition at price 110.85 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-09-29,D\r\n18,20490,,,,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n19,20490,2239804.0,,Sale at price 109.31 per share.,Comyn (Matthew),Chief Executive Officer,,2025-08-14,D\r\n20,49,5356.0,,Purchase at price 109.32 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-08-14,D\r\n21,75,8198.0,,Purchase at price 109.32 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-08-14,D\r\n22,174,,,,Munroe (Gavin),Divisional Officer,,2025-06-30,D\r\n23,4488,,,,Shortt (Vittoria),Other Executive,,2025-06-30,D\r\n24,11702,,,,Docherty (Alan),Chief Financial Officer,,2025-06-30,D\r\n25,15076,,,,Vacy-Lyle (Mike),Divisional Officer,,2025-06-30,D\r\n26,94,10592.0,,Purchase at price 112.69 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-21,D\r\n27,105,11365.0,,Purchase at price 108.24 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2025-05-15,D\r\n28,58,6273.0,,Other at price 108.17 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-05-15,D\r\n29,67,7247.0,,Other at price 108.17 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-05-15,D\r\n30,53,4994.0,,Acquisition at price 94.24 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-03-28,D\r\n31,37,3486.0,,Acquisition at price 94.24 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-03-28,D\r\n32,6748,,,,Lewis (Sian),Former,,2025-02-16,D\r\n33,10000,,,,Williams (Nigel),Former,,2025-02-16,D\r\n34,75,7878.0,,Other at price 105.05 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2025-02-13,D\r\n35,48,5042.0,,Other at price 105.05 per share.,Howitt (Katherine Neisha),Independent Non-Executive Director,,2025-02-13,D\r\n36,57,5628.0,,Purchase at price 98.75 per share.,Galbo (Julie Birgitte),Independent Non-Executive Director,,2024-11-15,D\r\n37,72,7061.0,,Other at price 98.08 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-11-14,D\r\n38,89,8728.0,,Other at price 98.08 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-11-14,D\r\n39,2458,,,,Howitt (Katherine Neisha),Independent Non-Executive Director,,2024-10-01,D\r\n40,59,5762.0,,Acquisition at price 97.66 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-09-27,D\r\n41,102,9368.0,,Other at price 91.85 per share.,Padbury (Mary Louise),Independent Non-Executive Director,,2024-08-16,D\r\n42,75,6888.0,,Other at price 91.85 per share.,Templeman-Jones (Anne),Independent Non-Executive Director,,2024-08-16,D\r\n43,125,11481.0,,Other at price 91.85 per share.,Whitfield (Robert John),Independent Non-Executive Director,,2024-08-16,D\r\n44,19220,88.0,,Sale at price 0.00 per share.,Comyn (Matthew),Chief Executive Officer,,2024-08-15,D\r\n"
         }
       },
       "structured_evidence": {
@@ -188,7 +188,7 @@
             "ticker": "CBA.AX",
             "curr_date": "2026-07-02"
           },
-          "output": "# Company Fundamentals for CBA.AX\n# Data retrieved on: 2026-07-05 09:41:07\n\nName: Commonwealth Bank of Australia\nSector: Financial Services\nIndustry: Banks - Diversified\nMarket Cap: 275933888512\nPE Ratio (TTM): 26.61613\nForward PE: 24.546358\nPEG Ratio: 3.49\nPrice to Book: 3.5727897\nEPS (TTM): 6.2\nForward EPS: 6.72279\nDividend Yield: 3.0\nBeta: 0.803\n52 Week High: 185.59\n52 Week Low: 146.98\n50 Day Average: 165.0706\n200 Day Average: 165.4109\nRevenue (TTM): 28466999296\nGross Profit: 28466999296\nNet Income: 10403000320\nProfit Margin: 0.36354\nOperating Margin: 0.55507\nReturn on Equity: 0.13644\nReturn on Assets: 0.0076599997\nBook Value: 46.188"
+          "output": "# Company Fundamentals for CBA.AX\n# Data retrieved on: 2026-07-05 12:59:11\n\nName: Commonwealth Bank of Australia\nSector: Financial Services\nIndustry: Banks - Diversified\nMarket Cap: 275933888512\nPE Ratio (TTM): 26.61613\nForward PE: 24.546358\nPEG Ratio: 3.49\nPrice to Book: 3.5727897\nEPS (TTM): 6.2\nForward EPS: 6.72279\nDividend Yield: 3.0\nBeta: 0.803\n52 Week High: 185.59\n52 Week Low: 146.98\n50 Day Average: 165.0706\n200 Day Average: 165.4109\nRevenue (TTM): 28466999296\nGross Profit: 28466999296\nNet Income: 10403000320\nProfit Margin: 0.36354\nOperating Margin: 0.55507\nReturn on Equity: 0.13644\nReturn on Assets: 0.0076599997\nBook Value: 46.188"
         },
         "get_balance_sheet": {
           "status": "ok",
@@ -197,7 +197,7 @@
             "freq": "quarterly",
             "curr_date": "2026-07-02"
           },
-          "output": "# Balance Sheet data for CBA.AX (quarterly)\n# Data retrieved on: 2026-07-05 09:41:07\n\n,2025-12-31,2025-06-30,2024-12-31\r\nTreasury Shares Number,1338636.0,1620212.0,1463595.0\r\nOrdinary Shares Number,1672123722.0,1671842146.0,1671998763.0\r\nShare Issued,1673462358.0,1673462358.0,1673462358.0\r\nNet Debt,117533000000.0,158452000000.0,121070000000.0\r\nTotal Debt,207438000000.0,216232000000.0,203847000000.0\r\nTangible Book Value,68936000000.0,70694000000.0,67481000000.0\r\nInvested Capital,284670000000.0,292731000000.0,279111000000.0\r\nNet Tangible Assets,68936000000.0,70694000000.0,67481000000.0\r\nCommon Stock Equity,77232000000.0,78776000000.0,75264000000.0\r\nTotal Capitalization,284670000000.0,292731000000.0,279111000000.0\r\nTotal Equity Gross Minority Interest,77232000000.0,78776000000.0,75264000000.0\r\nMinority Interest,,,0.0\r\nStockholders Equity,77232000000.0,78776000000.0,75264000000.0\r\nTreasury Stock,195000000.0,215000000.0,189000000.0\r\nRetained Earnings,45019000000.0,43974000000.0,42578000000.0\r\nCapital Stock,33775000000.0,33775000000.0,33775000000.0\r\nCommon Stock,33775000000.0,33775000000.0,33775000000.0\r\nTotal Liabilities Net Minority Interest,1331496000000.0,1275023000000.0,1233302000000.0\r\nDerivative Product Liabilities,22477000000.0,22493000000.0,36012000000.0\r\nLong Term Debt And Capital Lease Obligation,207438000000.0,216232000000.0,203847000000.0\r\nPayables,33379000000.0,40492000000.0,28020000000.0\r\nOther Payable,32982000000.0,28275000000.0,27599000000.0\r\nTotal Tax Payable,397000000.0,780000000.0,421000000.0\r\nAccounts Payable,,11437000000.0,\r\nTotal Assets,1408728000000.0,1353799000000.0,1308566000000.0\r\nDefined Pension Benefit,,596000000.0,\r\nInvestments And Advances,253035000000.0,174651000000.0,232590000000.0\r\nInvestmentin Financial Assets,253035000000.0,173832000000.0,231819000000.0\r\nAvailable For Sale Securities,115686000000.0,107651000000.0,103026000000.0\r\nFinancial Assets Designatedas Fair Value Through Profitor Loss Total,117676000000.0,51000000.0,87650000000.0\r\nTrading Securities,,41411000000.0,\r\nLong Term Equity Investment,,819000000.0,771000000.0\r\nGoodwill And Other Intangible Assets,8296000000.0,8082000000.0,7783000000.0\r\nOther Intangible Assets,3026000000.0,2793000000.0,2501000000.0\r\nGoodwill,5270000000.0,5289000000.0,5282000000.0\r\nNet PPE,3537000000.0,3563000000.0,3629000000.0\r\nPrepaid Assets,,850000000.0,\r\nReceivables,,4899000000.0,\r\nTaxes Receivable,,30000000.0,\r\nCash And Cash Equivalents,89905000000.0,55503000000.0,82777000000.0\r\nCash Financial,82606000000.0,54381000000.0,76498000000.0\r\nCash Cash Equivalents And Federal Funds Sold,89905000000.0,134409000000.0,82777000000.0\r\n"
+          "output": "# Balance Sheet data for CBA.AX (quarterly)\n# Data retrieved on: 2026-07-05 12:59:11\n\n,2025-12-31,2025-06-30,2024-12-31\r\nTreasury Shares Number,1338636.0,1620212.0,1463595.0\r\nOrdinary Shares Number,1672123722.0,1671842146.0,1671998763.0\r\nShare Issued,1673462358.0,1673462358.0,1673462358.0\r\nNet Debt,117533000000.0,158452000000.0,121070000000.0\r\nTotal Debt,207438000000.0,216232000000.0,203847000000.0\r\nTangible Book Value,68936000000.0,70694000000.0,67481000000.0\r\nInvested Capital,284670000000.0,292731000000.0,279111000000.0\r\nNet Tangible Assets,68936000000.0,70694000000.0,67481000000.0\r\nCommon Stock Equity,77232000000.0,78776000000.0,75264000000.0\r\nTotal Capitalization,284670000000.0,292731000000.0,279111000000.0\r\nTotal Equity Gross Minority Interest,77232000000.0,78776000000.0,75264000000.0\r\nMinority Interest,,,0.0\r\nStockholders Equity,77232000000.0,78776000000.0,75264000000.0\r\nTreasury Stock,195000000.0,215000000.0,189000000.0\r\nRetained Earnings,45019000000.0,43974000000.0,42578000000.0\r\nCapital Stock,33775000000.0,33775000000.0,33775000000.0\r\nCommon Stock,33775000000.0,33775000000.0,33775000000.0\r\nTotal Liabilities Net Minority Interest,1331496000000.0,1275023000000.0,1233302000000.0\r\nDerivative Product Liabilities,22477000000.0,22493000000.0,36012000000.0\r\nLong Term Debt And Capital Lease Obligation,207438000000.0,216232000000.0,203847000000.0\r\nPayables,33379000000.0,40492000000.0,28020000000.0\r\nOther Payable,32982000000.0,28275000000.0,27599000000.0\r\nTotal Tax Payable,397000000.0,780000000.0,421000000.0\r\nAccounts Payable,,11437000000.0,\r\nTotal Assets,1408728000000.0,1353799000000.0,1308566000000.0\r\nDefined Pension Benefit,,596000000.0,\r\nInvestments And Advances,253035000000.0,174651000000.0,232590000000.0\r\nInvestmentin Financial Assets,253035000000.0,173832000000.0,231819000000.0\r\nAvailable For Sale Securities,115686000000.0,107651000000.0,103026000000.0\r\nFinancial Assets Designatedas Fair Value Through Profitor Loss Total,117676000000.0,51000000.0,87650000000.0\r\nTrading Securities,,41411000000.0,\r\nLong Term Equity Investment,,819000000.0,771000000.0\r\nGoodwill And Other Intangible Assets,8296000000.0,8082000000.0,7783000000.0\r\nOther Intangible Assets,3026000000.0,2793000000.0,2501000000.0\r\nGoodwill,5270000000.0,5289000000.0,5282000000.0\r\nNet PPE,3537000000.0,3563000000.0,3629000000.0\r\nPrepaid Assets,,850000000.0,\r\nReceivables,,4899000000.0,\r\nTaxes Receivable,,30000000.0,\r\nCash And Cash Equivalents,89905000000.0,55503000000.0,82777000000.0\r\nCash Financial,82606000000.0,54381000000.0,76498000000.0\r\nCash Cash Equivalents And Federal Funds Sold,89905000000.0,134409000000.0,82777000000.0\r\n"
         },
         "get_cashflow": {
           "status": "ok",
@@ -1033,7 +1033,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_cet1",
@@ -1070,7 +1074,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_loan_growth",
@@ -1093,20 +1101,24 @@
                 "clean_metric_value": "unavailable",
                 "value_unit": "unavailable",
                 "value_context": "no high-confidence metric-value association",
-                "metric_value_status": "metric_mentioned_only",
-                "association_score": 35,
-                "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+                "metric_value_status": "table_row_unparsed",
+                "association_score": 45,
+                "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
                 "period_reference": "unavailable",
                 "comparison_reference": "unavailable",
                 "supporting_sentence": "home lending flow in Australia.",
-                "comparison_basis": "metric mentioned without explicit comparative baseline",
+                "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
                 "direction": "neutral",
                 "confidence": "low",
-                "confidence_reason": "metric label is present but no clean value or direction was extracted",
+                "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_arrears",
@@ -1143,7 +1155,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_impairment",
@@ -1162,25 +1178,29 @@
                 "metric_name": "impairment",
                 "metric_label": "impairment",
                 "sector": "banks",
-                "metric_confidence": "medium",
-                "extracted_value_or_phrase": "Statutory NPAT $10,133m 7% on FY24 Cash NPAT $10,252m 4% on FY24 Net interest margin 2.08% 9bpts on FY24 Loan loss rate 7bpts 2bpts on FY24 26 Highlights Sustainable shareholder returns Delivering strong and sustainable fully franked divide",
-                "clean_metric_value": "7",
-                "value_unit": "bps",
-                "value_context": "Loan loss near 7bpts",
-                "metric_value_status": "value_extracted",
-                "association_score": 98,
-                "association_reason": "label-value distance 1 tokens; unit bps compatible; competing labels nearby: margins, net_interest_margin",
-                "period_reference": "FY2024",
-                "comparison_reference": "not specified",
-                "supporting_sentence": "Statutory NPAT $10,133m 7% on FY24 Cash NPAT $10,252m 4% on FY24 Net interest margin 2.08% 9bpts on FY24 Loan loss rate 7bpts 2bpts on FY24 26 Highlights Sustainable shareholder returns Delivering strong and sustainable fully franked divide",
-                "comparison_basis": "metric mentioned without explicit comparative baseline",
+                "metric_confidence": "low",
+                "extracted_value_or_phrase": "impairment provisions as a percentage of credit risk weighted assets.",
+                "clean_metric_value": "unavailable",
+                "value_unit": "unavailable",
+                "value_context": "no high-confidence metric-value association",
+                "metric_value_status": "table_row_unparsed",
+                "association_score": 45,
+                "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+                "period_reference": "unavailable",
+                "comparison_reference": "unavailable",
+                "supporting_sentence": "impairment provisions as a percentage of credit risk weighted assets.",
+                "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
                 "direction": "neutral",
-                "confidence": "medium",
-                "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+                "confidence": "low",
+                "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_dividend",
@@ -1216,7 +1236,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_roe",
@@ -1253,7 +1277,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               }
             ],
             "fallback_page_url": "https://www.commbank.com.au/about-us/investors/annual-reports.html"
@@ -1537,7 +1565,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_cet1",
@@ -1574,7 +1606,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_loan_growth",
@@ -1597,20 +1633,24 @@
                 "clean_metric_value": "unavailable",
                 "value_unit": "unavailable",
                 "value_context": "no high-confidence metric-value association",
-                "metric_value_status": "metric_mentioned_only",
-                "association_score": 35,
-                "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+                "metric_value_status": "table_row_unparsed",
+                "association_score": 45,
+                "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
                 "period_reference": "unavailable",
                 "comparison_reference": "unavailable",
                 "supporting_sentence": "home lending flow in Australia.",
-                "comparison_basis": "metric mentioned without explicit comparative baseline",
+                "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
                 "direction": "neutral",
                 "confidence": "low",
-                "confidence_reason": "metric label is present but no clean value or direction was extracted",
+                "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_arrears",
@@ -1647,7 +1687,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_impairment",
@@ -1666,25 +1710,29 @@
                 "metric_name": "impairment",
                 "metric_label": "impairment",
                 "sector": "banks",
-                "metric_confidence": "medium",
-                "extracted_value_or_phrase": "Statutory NPAT $10,133m 7% on FY24 Cash NPAT $10,252m 4% on FY24 Net interest margin 2.08% 9bpts on FY24 Loan loss rate 7bpts 2bpts on FY24 26 Highlights Sustainable shareholder returns Delivering strong and sustainable fully franked divide",
-                "clean_metric_value": "7",
-                "value_unit": "bps",
-                "value_context": "Loan loss near 7bpts",
-                "metric_value_status": "value_extracted",
-                "association_score": 98,
-                "association_reason": "label-value distance 1 tokens; unit bps compatible; competing labels nearby: margins, net_interest_margin",
-                "period_reference": "FY2024",
-                "comparison_reference": "not specified",
-                "supporting_sentence": "Statutory NPAT $10,133m 7% on FY24 Cash NPAT $10,252m 4% on FY24 Net interest margin 2.08% 9bpts on FY24 Loan loss rate 7bpts 2bpts on FY24 26 Highlights Sustainable shareholder returns Delivering strong and sustainable fully franked divide",
-                "comparison_basis": "metric mentioned without explicit comparative baseline",
+                "metric_confidence": "low",
+                "extracted_value_or_phrase": "impairment provisions as a percentage of credit risk weighted assets.",
+                "clean_metric_value": "unavailable",
+                "value_unit": "unavailable",
+                "value_context": "no high-confidence metric-value association",
+                "metric_value_status": "table_row_unparsed",
+                "association_score": 45,
+                "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+                "period_reference": "unavailable",
+                "comparison_reference": "unavailable",
+                "supporting_sentence": "impairment provisions as a percentage of credit risk weighted assets.",
+                "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
                 "direction": "neutral",
-                "confidence": "medium",
-                "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+                "confidence": "low",
+                "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_dividend",
@@ -1720,7 +1768,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               },
               {
                 "section_name": "sector_metric_roe",
@@ -1757,7 +1809,11 @@
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
-                "source_page": "unavailable"
+                "source_page": "unavailable",
+                "current_period_value": "unavailable",
+                "prior_period_value": "unavailable",
+                "variance_value": "unavailable",
+                "variance_percent": "unavailable"
               }
             ],
             "fallback_page_url": "https://www.commbank.com.au/about-us/investors/annual-reports.html"

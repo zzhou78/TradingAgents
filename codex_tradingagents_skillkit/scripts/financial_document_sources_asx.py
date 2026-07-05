@@ -69,6 +69,38 @@ ASX_SECTOR_METRIC_PATTERNS: dict[str, list[tuple[str, str, str, list[str]]]] = {
     ],
 }
 
+ASX_METRIC_VALUE_STATUSES = {
+    "value_extracted",
+    "direction_extracted",
+    "metric_mentioned_only",
+    "context_only",
+    "table_row_unparsed",
+    "unavailable",
+}
+
+DENSE_TABLE_ROW_LABELS = [
+    "inventories",
+    "inventory",
+    "trade payables",
+    "receivables",
+    "trade receivables",
+    "net investment in inventory",
+    "cash",
+    "borrowings",
+    "debt",
+    "assets",
+    "liabilities",
+    "claims expense",
+    "gross profit",
+    "management expenses",
+    "operating profit",
+    "sales",
+    "ebit",
+    "revenue",
+]
+
+BALANCE_SHEET_STYLE_METRICS = {"inventory", "debt", "capital_adequacy"}
+
 HttpGet = Callable[[str, dict[str, str]], str]
 
 DOCUMENT_PATTERNS: list[tuple[str, str]] = [
@@ -519,7 +551,7 @@ def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
     for pattern in profile.get("accepted_value_patterns", []) or []:
         matches.extend(re.finditer(str(pattern), text, re.IGNORECASE))
     generic_pattern = (
-        r"(?:US\$|A\$|\$)?\d+(?:\.\d+)?\s*"
+        r"(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*"
         r"(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)"
     )
     for match in re.finditer(generic_pattern, text, re.IGNORECASE):
@@ -530,8 +562,13 @@ def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
 
 
 def _clean_value_and_unit(raw: str) -> tuple[str, str]:
-    value_match = re.search(r"(?:US\$|A\$|\$)?(?P<value>\d+(?:\.\d+)?)", raw, re.IGNORECASE)
-    clean_value = value_match.group("value") if value_match else "unavailable"
+    value_match = re.search(r"(?P<negative>\()?(?:US\$|A\$|\$)?(?P<value>(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)", raw, re.IGNORECASE)
+    if value_match:
+        clean_value = value_match.group("value").replace(",", "")
+        if value_match.group("negative"):
+            clean_value = f"-{clean_value}"
+    else:
+        clean_value = "unavailable"
     lower = raw.lower().replace(" ", "")
     if "bpts" in lower or "bps" in lower:
         unit = "bps"
@@ -560,6 +597,74 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
     else:
         unit = "unit unavailable"
     return clean_value, unit
+
+
+def _numeric_value_spans(text: str) -> list[re.Match[str]]:
+    pattern = r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?"
+    return [match for match in re.finditer(pattern, text, re.IGNORECASE) if re.search(r"\d", match.group(0))]
+
+
+def _dense_table_row_signal(text: str) -> bool:
+    clean = _clean_text(text)
+    lower = clean.lower()
+    numeric_count = len(_numeric_value_spans(clean))
+    label_hits = sum(1 for label in DENSE_TABLE_ROW_LABELS if re.search(rf"\b{re.escape(label)}\b", lower))
+    variance_style = bool(re.search(r"\([\d,]+(?:\.\d+)?\)", clean)) or len(re.findall(r"\bFY\d{2,4}\b|\b20\d{2}\b", clean, re.IGNORECASE)) >= 2
+    repeated_row_values = bool(re.search(r"\b[A-Za-z][A-Za-z /&-]{2,}\s+\(?[\d,]+(?:\.\d+)?\)?\s+\(?[\d,]+(?:\.\d+)?\)?\s+\(?-?[\d,]+(?:\.\d+)?\)?", clean))
+    return numeric_count > 4 and label_hits >= 2 and (variance_style or repeated_row_values)
+
+
+def _first_metric_support_sentence(clean: str, profile: dict[str, Any]) -> str:
+    support_sentence = clean[:240]
+    for sentence in _sentences(clean):
+        if _label_matches(sentence, profile):
+            return sentence[:240]
+    return support_sentence
+
+
+def _table_row_unparsed_result(base: dict[str, Any], clean: str, profile: dict[str, Any]) -> dict[str, Any]:
+    support_sentence = _first_metric_support_sentence(clean, profile)
+    direction = _direction_from_profile(support_sentence, profile)
+    return {
+        **base,
+        "metric_value_status": "table_row_unparsed",
+        "association_score": 45,
+        "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+        "supporting_sentence": support_sentence,
+        "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
+        "direction": direction if direction != "neutral" else "neutral",
+        "confidence": "low",
+        "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
+    }
+
+
+def _numeric_cell_value(cell: str, inferred_unit: str) -> tuple[str, str] | None:
+    if re.fullmatch(r"FY?\d{2,4}", cell.strip(), re.IGNORECASE):
+        return None
+    value_match = re.search(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?", cell, re.IGNORECASE)
+    if not value_match:
+        return None
+    clean_value, unit = _clean_value_and_unit(value_match.group(0))
+    if unit == "unit unavailable":
+        unit = inferred_unit
+    if unit == "unit unavailable":
+        return None
+    return clean_value, unit
+
+
+def _unit_from_column_label(label: str, fallback: str = "unit unavailable") -> str:
+    lower = label.lower()
+    if "$m" in lower or "a$m" in lower:
+        return "$m"
+    if "$bn" in lower or "a$bn" in lower:
+        return "$bn"
+    if "bps" in lower or "bpts" in lower:
+        return "bps"
+    if "%" in lower or "per cent" in lower:
+        return "%"
+    if "cents" in lower:
+        return "cents"
+    return fallback
 
 
 def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
@@ -713,6 +818,7 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
 def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
     if "|" not in text:
         return {}
+    header_cells: list[str] = []
     for raw_row in re.split(r"\n|(?<=\d[%a-zA-Z])\s+(?=[A-Z][A-Za-z /&-]{2,}\s*\|)", text):
         row = raw_row.strip()
         if "|" not in row:
@@ -720,31 +826,129 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         cells = [_clean_text(cell) for cell in row.split("|")]
         if len(cells) < 3:
             continue
-        row_label = cells[0]
-        if not _label_matches(row_label, profile):
+        if not _label_matches(cells[0], profile):
+            header_cells = cells
             continue
+        row_label = cells[0]
+        values: list[tuple[int, str, str, str]] = []
         for index, cell in enumerate(cells[1:], start=1):
-            value_match = next(iter(_value_matches(cell, profile)), None)
-            if not value_match:
+            column_label = header_cells[index] if header_cells and index < len(header_cells) else cells[index - 1]
+            inferred_unit = _unit_from_column_label(column_label)
+            parsed = _numeric_cell_value(cell, inferred_unit)
+            if not parsed:
                 continue
-            clean_value, unit = _clean_value_and_unit(value_match.group(0))
-            column_label = cells[index - 1] if index > 1 else "value"
-            comparison_reference = cells[index + 1] if index + 1 < len(cells) else "not specified"
-            return {
-                "score": 95,
-                "clean_metric_value": clean_value,
-                "value_unit": unit,
-                "value_context": "table row/column label association",
-                "supporting_sentence": row,
-                "association_reason": "table row label matches accepted metric label and value unit is compatible",
-                "direction": _direction_from_profile(row, profile),
-                "period_reference": column_label,
-                "comparison_reference": comparison_reference,
-                "table_title": "unavailable",
-                "row_label": row_label,
-                "column_label": column_label,
-            }
+            clean_value, unit = parsed
+            if unit != "unit unavailable" and not _unit_compatible(unit, profile):
+                continue
+            values.append((index, clean_value, unit, column_label))
+        if not values:
+            continue
+        preferred_index, clean_value, unit, column_label = values[0]
+        if metric_name == "claims_ratio":
+            percent_values = [item for item in values if item[2] in {"%", "per cent"} or "%" in item[3].lower()]
+            if percent_values:
+                preferred_index, clean_value, unit, column_label = percent_values[-1]
+        comparison_reference = "not specified"
+        if len(values) > 1:
+            comparison_reference = values[1][3] if values[1][0] != preferred_index else values[0][3]
+        value_fields = {item[3].lower(): item[1] for item in values}
+        current_period_value = values[0][1] if len(values) >= 1 else "unavailable"
+        prior_period_value = values[1][1] if len(values) >= 2 else "unavailable"
+        variance_value = next((item[1] for item in values if "variance" in item[3].lower() and "%" not in item[3]), "unavailable")
+        variance_percent = next((item[1] for item in values if "variance" in item[3].lower() and "%" in item[3]), "unavailable")
+        direction = _direction_from_profile(row, profile)
+        if metric_name == "claims_ratio" and unit in {"%", "per cent"}:
+            try:
+                if float(clean_value) > 0:
+                    direction = "adverse"
+            except ValueError:
+                pass
+        return {
+            "score": 95,
+            "clean_metric_value": clean_value,
+            "value_unit": unit,
+            "value_context": "table row/column label association",
+            "supporting_sentence": row,
+            "association_reason": "table row label matches accepted metric label and value is taken from parsed row/column structure",
+            "direction": direction,
+            "period_reference": column_label,
+            "comparison_reference": comparison_reference,
+            "table_title": "unavailable",
+            "row_label": row_label,
+            "column_label": column_label,
+            "current_period_value": current_period_value,
+            "prior_period_value": prior_period_value,
+            "variance_value": variance_value,
+            "variance_percent": variance_percent,
+            "table_values": value_fields,
+        }
     return {}
+
+
+def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
+    if metric_name in BALANCE_SHEET_STYLE_METRICS:
+        return {}
+    label_matches = _label_matches(text, profile)
+    if not label_matches:
+        return {}
+    row_start = label_matches[0].start()
+    next_label_start = len(text)
+    lower_tail = text[label_matches[0].end() :].lower()
+    for label in DENSE_TABLE_ROW_LABELS:
+        match = re.search(rf"\b{re.escape(label)}\b", lower_tail)
+        if match:
+            absolute_start = label_matches[0].end() + match.start()
+            if absolute_start > label_matches[0].end() and absolute_start < next_label_start:
+                next_label_start = absolute_start
+    row = text[row_start:next_label_start].strip()
+    first_sentence = re.split(r"(?<=[.!?])\s+", row, maxsplit=1)[0]
+    immediate_window = row[:140]
+    if not _numeric_value_spans(first_sentence) and len(_numeric_value_spans(immediate_window)) < 2:
+        return {}
+    value_matches = _numeric_value_spans(row)
+    if len(value_matches) < 3:
+        return {}
+    parsed_values: list[tuple[str, str, str]] = []
+    for match in value_matches:
+        clean_value, unit = _clean_value_and_unit(match.group(0))
+        parsed_values.append((clean_value, unit, match.group(0).strip()))
+    preferred = parsed_values[0]
+    column_label = "current_period_value"
+    if metric_name == "claims_ratio":
+        percent_values = [item for item in parsed_values if item[1] in {"%", "per cent"} or "%" in item[2]]
+        if not percent_values:
+            return {}
+        preferred = percent_values[-1]
+        column_label = "variance_percent"
+    clean_value, unit, raw_value = preferred
+    if unit != "unit unavailable" and not _unit_compatible(unit, profile):
+        return {}
+    direction = _direction_from_profile(row, profile)
+    if metric_name == "claims_ratio" and unit in {"%", "per cent"}:
+        try:
+            if float(clean_value) > 0:
+                direction = "adverse"
+        except ValueError:
+            pass
+    return {
+        "score": 88,
+        "clean_metric_value": clean_value,
+        "value_unit": unit,
+        "value_context": "dense row parsed before next financial row label",
+        "supporting_sentence": row,
+        "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+        "direction": direction,
+        "period_reference": column_label,
+        "comparison_reference": "prior_period_value" if len(parsed_values) >= 2 else "not specified",
+        "table_title": "unavailable",
+        "row_label": row[:80],
+        "column_label": column_label,
+        "current_period_value": parsed_values[0][0] if len(parsed_values) >= 1 else "unavailable",
+        "prior_period_value": parsed_values[1][0] if len(parsed_values) >= 2 else "unavailable",
+        "variance_value": parsed_values[2][0] if len(parsed_values) >= 3 and "%" not in parsed_values[2][2] else "unavailable",
+        "variance_percent": clean_value if column_label == "variance_percent" else "unavailable",
+        "raw_value": raw_value,
+    }
 
 
 def _metric_label_present(text: str, profile: dict[str, Any]) -> bool:
@@ -772,6 +976,10 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         "row_label": "unavailable",
         "column_label": "unavailable",
         "source_page": "unavailable",
+        "current_period_value": "unavailable",
+        "prior_period_value": "unavailable",
+        "variance_value": "unavailable",
+        "variance_percent": "unavailable",
     }
     if not profile:
         return base
@@ -787,11 +995,17 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         }
     if not label_present:
         return base
-    best = _extract_table_metric_value(clean, metric_name, profile)
+    best = _extract_table_metric_value(text, metric_name, profile)
+    if not best and _dense_table_row_signal(clean):
+        best = _extract_dense_metric_row_value(clean, metric_name, profile)
+    if not best and _dense_table_row_signal(clean):
+        return _table_row_unparsed_result(base, clean, profile)
     if not best:
         for sentence in _sentences(clean):
             if not _label_matches(sentence, profile):
                 continue
+            if _dense_table_row_signal(sentence):
+                return _table_row_unparsed_result(base, sentence, profile)
             candidate = _best_label_value_association(sentence, metric_name, profile)
             if not candidate:
                 continue
@@ -857,6 +1071,10 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         "row_label": best.get("row_label", "unavailable"),
         "column_label": best.get("column_label", "unavailable"),
         "source_page": "unavailable",
+        "current_period_value": best.get("current_period_value", "unavailable"),
+        "prior_period_value": best.get("prior_period_value", "unavailable"),
+        "variance_value": best.get("variance_value", "unavailable"),
+        "variance_percent": best.get("variance_percent", "unavailable"),
     }
 
 

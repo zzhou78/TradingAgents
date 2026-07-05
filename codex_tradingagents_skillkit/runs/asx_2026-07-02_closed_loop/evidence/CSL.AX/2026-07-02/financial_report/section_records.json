@@ -26,7 +26,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -56,7 +56,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -86,7 +86,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -117,7 +117,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -147,7 +147,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -178,7 +178,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -209,7 +209,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -238,7 +238,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -267,7 +267,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -296,7 +296,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -325,7 +325,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -353,7 +353,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -383,7 +383,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -416,7 +416,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -446,7 +446,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -476,7 +476,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -520,7 +520,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -537,7 +537,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:018",
@@ -564,7 +568,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -581,7 +585,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:019",
@@ -608,24 +616,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "direction_extracted",
+    "metric_value_status": "table_row_unparsed",
     "association_score": 45,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "margin and increase plasma volumes at a lower cost per litre.",
-    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "adverse",
-    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:020",
@@ -653,24 +665,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "debt for future growth 14 Performance WHAT CSL DOES THE VALUE CSL CREATES Provide a safe, rewarding and productive workplace for promising futures Powered by research and development to identify new indications for CSL\u2019s existing products, ",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:021",
@@ -698,7 +714,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -715,7 +731,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:022",
@@ -744,7 +764,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -776,7 +796,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -808,7 +828,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -839,7 +859,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -869,7 +889,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -900,7 +920,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -933,7 +953,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -964,7 +984,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -995,7 +1015,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1026,7 +1046,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1057,7 +1077,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1087,7 +1107,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1117,7 +1137,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1150,7 +1170,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1182,7 +1202,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1212,7 +1232,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -1256,7 +1276,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -1273,7 +1293,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:039",
@@ -1302,7 +1326,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -1346,7 +1370,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -1363,7 +1387,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:041",
@@ -1393,7 +1421,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -1440,7 +1468,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -1488,7 +1516,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1520,7 +1548,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1552,7 +1580,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1583,7 +1611,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1613,7 +1641,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1644,7 +1672,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1677,7 +1705,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1708,7 +1736,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1739,7 +1767,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1770,7 +1798,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1801,7 +1829,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1829,7 +1857,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1859,7 +1887,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1892,7 +1920,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1924,7 +1952,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -1954,7 +1982,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2000,7 +2028,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2046,7 +2074,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2092,7 +2120,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2139,7 +2167,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2186,7 +2214,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2232,7 +2260,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2262,7 +2290,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2294,7 +2322,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2325,7 +2353,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2355,7 +2383,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2386,7 +2414,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2419,7 +2447,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2450,7 +2478,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2479,7 +2507,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2510,7 +2538,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2541,7 +2569,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2569,7 +2597,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2599,7 +2627,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2632,7 +2660,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2664,7 +2692,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -2694,7 +2722,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2740,7 +2768,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2786,7 +2814,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2832,7 +2860,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2879,7 +2907,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -2924,7 +2952,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "context_only",
     "association_score": 0,
@@ -2941,7 +2969,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:085",
@@ -2970,7 +3002,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3002,7 +3034,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3034,7 +3066,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3065,7 +3097,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3095,7 +3127,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3126,7 +3158,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3159,7 +3191,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3190,7 +3222,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3221,7 +3253,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3252,7 +3284,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3283,7 +3315,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3313,7 +3345,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3343,7 +3375,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3376,7 +3408,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3408,7 +3440,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3438,7 +3470,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -3484,7 +3516,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -3530,7 +3562,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -3574,7 +3606,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -3591,7 +3623,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:104",
@@ -3621,7 +3657,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -3668,7 +3704,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -3714,7 +3750,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3746,7 +3782,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3778,7 +3814,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3807,7 +3843,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3837,7 +3873,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3866,7 +3902,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3897,7 +3933,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3928,7 +3964,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3959,7 +3995,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -3990,7 +4026,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4021,7 +4057,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4051,7 +4087,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4081,7 +4117,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4112,7 +4148,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4144,7 +4180,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4174,7 +4210,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4220,7 +4256,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4266,7 +4302,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4312,7 +4348,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4357,24 +4393,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "borrowings 97 2,058 Repayment of borrowings (832) (2,017) Principal payments of lease liabilities (89) (99) Net cash outflow from financing activities (2,241) (1,284) Net increase in cash and cash equivalents 470 221 Cash and cash equivalen",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:126",
@@ -4404,7 +4444,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4450,7 +4490,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4482,7 +4522,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4514,7 +4554,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4545,7 +4585,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4575,7 +4615,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4606,7 +4646,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4639,7 +4679,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4670,7 +4710,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4701,7 +4741,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4732,7 +4772,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4763,7 +4803,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4791,7 +4831,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4821,7 +4861,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4852,7 +4892,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4884,7 +4924,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -4914,7 +4954,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -4960,7 +5000,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5006,7 +5046,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5052,7 +5092,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5099,7 +5139,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5146,7 +5186,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5192,7 +5232,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5224,7 +5264,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5256,7 +5296,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5287,7 +5327,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5317,7 +5357,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5348,7 +5388,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5381,7 +5421,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5410,7 +5450,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5441,7 +5481,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5472,7 +5512,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5503,7 +5543,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5531,7 +5571,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5559,7 +5599,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5592,7 +5632,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5622,7 +5662,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5644,30 +5684,34 @@
       "segment revenue"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
-    "supporting_sentence": "segment revenue 11,158 10,608 2,166 2,128 2,234 2,064 15,558 14,800 Segment gross profit 5,641 5,275 1,257 1,318 1,545 1,413 8,443 8,006 Segment gross profit % 50.6% 49.7% 58.0% 61.9% 69.2% 68.5 % 54.3% 54.1% Selling and marketing expenses ",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "11158",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
+    "supporting_sentence": "segment revenue 11,158 10,608 2,166 2,128 2,234 2,064 15,558 14,800 Segment",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "segment revenue 11,158 10,608 2,166 2,128 2,234 2,064 15,558 14,800 Segment",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "11158",
+    "prior_period_value": "10608",
+    "variance_value": "2166",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:164",
@@ -5688,30 +5732,34 @@
       "R&D"
     ],
     "evidence_gap": "",
-    "confidence": "low",
+    "confidence": "medium",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
-    "clean_metric_value": "unavailable",
-    "value_unit": "unavailable",
-    "value_context": "no high-confidence metric-value association",
-    "period_reference": "unavailable",
-    "comparison_reference": "unavailable",
-    "supporting_sentence": "Research and development expenses (1,359) (1,428) General and administrative expenses (1,000) (825) Underlying EBIT 4,468 4,197 Finance costs (448) (476) Finance income 38 39 Profit before tax 4,058 3,760 Income tax expense (645) (722) NPAT",
+    "metric_value_status": "value_extracted",
+    "association_score": 88,
+    "association_reason": "dense row label matched accepted metric label and value was selected from the parsed metric row before the next row label",
+    "clean_metric_value": "-1359",
+    "value_unit": "unit unavailable",
+    "value_context": "dense row parsed before next financial row label",
+    "period_reference": "current_period_value",
+    "comparison_reference": "prior_period_value",
+    "supporting_sentence": "Research and development expenses (1,359) (1,428) General and administrative expenses (1,000) (825) Underlying",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
     "table_title": "unavailable",
-    "row_label": "unavailable",
-    "column_label": "unavailable",
-    "source_page": "unavailable"
+    "row_label": "Research and development expenses (1,359) (1,428) General and administrative exp",
+    "column_label": "current_period_value",
+    "source_page": "unavailable",
+    "current_period_value": "-1359",
+    "prior_period_value": "-1428",
+    "variance_value": "-1000",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:165",
@@ -5740,7 +5788,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5786,7 +5834,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5833,7 +5881,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5880,7 +5928,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -5928,7 +5976,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5960,7 +6008,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -5992,7 +6040,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6023,7 +6071,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6053,7 +6101,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6084,7 +6132,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6117,7 +6165,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6148,7 +6196,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6179,7 +6227,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6210,7 +6258,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6241,7 +6289,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6271,7 +6319,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6301,7 +6349,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6334,7 +6382,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6366,7 +6414,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6396,7 +6444,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6442,7 +6490,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6488,7 +6536,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6534,7 +6582,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6581,7 +6629,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6628,7 +6676,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -6674,7 +6722,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6706,7 +6754,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6738,7 +6786,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6767,7 +6815,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6797,7 +6845,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6828,7 +6876,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6859,7 +6907,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6888,7 +6936,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6919,7 +6967,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6950,7 +6998,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -6981,7 +7029,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7009,7 +7057,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7037,7 +7085,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7068,7 +7116,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7100,7 +7148,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7130,7 +7178,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7174,24 +7222,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "research and development expenses for early-stage products and as cost of sales for currently marketed products.",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:207",
@@ -7220,7 +7272,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7266,7 +7318,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7311,24 +7363,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "debt.",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:210",
@@ -7358,7 +7414,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7404,7 +7460,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7436,7 +7492,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7468,7 +7524,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7497,7 +7553,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7527,7 +7583,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7558,7 +7614,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7589,7 +7645,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7620,7 +7676,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7651,7 +7707,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7682,7 +7738,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7713,7 +7769,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7741,7 +7797,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7771,7 +7827,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7802,7 +7858,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7834,7 +7890,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -7864,7 +7920,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7910,7 +7966,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -7956,7 +8012,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8002,7 +8058,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8049,7 +8105,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8096,7 +8152,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8142,7 +8198,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8174,7 +8230,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8206,7 +8262,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8237,7 +8293,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8267,7 +8323,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8298,7 +8354,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8329,7 +8385,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8360,7 +8416,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8391,7 +8447,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8422,7 +8478,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8453,7 +8509,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8481,7 +8537,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8511,7 +8567,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8544,7 +8600,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8576,7 +8632,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8606,7 +8662,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8652,7 +8708,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8698,7 +8754,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8744,7 +8800,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8789,24 +8845,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "debt on an undiscounted basis by facility (US$m).",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:252",
@@ -8836,7 +8896,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -8884,7 +8944,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8916,7 +8976,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8948,7 +9008,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -8977,7 +9037,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9007,7 +9067,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9038,7 +9098,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9069,7 +9129,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9100,7 +9160,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9131,7 +9191,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9162,7 +9222,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9193,7 +9253,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9221,7 +9281,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9251,7 +9311,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9282,7 +9342,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9314,7 +9374,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9344,7 +9404,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -9390,7 +9450,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -9436,7 +9496,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -9482,7 +9542,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -9527,24 +9587,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 37,
-    "association_reason": "label-value distance 9 tokens; unit m incompatible",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
-    "value_context": "value association below acceptance threshold",
-    "period_reference": "FY2025",
-    "comparison_reference": "FY2024",
-    "supporting_sentence": "At 30 June 2025, the total fixed rate debt (excluding lease liabilities) has a carrying amount of $8,343m (2024: $8,180m) and a fair value of $7,687m (2024: $7,571m).",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "debt.",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "clean value withheld because association score is below accepted threshold",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:273",
@@ -9574,7 +9638,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -9622,7 +9686,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9652,7 +9716,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9684,7 +9748,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9715,7 +9779,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9745,7 +9809,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9776,7 +9840,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9809,7 +9873,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9840,7 +9904,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9871,7 +9935,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9902,7 +9966,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9933,7 +9997,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9963,7 +10027,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -9993,7 +10057,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10026,7 +10090,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10058,7 +10122,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10088,7 +10152,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10134,7 +10198,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10180,7 +10244,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10226,7 +10290,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10273,7 +10337,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10320,7 +10384,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10368,7 +10432,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10400,7 +10464,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10432,7 +10496,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10463,7 +10527,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10493,7 +10557,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10524,7 +10588,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10555,7 +10619,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10586,7 +10650,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10617,7 +10681,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10648,7 +10712,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10679,7 +10743,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10709,7 +10773,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10739,7 +10803,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10770,7 +10834,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10802,7 +10866,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -10832,7 +10896,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10878,7 +10942,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10924,7 +10988,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -10970,7 +11034,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11015,24 +11079,28 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "metric_value_status": "metric_mentioned_only",
-    "association_score": 35,
-    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
     "clean_metric_value": "unavailable",
     "value_unit": "unavailable",
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
     "supporting_sentence": "borrowings 320 163 Other current liabilities 2 \u2014 Total Current Liabilities 852 827 NON-CURRENT LIABILITIES Trade and other payables 915 2,315 Interest-bearing liabilities and borrowings 1,146 1,340 Provisions 48 46 Other non-current liabili",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:315",
@@ -11062,7 +11130,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11110,7 +11178,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11142,7 +11210,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11174,7 +11242,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11205,7 +11273,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11235,7 +11303,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11266,7 +11334,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11299,7 +11367,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11330,7 +11398,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11361,7 +11429,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11392,7 +11460,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11423,7 +11491,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11453,7 +11521,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11483,7 +11551,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11516,7 +11584,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11548,7 +11616,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11578,7 +11646,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11624,7 +11692,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11670,7 +11738,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11714,7 +11782,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "context_only",
     "association_score": 0,
@@ -11731,7 +11799,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
-    "source_page": "unavailable"
+    "source_page": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-02:335",
@@ -11761,7 +11833,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11808,7 +11880,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -11856,7 +11928,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11888,7 +11960,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11920,7 +11992,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11951,7 +12023,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -11981,7 +12053,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12012,7 +12084,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12045,7 +12117,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12076,7 +12148,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12107,7 +12179,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12138,7 +12210,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12169,7 +12241,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12199,7 +12271,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12229,7 +12301,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12262,7 +12334,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12294,7 +12366,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -12324,7 +12396,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -12370,7 +12442,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -12416,7 +12488,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -12462,7 +12534,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -12509,7 +12581,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,
@@ -12556,7 +12628,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T09:42:29+10:00",
+    "retrieval_time": "2026-07-05T13:00:36+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "unavailable",
     "association_score": 0,

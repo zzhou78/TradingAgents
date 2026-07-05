@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-02
 Evidence as of: 2026-07-02
-Run executed at: 2026-07-05T09:40:28+10:00
-Run ID: asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T09:40:28+10:00
+Run executed at: 2026-07-05T12:58:32+10:00
+Run ID: asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T12:58:32+10:00
 Run folder: asx_2026-07-02_closed_loop
 
 ## Tool Outputs Used
@@ -55,7 +55,7 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:CBA.AX:2026-07-02:038) plus Fundamentals/Financial section context; Market Analyst (market:CBA.AX:2026-07-02:001, market:CBA.AX:2026-07-02:002, market:CBA.AX:2026-07-02:003, market:CBA.AX:2026-07-02:004) modifies timing; News (news:CBA.AX:2026-07-02:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: banks metric direction mix: 7 available / 0 gap-labelled; 0 supportive, 0 adverse, 0 mixed, 4 neutral, 0 context-only. supportive examples: none; adverse examples: none; mixed/neutral examples: loan growth (neutral, financial:CBA.AX:2026-07-02:040); arrears (neutral, financial:CBA.AX:2026-07-02:041). Highlighted metric: net interest margin is available / context_only via financial:CBA.AX:2026-07-02:038.
 - Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, metric_value_status, association_score, association_reason, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, evidence_id, and table context fields for each ASX sector metric.
-- Compact metric-audit summary: Metric audit summary: impairment neutral (7 bps; value_extracted; association_score 98; financial:CBA.AX:2026-07-02:042; medium).
+- Compact metric-audit summary: Metric audit summary: net_interest_margin unavailable (value unavailable; metric_mentioned_only; association_score 35; financial:CBA.AX:2026-07-02:016; low); cet1 unavailable (value unavailable; metric_mentioned_only; association_score 35; financial:CBA.AX:2026-07-02:017; low).
 - Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CBA.AX:2026-07-02:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 

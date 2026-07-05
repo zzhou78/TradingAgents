@@ -20,7 +20,7 @@ Interpretation: structured fundamentals provide ratio and statement context only
 - ASX sector identified by collector: retailers.
 - sales growth: available via financial:WOW.AX:2026-07-02:016; confidence low.
 - EBIT margin: available via financial:WOW.AX:2026-07-02:017; confidence medium.
-- inventory: available via financial:WOW.AX:2026-07-02:018; confidence medium.
+- inventory: available via financial:WOW.AX:2026-07-02:018; confidence low.
 - capex: available via financial:WOW.AX:2026-07-02:019; confidence low.
 - dividend: available via financial:WOW.AX:2026-07-02:020; confidence low.
 - sales growth: evidence gap disclosed via financial:WOW.AX:2026-07-02:036; sales growth was not identified in extracted ASX document text.
