@@ -4,6 +4,7 @@ import html
 import io
 import json
 import re
+import sys
 import urllib.request
 from collections.abc import Callable
 from datetime import datetime
@@ -19,6 +20,16 @@ DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ASX_IR_RULES_PATH = REPO_ROOT / "data" / "rules" / "asx_investor_relations_urls.yaml"
 ASX_METRIC_PROFILE_PATH = Path(__file__).resolve().parents[1] / "data" / "rules" / "asx_sector_metric_extraction_profiles.yaml"
+CODEX_BUNDLED_PYTHON_PACKAGES = (
+    Path.home()
+    / ".cache"
+    / "codex-runtimes"
+    / "codex-primary-runtime"
+    / "dependencies"
+    / "python"
+    / "Lib"
+    / "site-packages"
+)
 
 ASX_SECTOR_BY_CODE = {
     "BHP": "miners",
@@ -99,8 +110,39 @@ DENSE_TABLE_ROW_LABELS = [
     "revenue",
 ]
 
-STRUCTURED_TABLE_REQUIRED_METRICS = {"inventory", "debt", "capital_adequacy", "segment_revenue"}
+STRUCTURED_TABLE_REQUIRED_METRICS = {
+    "inventory",
+    "debt",
+    "capital_adequacy",
+    "segment_revenue",
+    "production",
+    "commodity_exposure",
+    "reserves_resources",
+    "capex",
+    "membership",
+}
 TABLE_ROW_MARKER = "__TABLE_ROW__"
+PDFPLUMBER_WORD_TABLE_INDEX = 1001
+PDF_WORD_ROW_TOLERANCE = 3.0
+PDF_WORD_COLUMN_GAP = 18.0
+PDF_TABLE_TITLE_CROP_HEIGHT = 320
+PDFPLUMBER_MAX_TABLE_PAGES = 60
+
+PDFPLUMBER_TABLE_STRATEGIES: list[tuple[str, dict[str, Any] | None]] = [
+    ("default", None),
+    ("lines", {"vertical_strategy": "lines", "horizontal_strategy": "lines"}),
+    (
+        "text",
+        {
+            "vertical_strategy": "text",
+            "horizontal_strategy": "text",
+            "snap_tolerance": 4,
+            "join_tolerance": 4,
+            "intersection_tolerance": 6,
+            "text_tolerance": 3,
+        },
+    ),
+]
 
 HttpGet = Callable[[str, dict[str, str]], str]
 
@@ -176,9 +218,18 @@ def _default_http_get(url: str, headers: dict[str, str]) -> str:
 
 
 def _extract_pdf_text(body: bytes) -> str:
-    pdfplumber_text = _extract_pdf_text_with_pdfplumber(body)
-    if pdfplumber_text:
-        return pdfplumber_text
+    pypdf_text = _extract_pdf_text_with_pypdf(body)
+    pdfplumber_rows = _extract_pdf_text_with_pdfplumber(body, include_page_text=not bool(pypdf_text.strip()))
+    if pypdf_text and pdfplumber_rows:
+        return f"{pypdf_text}\n{pdfplumber_rows}".strip()
+    if pypdf_text:
+        return pypdf_text
+    if pdfplumber_rows:
+        return pdfplumber_rows
+    return ""
+
+
+def _extract_pdf_text_with_pypdf(body: bytes) -> str:
     try:
         from pypdf import PdfReader
     except ImportError:
@@ -196,34 +247,257 @@ def _extract_pdf_text(body: bytes) -> str:
     return "\n".join(page for page in pages if page).strip()
 
 
-def _extract_pdf_text_with_pdfplumber(body: bytes) -> str:
+def _extract_pdf_text_with_pdfplumber(body: bytes, *, include_page_text: bool = True) -> str:
     try:
         import pdfplumber
     except ImportError:
-        return ""
+        if CODEX_BUNDLED_PYTHON_PACKAGES.exists():
+            sys.path.append(str(CODEX_BUNDLED_PYTHON_PACKAGES))
+            try:
+                import pdfplumber
+            except ImportError:
+                return ""
+        else:
+            return ""
     parts: list[str] = []
     try:
         with pdfplumber.open(io.BytesIO(body)) as pdf:
             for page_number, page in enumerate(pdf.pages, start=1):
-                try:
-                    text = page.extract_text() or ""
-                except Exception:
-                    text = ""
-                if text:
-                    parts.append(text)
-                try:
-                    tables = page.extract_tables() or []
-                except Exception:
-                    tables = []
-                for table_index, table in enumerate(tables, start=1):
-                    table_title = f"pdfplumber_table_{table_index}"
-                    for row_index, row in enumerate(table or []):
-                        cells = [str(cell or "").strip() for cell in (row or [])]
-                        if any(cells):
-                            parts.append(_format_structured_table_row(cells, page_number, table_index, row_index, table_title))
+                if include_page_text:
+                    try:
+                        text = page.extract_text() or ""
+                    except Exception:
+                        text = ""
+                    if text:
+                        parts.append(text)
+                if page_number > PDFPLUMBER_MAX_TABLE_PAGES:
+                    if not include_page_text:
+                        break
+                    continue
+                parts.extend(_extract_pdfplumber_table_rows(page, page_number))
+                parts.extend(_extract_pdfplumber_word_table_rows(page, page_number))
     except Exception:
         return ""
     return "\n".join(part for part in parts if part).strip()
+
+
+def _extract_pdfplumber_table_rows(page: Any, page_number: int) -> list[str]:
+    rows: list[str] = []
+    seen_rows: set[tuple[str, ...]] = set()
+    next_table_index = 1
+    for strategy_name, settings in PDFPLUMBER_TABLE_STRATEGIES:
+        try:
+            if settings is None:
+                tables = page.extract_tables() or []
+            else:
+                tables = page.extract_tables(table_settings=settings) or []
+        except TypeError:
+            if settings is not None:
+                continue
+            try:
+                tables = page.extract_tables() or []
+            except Exception:
+                tables = []
+        except Exception:
+            tables = []
+        for table in tables:
+            table_title = "pdfplumber_table" if strategy_name == "default" else f"pdfplumber_{strategy_name}_table"
+            emitted_any = False
+            for row_index, row in enumerate(table or []):
+                cells = _normalize_pdf_table_cells(row or [])
+                if not _cells_look_table_like(cells):
+                    continue
+                row_key = tuple(cell.lower() for cell in cells)
+                if row_key in seen_rows:
+                    continue
+                seen_rows.add(row_key)
+                emitted_any = True
+                rows.append(
+                    _format_structured_table_row(
+                        cells,
+                        page_number,
+                        next_table_index,
+                        row_index,
+                        f"{table_title}_{next_table_index}",
+                    )
+                )
+            if emitted_any:
+                next_table_index += 1
+    rows.extend(_extract_pdfplumber_cropped_table_rows(page, page_number, seen_rows, next_table_index))
+    return rows
+
+
+def _extract_pdfplumber_cropped_table_rows(
+    page: Any,
+    page_number: int,
+    seen_rows: set[tuple[str, ...]],
+    start_table_index: int,
+) -> list[str]:
+    rows: list[str] = []
+    next_table_index = start_table_index
+    for title, top in _pdf_table_title_regions(page):
+        try:
+            height = float(getattr(page, "height", top + PDF_TABLE_TITLE_CROP_HEIGHT))
+            width = float(getattr(page, "width", 10_000))
+            cropped = page.crop((0, max(0.0, top - 8.0), width, min(height, top + PDF_TABLE_TITLE_CROP_HEIGHT)))
+        except Exception:
+            continue
+        for strategy_name, settings in PDFPLUMBER_TABLE_STRATEGIES:
+            try:
+                if settings is None:
+                    tables = cropped.extract_tables() or []
+                else:
+                    tables = cropped.extract_tables(table_settings=settings) or []
+            except TypeError:
+                if settings is not None:
+                    continue
+                try:
+                    tables = cropped.extract_tables() or []
+                except Exception:
+                    tables = []
+            except Exception:
+                tables = []
+            for table in tables:
+                emitted_any = False
+                for row_index, row in enumerate(table or []):
+                    cells = _normalize_pdf_table_cells(row or [])
+                    if not _cells_look_table_like(cells):
+                        continue
+                    row_key = tuple(cell.lower() for cell in cells)
+                    if row_key in seen_rows:
+                        continue
+                    seen_rows.add(row_key)
+                    emitted_any = True
+                    rows.append(
+                        _format_structured_table_row(
+                            cells,
+                            page_number,
+                            next_table_index,
+                            row_index,
+                            f"pdfplumber_crop_{title}_{strategy_name}_table_{next_table_index}",
+                        )
+                    )
+                if emitted_any:
+                    next_table_index += 1
+    return rows
+
+
+def _pdf_table_title_regions(page: Any) -> list[tuple[str, float]]:
+    try:
+        words = page.extract_words() or []
+    except Exception:
+        return []
+    rows = _cluster_pdf_words_by_row(words)
+    title_patterns = [
+        ("balance_sheet", r"\b(statement of financial position|balance sheet|working capital)\b"),
+        ("cash_flow", r"\b(statement of cash flows|cash flow)\b"),
+        ("income_statement", r"\b(income statement|statement of comprehensive income|profit or loss)\b"),
+        ("segment", r"\b(segment information|segment revenue|operating segments)\b"),
+        ("metrics", r"\b(key metrics|operating metrics|financial metrics)\b"),
+    ]
+    regions: list[tuple[str, float]] = []
+    seen: set[tuple[str, int]] = set()
+    for row_words in rows:
+        line = _clean_text(" ".join(str(word.get("text") or "") for word in row_words))
+        top = min(float(word.get("top") or word.get("doctop") or 0) for word in row_words)
+        for title, pattern in title_patterns:
+            if not re.search(pattern, line, re.IGNORECASE):
+                continue
+            key = (title, int(top // 10))
+            if key in seen:
+                continue
+            seen.add(key)
+            regions.append((title, top))
+    return regions
+
+
+def _normalize_pdf_table_cells(row: list[Any]) -> list[str]:
+    return [_clean_text(str(cell or "").replace("\n", " ")) for cell in row]
+
+
+def _cells_look_table_like(cells: list[str]) -> bool:
+    non_empty = [cell for cell in cells if cell]
+    if len(non_empty) < 2:
+        return False
+    numeric_cells = sum(1 for cell in non_empty if _cell_has_number(cell))
+    header_cells = sum(1 for cell in non_empty if _looks_like_period_or_metric_header(cell))
+    return numeric_cells >= 1 or header_cells >= 2
+
+
+def _cell_has_number(cell: str) -> bool:
+    return bool(re.search(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?", cell, re.IGNORECASE))
+
+
+def _looks_like_period_or_metric_header(cell: str) -> bool:
+    return bool(
+        re.search(
+            r"\b(?:metric|segment|fy\d{2,4}|20\d{2}|variance|change|current|prior|revenue|margin|inventory|claims|dividend|cet1|nim)\b|[$%]",
+            cell,
+            re.IGNORECASE,
+        )
+    )
+
+
+def _extract_pdfplumber_word_table_rows(page: Any, page_number: int) -> list[str]:
+    try:
+        words = page.extract_words() or []
+    except Exception:
+        return []
+    row_clusters = _cluster_pdf_words_by_row(words)
+    structured_rows: list[str] = []
+    for row_index, row_words in enumerate(row_clusters):
+        cells = _cells_from_pdf_word_row(row_words)
+        if _cells_look_table_like(cells):
+            structured_rows.append(
+                _format_structured_table_row(
+                    cells,
+                    page_number,
+                    PDFPLUMBER_WORD_TABLE_INDEX,
+                    row_index,
+                    "pdfplumber_words",
+                )
+            )
+    return structured_rows
+
+
+def _cluster_pdf_words_by_row(words: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    normalized_words = [word for word in words if str(word.get("text") or "").strip()]
+    sorted_words = sorted(
+        normalized_words,
+        key=lambda word: (float(word.get("top") or word.get("doctop") or 0), float(word.get("x0") or 0)),
+    )
+    rows: list[list[dict[str, Any]]] = []
+    row_tops: list[float] = []
+    for word in sorted_words:
+        top = float(word.get("top") or word.get("doctop") or 0)
+        matched_index = next((index for index, row_top in enumerate(row_tops) if abs(top - row_top) <= PDF_WORD_ROW_TOLERANCE), None)
+        if matched_index is None:
+            rows.append([word])
+            row_tops.append(top)
+        else:
+            rows[matched_index].append(word)
+            row_tops[matched_index] = (row_tops[matched_index] + top) / 2
+    return [sorted(row, key=lambda word: float(word.get("x0") or 0)) for row in rows]
+
+
+def _cells_from_pdf_word_row(words: list[dict[str, Any]]) -> list[str]:
+    cells: list[list[str]] = []
+    current_cell: list[str] = []
+    previous_x1: float | None = None
+    for word in sorted(words, key=lambda item: float(item.get("x0") or 0)):
+        text = str(word.get("text") or "").strip()
+        if not text:
+            continue
+        x0 = float(word.get("x0") or 0)
+        x1 = float(word.get("x1") or x0)
+        if previous_x1 is not None and x0 - previous_x1 > PDF_WORD_COLUMN_GAP and current_cell:
+            cells.append(current_cell)
+            current_cell = []
+        current_cell.append(text)
+        previous_x1 = x1
+    if current_cell:
+        cells.append(current_cell)
+    return [_clean_text(" ".join(cell)) for cell in cells if any(part.strip() for part in cell)]
 
 
 def _format_structured_table_row(cells: list[str], page_number: int, table_index: int, row_index: int, table_title: str) -> str:
@@ -705,6 +979,33 @@ def _table_key(metadata: dict[str, str]) -> tuple[str, str]:
     return (metadata.get("source_page", "unavailable"), metadata.get("table_index", "unavailable"))
 
 
+def _header_continuation_row(cells: list[str]) -> bool:
+    if not cells:
+        return False
+    first_cell = cells[0].strip().lower()
+    non_empty = [cell for cell in cells if cell.strip()]
+    if first_cell and any(label in first_cell for label in DENSE_TABLE_ROW_LABELS):
+        return False
+    unit_cells = sum(1 for cell in cells if re.search(r"\b(?:\$m|\$bn|bps|bpts|%|cents|mt|kt|moz|/t)\b|[$%]", cell, re.IGNORECASE))
+    period_cells = sum(1 for cell in cells if re.search(r"\b(?:FY)?20\d{2}\b|\bFY\d{2}\b|current|prior|variance|change", cell, re.IGNORECASE))
+    return bool(unit_cells or period_cells) and (not first_cell or len(non_empty) >= 2)
+
+
+def _merge_table_header_rows(existing: list[str], continuation: list[str]) -> list[str]:
+    width = max(len(existing), len(continuation))
+    merged: list[str] = []
+    for index in range(width):
+        left = existing[index] if index < len(existing) else ""
+        right = continuation[index] if index < len(continuation) else ""
+        if not left:
+            merged.append(right)
+        elif not right or right.lower() in left.lower():
+            merged.append(left)
+        else:
+            merged.append(_clean_text(f"{left} {right}"))
+    return merged
+
+
 def _profile_row_labels(profile: dict[str, Any]) -> list[str]:
     row_labels = profile.get("accepted_row_labels") or profile.get("accepted_labels") or []
     return [str(label) for label in row_labels if str(label).strip()]
@@ -952,7 +1253,10 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
             continue
         key = _table_key(metadata)
         if not _row_label_matches(cells[0], profile):
-            headers_by_table[key] = cells
+            if key in headers_by_table and _header_continuation_row(cells):
+                headers_by_table[key] = _merge_table_header_rows(headers_by_table[key], cells)
+            else:
+                headers_by_table[key] = cells
             continue
         row_label = cells[0]
         header_cells = headers_by_table.get(key, [])
@@ -1214,17 +1518,40 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         }
     score = int(best["score"])
     has_table_mapping = "table_mapping_confidence" in best
+    unit_missing_for_profile = (
+        score >= 80
+        and bool(profile.get("accepted_units"))
+        and str(best.get("value_unit") or "").lower() in {"", "unavailable", "unit unavailable"}
+    )
     status = (
         "value_extracted"
-        if score >= 80
+        if score >= 80 and not unit_missing_for_profile
         else (
             "table_row_unparsed"
             if has_table_mapping
             else ("direction_extracted" if best["direction"] != "neutral" or score >= 50 else "metric_mentioned_only")
         )
     )
+    if unit_missing_for_profile:
+        status = "direction_extracted" if best["direction"] != "neutral" else "metric_mentioned_only"
     clean_value = best["clean_metric_value"] if status == "value_extracted" else "unavailable"
     confidence = "medium" if status == "value_extracted" else "low"
+    confidence_reason = (
+        "clean value accepted because metric label, compatible unit, and proximity met threshold"
+        if status == "value_extracted"
+        else (
+            "clean value withheld because accepted metric units were not preserved in the source text"
+            if unit_missing_for_profile
+            else (
+                "clean value withheld because table row mapping confidence is below accepted threshold"
+                if status == "table_row_unparsed"
+                else "clean value withheld because association score is below accepted threshold"
+            )
+        )
+    )
+    association_reason = best["association_reason"]
+    if unit_missing_for_profile:
+        association_reason = f"{association_reason}; accepted unit was unavailable so clean value was suppressed"
     return {
         **base,
         "clean_metric_value": clean_value,
@@ -1232,7 +1559,7 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         "value_context": best["value_context"] if status == "value_extracted" else "value association below acceptance threshold",
         "metric_value_status": status,
         "association_score": score,
-        "association_reason": best["association_reason"],
+        "association_reason": association_reason,
         "period_reference": best.get("period_reference", "not specified"),
         "comparison_reference": best.get("comparison_reference", "not specified"),
         "supporting_sentence": best["supporting_sentence"][:240],
@@ -1241,13 +1568,7 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         else "metric mentioned without explicit comparative baseline",
         "direction": best["direction"],
         "confidence": confidence,
-        "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold"
-        if status == "value_extracted"
-        else (
-            "clean value withheld because table row mapping confidence is below accepted threshold"
-            if status == "table_row_unparsed"
-            else "clean value withheld because association score is below accepted threshold"
-        ),
+        "confidence_reason": confidence_reason,
         "table_title": best.get("table_title", "unavailable"),
         "row_label": best.get("row_label", "unavailable"),
         "column_label": best.get("column_label", "unavailable"),
@@ -1385,6 +1706,68 @@ def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int, sec
     return sections
 
 
+def _table_extraction_diagnostics(text: str, sections: list[dict[str, Any]]) -> dict[str, Any]:
+    table_rows: list[dict[str, Any]] = []
+    by_strategy: dict[str, int] = {}
+    by_table: dict[str, int] = {}
+    metric_rows: list[dict[str, Any]] = []
+    for line in text.splitlines():
+        if TABLE_ROW_MARKER not in line:
+            continue
+        metadata, cells = _parse_structured_table_line(line)
+        title = metadata.get("table_title", "unavailable")
+        table_key = f"page_{metadata.get('source_page', 'unavailable')}_table_{metadata.get('table_index', 'unavailable')}_{title}"
+        strategy = _table_strategy_from_title(title)
+        by_strategy[strategy] = by_strategy.get(strategy, 0) + 1
+        by_table[table_key] = by_table.get(table_key, 0) + 1
+        row = {
+            "source_page": metadata.get("source_page", "unavailable"),
+            "table_index": metadata.get("table_index", "unavailable"),
+            "row_index": metadata.get("row_index", "unavailable"),
+            "table_title": title,
+            "strategy": strategy,
+            "cell_count": len(cells),
+            "numeric_cell_count": sum(1 for cell in cells if _cell_has_number(cell)),
+            "raw_row_text": " | ".join(cells),
+        }
+        table_rows.append(row)
+        if any(re.search(rf"\b{re.escape(label)}\b", " ".join(cells), re.IGNORECASE) for label in DENSE_TABLE_ROW_LABELS):
+            metric_rows.append(row)
+    unparsed_metrics = [
+        {
+            "metric_name": section.get("metric_name", "unavailable"),
+            "metric_value_status": section.get("metric_value_status", "unavailable"),
+            "association_score": section.get("association_score", 0),
+            "association_reason": section.get("association_reason", ""),
+            "supporting_sentence": section.get("supporting_sentence", ""),
+            "row_label": section.get("row_label", "unavailable"),
+            "column_label": section.get("column_label", "unavailable"),
+        }
+        for section in sections
+        if section.get("section_type") == "sector_metric" and section.get("metric_value_status") == "table_row_unparsed"
+    ]
+    return {
+        "table_rows_detected": len(table_rows),
+        "table_rows_by_strategy": by_strategy,
+        "table_rows_by_table": by_table,
+        "metric_like_table_rows": metric_rows[:50],
+        "table_row_unparsed_metrics": unparsed_metrics,
+    }
+
+
+def _table_strategy_from_title(title: str) -> str:
+    lower = title.lower()
+    if "crop" in lower:
+        return "pdfplumber_crop"
+    if "words" in lower:
+        return "pdfplumber_words"
+    if "text_table" in lower:
+        return "pdfplumber_text"
+    if "lines_table" in lower:
+        return "pdfplumber_lines"
+    return "pdfplumber_default"
+
+
 def _source_from_row(
     row: dict[str, Any],
     *,
@@ -1434,6 +1817,10 @@ def _source_from_row(
         source["extraction_status"] = "available" if text else "unavailable"
         source["excerpt"] = text
         source["extracted_sections"] = _extract_sections(raw_document, source, excerpt_chars, asx_sector)
+        source["table_extraction_diagnostics"] = _table_extraction_diagnostics(
+            raw_document,
+            source["extracted_sections"],
+        )
     except Exception as exc:  # noqa: BLE001 - keep discovered announcement with extraction failure.
         source["extraction_status"] = "error"
         source["reason"] = str(exc)

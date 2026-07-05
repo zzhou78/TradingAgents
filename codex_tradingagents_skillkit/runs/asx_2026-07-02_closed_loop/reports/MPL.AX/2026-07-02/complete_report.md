@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-02
 Evidence as of: 2026-07-02
-Run executed at: 2026-07-05T13:42:09+10:00
-Run ID: asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T13:42:09+10:00
+Run executed at: 2026-07-05T15:12:58+10:00
+Run ID: asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T15:12:58+10:00
 Run folder: asx_2026-07-02_closed_loop
 
 ## Tool Outputs Used
@@ -55,7 +55,7 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:MPL.AX:2026-07-02:017) plus Fundamentals/Financial section context; Market Analyst (market:MPL.AX:2026-07-02:001, market:MPL.AX:2026-07-02:002, market:MPL.AX:2026-07-02:003, market:MPL.AX:2026-07-02:004) modifies timing; News (news:MPL.AX:2026-07-02:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: health_insurers metric direction mix: 4 available / 0 gap-labelled; 0 supportive, 1 adverse, 0 mixed, 3 neutral, 0 context-only. supportive examples: none; adverse examples: claims ratio (adverse, financial:MPL.AX:2026-07-02:017); mixed/neutral examples: premium growth (neutral, financial:MPL.AX:2026-07-02:016); membership (neutral, financial:MPL.AX:2026-07-02:018). Highlighted metric: claims ratio is available / adverse via financial:MPL.AX:2026-07-02:017.
 - Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, metric_value_status, association_score, association_reason, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, evidence_id, and table context fields for each ASX sector metric.
-- Compact metric-audit summary: Metric audit summary: claims_ratio adverse (3.3 %; value_extracted; association_score 88; financial:MPL.AX:2026-07-02:017; medium); membership neutral (13 %; value_extracted; association_score 86; financial:MPL.AX:2026-07-02:018; medium).
+- Compact metric-audit summary: Metric audit summary: claims_ratio adverse (3.3 %; value_extracted; association_score 88; financial:MPL.AX:2026-07-02:017; medium); membership neutral (value unavailable; value_extracted; association_score 86; financial:MPL.AX:2026-07-02:018; medium).
 - Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 

@@ -61,7 +61,7 @@ Interpretation: structured fundamentals provide ratio and statement context only
 - net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:146; net debt was not identified in extracted ASX document text.
 - guidance: evidence gap disclosed via financial:CSL.AX:2026-07-02:147; guidance was not identified in extracted ASX document text.
 - segment revenue: available via financial:CSL.AX:2026-07-02:163; confidence low.
-- R&D: available via financial:CSL.AX:2026-07-02:164; confidence medium.
+- R&D: available via financial:CSL.AX:2026-07-02:164; confidence low.
 - plasma collections: evidence gap disclosed via financial:CSL.AX:2026-07-02:165; plasma collections was not identified in extracted ASX document text.
 - margin: evidence gap disclosed via financial:CSL.AX:2026-07-02:166; margin was not identified in extracted ASX document text.
 - net debt: evidence gap disclosed via financial:CSL.AX:2026-07-02:167; net debt was not identified in extracted ASX document text.

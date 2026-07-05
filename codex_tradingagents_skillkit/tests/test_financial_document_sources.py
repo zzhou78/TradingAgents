@@ -360,6 +360,144 @@ def test_asx_pdf_text_extraction_includes_pdfplumber_tables(monkeypatch):
     assert "Australia Food | 50000" in text
 
 
+def test_asx_pdf_text_extraction_tries_pdfplumber_text_table_strategy(monkeypatch):
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    class FakePage:
+        def extract_text(self) -> str:
+            return "Annual report financial statements"
+
+        def extract_tables(self, table_settings=None):
+            if table_settings and table_settings.get("vertical_strategy") == "text":
+                return [[["Metric", "FY2025 $m", "FY2024 $m"], ["Inventories", "4,169", "4,187"]]]
+            return []
+
+    class FakePdf:
+        pages = [FakePage()]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+    monkeypatch.setitem(
+        sys.modules,
+        "pdfplumber",
+        types.SimpleNamespace(open=lambda stream: FakePdf()),
+    )
+
+    text = asx._extract_pdf_text(b"%PDF fake fixture")
+
+    assert "__TABLE_ROW__ page=1 table=1 row=0 title=pdfplumber_text_table_1" in text
+    assert "Metric | FY2025 $m | FY2024 $m" in text
+    assert "Inventories | 4,169 | 4,187" in text
+
+
+def test_asx_pdf_text_extraction_reconstructs_word_coordinate_rows(monkeypatch):
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    class FakePage:
+        def extract_text(self) -> str:
+            return "Inventories 4,169 4,187 (18)"
+
+        def extract_tables(self, table_settings=None):
+            return []
+
+        def extract_words(self):
+            return [
+                {"text": "Metric", "x0": 10, "x1": 40, "top": 10},
+                {"text": "FY2025", "x0": 160, "x1": 200, "top": 10},
+                {"text": "$m", "x0": 204, "x1": 220, "top": 10},
+                {"text": "FY2024", "x0": 260, "x1": 300, "top": 10},
+                {"text": "$m", "x0": 304, "x1": 320, "top": 10},
+                {"text": "Variance", "x0": 360, "x1": 415, "top": 10},
+                {"text": "$m", "x0": 419, "x1": 435, "top": 10},
+                {"text": "Inventories", "x0": 10, "x1": 80, "top": 30},
+                {"text": "4,169", "x0": 160, "x1": 198, "top": 30},
+                {"text": "4,187", "x0": 260, "x1": 298, "top": 30},
+                {"text": "(18)", "x0": 360, "x1": 388, "top": 30},
+            ]
+
+    class FakePdf:
+        pages = [FakePage()]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+    monkeypatch.setitem(
+        sys.modules,
+        "pdfplumber",
+        types.SimpleNamespace(open=lambda stream: FakePdf()),
+    )
+
+    text = asx._extract_pdf_text(b"%PDF fake fixture")
+    result = asx._extract_metric_value_from_text(text, "inventory")
+
+    assert "__TABLE_ROW__ page=1 table=1001 row=1 title=pdfplumber_words" in text
+    assert "Inventories | 4,169 | 4,187 | (18)" in text
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["row_label"] == "Inventories"
+    assert result["column_label"] == "FY2025 $m"
+    assert result["clean_metric_value"] == "4169"
+
+
+def test_asx_pdf_text_extraction_crops_below_table_titles(monkeypatch):
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    class FakeCroppedPage:
+        def extract_tables(self, table_settings=None):
+            if table_settings and table_settings.get("vertical_strategy") == "text":
+                return [[["Metric", "FY2025 $m"], ["Inventories", "4,169"]]]
+            return []
+
+    class FakePage:
+        width = 600
+        height = 800
+
+        def extract_text(self) -> str:
+            return "Working capital"
+
+        def extract_tables(self, table_settings=None):
+            return []
+
+        def extract_words(self):
+            return [
+                {"text": "Working", "x0": 10, "x1": 62, "top": 100},
+                {"text": "capital", "x0": 66, "x1": 110, "top": 100},
+            ]
+
+        def crop(self, bbox):
+            assert bbox[1] <= 100
+            return FakeCroppedPage()
+
+    class FakePdf:
+        pages = [FakePage()]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+    monkeypatch.setitem(
+        sys.modules,
+        "pdfplumber",
+        types.SimpleNamespace(open=lambda stream: FakePdf()),
+    )
+
+    text = asx._extract_pdf_text(b"%PDF fake fixture")
+
+    assert "pdfplumber_crop_balance_sheet_text_table" in text
+    assert "Inventories | 4,169" in text
+
+
 def _asx_sector_packet(module, ticker: str, document_text: str):
     code = ticker.removesuffix(".AX")
 
@@ -524,6 +662,52 @@ def test_table_row_value_preserves_row_column_period_context():
     assert result["column_label"] == "FY25"
     assert result["period_reference"] == "FY25"
     assert result["comparison_reference"] == "FY24"
+
+
+def test_multiline_table_header_preserves_units_for_inventory():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Metric | 29 June 2025 | 30 June 2024 | Change\n"
+        " | $m | $m | $m\n"
+        "Inventories | 4,169 | 4,187 | (18)",
+        "inventory",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "4169"
+    assert result["value_unit"] == "$m"
+    assert result["column_label"] == "29 June 2025 $m"
+
+
+def test_unitless_metric_value_is_suppressed():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    original_profile_for_metric = asx._profile_for_metric
+
+    def fake_profile_for_metric(metric_name: str):
+        if metric_name == "unitless_test_metric":
+            return {
+                "accepted_labels": ["test metric"],
+                "accepted_units": ["%"],
+                "accepted_value_patterns": [r"\b\d+(?:\.\d+)?\b"],
+                "max_label_value_distance_tokens": 8,
+                "direction_rules": {"supportive": ["increased"], "adverse": ["decreased"]},
+            }
+        return original_profile_for_metric(metric_name)
+
+    asx._profile_for_metric = fake_profile_for_metric
+
+    result = asx._extract_metric_value_from_text(
+        "Test metric 17 increased from 16 in the prior period.",
+        "unitless_test_metric",
+    )
+
+    assert result["association_score"] < 80
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["metric_value_status"] != "value_extracted"
+    assert "unit unit unavailable incompatible" in result["association_reason"]
 
 
 def test_low_association_score_does_not_populate_clean_metric_value():
@@ -717,6 +901,23 @@ def test_structured_table_inventory_prefers_cell_mapping_over_later_nearby_value
     assert result["column_label"] == "FY2025 $m"
     assert result["table_mapping_confidence"] >= 80
     assert "44" not in result["value_context"]
+
+
+def test_asx_packet_records_table_extraction_diagnostics():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "WOW.AX",
+        "__TABLE_ROW__ page=12 table=2 row=0 title=working_capital | Metric | FY2025 $m | FY2024 $m\n"
+        "__TABLE_ROW__ page=12 table=2 row=1 title=working_capital | Inventories | 4,169 | 4,187\n"
+        "Annual report operating and financial review cash flow statement inventory.",
+    )
+
+    diagnostics = packet["sources"][0]["table_extraction_diagnostics"]
+
+    assert diagnostics["table_rows_detected"] == 2
+    assert diagnostics["table_rows_by_strategy"]["pdfplumber_default"] == 2
+    assert diagnostics["metric_like_table_rows"]
 
 
 def test_mpl_claims_ratio_prefers_claims_expense_change_over_later_percentages():

@@ -27,7 +27,12 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from evidence_contracts import RoleExecutionContract, write_jsonl
-from financial_document_evidence import build_financial_document_evidence
+from financial_document_evidence import (
+    build_financial_document_evidence,
+    collect_table_extraction_diagnostics,
+    render_financial_metric_audit_review_csv,
+    render_financial_metric_audit_review_markdown,
+)
 from financial_document_sources import (
     collect_financial_document_sources,
     render_financial_document_packet,
@@ -1881,10 +1886,14 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
         financial_dir.mkdir(exist_ok=True)
         financial_section_records_path = financial_dir / "section_records.json"
         financial_ledger_path = financial_dir / "evidence_ledger.jsonl"
+        financial_metric_review_md_path = financial_dir / "asx_metric_audit_review.md"
+        financial_metric_review_csv_path = financial_dir / "asx_metric_audit_review.csv"
+        financial_table_diagnostics_path = financial_dir / "asx_table_extraction_diagnostics.json"
+        financial_packet = evidence["roles"][FINANCIAL_REPORT_ROLE].get("structured_packet", {})
         financial_evidence = build_financial_document_evidence(
             ticker=ticker,
             trade_date=args.trade_date,
-            packet=evidence["roles"][FINANCIAL_REPORT_ROLE].get("structured_packet", {}),
+            packet=financial_packet,
             structured_output_path=str(financial_section_records_path),
             retrieval_time=datetime.now().astimezone().isoformat(timespec="seconds"),
         )
@@ -1893,13 +1902,31 @@ def collect(args: argparse.Namespace) -> dict[str, Any]:
             encoding="utf-8",
         )
         write_jsonl(financial_ledger_path, financial_evidence["ledger_entries"])
+        financial_metric_review_md_path.write_text(
+            render_financial_metric_audit_review_markdown(financial_evidence["section_records"]),
+            encoding="utf-8",
+        )
+        financial_metric_review_csv_path.write_text(
+            render_financial_metric_audit_review_csv(financial_evidence["section_records"]),
+            encoding="utf-8",
+        )
+        financial_table_diagnostics_path.write_text(
+            json.dumps(collect_table_extraction_diagnostics(financial_packet), indent=2),
+            encoding="utf-8",
+        )
         role_evidence_paths[FINANCIAL_REPORT_ROLE] = [
             str(financial_section_records_path),
             str(financial_ledger_path),
+            str(financial_metric_review_md_path),
+            str(financial_metric_review_csv_path),
+            str(financial_table_diagnostics_path),
         ]
         evidence["roles"][FINANCIAL_REPORT_ROLE]["structured_evidence"] = {
             "section_records": str(financial_section_records_path),
             "evidence_ledger": str(financial_ledger_path),
+            "asx_metric_audit_review": str(financial_metric_review_md_path),
+            "asx_metric_audit_review_csv": str(financial_metric_review_csv_path),
+            "asx_table_extraction_diagnostics": str(financial_table_diagnostics_path),
             "tool_name": "financial_document_evidence",
         }
         evidence_path.write_text(json.dumps(evidence, indent=2), encoding="utf-8")

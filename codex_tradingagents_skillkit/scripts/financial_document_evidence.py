@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import csv
+import io
 from typing import Any
 
 try:
@@ -34,6 +36,28 @@ ASX_METRIC_AUDIT_FIELDS = [
     "prior_period_value",
     "variance_value",
     "variance_percent",
+]
+ASX_METRIC_AUDIT_REVIEW_COLUMNS = [
+    "evidence_id",
+    "ticker",
+    "metric_name",
+    "sector",
+    "metric_value_status",
+    "association_score",
+    "association_reason",
+    "clean_metric_value",
+    "value_unit",
+    "direction",
+    "confidence",
+    "confidence_reason",
+    "table_title",
+    "row_label",
+    "column_label",
+    "cell_value",
+    "source_page",
+    "table_mapping_confidence",
+    "table_mapping_reason",
+    "supporting_sentence",
 ]
 
 
@@ -273,3 +297,87 @@ def build_financial_document_evidence(
         for record in records
     ]
     return {"section_records": records, "ledger_entries": ledger_entries}
+
+
+def financial_metric_audit_review_rows(records: list[dict[str, Any]]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in records:
+        if record.get("section_kind") != "sector_metric":
+            continue
+        rows.append({column: _audit_cell(record.get(column, "")) for column in ASX_METRIC_AUDIT_REVIEW_COLUMNS})
+    return rows
+
+
+def render_financial_metric_audit_review_markdown(records: list[dict[str, Any]]) -> str:
+    rows = financial_metric_audit_review_rows(records)
+    header = "| " + " | ".join(ASX_METRIC_AUDIT_REVIEW_COLUMNS) + " |"
+    separator = "| " + " | ".join("---" for _column in ASX_METRIC_AUDIT_REVIEW_COLUMNS) + " |"
+    if not rows:
+        return "\n".join(
+            [
+                "# ASX Metric Audit Review",
+                "",
+                "No ASX sector metric audit rows were generated.",
+                "",
+                header,
+                separator,
+            ]
+        )
+    markdown_rows = [
+        "| " + " | ".join(_markdown_cell(row[column]) for column in ASX_METRIC_AUDIT_REVIEW_COLUMNS) + " |"
+        for row in rows
+    ]
+    return "\n".join(
+        [
+            "# ASX Metric Audit Review",
+            "",
+            "Review this artifact when checking ASX metric value association, row/column mapping, and confidence downgrades.",
+            "",
+            header,
+            separator,
+            *markdown_rows,
+        ]
+    )
+
+
+def render_financial_metric_audit_review_csv(records: list[dict[str, Any]]) -> str:
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=ASX_METRIC_AUDIT_REVIEW_COLUMNS, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(financial_metric_audit_review_rows(records))
+    return output.getvalue()
+
+
+def collect_table_extraction_diagnostics(packet: dict[str, Any]) -> dict[str, Any]:
+    sources = []
+    for source in packet.get("sources", []):
+        diagnostics = source.get("table_extraction_diagnostics")
+        if not diagnostics:
+            continue
+        sources.append(
+            {
+                "source_type": source.get("source_type", "unknown"),
+                "document_type": source.get("document_type", "unknown"),
+                "title": source.get("title", ""),
+                "url": source.get("url", ""),
+                "announcement_date": source.get("announcement_date", ""),
+                **diagnostics,
+            }
+        )
+    return {
+        "ticker": packet.get("ticker", ""),
+        "trade_date": packet.get("trade_date", ""),
+        "market": packet.get("market", ""),
+        "source_count": len(sources),
+        "sources": sources,
+    }
+
+
+def _audit_cell(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).replace("\r", " ").replace("\n", " ").strip()
+
+
+def _markdown_cell(value: str) -> str:
+    return value.replace("|", "\\|")

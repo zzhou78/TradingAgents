@@ -488,6 +488,62 @@ def test_metric_audit_summary_excludes_low_confidence_weak_associations():
     assert "dividends" not in summary
 
 
+def test_metric_audit_summary_suppresses_unit_unavailable_clean_values():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "production",
+            "metric_label": "Production",
+            "status": "available",
+            "direction": "supportive",
+            "confidence": "medium",
+            "evidence_id": "financial:BHP.AX:2026-07-02:016",
+            "excerpt": "Production 17 16 1",
+            "clean_metric_value": "17",
+            "value_unit": "unit unavailable",
+            "association_score": 88,
+            "metric_value_status": "value_extracted",
+            "table_mapping_confidence": 88,
+            "row_label": "Production",
+            "column_label": "current_period_value",
+        }
+    ]
+
+    summary = writer._asx_metric_audit_summary(records, "Hold")
+
+    assert "production supportive (value unavailable; value_extracted; association_score 88" in summary
+    assert "17 unit unavailable" not in summary
+
+
+def test_metric_audit_summary_suppresses_dense_unmapped_clean_values():
+    writer = _load_module(WRITER, "write_codex_session_role_reports")
+    records = [
+        {
+            "section_kind": "sector_metric",
+            "metric_name": "membership",
+            "metric_label": "Membership",
+            "status": "available",
+            "direction": "neutral",
+            "confidence": "medium",
+            "evidence_id": "financial:MPL.AX:2026-07-02:018",
+            "excerpt": "policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m investment in mental health over next 5 years 177k hospital bed days saved through homecare programs delivered by Amplar Health 4.3m",
+            "supporting_sentence": "policyholders engaged with health and wellbeing services 931k (+13%) Live Better rewards participants $50m investment in mental health over next 5 years 177k hospital bed days saved through homecare programs delivered by Amplar Health 4.3m",
+            "clean_metric_value": "13",
+            "value_unit": "%",
+            "association_score": 86,
+            "metric_value_status": "value_extracted",
+            "row_label": "unavailable",
+            "column_label": "unavailable",
+        }
+    ]
+
+    summary = writer._asx_metric_audit_summary(records, "Hold")
+
+    assert "membership neutral (value unavailable; value_extracted; association_score 86" in summary
+    assert "13 %" not in summary
+
+
 def test_quality_validator_requires_metric_association_audit_fields(tmp_path: Path):
     validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
     evidence_path = tmp_path / "evidence.json"

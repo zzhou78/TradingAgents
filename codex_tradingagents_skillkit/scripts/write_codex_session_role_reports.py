@@ -675,13 +675,35 @@ def _asx_metric_audit_summary(records: list[dict[str, object]], manager_rec: str
         selected = audit_records[:2]
     parts = []
     for item in selected:
-        value = item["clean_metric_value"]
-        value_text = f"{value} {item['value_unit']}".strip() if value != "unavailable" else "value unavailable"
+        value_text = _asx_metric_summary_value_text(item)
         parts.append(
             f"{item['metric_name']} {item['direction']} ({value_text}; {item['metric_value_status']}; "
             f"association_score {item['association_score']}; {item['evidence_id']}; {item['confidence']})"
         )
     return "Metric audit summary: " + "; ".join(parts) + "."
+
+
+def _asx_metric_summary_value_text(item: dict[str, object]) -> str:
+    value = str(item.get("clean_metric_value") or "unavailable")
+    unit = str(item.get("value_unit") or "unavailable")
+    if value == "unavailable" or unit in {"", "unavailable", "unit unavailable"}:
+        return "value unavailable"
+    try:
+        table_mapping_confidence = int(float(str(item.get("table_mapping_confidence") or "0")))
+    except ValueError:
+        table_mapping_confidence = 0
+    row_label = str(item.get("row_label") or "unavailable").strip().lower()
+    column_label = str(item.get("column_label") or "unavailable").strip().lower()
+    if table_mapping_confidence >= 80 and (row_label in {"", "unavailable"} or column_label in {"", "unavailable"}):
+        return "value unavailable"
+    support_text = str(item.get("supporting_sentence") or item.get("extracted_value_or_phrase") or "")
+    if row_label in {"", "unavailable"} and column_label in {"", "unavailable"} and _summary_text_has_many_numbers(support_text):
+        return "value unavailable"
+    return f"{value} {unit}".strip()
+
+
+def _summary_text_has_many_numbers(text: str) -> bool:
+    return len(re.findall(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t|k)?", text, re.IGNORECASE)) > 4
 
 
 def _asx_metric_direction_counts(records: list[dict[str, object]]) -> dict[str, int]:

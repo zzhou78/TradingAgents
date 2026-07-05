@@ -2,15 +2,15 @@
   "ticker": "WOW.AX",
   "trade_date": "2026-07-02",
   "evidence_as_of_date": "2026-07-02",
-  "run_executed_at": "2026-07-05T13:42:09+10:00",
+  "run_executed_at": "2026-07-05T15:12:58+10:00",
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-  "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T13:42:09+10:00",
+  "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T15:12:58+10:00",
   "authoritative_result_folder": true,
   "status": "pending",
   "run_metadata": {
     "trade_date": "2026-07-02",
     "evidence_as_of_date": "2026-07-02",
-    "run_executed_at": "2026-07-05T13:42:09+10:00",
+    "run_executed_at": "2026-07-05T15:12:58+10:00",
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "market": "ASX",
     "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -21,7 +21,7 @@
       "MPL.AX",
       "WOW.AX"
     ],
-    "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T13:42:09+10:00",
+    "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T15:12:58+10:00",
     "authoritative_result_folder": true,
     "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "status": "pending",
@@ -45,7 +45,7 @@
             "start_date": "2026-06-02",
             "end_date": "2026-07-02"
           },
-          "output": "# Stock data for WOW.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 13:44:42\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0\r\n2026-06-03,34.3,35.19,34.25,35.09,1890873,0.0,0.0\r\n2026-06-04,35.29,35.59,35.14,35.26,1427129,0.0,0.0\r\n2026-06-05,35.26,35.8,35.1,35.69,1754868,0.0,0.0\r\n2026-06-09,36.0,36.63,35.9,36.48,2781321,0.0,0.0\r\n2026-06-10,36.58,37.63,36.58,37.63,2237739,0.0,0.0\r\n2026-06-11,37.68,38.09,37.63,38.09,2377238,0.0,0.0\r\n2026-06-12,38.15,38.5,38.09,38.33,2199640,0.0,0.0\r\n2026-06-15,38.19,38.46,37.95,38.23,3411482,0.0,0.0\r\n2026-06-16,38.01,38.28,37.88,38.26,1501664,0.0,0.0\r\n2026-06-17,37.99,38.2,37.73,37.78,2278310,0.0,0.0\r\n2026-06-18,37.75,38.3,37.7,38.12,3777467,0.0,0.0\r\n2026-06-19,38.2,38.42,37.92,38.32,5103756,0.0,0.0\r\n2026-06-22,38.01,38.55,38.01,38.55,1438982,0.0,0.0\r\n2026-06-23,38.6,38.8,38.4,38.74,2019982,0.0,0.0\r\n2026-06-24,38.81,39.38,38.76,39.37,3127670,0.0,0.0\r\n2026-06-25,39.5,40.1,39.43,39.94,2464394,0.0,0.0\r\n2026-06-26,39.8,40.24,39.52,40.24,1677574,0.0,0.0\r\n2026-06-29,40.15,40.75,40.04,40.55,1737667,0.0,0.0\r\n2026-06-30,40.5,40.6,39.97,40.03,2447455,0.0,0.0\r\n2026-07-01,39.67,39.9,38.75,39.31,3008386,0.0,0.0\r\n2026-07-02,38.78,39.47,38.63,39.35,2879516,0.0,0.0\r\n"
+          "output": "# Stock data for WOW.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 15:17:27\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,34.71,35.02,34.26,34.41,2496839,0.0,0.0\r\n2026-06-03,34.3,35.19,34.25,35.09,1890873,0.0,0.0\r\n2026-06-04,35.29,35.59,35.14,35.26,1427129,0.0,0.0\r\n2026-06-05,35.26,35.8,35.1,35.69,1754868,0.0,0.0\r\n2026-06-09,36.0,36.63,35.9,36.48,2781321,0.0,0.0\r\n2026-06-10,36.58,37.63,36.58,37.63,2237739,0.0,0.0\r\n2026-06-11,37.68,38.09,37.63,38.09,2377238,0.0,0.0\r\n2026-06-12,38.15,38.5,38.09,38.33,2199640,0.0,0.0\r\n2026-06-15,38.19,38.46,37.95,38.23,3411482,0.0,0.0\r\n2026-06-16,38.01,38.28,37.88,38.26,1501664,0.0,0.0\r\n2026-06-17,37.99,38.2,37.73,37.78,2278310,0.0,0.0\r\n2026-06-18,37.75,38.3,37.7,38.12,3777467,0.0,0.0\r\n2026-06-19,38.2,38.42,37.92,38.32,5103756,0.0,0.0\r\n2026-06-22,38.01,38.55,38.01,38.55,1438982,0.0,0.0\r\n2026-06-23,38.6,38.8,38.4,38.74,2019982,0.0,0.0\r\n2026-06-24,38.81,39.38,38.76,39.37,3127670,0.0,0.0\r\n2026-06-25,39.5,40.1,39.43,39.94,2464394,0.0,0.0\r\n2026-06-26,39.8,40.24,39.52,40.24,1677574,0.0,0.0\r\n2026-06-29,40.15,40.75,40.04,40.55,1737667,0.0,0.0\r\n2026-06-30,40.5,40.6,39.97,40.03,2447455,0.0,0.0\r\n2026-07-01,39.67,39.9,38.75,39.31,3008386,0.0,0.0\r\n2026-07-02,38.78,39.47,38.63,39.35,2879516,0.0,0.0\r\n"
         },
         "get_verified_market_snapshot": {
           "status": "ok",
@@ -167,7 +167,7 @@
           "args": {
             "ticker": "WOW.AX"
           },
-          "output": "# Insider Transactions data for WOW.AX\n# Data retrieved on: 2026-07-05 13:45:00\n\n,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value\r\n0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,\r\n1,4027,,Purchase at price 24.97 per share.,Perkins (Scott Redvers),Independent Chairman Of The Board,,2026-06-01,D,100558.0\r\n2,7170,,,Fellows (Tracey),Former,,2026-03-01,D,\r\n3,3158,,,Bray (Warwick),Independent Non-Executive Director,,2026-02-26,D,\r\n4,701,,,Fellows (Tracey),Independent Non-Executive Director,,2026-02-26,D,\r\n5,12738,,,Bardwell (Amanda),Chief Executive Officer,,2025-08-28,D,\r\n6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,\r\n7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,\r\n8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,\r\n9,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,\r\n10,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,\r\n11,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,\r\n12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0\r\n13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0\r\n14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,\r\n15,620,,,Fellows (Tracey),Independent Non-Executive Director,,2025-02-28,D,\r\n16,1033,,,Kramer (Holly S),Independent Non-Executive Director,,2025-02-28,D,\r\n17,1676,,Purchase at price 19.89 per share.,Fellows (Tracey),Independent Non-Executive Director,,2024-11-07,D,33342.0\r\n18,8000,,Purchase at price 19.66 per share.,Chronican (Philip Wayne),Independent Non-Executive Director,,2024-11-05,D,157275.0\r\n19,8860,,,Bardwell (Amanda),Chief Executive Officer,,2024-09-01,D,\r\n20,1100,,Purchase at price 24.26 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2024-08-30,D,26688.0\r\n21,22569,,,Banducci (Bradford Leon),Chief Executive Officer,,2024-08-29,D,\r\n22,1930,,,Bray (Warwick),Independent Non-Executive Director,,2024-08-29,D,\r\n23,618,,,Fellows (Tracey),Independent Non-Executive Director,,2024-08-29,D,\r\n24,1027,,,Kramer (Holly S),Independent Non-Executive Director,,2024-08-29,D,\r\n"
+          "output": "# Insider Transactions data for WOW.AX\n# Data retrieved on: 2026-07-05 15:17:40\n\n,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value\r\n0,1000,,,Meyer (Kenneth),Director (Non-Executive),,2026-06-17,D,\r\n1,4027,,Purchase at price 24.97 per share.,Perkins (Scott Redvers),Independent Chairman Of The Board,,2026-06-01,D,100558.0\r\n2,7170,,,Fellows (Tracey),Former,,2026-03-01,D,\r\n3,3158,,,Bray (Warwick),Independent Non-Executive Director,,2026-02-26,D,\r\n4,701,,,Fellows (Tracey),Independent Non-Executive Director,,2026-02-26,D,\r\n5,12738,,,Bardwell (Amanda),Chief Executive Officer,,2025-08-28,D,\r\n6,1592,,,Bray (Warwick),Independent Non-Executive Director,,2025-08-28,D,\r\n7,664,,,Fellows (Tracey),Independent Non-Executive Director,,2025-08-28,D,\r\n8,1103,,,Kramer (Holly S),Independent Non-Executive Director,,2025-08-28,D,\r\n9,2480,,,Davis (Natalie),Divisional Officer,,2025-06-30,D,\r\n10,2229,,,Harrison (Stephen),Chief Financial Officer,,2025-06-30,D,\r\n11,44976,,,Karantoni (Annette),Divisional Officer,,2025-06-30,D,\r\n12,470,,Purchase at price 20.77 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-06,D,9763.0\r\n13,625,,Purchase at price 21.11 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2025-05-05,D,13193.0\r\n14,1490,,,Bray (Warwick),Independent Non-Executive Director,,2025-02-28,D,\r\n15,620,,,Fellows (Tracey),Independent Non-Executive Director,,2025-02-28,D,\r\n16,1033,,,Kramer (Holly S),Independent Non-Executive Director,,2025-02-28,D,\r\n17,1676,,Purchase at price 19.89 per share.,Fellows (Tracey),Independent Non-Executive Director,,2024-11-07,D,33342.0\r\n18,8000,,Purchase at price 19.66 per share.,Chronican (Philip Wayne),Independent Non-Executive Director,,2024-11-05,D,157275.0\r\n19,8860,,,Bardwell (Amanda),Chief Executive Officer,,2024-09-01,D,\r\n20,1100,,Purchase at price 24.26 per share.,Brenner (Maxine Nicole),Independent Non-Executive Director,,2024-08-30,D,26688.0\r\n21,22569,,,Banducci (Bradford Leon),Chief Executive Officer,,2024-08-29,D,\r\n22,1930,,,Bray (Warwick),Independent Non-Executive Director,,2024-08-29,D,\r\n23,618,,,Fellows (Tracey),Independent Non-Executive Director,,2024-08-29,D,\r\n24,1027,,,Kramer (Holly S),Independent Non-Executive Director,,2024-08-29,D,\r\n"
         }
       },
       "structured_evidence": {
@@ -188,7 +188,7 @@
             "ticker": "WOW.AX",
             "curr_date": "2026-07-02"
           },
-          "output": "# Company Fundamentals for WOW.AX\n# Data retrieved on: 2026-07-05 13:45:00\n\nName: Woolworths Group Limited\nSector: Consumer Defensive\nIndustry: Grocery Stores\nMarket Cap: 48595214336\nPE Ratio (TTM): 81.18367\nForward PE: 28.190971\nPEG Ratio: 2.16\nPrice to Book: 10.484976\nEPS (TTM): 0.49\nForward EPS: 1.41109\nDividend Yield: 2.26\nBeta: 0.27\n52 Week High: 40.75\n52 Week Low: 25.51\n50 Day Average: 36.1744\n200 Day Average: 32.4441\nRevenue (TTM): 70282002432\nGross Profit: 19207999488\nEBITDA: 3300000000\nNet Income: 598000000\nProfit Margin: 0.00851\nOperating Margin: 0.025910001\nReturn on Equity: 0.1188\nReturn on Assets: 0.03636\nDebt to Equity: 361.53\nCurrent Ratio: 0.557\nBook Value: 3.794\nFree Cash Flow: 2267749888"
+          "output": "# Company Fundamentals for WOW.AX\n# Data retrieved on: 2026-07-05 15:17:40\n\nName: Woolworths Group Limited\nSector: Consumer Defensive\nIndustry: Grocery Stores\nMarket Cap: 48595214336\nPE Ratio (TTM): 81.18367\nForward PE: 28.190971\nPEG Ratio: 2.16\nPrice to Book: 10.484976\nEPS (TTM): 0.49\nForward EPS: 1.41109\nDividend Yield: 2.26\nBeta: 0.27\n52 Week High: 40.75\n52 Week Low: 25.51\n50 Day Average: 36.1744\n200 Day Average: 32.4441\nRevenue (TTM): 70282002432\nGross Profit: 19207999488\nEBITDA: 3300000000\nNet Income: 598000000\nProfit Margin: 0.00851\nOperating Margin: 0.025910001\nReturn on Equity: 0.1188\nReturn on Assets: 0.03636\nDebt to Equity: 361.53\nCurrent Ratio: 0.557\nBook Value: 3.794\nFree Cash Flow: 2267749888"
         },
         "get_balance_sheet": {
           "status": "ok",
@@ -197,7 +197,7 @@
             "freq": "quarterly",
             "curr_date": "2026-07-02"
           },
-          "output": "# Balance Sheet data for WOW.AX (quarterly)\n# Data retrieved on: 2026-07-05 13:45:01\n\n,2025-06-30\r\nOrdinary Shares Number,1221595333.0\r\nShare Issued,1221595333.0\r\nNet Debt,4236000000.0\r\nTotal Debt,17385000000.0\r\nTangible Book Value,151000000.0\r\nInvested Capital,10371000000.0\r\nWorking Capital,-5306000000.0\r\nNet Tangible Assets,151000000.0\r\nCapital Lease Obligations,11874000000.0\r\nCommon Stock Equity,4860000000.0\r\nTotal Capitalization,10127000000.0\r\nTotal Equity Gross Minority Interest,4962000000.0\r\nMinority Interest,102000000.0\r\nStockholders Equity,4860000000.0\r\nGains Losses Not Affecting Retained Earnings,-7479000000.0\r\nOther Equity Adjustments,-7545000000.0\r\nForeign Currency Translation Adjustments,66000000.0\r\nRetained Earnings,6712000000.0\r\nCapital Stock,5627000000.0\r\nCommon Stock,5627000000.0\r\nTotal Liabilities Net Minority Interest,28867000000.0\r\nTotal Non Current Liabilities Net Minority Interest,16570000000.0\r\nOther Non Current Liabilities,58000000.0\r\nDerivative Product Liabilities,46000000.0\r\nEmployee Benefits,165000000.0\r\nNon Current Pension And Other Postretirement Benefit Plans,165000000.0\r\nNon Current Deferred Liabilities,61000000.0\r\nNon Current Deferred Taxes Liabilities,61000000.0\r\nLong Term Debt And Capital Lease Obligation,15442000000.0\r\nLong Term Capital Lease Obligation,10175000000.0\r\nLong Term Debt,5267000000.0\r\nLong Term Provisions,798000000.0\r\nCurrent Liabilities,12297000000.0\r\nOther Current Liabilities,11000000.0\r\nCurrent Deferred Liabilities,127000000.0\r\nCurrent Deferred Taxes Liabilities,127000000.0\r\nCurrent Debt And Capital Lease Obligation,1943000000.0\r\nCurrent Capital Lease Obligation,1699000000.0\r\nCurrent Debt,244000000.0\r\nOther Current Borrowings,244000000.0\r\nPensionand Other Post Retirement Benefit Plans Current,1401000000.0\r\nCurrent Provisions,732000000.0\r\nPayables And Accrued Expenses,8083000000.0\r\nPayables,8083000000.0\r\nOther Payable,2067000000.0\r\nAccounts Payable,6016000000.0\r\nTotal Assets,33829000000.0\r\nTotal Non Current Assets,26838000000.0\r\nOther Non Current Assets,27000000.0\r\nNon Current Deferred Assets,1853000000.0\r\nNon Current Deferred Taxes Assets,1853000000.0\r\nNon Current Accounts Receivable,455000000.0\r\nFinancial Assets,199000000.0\r\nInvestments And Advances,261000000.0\r\nOther Investments,173000000.0\r\nInvestmentin Financial Assets,11000000.0\r\nTrading Securities,11000000.0\r\nLong Term Equity Investment,77000000.0\r\nInvestmentsin Associatesat Cost,77000000.0\r\nGoodwill And Other Intangible Assets,4709000000.0\r\nOther Intangible Assets,2241000000.0\r\nGoodwill,2468000000.0\r\nNet PPE,19334000000.0\r\nAccumulated Depreciation,-23014000000.0\r\nGross PPE,42348000000.0\r\nLeases,4641000000.0\r\nOther Properties,23329000000.0\r\nMachinery Furniture Equipment,13036000000.0\r\nLand And Improvements,1342000000.0\r\nCurrent Assets,6991000000.0\r\nOther Current Assets,17000000.0\r\nHedging Assets Current,52000000.0\r\nAssets Held For Sale Current,200000000.0\r\nPrepaid Assets,183000000.0\r\nInventory,4169000000.0\r\nInventories Adjustments Allowances,-58000000.0\r\nOther Inventories,4227000000.0\r\nReceivables,1095000000.0\r\nReceivables Adjustments Allowances,-6000000.0\r\nOther Receivables,627000000.0\r\nAccounts Receivable,474000000.0\r\nCash Cash Equivalents And Short Term Investments,1275000000.0\r\nCash And Cash Equivalents,1275000000.0\r\nCash Financial,1275000000.0\r\n"
+          "output": "# Balance Sheet data for WOW.AX (quarterly)\n# Data retrieved on: 2026-07-05 15:17:40\n\n,2025-06-30\r\nOrdinary Shares Number,1221595333.0\r\nShare Issued,1221595333.0\r\nNet Debt,4236000000.0\r\nTotal Debt,17385000000.0\r\nTangible Book Value,151000000.0\r\nInvested Capital,10371000000.0\r\nWorking Capital,-5306000000.0\r\nNet Tangible Assets,151000000.0\r\nCapital Lease Obligations,11874000000.0\r\nCommon Stock Equity,4860000000.0\r\nTotal Capitalization,10127000000.0\r\nTotal Equity Gross Minority Interest,4962000000.0\r\nMinority Interest,102000000.0\r\nStockholders Equity,4860000000.0\r\nGains Losses Not Affecting Retained Earnings,-7479000000.0\r\nOther Equity Adjustments,-7545000000.0\r\nForeign Currency Translation Adjustments,66000000.0\r\nRetained Earnings,6712000000.0\r\nCapital Stock,5627000000.0\r\nCommon Stock,5627000000.0\r\nTotal Liabilities Net Minority Interest,28867000000.0\r\nTotal Non Current Liabilities Net Minority Interest,16570000000.0\r\nOther Non Current Liabilities,58000000.0\r\nDerivative Product Liabilities,46000000.0\r\nEmployee Benefits,165000000.0\r\nNon Current Pension And Other Postretirement Benefit Plans,165000000.0\r\nNon Current Deferred Liabilities,61000000.0\r\nNon Current Deferred Taxes Liabilities,61000000.0\r\nLong Term Debt And Capital Lease Obligation,15442000000.0\r\nLong Term Capital Lease Obligation,10175000000.0\r\nLong Term Debt,5267000000.0\r\nLong Term Provisions,798000000.0\r\nCurrent Liabilities,12297000000.0\r\nOther Current Liabilities,11000000.0\r\nCurrent Deferred Liabilities,127000000.0\r\nCurrent Deferred Taxes Liabilities,127000000.0\r\nCurrent Debt And Capital Lease Obligation,1943000000.0\r\nCurrent Capital Lease Obligation,1699000000.0\r\nCurrent Debt,244000000.0\r\nOther Current Borrowings,244000000.0\r\nPensionand Other Post Retirement Benefit Plans Current,1401000000.0\r\nCurrent Provisions,732000000.0\r\nPayables And Accrued Expenses,8083000000.0\r\nPayables,8083000000.0\r\nOther Payable,2067000000.0\r\nAccounts Payable,6016000000.0\r\nTotal Assets,33829000000.0\r\nTotal Non Current Assets,26838000000.0\r\nOther Non Current Assets,27000000.0\r\nNon Current Deferred Assets,1853000000.0\r\nNon Current Deferred Taxes Assets,1853000000.0\r\nNon Current Accounts Receivable,455000000.0\r\nFinancial Assets,199000000.0\r\nInvestments And Advances,261000000.0\r\nOther Investments,173000000.0\r\nInvestmentin Financial Assets,11000000.0\r\nTrading Securities,11000000.0\r\nLong Term Equity Investment,77000000.0\r\nInvestmentsin Associatesat Cost,77000000.0\r\nGoodwill And Other Intangible Assets,4709000000.0\r\nOther Intangible Assets,2241000000.0\r\nGoodwill,2468000000.0\r\nNet PPE,19334000000.0\r\nAccumulated Depreciation,-23014000000.0\r\nGross PPE,42348000000.0\r\nLeases,4641000000.0\r\nOther Properties,23329000000.0\r\nMachinery Furniture Equipment,13036000000.0\r\nLand And Improvements,1342000000.0\r\nCurrent Assets,6991000000.0\r\nOther Current Assets,17000000.0\r\nHedging Assets Current,52000000.0\r\nAssets Held For Sale Current,200000000.0\r\nPrepaid Assets,183000000.0\r\nInventory,4169000000.0\r\nInventories Adjustments Allowances,-58000000.0\r\nOther Inventories,4227000000.0\r\nReceivables,1095000000.0\r\nReceivables Adjustments Allowances,-6000000.0\r\nOther Receivables,627000000.0\r\nAccounts Receivable,474000000.0\r\nCash Cash Equivalents And Short Term Investments,1275000000.0\r\nCash And Cash Equivalents,1275000000.0\r\nCash Financial,1275000000.0\r\n"
         },
         "get_cashflow": {
           "status": "ok",
@@ -722,7 +722,695 @@
                 "variance_percent": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 3219,
+              "table_rows_by_strategy": {
+                "pdfplumber_default": 25,
+                "pdfplumber_text": 1472,
+                "pdfplumber_words": 1454,
+                "pdfplumber_crop": 268
+              },
+              "table_rows_by_table": {
+                "page_1_table_1_pdfplumber_table_1": 1,
+                "page_1_table_2_pdfplumber_text_table_2": 6,
+                "page_1_table_1001_pdfplumber_words": 1,
+                "page_2_table_1_pdfplumber_table_1": 4,
+                "page_2_table_2_pdfplumber_table_2": 2,
+                "page_2_table_3_pdfplumber_text_table_3": 36,
+                "page_2_table_1001_pdfplumber_words": 18,
+                "page_3_table_1_pdfplumber_text_table_1": 20,
+                "page_3_table_1001_pdfplumber_words": 11,
+                "page_5_table_1_pdfplumber_table_1": 1,
+                "page_5_table_2_pdfplumber_text_table_2": 36,
+                "page_5_table_1001_pdfplumber_words": 31,
+                "page_6_table_1_pdfplumber_table_1": 1,
+                "page_6_table_2_pdfplumber_text_table_2": 36,
+                "page_6_table_1001_pdfplumber_words": 31,
+                "page_7_table_1_pdfplumber_text_table_1": 17,
+                "page_7_table_2_pdfplumber_crop_balance_sheet_text_table_2": 3,
+                "page_7_table_1001_pdfplumber_words": 13,
+                "page_8_table_1_pdfplumber_text_table_1": 17,
+                "page_8_table_2_pdfplumber_crop_balance_sheet_text_table_2": 9,
+                "page_8_table_1001_pdfplumber_words": 13,
+                "page_9_table_1_pdfplumber_text_table_1": 31,
+                "page_9_table_1001_pdfplumber_words": 23,
+                "page_10_table_1_pdfplumber_text_table_1": 31,
+                "page_10_table_2_pdfplumber_crop_income_statement_text_table_2": 4,
+                "page_10_table_1001_pdfplumber_words": 23,
+                "page_11_table_1_pdfplumber_table_1": 2,
+                "page_11_table_2_pdfplumber_text_table_2": 14,
+                "page_11_table_1001_pdfplumber_words": 25,
+                "page_12_table_1_pdfplumber_table_1": 2,
+                "page_12_table_2_pdfplumber_text_table_2": 14,
+                "page_12_table_1001_pdfplumber_words": 25,
+                "page_13_table_1_pdfplumber_text_table_1": 17,
+                "page_13_table_1001_pdfplumber_words": 17,
+                "page_14_table_1_pdfplumber_text_table_1": 17,
+                "page_14_table_1001_pdfplumber_words": 17,
+                "page_15_table_1_pdfplumber_text_table_1": 6,
+                "page_15_table_1001_pdfplumber_words": 4,
+                "page_16_table_1_pdfplumber_text_table_1": 6,
+                "page_16_table_1001_pdfplumber_words": 4,
+                "page_17_table_1_pdfplumber_text_table_1": 23,
+                "page_17_table_1001_pdfplumber_words": 24,
+                "page_18_table_1_pdfplumber_text_table_1": 23,
+                "page_18_table_2_pdfplumber_crop_balance_sheet_text_table_2": 3,
+                "page_18_table_1001_pdfplumber_words": 24,
+                "page_19_table_1_pdfplumber_table_1": 2,
+                "page_19_table_2_pdfplumber_text_table_2": 17,
+                "page_19_table_1001_pdfplumber_words": 16,
+                "page_20_table_1_pdfplumber_table_1": 3,
+                "page_20_table_2_pdfplumber_text_table_2": 17,
+                "page_20_table_1001_pdfplumber_words": 16,
+                "page_21_table_1_pdfplumber_text_table_1": 14,
+                "page_21_table_1001_pdfplumber_words": 14,
+                "page_22_table_1_pdfplumber_table_1": 1,
+                "page_22_table_2_pdfplumber_text_table_2": 14,
+                "page_22_table_1001_pdfplumber_words": 14,
+                "page_23_table_1_pdfplumber_text_table_1": 17,
+                "page_23_table_1001_pdfplumber_words": 17,
+                "page_24_table_1_pdfplumber_text_table_1": 17,
+                "page_24_table_1001_pdfplumber_words": 17,
+                "page_25_table_1_pdfplumber_text_table_1": 24,
+                "page_25_table_1001_pdfplumber_words": 25,
+                "page_26_table_1_pdfplumber_text_table_1": 24,
+                "page_26_table_1001_pdfplumber_words": 25,
+                "page_27_table_1_pdfplumber_text_table_1": 18,
+                "page_27_table_1001_pdfplumber_words": 13,
+                "page_28_table_1_pdfplumber_text_table_1": 18,
+                "page_28_table_1001_pdfplumber_words": 13,
+                "page_29_table_1_pdfplumber_text_table_1": 17,
+                "page_29_table_1001_pdfplumber_words": 27,
+                "page_30_table_1_pdfplumber_text_table_1": 17,
+                "page_30_table_1001_pdfplumber_words": 27,
+                "page_31_table_1_pdfplumber_text_table_1": 55,
+                "page_31_table_2_pdfplumber_crop_income_statement_text_table_2": 18,
+                "page_31_table_1001_pdfplumber_words": 61,
+                "page_32_table_1_pdfplumber_text_table_1": 55,
+                "page_32_table_2_pdfplumber_crop_income_statement_text_table_2": 21,
+                "page_32_table_3_pdfplumber_crop_income_statement_text_table_3": 4,
+                "page_32_table_1001_pdfplumber_words": 61,
+                "page_33_table_1_pdfplumber_text_table_1": 58,
+                "page_33_table_2_pdfplumber_crop_balance_sheet_text_table_2": 25,
+                "page_33_table_3_pdfplumber_crop_balance_sheet_text_table_3": 24,
+                "page_33_table_4_pdfplumber_crop_cash_flow_text_table_4": 22,
+                "page_33_table_5_pdfplumber_crop_cash_flow_text_table_5": 18,
+                "page_33_table_6_pdfplumber_crop_balance_sheet_text_table_6": 7,
+                "page_33_table_7_pdfplumber_crop_income_statement_text_table_7": 7,
+                "page_33_table_8_pdfplumber_crop_balance_sheet_text_table_8": 7,
+                "page_33_table_1001_pdfplumber_words": 66,
+                "page_34_table_1_pdfplumber_text_table_1": 58,
+                "page_34_table_2_pdfplumber_crop_balance_sheet_text_table_2": 20,
+                "page_34_table_3_pdfplumber_crop_balance_sheet_text_table_3": 13,
+                "page_34_table_4_pdfplumber_crop_cash_flow_text_table_4": 18,
+                "page_34_table_5_pdfplumber_crop_cash_flow_text_table_5": 14,
+                "page_34_table_6_pdfplumber_crop_balance_sheet_text_table_6": 12,
+                "page_34_table_7_pdfplumber_crop_income_statement_text_table_7": 10,
+                "page_34_table_8_pdfplumber_crop_balance_sheet_text_table_8": 9,
+                "page_34_table_1001_pdfplumber_words": 66,
+                "page_35_table_1_pdfplumber_table_1": 1,
+                "page_35_table_2_pdfplumber_text_table_2": 33,
+                "page_35_table_1001_pdfplumber_words": 34,
+                "page_36_table_1_pdfplumber_table_1": 1,
+                "page_36_table_2_pdfplumber_text_table_2": 33,
+                "page_36_table_1001_pdfplumber_words": 34,
+                "page_37_table_1_pdfplumber_text_table_1": 31,
+                "page_37_table_1001_pdfplumber_words": 31,
+                "page_38_table_1_pdfplumber_text_table_1": 31,
+                "page_38_table_1001_pdfplumber_words": 31,
+                "page_39_table_1_pdfplumber_text_table_1": 31,
+                "page_39_table_1001_pdfplumber_words": 37,
+                "page_40_table_1_pdfplumber_text_table_1": 31,
+                "page_40_table_1001_pdfplumber_words": 37,
+                "page_41_table_1_pdfplumber_table_1": 1,
+                "page_41_table_2_pdfplumber_text_table_2": 38,
+                "page_41_table_1001_pdfplumber_words": 35,
+                "page_42_table_1_pdfplumber_table_1": 1,
+                "page_42_table_2_pdfplumber_text_table_2": 38,
+                "page_42_table_1001_pdfplumber_words": 35,
+                "page_43_table_1_pdfplumber_table_1": 1,
+                "page_43_table_2_pdfplumber_text_table_2": 43,
+                "page_43_table_1001_pdfplumber_words": 39,
+                "page_44_table_1_pdfplumber_table_1": 1,
+                "page_44_table_2_pdfplumber_text_table_2": 43,
+                "page_44_table_1001_pdfplumber_words": 39,
+                "page_45_table_1_pdfplumber_text_table_1": 30,
+                "page_45_table_1001_pdfplumber_words": 27,
+                "page_46_table_1_pdfplumber_text_table_1": 30,
+                "page_46_table_1001_pdfplumber_words": 27,
+                "page_47_table_1_pdfplumber_text_table_1": 22,
+                "page_47_table_1001_pdfplumber_words": 30,
+                "page_48_table_1_pdfplumber_text_table_1": 22,
+                "page_48_table_1001_pdfplumber_words": 30,
+                "page_49_table_1_pdfplumber_text_table_1": 16,
+                "page_49_table_1001_pdfplumber_words": 14,
+                "page_50_table_1_pdfplumber_text_table_1": 16,
+                "page_50_table_1001_pdfplumber_words": 14,
+                "page_51_table_1_pdfplumber_text_table_1": 12,
+                "page_51_table_1001_pdfplumber_words": 11,
+                "page_52_table_1_pdfplumber_text_table_1": 12,
+                "page_52_table_1001_pdfplumber_words": 11,
+                "page_53_table_1_pdfplumber_text_table_1": 10,
+                "page_53_table_1001_pdfplumber_words": 7,
+                "page_54_table_1_pdfplumber_text_table_1": 10,
+                "page_54_table_1001_pdfplumber_words": 7,
+                "page_55_table_1_pdfplumber_text_table_1": 23,
+                "page_55_table_1001_pdfplumber_words": 18,
+                "page_56_table_1_pdfplumber_text_table_1": 23,
+                "page_56_table_1001_pdfplumber_words": 18,
+                "page_57_table_1_pdfplumber_text_table_1": 15,
+                "page_57_table_1001_pdfplumber_words": 14,
+                "page_58_table_1_pdfplumber_text_table_1": 15,
+                "page_58_table_1001_pdfplumber_words": 14,
+                "page_59_table_1_pdfplumber_text_table_1": 37,
+                "page_59_table_1001_pdfplumber_words": 39,
+                "page_60_table_1_pdfplumber_text_table_1": 37,
+                "page_60_table_1001_pdfplumber_words": 39
+              },
+              "metric_like_table_rows": [
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "13",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Revenue |  |  |  |  |  | 1.7 | to | 69,077"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "52",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Net tangible assets per sha | re 1 |  |  |  |  |  | 12.4 | 43.8"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "54",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "1 Net tangible assets per sha | re is calculat | ed as net assets | of $4,962 million (202 | 4: $5,570 million) adju | sted f | or intan | gible assets of | "
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "1001",
+                  "row_index": "7",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Revenue | 1.7 | to | 69,077"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "1001",
+                  "row_index": "33",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Net tangible assets per share 1 | 12.4 | 43.8"
+                },
+                {
+                  "source_page": "7",
+                  "table_index": "1",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 16,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "financial performance, balance sheet or | cash flows. N | on-IFRS fi | nancial measure | s are financial meas | ures other than | those | 2025 to create long-term value for our stakeh | olders. |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "7",
+                  "table_index": "1",
+                  "row_index": "22",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 16,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "December 2011 to promote full and clear | disclosure fo | r | (such as compar | able sales), by adjus | ting for non-rec | urring |  |  |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "7",
+                  "table_index": "2",
+                  "row_index": "12",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "December 2011 to promote full | and clear | disclosure fo | r | (such as comp | arable sales), by | adjusting for | non-recurring"
+                },
+                {
+                  "source_page": "7",
+                  "table_index": "1001",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "financial performance, balance sheet or cash flows. Non-IFRS financial measures are financial measures other than those | 2025 to create long-term value for our stakeholders."
+                },
+                {
+                  "source_page": "7",
+                  "table_index": "1001",
+                  "row_index": "22",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "December 2011 to promote full and clear disclosure for | (such as comparable sales), by adjusting for non-recurring"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 16,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "financial performance, balance sheet or | cash flows. N | on-IFRS fi | nancial measure | s are financial meas | ures other than | those | 2025 to create long-term value for our stakeh | olders. |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1",
+                  "row_index": "22",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 16,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "December 2011 to promote full and clear | disclosure fo | r | (such as compar | able sales), by adjus | ting for non-rec | urring |  |  |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1001",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "financial performance, balance sheet or cash flows. Non-IFRS financial measures are financial measures other than those | 2025 to create long-term value for our stakeholders."
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1001",
+                  "row_index": "22",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "December 2011 to promote full and clear disclosure for | (such as comparable sales), by adjusting for non-recurring"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "19",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  | providing custo | mers with their |  | Group sales |  | Group eCommerce sa | les |  | Group EBI | T1 |  | s nce"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "34",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 6,
+                  "raw_row_text": " | Service busin | esses leverage the strength of the |  |  |  | \u25cf W Living 3 | $5,638M | \u25cf Other eCommerce sales 5 | $225M | \u25cf | W Living 3 | $( | 63)M | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "36",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | and accelerat | e sales and profit growth |  |  |  | reclassifications 4 $ | (1,559)M |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "64",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 6,
+                  "raw_row_text": " |  | 278 | 31 |  | 1 Bef 2 Rev sold res | ore significant items. enue in Australian B2B includes by the Group. At the Group lev ulting in no change to EBIT. | $382 million (F24: el, this revenue rep | $356 million) of freight revenue re resents a reduction in the cost of t | ceived fro he product | m suppli s and is | ers for freight reclassified as | services provided a reduction in co | on products st of sales, | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "66",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | 4 Inte | rsegment eliminations and recl | assifications repre | sent the elimination of intersegm | ent revenue | and the | reclassificati | on of external frei | ght revenue | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "67",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | rec | ognised in Australian B2B that is | reclassified and r | ecognised as a reduction to cost o | f sales at a | Group l | evel. |  |  | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "68",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | 5 Oth | er eCommerce sales comprise | s Petstock, Woolw | orths MarketPlus and Healthylife. |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1001",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Group sales | Group eCommerce sales | Group EBIT1"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1001",
+                  "row_index": "34",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 5,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "\u25cf W Living | $5,638M | \u25cf Other eCommerce sales 5 $225M | \u25cf W Living | $(63)M"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1001",
+                  "row_index": "39",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "and accelerate sales and profit growth | reclassifications 4 $(1,559)M"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "19",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  | providing custo | mers with their |  | Group sales |  | Group eCommerce sa | les |  | Group EBI | T1 |  | s nce"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "34",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 6,
+                  "raw_row_text": " | Service busin | esses leverage the strength of the |  |  |  | \u25cf W Living 3 | $5,638M | \u25cf Other eCommerce sales 5 | $225M | \u25cf | W Living 3 | $( | 63)M | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "36",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | and accelerat | e sales and profit growth |  |  |  | reclassifications 4 $ | (1,559)M |  |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "64",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 6,
+                  "raw_row_text": " |  | 278 | 31 |  | 1 Bef 2 Rev sold res | ore significant items. enue in Australian B2B includes by the Group. At the Group lev ulting in no change to EBIT. | $382 million (F24: el, this revenue rep | $356 million) of freight revenue re resents a reduction in the cost of t | ceived fro he product | m suppli s and is | ers for freight reclassified as | services provided a reduction in co | on products st of sales, | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "66",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | 4 Inte | rsegment eliminations and recl | assifications repre | sent the elimination of intersegm | ent revenue | and the | reclassificati | on of external frei | ght revenue | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "67",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | rec | ognised in Australian B2B that is | reclassified and r | ecognised as a reduction to cost o | f sales at a | Group l | evel. |  |  | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "68",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 15,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  |  |  |  | 5 Oth | er eCommerce sales comprise | s Petstock, Woolw | orths MarketPlus and Healthylife. |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "2",
+                  "row_index": "5",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 3,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "5 | Other eCommerce sales | comprises"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1001",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Group sales | Group eCommerce sales | Group EBIT1"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1001",
+                  "row_index": "34",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 5,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "\u25cf W Living | $5,638M | \u25cf Other eCommerce sales 5 $225M | \u25cf W Living | $(63)M"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1001",
+                  "row_index": "39",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "and accelerate sales and profit growth | reclassifications 4 $(1,559)M"
+                },
+                {
+                  "source_page": "11",
+                  "table_index": "2",
+                  "row_index": "32",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 13,
+                  "numeric_cell_count": 11,
+                  "raw_row_text": "F25 performance The Group\u2019s performance reflects a series of challenges which resulted in financial outcomes that fell short of expectations with Group EBIT declining by a normalised 12.6% 1. A combination of ongoing value-seeking behaviours from customers, necessary action taken to reduce shelf prices as well as material supply chain disruption from extended industrial action in Victoria contributed to Australian Food EBIT declining by a normalised 10.5% 1, well below our aspirations. | The Board dec 45 cents bring representing a Reflecting the outcomes, the The short-term customer, sale Target and Str | lared a fully franked ing the full year divid payout ratio of 74.1% Group's performanc long-term incentive incentive achieved s and safety achievi etch. | final d end to . e and did no a part ng out | ividend of 84 cents, shareholder t pay out. ial vesting with comes between | This year marks the en Sustainability Plan wit across key focus area plan period include th community through $ delivering over 165 mil through our partners, supply chain, and rem plastic from our own b can be found in this ye | d of our five-year 2 h meaningful progr s. Notable highlights e Group\u2019s efforts to 480 million in direct lion meals to people addressing modern oving over 20,000 t rand products. Mor ar\u2019s Sustainability R | 025 ess achieved over the support our contributions, in need slavery in our onnes of virgin e information eport. | potential rests on us intensifying our focu I want to take this m of former Executive of this year. Paul led 1995 during a pivota will be remembered values into the busin as they were in Paul\u2019 | staying true to s on delivery an oment to ackno Chairman Paul S Woolworths Lim l time in our com for instilling imp ess which rema s time. | our purpose w d performanc wledge the pa imons AM in ited from 198 pany\u2019s histor ortant custom in as relevant | hile e. ssing May 7 to y and er today | 4 Report Financial"
+                },
+                {
+                  "source_page": "11",
+                  "table_index": "2",
+                  "row_index": "33",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 13,
+                  "numeric_cell_count": 5,
+                  "raw_row_text": "While BIG W sales momentum built over the year, it reported a loss of $35 million for F25 reflecting gross margin pressure due to clearance activity in Clothing and lower prices as the business continued the reset of its range. Somewhat offsetting this was New Zealand Food, with EBIT 1 increasing by a normalised 40.6% 1,2 reflecting good progress on its ongoing transformation, a strong year from our eCommerce business, Media and Services, and PFD, as well as the full year contribution of Petstock in the W Living segment. | A one-off Acc in January 202 CEO) to ensure priorities, build under the new to serve separ of ongoing im The incentive H2 F25 targets 1 while tranche | elerator Incentive wa 5 for select senior le focus on driving the momentum and rea leadership. This ince ately and in addition portance within our was split into two tra on earnings and cos 2 consisted of addit | s also aders Grou lign G ntive to the STI an nches t savi ional | introduced (excluding the p\u2019s immediate roup initiatives was designed core metrics d LTI plans. with immediate ngs in tranche metrics over | Launching in F26 is th sustainability agenda, we can drive the most sustainable food syst affordable nutritious f human rights. I look fo as part of this importa Board updates I was pleased to anno | e next iteration of th focused on the are significant impact i ems, waste and circ ood, social impact rward to reporting nt agenda in the ye unce in August the | e Group\u2019s as where ncluding ularity, and advancing our progress ars ahead. appointment | Finally, I want to than the Group, who des year, remained focu | k all of our team pite the various c sed on putting o | members ac hallenges of t ur customers | ross his first. | 5 information Other"
+                },
+                {
+                  "source_page": "11",
+                  "table_index": "1001",
+                  "row_index": "73",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "expectations with Group EBIT declining by a normalised | representing a payout ratio of 74.1%. | community through $480 million in direct contributions, | of former Executive Chairman Paul Simons AM in May | Report Financial"
+                },
+                {
+                  "source_page": "12",
+                  "table_index": "2",
+                  "row_index": "32",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 13,
+                  "numeric_cell_count": 11,
+                  "raw_row_text": "F25 performance The Group\u2019s performance reflects a series of challenges which resulted in financial outcomes that fell short of expectations with Group EBIT declining by a normalised 12.6% 1. A combination of ongoing value-seeking behaviours from customers, necessary action taken to reduce shelf prices as well as material supply chain disruption from extended industrial action in Victoria contributed to Australian Food EBIT declining by a normalised 10.5% 1, well below our aspirations. | The Board dec 45 cents bring representing a Reflecting the outcomes, the The short-term customer, sale Target and Str | lared a fully franked ing the full year divid payout ratio of 74.1% Group's performanc long-term incentive incentive achieved s and safety achievi etch. | final d end to . e and did no a part ng out | ividend of 84 cents, shareholder t pay out. ial vesting with comes between | This year marks the en Sustainability Plan wit across key focus area plan period include th community through $ delivering over 165 mil through our partners, supply chain, and rem plastic from our own b can be found in this ye | d of our five-year 2 h meaningful progr s. Notable highlights e Group\u2019s efforts to 480 million in direct lion meals to people addressing modern oving over 20,000 t rand products. Mor ar\u2019s Sustainability R | 025 ess achieved over the support our contributions, in need slavery in our onnes of virgin e information eport. | potential rests on us intensifying our focu I want to take this m of former Executive of this year. Paul led 1995 during a pivota will be remembered values into the busin as they were in Paul\u2019 | staying true to s on delivery an oment to ackno Chairman Paul S Woolworths Lim l time in our com for instilling imp ess which rema s time. | our purpose w d performanc wledge the pa imons AM in ited from 198 pany\u2019s histor ortant custom in as relevant | hile e. ssing May 7 to y and er today | 4 Report Financial"
+                },
+                {
+                  "source_page": "12",
+                  "table_index": "2",
+                  "row_index": "33",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 13,
+                  "numeric_cell_count": 5,
+                  "raw_row_text": "While BIG W sales momentum built over the year, it reported a loss of $35 million for F25 reflecting gross margin pressure due to clearance activity in Clothing and lower prices as the business continued the reset of its range. Somewhat offsetting this was New Zealand Food, with EBIT 1 increasing by a normalised 40.6% 1,2 reflecting good progress on its ongoing transformation, a strong year from our eCommerce business, Media and Services, and PFD, as well as the full year contribution of Petstock in the W Living segment. | A one-off Acc in January 202 CEO) to ensure priorities, build under the new to serve separ of ongoing im The incentive H2 F25 targets 1 while tranche | elerator Incentive wa 5 for select senior le focus on driving the momentum and rea leadership. This ince ately and in addition portance within our was split into two tra on earnings and cos 2 consisted of addit | s also aders Grou lign G ntive to the STI an nches t savi ional | introduced (excluding the p\u2019s immediate roup initiatives was designed core metrics d LTI plans. with immediate ngs in tranche metrics over | Launching in F26 is th sustainability agenda, we can drive the most sustainable food syst affordable nutritious f human rights. I look fo as part of this importa Board updates I was pleased to anno | e next iteration of th focused on the are significant impact i ems, waste and circ ood, social impact rward to reporting nt agenda in the ye unce in August the | e Group\u2019s as where ncluding ularity, and advancing our progress ars ahead. appointment | Finally, I want to than the Group, who des year, remained focu | k all of our team pite the various c sed on putting o | members ac hallenges of t ur customers | ross his first. | 5 information Other"
+                },
+                {
+                  "source_page": "12",
+                  "table_index": "1001",
+                  "row_index": "73",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "expectations with Group EBIT declining by a normalised | representing a payout ratio of 74.1%. | community through $480 million in direct contributions, | of former Executive Chairman Paul Simons AM in May | Report Financial"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1",
+                  "row_index": "31",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "While there is more to do, we have seen some early positive | average selling prices | impacting | gross margin | and EBIT. | Encouragingly, we h | ave seen an | improvement in | our | In F26, we w through com | ill continue to rebu pelling value and | ild cust retail ex | omer trust ecution | rs\u2019"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1",
+                  "row_index": "32",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "signs with improving customer scores. | Group sales increase | d by a norm | alised 3.6% in | F25 | safety outcomes in | F25 through | our focused effo | rts | excellence, | simplify the way w | e work a | nd become a | "
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1",
+                  "row_index": "35",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "business was also materially impacted from extended industrial action leading up to Christmas. Pleasingly, we saw greater stability in the second half and we worked to address the issues most important to customers, particularly value. In addition to offering | chain commissioning investment, and a low BIG W all contributed normalised 12.6% 1. Ex action, incremental s | and dual-ru er earnings to Group EB cluding the upply chain | nning costs, p contribution f IT declining b impact of ind costs and the | rice rom y a ustrial | In February, we high to improve the perfo acknowledge that it of the actions we ha to be realised. | lighted thre rmance of t will take tim ve taken and | e key focus area he business. We e for the full ben current prioriti | s efits es | strength of deliver a mu Our team ar to thank and resilience an | our brands, assets ch-improved perf e the heart of our recognise them f d commitment th | and tea ormanc busines or their ey have | m can see us e. s and I want remarkable demonstrated | Report Financial"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1",
+                  "row_index": "36",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "more specials with deeper discounts and absorbing cost price increases, we launched Lower Shelf Price where we lowered the price on over 500 everyday items with a commitment to longer-term price reductions. We have seen some early positive signs with an improvement in customer scores as we worked hard to recover from | acquisition of Petstoc would have declined Strategic highl Notwithstanding the | k in the prio by a normali ights in challenging | r year, Group sed 7.8 % 1. F25 environment, | EBIT we made | We are also making of customer and ret expect but there re We have simplified t management chang | progress on ail execution mains more t he way we w es and esta | returning to the excellence that o do. ork with key blished a new | level we | navigating a I\u2019d like to fini support duri | difficult year. sh by thanking ou ng my first year in | r shareh the role | olders for your . | 5"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1",
+                  "row_index": "39",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "transformation with an improvement in earnings driven by positive momentum in key focus areas of value, fresh | with Group eCommer 17.1% in F25. Same Da | ce sales inc y and On De | reasing by a n mand delivery | ormalised and | Over the last six mo value of all our busin | nths we revi esses withi | ewed the strateg n the Group to | ic | Amanda Chief Execu | Bardwell tive Officer |  |  | ion"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1001",
+                  "row_index": "60",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "to reposition the Group for long-term sustainable growth. | average selling prices impacting gross margin and EBIT. | the collective responsibility for safety and wellbeing. | In F26, we will continue to rebuild customer trust"
+                },
+                {
+                  "source_page": "13",
+                  "table_index": "1001",
+                  "row_index": "62",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "signs with improving customer scores. | Group sales increased by a normalised 3.6% in F25 | safety outcomes in F25 through our focused efforts | excellence, simplify the way we work and become a"
+                },
+                {
+                  "source_page": "14",
+                  "table_index": "1",
+                  "row_index": "31",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "While there is more to do, we have seen some early positive | average selling prices | impacting | gross margin | and EBIT. | Encouragingly, we h | ave seen an | improvement in | our | In F26, we w through com | ill continue to rebu pelling value and | ild cust retail ex | omer trust ecution | rs\u2019"
+                },
+                {
+                  "source_page": "14",
+                  "table_index": "1",
+                  "row_index": "32",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 14,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "signs with improving customer scores. | Group sales increase | d by a norm | alised 3.6% in | F25 | safety outcomes in | F25 through | our focused effo | rts | excellence, | simplify the way w | e work a | nd become a | "
+                }
+              ],
+              "table_row_unparsed_metrics": [
+                {
+                  "metric_name": "inventory",
+                  "metric_value_status": "table_row_unparsed",
+                  "association_score": 45,
+                  "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+                  "supporting_sentence": "Inventories 4,169 4,187 (18) Trade payables (6,016) (5,815) (201) Net investment in inventory (1,847) (1,628) (219) Trade, other receivables and prepayments 1,390 1,358 32 Other creditors, provisions and other liabilities (4,890) (4,590) (3",
+                  "row_label": "unavailable",
+                  "column_label": "unavailable"
+                },
+                {
+                  "metric_name": "capex",
+                  "metric_value_status": "table_row_unparsed",
+                  "association_score": 45,
+                  "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+                  "supporting_sentence": "capex for energy efficiency and emissions reduction.",
+                  "row_label": "unavailable",
+                  "column_label": "unavailable"
+                }
+              ]
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -1171,7 +1859,597 @@
                 "variance_percent": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 1065,
+              "table_rows_by_strategy": {
+                "pdfplumber_default": 56,
+                "pdfplumber_text": 507,
+                "pdfplumber_words": 322,
+                "pdfplumber_crop": 180
+              },
+              "table_rows_by_table": {
+                "page_1_table_1_pdfplumber_table_1": 1,
+                "page_1_table_2_pdfplumber_text_table_2": 3,
+                "page_1_table_1001_pdfplumber_words": 1,
+                "page_2_table_1_pdfplumber_table_1": 4,
+                "page_2_table_2_pdfplumber_table_2": 4,
+                "page_2_table_3_pdfplumber_text_table_3": 27,
+                "page_2_table_1001_pdfplumber_words": 15,
+                "page_3_table_1_pdfplumber_text_table_1": 16,
+                "page_3_table_1001_pdfplumber_words": 10,
+                "page_5_table_1_pdfplumber_text_table_1": 23,
+                "page_5_table_2_pdfplumber_crop_income_statement_text_table_2": 14,
+                "page_5_table_3_pdfplumber_crop_balance_sheet_text_table_3": 14,
+                "page_5_table_4_pdfplumber_crop_cash_flow_text_table_4": 13,
+                "page_5_table_1001_pdfplumber_words": 23,
+                "page_6_table_1_pdfplumber_text_table_1": 7,
+                "page_7_table_1_pdfplumber_text_table_1": 7,
+                "page_7_table_1001_pdfplumber_words": 1,
+                "page_8_table_1_pdfplumber_text_table_1": 23,
+                "page_8_table_2_pdfplumber_crop_income_statement_text_table_2": 16,
+                "page_8_table_1001_pdfplumber_words": 18,
+                "page_9_table_1_pdfplumber_text_table_1": 12,
+                "page_9_table_2_pdfplumber_crop_income_statement_text_table_2": 8,
+                "page_9_table_3_pdfplumber_crop_income_statement_text_table_3": 4,
+                "page_9_table_1001_pdfplumber_words": 11,
+                "page_10_table_1_pdfplumber_text_table_1": 49,
+                "page_10_table_2_pdfplumber_crop_balance_sheet_text_table_2": 1,
+                "page_10_table_1001_pdfplumber_words": 47,
+                "page_11_table_1_pdfplumber_table_1": 12,
+                "page_11_table_2_pdfplumber_text_table_2": 25,
+                "page_11_table_1001_pdfplumber_words": 25,
+                "page_12_table_1_pdfplumber_text_table_1": 32,
+                "page_12_table_2_pdfplumber_crop_cash_flow_text_table_2": 18,
+                "page_12_table_1001_pdfplumber_words": 28,
+                "page_13_table_1_pdfplumber_text_table_1": 23,
+                "page_13_table_2_pdfplumber_crop_segment_text_table_2": 8,
+                "page_13_table_3_pdfplumber_crop_balance_sheet_text_table_3": 4,
+                "page_13_table_4_pdfplumber_crop_balance_sheet_text_table_4": 3,
+                "page_13_table_1001_pdfplumber_words": 5,
+                "page_14_table_1_pdfplumber_text_table_1": 18,
+                "page_14_table_1001_pdfplumber_words": 2,
+                "page_15_table_1_pdfplumber_text_table_1": 19,
+                "page_15_table_2_pdfplumber_crop_income_statement_text_table_2": 3,
+                "page_15_table_3_pdfplumber_crop_income_statement_text_table_3": 10,
+                "page_15_table_4_pdfplumber_crop_cash_flow_text_table_4": 13,
+                "page_15_table_1001_pdfplumber_words": 11,
+                "page_16_table_1_pdfplumber_text_table_1": 29,
+                "page_16_table_1001_pdfplumber_words": 20,
+                "page_17_table_1_pdfplumber_table_1": 8,
+                "page_17_table_2_pdfplumber_text_table_2": 37,
+                "page_17_table_1001_pdfplumber_words": 30,
+                "page_18_table_1_pdfplumber_text_table_1": 27,
+                "page_18_table_1001_pdfplumber_words": 18,
+                "page_19_table_1_pdfplumber_table_1": 9,
+                "page_19_table_2_pdfplumber_text_table_2": 25,
+                "page_19_table_1001_pdfplumber_words": 11,
+                "page_20_table_1_pdfplumber_table_1": 10,
+                "page_20_table_2_pdfplumber_text_table_2": 35,
+                "page_20_table_3_pdfplumber_crop_cash_flow_text_table_3": 11,
+                "page_20_table_1001_pdfplumber_words": 22,
+                "page_21_table_1_pdfplumber_table_1": 2,
+                "page_21_table_2_pdfplumber_table_2": 6,
+                "page_21_table_3_pdfplumber_text_table_3": 27,
+                "page_21_table_4_pdfplumber_crop_balance_sheet_text_table_4": 12,
+                "page_21_table_1001_pdfplumber_words": 15,
+                "page_22_table_1_pdfplumber_text_table_1": 21,
+                "page_22_table_2_pdfplumber_crop_balance_sheet_text_table_2": 7,
+                "page_22_table_3_pdfplumber_crop_balance_sheet_text_table_3": 5,
+                "page_22_table_1001_pdfplumber_words": 6,
+                "page_23_table_1_pdfplumber_text_table_1": 5,
+                "page_23_table_1001_pdfplumber_words": 1,
+                "page_24_table_1_pdfplumber_text_table_1": 12,
+                "page_24_table_2_pdfplumber_crop_balance_sheet_text_table_2": 8,
+                "page_24_table_3_pdfplumber_crop_income_statement_text_table_3": 8,
+                "page_24_table_1001_pdfplumber_words": 1,
+                "page_25_table_1_pdfplumber_text_table_1": 5,
+                "page_25_table_1001_pdfplumber_words": 1
+              },
+              "metric_like_table_rows": [
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "18",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 11,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Revenue |  |  |  |  |  |  | 3.7 | to | 35,930 | "
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "61",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 11,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Net tangible assets p | er share 1 |  |  |  | 24.8 |  | 43.8 |  | 73.6 | "
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "63",
+                  "table_title": "pdfplumber_text_table_3",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 11,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "1 Net tangible assets is | calculated as net | assets exc | luding intangible | assets and non-contr | olling intere | st a | nd is based o | n the closin | g number | "
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "1001",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Revenue | 3.7 | to 35,930"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "1001",
+                  "row_index": "37",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Net tangible assets per share 1 | 24.8 | 43.8 | 73.6"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "15",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Consolidated Statement of Cash Fl | ows | 8 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "2 Revenue and other incom | e | 11 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "29",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "6 Other financial assets and | liabilities | 14 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "31",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "7 Impairment of non-financ | ial assets | 14 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "33",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "8 Borrowings |  | 16 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1",
+                  "row_index": "41",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "12 Contingent liabilities |  | 18 | "
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "2",
+                  "row_index": "5",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 6,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "C | onsoli | dated Statemen | t of | Cash Flows | 8"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "2",
+                  "row_index": "11",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 6,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | 2 | Revenue and o | ther | income | 11"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "2",
+                  "row_index": "19",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 6,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | 6 | Other financial | ass | ets and liabilities | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "2",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 6,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | 7 | Impairment of | non | -financial assets | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "2",
+                  "row_index": "23",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 6,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": " | 8 | Borrowings |  |  | 16"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "3",
+                  "row_index": "3",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Consoli | dated Statemen | t of | Cash Flows | 8"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "3",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "2 | Revenue and o | ther | income | 11"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "3",
+                  "row_index": "17",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "6 | Other financial | ass | ets and liabilities | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "3",
+                  "row_index": "19",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "7 | Impairment of | non | -financial assets | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "3",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "8 | Borrowings |  |  | 16"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "4",
+                  "row_index": "1",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 4,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Consoli | dated Statemen | t of Cash Flows | 8"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "4",
+                  "row_index": "7",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "2 | Revenue and o | ther income | 11"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "4",
+                  "row_index": "15",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "6 | Other financial | assets and liabilities | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "4",
+                  "row_index": "17",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "7 | Impairment of | non-financial assets | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "4",
+                  "row_index": "19",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 4,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "8 | Borrowings |  | 16"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "13",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Consolidated Statement of Cash Flows | 8"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "18",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Revenue and other income | 11"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "26",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Other financial assets and liabilities | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "28",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Impairment of non-financial assets | 14"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "30",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Borrowings | 16"
+                },
+                {
+                  "source_page": "5",
+                  "table_index": "1001",
+                  "row_index": "38",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Contingent liabilities | 18"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 12,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Revenue |  |  |  |  |  |  | 2 |  | 35,930 | 34,635 | 25"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 12,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Cost of sales |  |  |  |  |  |  |  |  | (26,154) | (25,154) | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1",
+                  "row_index": "12",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 12,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Gross profit |  |  |  |  |  |  |  |  | 9,776 | 9,481 | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "2",
+                  "row_index": "8",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Revenue | 2 | 35,930 | 34,635 | 25"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "2",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Cost of sales |  | (26,154) | (25,154) | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "2",
+                  "row_index": "11",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Gross profit |  | 9,776 | 9,481 | "
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1001",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Revenue | 2 | 35,930 | 34,635"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1001",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Cost of sales | (26,154) | (25,154)"
+                },
+                {
+                  "source_page": "8",
+                  "table_index": "1001",
+                  "row_index": "11",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Gross profit | 9,776 | 9,481"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1",
+                  "row_index": "15",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 7,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Effective portion of changes in the fair | value of cash | flow hedges |  | 58 | (22) | "
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "2",
+                  "row_index": "3",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 7,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Effective portion | of changes in the fair | value of cash | flow hedges |  | 58 ( | 22"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1001",
+                  "row_index": "13",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Effective portion of changes in the fair value of cash flow hedges | 58 | (22)"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Current assets |  |  |  |  | 25"
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "10",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Cash and cash equivalents |  | 1,289 | 1,298 | 1,696 | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "12",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Trade and other receivables |  | 1,085 | 1,062 | 996 | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "14",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Inventories |  | 4,470 | 4,187 | 3,999 | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "16",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Other financial assets | 6 | 91 | 23 | 22 | "
+                },
+                {
+                  "source_page": "10",
+                  "table_index": "1",
+                  "row_index": "20",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 6,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Other current assets |  | 308 | 221 | 251 | "
+                }
+              ],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -1593,7 +2871,14 @@
                 "source_page": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 0,
+              "table_rows_by_strategy": {},
+              "table_rows_by_table": {},
+              "metric_like_table_rows": [],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -2015,7 +3300,14 @@
                 "source_page": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 0,
+              "table_rows_by_strategy": {},
+              "table_rows_by_table": {},
+              "metric_like_table_rows": [],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -2437,7 +3729,14 @@
                 "source_page": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 0,
+              "table_rows_by_strategy": {},
+              "table_rows_by_table": {},
+              "metric_like_table_rows": [],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -2859,7 +4158,14 @@
                 "source_page": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 0,
+              "table_rows_by_strategy": {},
+              "table_rows_by_table": {},
+              "metric_like_table_rows": [],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -3281,7 +4587,14 @@
                 "source_page": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html"
+            "fallback_page_url": "https://www.woolworthsgroup.com.au/au/en/investors/our-performance/results-and-presentations.html",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 0,
+              "table_rows_by_strategy": {},
+              "table_rows_by_table": {},
+              "metric_like_table_rows": [],
+              "table_row_unparsed_metrics": []
+            }
           },
           {
             "ticker": "WOW.AX",
@@ -3554,6 +4867,9 @@
       "structured_evidence": {
         "section_records": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\section_records.json",
         "evidence_ledger": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+        "asx_metric_audit_review": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+        "asx_metric_audit_review_csv": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+        "asx_table_extraction_diagnostics": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json",
         "tool_name": "financial_document_evidence"
       }
     }

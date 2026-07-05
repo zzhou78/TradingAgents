@@ -80,9 +80,27 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-05 13:42:23
+# Data retrieved on: 2026-07-05 15:13:12
 
-,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
-0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
+,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
+0,11254,,,Craig (Brandon),Chief Executive Officer,,2026-07-01,D,
+1,4825,,,Vassella (Mark),Director (Non-Executive),,2026-06-01,D,
+2,144654,,,Henry (Mike),Chief Executive Officer,,2025-08-27,D,
+3,66295,,Sale at price 0.00 per share.,Henry (Mike),Chief Executive Officer,,2025-08-27,D,19.0
+4,10920,,,Craig (Brandon),Other Executive,,2025-06-30,D,
+5,41247,,,Pant (Vandita),Chief Financial Officer,,2025-06-30,D,
+6,43017,,,Slattery (Geraldine),Other Executive,,2025-06-30,D,
+7,1223,,Purchase at price 21.96 per share.,Hinchliffe (Michelle),Independent Non-Executive Director,,2025-04-11,D,26856.0
+8,1450,,Purchase at price 22.09 per share.,Weisler (Dion J),Independent Non-Executive Director,,2025-04-11,D,32032.0
+9,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2025-04-07,D,
+10,58446,,,MacKenzie (Kenneth Norman),Retired,,2025-03-31,D,
+11,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2025-03-25,D,
+12,780,,Purchase at price 26.03 per share.,O'Reilly (Christine Elizabeth),Independent Non-Executive Director,,2025-02-19,D,20302.0
+13,2500,,Purchase at price 25.68 per share.,Weisler (Dion J),Independent Non-Executive Director,,2025-02-19,D,64199.0
+14,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2024-11-18,D,
+15,1000,,Purchase at price 26.05 per share.,Hinchliffe (Michelle),Independent Non-Executive Director,,2024-11-14,D,26053.0
+16,1461,,Purchase at price 27.76 per share.,Clever-Steg (Xiaoqun),Independent Non-Executive Director,,2024-11-01,D,40553.0
+17,130407,,,Henry (Mike),Chief Executive Officer,,2024-10-31,D,
+18,62373,,,Henry (Mike),Chief Executive Officer,,2024-10-31,D,
 
 ```

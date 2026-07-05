@@ -2,15 +2,15 @@
   "ticker": "MPL.AX",
   "trade_date": "2026-07-02",
   "evidence_as_of_date": "2026-07-02",
-  "run_executed_at": "2026-07-05T13:42:09+10:00",
+  "run_executed_at": "2026-07-05T15:12:58+10:00",
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
-  "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T13:42:09+10:00",
+  "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T15:12:58+10:00",
   "authoritative_result_folder": true,
   "status": "pending",
   "run_metadata": {
     "trade_date": "2026-07-02",
     "evidence_as_of_date": "2026-07-02",
-    "run_executed_at": "2026-07-05T13:42:09+10:00",
+    "run_executed_at": "2026-07-05T15:12:58+10:00",
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "market": "ASX",
     "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -21,7 +21,7 @@
       "MPL.AX",
       "WOW.AX"
     ],
-    "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T13:42:09+10:00",
+    "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T15:12:58+10:00",
     "authoritative_result_folder": true,
     "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
     "status": "pending",
@@ -45,7 +45,7 @@
             "start_date": "2026-06-02",
             "end_date": "2026-07-02"
           },
-          "output": "# Stock data for MPL.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 13:44:15\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,4.7,4.71,4.6,4.69,5640132,0.0,0.0\r\n2026-06-03,4.71,4.73,4.63,4.67,3902373,0.0,0.0\r\n2026-06-04,4.7,4.72,4.65,4.72,6390186,0.0,0.0\r\n2026-06-05,4.76,4.8,4.74,4.78,5833186,0.0,0.0\r\n2026-06-09,4.8,4.87,4.79,4.84,5278657,0.0,0.0\r\n2026-06-10,4.86,4.91,4.79,4.84,7158497,0.0,0.0\r\n2026-06-11,4.88,4.96,4.84,4.96,5377249,0.0,0.0\r\n2026-06-12,4.96,5.03,4.94,4.97,4950767,0.0,0.0\r\n2026-06-15,4.97,4.98,4.82,4.84,5944915,0.0,0.0\r\n2026-06-16,4.83,4.88,4.8,4.84,5155220,0.0,0.0\r\n2026-06-17,4.85,4.87,4.79,4.85,6736931,0.0,0.0\r\n2026-06-18,4.84,4.9,4.84,4.9,5921623,0.0,0.0\r\n2026-06-19,4.9,4.91,4.84,4.85,14385950,0.0,0.0\r\n2026-06-22,4.87,4.94,4.83,4.91,4124525,0.0,0.0\r\n2026-06-23,4.91,4.93,4.85,4.9,5972738,0.0,0.0\r\n2026-06-24,4.9,4.94,4.86,4.86,8071075,0.0,0.0\r\n2026-06-25,4.88,5.01,4.86,4.99,8989030,0.0,0.0\r\n2026-06-26,4.95,5.0,4.91,4.97,7929773,0.0,0.0\r\n2026-06-29,4.98,5.05,4.96,4.97,5254465,0.0,0.0\r\n2026-06-30,4.98,5.04,4.97,4.97,7699142,0.0,0.0\r\n2026-07-01,4.92,4.98,4.91,4.92,6087507,0.0,0.0\r\n2026-07-02,4.92,4.99,4.89,4.99,9959834,0.0,0.0\r\n"
+          "output": "# Stock data for MPL.AX from 2026-06-02 to 2026-07-02\n# Total records: 22\n# Data retrieved on: 2026-07-05 15:16:40\n\nDate,Open,High,Low,Close,Volume,Dividends,Stock Splits\r\n2026-06-02,4.7,4.71,4.6,4.69,5640132,0.0,0.0\r\n2026-06-03,4.71,4.73,4.63,4.67,3902373,0.0,0.0\r\n2026-06-04,4.7,4.72,4.65,4.72,6390186,0.0,0.0\r\n2026-06-05,4.76,4.8,4.74,4.78,5833186,0.0,0.0\r\n2026-06-09,4.8,4.87,4.79,4.84,5278657,0.0,0.0\r\n2026-06-10,4.86,4.91,4.79,4.84,7158497,0.0,0.0\r\n2026-06-11,4.88,4.96,4.84,4.96,5377249,0.0,0.0\r\n2026-06-12,4.96,5.03,4.94,4.97,4950767,0.0,0.0\r\n2026-06-15,4.97,4.98,4.82,4.84,5944915,0.0,0.0\r\n2026-06-16,4.83,4.88,4.8,4.84,5155220,0.0,0.0\r\n2026-06-17,4.85,4.87,4.79,4.85,6736931,0.0,0.0\r\n2026-06-18,4.84,4.9,4.84,4.9,5921623,0.0,0.0\r\n2026-06-19,4.9,4.91,4.84,4.85,14385950,0.0,0.0\r\n2026-06-22,4.87,4.94,4.83,4.91,4124525,0.0,0.0\r\n2026-06-23,4.91,4.93,4.85,4.9,5972738,0.0,0.0\r\n2026-06-24,4.9,4.94,4.86,4.86,8071075,0.0,0.0\r\n2026-06-25,4.88,5.01,4.86,4.99,8989030,0.0,0.0\r\n2026-06-26,4.95,5.0,4.91,4.97,7929773,0.0,0.0\r\n2026-06-29,4.98,5.05,4.96,4.97,5254465,0.0,0.0\r\n2026-06-30,4.98,5.04,4.97,4.97,7699142,0.0,0.0\r\n2026-07-01,4.92,4.98,4.91,4.92,6087507,0.0,0.0\r\n2026-07-02,4.92,4.99,4.89,4.99,9959834,0.0,0.0\r\n"
         },
         "get_verified_market_snapshot": {
           "status": "ok",
@@ -167,7 +167,7 @@
           "args": {
             "ticker": "MPL.AX"
           },
-          "output": "# Insider Transactions data for MPL.AX\n# Data retrieved on: 2026-07-05 13:44:32\n\n,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership\r\n0,25000,78420.0,,Purchase at price 3.14 per share.,Everingham (Peter Dobie),Independent Non-Executive Director,,2026-02-27,D\r\n1,11448,35991.0,,Purchase at price 3.14 per share.,Hey (Jacqueline Cherie),Director (Non-Executive),,2026-02-27,D\r\n2,22370,70682.0,,Purchase at price 3.16 per share.,McIntyre (Lisa Margaret),Director (Non-Executive),,2026-02-23,D\r\n3,535832,,,,Koczkar (David),Chief Executive Officer,,2025-09-04,D\r\n4,5900,19672.0,,Purchase at price 3.33 per share.,Weatherill (Jay Wilson),Independent Non-Executive Director,,2025-09-01,D\r\n5,59129,,,,Milisavljevic (Milosh),Divisional Officer,,2025-06-30,D\r\n6,40000,,,,Rogers (Mark),Chief Financial Officer,,2025-06-30,D\r\n7,457907,,,,Koczkar (David),Chief Executive Officer,,2024-09-02,D\r\n8,32750,87589.0,,Purchase at price 2.67 per share.,Fagg (Kathryn Joy),Independent Non-Executive Director,,2024-08-26,D\r\n9,5100,13484.0,,Purchase at price 2.64 per share.,Weatherill (Jay Wilson),Independent Non-Executive Director,,2024-08-26,D\r\n10,100000,268130.0,,Purchase at price 2.68 per share.,Wilkins (Michael J),Independent Non-Executive Chairman,,2024-08-26,D\r\n"
+          "output": "# Insider Transactions data for MPL.AX\n# Data retrieved on: 2026-07-05 15:16:57\n\n,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership\r\n0,25000,78420.0,,Purchase at price 3.14 per share.,Everingham (Peter Dobie),Independent Non-Executive Director,,2026-02-27,D\r\n1,11448,35991.0,,Purchase at price 3.14 per share.,Hey (Jacqueline Cherie),Director (Non-Executive),,2026-02-27,D\r\n2,22370,70682.0,,Purchase at price 3.16 per share.,McIntyre (Lisa Margaret),Director (Non-Executive),,2026-02-23,D\r\n3,535832,,,,Koczkar (David),Chief Executive Officer,,2025-09-04,D\r\n4,5900,19672.0,,Purchase at price 3.33 per share.,Weatherill (Jay Wilson),Independent Non-Executive Director,,2025-09-01,D\r\n5,59129,,,,Milisavljevic (Milosh),Divisional Officer,,2025-06-30,D\r\n6,40000,,,,Rogers (Mark),Chief Financial Officer,,2025-06-30,D\r\n7,457907,,,,Koczkar (David),Chief Executive Officer,,2024-09-02,D\r\n8,32750,87589.0,,Purchase at price 2.67 per share.,Fagg (Kathryn Joy),Independent Non-Executive Director,,2024-08-26,D\r\n9,5100,13484.0,,Purchase at price 2.64 per share.,Weatherill (Jay Wilson),Independent Non-Executive Director,,2024-08-26,D\r\n10,100000,268130.0,,Purchase at price 2.68 per share.,Wilkins (Michael J),Independent Non-Executive Chairman,,2024-08-26,D\r\n"
         }
       },
       "structured_evidence": {
@@ -188,7 +188,7 @@
             "ticker": "MPL.AX",
             "curr_date": "2026-07-02"
           },
-          "output": "# Company Fundamentals for MPL.AX\n# Data retrieved on: 2026-07-05 13:44:33\n\nName: Medibank Private Limited\nSector: Financial Services\nIndustry: Insurance - Specialty\nMarket Cap: 13770015744\nPE Ratio (TTM): 29.411764\nForward PE: 19.672647\nPrice to Book: 5.8685446\nEPS (TTM): 0.17\nForward EPS: 0.25416\nDividend Yield: 3.32\nBeta: 0.054\n52 Week High: 5.28\n52 Week Low: 4.06\n50 Day Average: 4.7814\n200 Day Average: 4.67595\nRevenue (TTM): 8770199552\nGross Profit: 1927200000\nEBITDA: 722200000\nNet Income: 463400000\nProfit Margin: 0.05284\nOperating Margin: 0.09843001\nReturn on Equity: 0.19996001\nReturn on Assets: 0.10399\nDebt to Equity: 11.778\nCurrent Ratio: 2.203\nBook Value: 0.852\nFree Cash Flow: 692750016"
+          "output": "# Company Fundamentals for MPL.AX\n# Data retrieved on: 2026-07-05 15:16:58\n\nName: Medibank Private Limited\nSector: Financial Services\nIndustry: Insurance - Specialty\nMarket Cap: 13770015744\nPE Ratio (TTM): 29.411764\nForward PE: 19.672647\nPrice to Book: 5.8685446\nEPS (TTM): 0.17\nForward EPS: 0.25416\nDividend Yield: 3.32\nBeta: 0.054\n52 Week High: 5.28\n52 Week Low: 4.06\n50 Day Average: 4.7814\n200 Day Average: 4.67595\nRevenue (TTM): 8770199552\nGross Profit: 1927200000\nEBITDA: 722200000\nNet Income: 463400000\nProfit Margin: 0.05284\nOperating Margin: 0.09843001\nReturn on Equity: 0.19996001\nReturn on Assets: 0.10399\nDebt to Equity: 11.778\nCurrent Ratio: 2.203\nBook Value: 0.852\nFree Cash Flow: 692750016"
         },
         "get_balance_sheet": {
           "status": "ok",
@@ -197,7 +197,7 @@
             "freq": "quarterly",
             "curr_date": "2026-07-02"
           },
-          "output": "# Balance Sheet data for MPL.AX (quarterly)\n# Data retrieved on: 2026-07-05 13:44:33\n\n,2025-06-30\r\nOrdinary Shares Number,2754003240.0\r\nShare Issued,2754003240.0\r\nTotal Debt,209000000.0\r\nTangible Book Value,1836000000.0\r\nInvested Capital,2370900000.0\r\nNet Tangible Assets,1836000000.0\r\nCapital Lease Obligations,174000000.0\r\nCommon Stock Equity,2335900000.0\r\nTotal Capitalization,2335900000.0\r\nTotal Equity Gross Minority Interest,2336100000.0\r\nMinority Interest,200000.0\r\nStockholders Equity,2335900000.0\r\nGains Losses Not Affecting Retained Earnings,27400000.0\r\nOther Equity Adjustments,27400000.0\r\nRetained Earnings,2223500000.0\r\nCapital Stock,85000000.0\r\nCommon Stock,85000000.0\r\nTotal Liabilities Net Minority Interest,2364200000.0\r\nEmployee Benefits,117900000.0\r\nNon Current Pension And Other Postretirement Benefit Plans,117900000.0\r\nLong Term Debt And Capital Lease Obligation,144800000.0\r\nLong Term Capital Lease Obligation,144800000.0\r\nLong Term Provisions,14700000.0\r\nCurrent Deferred Liabilities,34400000.0\r\nCurrent Deferred Taxes Liabilities,34400000.0\r\nCurrent Debt And Capital Lease Obligation,64200000.0\r\nCurrent Capital Lease Obligation,29200000.0\r\nCurrent Debt,35000000.0\r\nOther Current Borrowings,35000000.0\r\nCurrent Provisions,28400000.0\r\nPayables And Accrued Expenses,205900000.0\r\nPayables,205900000.0\r\nAccounts Payable,205900000.0\r\nTotal Assets,4700300000.0\r\nInvestments And Advances,264300000.0\r\nLong Term Equity Investment,39000000.0\r\nGoodwill And Other Intangible Assets,499900000.0\r\nOther Intangible Assets,157500000.0\r\nGoodwill,342400000.0\r\nNet PPE,194200000.0\r\nReceivables,66400000.0\r\nAccounts Receivable,66400000.0\r\nCash Cash Equivalents And Short Term Investments,873900000.0\r\nOther Short Term Investments,225300000.0\r\nCash And Cash Equivalents,648600000.0\r\n"
+          "output": "# Balance Sheet data for MPL.AX (quarterly)\n# Data retrieved on: 2026-07-05 15:16:58\n\n,2025-06-30\r\nOrdinary Shares Number,2754003240.0\r\nShare Issued,2754003240.0\r\nTotal Debt,209000000.0\r\nTangible Book Value,1836000000.0\r\nInvested Capital,2370900000.0\r\nNet Tangible Assets,1836000000.0\r\nCapital Lease Obligations,174000000.0\r\nCommon Stock Equity,2335900000.0\r\nTotal Capitalization,2335900000.0\r\nTotal Equity Gross Minority Interest,2336100000.0\r\nMinority Interest,200000.0\r\nStockholders Equity,2335900000.0\r\nGains Losses Not Affecting Retained Earnings,27400000.0\r\nOther Equity Adjustments,27400000.0\r\nRetained Earnings,2223500000.0\r\nCapital Stock,85000000.0\r\nCommon Stock,85000000.0\r\nTotal Liabilities Net Minority Interest,2364200000.0\r\nEmployee Benefits,117900000.0\r\nNon Current Pension And Other Postretirement Benefit Plans,117900000.0\r\nLong Term Debt And Capital Lease Obligation,144800000.0\r\nLong Term Capital Lease Obligation,144800000.0\r\nLong Term Provisions,14700000.0\r\nCurrent Deferred Liabilities,34400000.0\r\nCurrent Deferred Taxes Liabilities,34400000.0\r\nCurrent Debt And Capital Lease Obligation,64200000.0\r\nCurrent Capital Lease Obligation,29200000.0\r\nCurrent Debt,35000000.0\r\nOther Current Borrowings,35000000.0\r\nCurrent Provisions,28400000.0\r\nPayables And Accrued Expenses,205900000.0\r\nPayables,205900000.0\r\nAccounts Payable,205900000.0\r\nTotal Assets,4700300000.0\r\nInvestments And Advances,264300000.0\r\nLong Term Equity Investment,39000000.0\r\nGoodwill And Other Intangible Assets,499900000.0\r\nOther Intangible Assets,157500000.0\r\nGoodwill,342400000.0\r\nNet PPE,194200000.0\r\nReceivables,66400000.0\r\nAccounts Receivable,66400000.0\r\nCash Cash Equivalents And Short Term Investments,873900000.0\r\nOther Short Term Investments,225300000.0\r\nCash And Cash Equivalents,648600000.0\r\n"
         },
         "get_cashflow": {
           "status": "ok",
@@ -678,7 +678,647 @@
                 "variance_percent": "unavailable"
               }
             ],
-            "fallback_page_url": "https://www.medibank.com.au/about/investor-centre/results-reports/"
+            "fallback_page_url": "https://www.medibank.com.au/about/investor-centre/results-reports/",
+            "table_extraction_diagnostics": {
+              "table_rows_detected": 1245,
+              "table_rows_by_strategy": {
+                "pdfplumber_text": 719,
+                "pdfplumber_crop": 75,
+                "pdfplumber_words": 431,
+                "pdfplumber_default": 20
+              },
+              "table_rows_by_table": {
+                "page_2_table_1_pdfplumber_text_table_1": 36,
+                "page_2_table_2_pdfplumber_crop_income_statement_text_table_2": 13,
+                "page_2_table_3_pdfplumber_crop_balance_sheet_text_table_3": 12,
+                "page_2_table_4_pdfplumber_crop_cash_flow_text_table_4": 11,
+                "page_2_table_1001_pdfplumber_words": 32,
+                "page_3_table_1_pdfplumber_text_table_1": 1,
+                "page_4_table_1_pdfplumber_text_table_1": 7,
+                "page_4_table_1001_pdfplumber_words": 11,
+                "page_5_table_1_pdfplumber_text_table_1": 6,
+                "page_5_table_1001_pdfplumber_words": 7,
+                "page_6_table_1_pdfplumber_text_table_1": 4,
+                "page_6_table_1001_pdfplumber_words": 1,
+                "page_7_table_1_pdfplumber_text_table_1": 5,
+                "page_7_table_1001_pdfplumber_words": 1,
+                "page_8_table_1_pdfplumber_text_table_1": 7,
+                "page_8_table_1001_pdfplumber_words": 4,
+                "page_9_table_1_pdfplumber_text_table_1": 9,
+                "page_9_table_1001_pdfplumber_words": 4,
+                "page_11_table_1_pdfplumber_text_table_1": 2,
+                "page_11_table_1001_pdfplumber_words": 1,
+                "page_12_table_1_pdfplumber_text_table_1": 3,
+                "page_12_table_1001_pdfplumber_words": 3,
+                "page_13_table_1_pdfplumber_text_table_1": 7,
+                "page_13_table_1001_pdfplumber_words": 2,
+                "page_14_table_1_pdfplumber_text_table_1": 8,
+                "page_14_table_1001_pdfplumber_words": 2,
+                "page_15_table_1_pdfplumber_text_table_1": 17,
+                "page_15_table_1001_pdfplumber_words": 11,
+                "page_16_table_1_pdfplumber_text_table_1": 1,
+                "page_16_table_1001_pdfplumber_words": 1,
+                "page_17_table_1_pdfplumber_text_table_1": 17,
+                "page_17_table_1001_pdfplumber_words": 11,
+                "page_18_table_1_pdfplumber_text_table_1": 9,
+                "page_18_table_1001_pdfplumber_words": 4,
+                "page_19_table_1_pdfplumber_text_table_1": 12,
+                "page_19_table_1001_pdfplumber_words": 7,
+                "page_20_table_1_pdfplumber_text_table_1": 1,
+                "page_21_table_1_pdfplumber_text_table_1": 11,
+                "page_21_table_1001_pdfplumber_words": 5,
+                "page_22_table_1_pdfplumber_text_table_1": 8,
+                "page_22_table_1001_pdfplumber_words": 1,
+                "page_23_table_1_pdfplumber_text_table_1": 3,
+                "page_23_table_1001_pdfplumber_words": 2,
+                "page_25_table_1_pdfplumber_text_table_1": 2,
+                "page_26_table_1_pdfplumber_text_table_1": 1,
+                "page_26_table_1001_pdfplumber_words": 1,
+                "page_27_table_1_pdfplumber_text_table_1": 41,
+                "page_27_table_2_pdfplumber_crop_income_statement_text_table_2": 24,
+                "page_27_table_1001_pdfplumber_words": 28,
+                "page_28_table_1_pdfplumber_table_1": 8,
+                "page_28_table_2_pdfplumber_text_table_2": 34,
+                "page_28_table_1001_pdfplumber_words": 23,
+                "page_29_table_1_pdfplumber_text_table_1": 41,
+                "page_29_table_1001_pdfplumber_words": 27,
+                "page_30_table_1_pdfplumber_text_table_1": 34,
+                "page_30_table_1001_pdfplumber_words": 22,
+                "page_31_table_1_pdfplumber_text_table_1": 41,
+                "page_31_table_2_pdfplumber_crop_balance_sheet_text_table_2": 15,
+                "page_31_table_1001_pdfplumber_words": 33,
+                "page_32_table_1_pdfplumber_text_table_1": 4,
+                "page_32_table_1001_pdfplumber_words": 3,
+                "page_33_table_1_pdfplumber_text_table_1": 25,
+                "page_33_table_1001_pdfplumber_words": 18,
+                "page_34_table_1_pdfplumber_text_table_1": 19,
+                "page_34_table_1001_pdfplumber_words": 17,
+                "page_35_table_1_pdfplumber_table_1": 2,
+                "page_35_table_2_pdfplumber_text_table_2": 28,
+                "page_35_table_1001_pdfplumber_words": 17,
+                "page_36_table_1_pdfplumber_table_1": 1,
+                "page_36_table_2_pdfplumber_text_table_2": 20,
+                "page_36_table_1001_pdfplumber_words": 5,
+                "page_37_table_1_pdfplumber_text_table_1": 22,
+                "page_37_table_1001_pdfplumber_words": 7,
+                "page_38_table_1_pdfplumber_text_table_1": 11,
+                "page_38_table_1001_pdfplumber_words": 2,
+                "page_39_table_1_pdfplumber_text_table_1": 12,
+                "page_39_table_1001_pdfplumber_words": 2,
+                "page_40_table_1_pdfplumber_text_table_1": 9,
+                "page_41_table_1_pdfplumber_text_table_1": 10,
+                "page_41_table_1001_pdfplumber_words": 5,
+                "page_42_table_1_pdfplumber_text_table_1": 2,
+                "page_42_table_1001_pdfplumber_words": 1,
+                "page_43_table_1_pdfplumber_text_table_1": 8,
+                "page_43_table_1001_pdfplumber_words": 6,
+                "page_44_table_1_pdfplumber_text_table_1": 4,
+                "page_44_table_1001_pdfplumber_words": 1,
+                "page_45_table_1_pdfplumber_text_table_1": 2,
+                "page_47_table_1_pdfplumber_text_table_1": 7,
+                "page_47_table_1001_pdfplumber_words": 6,
+                "page_48_table_1_pdfplumber_text_table_1": 2,
+                "page_48_table_1001_pdfplumber_words": 1,
+                "page_49_table_1_pdfplumber_text_table_1": 18,
+                "page_49_table_1001_pdfplumber_words": 8,
+                "page_50_table_1_pdfplumber_text_table_1": 19,
+                "page_50_table_1001_pdfplumber_words": 18,
+                "page_51_table_1_pdfplumber_text_table_1": 3,
+                "page_52_table_1_pdfplumber_text_table_1": 18,
+                "page_52_table_1001_pdfplumber_words": 12,
+                "page_53_table_1_pdfplumber_text_table_1": 28,
+                "page_53_table_1001_pdfplumber_words": 14,
+                "page_54_table_1_pdfplumber_text_table_1": 3,
+                "page_55_table_1_pdfplumber_text_table_1": 20,
+                "page_55_table_1001_pdfplumber_words": 6,
+                "page_56_table_1_pdfplumber_table_1": 2,
+                "page_56_table_2_pdfplumber_table_2": 3,
+                "page_56_table_3_pdfplumber_table_3": 4,
+                "page_56_table_4_pdfplumber_text_table_4": 20,
+                "page_56_table_1001_pdfplumber_words": 15,
+                "page_57_table_1_pdfplumber_text_table_1": 7,
+                "page_57_table_1001_pdfplumber_words": 6,
+                "page_58_table_1_pdfplumber_text_table_1": 16,
+                "page_58_table_1001_pdfplumber_words": 9,
+                "page_59_table_1_pdfplumber_text_table_1": 8,
+                "page_59_table_1001_pdfplumber_words": 5,
+                "page_60_table_1_pdfplumber_text_table_1": 6,
+                "page_60_table_1001_pdfplumber_words": 3
+              },
+              "metric_like_table_rows": [
+                {
+                  "source_page": "2",
+                  "table_index": "1",
+                  "row_index": "27",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " | Consolidated | statement of | cash flows |  | 76 |  | "
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "2",
+                  "row_index": "4",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 7,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " | Consolida | ted | statement | of | cash flows | 76"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "3",
+                  "row_index": "3",
+                  "table_title": "pdfplumber_crop_balance_sheet_text_table_3",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 9,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  | Consolida | ted | statement | of | cash flows |  | 76"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "4",
+                  "row_index": "1",
+                  "table_title": "pdfplumber_crop_cash_flow_text_table_4",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": " |  | Consolida | ted | statement of | cash flows |  | 76"
+                },
+                {
+                  "source_page": "2",
+                  "table_index": "1001",
+                  "row_index": "22",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Consolidated statement of cash flows | 76"
+                },
+                {
+                  "source_page": "9",
+                  "table_index": "1001",
+                  "row_index": "27",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 3,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "industry growth relative to FY25 | solid gross profit growth | digit organic operating profit growth"
+                },
+                {
+                  "source_page": "17",
+                  "table_index": "1",
+                  "row_index": "25",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "customers by | returning $257 millio | n in | cash back and | Live Better | Products and ser | vices offering | more | "
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1",
+                  "row_index": "2",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 10,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "1. About Medi | bank |  |  | Additionally, | as we mainta | in | assets to | satisfy our reg | ulatory"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1",
+                  "row_index": "5",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 10,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "providing health i | nsurance to m | ore than 4.2 mill | ion people | of investmen | t assets. |  |  |  | "
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1",
+                  "row_index": "30",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 10,
+                  "numeric_cell_count": 5,
+                  "raw_row_text": "Group revenue fr | om external c | ustomers |  |  | 8, | 60 | 4.0 | 8,175.8 | 5.2%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1",
+                  "row_index": "40",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 10,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Group operating | profit |  |  |  |  | 76 | 2.4 | 699.8 | 8.9%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1",
+                  "row_index": "76",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 10,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "1. Health Insurance | operating profit e | xcludes the impacts | of COVID-19. |  |  |  |  |  | "
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "2",
+                  "row_index": "4",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 4,
+                  "raw_row_text": "Group revenue fr | om external customers 8, | 604.0 8 | ,175.8 | 5.2%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "2",
+                  "row_index": "14",
+                  "table_title": "pdfplumber_crop_income_statement_text_table_2",
+                  "strategy": "pdfplumber_crop",
+                  "cell_count": 5,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Group operating | profit | 762.4 | 699.8 | 8.9%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1001",
+                  "row_index": "1",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "1. About Medibank | Additionally, as we maintain assets to satisfy our regulatory"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1001",
+                  "row_index": "35",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Group revenue from external customers | 8,604.0 | 8,175.8 | 5.2%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1001",
+                  "row_index": "38",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Segment operating profit | 818.2 | 752.7 | 8.7%"
+                },
+                {
+                  "source_page": "27",
+                  "table_index": "1001",
+                  "row_index": "40",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Group operating profit | 762.4 | 699.8 | 8.9%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "2",
+                  "row_index": "11",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "the business, highl | ights the benefit o | f continu | ing revenue | by the adoptio | n of AA | SB 17 Insurance | Contracts (A | ASB 17),"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "2",
+                  "row_index": "30",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Premium revenue |  |  |  |  |  | 8,211.0 | 7,903.0 | 3.9%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "2",
+                  "row_index": "34",
+                  "table_title": "pdfplumber_text_table_2",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 9,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Gross profit |  |  |  |  |  | 1,396.4 | 1,307.2 | 6.8%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "9",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "the business, highlights the benefit of continuing revenue | by the adoption of AASB 17 Insurance Contracts (AASB 17),"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "12",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Group operating profit was up 8.9% to $762.4 million, with | and value of COVID-19 claims savings and customer give"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "30",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Premium revenue | 8,211.0 | 7,903.0 | 3.9%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "31",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Net claims expense (including risk equalisation) | (6,814.6) | (6,595.8) | 3.3%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "32",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Gross profit | 1,396.4 | 1,307.2 | 6.8%"
+                },
+                {
+                  "source_page": "28",
+                  "table_index": "1001",
+                  "row_index": "33",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 4,
+                  "numeric_cell_count": 3,
+                  "raw_row_text": "Management expenses | (654.9) | (614.9) | 6.5%"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "7",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "consumers with | the percentage o | f sales throu | gh direct | hospital claim | s as we exit the C | OVID-19 regime, l | ower MBS and"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "propositions, in | creasing focus on | acquisition i | n priority | 3.9% premium | revenue growth | and a significan | tly improved"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "31",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "Revenue |  |  |  | growth per po | licy unit of 2.2%. | The 2.6% revenu | e growth"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "35",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "in non-resident | revenue to $302.2 | million. |  | in our Live Be | tter rewards progr | am, customer gr | owth skewed"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "51",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "in extras claim | s growth. The incre | ase in hospit | al claims | Management | expenses increas | ed 6.5% to $654 | .9 million,"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1",
+                  "row_index": "54",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "room rate char | ges effective from | 1 January 20 | 25. This was | increasing inv | estment in digital | assets, which w | as partially"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "7",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "consumers with the percentage of sales through direct | hospital claims as we exit the COVID-19 regime, lower MBS and"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "16",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "enhanced customer experience. | Non-resident net claims expense increased by 8.8% to"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "20",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "through further personalisation and integrated customer | Total gross profit increased 6.8% to $1,396.4 million with"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "propositions, increasing focus on acquisition in priority | 3.9% premium revenue growth and a significantly improved"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "36",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "resident revenue to $7,908.8 million and a 13.4% increase | The increase in downgrading reflects increased investment"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "37",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "in non-resident revenue to $302.2 million. | in our Live Better rewards program, customer growth skewed"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "46",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "while net claims expense was up 3.2% to $6,624.0 million. | offset by modest tenure impacts on the student margin."
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "57",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "in extras claims growth. The increase in hospital claims | Management expenses increased 6.5% to $654.9 million,"
+                },
+                {
+                  "source_page": "29",
+                  "table_index": "1001",
+                  "row_index": "60",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "room rate charges effective from 1 January 2025. This was | increasing investment in digital assets, which was partially"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1",
+                  "row_index": "8",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Sales commissions were | $3.5 million lower w | ith non-resident | We continue t | o see | strong orga | nic growth poten | tial with"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1",
+                  "row_index": "21",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "distribution strength to m While we will maintain ou management, we will ba growth where this makes | anage the cost of r disciplined appro lance this with inve commercial sense | acquisition. ach to cost sting in further . | cover insuranc business and s reserves to me operations. Th to fund claims | e lia atisfi et he e STO defe | bilities relate es our obliga alth claims a C balance c rred due to C | d to the Health In tion to maintain nd to fund ongo onsists largely of OVID-19 and cus | surance regulatory ing cash asse tomer give"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1",
+                  "row_index": "35",
+                  "table_title": "pdfplumber_text_table_1",
+                  "strategy": "pdfplumber_text",
+                  "cell_count": 8,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "controlling shareholding | in January 2024. T | he business | offset by a $1.3 | milli | on cost from | the lower averag | e RBA cash"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1001",
+                  "row_index": "4",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "in the resident portfolio and investment in product and | a 23.0% increase in organic operating profit to $64.7 million"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1001",
+                  "row_index": "6",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 1,
+                  "raw_row_text": "Sales commissions were $3.5 million lower with non-resident | We continue to see strong organic growth potential with"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1001",
+                  "row_index": "39",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "$76.7 million with a 31.2% increase in operating profit to | Net investment income increased $25.6 million or 14.1% to"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1001",
+                  "row_index": "47",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "There was a 12-month operating profit contribution from | includes a 9.1% increase in average asset balances and an"
+                },
+                {
+                  "source_page": "30",
+                  "table_index": "1001",
+                  "row_index": "49",
+                  "table_title": "pdfplumber_words",
+                  "strategy": "pdfplumber_words",
+                  "cell_count": 2,
+                  "numeric_cell_count": 2,
+                  "raw_row_text": "controlling shareholding in January 2024. The business | offset by a $1.3 million cost from the lower average RBA cash"
+                }
+              ],
+              "table_row_unparsed_metrics": [
+                {
+                  "metric_name": "capital_adequacy",
+                  "metric_value_status": "table_row_unparsed",
+                  "association_score": 45,
+                  "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+                  "supporting_sentence": "capital adequacy requirement of $250 million for Medibank, with effect from 1 July 2023, following a review of the 2022 cybercrime event.",
+                  "row_label": "unavailable",
+                  "column_label": "unavailable"
+                }
+              ]
+            }
           }
         ]
       },
@@ -696,6 +1336,9 @@
       "structured_evidence": {
         "section_records": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\financial_report\\section_records.json",
         "evidence_ledger": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+        "asx_metric_audit_review": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+        "asx_metric_audit_review_csv": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+        "asx_table_extraction_diagnostics": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\MPL.AX\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json",
         "tool_name": "financial_document_evidence"
       }
     }
