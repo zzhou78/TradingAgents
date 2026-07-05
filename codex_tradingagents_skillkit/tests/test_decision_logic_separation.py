@@ -536,9 +536,9 @@ def test_quality_validator_rejects_clean_value_below_association_threshold(tmp_p
 ## Debate Outcome Scorecard
 ## Market Technicals as Confidence / Timing Modifier
 ## Sector Metric Direction Audit
-| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| net_interest_margin | NIM commentary. Operating income increased 5%. | 5 | % | operating income | direction_extracted | 42 | competing operating income label closer | not specified | not specified | NIM commentary. Operating income increased 5%. | metric mentioned without explicit comparative baseline | neutral | medium | source confidence medium | financial:CBA.AX:2026-07-02:011 |
+| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | table_mapping_confidence | table_mapping_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | cell_value | source_page | current_period_value | prior_period_value | variance_value | variance_percent | raw_row_text |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| net_interest_margin | NIM commentary. Operating income increased 5%. | 5 | % | operating income | direction_extracted | 42 | competing operating income label closer | 0 | no table row mapping available | not specified | not specified | NIM commentary. Operating income increased 5%. | metric mentioned without explicit comparative baseline | neutral | medium | source confidence medium | financial:CBA.AX:2026-07-02:011 | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable |
 """,
         encoding="utf-8",
     )
@@ -570,9 +570,9 @@ def test_quality_validator_rejects_dense_high_score_without_row_mapping(tmp_path
 ## Debate Outcome Scorecard
 ## Market Technicals as Confidence / Timing Modifier
 ## Sector Metric Direction Audit
-| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| inventory | {dense_sentence} | 44 | $m | inventory near 44 $m | value_extracted | 95 | label-value distance 3 tokens; unit $m compatible | FY2025 | FY2024 | {dense_sentence} | period-over-period wording in extracted filing/report phrase | adverse | medium | clean value accepted | financial:WOW.AX:2026-07-02:011 | unavailable | unavailable | unavailable | unavailable |
+| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | table_mapping_confidence | table_mapping_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | cell_value | source_page | current_period_value | prior_period_value | variance_value | variance_percent | raw_row_text |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| inventory | {dense_sentence} | 44 | $m | inventory near 44 $m | value_extracted | 95 | label-value distance 3 tokens; unit $m compatible | 0 | no table row mapping available | FY2025 | FY2024 | {dense_sentence} | period-over-period wording in extracted filing/report phrase | adverse | medium | clean value accepted | financial:WOW.AX:2026-07-02:011 | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | {dense_sentence} |
 """,
         encoding="utf-8",
     )
@@ -580,6 +580,36 @@ def test_quality_validator_rejects_dense_high_score_without_row_mapping(tmp_path
     errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
 
     assert "ASX metric audit has high association score on dense numeric text without row/column mapping" in errors
+
+
+def test_quality_validator_rejects_clean_value_below_table_mapping_threshold(tmp_path: Path):
+    validator = _load_module(QUALITY_VALIDATOR, "validate_quality_review")
+    evidence_path = tmp_path / "evidence.json"
+    evidence_path.write_text('{"ticker": "WOW.AX"}', encoding="utf-8")
+    report_dir = tmp_path / "reports" / "WOW.AX" / "2026-07-02"
+    manager_path = report_dir / "2_research" / "manager.md"
+    manager_path.parent.mkdir(parents=True)
+    manager_path.write_text(
+        """## Tool Outputs Used
+## Primary Rating Driver
+## Evidence Winner
+## Structured Evidence Matrix
+## Role Evidence Weighting
+## Rating-vs-Rating Reasoning
+10 EMA 95, 50 SMA 90, 200 SMA 80. Sector metric inventory adverse financial:WOW.AX:2026-07-02:011.
+## Debate Outcome Scorecard
+## Market Technicals as Confidence / Timing Modifier
+## Sector Metric Direction Audit
+| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | table_mapping_confidence | table_mapping_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | cell_value | source_page | current_period_value | prior_period_value | variance_value | variance_percent | raw_row_text |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| inventory | Inventories 4,169 4,187 (18) | 4169 | $m | table row | value_extracted | 95 | table row mapped | 70 | row label matched but column mapping below threshold | FY2025 $m | FY2024 $m | Inventories 4,169 4,187 (18) | table row | neutral | medium | table mapped | financial:WOW.AX:2026-07-02:011 | working_capital | Inventories | FY2025 $m | 4,169 | 12 | 4169 | 4187 | -18 | unavailable | Inventories 4,169 4,187 (18) |
+""",
+        encoding="utf-8",
+    )
+
+    errors = validator._asx_research_specificity_errors(manager_path, evidence_path)
+
+    assert "ASX metric audit populates clean_metric_value below accepted table mapping confidence" in errors
 
 
 def test_metric_clean_value_unavailable_when_numbers_are_unlabelled():

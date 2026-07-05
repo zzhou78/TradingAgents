@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-02
 Evidence as of: 2026-07-02
-Run executed at: 2026-07-05T12:58:32+10:00
-Run ID: asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-05T12:58:32+10:00
+Run executed at: 2026-07-05T13:42:09+10:00
+Run ID: asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-05T13:42:09+10:00
 Run folder: asx_2026-07-02_closed_loop
 
 ## Tool Outputs Used
@@ -55,7 +55,7 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:CSL.AX:2026-07-02:017) plus Fundamentals/Financial section context; Market Analyst (market:CSL.AX:2026-07-02:001, market:CSL.AX:2026-07-02:002, market:CSL.AX:2026-07-02:003, market:CSL.AX:2026-07-02:004) modifies timing; News (news:CSL.AX:2026-07-02:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: healthcare metric direction mix: 6 available / 0 gap-labelled; 0 supportive, 0 adverse, 0 mixed, 6 neutral, 0 context-only. supportive examples: none; adverse examples: none; mixed/neutral examples: R&D (neutral, financial:CSL.AX:2026-07-02:017); plasma collections (neutral, financial:CSL.AX:2026-07-02:018). Highlighted metric: R&D is available / neutral via financial:CSL.AX:2026-07-02:017.
 - Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, metric_value_status, association_score, association_reason, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, evidence_id, and table context fields for each ASX sector metric.
-- Compact metric-audit summary: Metric audit summary: segment_revenue neutral (11158 unit unavailable; value_extracted; association_score 88; financial:CSL.AX:2026-07-02:163; medium).
+- Compact metric-audit summary: Metric audit summary: segment_revenue neutral (value unavailable; table_row_unparsed; association_score 45; financial:CSL.AX:2026-07-02:163; low); r_and_d neutral (value unavailable; metric_mentioned_only; association_score 35; financial:CSL.AX:2026-07-02:017; low).
 - Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:CSL.AX:2026-07-02:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 

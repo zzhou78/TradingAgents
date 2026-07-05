@@ -26,7 +26,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -56,7 +56,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -86,7 +86,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -115,7 +115,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -145,7 +145,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -174,7 +174,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -205,7 +205,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -234,7 +234,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -263,7 +263,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -292,7 +292,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -321,7 +321,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -349,7 +349,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -377,7 +377,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -408,7 +408,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -438,7 +438,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -466,7 +466,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "metric_mentioned_only",
     "association_score": 35,
@@ -483,7 +483,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
+    "cell_value": "unavailable",
     "source_page": "unavailable",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
     "variance_value": "unavailable",
@@ -514,7 +518,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "value_extracted",
     "association_score": 88,
@@ -531,7 +535,11 @@
     "table_title": "unavailable",
     "row_label": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3%",
     "column_label": "variance_percent",
+    "cell_value": "3.3%",
     "source_page": "unavailable",
+    "table_mapping_confidence": 88,
+    "table_mapping_reason": "dense metric row isolated before next financial row label",
+    "raw_row_text": "claims expense (including risk equalisation) (6,814.6) (6,595.8) 3.3%",
     "current_period_value": "-6814.6",
     "prior_period_value": "-6595.8",
     "variance_value": "unavailable",
@@ -562,7 +570,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "value_extracted",
     "association_score": 86,
@@ -579,7 +587,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
+    "cell_value": "unavailable",
     "source_page": "unavailable",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no structured table mapping available",
+    "raw_row_text": "unavailable",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
     "variance_value": "unavailable",
@@ -610,7 +622,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-05T13:01:04+10:00",
+    "retrieval_time": "2026-07-05T13:44:42+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "metric_value_status": "table_row_unparsed",
     "association_score": 45,
@@ -627,7 +639,11 @@
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
+    "cell_value": "unavailable",
     "source_page": "unavailable",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
     "variance_value": "unavailable",

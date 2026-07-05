@@ -1,6 +1,10 @@
 banks:
   net_interest_margin:
     accepted_labels: ["net interest margin", "NIM"]
+    accepted_row_labels: ["net interest margin", "NIM"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["margin", "nim", "2025", "2024", "bps", "%", "change", "variance"]
+    rejected_column_labels: ["operating income", "dividend", "cash npat", "cet1"]
     accepted_units: ["bps", "%"]
     accepted_value_patterns:
       - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
@@ -13,6 +17,10 @@ banks:
       adverse: ["down", "decreased", "lower", "compressed"]
   cet1:
     accepted_labels: ["CET1", "common equity tier 1"]
+    accepted_row_labels: ["CET1", "common equity tier 1"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["cet1", "capital", "2025", "2024", "bps", "%", "change", "variance"]
+    rejected_column_labels: ["operating income", "dividend", "nim"]
     accepted_units: ["bps", "%"]
     accepted_value_patterns:
       - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
@@ -137,6 +145,10 @@ miners:
 healthcare:
   segment_revenue:
     accepted_labels: ["segment revenue", "revenue by segment", "segment sales"]
+    accepted_row_labels: ["segment revenue", "revenue", "segment sales"]
+    preferred_value_type: ["current_period_value", "variance_percent", "variance_value"]
+    accepted_column_labels: ["revenue", "sales", "2025", "2024", "change", "variance", "$m", "$bn", "%"]
+    rejected_column_labels: ["selling", "marketing", "expense", "expenses"]
     accepted_units: ["$m", "$bn", "US$m", "US$bn", "%"]
     accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: ["segment"]
@@ -208,6 +220,10 @@ health_insurers:
       adverse: ["declined", "lower", "down"]
   claims_ratio:
     accepted_labels: ["claims ratio", "claims expense", "benefits paid"]
+    accepted_row_labels: ["claims ratio", "claims expense", "net claims expense", "benefits paid"]
+    preferred_value_type: ["variance_percent", "current_period_value", "variance_value"]
+    accepted_column_labels: ["claims", "2025", "2024", "change", "variance", "%", "$m"]
+    rejected_column_labels: ["premium", "membership", "gross profit", "operating profit"]
     accepted_units: ["%", "bps"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"]
     required_nearby_terms: ["claims"]
@@ -249,6 +265,10 @@ retailers:
       adverse: ["declined", "lower", "down"]
   ebit_margin:
     accepted_labels: ["EBIT margin", "operating margin"]
+    accepted_row_labels: ["EBIT margin", "operating margin"]
+    preferred_value_type: ["variance_value", "current_period_value", "variance_percent"]
+    accepted_column_labels: ["margin", "2025", "2024", "change", "variance", "bps", "%"]
+    rejected_column_labels: ["sales", "inventory", "dividend"]
     accepted_units: ["bps", "%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: ["margin"]
@@ -259,6 +279,10 @@ retailers:
       adverse: ["decreasing", "decreased", "lower", "declined", "compressed"]
   inventory:
     accepted_labels: ["inventory", "inventories", "stock loss", "shrink"]
+    accepted_row_labels: ["inventory", "inventories", "net investment in inventory", "stock loss", "shrink"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["inventory", "inventories", "2025", "2024", "change", "variance", "$m", "$bn"]
+    rejected_column_labels: ["trade payables", "receivables", "creditors", "provisions"]
     accepted_units: ["%", "$m", "$bn"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
     required_nearby_terms: []
@@ -279,6 +303,10 @@ retailers:
       adverse: ["higher", "increased"]
   dividends:
     accepted_labels: ["dividend", "dividends", "DPS", "dividend per share"]
+    accepted_row_labels: ["dividend", "dividends", "DPS", "dividend per share"]
+    preferred_value_type: ["current_period_value", "variance_percent", "variance_value"]
+    accepted_column_labels: ["dividend", "dps", "2025", "2024", "change", "variance", "cents", "cps", "%"]
+    rejected_column_labels: ["note", "footnote", "tax", "franked"]
     accepted_units: ["cents", "cps", "%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*cents\\b", "\\b\\d+(?:\\.\\d+)?\\s*cps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: []

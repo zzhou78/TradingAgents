@@ -314,6 +314,7 @@ def _metric_supporting_sentence(record: dict[str, object]) -> str:
 def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
     metric_status = str(record.get("metric_value_status") or "").lower()
     association_score = _clean_cell(record.get("association_score") or "")
+    table_mapping_confidence = _clean_cell(record.get("table_mapping_confidence") or "")
     explicit = record.get("clean_metric_value_if_available") or record.get("clean_metric_value")
     if explicit and _clean_cell(explicit).lower() != "unavailable":
         if association_score:
@@ -321,7 +322,15 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 score_value = int(float(association_score))
             except ValueError:
                 score_value = 0
-            if score_value < 80 or metric_status in {"direction_extracted", "metric_mentioned_only", "context_only", "table_row_unparsed", "unavailable"}:
+            try:
+                table_score_value = int(float(table_mapping_confidence or "0"))
+            except ValueError:
+                table_score_value = 0
+            if (
+                score_value < 80
+                or (table_mapping_confidence and table_score_value < 80)
+                or metric_status in {"direction_extracted", "metric_mentioned_only", "context_only", "table_row_unparsed", "unavailable"}
+            ):
                 return {
                     "clean_metric_value": "unavailable",
                     "value_unit": "unavailable",
@@ -334,7 +343,11 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                     "table_title": _clean_cell(record.get("table_title") or "unavailable"),
                     "row_label": _clean_cell(record.get("row_label") or "unavailable"),
                     "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+                    "cell_value": _clean_cell(record.get("cell_value") or "unavailable"),
                     "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+                    "table_mapping_confidence": table_mapping_confidence or "0",
+                    "table_mapping_reason": _clean_cell(record.get("table_mapping_reason") or "no table row mapping available"),
+                    "raw_row_text": _clean_cell(record.get("raw_row_text") or "unavailable"),
                     "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
                     "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
                     "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
@@ -352,7 +365,11 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
             "table_title": _clean_cell(record.get("table_title") or "unavailable"),
             "row_label": _clean_cell(record.get("row_label") or "unavailable"),
             "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+            "cell_value": _clean_cell(record.get("cell_value") or "unavailable"),
             "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+            "table_mapping_confidence": _clean_cell(record.get("table_mapping_confidence") or "0"),
+            "table_mapping_reason": _clean_cell(record.get("table_mapping_reason") or "no table row mapping available"),
+            "raw_row_text": _clean_cell(record.get("raw_row_text") or "unavailable"),
             "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
             "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
             "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
@@ -377,7 +394,11 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 "table_title": _clean_cell(profile_result.get("table_title") or "unavailable"),
                 "row_label": _clean_cell(profile_result.get("row_label") or "unavailable"),
                 "column_label": _clean_cell(profile_result.get("column_label") or "unavailable"),
+                "cell_value": _clean_cell(profile_result.get("cell_value") or "unavailable"),
                 "source_page": _clean_cell(profile_result.get("source_page") or "unavailable"),
+                "table_mapping_confidence": _clean_cell(profile_result.get("table_mapping_confidence") or "0"),
+                "table_mapping_reason": _clean_cell(profile_result.get("table_mapping_reason") or "no table row mapping available"),
+                "raw_row_text": _clean_cell(profile_result.get("raw_row_text") or "unavailable"),
                 "current_period_value": _clean_cell(profile_result.get("current_period_value") or "unavailable"),
                 "prior_period_value": _clean_cell(profile_result.get("prior_period_value") or "unavailable"),
                 "variance_value": _clean_cell(profile_result.get("variance_value") or "unavailable"),
@@ -428,7 +449,11 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
                 "table_title": "unavailable",
                 "row_label": "unavailable",
                 "column_label": "unavailable",
+                "cell_value": "unavailable",
                 "source_page": "unavailable",
+                "table_mapping_confidence": "0",
+                "table_mapping_reason": "no table row mapping available",
+                "raw_row_text": "unavailable",
                 "current_period_value": "unavailable",
                 "prior_period_value": "unavailable",
                 "variance_value": "unavailable",
@@ -446,7 +471,11 @@ def _metric_value_parts(record: dict[str, object]) -> dict[str, str]:
         "table_title": _clean_cell(record.get("table_title") or "unavailable"),
         "row_label": _clean_cell(record.get("row_label") or "unavailable"),
         "column_label": _clean_cell(record.get("column_label") or "unavailable"),
+        "cell_value": _clean_cell(record.get("cell_value") or "unavailable"),
         "source_page": _clean_cell(record.get("source_page") or "unavailable"),
+        "table_mapping_confidence": _clean_cell(record.get("table_mapping_confidence") or "0"),
+        "table_mapping_reason": _clean_cell(record.get("table_mapping_reason") or "no table row mapping available"),
+        "raw_row_text": _clean_cell(record.get("raw_row_text") or "unavailable"),
         "current_period_value": _clean_cell(record.get("current_period_value") or "unavailable"),
         "prior_period_value": _clean_cell(record.get("prior_period_value") or "unavailable"),
         "variance_value": _clean_cell(record.get("variance_value") or "unavailable"),
@@ -541,7 +570,11 @@ def _asx_metric_audit_records(records: list[dict[str, object]]) -> list[dict[str
                 "table_title": value_parts["table_title"],
                 "row_label": value_parts["row_label"],
                 "column_label": value_parts["column_label"],
+                "cell_value": value_parts["cell_value"],
                 "source_page": value_parts["source_page"],
+                "table_mapping_confidence": value_parts["table_mapping_confidence"],
+                "table_mapping_reason": value_parts["table_mapping_reason"],
+                "raw_row_text": value_parts["raw_row_text"],
                 "current_period_value": value_parts["current_period_value"],
                 "prior_period_value": value_parts["prior_period_value"],
                 "variance_value": value_parts["variance_value"],
@@ -568,10 +601,10 @@ def _asx_best_metric_records(records: list[dict[str, object]]) -> list[dict[str,
 def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
     audit_records = _asx_metric_audit_records(records)
     if not audit_records:
-        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page | current_period_value | prior_period_value | variance_value | variance_percent |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | 0 | no ASX sector metric records extracted | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable |"
+        return "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | table_mapping_confidence | table_mapping_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | cell_value | source_page | current_period_value | prior_period_value | variance_value | variance_percent | raw_row_text |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| unavailable | no extracted phrase available | unavailable | unavailable | unavailable | unavailable | 0 | no ASX sector metric records extracted | 0 | no table row mapping available | unavailable | unavailable | no supporting sentence extracted | unavailable | unavailable | low | no ASX sector metric records extracted | uncited | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable | unavailable |"
     rows = [
-        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | source_page | current_period_value | prior_period_value | variance_value | variance_percent |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "| metric_name | extracted_value_or_phrase | clean_metric_value | value_unit | value_context | metric_value_status | association_score | association_reason | table_mapping_confidence | table_mapping_reason | period_reference | comparison_reference | supporting_sentence | comparison_basis | direction | confidence | confidence_reason | evidence_id | table_title | row_label | column_label | cell_value | source_page | current_period_value | prior_period_value | variance_value | variance_percent | raw_row_text |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for item in audit_records:
         rows.append(
@@ -586,6 +619,8 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                     _clean_cell(item["metric_value_status"]),
                     _clean_cell(item["association_score"]),
                     _clean_cell(item["association_reason"]),
+                    _clean_cell(item["table_mapping_confidence"]),
+                    _clean_cell(item["table_mapping_reason"]),
                     _clean_cell(item["period_reference"]),
                     _clean_cell(item["comparison_reference"]),
                     _clean_cell(item["supporting_sentence"]),
@@ -597,11 +632,13 @@ def _asx_metric_audit_table(records: list[dict[str, object]]) -> str:
                     _clean_cell(item["table_title"]),
                     _clean_cell(item["row_label"]),
                     _clean_cell(item["column_label"]),
+                    _clean_cell(item["cell_value"]),
                     _clean_cell(item["source_page"]),
                     _clean_cell(item["current_period_value"]),
                     _clean_cell(item["prior_period_value"]),
                     _clean_cell(item["variance_value"]),
                     _clean_cell(item["variance_percent"]),
+                    _clean_cell(item["raw_row_text"]),
                 ]
             )
             + " |"

@@ -99,7 +99,8 @@ DENSE_TABLE_ROW_LABELS = [
     "revenue",
 ]
 
-BALANCE_SHEET_STYLE_METRICS = {"inventory", "debt", "capital_adequacy"}
+STRUCTURED_TABLE_REQUIRED_METRICS = {"inventory", "debt", "capital_adequacy", "segment_revenue"}
+TABLE_ROW_MARKER = "__TABLE_ROW__"
 
 HttpGet = Callable[[str, dict[str, str]], str]
 
@@ -203,7 +204,7 @@ def _extract_pdf_text_with_pdfplumber(body: bytes) -> str:
     parts: list[str] = []
     try:
         with pdfplumber.open(io.BytesIO(body)) as pdf:
-            for page in pdf.pages:
+            for page_number, page in enumerate(pdf.pages, start=1):
                 try:
                     text = page.extract_text() or ""
                 except Exception:
@@ -214,14 +215,23 @@ def _extract_pdf_text_with_pdfplumber(body: bytes) -> str:
                     tables = page.extract_tables() or []
                 except Exception:
                     tables = []
-                for table in tables:
-                    for row in table or []:
+                for table_index, table in enumerate(tables, start=1):
+                    table_title = f"pdfplumber_table_{table_index}"
+                    for row_index, row in enumerate(table or []):
                         cells = [str(cell or "").strip() for cell in (row or [])]
                         if any(cells):
-                            parts.append(" | ".join(cells))
+                            parts.append(_format_structured_table_row(cells, page_number, table_index, row_index, table_title))
     except Exception:
         return ""
     return "\n".join(part for part in parts if part).strip()
+
+
+def _format_structured_table_row(cells: list[str], page_number: int, table_index: int, row_index: int, table_title: str) -> str:
+    escaped_title = re.sub(r"\s+", "_", table_title.strip() or f"pdfplumber_table_{table_index}")
+    return (
+        f"{TABLE_ROW_MARKER} page={page_number} table={table_index} row={row_index} title={escaped_title} | "
+        + " | ".join(cells)
+    )
 
 
 def normalize_asx_code(ticker: str) -> str:
@@ -667,6 +677,119 @@ def _unit_from_column_label(label: str, fallback: str = "unit unavailable") -> s
     return fallback
 
 
+def _parse_structured_table_line(line: str) -> tuple[dict[str, str], list[str]]:
+    row = line.strip()
+    metadata: dict[str, str] = {
+        "source_page": "unavailable",
+        "table_title": "unavailable",
+        "table_index": "unavailable",
+        "row_index": "unavailable",
+    }
+    if row.startswith(TABLE_ROW_MARKER):
+        prefix, _separator, cell_text = row.partition("|")
+        for key, value in re.findall(r"\b(page|table|row|title)=([^\s|]+)", prefix):
+            if key == "page":
+                metadata["source_page"] = value
+            elif key == "title":
+                metadata["table_title"] = value
+            elif key == "table":
+                metadata["table_index"] = value
+            elif key == "row":
+                metadata["row_index"] = value
+        row = cell_text
+    cells = [_clean_text(cell) for cell in row.split("|")]
+    return metadata, cells
+
+
+def _table_key(metadata: dict[str, str]) -> tuple[str, str]:
+    return (metadata.get("source_page", "unavailable"), metadata.get("table_index", "unavailable"))
+
+
+def _profile_row_labels(profile: dict[str, Any]) -> list[str]:
+    row_labels = profile.get("accepted_row_labels") or profile.get("accepted_labels") or []
+    return [str(label) for label in row_labels if str(label).strip()]
+
+
+def _row_label_matches(row_label: str, profile: dict[str, Any]) -> bool:
+    row_profile = {**profile, "accepted_labels": _profile_row_labels(profile)}
+    return bool(_label_matches(row_label, row_profile))
+
+
+def _column_label_allowed(column_label: str, profile: dict[str, Any]) -> bool:
+    lower = column_label.lower()
+    normalized = re.sub(r"\bfy(\d{2})\b", lambda match: f"fy20{match.group(1)} 20{match.group(1)}", lower)
+    rejected = [str(label).lower() for label in profile.get("rejected_column_labels", []) or []]
+    if any(label and (label in lower or label in normalized) for label in rejected):
+        return False
+    accepted = [str(label).lower() for label in profile.get("accepted_column_labels", []) or []]
+    return not accepted or any(label and (label in lower or label in normalized) for label in accepted)
+
+
+def _value_type_from_column_label(column_label: str, index: int) -> str:
+    lower = column_label.lower()
+    if any(term in lower for term in ["variance %", "variance_percent", "change %", "% change"]):
+        return "variance_percent"
+    if any(term in lower for term in ["variance", "change"]):
+        return "variance_value"
+    if re.search(r"\bfy?25\b|\b2025\b", lower) or "current" in lower:
+        return "current_period_value"
+    if re.search(r"\bfy?24\b|\b2024\b", lower) or "prior" in lower:
+        return "prior_period_value"
+    if "%" in lower:
+        return "variance_percent"
+    if index == 1:
+        return "current_period_value"
+    if index == 2:
+        return "prior_period_value"
+    if index == 3:
+        return "variance_value"
+    return "cell_value"
+
+
+def _preferred_value_types(profile: dict[str, Any]) -> list[str]:
+    preferred = profile.get("preferred_value_type") or ["current_period_value", "variance_percent", "variance_value"]
+    return [str(item) for item in preferred if str(item).strip()]
+
+
+def _table_mapping_score(
+    *,
+    row_label: str,
+    column_label: str,
+    value_type: str,
+    unit: str,
+    profile: dict[str, Any],
+    has_header: bool,
+    metadata: dict[str, str],
+) -> tuple[int, str]:
+    score = 30
+    reasons = []
+    if _row_label_matches(row_label, profile):
+        score += 30
+        reasons.append("accepted row label")
+    if has_header:
+        score += 15
+        reasons.append("header row available")
+    if _column_label_allowed(column_label, profile):
+        score += 10
+        reasons.append("accepted column label")
+    else:
+        score -= 30
+        reasons.append("rejected column label")
+    if value_type in _preferred_value_types(profile):
+        score += 10
+        reasons.append(f"preferred value type {value_type}")
+    if _unit_compatible(unit, profile):
+        score += 10
+        reasons.append(f"unit {unit} compatible")
+    else:
+        score -= 20
+        reasons.append(f"unit {unit} incompatible")
+    if metadata.get("source_page", "unavailable") != "unavailable":
+        score += 5
+        reasons.append("source page preserved")
+    return max(0, min(100, score)), "; ".join(reasons)
+
+
 def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
     accepted = {str(item).lower() for item in profile.get("accepted_units", []) or []}
     if not accepted:
@@ -818,19 +941,22 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
 def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
     if "|" not in text:
         return {}
-    header_cells: list[str] = []
-    for raw_row in re.split(r"\n|(?<=\d[%a-zA-Z])\s+(?=[A-Z][A-Za-z /&-]{2,}\s*\|)", text):
+    headers_by_table: dict[tuple[str, str], list[str]] = {}
+    best: dict[str, Any] = {}
+    for raw_row in re.split(r"\n|(?<=\d[%a-zA-Z])\s+(?=(?:__TABLE_ROW__\s+)?[A-Z][A-Za-z /&-]{2,}\s*\|)", text):
         row = raw_row.strip()
         if "|" not in row:
             continue
-        cells = [_clean_text(cell) for cell in row.split("|")]
+        metadata, cells = _parse_structured_table_line(row)
         if len(cells) < 3:
             continue
-        if not _label_matches(cells[0], profile):
-            header_cells = cells
+        key = _table_key(metadata)
+        if not _row_label_matches(cells[0], profile):
+            headers_by_table[key] = cells
             continue
         row_label = cells[0]
-        values: list[tuple[int, str, str, str]] = []
+        header_cells = headers_by_table.get(key, [])
+        values: list[dict[str, str]] = []
         for index, cell in enumerate(cells[1:], start=1):
             column_label = header_cells[index] if header_cells and index < len(header_cells) else cells[index - 1]
             inferred_unit = _unit_from_column_label(column_label)
@@ -840,22 +966,46 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
             clean_value, unit = parsed
             if unit != "unit unavailable" and not _unit_compatible(unit, profile):
                 continue
-            values.append((index, clean_value, unit, column_label))
+            value_type = _value_type_from_column_label(column_label, index)
+            if not _column_label_allowed(column_label, profile):
+                continue
+            mapping_score, mapping_reason = _table_mapping_score(
+                row_label=row_label,
+                column_label=column_label,
+                value_type=value_type,
+                unit=unit,
+                profile=profile,
+                has_header=bool(header_cells),
+                metadata=metadata,
+            )
+            values.append(
+                {
+                    "index": str(index),
+                    "clean_value": clean_value,
+                    "unit": unit,
+                    "column_label": column_label,
+                    "value_type": value_type,
+                    "cell_value": cell,
+                    "table_mapping_confidence": str(mapping_score),
+                    "table_mapping_reason": mapping_reason,
+                }
+            )
         if not values:
             continue
-        preferred_index, clean_value, unit, column_label = values[0]
-        if metric_name == "claims_ratio":
-            percent_values = [item for item in values if item[2] in {"%", "per cent"} or "%" in item[3].lower()]
-            if percent_values:
-                preferred_index, clean_value, unit, column_label = percent_values[-1]
-        comparison_reference = "not specified"
-        if len(values) > 1:
-            comparison_reference = values[1][3] if values[1][0] != preferred_index else values[0][3]
-        value_fields = {item[3].lower(): item[1] for item in values}
-        current_period_value = values[0][1] if len(values) >= 1 else "unavailable"
-        prior_period_value = values[1][1] if len(values) >= 2 else "unavailable"
-        variance_value = next((item[1] for item in values if "variance" in item[3].lower() and "%" not in item[3]), "unavailable")
-        variance_percent = next((item[1] for item in values if "variance" in item[3].lower() and "%" in item[3]), "unavailable")
+        preferred_types = _preferred_value_types(profile)
+        preferred = next((item for value_type in preferred_types for item in values if item["value_type"] == value_type), values[0])
+        clean_value = preferred["clean_value"]
+        unit = preferred["unit"]
+        column_label = preferred["column_label"]
+        value_type = preferred["value_type"]
+        mapping_score = int(preferred["table_mapping_confidence"])
+        value_fields = {item["value_type"]: item["clean_value"] for item in values}
+        value_column_labels = {item["value_type"]: item["column_label"] for item in values}
+        current_period_value = value_fields.get("current_period_value", "unavailable")
+        prior_period_value = value_fields.get("prior_period_value", "unavailable")
+        variance_value = value_fields.get("variance_value", "unavailable")
+        variance_percent = value_fields.get("variance_percent", "unavailable")
+        comparison_reference = value_column_labels.get("prior_period_value", "not specified") if prior_period_value != "unavailable" else "not specified"
         direction = _direction_from_profile(row, profile)
         if metric_name == "claims_ratio" and unit in {"%", "per cent"}:
             try:
@@ -863,9 +1013,10 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
                     direction = "adverse"
             except ValueError:
                 pass
-        return {
-            "score": 95,
-            "clean_metric_value": clean_value,
+        score = max(0, min(100, mapping_score))
+        candidate = {
+            "score": score,
+            "clean_metric_value": clean_value if score >= 80 else "unavailable",
             "value_unit": unit,
             "value_context": "table row/column label association",
             "supporting_sentence": row,
@@ -873,20 +1024,28 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
             "direction": direction,
             "period_reference": column_label,
             "comparison_reference": comparison_reference,
-            "table_title": "unavailable",
+            "table_title": metadata.get("table_title", "unavailable"),
             "row_label": row_label,
             "column_label": column_label,
+            "cell_value": preferred["cell_value"],
+            "source_page": metadata.get("source_page", "unavailable"),
             "current_period_value": current_period_value,
             "prior_period_value": prior_period_value,
             "variance_value": variance_value,
             "variance_percent": variance_percent,
+            "raw_row_text": " | ".join(cells),
             "table_values": value_fields,
+            "table_mapping_confidence": score,
+            "table_mapping_reason": preferred["table_mapping_reason"],
+            "value_type": value_type,
         }
-    return {}
+        if not best or score > int(best.get("table_mapping_confidence", 0)):
+            best = candidate
+    return best
 
 
 def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
-    if metric_name in BALANCE_SHEET_STYLE_METRICS:
+    if metric_name in STRUCTURED_TABLE_REQUIRED_METRICS:
         return {}
     label_matches = _label_matches(text, profile)
     if not label_matches:
@@ -943,6 +1102,11 @@ def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[s
         "table_title": "unavailable",
         "row_label": row[:80],
         "column_label": column_label,
+        "cell_value": raw_value,
+        "source_page": "unavailable",
+        "table_mapping_confidence": 88,
+        "table_mapping_reason": "dense metric row isolated before next financial row label",
+        "raw_row_text": row,
         "current_period_value": parsed_values[0][0] if len(parsed_values) >= 1 else "unavailable",
         "prior_period_value": parsed_values[1][0] if len(parsed_values) >= 2 else "unavailable",
         "variance_value": parsed_values[2][0] if len(parsed_values) >= 3 and "%" not in parsed_values[2][2] else "unavailable",
@@ -976,6 +1140,10 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         "row_label": "unavailable",
         "column_label": "unavailable",
         "source_page": "unavailable",
+        "cell_value": "unavailable",
+        "table_mapping_confidence": 0,
+        "table_mapping_reason": "no table row mapping available",
+        "raw_row_text": "unavailable",
         "current_period_value": "unavailable",
         "prior_period_value": "unavailable",
         "variance_value": "unavailable",
@@ -1045,7 +1213,16 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
             "confidence_reason": confidence_reason,
         }
     score = int(best["score"])
-    status = "value_extracted" if score >= 80 else ("direction_extracted" if best["direction"] != "neutral" or score >= 50 else "metric_mentioned_only")
+    has_table_mapping = "table_mapping_confidence" in best
+    status = (
+        "value_extracted"
+        if score >= 80
+        else (
+            "table_row_unparsed"
+            if has_table_mapping
+            else ("direction_extracted" if best["direction"] != "neutral" or score >= 50 else "metric_mentioned_only")
+        )
+    )
     clean_value = best["clean_metric_value"] if status == "value_extracted" else "unavailable"
     confidence = "medium" if status == "value_extracted" else "low"
     return {
@@ -1066,11 +1243,19 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
         "confidence": confidence,
         "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold"
         if status == "value_extracted"
-        else "clean value withheld because association score is below accepted threshold",
+        else (
+            "clean value withheld because table row mapping confidence is below accepted threshold"
+            if status == "table_row_unparsed"
+            else "clean value withheld because association score is below accepted threshold"
+        ),
         "table_title": best.get("table_title", "unavailable"),
         "row_label": best.get("row_label", "unavailable"),
         "column_label": best.get("column_label", "unavailable"),
-        "source_page": "unavailable",
+        "source_page": best.get("source_page", "unavailable"),
+        "cell_value": best.get("cell_value", "unavailable") if status == "value_extracted" else "unavailable",
+        "table_mapping_confidence": best.get("table_mapping_confidence", 0),
+        "table_mapping_reason": best.get("table_mapping_reason", "no structured table mapping available"),
+        "raw_row_text": best.get("raw_row_text", "unavailable"),
         "current_period_value": best.get("current_period_value", "unavailable"),
         "prior_period_value": best.get("prior_period_value", "unavailable"),
         "variance_value": best.get("variance_value", "unavailable"),

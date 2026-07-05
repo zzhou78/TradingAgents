@@ -356,6 +356,7 @@ def test_asx_pdf_text_extraction_includes_pdfplumber_tables(monkeypatch):
 
     assert "Annual report financial statements" in text
     assert "Segment | Revenue" in text
+    assert "__TABLE_ROW__ page=1 table=1 row=1 title=pdfplumber_table_1" in text
     assert "Australia Food | 50000" in text
 
 
@@ -581,6 +582,22 @@ def test_csl_segment_revenue_and_guidance_reject_unrelated_percentages_and_toc_n
     assert sections["guidance"]["metric_value_status"] in {"metric_mentioned_only", "context_only"}
 
 
+def test_csl_segment_revenue_dense_row_requires_structured_table_mapping():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "segment revenue 11,158 10,608 2,166 2,128 2,234 2,064 15,558 14,800 "
+        "Segment gross profit 5,641 5,275 1,257 1,318 1,545 1,413 8,443 8,006 "
+        "Segment gross profit % 50.6% 49.7% 58.0% 61.9%",
+        "segment_revenue",
+    )
+
+    assert result["metric_value_status"] == "table_row_unparsed"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["association_score"] < 80
+
+
 def test_wow_dividends_reject_footnote_marker_and_ebit_margin_is_preserved():
     module = _load_module()
     packet = _asx_sector_packet(
@@ -672,9 +689,34 @@ def test_pipe_table_inventory_row_preserves_row_column_period_context():
     assert result["value_unit"] == "$m"
     assert result["row_label"] == "Inventories"
     assert result["column_label"] == "FY2025 $m"
+    assert result["cell_value"] == "4,169"
     assert result["current_period_value"] == "4169"
     assert result["prior_period_value"] == "4187"
     assert result["variance_value"] == "-18"
+    assert result["table_mapping_confidence"] >= 80
+
+
+def test_structured_table_inventory_prefers_cell_mapping_over_later_nearby_value():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "__TABLE_ROW__ page=12 table=2 row=0 title=working_capital | Metric | FY2025 $m | FY2024 $m | Variance $m\n"
+        "__TABLE_ROW__ page=12 table=2 row=1 title=working_capital | Inventories | 4,169 | 4,187 | (18)\n"
+        "__TABLE_ROW__ page=12 table=2 row=2 title=working_capital | Trade payables | (6,016) | (5,815) | (201)\n"
+        "Net investment in inventory increased by 44 $m compared with FY24.",
+        "inventory",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "4169"
+    assert result["cell_value"] == "4,169"
+    assert result["table_title"] == "working_capital"
+    assert result["source_page"] == "12"
+    assert result["row_label"] == "Inventories"
+    assert result["column_label"] == "FY2025 $m"
+    assert result["table_mapping_confidence"] >= 80
+    assert "44" not in result["value_context"]
 
 
 def test_mpl_claims_ratio_prefers_claims_expense_change_over_later_percentages():

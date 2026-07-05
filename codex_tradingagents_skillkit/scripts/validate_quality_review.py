@@ -650,6 +650,8 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
             "metric_value_status",
             "association_score",
             "association_reason",
+            "table_mapping_confidence",
+            "table_mapping_reason",
             "period_reference",
             "comparison_reference",
             "supporting_sentence",
@@ -658,6 +660,10 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
             "confidence",
             "confidence_reason",
             "evidence_id",
+            "row_label",
+            "column_label",
+            "cell_value",
+            "raw_row_text",
         ]
         if not audit_section or not all(field in audit_section for field in required_audit_fields):
             errors.append("ASX Research Manager report lacks auditable sector metric direction records")
@@ -676,6 +682,10 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
                     association_score = int(float(data.get("association_score", "0").strip() or "0"))
                 except ValueError:
                     association_score = 0
+                try:
+                    table_mapping_confidence = int(float(data.get("table_mapping_confidence", "0").strip() or "0"))
+                except ValueError:
+                    table_mapping_confidence = 0
                 row_label = data.get("row_label", "").strip().lower()
                 column_label = data.get("column_label", "").strip().lower()
                 support_text = data.get("supporting_sentence", "") or data.get("extracted_value_or_phrase", "")
@@ -685,16 +695,21 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
                 if clean_value not in {"", "unavailable"} and status != "value_extracted":
                     errors.append("ASX metric audit populates clean_metric_value without value_extracted status")
                     break
-                if status == "context_only" and clean_value not in {"", "unavailable"}:
-                    errors.append("ASX metric audit treats context-only text as an extracted metric value")
-                    break
                 if (
+                    status == "value_extracted"
+                    and
                     association_score >= 90
                     and _dense_financial_numeric_text(support_text)
                     and row_label in {"", "unavailable"}
                     and column_label in {"", "unavailable"}
                 ):
                     errors.append("ASX metric audit has high association score on dense numeric text without row/column mapping")
+                    break
+                if clean_value not in {"", "unavailable"} and 0 < table_mapping_confidence < 80:
+                    errors.append("ASX metric audit populates clean_metric_value below accepted table mapping confidence")
+                    break
+                if status == "context_only" and clean_value not in {"", "unavailable"}:
+                    errors.append("ASX metric audit treats context-only text as an extracted metric value")
                     break
                 if status in {"context_only", "metric_mentioned_only", "table_row_unparsed"} and confidence in {"medium", "high"} and direction in {"supportive", "adverse"}:
                     errors.append("ASX metric audit counts weak metric evidence as strong directional support")
