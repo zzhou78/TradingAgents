@@ -2,6 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
+- evidence_reasoning_auditor.py was run before review-ready status: pass (0 critical findings, 0 warnings).
 - Role reports and evidence records including market:AAPL:2026-07-02:001, financial:AAPL:2026-07-02:022, news:AAPL:2026-07-02:040, and social:AAPL:2026-07-02:001.
 
 ## Quality Gate Findings

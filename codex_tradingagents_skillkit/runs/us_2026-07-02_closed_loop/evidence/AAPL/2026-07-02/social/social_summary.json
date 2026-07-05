@@ -2,8 +2,8 @@
   "social_summary": {
     "ticker": "AAPL",
     "trade_date": "2026-07-02",
-    "total_items_reviewed": 7,
-    "usable_items": 2,
+    "total_items_reviewed": 11,
+    "usable_items": 1,
     "source_limitations": [
       "social coverage is noisy or sparse"
     ],
@@ -35,25 +35,16 @@
       "status": "available",
       "source_confidence_category": "broad_social_discussion",
       "retail_only": true,
-      "items_reviewed": 5,
-      "usable_ticker_relevant_items": 2,
+      "items_reviewed": 9,
+      "usable_ticker_relevant_items": 1,
       "bullish_count": 0,
       "bearish_count": 0,
-      "neutral_count": 2,
+      "neutral_count": 1,
       "confidence": "low",
       "limitations": [],
       "representative_items": [
         {
-          "text_excerpt": "r/investing \u2014 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
-          "classification": "directly ticker-relevant",
-          "label": "neutral",
-          "ticker_relevance": "direct_company",
-          "candidate_sentiment_label": "neutral",
-          "reasoning_quality": "low",
-          "influence_weight": 0.3
-        },
-        {
-          "text_excerpt": "body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's say Fidelity manages portfolios with AAPL in it and one of the Fidelity portfolio",
+          "text_excerpt": "r/wallstreetbets \u2014 3 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):",
           "classification": "directly ticker-relevant",
           "label": "neutral",
           "ticker_relevance": "direct_company",

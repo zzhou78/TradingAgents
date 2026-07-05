@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for BHP.AX from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-05 15:12:59
+# Data retrieved on: 2026-07-05 22:27:22
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,63.4,63.58,62.55,63.37,7621289,0.0,0.0
@@ -183,23 +183,23 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: 48.97174394607544
-2026-06-18: 48.86773963928223
-2026-06-17: 48.748223361968996
-2026-06-16: 48.62523710250854
-2026-06-15: 48.50660284042358
+2026-06-18: 48.86773962020874
+2026-06-17: 48.74822334289551
+2026-06-16: 48.62523708343506
+2026-06-15: 48.5066028213501
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 48.3871545791626
-2026-06-11: 48.27996435165405
-2026-06-10: 48.18068807601929
-2026-06-09: 48.08676383972168
+2026-06-12: 48.38715456008911
+2026-06-11: 48.27996433258057
+2026-06-10: 48.1806880569458
+2026-06-09: 48.086763820648194
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 47.9879674911499
-2026-06-04: 47.88365915298462
-2026-06-03: 47.77006280899048
-2026-06-02: 47.64769245147705
+2026-06-05: 47.98796747207641
+2026-06-04: 47.88365913391113
+2026-06-03: 47.77006277084351
+2026-06-02: 47.64769241333008
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 45.82701179049862
-2026-07-01: 47.16629410380277
-2026-06-30: 44.94664624468937
-2026-06-29: 46.40894766027351
+2026-07-02: 45.82701179049945
+2026-07-01: 47.16629410380347
+2026-06-30: 44.94664624469037
+2026-06-29: 46.40894766027437
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 43.00634621156326
-2026-06-25: 41.03787450787576
-2026-06-24: 43.978830720215036
-2026-06-23: 45.26990161507171
-2026-06-22: 46.53854174292188
+2026-06-26: 43.006346211564605
+2026-06-25: 41.03787450787741
+2026-06-24: 43.97883072021639
+2026-06-23: 45.26990161507292
+2026-06-22: 46.538541742922924
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 49.80979405593098
-2026-06-18: 64.19912411175076
-2026-06-17: 66.91117324960935
-2026-06-16: 65.93947966453601
-2026-06-15: 65.91623891142181
+2026-06-19: 49.80979405593157
+2026-06-18: 64.19912411174859
+2026-06-17: 66.9111732496065
+2026-06-16: 65.93947966453327
+2026-06-15: 65.9162389114191
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 60.25081795830355
-2026-06-11: 53.448976116375924
-2026-06-10: 51.267751319283775
-2026-06-09: 50.83996596233151
+2026-06-12: 60.25081795830183
+2026-06-11: 53.44897611637593
+2026-06-10: 51.26775131928447
+2026-06-09: 50.83996596233236
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 55.18862008256278
-2026-06-04: 61.7885431657325
-2026-06-03: 72.7093393406032
-2026-06-02: 68.99548085289136
+2026-06-05: 55.1886200825622
+2026-06-04: 61.788543165729315
+2026-06-03: 72.70933934059447
+2026-06-02: 68.99548085288338
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -0.24134224108811964
-2026-07-01: -0.18529724738462505
-2026-06-30: -0.1467044310061567
-2026-06-29: -0.042366968174434305
+2026-07-02: -0.241342241088077
+2026-07-01: -0.18529724738457531
+2026-06-30: -0.14670443100610697
+2026-06-29: -0.04236696817438457
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 0.048658372175239606
-2026-06-25: 0.24864093738268167
-2026-06-24: 0.5481294858116641
-2026-06-23: 0.8226312144396886
-2026-06-22: 1.1182662441131797
+2026-06-26: 0.04865837217529645
+2026-06-25: 0.24864093738274562
+2026-06-24: 0.548129485811728
+2026-06-23: 0.8226312144397667
+2026-06-22: 1.1182662441132578
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 1.4365745164657184
-2026-06-18: 1.7140285785665696
-2026-06-17: 1.6726114097410232
-2026-06-16: 1.539419614385011
-2026-06-15: 1.3877535433815993
+2026-06-19: 1.4365745164658108
+2026-06-18: 1.7140285785666691
+2026-06-17: 1.6726114097411298
+2026-06-16: 1.5394196143851175
+2026-06-15: 1.387753543381713
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 1.1750053787224388
-2026-06-11: 1.1154612794124148
-2026-06-10: 1.2401093009824535
-2026-06-09: 1.4422583033189653
+2026-06-12: 1.1750053787225667
+2026-06-11: 1.115461279412557
+2026-06-10: 1.2401093009826027
+2026-06-09: 1.4422583033191287
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 1.6915137094993824
-2026-06-04: 1.8669413349677129
-2026-06-03: 1.9048591515454874
-2026-06-02: 1.710712217404577
+2026-06-05: 1.691513709499553
+2026-06-04: 1.8669413349678905
+2026-06-03: 1.9048591515456792
+2026-06-02: 1.710712217404783
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 1.3874537761945982
-2026-07-01: 1.413411817666448
-2026-06-30: 1.4352129379932537
-2026-06-29: 1.4956138158482035
+2026-07-02: 1.3874537761946502
+2026-07-01: 1.4134118176665043
+2026-06-30: 1.435212937993314
+2026-06-29: 1.4956138158482684
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 1.532199458777783
-2026-06-25: 1.553907109452997
-2026-06-24: 1.5749769810034677
-2026-06-23: 1.6076676940666852
-2026-06-22: 1.6267190081986171
+2026-06-26: 1.5321994587778527
+2026-06-25: 1.553907109453072
+2026-06-24: 1.5749769810035488
+2026-06-23: 1.6076676940667725
+2026-06-22: 1.6267190081987113
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 1.6372357258702956
-2026-06-18: 1.4831769825027463
-2026-06-17: 1.5472674022430417
-2026-06-16: 1.6047492753572903
-2026-06-15: 1.6804990083400027
+2026-06-19: 1.637235725870397
+2026-06-18: 1.4831769825028553
+2026-06-17: 1.5472674022431592
+2026-06-16: 1.6047492753574166
+2026-06-15: 1.6804990083401388
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 1.6166910754253514
-2026-06-11: 1.5556673237340624
-2026-06-10: 1.5114880983737624
-2026-06-09: 1.5216024853167263
+2026-06-12: 1.616691075425498
+2026-06-11: 1.5556673237342202
+2026-06-10: 1.5114880983739323
+2026-06-09: 1.521602485316909
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 1.4694180024226704
-2026-06-04: 1.4416810782738432
-2026-06-03: 1.3571946435083997
-2026-06-02: 1.3331325404211551
+2026-06-05: 1.4694180024228671
+2026-06-04: 1.4416810782740552
+2026-06-03: 1.357194643508628
+2026-06-02: 1.3331325404214012
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -430,28 +430,10 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-05 15:13:12
+# Data retrieved on: 2026-07-05 22:27:36
 
-,Shares,URL,Text,Insider,Position,Transaction,Start Date,Ownership,Value
-0,11254,,,Craig (Brandon),Chief Executive Officer,,2026-07-01,D,
-1,4825,,,Vassella (Mark),Director (Non-Executive),,2026-06-01,D,
-2,144654,,,Henry (Mike),Chief Executive Officer,,2025-08-27,D,
-3,66295,,Sale at price 0.00 per share.,Henry (Mike),Chief Executive Officer,,2025-08-27,D,19.0
-4,10920,,,Craig (Brandon),Other Executive,,2025-06-30,D,
-5,41247,,,Pant (Vandita),Chief Financial Officer,,2025-06-30,D,
-6,43017,,,Slattery (Geraldine),Other Executive,,2025-06-30,D,
-7,1223,,Purchase at price 21.96 per share.,Hinchliffe (Michelle),Independent Non-Executive Director,,2025-04-11,D,26856.0
-8,1450,,Purchase at price 22.09 per share.,Weisler (Dion J),Independent Non-Executive Director,,2025-04-11,D,32032.0
-9,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2025-04-07,D,
-10,58446,,,MacKenzie (Kenneth Norman),Retired,,2025-03-31,D,
-11,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2025-03-25,D,
-12,780,,Purchase at price 26.03 per share.,O'Reilly (Christine Elizabeth),Independent Non-Executive Director,,2025-02-19,D,20302.0
-13,2500,,Purchase at price 25.68 per share.,Weisler (Dion J),Independent Non-Executive Director,,2025-02-19,D,64199.0
-14,2000,,,Goldberg (Gary J),Independent Non-Executive Director,,2024-11-18,D,
-15,1000,,Purchase at price 26.05 per share.,Hinchliffe (Michelle),Independent Non-Executive Director,,2024-11-14,D,26053.0
-16,1461,,Purchase at price 27.76 per share.,Clever-Steg (Xiaoqun),Independent Non-Executive Director,,2024-11-01,D,40553.0
-17,130407,,,Henry (Mike),Chief Executive Officer,,2024-10-31,D,
-18,62373,,,Henry (Mike),Chief Executive Officer,,2024-10-31,D,
+,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
+0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
 
 ```
 
@@ -465,7 +447,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for BHP.AX
-# Data retrieved on: 2026-07-05 15:13:12
+# Data retrieved on: 2026-07-05 22:27:36
 
 Name: BHP Group Limited
 Sector: Basic Materials
@@ -503,7 +485,7 @@ Free Cash Flow: 8137124864
 
 ```text
 # Balance Sheet data for BHP.AX (quarterly)
-# Data retrieved on: 2026-07-05 15:13:12
+# Data retrieved on: 2026-07-05 22:27:36
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,,701522.0,

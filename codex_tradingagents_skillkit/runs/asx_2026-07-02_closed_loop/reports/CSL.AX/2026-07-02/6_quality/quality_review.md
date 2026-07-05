@@ -2,6 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
+- evidence_reasoning_auditor.py was run before review-ready status: pass_with_warnings (0 critical findings, 16 warnings).
 - Role reports and evidence records including market:CSL.AX:2026-07-02:001, financial:CSL.AX:2026-07-02:001, news:CSL.AX:2026-07-02:001, and social:CSL.AX:2026-07-02:001.
 
 ## Quality Gate Findings

@@ -158,7 +158,10 @@
         "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\roles\\financial_report.md",
         "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\evidence.json",
         "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\section_records.json",
-        "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl"
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\CSL.AX\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json"
       ],
       "forbidden_input_files": [],
       "allowed_memory_files": [
@@ -372,6 +375,8 @@
       "required_output_sections": [
         "Tool Outputs Used",
         "Action Consistency Check",
+        "Setup Quality Assessment",
+        "Setup Thresholds",
         "Paper-study price framework",
         "FINAL TRANSACTION PROPOSAL",
         "Memory Update"

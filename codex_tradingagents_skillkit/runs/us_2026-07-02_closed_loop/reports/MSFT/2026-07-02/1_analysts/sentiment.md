@@ -7,7 +7,7 @@
 ## Sentiment Evidence Quality Summary
 | Items reviewed | Usable ticker-relevant items | Bullish | Bearish | Neutral/unlabeled | Interpretation confidence |
 |---:|---:|---:|---:|---:|---|
-| 3 | 0 | 0 | 0 | 0 | low |
+| 11 | 4 | 0 | 0 | 4 | low |
 
 The usable sentiment signal is low-confidence retail reaction. It is retail-only because the usable sources are StockTwits and optional Reddit/broad social. Platform labels are not treated as final sentiment, and missing or sparse Reddit coverage is not treated as neutral sentiment.
 
@@ -15,17 +15,19 @@ The usable sentiment signal is low-confidence retail reaction. It is retail-only
 | Evidence ID | Source | Source confidence category | Items reviewed | Usable ticker-relevant items | Bullish / bearish / neutral | Confidence | Limitations |
 |---|---|---|---:|---:|---|---|---|
 | social:MSFT:2026-07-02:001 | fetch_stocktwits_messages | ticker_specific_retail_platform | 2 | 0 | 0/0/0 | low | no_usable_ticker_relevant_items |
-| social:MSFT:2026-07-02:002 | fetch_reddit_posts | broad_social_discussion | 1 | 0 | 0/0/0 | low | no_usable_ticker_relevant_items |
+| social:MSFT:2026-07-02:002 | fetch_reddit_posts | broad_social_discussion | 9 | 4 | 0/0/4 | low | none disclosed |
 
 ## Top Reasoned Items
 | Evidence ID | Source | Candidate label | Reasoning quality | Relevance | Independence group | Short excerpt |
 |---|---|---|---|---|---|---|
-| none | none | neutral | none | unavailable | none | No genuinely reasoned social items were found. |
+| social:MSFT:2026-07-02:item:0005 | fetch_reddit_posts | neutral | high | direct_company | reaction:MSFT:2026-07-02:earnings | body excerpt: MSFT earnings less than a month out. Prediction that it will run up to 462 just before earnings. Microsoft will post record earnings for another q |
+| social:MSFT:2026-07-02:item:0004 | fetch_reddit_posts | neutral | medium | direct_company | reaction:MSFT:2026-07-02:earnings | [2026-07-02] MSFT earnings |
 
 ## Representative Low-Quality Retail Items
 | Evidence ID | Source | Candidate label | Reasoning quality | Short excerpt |
 |---|---|---|---|---|
-| none | none | none | none | No representative low-quality retail item needed. |
+| social:MSFT:2026-07-02:item:0003 | fetch_reddit_posts | neutral | low | r/wallstreetbets — 3 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable): |
+| social:MSFT:2026-07-02:item:0006 | fetch_reddit_posts | neutral | low | [2026-07-01] MSFT Tendies |
 
 ## Excluded / Downgraded Evidence
 - Low-information, meme, spam-like, cross-ticker, and post-trade-date items are excluded or downgraded by the evidence cards.

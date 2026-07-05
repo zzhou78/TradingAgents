@@ -109,6 +109,8 @@ The final transaction proposal must match the reasoning and cite the Research Ma
   "required_output_sections": [
     "Tool Outputs Used",
     "Action Consistency Check",
+    "Setup Quality Assessment",
+    "Setup Thresholds",
     "Paper-study price framework",
     "FINAL TRANSACTION PROPOSAL",
     "Memory Update"

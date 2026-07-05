@@ -1042,6 +1042,26 @@ def _complete_report_role_consistency_errors(report_dir: Path) -> list[str]:
     return validate_role_consistency(report_dir)
 
 
+def _evidence_reasoning_audit_errors(report_dir: Path) -> list[str]:
+    path = report_dir / "6_quality" / "evidence_reasoning_audit.json"
+    if not path.exists():
+        return ["evidence_reasoning_audit.json missing for completed run"]
+    try:
+        audit = json.loads(_read(path))
+    except json.JSONDecodeError:
+        return ["evidence_reasoning_audit.json is not valid JSON"]
+    verdict = str(audit.get("summary_verdict") or "")
+    critical = list(audit.get("critical_findings") or [])
+    if verdict not in {"pass", "pass_with_warnings", "fail"}:
+        return ["evidence_reasoning_audit.json has invalid summary_verdict"]
+    errors = []
+    if verdict == "fail":
+        errors.append("evidence_reasoning_audit.json failed; workflow remains incomplete")
+    if critical:
+        errors.append("evidence_reasoning_audit.json has critical findings")
+    return errors
+
+
 def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> list[str]:
     errors: list[str] = []
     analyst_dir = report_dir / "1_analysts"
@@ -1162,6 +1182,7 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
                 review_text = _read(quality_review)
                 if re.search(r"validator must still be run|validator still pending|planned check", review_text, re.IGNORECASE):
                     errors.append("quality_review.md says validator is pending while quality_gate.json passed")
+                errors.extend(_evidence_reasoning_audit_errors(report_dir))
             if errors and gate.get("passed") is True:
                 errors.append("quality_gate.json passes despite quality errors")
             if not passed:

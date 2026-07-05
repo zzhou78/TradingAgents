@@ -33,6 +33,7 @@ Role skills derived from `tradingagents/agents`:
 - `tradingagents-conservative-risk-analyst`
 - `tradingagents-neutral-risk-analyst`
 - `tradingagents-portfolio-manager`
+- `tradingagents-evidence-and-reasoning-auditor`
 - `tradingagents-quality-reviewer`
 
 Workflow skills derived from `tradingagents/graph`:
@@ -154,6 +155,12 @@ tasks. It writes `quality_remediation_plan.json` next to `quality_gate.json`
 with the failed gate, root-cause category, affected code areas, required tests,
 rerun command, and review-grade blocking status. The plan is for Codex workflow
 improvement; it is not an investment judgment.
+
+`evidence_reasoning_auditor.py` writes `evidence_reasoning_audit.md` and
+`evidence_reasoning_audit.json` before a workflow can be review-ready. Final
+completion requires both ordinary quality validation and no critical evidence
+or reasoning audit findings:
+`review_ready = quality_gate_passed AND evidence_reasoning_audit_has_no_critical_findings`.
 
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.

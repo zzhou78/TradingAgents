@@ -23,11 +23,15 @@ As-of filter: removed 30 post-trade-date social items after 2026-07-02.
 - Status: `ok`
 
 ```text
-r/wallstreetbets: <no posts found mentioning AAPL in the past 7 days>
+r/wallstreetbets — 3 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
+    body excerpt: Added Apple options when it crashed ~6% after the price increase announcement. From a business perspective, every price increase is good for their earnings meaning they are managing the operating expense cost well. Few reasons that made me …
+  [2026-06-30] ASML is my first 200% gain ever. Bought during the April 2025 dip.
+    body excerpt: submitted by /u/razeusv2 [link] [comments]
+  [2026-06-28] Webull glitch
+    body excerpt: My all stocks has doubled the value
 
 r/stocks: <no posts found mentioning AAPL in the past 7 days>
 
-r/investing — 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
-  [2026-06-27] Help with Bloomberg function please!
-    body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's say Fidelity manages portfolios with AAPL in it and one of the Fidelity portfolios is owned by …
+r/investing: <no posts found mentioning AAPL in the past 7 days>
+As-of filter: removed 1 post-trade-date social item after 2026-07-02.
 ```

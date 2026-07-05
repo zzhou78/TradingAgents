@@ -1470,7 +1470,8 @@ def write_reports(*, output_dir: Path, ticker: str, trade_date: str) -> Path:
     report_dir = output_dir / "reports" / ticker / trade_date
     _ensure_report_dirs(report_dir)
 
-    evidence = _load_json(evidence_dir / "evidence.json")
+    evidence_path = evidence_dir / "evidence.json"
+    evidence = _load_json(evidence_path)
     market_records = _load_json(evidence_dir / "market" / "quantitative_observations.json")
     social_summary = _load_json(evidence_dir / "social" / "social_summary.json")
     social_cards_path = evidence_dir / "social" / "social_cards.json"
@@ -2375,11 +2376,19 @@ Risk debate impact: strongest concrete opportunity is {portfolio_risk['opportuni
         encoding="utf-8",
     )
 
+    from evidence_reasoning_auditor import write_audit
+
+    evidence_reasoning_audit = write_audit(report_dir, evidence_path)
+    audit_verdict = str(evidence_reasoning_audit.get("summary_verdict", "missing"))
+    audit_critical_count = len(evidence_reasoning_audit.get("critical_findings") or [])
+    audit_warning_count = len(evidence_reasoning_audit.get("warnings") or [])
+
     (report_dir / "6_quality" / "quality_review.md").write_text(
         f"""# Quality Reviewer Report - {ticker}
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
+- evidence_reasoning_auditor.py was run before review-ready status: {audit_verdict} ({audit_critical_count} critical findings, {audit_warning_count} warnings).
 - Role reports and evidence records including {refs['close']}, {refs['exhibit']}, {best_news_id}, and {first_social_id}.
 
 ## Quality Gate Findings

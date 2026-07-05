@@ -173,6 +173,22 @@ RULES = (
         ),
     ),
     RemediationRule(
+        marker="evidence_reasoning_audit.json",
+        failed_gate="evidence_reasoning_audit_gate",
+        root_cause_category="evidence_reasoning_audit_failure",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/evidence_reasoning_auditor.py",
+            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/skills/tradingagents-evidence-and-reasoning-auditor/SKILL.md",
+        ),
+        required_fix="Repair the evidence substrate, metric extraction, report reasoning, or auditor rule that produced critical evidence/reasoning findings.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_closed_loop_workflow.py",
+            "codex_tradingagents_skillkit/tests/test_evidence_reasoning_auditor.py",
+        ),
+    ),
+    RemediationRule(
         marker="ASX source collection failed",
         failed_gate="asx_official_source_gate",
         root_cause_category="asx_official_source_collection",

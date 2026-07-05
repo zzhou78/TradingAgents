@@ -2,17 +2,17 @@
   "ticker": "MSFT",
   "trade_date": "2026-07-02",
   "evidence_as_of_date": "2026-07-02",
-  "run_executed_at": "2026-07-04T16:13:43+10:00",
+  "run_executed_at": "2026-07-05T22:25:39+10:00",
   "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
   "run_folder_name": "us_2026-07-02_closed_loop",
-  "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-04T16:13:43+10:00",
+  "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-05T22:25:39+10:00",
   "authoritative_result_folder": true,
   "status": "pending",
   "workflow_status": "pending",
   "run_metadata": {
     "trade_date": "2026-07-02",
     "evidence_as_of_date": "2026-07-02",
-    "run_executed_at": "2026-07-04T16:13:43+10:00",
+    "run_executed_at": "2026-07-05T22:25:39+10:00",
     "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
     "market": "US",
     "run_folder_name": "us_2026-07-02_closed_loop",
@@ -20,7 +20,7 @@
       "AAPL",
       "MSFT"
     ],
-    "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-04T16:13:43+10:00",
+    "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-05T22:25:39+10:00",
     "authoritative_result_folder": true,
     "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
     "status": "pending",
@@ -524,7 +524,10 @@
         "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\roles\\financial_report.md",
         "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\evidence.json",
         "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\section_records.json",
-        "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\evidence_ledger.jsonl"
+        "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+        "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+        "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+        "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json"
       ],
       "forbidden_inputs": [],
       "output_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\MSFT\\2026-07-02\\1_analysts\\financial_report.md",
@@ -570,7 +573,10 @@
           "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\roles\\financial_report.md",
           "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\evidence.json",
           "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\section_records.json",
-          "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\evidence_ledger.jsonl"
+          "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+          "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+          "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+          "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\evidence\\MSFT\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json"
         ],
         "forbidden_inputs": [
           "future_filings",
@@ -1161,6 +1167,8 @@
         "required_output_sections": [
           "Tool Outputs Used",
           "Action Consistency Check",
+          "Setup Quality Assessment",
+          "Setup Thresholds",
           "Paper-study price framework",
           "FINAL TRANSACTION PROPOSAL",
           "Memory Update"

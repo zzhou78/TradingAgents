@@ -7,7 +7,7 @@
 ## Sentiment Evidence Quality Summary
 | Items reviewed | Usable ticker-relevant items | Bullish | Bearish | Neutral/unlabeled | Interpretation confidence |
 |---:|---:|---:|---:|---:|---|
-| 7 | 2 | 0 | 0 | 2 | low |
+| 11 | 1 | 0 | 0 | 1 | low |
 
 The usable sentiment signal is low-confidence retail reaction. It is retail-only because the usable sources are StockTwits and optional Reddit/broad social. Platform labels are not treated as final sentiment, and missing or sparse Reddit coverage is not treated as neutral sentiment.
 
@@ -15,7 +15,7 @@ The usable sentiment signal is low-confidence retail reaction. It is retail-only
 | Evidence ID | Source | Source confidence category | Items reviewed | Usable ticker-relevant items | Bullish / bearish / neutral | Confidence | Limitations |
 |---|---|---|---:|---:|---|---|---|
 | social:AAPL:2026-07-02:001 | fetch_stocktwits_messages | ticker_specific_retail_platform | 2 | 0 | 0/0/0 | low | no_usable_ticker_relevant_items |
-| social:AAPL:2026-07-02:002 | fetch_reddit_posts | broad_social_discussion | 5 | 2 | 0/0/2 | low | none disclosed |
+| social:AAPL:2026-07-02:002 | fetch_reddit_posts | broad_social_discussion | 9 | 1 | 0/0/1 | low | none disclosed |
 
 ## Top Reasoned Items
 | Evidence ID | Source | Candidate label | Reasoning quality | Relevance | Independence group | Short excerpt |
@@ -25,8 +25,7 @@ The usable sentiment signal is low-confidence retail reaction. It is retail-only
 ## Representative Low-Quality Retail Items
 | Evidence ID | Source | Candidate label | Reasoning quality | Short excerpt |
 |---|---|---|---|---|
-| social:AAPL:2026-07-02:item:0005 | fetch_reddit_posts | neutral | low | r/investing — 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable): |
-| social:AAPL:2026-07-02:item:0007 | fetch_reddit_posts | neutral | low | body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's s |
+| social:AAPL:2026-07-02:item:0003 | fetch_reddit_posts | neutral | low | r/wallstreetbets — 3 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable): |
 
 ## Excluded / Downgraded Evidence
 - Low-information, meme, spam-like, cross-ticker, and post-trade-date items are excluded or downgraded by the evidence cards.

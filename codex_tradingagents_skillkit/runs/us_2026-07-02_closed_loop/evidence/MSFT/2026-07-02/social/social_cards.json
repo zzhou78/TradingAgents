@@ -66,7 +66,224 @@
   {
     "source": "fetch_reddit_posts",
     "posted_at": "",
-    "text_excerpt": "<no Reddit posts found mentioning MSFT across r/wallstreetbets, r/stocks, r/investing in the past 7 days>",
+    "text_excerpt": "r/wallstreetbets \u2014 3 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": true,
+    "linked_event_type": "AI capex",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:ai_capex",
+    "independence_group_id": "reaction:MSFT:2026-07-02:ai_capex",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0003"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-02] MSFT earnings",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "medium",
+    "event_linked": true,
+    "linked_event_type": "earnings",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.45,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:earnings",
+    "independence_group_id": "reaction:MSFT:2026-07-02:earnings",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0004"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "body excerpt: MSFT earnings less than a month out. Prediction that it will run up to 462 just before earnings. Microsoft will post record earnings for another quarter. It will proceed to crash back down to 350 or lower. Source: my ass. I\u2019m ",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "high",
+    "event_linked": true,
+    "linked_event_type": "earnings",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.6,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:earnings",
+    "independence_group_id": "reaction:MSFT:2026-07-02:earnings",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0005"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "[2026-07-01] MSFT Tendies",
+    "ticker_relevance": "direct_company",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.3,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0006"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "body excerpt: (I didn\u2019t sell, so these are all going to $0)",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "bearish",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0007"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "[2026-06-29] Think this might be a sign",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0008"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "body excerpt: submitted by /u/SuddenGrade9632 [link] [comments]",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.05,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [],
+    "evidence_id": "social:MSFT:2026-07-02:item:0009"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "r/stocks: <no posts found mentioning MSFT in the past 7 days>",
     "ticker_relevance": "irrelevant",
     "cashtags_detected": [],
     "platform_label": "none",
@@ -94,6 +311,39 @@
     "limitations": [
       "no_items_placeholder"
     ],
-    "evidence_id": "social:MSFT:2026-07-02:item:0003"
+    "evidence_id": "social:MSFT:2026-07-02:item:0010"
+  },
+  {
+    "source": "fetch_reddit_posts",
+    "posted_at": "",
+    "text_excerpt": "r/investing: <no posts found mentioning MSFT in the past 7 days>",
+    "ticker_relevance": "irrelevant",
+    "cashtags_detected": [],
+    "platform_label": "none",
+    "candidate_sentiment_label": "neutral",
+    "reasoning_quality": "low",
+    "event_linked": false,
+    "linked_event_type": "none",
+    "spam_or_bot_risk": "low",
+    "meme_or_joke": false,
+    "duplicate_or_near_duplicate": false,
+    "influence_weight": 0.0,
+    "source_confidence_category": "broad_social_discussion",
+    "primary_role_owner": "sentiment_analyst",
+    "event_or_topic_id": "event:MSFT:2026-07-02:none",
+    "independence_group_id": "reaction:MSFT:2026-07-02:none",
+    "allowed_secondary_roles": [
+      "research_manager",
+      "bear_researcher",
+      "bull_researcher"
+    ],
+    "secondary_use_purpose": "reaction_evidence",
+    "as_of_validity": {
+      "valid_for_trade_date": true
+    },
+    "limitations": [
+      "no_items_placeholder"
+    ],
+    "evidence_id": "social:MSFT:2026-07-02:item:0011"
   }
 ]

@@ -2,6 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
+- evidence_reasoning_auditor.py was run before review-ready status: pass (0 critical findings, 0 warnings).
 - Role reports and evidence records including market:MSFT:2026-07-02:001, financial:MSFT:2026-07-02:022, news:MSFT:2026-07-02:033, and social:MSFT:2026-07-02:001.
 
 ## Quality Gate Findings

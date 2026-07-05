@@ -110,6 +110,10 @@ def _write_passed_quality_gates(workflow_payload: dict[str, Any], status_path: P
             "issues": [],
             "validator": "validate_quality_review.py",
             "status": "workflow_complete",
+            "quality_gate_passed": bool(run.get("quality_gate_passed")),
+            "evidence_reasoning_audit_status": run.get("evidence_reasoning_audit_status", "missing"),
+            "evidence_reasoning_critical_findings": list(run.get("evidence_reasoning_critical_findings") or []),
+            "review_ready": bool(run.get("review_ready")),
             "closed_loop_status_path": str(status_path),
             "closed_loop_status_artifact": "closed_loop_status.json",
             "notes": "Codex-session workflow and quality validators passed; see closed_loop_status.json for run-level workflow status.",
@@ -142,6 +146,34 @@ def _patch_quality_reviews_with_warnings(workflow_payload: dict[str, Any]) -> li
         review_path.write_text(text, encoding="utf-8")
         patched.append(str(review_path))
     return patched
+
+
+def _aggregate_audit_status(workflow_payload: dict[str, Any]) -> dict[str, Any]:
+    runs = [run for run in workflow_payload.get("runs", []) if isinstance(run, dict)]
+    critical: list[Any] = []
+    warnings: list[Any] = []
+    statuses = []
+    for run in runs:
+        critical.extend(run.get("evidence_reasoning_critical_findings") or [])
+        warnings.extend(run.get("evidence_reasoning_warnings") or [])
+        statuses.append(str(run.get("evidence_reasoning_audit_status") or "missing"))
+    if critical or any(status == "fail" for status in statuses):
+        audit_status = "fail"
+    elif warnings or any(status == "pass_with_warnings" for status in statuses):
+        audit_status = "pass_with_warnings"
+    elif statuses and all(status == "pass" for status in statuses):
+        audit_status = "pass"
+    else:
+        audit_status = "missing"
+    quality_gate_passed = bool(runs) and all(bool(run.get("quality_gate_passed")) for run in runs)
+    review_ready = quality_gate_passed and not critical and audit_status in {"pass", "pass_with_warnings"}
+    return {
+        "quality_gate_passed": quality_gate_passed,
+        "evidence_reasoning_audit_status": audit_status,
+        "evidence_reasoning_critical_findings": critical,
+        "evidence_reasoning_warnings": warnings,
+        "review_ready": review_ready,
+    }
 
 
 def run_closed_loop(
@@ -202,6 +234,7 @@ def run_closed_loop(
             break
 
     status = _status_from_runs(workflow_payload["runs"], remediation_plans)
+    audit_summary = _aggregate_audit_status(workflow_payload)
     _sync_nested_run_metadata_status(workflow_payload, status)
     patched_quality_reviews = _patch_quality_reviews_with_warnings(workflow_payload)
     payload = {
@@ -211,6 +244,7 @@ def run_closed_loop(
         "commands": commands,
         "workflow": workflow_payload,
         "remediation_plans": remediation_plans,
+        **audit_summary,
         "patched_quality_gates": patched_quality_gates,
         "patched_quality_reviews": patched_quality_reviews,
         "written_quality_gates": _write_passed_quality_gates(workflow_payload, provisional_status_path),

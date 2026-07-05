@@ -17,6 +17,9 @@ Memory update file: `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loo
 - `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\evidence.json`
 - `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\financial_report\section_records.json`
 - `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\financial_report\evidence_ledger.jsonl`
+- `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\financial_report\asx_metric_audit_review.md`
+- `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\financial_report\asx_metric_audit_review.csv`
+- `codex_tradingagents_skillkit\runs\asx_2026-07-02_closed_loop\evidence\WOW.AX\2026-07-02\financial_report\asx_table_extraction_diagnostics.json`
 
 ## Forbidden Input Files
 
@@ -78,7 +81,10 @@ Every major claim must cite a source section or exhibit. Mark missing capex, gui
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\roles\\financial_report.md",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\evidence.json",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\section_records.json",
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl"
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\evidence_ledger.jsonl",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_metric_audit_review.csv",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\evidence\\WOW.AX\\2026-07-02\\financial_report\\asx_table_extraction_diagnostics.json"
   ],
   "forbidden_inputs": [
     "future_filings",

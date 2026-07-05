@@ -2,6 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
+- evidence_reasoning_auditor.py was run before review-ready status: pass_with_warnings (0 critical findings, 8 warnings).
 - Role reports and evidence records including market:CBA.AX:2026-07-02:001, financial:CBA.AX:2026-07-02:023, news:CBA.AX:2026-07-02:001, and social:CBA.AX:2026-07-02:001.
 
 ## Quality Gate Findings

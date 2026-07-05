@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
   "status": "review_ready_paper_study",
-  "generated_at": "2026-07-05T07:38:15+10:00",
+  "generated_at": "2026-07-05T22:27:12+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
@@ -10,14 +10,14 @@
         "ticker": "AAPL",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-04T16:13:43+10:00",
-        "run_id": "us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-04T16:13:43+10:00",
+        "run_executed_at": "2026-07-05T22:25:39+10:00",
+        "run_id": "us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-05T22:25:39+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-04T16:13:43+10:00",
+          "run_executed_at": "2026-07-05T22:25:39+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
           "market": "US",
           "run_folder_name": "us_2026-07-02_closed_loop",
@@ -25,7 +25,7 @@
             "AAPL",
             "MSFT"
           ],
-          "run_id": "us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-04T16:13:43+10:00",
+          "run_id": "us_2026-07-02_closed_loop:AAPL:2026-07-02:2026-07-05T22:25:39+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -199,6 +199,11 @@
           }
         ],
         "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\AAPL\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -208,14 +213,14 @@
         "ticker": "MSFT",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-04T16:13:43+10:00",
-        "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-04T16:13:43+10:00",
+        "run_executed_at": "2026-07-05T22:25:39+10:00",
+        "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-05T22:25:39+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-04T16:13:43+10:00",
+          "run_executed_at": "2026-07-05T22:25:39+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
           "market": "US",
           "run_folder_name": "us_2026-07-02_closed_loop",
@@ -223,7 +228,7 @@
             "AAPL",
             "MSFT"
           ],
-          "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-04T16:13:43+10:00",
+          "run_id": "us_2026-07-02_closed_loop:MSFT:2026-07-02:2026-07-05T22:25:39+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -397,6 +402,11 @@
           }
         ],
         "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\MSFT\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -407,10 +417,12 @@
     "run_quality_warnings": []
   },
   "remediation_plans": [],
-  "patched_quality_gates": [
-    "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\AAPL\\2026-07-02\\6_quality\\quality_gate.json",
-    "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\MSFT\\2026-07-02\\6_quality\\quality_gate.json"
-  ],
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass",
+  "evidence_reasoning_critical_findings": [],
+  "evidence_reasoning_warnings": [],
+  "review_ready": true,
+  "patched_quality_gates": [],
   "patched_quality_reviews": [],
   "written_quality_gates": [
     "codex_tradingagents_skillkit\\runs\\us_2026-07-02_closed_loop\\reports\\AAPL\\2026-07-02\\6_quality\\quality_gate.json",

@@ -5,13 +5,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\market.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -20,13 +22,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\sentiment.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -35,13 +39,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\news.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -50,13 +56,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\fundamentals.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -65,13 +73,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\financial_report.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -80,13 +90,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\1_analysts\\industry_theme.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -95,13 +107,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\2_research\\bull_round_1.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -110,13 +124,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\2_research\\bear_round_1.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -125,13 +141,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\2_research\\manager.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -140,13 +158,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\3_trading\\trader.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -155,13 +175,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\4_risk\\aggressive_round_1.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -170,13 +192,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\4_risk\\conservative_round_1.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -185,13 +209,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\4_risk\\neutral_round_1.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -200,13 +226,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\5_portfolio\\decision.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {
@@ -215,13 +243,15 @@
     "trade_date": "2026-07-02",
     "role": "quality_reviewer",
     "input_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\complete_report.md",
-    "status": "available",
+    "status": "pending_or_missing",
     "supports_claims": [
       "upstream role evidence",
       "cross-role synthesis input"
     ],
-    "confidence": "medium",
-    "limitations": [],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
     "final_role_judgment": "pending_codex_interpretation"
   },
   {

@@ -30,6 +30,7 @@ EXPECTED_SKILLS = [
     "tradingagents-conservative-risk-analyst",
     "tradingagents-dataflow-routing",
     "tradingagents-debate-routing",
+    "tradingagents-evidence-and-reasoning-auditor",
     "tradingagents-financial-report-analyst",
     "tradingagents-fundamentals-analyst",
     "tradingagents-industry-theme-discovery-analyst",
@@ -1912,6 +1913,9 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
     neutral = (SKILLS_ROOT / "tradingagents-neutral-risk-analyst" / "SKILL.md").read_text(encoding="utf-8")
     portfolio = (SKILLS_ROOT / "tradingagents-portfolio-manager" / "SKILL.md").read_text(encoding="utf-8")
     quality = (SKILLS_ROOT / "tradingagents-quality-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+    evidence_auditor = (SKILLS_ROOT / "tradingagents-evidence-and-reasoning-auditor" / "SKILL.md").read_text(
+        encoding="utf-8"
+    )
     orchestrator = (SKILLS_ROOT / "tradingagents-workflow-orchestrator" / "SKILL.md").read_text(encoding="utf-8")
     persistence = (SKILLS_ROOT / "tradingagents-run-persistence" / "SKILL.md").read_text(encoding="utf-8")
     ticker_runner = (SKILLS_ROOT / "tradingagents-ticker-workflow-runner" / "SKILL.md").read_text(encoding="utf-8")
@@ -2052,6 +2056,22 @@ def test_news_theme_and_quality_skills_define_llm_reasoning_contracts():
         '"passed": false',
     ]:
         assert required in quality
+
+    for required in [
+        "Evidence Reliability Attack",
+        "Metric-Value Attachment Attack",
+        "Dense Table Attack",
+        "Evidence Independence Attack",
+        "Reasoning Logic Attack",
+        "Role Separation Attack",
+        "Cross-Ticker Differentiation Attack",
+        "Validator Blind-Spot Attack",
+        "It is not a trading decision role",
+        "must not set",
+        "review_ready = quality_gate_passed",
+        "evidence_reasoning_audit_has_no_critical_findings",
+    ]:
+        assert required in evidence_auditor
 
     for text in [quality, orchestrator, persistence, ticker_runner]:
         assert "next_remediation_task.md" in text

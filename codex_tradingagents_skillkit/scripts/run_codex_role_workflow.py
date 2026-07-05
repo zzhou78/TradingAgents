@@ -164,6 +164,45 @@ def _review_status(
     return "review_ready_paper_study"
 
 
+def _quality_gate_passed(report_dir: Path) -> bool:
+    path = report_dir / "6_quality" / "quality_gate.json"
+    if not path.exists():
+        return False
+    try:
+        gate = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return False
+    return gate.get("passed") is True
+
+
+def _audit_status_fields(report_dir: Path) -> dict[str, Any]:
+    path = report_dir / "6_quality" / "evidence_reasoning_audit.json"
+    if not path.exists():
+        return {
+            "evidence_reasoning_audit_status": "missing",
+            "evidence_reasoning_critical_findings": ["evidence_reasoning_audit.json missing"],
+            "evidence_reasoning_warnings": [],
+            "evidence_reasoning_audit_path": "",
+        }
+    try:
+        audit = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {
+            "evidence_reasoning_audit_status": "invalid",
+            "evidence_reasoning_critical_findings": ["evidence_reasoning_audit.json is not valid JSON"],
+            "evidence_reasoning_warnings": [],
+            "evidence_reasoning_audit_path": str(path),
+        }
+    critical = list(audit.get("critical_findings") or [])
+    warnings = list(audit.get("warnings") or [])
+    return {
+        "evidence_reasoning_audit_status": str(audit.get("summary_verdict") or "missing"),
+        "evidence_reasoning_critical_findings": critical,
+        "evidence_reasoning_warnings": warnings,
+        "evidence_reasoning_audit_path": str(path),
+    }
+
+
 def _run_metadata_errors(workflow_path: Path, workflow: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     output_dir = Path(str(workflow.get("output_dir") or workflow_path.parents[3]))
@@ -246,10 +285,16 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
     quality_errors = _run_metadata_errors(workflow_path, workflow)
     remediation_plan_path = ""
     next_remediation_task_path = ""
-    if complete_count == len(stage_summaries) and stage_summaries:
+    workflow_complete_for_validation = complete_count == len(stage_summaries) and (bool(stage_summaries) or quality_errors == [])
+    if workflow_complete_for_validation:
         try:
+            from evidence_reasoning_auditor import write_audit
             from validate_quality_review import validate_report_dir
 
+            write_audit(
+                Path(workflow["report_dir"]),
+                Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None,
+            )
             quality_errors.extend(
                 validate_report_dir(
                     Path(workflow["report_dir"]),
@@ -287,12 +332,21 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
             quality_errors = [f"quality validation failed to run: {exc}"]
 
     run_metadata = dict(workflow.get("run_metadata") or {})
+    report_dir = Path(str(workflow.get("report_dir") or ""))
+    audit_fields = _audit_status_fields(report_dir)
+    ordinary_validation_passed = workflow_complete_for_validation and not quality_errors
+    quality_gate_passed = _quality_gate_passed(report_dir) or ordinary_validation_passed
+    audit_has_no_critical_findings = not audit_fields["evidence_reasoning_critical_findings"] and audit_fields[
+        "evidence_reasoning_audit_status"
+    ] in {"pass", "pass_with_warnings"}
     status = _review_status(
         complete_count=complete_count,
         total_stages=len(stage_summaries),
         quality_errors=quality_errors,
         run_metadata=run_metadata,
     )
+    if status == "review_ready_paper_study" and not (quality_gate_passed and audit_has_no_critical_findings):
+        status = "remediation_required"
     return {
         "ticker": workflow.get("ticker", ""),
         "trade_date": workflow.get("trade_date", ""),
@@ -309,9 +363,11 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         "next_stage": next_stage,
         "stages": stage_summaries,
         "quality_errors": quality_errors,
+        "quality_gate_passed": quality_gate_passed,
+        **audit_fields,
         "remediation_plan_path": remediation_plan_path,
         "next_remediation_task_path": next_remediation_task_path,
-        "complete": complete_count == len(stage_summaries) and not quality_errors,
+        "complete": complete_count == len(stage_summaries) and not quality_errors and audit_has_no_critical_findings,
         "review_ready": status == "review_ready_paper_study",
     }
 

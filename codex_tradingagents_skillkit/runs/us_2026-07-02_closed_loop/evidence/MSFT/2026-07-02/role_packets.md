@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for MSFT from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-04 16:14:07
+# Data retrieved on: 2026-07-05 22:26:02
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,446.88,453.5,440.43,441.31,37036800,0.0,0.0
@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-29,377.5,380.5,359.9,368.57,51229900,0.0,0.0
 2026-06-30,371.03,374.15,367.45,373.02,44945700,0.0,0.0
 2026-07-01,380.83,388.83,374.89,384.28,48065800,0.0,0.0
-2026-07-02,384.48,392.2,383.7,390.49,42194400,0.0,0.0
+2026-07-02,384.48,392.2,383.7,390.49,42128900,0.0,0.0
 
 ```
 
@@ -63,7 +63,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 | High | 392.20 |
 | Low | 383.70 |
 | Close | 390.49 |
-| Volume | 42194400 |
+| Volume | 42128900 |
 
 ### Verified technical indicators (latest row)
 
@@ -169,37 +169,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## close_200_sma values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 443.7846469116211
-2026-07-01: 444.39278015136716
-2026-06-30: 445.0048352050781
-2026-06-29: 445.6290200805664
+2026-07-02: 443.7846452331543
+2026-07-01: 444.3927784729004
+2026-06-30: 445.0048335266113
+2026-06-29: 445.62901840209963
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 446.2722749328613
-2026-06-25: 446.88379150390625
-2026-06-24: 447.5949649047852
-2026-06-23: 448.22708892822266
-2026-06-22: 448.8812547302246
+2026-06-26: 446.2722732543945
+2026-06-25: 446.88378982543946
+2026-06-24: 447.59496307373047
+2026-06-23: 448.22708709716795
+2026-06-22: 448.8812528991699
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 449.55540283203123
-2026-06-17: 450.16810821533204
-2026-06-16: 450.79106430053713
-2026-06-15: 451.35407760620114
+2026-06-18: 449.55540115356445
+2026-06-17: 450.16810653686525
+2026-06-16: 450.7910626220703
+2026-06-15: 451.3540760803223
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 451.8730320739746
-2026-06-11: 452.41373443603516
-2026-06-10: 452.96746704101565
-2026-06-09: 453.5008563232422
-2026-06-08: 453.98913940429685
+2026-06-12: 451.8730305480957
+2026-06-11: 452.41373306274414
+2026-06-10: 452.9674656677246
+2026-06-09: 453.5008549499512
+2026-06-08: 453.989137878418
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 454.43900207519533
-2026-06-04: 454.88430404663086
-2026-06-03: 455.3090660095215
-2026-06-02: 455.7526062011719
+2026-06-05: 454.4390007019043
+2026-06-04: 454.88430267333985
+2026-06-03: 455.30906463623046
+2026-06-02: 455.7526048278809
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 49.8499344663945
-2026-07-01: 46.98834780022507
-2026-06-30: 41.35409725085432
-2026-06-29: 38.973887132356836
+2026-07-02: 49.84993446641805
+2026-07-01: 46.9883478002922
+2026-06-30: 41.35409725102055
+2026-06-29: 38.97388713257023
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 40.48241450614968
-2026-06-25: 28.762928831662656
-2026-06-24: 32.48810369420688
-2026-06-23: 35.34181917040478
-2026-06-22: 30.958966947022137
+2026-06-26: 40.482414506344725
+2026-06-25: 28.76292883214357
+2026-06-24: 32.48810369466122
+2026-06-23: 35.34181917082499
+2026-06-22: 30.958966947592252
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 34.98244572177964
-2026-06-17: 34.66208738437894
-2026-06-16: 40.27273126652912
-2026-06-15: 42.831460041415326
+2026-06-18: 34.982445722297896
+2026-06-17: 34.662087384909825
+2026-06-16: 40.272731266940845
+2026-06-15: 42.83146004175374
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 37.19546537460397
-2026-06-11: 36.93946989706358
-2026-06-10: 39.56781082884555
-2026-06-09: 41.956886267706494
-2026-06-08: 45.46670118129425
+2026-06-12: 37.19546537521644
+2026-06-11: 36.939469897689534
+2026-06-10: 39.56781082939533
+2026-06-09: 41.95688626817311
+2026-06-08: 45.46670118161465
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 47.65765704994541
-2026-06-04: 53.14708757565233
-2026-06-03: 52.83233730209063
-2026-06-02: 60.22430304502887
+2026-06-05: 47.65765705016005
+2026-06-04: 53.14708757555302
+2026-06-03: 52.83233730201018
+2026-06-02: 60.224303044413844
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -9.795341507183082
-2026-07-01: -11.597025560813734
-2026-06-30: -13.095655523864309
-2026-06-29: -13.671496329310855
+2026-07-02: -9.795341507154546
+2026-07-01: -11.597025560782868
+2026-06-30: -13.095655523830999
+2026-06-29: -13.67149632927493
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -13.754531420546527
-2026-06-25: -14.108447858521401
-2026-06-24: -12.304340469935426
-2026-06-23: -11.108635311554679
-2026-06-22: -10.28431987802503
+2026-06-26: -13.75453142050776
+2026-06-25: -14.108447858479508
+2026-06-24: -12.304340469890121
+2026-06-23: -11.108635311505793
+2026-06-22: -10.284319877972166
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: -8.410602905008886
-2026-06-17: -7.124649677706827
-2026-06-16: -5.32978455750191
-2026-06-15: -4.480485379547133
+2026-06-18: -8.410602904951759
+2026-06-17: -7.124649677645095
+2026-06-16: -5.329784557435232
+2026-06-15: -4.4804853794751125
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -3.935084275669851
-2026-06-11: -2.263314561347613
-2026-06-10: -0.05588089926015982
-2026-06-09: 2.047657452037811
-2026-06-08: 4.086751338590943
+2026-06-12: -3.9350842755920894
+2026-06-11: -2.2633145612635985
+2026-06-10: -0.05588089916938088
+2026-06-09: 2.0476574521358657
+2026-06-08: 4.086751338696786
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 5.781788883326726
-2026-06-04: 7.359208422435415
-2026-06-03: 8.106838030838446
-2026-06-02: 9.015457671450463
+2026-06-05: 5.781788883441038
+2026-06-04: 7.359208422558936
+2026-06-03: 8.106838030971858
+2026-06-02: 9.015457671594618
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 13.06390933227686
-2026-07-01: 13.41497928091354
-2026-06-30: 13.230747105707371
-2026-06-29: 13.733113676188472
+2026-07-02: 13.063909332237184
+2026-07-01: 13.414979280870815
+2026-06-30: 13.230747105661358
+2026-06-29: 13.733113676138919
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 13.20489118177869
-2026-06-25: 12.391421366584984
-2026-06-24: 12.093839991087915
-2026-06-23: 11.939519520901168
-2026-06-22: 12.097943723831065
+2026-06-26: 13.204891181725325
+2026-06-25: 12.391421366527513
+2026-06-24: 12.093839991026023
+2026-06-23: 11.939519520834514
+2026-06-22: 12.097943723759284
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 11.908554967310863
-2026-06-17: 12.202290246497036
-2026-06-16: 11.870929554070129
-2026-06-15: 12.086385110212547
+2026-06-18: 11.908554967233561
+2026-06-17: 12.202290246413787
+2026-06-16: 11.870929553980476
+2026-06-15: 12.086385110115998
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 12.169183213642357
-2026-06-11: 12.376812597714608
-2026-06-10: 12.301183924341693
-2026-06-09: 12.641274619843939
-2026-06-08: 12.575218821370395
+2026-06-12: 12.169183213538384
+2026-06-11: 12.376812597602633
+2026-06-10: 12.301183924221105
+2026-06-09: 12.641274619714075
+2026-06-08: 12.575218821230543
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 12.881004415051532
-2026-06-04: 12.712619575884823
-2026-06-03: 12.941283371385579
-2026-06-02: 12.624459203138796
+2026-06-05: 12.881004414900922
+2026-06-04: 12.712619575722627
+2026-06-03: 12.941283371210906
+2026-06-02: 12.624459202950687
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -353,7 +353,17 @@ As-of filter: removed 30 post-trade-date social items after 2026-07-02.
 - Status: `ok`
 
 ```text
-<no Reddit posts found mentioning MSFT across r/wallstreetbets, r/stocks, r/investing in the past 7 days>
+r/wallstreetbets — 3 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):
+  [2026-07-02] MSFT earnings
+    body excerpt: MSFT earnings less than a month out. Prediction that it will run up to 462 just before earnings. Microsoft will post record earnings for another quarter. It will proceed to crash back down to 350 or lower. Source: my ass. I’m holding 160 sh…
+  [2026-07-01] MSFT Tendies
+    body excerpt: (I didn’t sell, so these are all going to $0)
+  [2026-06-29] Think this might be a sign
+    body excerpt: submitted by /u/SuddenGrade9632 [link] [comments]
+
+r/stocks: <no posts found mentioning MSFT in the past 7 days>
+
+r/investing: <no posts found mentioning MSFT in the past 7 days>
 ```
 
 ## Role: news
@@ -382,60 +392,60 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for MSFT
-# Data retrieved on: 2026-07-04 16:14:26
+# Data retrieved on: 2026-07-05 22:26:15
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,5004,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2026-06-15,D
 1,4500,1812780,,Sale at price 402.84 per share.,NUMOTO TAKESHI,Officer,,2026-06-10,D
 2,2500,1031125,,Sale at price 412.45 per share.,NUMOTO TAKESHI,Officer,,2026-06-08,D
-3,149,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-06-05,D
-4,15,0,,Stock Award(Grant) at price 0.00 per share.,DI SIBIO CARMINE,Director,,2026-06-05,D
-5,149,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-06-05,D
-6,149,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-06-05,D
+3,149,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-06-05,D
+4,149,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-06-05,D
+5,149,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2026-06-05,D
+6,15,0,,Stock Award(Grant) at price 0.00 per share.,DI SIBIO CARMINE,Director,,2026-06-05,D
 7,15500,7145314,,Sale at price 460.99 per share.,ALTHOFF JUDSON,Officer,,2026-06-01,D
 8,1262,519242,,Sale at price 411.34 per share.,COLEMAN AMY,Officer,,2026-05-14,D
 9,12320,5045643,,Sale at price 409.52 per share.,HOGAN KATHLEEN T,Officer,,2026-03-06,D
 10,5000,1986750,,Purchase at price 397.35 per share.,STANTON JOHN W.,Director,,2026-02-18,D
-11,145,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2026-01-30,D
+11,145,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-01-30,D
 12,145,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2026-01-30,D
-13,145,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2026-01-30,D
-14,145,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2026-01-30,D
+13,145,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2026-01-30,D
+14,145,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2026-01-30,D
 15,150,0,,Stock Gift at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-12-10,D
 16,2850,1364352,,Sale at price 478.72 per share.,NUMOTO TAKESHI,Officer,,2025-12-04,D
-17,130,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-12-04,D
+17,130,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-12-04,D
 18,130,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-12-04,D
-19,130,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-12-04,D
-20,130,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-12-04,D
+19,130,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-12-04,D
+20,130,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-12-04,D
 21,12750,6266829,,Sale at price 491.52 per share.,ALTHOFF JUDSON,Officer,,2025-12-02,D
 22,3463,0,,Stock Gift at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-11-20,D
 23,3977,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-11-10,D
 24,10000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-11-06,D
 25,38500,19967707,,Sale at price 518.49 - 519.21 per share.,SMITH BRADFORD LEE,President,,2025-11-03,D
-26,6513,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-15,D
-27,26151,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-15,D
-28,11583,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-15,D
-29,4022,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
-30,4358,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
-31,26151,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-15,D
-32,26151,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-15,D
-33,125,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2025-09-10,D
+26,26151,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-15,D
+27,11583,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-15,D
+28,4022,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
+29,4358,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-09-15,D
+30,26151,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-15,D
+31,26151,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-15,D
+32,6513,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-15,D
+33,125,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-09-10,D
 34,125,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-09-10,D
-35,125,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-09-10,D
-36,125,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-09-10,D
+35,125,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-09-10,D
+36,125,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-09-10,D
 37,149205,75315121,,Sale at price 503.00 - 507.56 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-03,D
-38,20386,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-02,D
-39,45220,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-02,D
+38,308870,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-02,D
+39,47877,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-02,D
 40,17223,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2025-09-02,D
-41,47877,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-09-02,D
-42,308870,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2025-09-02,D
-43,54053,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-02,D
+41,45220,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2025-09-02,D
+42,54053,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2025-09-02,D
+43,20386,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2025-09-02,D
 44,3813,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2025-08-29,D
 45,4850,2557506,,Sale at price 525.56 - 528.56 per share.,NUMOTO TAKESHI,Officer,,2025-08-12,D
 46,20000,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2025-08-11,D
-47,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-06-10,D
-48,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-06-10,D
-49,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-06-10,D
-50,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-06-10,D
+47,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-06-10,D
+48,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-06-10,D
+49,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-06-10,D
+50,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-06-10,D
 51,3000,1389000,,Sale at price 463.00 per share.,NUMOTO TAKESHI,Officer,,2025-06-03,D
 52,1000,460008,,Sale at price 460.01 per share.,NUMOTO TAKESHI,Officer,,2025-05-30,D
 53,21500,9756152,,Sale at price 453.77 per share.,HOGAN KATHLEEN T,Officer,,2025-05-21,D
@@ -445,45 +455,45 @@ No global news found between 2026-06-25 and 2026-07-02
 57,81000,35302945,,Sale at price 433.17 - 436.29 per share.,SMITH BRADFORD LEE,President,,2025-05-05,D
 58,3842,1450221,,Purchase at price 377.46 per share.,SMITH BRADFORD LEE,President,,2025-04-23,D
 59,10370,0,,Stock Award(Grant) at price 0.00 per share.,COLEMAN AMY,Officer,,2025-04-15,D
-60,151,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-01-31,D
-61,151,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-01-31,D
-62,151,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-01-31,D
-63,151,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-01-31,D
+60,151,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2025-01-31,D
+61,151,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2025-01-31,D
+62,151,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2025-01-31,D
+63,151,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2025-01-31,D
 64,2500,1118530,,Sale at price 447.41 per share.,NUMOTO TAKESHI,Officer,,2024-12-09,D
-65,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST TERI,Director,,2024-12-09,D
+65,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-12-09,D
 66,132,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-12-09,D
-67,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-12-09,D
-68,132,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-12-09,D
+67,132,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2024-12-09,D
+68,132,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-12-09,D
 69,2000,874634,,Sale at price 437.32 per share.,NUMOTO TAKESHI,Officer,,2024-12-04,D
 70,3500,1500662,,Sale at price 423.48 - 430.87 per share.,NUMOTO TAKESHI,Officer,,2024-12-02,D
 71,25000,10425000,,Sale at price 417.00 per share.,ALTHOFF JUDSON,Officer,,2024-11-22,D
 72,1000,414720,,Sale at price 414.72 per share.,NUMOTO TAKESHI,Officer,,2024-11-22,D
 73,4719,0,,Stock Gift at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-11-13,D
 74,7200,3050340,,Sale at price 423.66 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-11-12,D
-75,7912,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-16,D
-76,8990,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-16,D
+75,23374,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-16,D
+76,8511,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-16,D
 77,23374,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-16,D
-78,8511,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-16,D
-79,23374,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-16,D
-80,23374,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-16,D
-81,17377,7156892,,Sale at price 411.85 per share.,HOGAN KATHLEEN T,Officer,,2024-09-10,D
-82,2500,1027608,,Sale at price 411.04 per share.,NUMOTO TAKESHI,Officer,,2024-09-10,D
+78,23374,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-16,D
+79,7912,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-16,D
+80,8990,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-16,D
+81,2500,1027608,,Sale at price 411.04 per share.,NUMOTO TAKESHI,Officer,,2024-09-10,D
+82,17377,7156892,,Sale at price 411.85 per share.,HOGAN KATHLEEN T,Officer,,2024-09-10,D
 83,12500,0,,Stock Gift at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-10,D
 84,40000,16103553,,Sale at price 402.59 - 403.30 per share.,SMITH BRADFORD LEE,President,,2024-09-09,D
-85,146,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-09-06,D
-86,146,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-09-06,D
-87,146,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2024-09-06,D
-88,146,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-09-06,D
+85,146,0,,Stock Award(Grant) at price 0.00 per share.,SCHARF CHARLES W,Director,,2024-09-06,D
+86,146,0,,Stock Award(Grant) at price 0.00 per share.,STANTON JOHN W.,Director,,2024-09-06,D
+87,146,0,,Stock Award(Grant) at price 0.00 per share.,MASON MARK A.L.,Director,,2024-09-06,D
+88,146,0,,Stock Award(Grant) at price 0.00 per share.,LIST-STOLL TERI L.,Director,,2024-09-06,D
 89,38000,15600794,,Sale at price 410.55 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-05,D
 90,78353,32017224,,Sale at price 404.98 - 410.82 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-04,D
 91,2450,0,,Stock Gift at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-04,D
-92,17224,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-03,D
-93,19573,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-03,D
-94,32881,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-03,D
-95,14552,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-03,D
-96,40448,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-03,D
-97,260949,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-03,D
-98,45668,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-03,D
+92,260949,0,,Stock Award(Grant) at price 0.00 per share.,NADELLA SATYA,Chief Executive Officer,,2024-09-03,D
+93,40448,0,,Stock Award(Grant) at price 0.00 per share.,SMITH BRADFORD LEE,President,,2024-09-03,D
+94,14552,0,,Stock Award(Grant) at price 0.00 per share.,NUMOTO TAKESHI,Officer,,2024-09-03,D
+95,32881,0,,Stock Award(Grant) at price 0.00 per share.,ALTHOFF JUDSON,Officer,,2024-09-03,D
+96,45668,0,,Stock Award(Grant) at price 0.00 per share.,HOOD AMY E,Chief Financial Officer,,2024-09-03,D
+97,17224,0,,Stock Award(Grant) at price 0.00 per share.,HOGAN KATHLEEN T,Officer,,2024-09-03,D
+98,19573,0,,Stock Award(Grant) at price 0.00 per share.,YOUNG CHRISTOPHER DAVID,Officer,,2024-09-03,D
 99,4411,0,,Stock Award(Grant) at price 0.00 per share.,JOLLA ALICE L,Officer,,2024-08-30,D
 100,14398,6009898,,Sale at price 417.41 per share.,NADELLA SATYA,Chief Executive Officer,,2024-08-23,I
 
@@ -499,7 +509,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for MSFT
-# Data retrieved on: 2026-07-04 16:14:26
+# Data retrieved on: 2026-07-05 22:26:16
 
 Name: Microsoft Corporation
 Sector: Technology
@@ -537,7 +547,7 @@ Free Cash Flow: 37011251200
 
 ```text
 # Balance Sheet data for MSFT (quarterly)
-# Data retrieved on: 2026-07-04 16:14:26
+# Data retrieved on: 2026-07-05 22:26:16
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,7429000000.0,7428838066.0,7433087554.0,7434158655.0,7433982235.0,
@@ -628,7 +638,7 @@ Cash Financial,12731000000.0,10221000000.0,11366000000.0,11711000000.0,106800000
 
 ```text
 # Cash Flow data for MSFT (quarterly)
-# Data retrieved on: 2026-07-04 16:14:27
+# Data retrieved on: 2026-07-05 22:26:16
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,15803000000.0,5882000000.0,25663000000.0,25568000000.0,20299000000.0,
@@ -700,7 +710,7 @@ Net Income From Continuing Operations,31778000000.0,38458000000.0,27747000000.0,
 
 ```text
 # Income Statement data for MSFT (quarterly)
-# Data retrieved on: 2026-07-04 16:14:27
+# Data retrieved on: 2026-07-05 22:26:16
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,281390000.0,65200000.0,187150000.0,495125.091979,69660000.0

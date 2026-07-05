@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for AAPL from 2026-06-02 to 2026-07-02
 # Total records: 22
-# Data retrieved on: 2026-07-04 16:13:47
+# Data retrieved on: 2026-07-05 22:25:43
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-02,307.46,315.45,306.69,315.2,44534700,0.0,0.0
@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-29,286.73,288.37,279.85,281.74,66427000,0.0,0.0
 2026-06-30,281.17,289.94,280.7,289.36,65100200,0.0,0.0
 2026-07-01,293.44,296.59,289.2,294.38,50164200,0.0,0.0
-2026-07-02,294.12,309.42,293.68,308.63,75400600,0.0,0.0
+2026-07-02,294.12,309.42,293.68,308.63,75352800,0.0,0.0
 
 ```
 
@@ -63,7 +63,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 | High | 309.42 |
 | Low | 293.68 |
 | Close | 308.63 |
-| Volume | 75400600 |
+| Volume | 75352800 |
 
 ### Verified technical indicators (latest row)
 
@@ -169,37 +169,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## close_200_sma values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 270.32122268676756
-2026-07-01: 269.958233795166
-2026-06-30: 269.65338218688964
-2026-06-29: 269.3534875488281
+2026-07-02: 270.3212238311768
+2026-07-01: 269.95823501586915
+2026-06-30: 269.6533834075928
+2026-06-29: 269.3534888458252
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 269.07553855896
-2026-06-25: 268.8250829315186
-2026-06-24: 268.63537750244143
-2026-06-23: 268.36504653930666
-2026-06-22: 268.08906440734864
+2026-06-26: 269.075539855957
+2026-06-25: 268.8250843048096
+2026-06-24: 268.6353789520264
+2026-06-23: 268.36504806518553
+2026-06-22: 268.08906578063966
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 267.79300064086914
-2026-06-17: 267.44831031799316
-2026-06-16: 267.1259857940674
-2026-06-15: 266.78930549621583
+2026-06-18: 267.79300201416015
+2026-06-17: 267.44831161499025
+2026-06-16: 267.1259870910645
+2026-06-15: 266.78930671691893
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 266.4564042663574
-2026-06-11: 266.14406967163086
-2026-06-10: 265.79851547241213
-2026-06-09: 265.4762028503418
-2026-06-08: 265.14478050231935
+2026-06-12: 266.4564055633545
+2026-06-11: 266.14407096862794
+2026-06-10: 265.79851676940916
+2026-06-09: 265.4762041473389
+2026-06-08: 265.14478179931643
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 264.7639424133301
-2026-06-04: 264.37679023742675
-2026-06-03: 263.97183326721193
-2026-06-02: 263.5752164459229
+2026-06-05: 264.76394371032717
+2026-06-04: 264.37679153442383
+2026-06-03: 263.97183464050295
+2026-06-02: 263.5752178955078
 
 
 200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
@@ -212,37 +212,37 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 60.27663364497157
-2026-07-01: 50.986104006751866
-2026-06-30: 46.92554495972823
-2026-06-29: 39.908683042666254
+2026-07-02: 60.27663364454635
+2026-07-01: 50.98610400554641
+2026-06-30: 46.92554495810067
+2026-06-29: 39.90868304019312
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 41.2649052422817
-2026-06-25: 32.21626505803983
-2026-06-24: 45.84082382660562
-2026-06-23: 47.09933626874467
-2026-06-22: 49.92659056470036
+2026-06-26: 41.2649052398505
+2026-06-25: 32.21626505426403
+2026-06-24: 45.84082382331133
+2026-06-23: 47.0993362655572
+2026-06-22: 49.92659056179126
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 50.97504659409082
-2026-06-17: 48.92330273949514
-2026-06-16: 52.16066007339188
-2026-06-15: 49.501004067655884
+2026-06-18: 50.97504659129849
+2026-06-17: 48.92330273622335
+2026-06-16: 52.16066007051358
+2026-06-15: 49.50100406408854
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 44.08616263340864
-2026-06-11: 48.165714553469
-2026-06-10: 43.82118744755291
-2026-06-09: 42.68676354487113
-2026-06-08: 53.36306102182349
+2026-06-12: 44.086162628266315
+2026-06-11: 48.165714548832376
+2026-06-10: 43.821187441394734
+2026-06-09: 42.68676353828681
+2026-06-08: 53.36306101714301
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 60.81720503269423
-2026-06-04: 66.6121595638263
-2026-06-03: 65.85891278530602
-2026-06-02: 73.72449671462738
+2026-06-05: 60.81720503018527
+2026-06-04: 66.612159563484
+2026-06-03: 65.85891278463623
+2026-06-02: 73.72449671761538
 
 
 RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
@@ -255,37 +255,37 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: -0.6719229842857999
-2026-07-01: -2.2480108880747594
-2026-06-30: -2.7760647450843408
-2026-06-29: -2.8985451012844123
+2026-07-02: -0.6719229853546267
+2026-07-01: -2.2480108892290787
+2026-06-30: -2.7760647463309738
+2026-06-29: -2.8985451026307487
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -2.2368598697929087
-2026-06-25: -1.5674827189752136
-2026-06-24: 0.18837709023085836
-2026-06-23: 0.6011534165891703
-2026-06-22: 0.9950437537009407
+2026-06-26: -2.2368598712469634
+2026-06-25: -1.56748272054557
+2026-06-24: 0.18837708853493496
+2026-06-23: 0.6011534147576185
+2026-06-22: 0.9950437517228465
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 1.2073881830719984
-2026-06-17: 1.3590366993518046
-2026-06-16: 1.742572750469776
-2026-06-15: 1.8717781256512467
+2026-06-18: 1.2073881809356521
+2026-06-17: 1.359036697044587
+2026-06-16: 1.742572747977988
+2026-06-15: 1.8717781229601087
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 2.296590215731328
-2026-06-11: 3.3440190230513736
-2026-06-10: 4.174096969513528
-2026-06-09: 5.585229638697172
-2026-06-08: 7.409980962875238
+2026-06-12: 2.296590212824924
+2026-06-11: 3.344019019912423
+2026-06-10: 4.1740969661235
+2026-06-09: 5.585229635036001
+2026-06-08: 7.409980958921267
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 8.512261726076417
-2026-06-04: 9.204813881626137
-2026-06-03: 9.558799848590525
-2026-06-02: 9.970341336553531
+2026-06-05: 8.51226172180617
+2026-06-04: 9.20481387701443
+2026-06-03: 9.558799843609961
+2026-06-02: 9.970341331174609
 
 
 MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
@@ -298,37 +298,37 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-02 to 2026-07-02:
 
-2026-07-02: 8.73563208711917
-2026-07-01: 8.196832959055019
-2026-06-30: 8.258898253531607
-2026-06-29: 8.183429639620575
+2026-07-02: 8.735632087921937
+2026-07-01: 8.196832959919538
+2026-06-30: 8.258898254462627
+2026-06-29: 8.183429640623213
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 8.157540457001245
-2026-06-25: 7.881965049697255
-2026-06-24: 7.001348009499688
-2026-06-23: 7.019912489797741
-2026-06-22: 6.98605791419324
+2026-06-26: 8.157540458081009
+2026-06-25: 7.881965050860076
+2026-06-24: 7.001348010751957
+2026-06-23: 7.019912491146338
+2026-06-22: 6.986057915645576
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: N/A: Not a trading day (weekend or holiday)
-2026-06-18: 7.08806208743046
-2026-06-17: 7.252527462845784
-2026-06-16: 7.2173355774757475
-2026-06-15: 7.271745255310421
+2026-06-18: 7.088062088994515
+2026-06-17: 7.25252746453015
+2026-06-16: 7.217335579289681
+2026-06-15: 7.271745257263888
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 7.319572282912424
-2026-06-11: 7.304153263809534
-2026-06-10: 7.296010925478777
-2026-06-09: 7.2903198338088755
-2026-06-08: 6.792651377515328
+2026-06-12: 7.319572285016157
+2026-06-11: 7.304153266075092
+2026-06-10: 7.2960109279186085
+2026-06-09: 7.290319836436386
+2026-06-08: 6.792651380344955
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
-2026-06-05: 6.06670298588189
-2026-06-04: 5.91644786700742
-2026-06-03: 6.072327345358953
-2026-06-02: 5.917122038241131
+2026-06-05: 6.066702988929182
+2026-06-04: 5.916447870289119
+2026-06-03: 6.07232734889309
+2026-06-02: 5.917122042047126
 
 
 ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
@@ -353,13 +353,17 @@ As-of filter: removed 30 post-trade-date social items after 2026-07-02.
 - Status: `ok`
 
 ```text
-r/wallstreetbets: <no posts found mentioning AAPL in the past 7 days>
+r/wallstreetbets — 3 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
+    body excerpt: Added Apple options when it crashed ~6% after the price increase announcement. From a business perspective, every price increase is good for their earnings meaning they are managing the operating expense cost well. Few reasons that made me …
+  [2026-06-30] ASML is my first 200% gain ever. Bought during the April 2025 dip.
+    body excerpt: submitted by /u/razeusv2 [link] [comments]
+  [2026-06-28] Webull glitch
+    body excerpt: My all stocks has doubled the value
 
 r/stocks: <no posts found mentioning AAPL in the past 7 days>
 
-r/investing — 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
-  [2026-06-27] Help with Bloomberg function please!
-    body excerpt: Hi, I am running into a problem and I wanted to see if the experts online could help me! The problem: I want to see top ownership of AAPL. Let's say Fidelity manages portfolios with AAPL in it and one of the Fidelity portfolios is owned by …
+r/investing: <no posts found mentioning AAPL in the past 7 days>
+As-of filter: removed 1 post-trade-date social item after 2026-07-02.
 ```
 
 ## Role: news
@@ -371,13 +375,7 @@ r/investing — 1 recent posts mentioning AAPL (via RSS feed; scores/comments un
 - Status: `ok`
 
 ```text
-## AAPL News, from 2026-06-25 to 2026-07-02:
-
-### Here's how much more expensive your devices have gotten thanks to AI (source: Yahoo Finance)
-The AI price increase is coming for your wallet.
-Link: https://finance.yahoo.com/technology/article/heres-how-much-more-expensive-your-devices-have-gotten-thanks-to-ai-121100267.html
-
-
+No news found for AAPL between 2026-06-25 and 2026-07-02
 ```
 
 ### Tool: get_global_news
@@ -394,34 +392,34 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Insider Transactions data for AAPL
-# Data retrieved on: 2026-07-04 16:14:01
+# Data retrieved on: 2026-07-05 22:25:57
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
-1,30104,,,,NEWSTEAD JENNIFER,General Counsel,,2026-06-15,D
-2,240,,,,BORDERS BEN,Officer,,2026-06-15,D
-3,65000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
-4,50000,15551000.0,,Sale at price 311.02 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+1,240,,,,BORDERS BEN,Officer,,2026-06-15,D
+2,30104,,,,NEWSTEAD JENNIFER,General Counsel,,2026-06-15,D
+3,50000,15551000.0,,Sale at price 311.02 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+4,65000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
 5,1274,369460.0,,Sale at price 290.00 per share.,BORDERS BEN,Officer,,2026-05-08,D
-6,5000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
-7,250000,71189722.0,,Sale at price 284.57 - 285.04 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+6,250000,71189722.0,,Sale at price 284.57 - 285.04 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+7,5000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
 8,1534,421850.0,,Sale at price 275.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2026-04-23,D
 9,10928,,,,PAREKH KEVAN,Chief Financial Officer,,2026-04-15,D
 10,1717,,,,BORDERS BEN,Officer,,2026-04-15,D
 11,30002,7660875.0,,Sale at price 255.12 - 255.82 per share.,O'BRIEN DEIRDRE,Officer,,2026-04-02,D
 12,64949,16512198.0,,Sale at price 251.25 - 256.00 per share.,COOK TIMOTHY D,Chief Executive Officer,,2026-04-02,D
-13,64317,,,,O'BRIEN DEIRDRE,Officer,,2026-04-01,D
-14,64317,,,,KHAN SABIH,Chief Operating Officer,,2026-04-01,D
+13,64317,,,,KHAN SABIH,Chief Operating Officer,,2026-04-01,D
+14,64317,,,,O'BRIEN DEIRDRE,Officer,,2026-04-01,D
 15,131576,,,,COOK TIMOTHY D,Chief Executive Officer,,2026-04-01,D
 16,60208,,,,NEWSTEAD JENNIFER,General Counsel,,2026-03-13,D
 17,1113,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-02-26,D
-18,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
-19,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
-20,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
-21,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
-22,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
-23,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
-24,1255,,,,JUNG ANDREA,Director,,2026-01-30,D
+18,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
+19,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
+20,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
+21,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
+22,1255,,,,JUNG ANDREA,Director,,2026-01-30,D
+23,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
+24,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
 25,3750,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2025-11-12,D
 26,3752,1017655.0,,Sale at price 271.23 per share.,KONDO CHRISTOPHER,Officer,,2025-11-07,D
 27,4199,1038787.0,,Sale at price 245.89 - 248.73 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-10-16,D
@@ -430,8 +428,8 @@ No global news found between 2026-06-25 and 2026-07-02
 30,43013,11071078.0,,Sale at price 257.36 - 258.08 per share.,O'BRIEN DEIRDRE,Officer,,2025-10-02,D
 31,47125,12101154.0,,Sale at price 254.83 - 257.54 per share.,ADAMS KATHERINE L,General Counsel,,2025-10-02,D
 32,129963,33375723.0,,Sale at price 254.83 - 257.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-10-02,D
-33,92403,,,,O'BRIEN DEIRDRE,Officer,,2025-10-01,D
-34,92403,,,,KHAN SABIH,Chief Operating Officer,,2025-10-01,D
+33,92403,,,,KHAN SABIH,Chief Operating Officer,,2025-10-01,D
+34,92403,,,,O'BRIEN DEIRDRE,Officer,,2025-10-01,D
 35,92403,,,,ADAMS KATHERINE L,General Counsel,,2025-10-01,D
 36,277206,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-10-01,D
 37,90000,20886300.0,,Sale at price 232.07 per share.,LEVINSON ARTHUR D,Director,,2025-08-28,D
@@ -441,36 +439,36 @@ No global news found between 2026-06-25 and 2026-07-02
 41,4570,941420.0,,Sale at price 206.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-04-23,D
 42,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
 43,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
-44,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
-45,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
+44,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
+45,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
 46,108136,24184658.0,,Sale at price 221.77 - 224.76 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-04-02,D
 47,74535,,,,O'BRIEN DEIRDRE,Officer,,2025-04-01,D
 48,74535,,,,ADAMS KATHERINE L,General Counsel,,2025-04-01,D
 49,74535,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-01,D
 50,218568,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-04-01,D
 51,1516,343147.0,,Sale at price 226.35 per share.,LEVINSON ARTHUR D,Director,,2025-02-03,D
-52,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
-53,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
-54,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
-55,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
-56,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
-57,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
-58,1516,,,,JUNG ANDREA,Director,,2025-01-31,D
+52,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
+53,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
+54,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
+55,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
+56,1516,,,,JUNG ANDREA,Director,,2025-01-31,D
+57,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
+58,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
 59,100000,24997395.0,,Sale at price 248.61 - 251.10 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-12-16,I
 60,200000,45464500.0,,Sale at price 224.68 - 229.28 per share.,LEVINSON ARTHUR D,Director,,2024-11-19,D
 61,4130,945233.0,,Sale at price 228.87 per share.,KONDO CHRISTOPHER,Officer,,2024-11-18,D
 62,8000,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-11-05,D
 63,8115,,,,KONDO CHRISTOPHER,Officer,,2024-10-15,D
 64,59305,13433769.0,,Sale at price 226.52 per share.,MAESTRI LUCA,Chief Financial Officer,,2024-10-04,D
-65,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
-66,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
-67,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
-68,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
-69,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
-70,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
-71,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
-72,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
-73,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
+65,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
+66,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
+67,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
+68,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
+69,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
+70,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
+71,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
+72,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
+73,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
 74,8706,1958850.0,,Sale at price 225.00 per share.,KONDO CHRISTOPHER,Officer,,2024-08-15,D
 75,5178,1121037.0,,Sale at price 216.50 per share.,KONDO CHRISTOPHER,Officer,,2024-08-09,D
 76,4500,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-07,D
@@ -488,7 +486,7 @@ No global news found between 2026-06-25 and 2026-07-02
 
 ```text
 # Company Fundamentals for AAPL
-# Data retrieved on: 2026-07-04 16:14:01
+# Data retrieved on: 2026-07-05 22:25:58
 
 Name: Apple Inc.
 Sector: Technology
@@ -526,7 +524,7 @@ Free Cash Flow: 101090746368
 
 ```text
 # Balance Sheet data for AAPL (quarterly)
-# Data retrieved on: 2026-07-04 16:14:02
+# Data retrieved on: 2026-07-05 22:25:58
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,
@@ -603,7 +601,7 @@ Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,250610000
 
 ```text
 # Cash Flow data for AAPL (quarterly)
-# Data retrieved on: 2026-07-04 16:14:02
+# Data retrieved on: 2026-07-05 22:25:58
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
 Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,
@@ -661,7 +659,7 @@ Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,
 
 ```text
 # Income Statement data for AAPL (quarterly)
-# Data retrieved on: 2026-07-04 16:14:02
+# Data retrieved on: 2026-07-05 22:25:58
 
 ,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
 Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0
