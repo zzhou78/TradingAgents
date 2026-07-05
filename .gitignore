@@ -236,3 +236,10 @@ results/
 .env.enterprise
 reports/
 codex_tradingagents_skillkit/runs/
+
+# Microsoft Office temporary/lock files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+.~lock.*
+*.tmp
