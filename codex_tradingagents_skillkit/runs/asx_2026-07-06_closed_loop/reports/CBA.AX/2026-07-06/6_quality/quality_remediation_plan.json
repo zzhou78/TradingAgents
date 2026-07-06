@@ -1,0 +1,66 @@
+{
+  "ticker": "CBA.AX",
+  "trade_date": "2026-07-06",
+  "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CBA.AX\\2026-07-06",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\evidence.json",
+  "status": "remediation_required",
+  "blocking_for_review_grade": true,
+  "validator_errors": [
+    "ASX core metric coverage failed; review-ready quality gate cannot pass"
+  ],
+  "remediation_tasks": [
+    {
+      "failed_gate": "asx_core_metric_coverage_gate",
+      "root_cause_category": "asx_core_metric_coverage_insufficient",
+      "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+      "affected_files": [
+        "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+        "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+        "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+        "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+        "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+      ],
+      "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+      "required_tests": [
+        "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+        "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+      ],
+      "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
+      "blocking_for_review_grade": true,
+      "status": "pending",
+      "rerun_commands": [
+        ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
+      ],
+      "created_at": "2026-07-06T22:20:31+10:00",
+      "updated_at": "2026-07-06T22:20:31+10:00",
+      "task_id": "remediate:CBA.AX:2026-07-06:001"
+    }
+  ],
+  "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CBA.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+  "next_remediation_task": {
+    "failed_gate": "asx_core_metric_coverage_gate",
+    "root_cause_category": "asx_core_metric_coverage_insufficient",
+    "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+    "affected_files": [
+      "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+      "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+      "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+      "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+      "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+    ],
+    "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+    "required_tests": [
+      "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+      "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+    ],
+    "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
+    "blocking_for_review_grade": true,
+    "status": "pending",
+    "rerun_commands": [
+      ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
+    ],
+    "created_at": "2026-07-06T22:20:31+10:00",
+    "updated_at": "2026-07-06T22:20:31+10:00",
+    "task_id": "remediate:CBA.AX:2026-07-06:001"
+  }
+}

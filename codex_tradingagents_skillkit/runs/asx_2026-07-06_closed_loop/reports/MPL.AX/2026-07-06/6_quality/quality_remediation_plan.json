@@ -1,0 +1,10 @@
+{
+  "ticker": "MPL.AX",
+  "trade_date": "2026-07-06",
+  "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\MPL.AX\\2026-07-06",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\evidence.json",
+  "status": "no_remediation_required",
+  "blocking_for_review_grade": false,
+  "validator_errors": [],
+  "remediation_tasks": []
+}

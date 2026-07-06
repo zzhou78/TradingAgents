@@ -1,0 +1,13 @@
+{
+  "summary_verdict": "pass",
+  "critical_findings": [],
+  "warnings": [],
+  "evidence_references": [],
+  "required_remediation": [],
+  "regression_tests_needed": [],
+  "do_not_change": [
+    "Do not replace Bull/Bear debate, Research Manager, Trader, Risk Analysts, Portfolio Manager, or Quality Reviewer.",
+    "Keep Research Manager rating separate from Trader action and Portfolio stance.",
+    "Keep paper-study-only boundary, ASX metric safeguards, dense-table table_row_unparsed behavior, validators, and remediation loop."
+  ]
+}

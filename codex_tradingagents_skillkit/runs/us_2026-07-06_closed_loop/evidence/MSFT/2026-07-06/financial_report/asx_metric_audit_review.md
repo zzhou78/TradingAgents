@@ -1,0 +1,6 @@
+# ASX Metric Audit Review
+
+No ASX sector metric audit rows were generated.
+
+| evidence_id | ticker | metric_name | sector | source_quality_tier | document_role | metric_eligibility | candidate_score | candidate_origin | section_title | metric_candidate_count | metric_value_status | association_score | association_reason | clean_metric_value | value_unit | direction | confidence | confidence_reason | table_title | row_label | column_label | cell_value | source_page | table_mapping_confidence | table_mapping_reason | supporting_sentence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

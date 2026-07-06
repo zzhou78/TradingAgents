@@ -1,0 +1,58 @@
+{
+  "ticker": "CSL.AX",
+  "trade_date": "2026-07-06",
+  "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\evidence.json",
+  "status": "remediation_required",
+  "blocking_for_review_grade": true,
+  "validator_errors": [
+    "ASX sector-specific metrics are missing without evidence-gap disclosure"
+  ],
+  "remediation_tasks": [
+    {
+      "failed_gate": "quality_review_gate",
+      "root_cause_category": "report_quality_validation",
+      "validator_error": "ASX sector-specific metrics are missing without evidence-gap disclosure",
+      "affected_files": [
+        "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+        "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+      ],
+      "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
+      "required_tests": [
+        "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
+      ],
+      "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
+      "blocking_for_review_grade": true,
+      "status": "pending",
+      "rerun_commands": [
+        ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
+      ],
+      "created_at": "2026-07-06T22:20:31+10:00",
+      "updated_at": "2026-07-06T22:20:31+10:00",
+      "task_id": "remediate:CSL.AX:2026-07-06:001"
+    }
+  ],
+  "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+  "next_remediation_task": {
+    "failed_gate": "quality_review_gate",
+    "root_cause_category": "report_quality_validation",
+    "validator_error": "ASX sector-specific metrics are missing without evidence-gap disclosure",
+    "affected_files": [
+      "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+      "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+    ],
+    "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
+    "required_tests": [
+      "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
+    ],
+    "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
+    "blocking_for_review_grade": true,
+    "status": "pending",
+    "rerun_commands": [
+      ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
+    ],
+    "created_at": "2026-07-06T22:20:31+10:00",
+    "updated_at": "2026-07-06T22:20:31+10:00",
+    "task_id": "remediate:CSL.AX:2026-07-06:001"
+  }
+}

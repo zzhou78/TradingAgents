@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "ticker": "BHP.AX",
+  "trade_date": "2026-07-06",
+  "issues": [
+    {
+      "severity": "major",
+      "section": "Quality Gate",
+      "issue": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+      "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
+    }
+  ],
+  "validator": "validate_quality_review.py",
+  "status": "remediation_required",
+  "quality_gate_passed": false,
+  "evidence_reasoning_audit_status": "fail",
+  "evidence_reasoning_critical_findings": [
+    {
+      "attack": "Dense Table Attack",
+      "finding": "Dense numeric text produced a clean value without row_label and column_label.",
+      "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
+      "required_remediation": "Downgrade the metric to table_row_unparsed unless row/column mapping proves the value.",
+      "regression_test": "Add a dense table value extraction rejection test."
+    }
+  ],
+  "core_metric_coverage_status": "failed",
+  "core_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "production",
+    "unit_cost_aisc",
+    "capex"
+  ],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [
+    "realised_price",
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metric_coverage_passed": false,
+  "review_ready": false,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Closed-loop validation failed; see quality_remediation_plan.json and next_remediation_task.md."
+}
