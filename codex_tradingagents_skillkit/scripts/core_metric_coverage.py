@@ -7,6 +7,18 @@ from typing import Any
 
 ACCEPTED_ASSOCIATION_THRESHOLD = 80
 ACCEPTED_TABLE_MAPPING_THRESHOLD = 80
+ELIGIBLE_ASX_SOURCE_QUALITY_TIERS = {
+    "tier_1_asx_lodged_pdf",
+    "tier_2_company_results_pdf",
+    "tier_3_company_annual_report_pdf",
+}
+ASX_SECTOR_BY_CODE = {
+    "BHP": "miners",
+    "CBA": "banks",
+    "CSL": "healthcare",
+    "MPL": "health_insurers",
+    "WOW": "retailers",
+}
 
 CORE_METRIC_PROFILES: dict[str, dict[str, tuple[str, ...]]] = {
     "banks": {
@@ -112,11 +124,20 @@ def _record_metric_name(record: dict[str, Any]) -> str:
     return str(record.get("metric_name") or record.get("metric_label") or "").strip().lower()
 
 
-def _sector_from_records(records: list[dict[str, Any]]) -> str:
+def _sector_from_ticker(ticker: str) -> str:
+    symbol = ticker.upper().strip()
+    code = symbol[:-3] if symbol.endswith(".AX") else symbol
+    return ASX_SECTOR_BY_CODE.get(code, "")
+
+
+def _sector_from_records(records: list[dict[str, Any]], *, ticker: str = "") -> str:
     for record in _metric_records(records):
         sector = str(record.get("sector") or "").strip().lower()
         if sector:
             return sector
+    inferred = _sector_from_ticker(ticker)
+    if inferred:
+        return inferred
     return ""
 
 
@@ -143,8 +164,14 @@ def _table_mapping_proved(record: dict[str, Any]) -> bool:
     return row_label not in UNAVAILABLE_VALUES and has_value_cell and table_mapping_confidence >= ACCEPTED_TABLE_MAPPING_THRESHOLD
 
 
+def _eligible_source_quality(record: dict[str, Any]) -> bool:
+    return str(record.get("source_quality_tier") or "").strip() in ELIGIBLE_ASX_SOURCE_QUALITY_TIERS
+
+
 def _is_cleanly_extracted(record: dict[str, Any]) -> bool:
     if str(record.get("metric_value_status") or "").strip().lower() != "value_extracted":
+        return False
+    if not _eligible_source_quality(record):
         return False
     if not _clean_value_present(record):
         return False
@@ -166,6 +193,25 @@ def _is_unavailable_with_reason(record: dict[str, Any]) -> bool:
     return metric_status == "unavailable" and status != "available" and _reason_present(record)
 
 
+def _has_documented_absence_or_external_blocker(record: dict[str, Any]) -> bool:
+    basis = str(record.get("gap_disclosure_basis") or record.get("unavailable_basis") or "").strip().lower()
+    if basis in {"source_lacks_metric", "source_genuinely_lacks_metric", "external_blocker"}:
+        return True
+    if record.get("source_lacks_metric") is True or record.get("external_blocker") is True:
+        return True
+    reason_text = " ".join(
+        str(record.get(field) or "")
+        for field in (
+            "unavailable_reason",
+            "evidence_gap",
+            "limitations",
+            "source_limitation",
+            "confidence_reason",
+        )
+    ).lower()
+    return "external blocker" in reason_text or "source genuinely lacks" in reason_text
+
+
 def _is_gap_disclosed_weak_metric(record: dict[str, Any]) -> bool:
     metric_status = str(record.get("metric_value_status") or "").strip().lower()
     confidence = str(record.get("confidence") or "").strip().lower()
@@ -174,6 +220,7 @@ def _is_gap_disclosed_weak_metric(record: dict[str, Any]) -> bool:
         and not _clean_value_present(record)
         and confidence == "low"
         and _reason_present(record)
+        and _has_documented_absence_or_external_blocker(record)
     )
 
 
@@ -183,7 +230,7 @@ def _matching_records(records: list[dict[str, Any]], aliases: tuple[str, ...]) -
 
 
 def evaluate_core_metric_coverage(records: list[dict[str, Any]], *, ticker: str = "") -> dict[str, Any]:
-    sector = _sector_from_records(records)
+    sector = _sector_from_records(records, ticker=ticker)
     profiles = CORE_METRIC_PROFILES.get(sector, {})
     required = list(profiles)
     cleanly_extracted: list[str] = []
@@ -197,6 +244,24 @@ def evaluate_core_metric_coverage(records: list[dict[str, Any]], *, ticker: str 
         if any(_is_cleanly_extracted(record) for record in candidates):
             cleanly_extracted.append(metric)
             details[metric] = {"status": "cleanly_extracted"}
+            continue
+        ineligible_clean_candidates = [
+            record
+            for record in candidates
+            if str(record.get("metric_value_status") or "").strip().lower() == "value_extracted"
+            and _clean_value_present(record)
+            and not _eligible_source_quality(record)
+        ]
+        if ineligible_clean_candidates:
+            unresolved.append(metric)
+            details[metric] = {
+                "status": "unresolved",
+                "reason": "clean value is not from an eligible ASX financial document source tier",
+                "source_quality_tiers": [
+                    str(record.get("source_quality_tier") or "") for record in ineligible_clean_candidates
+                ],
+                "evidence_ids": [str(record.get("evidence_id") or "") for record in ineligible_clean_candidates],
+            }
             continue
         weak_candidates = [
             record

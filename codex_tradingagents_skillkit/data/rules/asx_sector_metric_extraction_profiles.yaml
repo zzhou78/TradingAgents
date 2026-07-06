@@ -94,8 +94,8 @@ miners:
       adverse: ["decreased", "lower", "down"]
   realised_price:
     accepted_labels: ["realised price", "realized price", "average realised"]
-    accepted_units: ["US$/t", "$/t", "%"]
-    accepted_value_patterns: ["\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/t\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    accepted_units: ["US$/t", "$/t"]
+    accepted_value_patterns: ["\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne)\\b"]
     required_nearby_terms: []
     rejected_nearby_terms: ["page", "contents"]
     max_label_value_distance_tokens: 12
@@ -103,9 +103,9 @@ miners:
       supportive: ["higher", "increased", "up"]
       adverse: ["lower", "decreased", "down"]
   unit_cost_aisc:
-    accepted_labels: ["unit cost", "AISC", "all-in sustaining cost", "cash cost"]
-    accepted_units: ["%", "bps", "US$/t", "$/t"]
-    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b\\d+(?:\\.\\d+)?\\s*per cent\\b", "\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/t\\b"]
+    accepted_labels: ["unit cost", "unit costs", "AISC", "all-in sustaining cost", "cash cost"]
+    accepted_units: ["US$/t", "$/t"]
+    accepted_value_patterns: ["\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne)\\b"]
     required_nearby_terms: []
     rejected_nearby_terms: ["revenue", "operating income"]
     max_label_value_distance_tokens: 12
@@ -133,11 +133,11 @@ miners:
       supportive: ["increased", "discovery", "expanded"]
       adverse: ["depleted", "lower", "reduced"]
   commodity_exposure:
-    accepted_labels: ["iron ore", "copper", "coal", "potash", "nickel", "commodity exposure"]
+    accepted_labels: ["commodity exposure", "commodity mix", "portfolio mix", "commodity portfolio", "revenue by commodity"]
     accepted_units: ["%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: []
-    rejected_nearby_terms: ["reports and presentations", "downloads", "contents"]
+    rejected_nearby_terms: ["reports and presentations", "downloads", "contents", "years"]
     max_label_value_distance_tokens: 12
     direction_rules:
       supportive: ["exposure", "producer", "portfolio"]

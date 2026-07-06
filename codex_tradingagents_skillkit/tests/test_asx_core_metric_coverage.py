@@ -28,6 +28,8 @@ def _clean_metric(sector: str, metric_name: str, value: str = "1.0") -> dict[str
         "section_kind": "sector_metric",
         "sector": sector,
         "metric_name": metric_name,
+        "source_quality_tier": "tier_1_asx_lodged_pdf",
+        "document_role": "annual_report",
         "status": "available",
         "clean_metric_value": value,
         "metric_value_status": "value_extracted",
@@ -46,6 +48,8 @@ def _unavailable_metric(sector: str, metric_name: str) -> dict[str, object]:
         "section_kind": "sector_metric",
         "sector": sector,
         "metric_name": metric_name,
+        "source_quality_tier": "tier_1_asx_lodged_pdf",
+        "document_role": "annual_report",
         "status": "unavailable",
         "clean_metric_value": "unavailable",
         "metric_value_status": "unavailable",
@@ -63,6 +67,8 @@ def _weak_gap_metric(sector: str, metric_name: str, status: str = "metric_mentio
         "section_kind": "sector_metric",
         "sector": sector,
         "metric_name": metric_name,
+        "source_quality_tier": "tier_1_asx_lodged_pdf",
+        "document_role": "annual_report",
         "status": "available",
         "clean_metric_value": "unavailable",
         "metric_value_status": status,
@@ -100,7 +106,7 @@ def test_bhp_core_metrics_fail_when_mostly_unresolved():
     assert status["core_metrics_unavailable_with_reason"] == ["capex"]
 
 
-def test_weak_core_metric_with_explicit_gap_disclosure_passes_without_clean_value():
+def test_weak_core_metric_with_explicit_gap_disclosure_requires_remediation_without_blocker():
     module = _load_coverage()
     records = [
         _clean_metric("banks", "net_interest_margin"),
@@ -114,9 +120,57 @@ def test_weak_core_metric_with_explicit_gap_disclosure_passes_without_clean_valu
 
     status = module.evaluate_core_metric_coverage(records, ticker="CBA.AX")
 
-    assert status["core_metric_coverage_passed"] is True
-    assert status["core_metrics_gap_disclosed"] == ["arrears", "roe"]
-    assert status["core_metrics_unresolved"] == []
+    assert status["core_metric_coverage_passed"] is False
+    assert status["core_metrics_gap_disclosed"] == []
+    assert set(status["core_metrics_unresolved"]) >= {"arrears", "roe"}
+
+
+def test_core_metric_clean_value_from_landing_page_tier_fails_coverage():
+    module = _load_coverage()
+    records = [
+        {
+            **_clean_metric("banks", "net_interest_margin", "2.05"),
+            "source_quality_tier": "tier_4_company_ir_landing_page",
+            "document_role": "landing_page",
+        },
+        _clean_metric("banks", "cet1", "12.3"),
+        _clean_metric("banks", "loan_growth"),
+        _unavailable_metric("banks", "arrears"),
+        _unavailable_metric("banks", "impairment"),
+        _clean_metric("banks", "roe"),
+        _clean_metric("banks", "dividend"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="CBA.AX")
+
+    assert status["core_metric_coverage_passed"] is False
+    assert "net_interest_margin" in status["core_metrics_unresolved"]
+    assert status["core_metric_coverage_details"]["net_interest_margin"]["reason"] == (
+        "clean value is not from an eligible ASX financial document source tier"
+    )
+
+
+def test_asx_core_metric_coverage_fails_when_no_sector_metric_records_exist():
+    module = _load_coverage()
+
+    status = module.evaluate_core_metric_coverage(
+        [
+            {
+                "section_kind": "source_coverage",
+                "ticker": "CBA.AX",
+                "source_quality_tier": "tier_4_company_ir_landing_page",
+                "document_role": "landing_page",
+                "metric_eligibility": "discovery_only",
+            }
+        ],
+        ticker="CBA.AX",
+    )
+
+    assert status["sector"] == "banks"
+    assert status["core_metric_coverage_passed"] is False
+    assert {"net_interest_margin", "cet1", "loan_growth"}.issubset(
+        set(status["core_metrics_unresolved"])
+    )
 
 
 def test_cba_nim_and_cet1_mentioned_only_fail_core_coverage():

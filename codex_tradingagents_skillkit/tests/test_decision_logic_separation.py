@@ -692,13 +692,13 @@ def test_metric_clean_value_keeps_labelled_value_context():
         "metric_name": "unit_cost_aisc",
         "metric_label": "Unit cost",
         "status": "available",
-        "excerpt": "Across the group, unit costs at our major assets were down 4.7 per cent year-on-year.",
+        "excerpt": "Across the group, unit costs at our major assets were guided to US$116/t for FY2026.",
     }
 
     value_parts = writer._metric_value_parts(record)
 
-    assert value_parts["clean_metric_value"] == "4.7"
-    assert value_parts["value_unit"] == "per cent"
+    assert value_parts["clean_metric_value"] == "116"
+    assert value_parts["value_unit"] == "US$/t"
     assert "unit cost" in value_parts["value_context"].lower()
     assert value_parts["metric_value_status"] == "value_extracted"
 

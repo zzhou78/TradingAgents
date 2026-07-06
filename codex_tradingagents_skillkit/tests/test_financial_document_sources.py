@@ -161,11 +161,103 @@ def test_asx_tickers_route_to_asx_announcement_collector_and_filter_trade_date()
     annual = sources[0]
     assert annual["announcement_date"] == "2025-08-12"
     assert annual["extraction_status"] == "available"
+    assert annual["source_quality_tier"] == "tier_1_asx_lodged_pdf"
+    assert annual["document_role"] == "annual_report"
+    assert annual["metric_eligibility"] == "eligible_financial_document"
     assert annual["extracted_sections"]
     rendered = module.render_financial_document_packet(packet)
     assert "- Market: `ASX`" in rendered
     assert "Annual Report" in rendered
     assert "operating_cash_flow" in rendered
+
+
+def test_asx_landing_page_source_is_discovery_only_and_emits_no_sector_metrics():
+    module = _load_module()
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if "company/CBA/announcements" in url or "asx-research/1.0/companies/CBA/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/CBA" in url:
+            return """
+            <html><body>
+            <a href="https://company.example/investors/results">2025 Annual Report 15 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://company.example/investors/results":
+            return """
+            <html><body>
+            <nav>Home Search Contact us Reports and presentations Downloads Read more</nav>
+            <main>
+            Archive of annual reports, results presentations, and shareholder services.
+            Net interest margin 2.08% CET1 12.3% dividend 485 cents.
+            </main>
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("CBA.AX", "2026-07-02", http_get=fake_http_get)
+
+    source = packet["sources"][0]
+    assert source["source_quality_tier"] in {
+        "tier_4_company_ir_landing_page",
+        "tier_5_navigation_or_archive_page",
+    }
+    assert source["document_role"] in {"landing_page", "archive_page"}
+    assert source["metric_eligibility"] == "discovery_only"
+    assert packet["metric_extraction_status"] == "no_eligible_financial_sources"
+    assert not [
+        section
+        for section in source["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    ]
+
+
+def test_asx_metric_extraction_ranks_later_financial_candidate_over_first_navigation_hit():
+    module = _load_module()
+
+    document_text = (
+        "Annual report operating and financial review cash flow statement. "
+        "Contents 1 Net interest margin 2 CET1 3 Loan growth 4 Financial statements. "
+        + " ".join(f"archive item {index}" for index in range(60))
+        + " Operating review. Net interest margin 2.05% increased by 9 bps on FY24."
+    )
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        if "companies/CBA/announcements" in url:
+            return json.dumps(
+                {
+                    "data": [
+                        {
+                            "title": "2025 Annual Report",
+                            "announcement_date": "2025-08-15",
+                            "url": "https://asx.example/CBA-annual-report.pdf",
+                        }
+                    ]
+                }
+            )
+        if url == "https://asx.example/CBA-annual-report.pdf":
+            return document_text
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources(
+        "CBA.AX",
+        "2026-07-02",
+        http_get=fake_http_get,
+        excerpt_chars=180,
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["net_interest_margin"]["metric_value_status"] == "value_extracted"
+    assert sections["net_interest_margin"]["clean_metric_value"] == "2.05"
+    assert sections["net_interest_margin"]["source_quality_tier"] == "tier_1_asx_lodged_pdf"
+    assert sections["net_interest_margin"]["document_role"] == "annual_report"
+    assert sections["net_interest_margin"]["source_page"] == "1"
+    assert sections["net_interest_margin"]["metric_label_value_distance_tokens"] <= 3
+    assert sections["net_interest_margin"]["section_title"] == "management_discussion_analysis"
 
 
 def test_asx_collector_supports_current_markit_company_announcements_schema():
@@ -253,6 +345,90 @@ def test_asx_collector_tries_official_and_ir_fallback_pages_when_endpoint_fails(
     assert "2025 Annual Report" in titles
     assert "FY25 Results Presentation" in titles
     assert all(source["source_type"] == "asx_fallback_document" for source in packet["sources"])
+
+
+def test_asx_fallback_promotes_report_links_from_discovery_landing_pages():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/BHP/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/BHP" in url:
+            return """
+            <html><body>
+            <a href="https://www.bhp.example/annual-report">Annual Report 2025</a>
+            </body></html>
+            """
+        if url == "https://www.bhp.example/annual-report":
+            return """
+            <html><body>
+            <h1>Annual Report 2025</h1>
+            <a href="/careers">Careers</a>
+            <a href="/downloads/report">Read the report</a>
+            </body></html>
+            """
+        if url == "https://www.bhp.example/careers":
+            raise AssertionError("navigation link should not be promoted as an annual report")
+        if url == "https://www.bhp.example/downloads/report":
+            return "Annual report operating and financial review production capex reserves resources commodity exposure"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("BHP.AX", "2026-06-27", http_get=fake_http_get)
+
+    urls = [source["url"] for source in packet["sources"]]
+    assert "https://www.bhp.example/annual-report" in urls
+    assert "https://www.bhp.example/downloads/report" in urls
+    report = next(source for source in packet["sources"] if source["url"] == "https://www.bhp.example/downloads/report")
+    assert report["document_role"] == "annual_report"
+    assert report["source_quality_tier"] == "tier_3_company_annual_report_pdf"
+    assert report["metric_eligibility"] == "eligible_financial_document"
+    assert any(section.get("section_type") == "sector_metric" for section in report["extracted_sections"])
+    assert "https://www.bhp.example/careers" not in requested_urls
+
+
+def test_asx_fallback_prefilters_archive_pages_to_latest_primary_report_pdf():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/XYZ/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/XYZ" in url:
+            return "<html><body>No report links here.</body></html>"
+        if url == "https://www.xyz.example/investors/annual-reporting":
+            return """
+            <html><body>
+            <a href="/reports/annual-report-2025.pdf">Annual Report 2025</a>
+            <a href="/reports/annual-report-2025.zip">Annual Report 2025 ZIP</a>
+            <a href="/reports/annual-report-2025.xml">Annual Report 2025 XML</a>
+            <a href="/reports/annual-report-2024.pdf">Annual Report 2024</a>
+            </body></html>
+            """
+        if url == "https://www.xyz.example/reports/annual-report-2025.pdf":
+            return "Annual report revenue income NPAT operating cash flow cash debt segment sales outlook capex risks"
+        if url in {
+            "https://www.xyz.example/reports/annual-report-2025.zip",
+            "https://www.xyz.example/reports/annual-report-2025.xml",
+            "https://www.xyz.example/reports/annual-report-2024.pdf",
+        }:
+            raise AssertionError(f"archive variant should not be fetched: {url}")
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources(
+        "XYZ.AX",
+        "2026-06-27",
+        identity={"investor_relations_url": "https://www.xyz.example/investors/annual-reporting"},
+        http_get=fake_http_get,
+    )
+
+    urls = [source["url"] for source in packet["sources"]]
+    assert "https://www.xyz.example/reports/annual-report-2025.pdf" in urls
+    assert "https://www.xyz.example/reports/annual-report-2025.zip" not in requested_urls
+    assert "https://www.xyz.example/reports/annual-report-2025.xml" not in requested_urls
+    assert "https://www.xyz.example/reports/annual-report-2024.pdf" not in requested_urls
 
 
 def test_asx_fallback_uses_known_official_ir_pages_and_infers_report_years():
@@ -794,6 +970,69 @@ def test_bhp_production_value_before_right_hand_production_label_is_accepted():
     assert result["metric_value_status"] == "value_extracted"
     assert result["clean_metric_value"] == "2"
     assert result["value_unit"] == "mt"
+
+
+def test_bhp_realised_price_prefers_price_per_tonne_over_revenue_share_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Includes the fair value of contingent payments based on 35% revenue share, "
+        "subject to average realised prices achieved by the Assets exceeding thresholds "
+        "of US$159/tonne in the 12 month period.",
+        "realised_price",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "159"
+    assert result["value_unit"] == "US$/t"
+
+
+def test_bhp_unit_cost_prefers_dollar_per_tonne_guidance_over_basis_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Production for FY2026 is expected to increase to between 18 and 20 Mt "
+        "(36 and 40 Mt on a 100 per cent basis), while unit costs are expected "
+        "to decrease with guidance between US$116/t and US$128/t.",
+        "unit_cost_aisc",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "116"
+    assert result["value_unit"] == "US$/t"
+
+
+def test_bhp_broken_production_table_row_without_preferred_column_is_rejected():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_table_metric_value(
+        "__TABLE_ROW__ page=22 table=1 row=11 title=pdfplumber_text_table_1 "
+        "| gold production of 99 | ktoz (91 kt | oz FY2024). Hy | drofloat techn | ology | "
+        "Environmental Im | pact State | ment (FEIS)",
+        "production",
+        asx._profile_for_metric("production"),
+    )
+
+    assert result == {}
+
+
+def test_bhp_commodity_exposure_does_not_capture_production_decline_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_table_metric_value(
+        "__TABLE_ROW__ page=22 table=1 row=0 title=pdfplumber_text_table_1 "
+        "| header | 5 per cent), loca pper and zinc m | decreased 17 p | er cent to 119 | kt reflecting\n"
+        "__TABLE_ROW__ page=22 table=1 row=53 title=pdfplumber_text_table_1 "
+        "| At Antamina, copper p | roduction | decreased 17 p | er cent to 119 | kt reflecting",
+        "commodity_exposure",
+        asx._profile_for_metric("commodity_exposure"),
+    )
+
+    assert result == {}
 
 
 def test_health_insurer_operating_profit_metric_profile_extracts_margin():

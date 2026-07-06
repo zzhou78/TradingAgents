@@ -139,6 +139,45 @@ PDF_WORD_ROW_TOLERANCE = 3.0
 PDF_WORD_COLUMN_GAP = 18.0
 PDF_TABLE_TITLE_CROP_HEIGHT = 320
 PDFPLUMBER_MAX_TABLE_PAGES = 60
+PDF_PAGE_MARKER = "__PDF_PAGE__"
+DOCUMENT_TEXT_BLOCK_CHARS = 900
+
+SOURCE_QUALITY_TIERS = {
+    "tier_1_asx_lodged_pdf",
+    "tier_2_company_results_pdf",
+    "tier_3_company_annual_report_pdf",
+    "tier_4_company_ir_landing_page",
+    "tier_5_navigation_or_archive_page",
+}
+ELIGIBLE_SOURCE_QUALITY_TIERS = {
+    "tier_1_asx_lodged_pdf",
+    "tier_2_company_results_pdf",
+    "tier_3_company_annual_report_pdf",
+}
+SOURCE_QUALITY_RANK = {
+    "tier_1_asx_lodged_pdf": 1,
+    "tier_2_company_results_pdf": 2,
+    "tier_3_company_annual_report_pdf": 3,
+    "tier_4_company_ir_landing_page": 4,
+    "tier_5_navigation_or_archive_page": 5,
+}
+DOCUMENT_ROLE_RANK = {
+    "appendix_4e": 1,
+    "financial_report_pdf": 2,
+    "annual_report": 3,
+    "results_presentation": 4,
+    "investor_presentation": 5,
+    "unknown": 8,
+    "landing_page": 9,
+    "archive_page": 10,
+}
+FINANCIAL_DOCUMENT_ROLES = {
+    "annual_report",
+    "appendix_4e",
+    "results_presentation",
+    "financial_report_pdf",
+    "investor_presentation",
+}
 
 PDFPLUMBER_TABLE_STRATEGIES: list[tuple[str, dict[str, Any] | None]] = [
     ("default", None),
@@ -251,11 +290,13 @@ def _extract_pdf_text_with_pypdf(body: bytes) -> str:
     except Exception:
         return ""
     pages = []
-    for page in reader.pages:
+    for page_number, page in enumerate(reader.pages, start=1):
         try:
-            pages.append(page.extract_text() or "")
+            text = page.extract_text() or ""
         except Exception:
             continue
+        if text:
+            pages.append(f"{PDF_PAGE_MARKER} page={page_number}\n{text}")
     return "\n".join(page for page in pages if page).strip()
 
 
@@ -281,6 +322,7 @@ def _extract_pdf_text_with_pdfplumber(body: bytes, *, include_page_text: bool = 
                     except Exception:
                         text = ""
                     if text:
+                        parts.append(f"{PDF_PAGE_MARKER} page={page_number}")
                         parts.append(text)
                 if page_number > PDFPLUMBER_MAX_TABLE_PAGES:
                     if not include_page_text:
@@ -567,6 +609,100 @@ def _classify_document(title: str) -> str | None:
     return None
 
 
+def _is_pdf_like_url(url: str) -> bool:
+    lower = url.lower()
+    return lower.endswith(".pdf") or ".pdf?" in lower or "/file/" in lower
+
+
+def _is_html_like_document(raw_document: str) -> bool:
+    return bool(re.search(r"(?is)<\s*(?:html|body|main|nav|a|button|script|style)\b", raw_document))
+
+
+def _looks_like_archive_or_navigation(raw_document: str, url: str, title: str) -> bool:
+    lower = _clean_text(f"{title} {url} {raw_document[:5000]}").lower()
+    archive_terms = sum(
+        1
+        for term in [
+            "archive",
+            "reports and presentations",
+            "annual reports",
+            "shareholder services",
+            "downloads",
+            "asx announcements",
+            "investor centre",
+            "investor center",
+        ]
+        if term in lower
+    )
+    if _is_navigation_or_toc(lower):
+        return True
+    return archive_terms >= 2 and _is_html_like_document(raw_document)
+
+
+def _document_role(document_type: str | None, *, raw_document: str = "", url: str = "", title: str = "") -> str:
+    if raw_document and _is_html_like_document(raw_document) and not _is_pdf_like_url(url):
+        return "archive_page" if _looks_like_archive_or_navigation(raw_document, url, title) else "landing_page"
+    normalized = (document_type or "").lower()
+    if "annual report" in normalized:
+        return "annual_report"
+    if "appendix 4e" in normalized or "preliminary final" in normalized:
+        return "appendix_4e"
+    if "results" in normalized and "presentation" in normalized:
+        return "results_presentation"
+    if "investor presentation" in normalized or "agm presentation" in normalized:
+        return "investor_presentation"
+    if any(term in normalized for term in ["half year", "appendix 4d", "quarterly", "cash flow", "full year results"]):
+        return "financial_report_pdf"
+    if "sustainability" in normalized:
+        return "investor_presentation"
+    return "unknown"
+
+
+def _source_quality_tier(
+    *,
+    source_type: str,
+    document_role: str,
+    url: str,
+    fallback_page_url: str = "",
+    raw_document: str = "",
+    title: str = "",
+) -> str:
+    if document_role == "archive_page" or _looks_like_archive_or_navigation(raw_document, url, title):
+        return "tier_5_navigation_or_archive_page"
+    if document_role == "landing_page":
+        return "tier_4_company_ir_landing_page"
+    if raw_document and _is_html_like_document(raw_document) and not _is_pdf_like_url(url):
+        return "tier_4_company_ir_landing_page"
+    lower_url = url.lower()
+    lower_fallback_page = fallback_page_url.lower()
+    asx_lodged = (
+        source_type == "asx_announcement"
+        or "asx-research/1.0/file/" in lower_url
+        or "asx.com.au" in lower_url
+        or "asx.com.au/markets/company" in lower_fallback_page
+        or (source_type == "asx_fallback_document" and "asx" in lower_url)
+    )
+    if asx_lodged and document_role in FINANCIAL_DOCUMENT_ROLES:
+        return "tier_1_asx_lodged_pdf"
+    if document_role == "annual_report":
+        return "tier_3_company_annual_report_pdf"
+    if document_role in {"appendix_4e", "results_presentation", "financial_report_pdf", "investor_presentation"}:
+        return "tier_2_company_results_pdf"
+    return "tier_4_company_ir_landing_page" if not _is_pdf_like_url(url) else "tier_2_company_results_pdf"
+
+
+def _metric_eligibility(source_quality_tier: str, document_role: str, extraction_status: str) -> str:
+    if (
+        source_quality_tier in ELIGIBLE_SOURCE_QUALITY_TIERS
+        and document_role in FINANCIAL_DOCUMENT_ROLES
+        and extraction_status == "available"
+    ):
+        return "eligible_financial_document"
+    if source_quality_tier in {"tier_4_company_ir_landing_page", "tier_5_navigation_or_archive_page"}:
+        return "discovery_only"
+    return "not_eligible"
+
+
 def _announcement_rows(payload: str) -> list[dict[str, Any]]:
     data = json.loads(payload)
     if isinstance(data, list):
@@ -631,8 +767,44 @@ def _title_without_date(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def _fallback_rows(page_html: str, page_url: str) -> list[dict[str, Any]]:
+def _fallback_row_title(*candidates: str) -> str:
+    cleaned_candidates = [_clean_text(candidate) for candidate in candidates if _clean_text(candidate)]
+    for candidate in cleaned_candidates:
+        if _classify_document(candidate):
+            title = _title_without_date(candidate)
+            if title:
+                return title
+    for candidate in cleaned_candidates:
+        title = _title_without_date(candidate)
+        if title:
+            return title
+    return ""
+
+
+def _can_inherit_report_context(clean_label: str, title: str, href: str) -> bool:
+    label_title = f"{clean_label} {title}".lower()
+    href_context = href.replace("-", " ").replace("_", " ").lower()
+    has_report_action = bool(re.search(r"\b(?:read|view|open|download|get)\b.*\breport\b|\breport\b", label_title))
+    has_document_url_cue = bool(
+        re.search(
+            r"(?:\.pdf(?:[?#].*)?$|/download|/downloads|/content/dam|/documents?|/reports?|annual\s+report)",
+            href_context,
+            re.IGNORECASE,
+        )
+    )
+    return has_report_action and has_document_url_cue
+
+
+def _fallback_rows(
+    page_html: str,
+    page_url: str,
+    *,
+    inherited_title: str = "",
+    inherited_date: str = "",
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    inherited_title = _clean_text(inherited_title)
+    inherited_date = _date_from_text(inherited_date) if inherited_date else ""
     for anchor in re.finditer(r"(?is)<a\b(?P<attrs>[^>]*)>(?P<label>.*?)</a>", page_html):
         attrs = anchor.group("attrs")
         href_match = re.search(r"href=['\"]([^'\"]+)['\"]", attrs, re.IGNORECASE)
@@ -642,15 +814,18 @@ def _fallback_rows(page_html: str, page_url: str) -> list[dict[str, Any]]:
         title_match = re.search(r"title=['\"]([^'\"]+)['\"]", attrs, re.IGNORECASE)
         title = _clean_text(title_match.group(1)) if title_match else ""
         clean_label = _clean_text(anchor.group("label"))
-        searchable_text = f"{clean_label} {title} {href.replace('-', ' ').replace('_', ' ')} {page_url}"
+        direct_searchable_text = f"{clean_label} {title} {href.replace('-', ' ').replace('_', ' ')} {page_url}"
+        searchable_text = direct_searchable_text
         if not _classify_document(searchable_text):
-            continue
-        date_text = _date_from_text(searchable_text)
+            if not inherited_title or not _can_inherit_report_context(clean_label, title, href):
+                continue
+            searchable_text = f"{direct_searchable_text} {inherited_title}"
+        date_text = _date_from_text(searchable_text) or inherited_date
         if not date_text:
             continue
         rows.append(
             {
-                "title": _title_without_date(title) or _title_without_date(clean_label) or _title_without_date(searchable_text),
+                "title": _fallback_row_title(title, clean_label, inherited_title, searchable_text),
                 "announcement_date": date_text,
                 "url": urljoin(page_url, href),
                 "fallback_page_url": page_url,
@@ -661,21 +836,81 @@ def _fallback_rows(page_html: str, page_url: str) -> list[dict[str, Any]]:
         page_html,
     ):
         clean_label = _clean_text(label)
-        searchable_text = f"{clean_label} {href.replace('-', ' ').replace('_', ' ')}"
+        direct_searchable_text = f"{clean_label} {href.replace('-', ' ').replace('_', ' ')}"
+        searchable_text = direct_searchable_text
         if not _classify_document(searchable_text):
-            continue
-        date_text = _date_from_text(searchable_text)
+            if not inherited_title or not _can_inherit_report_context(clean_label, "", href):
+                continue
+            searchable_text = f"{direct_searchable_text} {inherited_title}"
+        date_text = _date_from_text(searchable_text) or inherited_date
         if not date_text:
             continue
         rows.append(
             {
-                "title": _title_without_date(clean_label) or _title_without_date(searchable_text),
+                "title": _fallback_row_title(clean_label, inherited_title, searchable_text),
                 "announcement_date": date_text,
                 "url": urljoin(page_url, href),
                 "fallback_page_url": page_url,
             }
         )
     return rows
+
+
+def _fallback_row_sort_key(row: dict[str, Any]) -> tuple[datetime, int, int, str]:
+    date_text = str(row.get("announcement_date") or "")
+    try:
+        parsed_date = _parse_date(date_text)
+    except ValueError:
+        parsed_date = datetime.min
+    url = str(row.get("url") or "")
+    title = str(row.get("title") or "")
+    document_type = _classify_document(f"{title} {url.replace('-', ' ').replace('_', ' ')}")
+    role = _document_role(document_type, url=url, title=title)
+    if _is_pdf_like_url(url):
+        asset_rank = 0
+    elif re.search(r"/(?:download|downloads|content/dam|documents?)/", url.lower()):
+        asset_rank = 1
+    else:
+        asset_rank = 2
+    return (parsed_date, -asset_rank, -DOCUMENT_ROLE_RANK.get(role, 99), url)
+
+
+def _allowed_fallback_document_asset(row: dict[str, Any]) -> bool:
+    haystack = f"{row.get('title', '')} {row.get('url', '')}".lower()
+    if re.search(r"\.(?:zip|xml|xhtml|xlsx?|csv)(?:[?#].*)?$", haystack):
+        return False
+    excluded_report_terms = [
+        "economic contribution",
+        "economiccontribution",
+        "climate transition",
+        "climatetransition",
+        "sustainability report",
+        "reportextract",
+        "report extract",
+    ]
+    return not any(term in haystack for term in excluded_report_terms)
+
+
+def _prefilter_fallback_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = []
+    seen_roles: set[str] = set()
+    sorted_rows = sorted(
+        [row for row in rows if _allowed_fallback_document_asset(row)],
+        key=_fallback_row_sort_key,
+        reverse=True,
+    )
+    for row in sorted_rows:
+        url = str(row.get("url") or "")
+        title = str(row.get("title") or "")
+        document_type = _classify_document(f"{title} {url.replace('-', ' ').replace('_', ' ')}")
+        role = _document_role(document_type, url=url, title=title)
+        role_key = role if role in FINANCIAL_DOCUMENT_ROLES else document_type or url
+        if role_key in FINANCIAL_DOCUMENT_ROLES and role_key in seen_roles:
+            continue
+        if role_key in FINANCIAL_DOCUMENT_ROLES:
+            seen_roles.add(role_key)
+        selected.append(row)
+    return selected
 
 
 def _fallback_page_urls(asx_code: str, identity: dict[str, Any] | None) -> list[str]:
@@ -848,7 +1083,7 @@ def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
         matches.extend(re.finditer(str(pattern), text, re.IGNORECASE))
     generic_pattern = (
         r"(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*"
-        r"(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)"
+        r"(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/(?:t|tonne))"
     )
     for match in re.finditer(generic_pattern, text, re.IGNORECASE):
         _clean_value, unit = _clean_value_and_unit(match.group(0))
@@ -872,6 +1107,10 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
         unit = "per cent" if "per cent" in raw.lower() else "%"
     elif "cents" in lower or "cps" in lower:
         unit = "cents" if "cents" in lower else "cps"
+    elif ("us$" in lower or "a$" in lower) and re.search(r"/(?:t|tonne)\b", lower):
+        unit = "US$/t"
+    elif "$" in raw and re.search(r"/(?:t|tonne)\b", lower):
+        unit = "$/t"
     elif "us$" in lower and "bn" in lower:
         unit = "US$bn"
     elif "us$" in lower and "m" in lower:
@@ -898,7 +1137,7 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
 
 
 def _numeric_value_spans(text: str) -> list[re.Match[str]]:
-    pattern = r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?"
+    pattern = r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/(?:t|tonne))?"
     return [match for match in re.finditer(pattern, text, re.IGNORECASE) if re.search(r"\d", match.group(0))]
 
 
@@ -939,7 +1178,7 @@ def _table_row_unparsed_result(base: dict[str, Any], clean: str, profile: dict[s
 def _numeric_cell_value(cell: str, inferred_unit: str) -> tuple[str, str] | None:
     if re.fullmatch(r"FY?\d{2,4}", cell.strip(), re.IGNORECASE):
         return None
-    value_match = re.search(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/t)?", cell, re.IGNORECASE)
+    value_match = re.search(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|/(?:t|tonne))?", cell, re.IGNORECASE)
     if not value_match:
         return None
     clean_value, unit = _clean_value_and_unit(value_match.group(0))
@@ -987,6 +1226,139 @@ def _parse_structured_table_line(line: str) -> tuple[dict[str, str], list[str]]:
         row = cell_text
     cells = [_clean_text(cell) for cell in row.split("|")]
     return metadata, cells
+
+
+def _section_title_for_text(text: str) -> str:
+    clean = _clean_text(text)
+    for section_name, pattern, _supports_claims in SECTION_PATTERNS:
+        if re.search(pattern, clean, re.IGNORECASE):
+            return section_name
+    if _is_navigation_or_toc(clean):
+        return "navigation_or_table_of_contents"
+    return "unclassified_text"
+
+
+def _text_blocks_from_page_text(text: str) -> list[dict[str, str]]:
+    sentences = _sentences(text)
+    if not sentences and text.strip():
+        sentences = [_clean_text(text)]
+    blocks: list[dict[str, str]] = []
+    current: list[str] = []
+    current_length = 0
+    carried_section_title = ""
+    for sentence in sentences:
+        if current and current_length + len(sentence) > DOCUMENT_TEXT_BLOCK_CHARS:
+            block_text = _clean_text(" ".join(current))
+            section_title = _section_title_for_text(block_text)
+            if section_title == "unclassified_text" and carried_section_title:
+                section_title = carried_section_title
+            blocks.append({"section_title": section_title, "text": block_text})
+            current = []
+            current_length = 0
+        current.append(sentence)
+        current_length += len(sentence) + 1
+        sentence_title = _section_title_for_text(sentence)
+        if sentence_title not in {"unclassified_text", "navigation_or_table_of_contents"}:
+            carried_section_title = sentence_title
+    if current:
+        block_text = _clean_text(" ".join(current))
+        section_title = _section_title_for_text(block_text)
+        if section_title == "unclassified_text" and carried_section_title:
+            section_title = carried_section_title
+        blocks.append({"section_title": section_title, "text": block_text})
+    return blocks
+
+
+def _new_structured_page(page_number: str) -> dict[str, Any]:
+    return {"page_number": page_number, "text_blocks": [], "tables": []}
+
+
+def _build_document_structure(text: str) -> dict[str, Any]:
+    pages_by_number: dict[str, dict[str, Any]] = {}
+    table_lookup: dict[tuple[str, str, str], dict[str, Any]] = {}
+    current_page = "1"
+    text_lines_by_page: dict[str, list[str]] = {"1": []}
+
+    def page_for(page_number: str) -> dict[str, Any]:
+        page = pages_by_number.get(page_number)
+        if page is None:
+            page = _new_structured_page(page_number)
+            pages_by_number[page_number] = page
+        text_lines_by_page.setdefault(page_number, [])
+        return page
+
+    page_for(current_page)
+    for raw_line in text.splitlines() or [text]:
+        line = raw_line.strip()
+        if not line:
+            continue
+        page_marker = re.match(rf"^{re.escape(PDF_PAGE_MARKER)}\s+page=(?P<page>\d+)", line)
+        if page_marker:
+            current_page = page_marker.group("page")
+            page_for(current_page)
+            continue
+        if line.startswith(TABLE_ROW_MARKER):
+            metadata, cells = _parse_structured_table_line(line)
+            page_number = metadata.get("source_page", "unavailable")
+            if page_number == "unavailable":
+                page_number = current_page
+                metadata["source_page"] = page_number
+            page = page_for(page_number)
+            table_key = (
+                page_number,
+                metadata.get("table_index", "unavailable"),
+                metadata.get("table_title", "unavailable"),
+            )
+            table = table_lookup.get(table_key)
+            if table is None:
+                table = {
+                    "source_page": page_number,
+                    "table_index": metadata.get("table_index", "unavailable"),
+                    "table_title": metadata.get("table_title", "unavailable"),
+                    "section_title": _section_title_for_text(metadata.get("table_title", "")),
+                    "rows": [],
+                }
+                table_lookup[table_key] = table
+                page["tables"].append(table)
+            table["rows"].append(
+                {
+                    "row_index": metadata.get("row_index", "unavailable"),
+                    "cells": cells,
+                    "raw_row_text": " | ".join(cells),
+                }
+            )
+            continue
+        text_lines_by_page.setdefault(current_page, []).append(line)
+
+    for page_number, lines in text_lines_by_page.items():
+        if not lines:
+            continue
+        page = page_for(page_number)
+        page["text_blocks"].extend(_text_blocks_from_page_text("\n".join(lines)))
+
+    ordered_pages = sorted(
+        pages_by_number.values(),
+        key=lambda page: int(page["page_number"]) if str(page["page_number"]).isdigit() else 10_000,
+    )
+    return {
+        "pages": ordered_pages,
+        "page_count": len(ordered_pages),
+        "table_count": len(table_lookup),
+        "text_block_count": sum(len(page.get("text_blocks", [])) for page in ordered_pages),
+    }
+
+
+def _table_text_from_structured_table(table: dict[str, Any]) -> str:
+    page_number = str(table.get("source_page") or "unavailable")
+    table_index = str(table.get("table_index") or "unavailable")
+    table_title = str(table.get("table_title") or "unavailable")
+    rows = []
+    for row in table.get("rows", []):
+        cells = [str(cell) for cell in row.get("cells", [])]
+        row_index = int(str(row.get("row_index") or "0")) if str(row.get("row_index") or "0").isdigit() else 0
+        table_index_int = int(table_index) if table_index.isdigit() else 0
+        rows.append(_format_structured_table_row(cells, int(page_number) if page_number.isdigit() else 0, table_index_int, row_index, table_title))
+    return "\n".join(rows)
 
 
 def _table_key(metadata: dict[str, str]) -> tuple[str, str]:
@@ -1206,6 +1578,8 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
                 own_distance = abs(value_match.start() - label_match.end())
                 own_label_is_close_after_value = label_match.start() >= value_match.end() and token_distance <= 3
                 for other_metric in competing:
+                    if other_metric == "guidance" and metric_name != "guidance":
+                        continue
                     if metric_name == "production" and other_metric == "commodity_exposure":
                         continue
                     other_profile = _profile_for_metric(other_metric)
@@ -1283,6 +1657,9 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         if len(cells) < 3:
             continue
         key = _table_key(metadata)
+        rejected_terms = [str(term).lower() for term in profile.get("rejected_nearby_terms", []) or []]
+        if any(term and term in row.lower() for term in rejected_terms):
+            continue
         if not _row_label_matches(cells[0], profile):
             if key in headers_by_table and _header_continuation_row(cells):
                 headers_by_table[key] = _merge_table_header_rows(headers_by_table[key], cells)
@@ -1291,6 +1668,8 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
             continue
         row_label = cells[0]
         header_cells = headers_by_table.get(key, [])
+        if metric_name in STRUCTURED_TABLE_REQUIRED_METRICS and not header_cells:
+            continue
         values: list[dict[str, str]] = []
         for index, cell in enumerate(cells[1:], start=1):
             column_label = header_cells[index] if header_cells and index < len(header_cells) else cells[index - 1]
@@ -1639,35 +2018,241 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
     }
 
 
+def _metric_specs_for_sector(sector: str) -> list[tuple[str, str, list[str]]]:
+    profile_specs = _metric_profiles_for_sector(sector)
+    legacy_specs = ASX_SECTOR_METRIC_PATTERNS.get(sector, [])
+    legacy_supports = {name: supports_claims for name, _label, _pattern, supports_claims in legacy_specs}
+    specs: list[tuple[str, str, list[str]]] = []
+    if profile_specs:
+        for metric_name, profile in profile_specs.items():
+            labels = [str(label) for label in profile.get("accepted_labels", []) or [metric_name]]
+            metric_label = labels[0]
+            supports_claims = legacy_supports.get(metric_name, [metric_label])
+            specs.append((metric_name, metric_label, supports_claims))
+        return specs
+    return [(name, label, supports_claims) for name, label, _pattern, supports_claims in legacy_specs]
+
+
+def _int_metric_field(value: Any) -> int:
+    try:
+        return int(float(str(value or "0")))
+    except ValueError:
+        return 0
+
+
+def _metric_label_value_distance(association: dict[str, Any]) -> int:
+    reason = str(association.get("association_reason") or "")
+    match = re.search(r"label-value distance\s+(\d+)\s+tokens", reason, re.IGNORECASE)
+    if match:
+        return int(match.group(1))
+    if association.get("metric_value_status") == "value_extracted" and association.get("row_label") not in {"", "unavailable"}:
+        return 0
+    return 999
+
+
+def _competing_labels_from_association(association: dict[str, Any]) -> list[str]:
+    reason = str(association.get("association_reason") or "")
+    match = re.search(r"competing labels nearby:\s*([^;]+)", reason, re.IGNORECASE)
+    if not match:
+        return []
+    return [label.strip() for label in match.group(1).split(",") if label.strip()]
+
+
+def _footnote_header_footer_penalty(text: str) -> int:
+    lower = text.lower()
+    if re.search(r"\b(?:footnote|note\s+\d+|page\s+\d+\s+of\s+\d+|continued|unaudited)\b", lower):
+        return 30
+    return 0
+
+
+def _source_quality_bonus(source_quality_tier: str) -> int:
+    return {
+        "tier_1_asx_lodged_pdf": 15,
+        "tier_2_company_results_pdf": 10,
+        "tier_3_company_annual_report_pdf": 6,
+    }.get(source_quality_tier, -50)
+
+
+def _document_role_bonus(document_role: str) -> int:
+    return {
+        "appendix_4e": 12,
+        "financial_report_pdf": 11,
+        "annual_report": 10,
+        "results_presentation": 8,
+        "investor_presentation": 4,
+    }.get(document_role, -20)
+
+
+def _section_relevance_bonus(section_title: str, text: str) -> int:
+    if section_title == "navigation_or_table_of_contents" or _is_navigation_or_toc(text):
+        return -40
+    if section_title in {
+        "financial_statement_tables",
+        "segment_product_tables",
+        "segment_product_performance",
+        "cash_debt_gearing",
+        "capex_commitments",
+        "cash_flow_statement",
+        "revenue_income_npat",
+    }:
+        return 8
+    if section_title != "unclassified_text":
+        return 4
+    return 0
+
+
+def _metric_status_rank(status: str) -> int:
+    return {
+        "value_extracted": 5,
+        "table_row_unparsed": 3,
+        "direction_extracted": 2,
+        "metric_mentioned_only": 1,
+        "context_only": 0,
+        "unavailable": -1,
+    }.get(status, -1)
+
+
+def _metric_candidate_from_association(
+    *,
+    association: dict[str, Any],
+    source: dict[str, Any],
+    page_number: str,
+    section_title: str,
+    candidate_text: str,
+    candidate_origin: str,
+) -> dict[str, Any] | None:
+    status = str(association.get("metric_value_status") or "unavailable")
+    if status == "unavailable":
+        return None
+    source_quality_tier = str(source.get("source_quality_tier") or "tier_5_navigation_or_archive_page")
+    document_role = str(source.get("document_role") or "unknown")
+    navigation_penalty = 50 if section_title == "navigation_or_table_of_contents" or _is_navigation_or_toc(candidate_text) else 0
+    footnote_penalty = _footnote_header_footer_penalty(candidate_text)
+    association_score = _int_metric_field(association.get("association_score"))
+    table_mapping_confidence = _int_metric_field(association.get("table_mapping_confidence"))
+    table_bonus = 8 if table_mapping_confidence >= 80 else 0
+    candidate_score = max(
+        0,
+        min(
+            100,
+            association_score
+            + _source_quality_bonus(source_quality_tier)
+            + _document_role_bonus(document_role)
+            + _section_relevance_bonus(section_title, candidate_text)
+            + table_bonus
+            - navigation_penalty
+            - footnote_penalty,
+        ),
+    )
+    source_page = str(association.get("source_page") or page_number or "unavailable")
+    if source_page == "unavailable" and page_number:
+        source_page = page_number
+    return {
+        **association,
+        "candidate_score": candidate_score,
+        "candidate_origin": candidate_origin,
+        "source_quality_tier": source_quality_tier,
+        "document_role": document_role,
+        "extraction_status": str(source.get("extraction_status") or "unavailable"),
+        "metric_eligibility": str(source.get("metric_eligibility") or "not_eligible"),
+        "section_title": section_title,
+        "source_page": source_page,
+        "metric_label_value_distance_tokens": _metric_label_value_distance(association),
+        "competing_labels_near_value": _competing_labels_from_association(association),
+        "navigation_toc_penalty": navigation_penalty,
+        "footnote_header_footer_penalty": footnote_penalty,
+    }
+
+
+def _metric_candidate_sort_key(candidate: dict[str, Any]) -> tuple[int, int, int, int, int]:
+    source_quality_tier = str(candidate.get("source_quality_tier") or "")
+    return (
+        _metric_status_rank(str(candidate.get("metric_value_status") or "")),
+        _int_metric_field(candidate.get("candidate_score")),
+        _int_metric_field(candidate.get("association_score")),
+        _int_metric_field(candidate.get("table_mapping_confidence")),
+        -SOURCE_QUALITY_RANK.get(source_quality_tier, 99),
+    )
+
+
+def _extract_metric_value_from_document(
+    document_structure: dict[str, Any],
+    metric_name: str,
+    source: dict[str, Any],
+) -> dict[str, Any]:
+    profile = _profile_for_metric(metric_name)
+    if not profile:
+        return _extract_metric_value_from_text("", metric_name)
+    candidates: list[dict[str, Any]] = []
+    for page in document_structure.get("pages", []):
+        page_number = str(page.get("page_number") or "unavailable")
+        for table in page.get("tables", []):
+            table_text = _table_text_from_structured_table(table)
+            if not table_text or not _metric_label_present(table_text, profile):
+                continue
+            association = _extract_metric_value_from_text(table_text, metric_name)
+            candidate = _metric_candidate_from_association(
+                association=association,
+                source=source,
+                page_number=page_number,
+                section_title=str(table.get("section_title") or "financial_statement_tables"),
+                candidate_text=table_text,
+                candidate_origin="table",
+            )
+            if candidate:
+                candidates.append(candidate)
+        for block in page.get("text_blocks", []):
+            block_text = str(block.get("text") or "")
+            if not block_text or not _metric_label_present(block_text, profile):
+                continue
+            association = _extract_metric_value_from_text(block_text, metric_name)
+            candidate = _metric_candidate_from_association(
+                association=association,
+                source=source,
+                page_number=page_number,
+                section_title=str(block.get("section_title") or _section_title_for_text(block_text)),
+                candidate_text=block_text,
+                candidate_origin="text_block",
+            )
+            if candidate:
+                candidates.append(candidate)
+    if not candidates:
+        result = _extract_metric_value_from_text("", metric_name)
+        result["association_reason"] = "metric label was not found in eligible structured pages, sections, or tables"
+        return result
+    return max(candidates, key=_metric_candidate_sort_key)
+
+
 def _extract_sector_metrics(
     text: str,
     source: dict[str, Any],
     excerpt_chars: int,
     sector: str,
 ) -> list[dict[str, Any]]:
-    profile_specs = _metric_profiles_for_sector(sector)
-    legacy_specs = ASX_SECTOR_METRIC_PATTERNS.get(sector, [])
-    specs = [
-        (
-            metric_name,
-            str(profile.get("accepted_labels", [metric_name])[0]),
-            "|".join(_label_regex(str(label)) for label in profile.get("accepted_labels", []) or [metric_name]),
-            ASX_SECTOR_METRIC_PATTERNS.get(sector, []),
-        )
-        for metric_name, profile in profile_specs.items()
-    ]
-    if not specs:
-        specs = legacy_specs
+    specs = _metric_specs_for_sector(sector)
     if not specs:
         return []
-    clean = _clean_text(text)
     metrics: list[dict[str, Any]] = []
-    legacy_supports = {name: supports_claims for name, _label, _pattern, supports_claims in legacy_specs}
-    for metric_name, metric_label, pattern, supports_claims_or_legacy in specs:
-        supports_claims = legacy_supports.get(metric_name, supports_claims_or_legacy if isinstance(supports_claims_or_legacy, list) else [metric_label])
+    document_structure = source.get("document_structure")
+    if not isinstance(document_structure, dict):
+        document_structure = _build_document_structure(text)
+    metric_source = {
+        **source,
+        "source_quality_tier": source.get("source_quality_tier") or "tier_1_asx_lodged_pdf",
+        "document_role": source.get("document_role") or "annual_report",
+        "extraction_status": source.get("extraction_status") or "available",
+    }
+    metric_source["metric_eligibility"] = source.get("metric_eligibility") or _metric_eligibility(
+        str(metric_source["source_quality_tier"]),
+        str(metric_source["document_role"]),
+        str(metric_source["extraction_status"]),
+    )
+    if metric_source["metric_eligibility"] != "eligible_financial_document":
+        return []
+    for metric_name, metric_label, supports_claims in specs:
         section_name = f"sector_metric_{metric_name}"
-        match = re.search(pattern, clean, re.IGNORECASE)
-        if not match:
+        association = _extract_metric_value_from_document(document_structure, metric_name, metric_source)
+        if association["metric_value_status"] == "unavailable":
             reason = f"{metric_label} was not identified in extracted ASX document text."
             metrics.append(
                 {
@@ -1681,6 +2266,17 @@ def _extract_sector_metrics(
                     "metric_name": metric_name,
                     "metric_label": metric_label,
                     "sector": sector,
+                    "source_quality_tier": metric_source["source_quality_tier"],
+                    "document_role": metric_source["document_role"],
+                    "extraction_status": metric_source["extraction_status"],
+                    "metric_eligibility": metric_source["metric_eligibility"],
+                    "candidate_score": 0,
+                    "candidate_origin": "unavailable",
+                    "section_title": "unavailable",
+                    "metric_label_value_distance_tokens": 999,
+                    "competing_labels_near_value": [],
+                    "navigation_toc_penalty": 0,
+                    "footnote_header_footer_penalty": 0,
                     "metric_confidence": "low",
                     "clean_metric_value": "unavailable",
                     "value_unit": "unavailable",
@@ -1702,9 +2298,7 @@ def _extract_sector_metrics(
                 }
             )
             continue
-        excerpt_start = max(0, match.start() - min(300, excerpt_chars // 4))
-        excerpt = clean[excerpt_start : match.start() + excerpt_chars].rsplit(" ", 1)[0].strip()
-        association = _extract_metric_value_from_text(excerpt, metric_name)
+        excerpt = str(association["supporting_sentence"])[:excerpt_chars].rsplit(" ", 1)[0].strip()
         metrics.append(
             {
                 "section_name": section_name,
@@ -1728,7 +2322,14 @@ def _extract_sector_metrics(
     return metrics
 
 
-def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int, sector: str = "general") -> list[dict[str, Any]]:
+def _extract_sections(
+    text: str,
+    source: dict[str, Any],
+    excerpt_chars: int,
+    sector: str = "general",
+    *,
+    include_sector_metrics: bool = True,
+) -> list[dict[str, Any]]:
     sections: list[dict[str, Any]] = []
     clean = _clean_text(text)
     for section_name, pattern, supports_claims in SECTION_PATTERNS:
@@ -1758,7 +2359,8 @@ def _extract_sections(text: str, source: dict[str, Any], excerpt_chars: int, sec
                 "evidence_gap": "",
             }
         )
-    sections.extend(_extract_sector_metrics(text, source, excerpt_chars, sector))
+    if include_sector_metrics:
+        sections.extend(_extract_sector_metrics(text, source, excerpt_chars, sector))
     return sections
 
 
@@ -1824,6 +2426,187 @@ def _table_strategy_from_title(title: str) -> str:
     return "pdfplumber_default"
 
 
+def _source_selection_sort_key(source: dict[str, Any]) -> tuple[int, int, str]:
+    source_quality_tier = str(source.get("source_quality_tier") or "tier_5_navigation_or_archive_page")
+    document_role = str(source.get("document_role") or "unknown")
+    return (
+        SOURCE_QUALITY_RANK.get(source_quality_tier, 99),
+        DOCUMENT_ROLE_RANK.get(document_role, 99),
+        str(source.get("announcement_date") or source.get("lodgement_date") or ""),
+    )
+
+
+def _eligible_metric_source(source: dict[str, Any]) -> bool:
+    return (
+        source.get("status") == "available"
+        and source.get("extraction_status") == "available"
+        and source.get("metric_eligibility") == "eligible_financial_document"
+        and source.get("source_quality_tier") in ELIGIBLE_SOURCE_QUALITY_TIERS
+    )
+
+
+def _select_authoritative_metric_sources(sources: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted([source for source in sources if _eligible_metric_source(source)], key=_source_selection_sort_key)
+
+
+def _remove_existing_sector_metrics(sources: list[dict[str, Any]]) -> None:
+    for source in sources:
+        source["extracted_sections"] = [
+            section
+            for section in source.get("extracted_sections", [])
+            if section.get("section_type") != "sector_metric"
+        ]
+
+
+def _unavailable_sector_metric_section(
+    *,
+    source: dict[str, Any],
+    metric_name: str,
+    metric_label: str,
+    supports_claims: list[str],
+    sector: str,
+    reason: str,
+) -> dict[str, Any]:
+    section_name = f"sector_metric_{metric_name}"
+    return {
+        **_section_unavailable(
+            section_name=section_name,
+            section_type="sector_metric",
+            source=source,
+            supports_claims=supports_claims,
+            reason=reason,
+        ),
+        "metric_name": metric_name,
+        "metric_label": metric_label,
+        "sector": sector,
+        "source_quality_tier": source.get("source_quality_tier", "tier_5_navigation_or_archive_page"),
+        "document_role": source.get("document_role", "unknown"),
+        "extraction_status": source.get("extraction_status", "unavailable"),
+        "metric_eligibility": source.get("metric_eligibility", "not_eligible"),
+        "candidate_score": 0,
+        "candidate_origin": "unavailable",
+        "section_title": "unavailable",
+        "metric_candidate_count": 0,
+        "metric_label_value_distance_tokens": 999,
+        "competing_labels_near_value": [],
+        "navigation_toc_penalty": 0,
+        "footnote_header_footer_penalty": 0,
+        "metric_confidence": "low",
+        "clean_metric_value": "unavailable",
+        "value_unit": "unavailable",
+        "value_context": "metric label unavailable",
+        "metric_value_status": "unavailable",
+        "association_score": 0,
+        "association_reason": reason,
+        "period_reference": "unavailable",
+        "comparison_reference": "unavailable",
+        "supporting_sentence": "no supporting sentence extracted",
+        "comparison_basis": "unavailable",
+        "direction": "unavailable",
+        "confidence": "low",
+        "confidence_reason": reason,
+        "table_title": "unavailable",
+        "row_label": "unavailable",
+        "column_label": "unavailable",
+        "source_page": "unavailable",
+        "cell_value": "unavailable",
+        "table_mapping_confidence": 0,
+        "table_mapping_reason": "no table row mapping available",
+        "raw_row_text": "unavailable",
+        "current_period_value": "unavailable",
+        "prior_period_value": "unavailable",
+        "variance_value": "unavailable",
+        "variance_percent": "unavailable",
+    }
+
+
+def _sector_metric_section_from_candidate(
+    *,
+    source: dict[str, Any],
+    association: dict[str, Any],
+    metric_name: str,
+    metric_label: str,
+    supports_claims: list[str],
+    sector: str,
+    excerpt_chars: int,
+    candidate_count: int,
+) -> dict[str, Any]:
+    excerpt = str(association.get("supporting_sentence") or "")[:excerpt_chars].rsplit(" ", 1)[0].strip()
+    return {
+        "section_name": f"sector_metric_{metric_name}",
+        "section_type": "sector_metric",
+        "status": "available",
+        "source_type": source["source_type"],
+        "filing_date": source["announcement_date"],
+        "url": source.get("url", ""),
+        "excerpt": excerpt,
+        "supports_claims": supports_claims,
+        "unavailable_reason": "",
+        "evidence_gap": "",
+        "metric_name": metric_name,
+        "metric_label": metric_label,
+        "sector": sector,
+        "metric_confidence": association["confidence"],
+        "extracted_value_or_phrase": association["supporting_sentence"],
+        "metric_candidate_count": candidate_count,
+        **association,
+    }
+
+
+def _apply_authoritative_sector_metric_extraction(
+    sources: list[dict[str, Any]],
+    *,
+    sector: str,
+    excerpt_chars: int,
+) -> tuple[str, list[dict[str, Any]]]:
+    _remove_existing_sector_metrics(sources)
+    specs = _metric_specs_for_sector(sector)
+    if not specs:
+        return "no_sector_metric_profile", []
+    selected_sources = _select_authoritative_metric_sources(sources)
+    if not selected_sources:
+        return "no_eligible_financial_sources", []
+    for metric_name, metric_label, supports_claims in specs:
+        candidates: list[tuple[dict[str, Any], dict[str, Any]]] = []
+        for source in selected_sources:
+            document_structure = source.get("document_structure")
+            if not isinstance(document_structure, dict):
+                document_structure = _build_document_structure(str(source.get("excerpt") or ""))
+            association = _extract_metric_value_from_document(document_structure, metric_name, source)
+            if association["metric_value_status"] != "unavailable":
+                candidates.append((source, association))
+        if candidates:
+            selected_source, selected_association = max(
+                candidates,
+                key=lambda item: _metric_candidate_sort_key(item[1]),
+            )
+            selected_source.setdefault("extracted_sections", []).append(
+                _sector_metric_section_from_candidate(
+                    source=selected_source,
+                    association=selected_association,
+                    metric_name=metric_name,
+                    metric_label=metric_label,
+                    supports_claims=supports_claims,
+                    sector=sector,
+                    excerpt_chars=excerpt_chars,
+                    candidate_count=len(candidates),
+                )
+            )
+            continue
+        primary_source = selected_sources[0]
+        primary_source.setdefault("extracted_sections", []).append(
+            _unavailable_sector_metric_section(
+                source=primary_source,
+                metric_name=metric_name,
+                metric_label=metric_label,
+                supports_claims=supports_claims,
+                sector=sector,
+                reason=f"{metric_label} was not identified in selected eligible ASX financial documents.",
+            )
+        )
+    return "metrics_extracted_from_authoritative_sources", selected_sources
+
+
 def _source_from_row(
     row: dict[str, Any],
     *,
@@ -1846,39 +2629,92 @@ def _source_from_row(
     if parsed_date > _parse_date(trade_date):
         return None
     url = _document_url(row)
+    initial_document_role = _document_role(document_type, url=url, title=title)
     source: dict[str, Any] = {
         "ticker": "",
         "market": "ASX",
         "asx_sector": asx_sector,
         "source_type": source_type,
         "document_type": document_type,
+        "document_role": initial_document_role,
         "title": title,
         "announcement_date": parsed_date.strftime("%Y-%m-%d"),
         "lodgement_date": parsed_date.strftime("%Y-%m-%d"),
         "url": url,
         "status": "available",
         "extraction_status": "unavailable" if not url else "pending",
+        "source_quality_tier": _source_quality_tier(
+            source_type=source_type,
+            document_role=initial_document_role,
+            url=url,
+            fallback_page_url=str(row.get("fallback_page_url") or ""),
+            title=title,
+        ),
+        "metric_eligibility": "not_eligible",
         "excerpt": "",
         "extracted_sections": [],
+        "document_structure": {"pages": [], "page_count": 0, "table_count": 0, "text_block_count": 0},
     }
     if row.get("fallback_page_url"):
         source["fallback_page_url"] = str(row["fallback_page_url"])
     if not url:
         source["extraction_status"] = "unavailable"
+        source["metric_eligibility"] = _metric_eligibility(
+            str(source["source_quality_tier"]),
+            str(source["document_role"]),
+            str(source["extraction_status"]),
+        )
         source["reason"] = "Announcement had no document URL."
         return source
     try:
         raw_document = http_get(url, headers)
         text = _excerpt(raw_document, excerpt_chars)
         source["extraction_status"] = "available" if text else "unavailable"
+        source["document_role"] = _document_role(document_type, raw_document=raw_document, url=url, title=title)
+        source["source_quality_tier"] = _source_quality_tier(
+            source_type=source_type,
+            document_role=str(source["document_role"]),
+            url=url,
+            fallback_page_url=str(row.get("fallback_page_url") or ""),
+            raw_document=raw_document,
+            title=title,
+        )
+        source["metric_eligibility"] = _metric_eligibility(
+            str(source["source_quality_tier"]),
+            str(source["document_role"]),
+            str(source["extraction_status"]),
+        )
+        source["document_structure"] = _build_document_structure(raw_document)
         source["excerpt"] = text
-        source["extracted_sections"] = _extract_sections(raw_document, source, excerpt_chars, asx_sector)
+        if _is_html_like_document(raw_document) and source["metric_eligibility"] == "discovery_only":
+            source["discovered_child_rows"] = [
+                child_row
+                for child_row in _fallback_rows(
+                    raw_document,
+                    url,
+                    inherited_title=title,
+                    inherited_date=str(source["announcement_date"]),
+                )
+                if child_row.get("url") and child_row.get("url") != url
+            ]
+        source["extracted_sections"] = _extract_sections(
+            raw_document,
+            source,
+            excerpt_chars,
+            asx_sector,
+            include_sector_metrics=False,
+        )
         source["table_extraction_diagnostics"] = _table_extraction_diagnostics(
             raw_document,
             source["extracted_sections"],
         )
     except Exception as exc:  # noqa: BLE001 - keep discovered announcement with extraction failure.
         source["extraction_status"] = "error"
+        source["metric_eligibility"] = _metric_eligibility(
+            str(source["source_quality_tier"]),
+            str(source["document_role"]),
+            str(source["extraction_status"]),
+        )
         source["reason"] = str(exc)
     return source
 
@@ -1896,9 +2732,10 @@ def _collect_fallback_sources(
     sources: list[dict[str, Any]] = []
     fallback_attempts: list[dict[str, Any]] = []
     asx_sector = _sector_for_asx_code(asx_code)
+    seen_source_urls: set[str] = set()
     for page_url in _fallback_page_urls(asx_code, identity):
         try:
-            rows = _fallback_rows(http_get(page_url, headers), page_url)
+            rows = _prefilter_fallback_rows(_fallback_rows(http_get(page_url, headers), page_url))
             fallback_attempts.append(
                 {
                     "source_type": "asx_fallback_page",
@@ -1918,6 +2755,11 @@ def _collect_fallback_sources(
             )
             continue
         for row in rows:
+            row_url = str(row.get("url") or "")
+            if row_url and row_url in seen_source_urls:
+                continue
+            if row_url:
+                seen_source_urls.add(row_url)
             source = _source_from_row(
                 row,
                 trade_date=trade_date,
@@ -1928,8 +2770,28 @@ def _collect_fallback_sources(
                 asx_sector=asx_sector,
             )
             if source:
+                child_rows = _prefilter_fallback_rows(source.pop("discovered_child_rows", []))
                 source["ticker"] = symbol
                 sources.append(source)
+                for child_row in child_rows:
+                    child_url = str(child_row.get("url") or "")
+                    if child_url and child_url in seen_source_urls:
+                        continue
+                    if child_url:
+                        seen_source_urls.add(child_url)
+                    child_source = _source_from_row(
+                        child_row,
+                        trade_date=trade_date,
+                        http_get=http_get,
+                        headers=headers,
+                        excerpt_chars=excerpt_chars,
+                        source_type="asx_fallback_document",
+                        asx_sector=asx_sector,
+                    )
+                    if child_source:
+                        child_source.pop("discovered_child_rows", None)
+                        child_source["ticker"] = symbol
+                        sources.append(child_source)
     return sources, fallback_attempts
 
 
@@ -1965,6 +2827,21 @@ def _merge_unique_sources(primary: list[dict[str, Any]], supplemental: list[dict
             seen_urls.add(url)
         merged.append(source)
     return merged
+
+
+def _source_selection_summaries(sources: list[dict[str, Any]]) -> list[dict[str, str]]:
+    return [
+        {
+            "title": str(source.get("title") or ""),
+            "url": str(source.get("url") or ""),
+            "source_type": str(source.get("source_type") or ""),
+            "source_quality_tier": str(source.get("source_quality_tier") or ""),
+            "document_role": str(source.get("document_role") or ""),
+            "extraction_status": str(source.get("extraction_status") or ""),
+            "metric_eligibility": str(source.get("metric_eligibility") or ""),
+        }
+        for source in sources
+    ]
 
 
 def collect_asx_financial_document_sources(
@@ -2071,6 +2948,11 @@ def collect_asx_financial_document_sources(
                 sources = _merge_unique_sources(sources, fallback_sources)
         for source in sources:
             source["ticker"] = symbol
+        metric_extraction_status, authoritative_sources = _apply_authoritative_sector_metric_extraction(
+            sources,
+            sector=asx_sector,
+            excerpt_chars=excerpt_chars,
+        )
         return {
             "ticker": symbol,
             "market": "ASX",
@@ -2079,6 +2961,8 @@ def collect_asx_financial_document_sources(
             "trade_date": trade_date,
             "status": "ok" if any(source.get("status") == "available" for source in sources) else "unavailable",
             "as_of_rule": "Only ASX announcements with announcement/lodgement date <= trade_date are included.",
+            "metric_extraction_status": metric_extraction_status,
+            "authoritative_financial_sources": _source_selection_summaries(authoritative_sources),
             "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
             "sources": sources,
@@ -2093,6 +2977,11 @@ def collect_asx_financial_document_sources(
         excerpt_chars=excerpt_chars,
     )
     if fallback_sources:
+        metric_extraction_status, authoritative_sources = _apply_authoritative_sector_metric_extraction(
+            fallback_sources,
+            sector=asx_sector,
+            excerpt_chars=excerpt_chars,
+        )
         return {
             "ticker": symbol,
             "market": "ASX",
@@ -2102,6 +2991,8 @@ def collect_asx_financial_document_sources(
             "status": "ok",
             "as_of_rule": "ASX endpoint failed; fallback official ASX/company IR documents still require date <= trade_date.",
             "primary_endpoint_error": endpoint_error,
+            "metric_extraction_status": metric_extraction_status,
+            "authoritative_financial_sources": _source_selection_summaries(authoritative_sources),
             "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
             "sources": fallback_sources,
