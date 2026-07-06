@@ -21,8 +21,8 @@ Interpretation: structured fundamentals provide ratio and statement context only
 - net interest margin: available via financial:CBA.AX:2026-07-06:016; confidence medium.
 - CET1: available via financial:CBA.AX:2026-07-06:017; confidence medium.
 - loan growth: available via financial:CBA.AX:2026-07-06:018; confidence medium.
-- arrears: available via financial:CBA.AX:2026-07-06:019; confidence medium.
-- impairment: available via financial:CBA.AX:2026-07-06:020; confidence medium.
+- arrears: available via financial:CBA.AX:2026-07-06:019; confidence low.
+- impairment: available via financial:CBA.AX:2026-07-06:020; confidence low.
 - dividend: available via financial:CBA.AX:2026-07-06:021; confidence medium.
 - ROE: available via financial:CBA.AX:2026-07-06:022; confidence low.
 

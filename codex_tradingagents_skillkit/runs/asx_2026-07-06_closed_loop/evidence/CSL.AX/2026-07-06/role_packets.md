@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for CSL.AX from 2026-06-06 to 2026-07-06
 # Total records: 20
-# Data retrieved on: 2026-07-06 22:14:37
+# Data retrieved on: 2026-07-07 09:06:18
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-09,97.95,99.82,96.88,99.47,2260104,0.0,0.0
@@ -38,7 +38,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-07-01,115.83,118.37,115.52,118.37,1537670,0.0,0.0
 2026-07-02,116.88,118.6,116.33,117.75,1298766,0.0,0.0
 2026-07-03,120.0,122.21,118.93,121.81,1442210,0.0,0.0
-2026-07-06,121.85,125.0,120.75,124.23,1356014,0.0,0.0
+2026-07-06,121.85,125.0,120.75,124.23,1481014,0.0,0.0
 
 ```
 
@@ -61,7 +61,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 | High | 125.00 |
 | Low | 120.75 |
 | Close | 124.23 |
-| Volume | 1356014 |
+| Volume | 1481014 |
 
 ### Verified technical indicators (latest row)
 
@@ -186,15 +186,15 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 2026-06-20: N/A: Not a trading day (weekend or holiday)
 2026-06-19: 159.16595306396485
 2026-06-18: 159.5925908279419
-2026-06-17: 160.0689679336548
-2026-06-16: 160.56106651306152
-2026-06-15: 161.0686498260498
+2026-06-17: 160.06896800994872
+2026-06-16: 160.56106658935548
+2026-06-15: 161.06864990234374
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 161.5789059448242
-2026-06-11: 162.09394992828368
-2026-06-10: 162.6077101135254
-2026-06-09: 163.14892105102538
+2026-06-12: 161.5789060974121
+2026-06-11: 162.0939500808716
+2026-06-10: 162.6077102661133
+2026-06-09: 163.14892127990723
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -210,34 +210,34 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: 70.22003601823093
+2026-07-06: 70.22003601822738
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: 67.75271670162375
-2026-07-02: 62.97372981164885
-2026-07-01: 64.32551961706197
-2026-06-30: 59.6121758086921
-2026-06-29: 60.951161491678185
+2026-07-03: 67.75271670162022
+2026-07-02: 62.97372981164552
+2026-07-01: 64.32551961705836
+2026-06-30: 59.612175808688825
+2026-06-29: 60.9511614916746
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 60.28855120784047
-2026-06-25: 65.8343203891919
-2026-06-24: 62.793439473623145
-2026-06-23: 59.03910048914662
-2026-06-22: 60.657438243349226
+2026-06-26: 60.28855120783694
+2026-06-25: 65.83432038918696
+2026-06-24: 62.793439473618406
+2026-06-23: 59.03910048914229
+2026-06-22: 60.65743824334437
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 67.71602152188804
-2026-06-18: 56.4417823460725
-2026-06-17: 54.11221355602102
-2026-06-16: 53.138018591906985
-2026-06-15: 51.873015832506006
+2026-06-19: 67.71602152188072
+2026-06-18: 56.44178234606675
+2026-06-17: 54.11221355601585
+2026-06-16: 53.1380185919021
+2026-06-15: 51.8730158325015
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 55.71343635773377
-2026-06-11: 55.278668390638295
-2026-06-10: 48.038070628625995
-2026-06-09: 40.80174297065214
+2026-06-12: 55.71343635772726
+2026-06-11: 55.2786683906319
+2026-06-10: 48.038070628622265
+2026-06-09: 40.801742970652086
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -253,34 +253,34 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: 3.9602410839273574
+2026-07-06: 3.9602410839269737
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: 3.479664196421737
-2026-07-02: 3.0620606257066925
-2026-07-01: 2.8978891195860115
-2026-06-30: 2.583067912200576
-2026-06-29: 2.513270171392051
+2026-07-03: 3.479664196421325
+2026-07-02: 3.062060625706252
+2026-07-01: 2.8978891195855425
+2026-06-30: 2.5830679122000646
+2026-06-29: 2.513270171391497
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 2.3214442425412614
-2026-06-25: 2.0957832534833187
-2026-06-24: 1.4942192316884615
-2026-06-23: 0.9755074279150762
-2026-06-22: 0.5996166705138393
+2026-06-26: 2.3214442425406645
+2026-06-25: 2.0957832534826792
+2026-06-24: 1.4942192316877794
+2026-06-23: 0.9755074279143372
+2026-06-22: 0.5996166705130292
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 0.025594779638112186
-2026-06-18: -1.0576929700902724
-2026-06-17: -1.5859958358675783
-2026-06-16: -2.1058878246297468
-2026-06-15: -2.6838460468924126
+2026-06-19: 0.025594779637245324
+2026-06-18: -1.0576929700912245
+2026-06-17: -1.5859958358685873
+2026-06-16: -2.105887824630827
+2026-06-15: -2.683846046893578
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -3.309183929244938
-2026-06-11: -4.260809220091829
-2026-06-10: -5.384944763315744
-2026-06-09: -6.305641553042918
+2026-06-12: -3.3091839292462026
+2026-06-11: -4.2608092200931935
+2026-06-10: -5.384944763317208
+2026-06-09: -6.305641553044495
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -296,34 +296,34 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: 3.7759286135931798
+2026-07-06: 3.775928613593286
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: 3.739461583869578
-2026-07-02: 3.6840356222847257
-2026-07-01: 3.7928078514553647
-2026-06-30: 3.805331156735583
-2026-06-29: 3.87843388205839
+2026-07-03: 3.739461583869692
+2026-07-02: 3.6840356222848487
+2026-07-01: 3.792807851455497
+2026-06-30: 3.8053311567357255
+2026-06-29: 3.878433882058544
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 3.861390451899721
-2026-06-25: 3.9076510915665867
-2026-06-24: 3.90900891479106
-2026-06-23: 3.819701931711586
-2026-06-22: 3.7973712641238957
+2026-06-26: 3.861390451899886
+2026-06-25: 3.9076510915667644
+2026-06-24: 3.9090089147912512
+2026-06-23: 3.819701931711792
+2026-06-22: 3.7973712641241173
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 3.671784414812212
-2026-06-18: 3.320383380277032
-2026-06-17: 3.3804128006423944
-2026-06-16: 3.4815982128913285
-2026-06-15: 3.598644299692763
+2026-06-19: 3.6717844148124508
+2026-06-18: 3.3203833802772897
+2026-06-17: 3.380412800642671
+2026-06-16: 3.4815982128916265
+2026-06-15: 3.5986442996930834
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 3.634693485606627
-2026-06-11: 3.6627470888789504
-2026-06-10: 3.4591124373624274
-2026-06-09: 3.3051974930159087
+2026-06-12: 3.6346934856069724
+2026-06-11: 3.6627470888793225
+2026-06-10: 3.459112437362828
+2026-06-09: 3.30519749301634
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -378,7 +378,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Insider Transactions data for CSL.AX
-# Data retrieved on: 2026-07-06 22:14:51
+# Data retrieved on: 2026-07-07 09:06:31
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,1036,71079.0,,Purchase at price 68.61 per share.,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-06-01,D
@@ -436,7 +436,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Company Fundamentals for CSL.AX
-# Data retrieved on: 2026-07-06 22:14:51
+# Data retrieved on: 2026-07-07 09:06:31
 
 Name: CSL Limited
 Sector: Healthcare
@@ -474,7 +474,7 @@ Free Cash Flow: 1848125056
 
 ```text
 # Balance Sheet data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-06 22:14:53
+# Data retrieved on: 2026-07-07 09:06:31
 
 ,2024-12-31
 Ordinary Shares Number,484206716.0
@@ -546,7 +546,7 @@ Cash Financial,1524000000.0
 
 ```text
 # Cash Flow data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-06 22:14:53
+# Data retrieved on: 2026-07-07 09:06:31
 
 ,2024-12-31
 Free Cash Flow,726000000.0
@@ -596,7 +596,7 @@ Other Cash Receiptsfrom Operating Activities,1567000000.0
 
 ```text
 # Income Statement data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-06 22:14:53
+# Data retrieved on: 2026-07-07 09:06:32
 
 ,2024-12-31
 Tax Effect Of Unusual Items,0.0
@@ -850,6 +850,81 @@ risk and legal fields. He has more than 35 years’ experience and from 2014 he 
 
 ```text
 Product Portfolio 20 Material Risks 24 Healthier World Healthier Communities 27 Healthier Environment 35 IN THIS REPORT ANNUAL GENERAL MEETING The 2025 Annual General Meeting (AGM) of CSL Limited (ABN 99 051 588 348) will be held on Tuesday, 28 October 2025 at 10 a.m. (Melbourne time) at RACV City Club, Level 17, 501 Bourke St, Melbourne 3000. Governance Governance 40 Directors’ Report Remuneration Report 61 Financial Report Financial Report 90 Shareholder Information Shareholder Information 138 Key Performance Data Summary 141 Glossary 143 Corporate Directory 144 Sections which are read as part of the Operating and Financial Review (see page 52) 2025 19/8 Annual results and final dividend announcement 9/9 Shares trade ex‑dividend 10/9 Record date for final dividend 3/10 Final dividend paid 28/10 Annual General Meeting 31/12 Half Year ends 2026 10/2 Half Year results and interim dividend announcement 10/3 Shares trade ex‑dividend 11/3 Record date for interim dividend 9/4 Interim dividend paid 30/6 Full Year ends 18/8 Annual profit and final dividend announcement 9/9 Shares trade ex‑dividend 10/9 Record date for final dividend 2/10 Final dividend paid 27/10 Annual General Meeting 31/12 Half Year ends CSL CALENDAR ABOUT THIS REPORT This Annual Report combines CSL’s financial and non‑financial performance in one comprehensive report, linking CSL’s sustainability and strategic priorities to its business results. Unless otherwise stated, this report covers CSL’s controlled entities as disclosed within its consolidated entity disclosure statement included in the financial report. This 2025 Annual Report is a summary of CSL’s operations and activities for the year ended 30 June 2025 and financial position as at 30 June 2025. This report covers CSL’s global operations, including subsidiaries, unless otherwise noted. A reference to CSL, CSL Group, we, us and our and similar expressions refer collectively to CSL Limited and its related bodies corporate. Please refer to the inside back cover to read the legal notice and the disclaimers as they relate to forward looking statements, non-IFRS financial information and trademarks. + READ MORE AT INVESTORS.CSL.COM 1 CSL Limited Annual Report 2024/25 CSL CSL is a global biopharma company working to create enduring impact for patients and public health. OUR GLOBAL MANUFACTURING AND OFFICE PRESENCE OUR BUSINESS US$15.6b in annual revenue 100+ countries that CSL provides lifesaving products to patients US$2.92 dividend per share for 2025 CSL uses its deep expertise in plasma-derived therapies, vaccines and biotechnology to deliver medicines for serious and complex diseases such as haemophilia, immune deficiencies, influenza and iron deficiency anaemia. CSL innovates at every step of the process. It pioneers therapies and vaccines, improves patients’ and donors’ experiences, broadens access to treatments, and tackles complexity at scale through specialised manufacturing processes. Helping address unmet medical needs is what sets CSL apart. CSL’s focus on diseases where it has a fundamental advantage in understanding the disease and the science; and medicines with a high degree of specialist expertise or manufacturing differentiation. 29,000+ employees globally United States Puerto Rico 2 Leading the Way in Treating Rare and Serious Diseases CSL Behring discovers, develops and delivers innovative therapies for people living with a range of rare and serious health conditions. Securing Health for All of Us CSL Seqirus is a major contributor to the prevention of influenza globally and a transcontinental partner in pandemic preparedness. Changing the Game in Iron Deficiency and Nephrology CSL Vifor is a global partner of choice for pharmaceuticals and innovative leading therapies in iron deficiency and nephrology. + READ MORE ON PAGE 16 + READ MORE ON PAGE 17 + READ MORE ON PAGE 18 Australia Japan China Germany Netherlands United Kingdom Spain Switzerland Italy Hungary 3 CSL Limited Annual Report 2024/25 CSL Message from the Chair The past year has been significant to say the least with a great deal of uncertainty in the external environment. Our CEO Paul McKenzie is settling into the second year of his tenure and along with his leadership team is working with the Board of Directors to address some shortcomings in the way our business currently operates and in charting a path for continuing growth. CSL is a truly global company, and we have the flexibility and resilience to cope with shifting external trends. We also have the financial strength to make decisions now that will enhance shareholder value in the future. Your Directors and management team are focused on what we can control and, despite the complexity, the company has delivered strong financial results. This is due to the great work of our staff who work across 100 different countries. Focused strategy While CSL has a strong track record of sustainable, profitable growth, our operating environment has become increasingly complex and competitive. A company of our size must and does constantly evolve its strategy to deal with such changing times. We must also recognise that not all our investments have performed as we had anticipated. The detail in this report shows our strategic ambition of delivering enduring patient impact in areas of high unmet medical need. This underpins value creation for shareholders into the future. It’s what we’ve always done, but how we deliver on that ambition needs adjustment – our organisation needs to return to a more productive one. . We remain focused on five core therapeutic areas – but particularly in areas where CSL is uniquely positioned to outperform our competitors. In order to improve clinical and commercial execution, CSL has embarked on a series of strategic initiatives to help reduce cost and complexity. Although this is painful and has a significant cost impact in the coming financial year, these measures will drive further growth through transforming our
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_segment_revenue
+- Status: `unavailable`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: segment revenue
+- Unavailable reason: segment revenue was not identified in selected eligible ASX financial documents.
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_r_and_d
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: R&D
+
+```text
++ READ MORE ABOUT CSL’S R&D PIPELINE AT WWW.CSL.COM/RESEARCH-ANDDEVELOPMENT/PRODUCT-PIPELINE NPATA attributable to equity holders of US$3.2 billion for the year ended 30 June 2025, up 11% on a reported currency basis when compared to the
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_plasma_collections
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: plasma collections
+
+```text
+In plasma collection the focus is on three areas; enhancing collection efficiency, reducing the unit acquisition cost and providing a world-class experience for donors and
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_margins
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: margins
+
+```text
+CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL’s
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_debt
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: debt, liquidity
+
+```text
+CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL’s
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_guidance
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: guidance, outlook
+
+```text
++ READ MORE AT INVESTORS.CSL.COM CSL’s Businesses and Outlook US$11,158m CSL Behring revenue 16 Performance The FY2025 financial year was dynamic for the vaccine market and CSL Seqirus generated positive
 ```
 
 ### Excerpt: asx_fallback_document

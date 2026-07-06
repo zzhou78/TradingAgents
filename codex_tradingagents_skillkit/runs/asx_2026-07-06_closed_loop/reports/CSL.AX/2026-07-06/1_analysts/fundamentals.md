@@ -17,7 +17,13 @@
 Interpretation: structured fundamentals provide ratio and statement context only; ASX sector metrics must come from official announcement or IR section records and are not final investment judgments.
 
 ## Sector-Specific Metrics
-- Sector-specific gap: no ASX sector metric records were extracted. Financial strength/weakness claims must stay evidence-gapped.
+- ASX sector identified by collector: healthcare.
+- segment revenue: evidence gap disclosed via financial:CSL.AX:2026-07-06:016; segment revenue was not identified in selected eligible ASX financial documents.
+- R&D: available via financial:CSL.AX:2026-07-06:017; confidence low.
+- plasma collections: available via financial:CSL.AX:2026-07-06:018; confidence low.
+- margin: available via financial:CSL.AX:2026-07-06:019; confidence low.
+- net debt: available via financial:CSL.AX:2026-07-06:020; confidence low.
+- guidance: available via financial:CSL.AX:2026-07-06:021; confidence low.
 
 ## Evidence Gaps
 - The fundamentals packet is structured but not a substitute for filing-section interpretation.

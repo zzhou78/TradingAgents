@@ -30,7 +30,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -64,7 +64,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -98,7 +98,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -131,7 +131,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -165,7 +165,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -200,7 +200,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -235,7 +235,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -268,7 +268,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -301,7 +301,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -334,7 +334,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -367,7 +367,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -399,7 +399,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -431,7 +431,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -466,7 +466,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -500,7 +500,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -521,7 +521,7 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.commbank.com.au/content/dam/commbank-assets/investors/docs/results/fy25/2025-annual-report.pdf#page=52",
-    "excerpt": "__TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights Financial highlights $10,133m $10,252m Statutory net profit Cash NPAT after tax (NPAT) 4% on FY24 7% on FY24 $28,465m 2.08% Operating income Net interest",
+    "excerpt": "Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income",
     "supports_claims": [
       "NIM",
       "margin quality"
@@ -533,29 +533,29 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
-    "candidate_origin": "table",
-    "section_title": "unclassified_text",
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
     "metric_candidate_count": 1,
     "metric_label_value_distance_tokens": 0,
     "competing_labels_near_value": [
       "margins",
-      "capital_adequacy",
+      "cet1",
       "cet1"
     ],
     "navigation_toc_penalty": 0,
     "footnote_header_footer_penalty": 0,
     "metric_value_status": "value_extracted",
     "association_score": 100,
-    "association_reason": "label-value distance 0 tokens; unit % compatible; competing labels nearby: margins, capital_adequacy, cet1",
-    "clean_metric_value": "5",
+    "association_reason": "label-value distance 0 tokens; unit % compatible; competing labels nearby: margins, cet1, cet1",
+    "clean_metric_value": "2.08",
     "value_unit": "%",
-    "value_context": "Net interest margin near 5%",
-    "period_reference": "FY2025",
-    "comparison_reference": "FY2024",
-    "supporting_sentence": "__TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights Financial highlights $10,133m $10,252m Statutory net profit Cash NPAT after tax (NPAT) 4% on FY24 7% on FY24 $28,465m 2.08% Operating income Net interest margin",
+    "value_context": "Net interest margin near 2.08%",
+    "period_reference": "FY2024",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income 5",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
     "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
@@ -590,7 +590,7 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.commbank.com.au/content/dam/commbank-assets/investors/docs/results/fy25/2025-annual-report.pdf#page=52",
-    "excerpt": "__TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital ratio | coverage ratio 2 | 450",
+    "excerpt": "Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income",
     "supports_claims": [
       "CET1",
       "capital adequacy"
@@ -602,40 +602,44 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
-    "candidate_origin": "table",
-    "section_title": "unclassified_text",
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
     "metric_candidate_count": 1,
     "metric_label_value_distance_tokens": 0,
-    "competing_labels_near_value": [],
+    "competing_labels_near_value": [
+      "dividend",
+      "dividends",
+      "capital_adequacy"
+    ],
     "navigation_toc_penalty": 0,
     "footnote_header_footer_penalty": 0,
     "metric_value_status": "value_extracted",
     "association_score": 100,
-    "association_reason": "table row label matches accepted metric label and value is taken from parsed row/column structure",
-    "clean_metric_value": "2",
+    "association_reason": "label-value distance 0 tokens; unit % compatible; competing labels nearby: dividend, dividends, capital_adequacy",
+    "clean_metric_value": "12.3",
     "value_unit": "%",
-    "value_context": "table row/column label association",
-    "period_reference": "#1 Business MFI share peer 19.3%",
+    "value_context": "Capital ratio CET1 near 12.3%",
+    "period_reference": "FY2024",
     "comparison_reference": "not specified",
-    "supporting_sentence": "__TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital ratio | coverage ratio 2 | 450 465",
+    "supporting_sentence": "Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income 5",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
     "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
-    "table_title": "pdfplumber_words",
-    "row_label": "Tier 1 capital ratio",
-    "column_label": "#1 Business MFI share peer 19.3%",
-    "cell_value": "coverage ratio 2",
-    "source_page": "15",
-    "table_mapping_confidence": 100,
-    "table_mapping_reason": "accepted row label; header row available; accepted column label; unit % compatible; source page preserved",
-    "raw_row_text": "Tier 1 capital ratio | coverage ratio 2 | 450 465",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "3",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no structured table mapping available",
+    "raw_row_text": "unavailable",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
     "variance_value": "unavailable",
-    "variance_percent": "2"
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CBA.AX:2026-07-06:018",
@@ -655,7 +659,7 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.commbank.com.au/content/dam/commbank-assets/investors/docs/results/fy25/2025-annual-report.pdf#page=52",
-    "excerpt": "Staff increases were due | portfolio remains well secured and 85% of home lending __TABLE_ROW__ page=17 table=1001 row=51 title=pdfplumber_words | $12,996m | to additional resources for the delivery of our strategic priorities and were",
+    "excerpt": "Home lending grew above market at 7%, while business and rural lending grew 2% above a relatively flat",
     "supports_claims": [
       "loan growth"
     ],
@@ -666,25 +670,25 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
-    "candidate_origin": "table",
-    "section_title": "unclassified_text",
+    "candidate_origin": "text_block",
+    "section_title": "material_risks",
     "metric_candidate_count": 1,
-    "metric_label_value_distance_tokens": 1,
+    "metric_label_value_distance_tokens": 4,
     "competing_labels_near_value": [],
     "navigation_toc_penalty": 0,
     "footnote_header_footer_penalty": 0,
     "metric_value_status": "value_extracted",
-    "association_score": 98,
-    "association_reason": "label-value distance 1 tokens; unit % compatible",
-    "clean_metric_value": "85",
+    "association_score": 92,
+    "association_reason": "label-value distance 4 tokens; unit % compatible",
+    "clean_metric_value": "7",
     "value_unit": "%",
-    "value_context": "home lending near 85%",
+    "value_context": "Home lending near 7%",
     "period_reference": "not specified",
     "comparison_reference": "not specified",
-    "supporting_sentence": "Staff increases were due | portfolio remains well secured and 85% of home lending __TABLE_ROW__ page=17 table=1001 row=51 title=pdfplumber_words | $12,996m | to additional resources for the delivery of our strategic priorities and were part",
+    "supporting_sentence": "Home lending grew above market at 7%, while business and rural lending grew 2% above a relatively flat market.",
     "comparison_basis": "metric mentioned without explicit comparative baseline",
     "direction": "neutral",
     "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
@@ -692,7 +696,7 @@
     "row_label": "unavailable",
     "column_label": "unavailable",
     "cell_value": "unavailable",
-    "source_page": "17",
+    "source_page": "18",
     "table_mapping_confidence": 0,
     "table_mapping_reason": "no structured table mapping available",
     "raw_row_text": "unavailable",
@@ -719,45 +723,45 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.commbank.com.au/content/dam/commbank-assets/investors/docs/results/fy25/2025-annual-report.pdf#page=52",
-    "excerpt": "Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2 (Scope 3) 1 FY24 PCAF Score Scope 1 & 2 (Scope 3) 1 Status Further information see page(s) Sector-level financed emissions goals Australian housing kgCO2-e/m2",
+    "excerpt": "Home loan and personal | 1.50 | 1.51 __TABLE_ROW__ page=17 table=1001 row=48 title=pdfplumber_words | Operating expenses | Operating expenses increased 6% driven by higher staff, information technology costs and | loan arrears increased as",
     "supports_claims": [
       "arrears",
       "credit quality"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "candidate_score": 100,
-    "candidate_origin": "text_block",
-    "section_title": "revenue_income_npat",
+    "candidate_score": 91,
+    "candidate_origin": "table",
+    "section_title": "unclassified_text",
     "metric_candidate_count": 1,
-    "metric_label_value_distance_tokens": 5,
+    "metric_label_value_distance_tokens": 9,
     "competing_labels_near_value": [],
     "navigation_toc_penalty": 0,
     "footnote_header_footer_penalty": 0,
-    "metric_value_status": "value_extracted",
-    "association_score": 95,
-    "association_reason": "label-value distance 5 tokens; unit % compatible",
-    "clean_metric_value": "100",
-    "value_unit": "%",
-    "value_context": "arrears near 100%",
-    "period_reference": "FY2023",
-    "comparison_reference": "FY2024",
-    "supporting_sentence": "Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2 (Scope 3) 1 FY24 PCAF Score Scope 1 & 2 (Scope 3) 1 Status Further information see page(s) Sector-level financed emissions goals Australian housing kgCO2-e/m2 ",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 87,
+    "association_reason": "label-value distance 9 tokens; unit % compatible; clean value withheld because table-origin text lacked row/column mapping",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "value association below acceptance threshold",
+    "period_reference": "not specified",
+    "comparison_reference": "not specified",
+    "supporting_sentence": "Home loan and personal | 1.50 | 1.51 __TABLE_ROW__ page=17 table=1001 row=48 title=pdfplumber_words | Operating expenses | Operating expenses increased 6% driven by higher staff, information technology costs and | loan arrears increased as ",
     "comparison_basis": "period-over-period wording in extracted filing/report phrase",
     "direction": "adverse",
-    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
+    "confidence_reason": "clean value withheld because table-origin text lacked row/column mapping",
     "table_title": "unavailable",
     "row_label": "unavailable",
     "column_label": "unavailable",
     "cell_value": "unavailable",
-    "source_page": "83",
+    "source_page": "17",
     "table_mapping_confidence": 0,
     "table_mapping_reason": "no structured table mapping available",
     "raw_row_text": "unavailable",
@@ -784,52 +788,52 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.commbank.com.au/content/dam/commbank-assets/investors/docs/results/fy25/2025-annual-report.pdf#page=52",
-    "excerpt": "__TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words | Loan impairment expense | (726) | (802) | \uf082",
+    "excerpt": "Five-year financial summary 385 CBA FINANCIAL REPORT 2025 Annual report 30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 22 30 Jun 21 $M $M $M $M $M Net interest income 24,023 22,824 23,056 19,473 19,302 Other operating income 4,442 4,350 4,079 5,126",
     "supports_claims": [
       "impairment",
       "credit quality"
     ],
     "evidence_gap": "",
-    "confidence": "medium",
+    "confidence": "low",
     "limitations": [],
     "as_of_validity": {
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
-    "candidate_score": 100,
-    "candidate_origin": "table",
-    "section_title": "unclassified_text",
+    "candidate_score": 69,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
     "metric_candidate_count": 1,
-    "metric_label_value_distance_tokens": 0,
+    "metric_label_value_distance_tokens": 999,
     "competing_labels_near_value": [],
     "navigation_toc_penalty": 0,
     "footnote_header_footer_penalty": 0,
-    "metric_value_status": "value_extracted",
-    "association_score": 100,
-    "association_reason": "table row label matches accepted metric label and value is taken from parsed row/column structure",
-    "clean_metric_value": "-802",
-    "value_unit": "%",
-    "value_context": "table row/column label association",
-    "period_reference": "31 loan impairment as a percentage of average loan balances. Loan impairment expense decreased 9% reflecting our robust credit origination and of uncertain economic outlook due to rising global trade and geopolitical tensions. 15 \uf081 5% 7 \uf081 6% \uf081 3%",
-    "comparison_reference": "not specified",
-    "supporting_sentence": "__TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words | Loan impairment expense | (726) | (802) | \uf082 9%",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "metric_value_status": "table_row_unparsed",
+    "association_score": 45,
+    "association_reason": "dense table-like row contains multiple numeric values and financial row labels; clean value withheld until row/column mapping is parsed",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "Five-year financial summary 385 CBA FINANCIAL REPORT 2025 Annual report 30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 22 30 Jun 21 $M $M $M $M $M Net interest income 24,023 22,824 23,056 19,473 19,302 Other operating income 4,442 4,350 4,079 5,126 4",
+    "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
-    "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
-    "table_title": "pdfplumber_words",
-    "row_label": "Loan impairment expense",
-    "column_label": "31 loan impairment as a percentage of average loan balances. Loan impairment expense decreased 9% reflecting our robust credit origination and of uncertain economic outlook due to rising global trade and geopolitical tensions. 15 \uf081 5% 7 \uf081 6% \uf081 3%",
-    "cell_value": "(802)",
-    "source_page": "17",
-    "table_mapping_confidence": 100,
-    "table_mapping_reason": "accepted row label; header row available; accepted column label; preferred value type variance_percent; unit % compatible; source page preserved",
-    "raw_row_text": "Loan impairment expense | (726) | (802) | \uf082 9%",
+    "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "194",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
-    "variance_value": "9",
-    "variance_percent": "-802"
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
   },
   {
     "evidence_id": "financial:CBA.AX:2026-07-06:021",
@@ -860,7 +864,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "text_block",
@@ -929,7 +933,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:17:40+10:00",
+    "retrieval_time": "2026-07-07T09:00:44+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 59,
     "candidate_origin": "text_block",

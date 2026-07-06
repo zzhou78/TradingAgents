@@ -5,11 +5,25 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:020 metric=impairment",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     }
   ],
   "evidence_references": [
+    "financial:CBA.AX:2026-07-06:019 metric=arrears",
+    "financial:CBA.AX:2026-07-06:020 metric=impairment",
     "financial:CBA.AX:2026-07-06:022 metric=roe"
   ],
   "required_remediation": [],

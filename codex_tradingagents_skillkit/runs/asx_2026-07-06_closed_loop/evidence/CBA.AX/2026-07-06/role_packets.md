@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for CBA.AX from 2026-06-06 to 2026-07-06
 # Total records: 20
-# Data retrieved on: 2026-07-06 22:15:44
+# Data retrieved on: 2026-07-07 08:58:43
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-09,160.43,161.96,158.32,160.48,2993060,0.0,0.0
@@ -38,7 +38,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-07-01,164.2,164.25,160.29,160.73,2322125,0.0,0.0
 2026-07-02,160.0,162.02,158.87,161.14,2177202,0.0,0.0
 2026-07-03,161.36,165.02,161.2,165.02,1298076,0.0,0.0
-2026-07-06,164.1,165.29,163.58,164.66,1304028,0.0,0.0
+2026-07-06,164.1,165.29,163.58,164.66,1350853,0.0,0.0
 
 ```
 
@@ -61,7 +61,7 @@ Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 | High | 165.29 |
 | Low | 163.58 |
 | Close | 164.66 |
-| Volume | 1304028 |
+| Volume | 1350853 |
 
 ### Verified technical indicators (latest row)
 
@@ -210,34 +210,34 @@ Use this snapshot as the source of truth for exact OHLCV, price-level, and indic
 ```text
 ## rsi values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: 52.67442266884383
+2026-07-06: 52.67442266884387
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: 53.50504846393533
-2026-07-02: 44.792431976624684
-2026-07-01: 43.75830957978562
-2026-06-30: 52.40674694248864
-2026-06-29: 50.02546588566846
+2026-07-03: 53.50504846393539
+2026-07-02: 44.792431976624336
+2026-07-01: 43.75830957978521
+2026-06-30: 52.40674694248867
+2026-06-29: 50.02546588566834
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 46.08186889924467
-2026-06-25: 47.57268779487557
-2026-06-24: 52.41198161661917
-2026-06-23: 51.13099216183647
-2026-06-22: 49.385941174655756
+2026-06-26: 46.08186889924427
+2026-06-25: 47.57268779487526
+2026-06-24: 52.41198161661921
+2026-06-23: 51.130992161836396
+2026-06-22: 49.38594117465554
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 47.1745421450811
-2026-06-18: 46.81133951093342
-2026-06-17: 49.566386369431584
-2026-06-16: 45.91140178994996
-2026-06-15: 45.73177407542385
+2026-06-19: 47.17454214508068
+2026-06-18: 46.811339510932974
+2026-06-17: 49.56638636943136
+2026-06-16: 45.911401789949366
+2026-06-15: 45.73177407542324
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 41.13358676688099
-2026-06-11: 34.10746056762961
-2026-06-10: 39.52268354438812
-2026-06-09: 39.892170675954034
+2026-06-12: 41.13358676687982
+2026-06-11: 34.10746056762745
+2026-06-10: 39.52268354438638
+2026-06-09: 39.89217067595233
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -253,34 +253,34 @@ RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/3
 ```text
 ## macd values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: -0.28044933063245026
+2026-07-06: -0.2804493306325355
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: -0.45493121304033934
-2026-07-02: -0.707670969268861
-2026-07-01: -0.624910365052159
-2026-06-30: -0.46844230658180663
-2026-06-29: -0.6579911253481328
+2026-07-03: -0.45493121304045303
+2026-07-02: -0.7076709692689747
+2026-07-01: -0.6249103650522443
+2026-06-30: -0.4684423065818635
+2026-06-29: -0.6579911253481612
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: -0.7875177605996839
-2026-06-25: -0.7794955077631585
-2026-06-24: -0.8271536973821014
-2026-06-23: -1.0887511782099466
-2026-06-22: -1.3477551310618878
+2026-06-26: -0.7875177605997408
+2026-06-25: -0.7794955077632153
+2026-06-24: -0.8271536973821867
+2026-06-23: -1.088751178209975
+2026-06-22: -1.3477551310619447
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: -1.5772797909802705
-2026-06-18: -1.7444571110891616
-2026-06-17: -1.9151533372105973
-2026-06-16: -2.255859044981378
-2026-06-15: -2.471583466719892
+2026-06-19: -1.5772797909803558
+2026-06-18: -1.7444571110892468
+2026-06-17: -1.9151533372106826
+2026-06-16: -2.255859044981463
+2026-06-15: -2.4715834667200056
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: -2.701811152015523
-2026-06-11: -2.724220996053333
-2026-06-10: -2.3985812644610576
-2026-06-09: -2.3370042980297967
+2026-06-12: -2.701811152015665
+2026-06-11: -2.724220996053475
+2026-06-10: -2.3985812644611997
+2026-06-09: -2.337004298029939
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -296,34 +296,34 @@ MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and 
 ```text
 ## atr values from 2026-06-06 to 2026-07-06:
 
-2026-07-06: 3.0619827727409334
+2026-07-06: 3.0619827727408935
 2026-07-05: N/A: Not a trading day (weekend or holiday)
 2026-07-04: N/A: Not a trading day (weekend or holiday)
-2026-07-03: 3.165982104868842
-2026-07-02: 3.111057275796253
-2026-07-01: 3.108060977374931
-2026-06-30: 3.0140655270918724
-2026-06-29: 3.0574554177726174
+2026-07-03: 3.165982104868799
+2026-07-02: 3.111057275796207
+2026-07-01: 3.108060977374881
+2026-06-30: 3.0140655270918186
+2026-06-29: 3.0574554177725592
 2026-06-28: N/A: Not a trading day (weekend or holiday)
 2026-06-27: N/A: Not a trading day (weekend or holiday)
-2026-06-26: 3.135721735591064
-2026-06-25: 3.2292389330253526
-2026-06-24: 3.246103888886077
-2026-06-23: 3.2511893668172176
-2026-06-22: 3.359742676734648
+2026-06-26: 3.1357217355910016
+2026-06-25: 3.2292389330252855
+2026-06-24: 3.2461038888860045
+2026-06-23: 3.25118936681714
+2026-06-22: 3.359742676734564
 2026-06-21: N/A: Not a trading day (weekend or holiday)
 2026-06-20: N/A: Not a trading day (weekend or holiday)
-2026-06-19: 3.4797226478867125
-2026-06-18: 3.5889322701400177
-2026-06-17: 3.59346561558949
-2026-06-16: 3.672194350217167
-2026-06-15: 3.646209722784954
+2026-06-19: 3.479722647886622
+2026-06-18: 3.5889322701399196
+2026-06-17: 3.5934656155893845
+2026-06-16: 3.6721943502170533
+2026-06-15: 3.646209722784832
 2026-06-14: N/A: Not a trading day (weekend or holiday)
 2026-06-13: N/A: Not a trading day (weekend or holiday)
-2026-06-12: 3.6889941940238207
-2026-06-11: 3.674301064116999
-2026-06-10: 3.6630928902630178
-2026-06-09: 3.7371771934953895
+2026-06-12: 3.6889941940236888
+2026-06-11: 3.674301064116857
+2026-06-10: 3.663092890262865
+2026-06-09: 3.737177193495225
 2026-06-08: N/A: Not a trading day (weekend or holiday)
 2026-06-07: N/A: Not a trading day (weekend or holiday)
 2026-06-06: N/A: Not a trading day (weekend or holiday)
@@ -388,7 +388,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Insider Transactions data for CBA.AX
-# Data retrieved on: 2026-07-06 22:15:58
+# Data retrieved on: 2026-07-07 08:58:56
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,450,52288.0,,Purchase at price 116.20 per share.,O'Malley (Paul Francis),Chairman of the Board,,2026-05-19,D
@@ -449,7 +449,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Company Fundamentals for CBA.AX
-# Data retrieved on: 2026-07-06 22:15:59
+# Data retrieved on: 2026-07-07 08:58:56
 
 Name: Commonwealth Bank of Australia
 Sector: Financial Services
@@ -483,7 +483,7 @@ Book Value: 46.188
 
 ```text
 # Balance Sheet data for CBA.AX (quarterly)
-# Data retrieved on: 2026-07-06 22:15:59
+# Data retrieved on: 2026-07-07 08:58:57
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,1338636.0,1620212.0,1463595.0
@@ -767,7 +767,7 @@ product offering is now simpler with a focus on home loans and everyday banking.
 - Supports claims: NIM, margin quality
 
 ```text
-__TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights Financial highlights $10,133m $10,252m Statutory net profit Cash NPAT after tax (NPAT) 4% on FY24 7% on FY24 $28,465m 2.08% Operating income Net interest
+Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -780,7 +780,7 @@ __TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights 
 - Supports claims: CET1, capital adequacy
 
 ```text
-__TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital ratio | coverage ratio 2 | 450
+Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -793,7 +793,7 @@ __TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital 
 - Supports claims: loan growth
 
 ```text
-Staff increases were due | portfolio remains well secured and 85% of home lending __TABLE_ROW__ page=17 table=1001 row=51 title=pdfplumber_words | $12,996m | to additional resources for the delivery of our strategic priorities and were
+Home lending grew above market at 7%, while business and rural lending grew 2% above a relatively flat
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -806,7 +806,7 @@ Staff increases were due | portfolio remains well secured and 85% of home lendin
 - Supports claims: arrears, credit quality
 
 ```text
-Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2 (Scope 3) 1 FY24 PCAF Score Scope 1 & 2 (Scope 3) 1 Status Further information see page(s) Sector-level financed emissions goals Australian housing kgCO2-e/m2
+Home loan and personal | 1.50 | 1.51 __TABLE_ROW__ page=17 table=1001 row=48 title=pdfplumber_words | Operating expenses | Operating expenses increased 6% driven by higher staff, information technology costs and | loan arrears increased as
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -819,7 +819,7 @@ Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2
 - Supports claims: impairment, credit quality
 
 ```text
-__TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words | Loan impairment expense | (726) | (802) | 
+Five-year financial summary 385 CBA FINANCIAL REPORT 2025 Annual report 30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 22 30 Jun 21 $M $M $M $M $M Net interest income 24,023 22,824 23,056 19,473 19,302 Other operating income 4,442 4,350 4,079 5,126
 ```
 
 ### Section: asx_fallback_document / sector_metric

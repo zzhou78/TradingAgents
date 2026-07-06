@@ -15,6 +15,10 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 ```text
 ## BHP.AX News, from 2026-06-29 to 2026-07-06:
 
+### TNR Gold chair: Altius, McEwen, Ganfeng, Lundin and BHP support royalty-focused growth strategy (source: Proactive)
+TNR Gold Corp (TSX-V:TNR, FRA:TNW, OTC:TRRXF) executive chairman Kirill Klip joined Proactive's Stephen Gunnion to discuss the company's normal course issuer bid, its royalty strategy and progress across its portfolio. Klip said the share buyback reflects management's view that TNR's price doesn't fully reflect underlying value, particularly following a strategic investment by Canadian royalty giant Altius, which he described as an important validation of the portfolio and strategy following extensive due diligence. He also outlined longer-term ambitions to introduce a dividend policy once regulatory requirements are met. On the portfolio, Klip highlighted Ganfeng Lithium's Mariana project exporting its first lithium chloride as a pivotal milestone. "We are transforming and basically graduating from years of being a project-generated junior mining company to potentially cash flow generation royalty company," he said. He also covered McEwen Copper's Los Azules copper project, where ongoing financing and inclusion in Argentina's RIGI investment incentive programme could further de-risk the asset, and provided an update on the Shotgun Gold project in Alaska, which he described as an important source of optionality as TNR pursues a major partner. For more interviews with leading companies and market insights, visit the Proactive YouTube channel. Don't forget to like this video, subscribe to the channel and enable notifications so you never miss future updates. #TNRGold #KirillKlip #Mining #RoyaltyCompany #Lithium #Copper #Gold #MarianaLithium #LosAzules #ShotgunGold #Altius #GanfengLithium #McEwenCopper #ArgentinaMining #CriticalMinerals #EnergyTransition #JuniorMining #Investing #TSXV #Proactive
+Link: https://finance.yahoo.com/video/tnr-gold-chair-altius-mcewen-140630836.html
+
 ### BHP agrees to sell San Manuel property to Faraday Copper (source: Mining Technology)
 The agreement provides for BHP to receive a 30% equity interest in Faraday on a fully diluted basis once the deal closes.
 Link: https://www.mining-technology.com/news/bhp-sell-san-manuel-property-faraday-copper/
@@ -52,7 +56,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-06 22:12:49
+# Data retrieved on: 2026-07-07 08:49:28
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D

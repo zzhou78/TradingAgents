@@ -4,10 +4,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "revenue_income_npat",
     "section_kind": "revenue_income_npat",
     "metric_name": "",
@@ -30,7 +30,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -38,10 +38,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "eps_dps",
     "section_kind": "eps_dps",
     "metric_name": "",
@@ -64,7 +64,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -72,10 +72,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "management_discussion_analysis",
     "section_kind": "management_discussion_analysis",
     "metric_name": "",
@@ -98,7 +98,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -106,10 +106,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "cash_flow_statement",
     "section_kind": "cash_flow_statement",
     "metric_name": "",
@@ -133,7 +133,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -141,10 +141,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "operating_cash_flow",
     "section_kind": "operating_cash_flow",
     "metric_name": "",
@@ -167,7 +167,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -175,10 +175,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "free_cash_flow_or_cash_movement",
     "section_kind": "free_cash_flow_or_cash_movement",
     "metric_name": "",
@@ -202,7 +202,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -210,10 +210,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "cash_debt_gearing",
     "section_kind": "cash_debt_gearing",
     "metric_name": "",
@@ -237,7 +237,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -245,10 +245,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "segment_product_performance",
     "section_kind": "segment_product_performance",
     "metric_name": "",
@@ -270,7 +270,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -278,10 +278,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "management_commentary_outlook",
     "section_kind": "management_commentary_outlook",
     "metric_name": "",
@@ -303,7 +303,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -311,10 +311,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "dividends_capital_management",
     "section_kind": "dividends_capital_management",
     "metric_name": "",
@@ -336,7 +336,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -344,10 +344,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "capex_commitments",
     "section_kind": "capex_commitments",
     "metric_name": "",
@@ -369,7 +369,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -377,10 +377,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "material_risks",
     "section_kind": "material_risks",
     "metric_name": "",
@@ -401,7 +401,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -409,10 +409,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "one_off_items",
     "section_kind": "one_off_items",
     "metric_name": "",
@@ -435,7 +435,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -443,10 +443,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "financial_statement_tables",
     "section_kind": "financial_statement_tables",
     "metric_name": "",
@@ -472,7 +472,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -480,10 +480,10 @@
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
-    "source_quality_tier": "tier_4_company_ir_landing_page",
-    "document_role": "landing_page",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
     "extraction_status": "available",
-    "metric_eligibility": "discovery_only",
+    "metric_eligibility": "eligible_financial_document",
     "section_name": "segment_product_tables",
     "section_kind": "segment_product_tables",
     "metric_name": "",
@@ -506,11 +506,399 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
     "evidence_id": "financial:CSL.AX:2026-07-06:016",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_segment_revenue",
+    "section_kind": "sector_metric",
+    "metric_name": "segment_revenue",
+    "metric_label": "segment revenue",
+    "sector": "healthcare",
+    "status": "unavailable",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "",
+    "supports_claims": [
+      "segment revenue"
+    ],
+    "evidence_gap": "segment revenue was not identified in selected eligible ASX financial documents.",
+    "confidence": "low",
+    "limitations": [
+      "section_unavailable"
+    ],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 0,
+    "candidate_origin": "unavailable",
+    "section_title": "unavailable",
+    "metric_candidate_count": 0,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "unavailable",
+    "association_score": 0,
+    "association_reason": "segment revenue was not identified in selected eligible ASX financial documents.",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "metric label unavailable",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "no supporting sentence extracted",
+    "comparison_basis": "unavailable",
+    "direction": "unavailable",
+    "confidence_reason": "segment revenue was not identified in selected eligible ASX financial documents.",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "unavailable",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:017",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_r_and_d",
+    "section_kind": "sector_metric",
+    "metric_name": "r_and_d",
+    "metric_label": "R&D",
+    "sector": "healthcare",
+    "status": "available",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "+ READ MORE ABOUT CSL\u2019S R&D PIPELINE AT WWW.CSL.COM/RESEARCH-ANDDEVELOPMENT/PRODUCT-PIPELINE NPATA attributable to equity holders of US$3.2 billion for the year ended 30 June 2025, up 11% on a reported currency basis when compared to the",
+    "supports_claims": [
+      "R&D"
+    ],
+    "evidence_gap": "",
+    "confidence": "low",
+    "limitations": [],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 69,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
+    "metric_candidate_count": 1,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "direction_extracted",
+    "association_score": 45,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "+ READ MORE ABOUT CSL\u2019S R&D PIPELINE AT WWW.CSL.COM/RESEARCH-ANDDEVELOPMENT/PRODUCT-PIPELINE NPATA attributable to equity holders of US$3.2 billion for the year ended 30 June 2025, up 11% on a reported currency basis when compared to the pr",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "supportive",
+    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "1",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:018",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_plasma_collections",
+    "section_kind": "sector_metric",
+    "metric_name": "plasma_collections",
+    "metric_label": "plasma collections",
+    "sector": "healthcare",
+    "status": "available",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "In plasma collection the focus is on three areas; enhancing collection efficiency, reducing the unit acquisition cost and providing a world-class experience for donors and",
+    "supports_claims": [
+      "plasma collections"
+    ],
+    "evidence_gap": "",
+    "confidence": "low",
+    "limitations": [],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 59,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
+    "metric_candidate_count": 1,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "metric_mentioned_only",
+    "association_score": 35,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "In plasma collection the focus is on three areas; enhancing collection efficiency, reducing the unit acquisition cost and providing a world-class experience for donors and communities.",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "1",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:019",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_margins",
+    "section_kind": "sector_metric",
+    "metric_name": "margins",
+    "metric_label": "margin",
+    "sector": "healthcare",
+    "status": "available",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL\u2019s",
+    "supports_claims": [
+      "margins"
+    ],
+    "evidence_gap": "",
+    "confidence": "low",
+    "limitations": [],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 59,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
+    "metric_candidate_count": 1,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "metric_mentioned_only",
+    "association_score": 35,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL\u2019s ",
+    "comparison_basis": "metric mentioned without explicit comparative baseline",
+    "direction": "neutral",
+    "confidence_reason": "metric label is present but no clean value or direction was extracted",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "1",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:020",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_debt",
+    "section_kind": "sector_metric",
+    "metric_name": "debt",
+    "metric_label": "net debt",
+    "sector": "healthcare",
+    "status": "available",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL\u2019s",
+    "supports_claims": [
+      "debt",
+      "liquidity"
+    ],
+    "evidence_gap": "",
+    "confidence": "low",
+    "limitations": [],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 69,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
+    "metric_candidate_count": 1,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "direction_extracted",
+    "association_score": 45,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL\u2019s ",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "adverse",
+    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "1",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:021",
+    "ticker": "CSL.AX",
+    "trade_date": "2026-07-06",
+    "source_type": "asx_fallback_document",
+    "source_quality_tier": "tier_3_structured_online_annual_report",
+    "document_role": "annual_report",
+    "extraction_status": "available",
+    "metric_eligibility": "eligible_financial_document",
+    "section_name": "sector_metric_guidance",
+    "section_kind": "sector_metric",
+    "metric_name": "guidance",
+    "metric_label": "guidance",
+    "sector": "healthcare",
+    "status": "available",
+    "filing_date": "2025-12-31",
+    "source_date": "2025-12-31",
+    "url": "https://investors.csl.com/annualreport/2025/",
+    "excerpt": "+ READ MORE AT INVESTORS.CSL.COM CSL\u2019s Businesses and Outlook US$11,158m CSL Behring revenue 16 Performance The FY2025 financial year was dynamic for the vaccine market and CSL Seqirus generated positive",
+    "supports_claims": [
+      "guidance",
+      "outlook"
+    ],
+    "evidence_gap": "",
+    "confidence": "low",
+    "limitations": [],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
+    "final_financial_judgment": "pending_codex_interpretation",
+    "candidate_score": 69,
+    "candidate_origin": "text_block",
+    "section_title": "revenue_income_npat",
+    "metric_candidate_count": 1,
+    "metric_label_value_distance_tokens": 999,
+    "competing_labels_near_value": [],
+    "navigation_toc_penalty": 0,
+    "footnote_header_footer_penalty": 0,
+    "metric_value_status": "direction_extracted",
+    "association_score": 45,
+    "association_reason": "metric label present but no compatible value found; competing or rejected labels may be closer",
+    "clean_metric_value": "unavailable",
+    "value_unit": "unavailable",
+    "value_context": "no high-confidence metric-value association",
+    "period_reference": "unavailable",
+    "comparison_reference": "unavailable",
+    "supporting_sentence": "+ READ MORE AT INVESTORS.CSL.COM CSL\u2019s Businesses and Outlook US$11,158m CSL Behring revenue 16 Performance The FY2025 financial year was dynamic for the vaccine market and CSL Seqirus generated positive growth.",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "supportive",
+    "confidence_reason": "directional wording is present but no compatible clean metric value was attached",
+    "table_title": "unavailable",
+    "row_label": "unavailable",
+    "column_label": "unavailable",
+    "cell_value": "unavailable",
+    "source_page": "1",
+    "table_mapping_confidence": 0,
+    "table_mapping_reason": "no table row mapping available",
+    "raw_row_text": "unavailable",
+    "current_period_value": "unavailable",
+    "prior_period_value": "unavailable",
+    "variance_value": "unavailable",
+    "variance_percent": "unavailable"
+  },
+  {
+    "evidence_id": "financial:CSL.AX:2026-07-06:022",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -540,11 +928,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:017",
+    "evidence_id": "financial:CSL.AX:2026-07-06:023",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -576,11 +964,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:018",
+    "evidence_id": "financial:CSL.AX:2026-07-06:024",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -612,11 +1000,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:019",
+    "evidence_id": "financial:CSL.AX:2026-07-06:025",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -645,11 +1033,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:020",
+    "evidence_id": "financial:CSL.AX:2026-07-06:026",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -679,11 +1067,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:021",
+    "evidence_id": "financial:CSL.AX:2026-07-06:027",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -712,11 +1100,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:022",
+    "evidence_id": "financial:CSL.AX:2026-07-06:028",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -747,11 +1135,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:023",
+    "evidence_id": "financial:CSL.AX:2026-07-06:029",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -782,11 +1170,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:024",
+    "evidence_id": "financial:CSL.AX:2026-07-06:030",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -817,11 +1205,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:025",
+    "evidence_id": "financial:CSL.AX:2026-07-06:031",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -852,11 +1240,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:026",
+    "evidence_id": "financial:CSL.AX:2026-07-06:032",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -887,11 +1275,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:027",
+    "evidence_id": "financial:CSL.AX:2026-07-06:033",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -921,11 +1309,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:028",
+    "evidence_id": "financial:CSL.AX:2026-07-06:034",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -955,11 +1343,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:029",
+    "evidence_id": "financial:CSL.AX:2026-07-06:035",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -990,11 +1378,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:030",
+    "evidence_id": "financial:CSL.AX:2026-07-06:036",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1026,11 +1414,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:031",
+    "evidence_id": "financial:CSL.AX:2026-07-06:037",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1060,11 +1448,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:032",
+    "evidence_id": "financial:CSL.AX:2026-07-06:038",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1096,11 +1484,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:033",
+    "evidence_id": "financial:CSL.AX:2026-07-06:039",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1132,11 +1520,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:034",
+    "evidence_id": "financial:CSL.AX:2026-07-06:040",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1167,11 +1555,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:035",
+    "evidence_id": "financial:CSL.AX:2026-07-06:041",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1201,11 +1589,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:036",
+    "evidence_id": "financial:CSL.AX:2026-07-06:042",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1236,11 +1624,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:037",
+    "evidence_id": "financial:CSL.AX:2026-07-06:043",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1273,11 +1661,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:038",
+    "evidence_id": "financial:CSL.AX:2026-07-06:044",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1306,11 +1694,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:039",
+    "evidence_id": "financial:CSL.AX:2026-07-06:045",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1341,11 +1729,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:040",
+    "evidence_id": "financial:CSL.AX:2026-07-06:046",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1376,11 +1764,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:041",
+    "evidence_id": "financial:CSL.AX:2026-07-06:047",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1411,11 +1799,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:042",
+    "evidence_id": "financial:CSL.AX:2026-07-06:048",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1443,11 +1831,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:043",
+    "evidence_id": "financial:CSL.AX:2026-07-06:049",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1475,11 +1863,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:044",
+    "evidence_id": "financial:CSL.AX:2026-07-06:050",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1512,11 +1900,11 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
-    "evidence_id": "financial:CSL.AX:2026-07-06:045",
+    "evidence_id": "financial:CSL.AX:2026-07-06:051",
     "ticker": "CSL.AX",
     "trade_date": "2026-07-06",
     "source_type": "asx_fallback_document",
@@ -1546,7 +1934,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:14:58+10:00",
+    "retrieval_time": "2026-07-07T09:06:37+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   }
 ]

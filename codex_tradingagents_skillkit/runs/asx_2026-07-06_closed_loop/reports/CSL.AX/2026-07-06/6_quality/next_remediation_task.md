@@ -2,26 +2,30 @@
 
 Ticker: `CSL.AX`
 Trade date: `2026-07-06`
-Root cause category: `report_quality_validation`
-Failed gate: `quality_review_gate`
+Root cause category: `asx_core_metric_coverage_insufficient`
+Failed gate: `asx_core_metric_coverage_gate`
 Status: `pending`
 
 ## Validator Error
 
-ASX sector-specific metrics are missing without evidence-gap disclosure
+ASX core metric coverage failed; review-ready quality gate cannot pass
 
 ## Required Fix
 
-Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.
+Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.
 
 ## Affected Files
 
+- `codex_tradingagents_skillkit/scripts/core_metric_coverage.py`
+- `codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py`
+- `codex_tradingagents_skillkit/scripts/financial_document_evidence.py`
 - `codex_tradingagents_skillkit/scripts/validate_quality_review.py`
-- `codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md`
+- `codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py`
 
 ## Required Tests
 
-- `codex_tradingagents_skillkit/tests/test_skillkit_bundle.py`
+- `codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py`
+- `codex_tradingagents_skillkit/tests/test_financial_document_sources.py`
 
 ## Verification And Rerun
 

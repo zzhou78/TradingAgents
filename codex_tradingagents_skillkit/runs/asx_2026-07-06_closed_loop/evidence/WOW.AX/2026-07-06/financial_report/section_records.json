@@ -30,7 +30,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -64,7 +64,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -98,7 +98,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -131,7 +131,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -163,7 +163,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -196,7 +196,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -231,7 +231,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -264,7 +264,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -297,7 +297,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -330,7 +330,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -363,7 +363,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -395,7 +395,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -427,7 +427,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -462,7 +462,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -496,7 +496,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation"
   },
   {
@@ -517,7 +517,7 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/f25/2936242.pdf",
-    "excerpt": "__TABLE_ROW__ page=35 table=1001 row=13 title=pdfplumber_words | Total sales | 51,452 | 50,823 | 1.2% |",
+    "excerpt": "__TABLE_ROW__ page=31 table=1 row=38 title=pdfplumber_text_table_1 | sales growth of 3.6%. Excluding Petstock, Group sales a normalised 12.6% | primarily d | ue to | lower earning | s |  |  |  |  |  | F25 | F24 |  | CHANGE |",
     "supports_claims": [
       "sales growth"
     ],
@@ -528,7 +528,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "table",
@@ -541,26 +541,26 @@
     "metric_value_status": "value_extracted",
     "association_score": 100,
     "association_reason": "table row label matches accepted metric label and value is taken from parsed row/column structure",
-    "clean_metric_value": "1.2",
+    "clean_metric_value": "3",
     "value_unit": "%",
     "value_context": "table row/column label association",
-    "period_reference": "CHANGE",
+    "period_reference": "",
     "comparison_reference": "not specified",
-    "supporting_sentence": "__TABLE_ROW__ page=35 table=1001 row=13 title=pdfplumber_words | Total sales | 51,452 | 50,823 | 1.2% | 3.1%",
-    "comparison_basis": "metric mentioned without explicit comparative baseline",
-    "direction": "neutral",
+    "supporting_sentence": "__TABLE_ROW__ page=31 table=1 row=38 title=pdfplumber_text_table_1 | sales growth of 3.6%. Excluding Petstock, Group sales a normalised 12.6% | primarily d | ue to | lower earning | s |  |  |  |  |  | F25 | F24 |  | CHANGE | 3",
+    "comparison_basis": "period-over-period wording in extracted filing/report phrase",
+    "direction": "mixed",
     "confidence_reason": "clean value accepted because metric label, compatible unit, and proximity met threshold",
-    "table_title": "pdfplumber_words",
-    "row_label": "Total sales",
-    "column_label": "CHANGE",
-    "cell_value": "1.2%",
-    "source_page": "35",
+    "table_title": "pdfplumber_text_table_1",
+    "row_label": "sales growth of 3.6%. Excluding Petstock, Group sales a normalised 12.6%",
+    "column_label": "",
+    "cell_value": "3",
+    "source_page": "31",
     "table_mapping_confidence": 100,
-    "table_mapping_reason": "accepted row label; header row available; accepted column label; preferred value type variance_value; unit % compatible; source page preserved",
-    "raw_row_text": "Total sales | 51,452 | 50,823 | 1.2% | 3.1%",
+    "table_mapping_reason": "accepted row label; header row available; accepted column label; unit % compatible; source page preserved",
+    "raw_row_text": "sales growth of 3.6%. Excluding Petstock, Group sales a normalised 12.6% | primarily d | ue to | lower earning | s |  |  |  |  |  | F25 | F24 |  | CHANGE | 3",
     "current_period_value": "unavailable",
     "prior_period_value": "unavailable",
-    "variance_value": "1.2",
+    "variance_value": "unavailable",
     "variance_percent": "unavailable"
   },
   {
@@ -592,7 +592,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "text_block",
@@ -659,7 +659,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "text_block",
@@ -726,7 +726,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "text_block",
@@ -779,7 +779,7 @@
     "filing_date": "2025-12-31",
     "source_date": "2025-12-31",
     "url": "https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/f25/2936242.pdf",
-    "excerpt": "2025 (52 WEEKS) AUSTRALIAN FOOD $M AUSTRALIAN B2B $M NEW ZEALAND FOOD $M W LIVING $M OTHER $M ELIMINATIONS/ RECLASSIFICATIONS $M TOTAL $M Revenue External 51,291 4,736 7, 55 6 5,638 238 (382) 69,077 Internal 161 1,007 1 \u2013 8 (1,177) \u2013 Total",
+    "excerpt": "2025 2024 52 WEEKS 53 WEEKS NOTE $M $M Cash flows from operating activities Receipts from customers 73,510 72,155 Payments to suppliers and employees (67, 3 3 6 ) (66,292) Payments for the interest component of lease liabilities 3.5.2",
     "supports_claims": [
       "capex"
     ],
@@ -790,7 +790,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 69,
     "candidate_origin": "text_block",
@@ -808,7 +808,7 @@
     "value_context": "no high-confidence metric-value association",
     "period_reference": "unavailable",
     "comparison_reference": "unavailable",
-    "supporting_sentence": "2025 (52 WEEKS) AUSTRALIAN FOOD $M AUSTRALIAN B2B $M NEW ZEALAND FOOD $M W LIVING $M OTHER $M ELIMINATIONS/ RECLASSIFICATIONS $M TOTAL $M Revenue External 51,291 4,736 7, 55 6 5,638 238 (382) 69,077 Internal 161 1,007 1 \u2013 8 (1,177) \u2013 Total ",
+    "supporting_sentence": "2025 2024 52 WEEKS 53 WEEKS NOTE $M $M Cash flows from operating activities Receipts from customers 73,510 72,155 Payments to suppliers and employees (67, 3 3 6 ) (66,292) Payments for the interest component of lease liabilities 3.5.2 (597)",
     "comparison_basis": "dense table-like row requires parsed row/column mapping before value use",
     "direction": "neutral",
     "confidence_reason": "metric row appears present, but value association is unsafe without row/column mapping",
@@ -816,7 +816,7 @@
     "row_label": "unavailable",
     "column_label": "unavailable",
     "cell_value": "unavailable",
-    "source_page": "119",
+    "source_page": "115",
     "table_mapping_confidence": 0,
     "table_mapping_reason": "no table row mapping available",
     "raw_row_text": "unavailable",
@@ -854,7 +854,7 @@
       "valid_for_trade_date": true,
       "reason": "source_date is on or before trade_date"
     },
-    "retrieval_time": "2026-07-06T22:19:54+10:00",
+    "retrieval_time": "2026-07-07T08:55:32+10:00",
     "final_financial_judgment": "pending_codex_interpretation",
     "candidate_score": 100,
     "candidate_origin": "table",

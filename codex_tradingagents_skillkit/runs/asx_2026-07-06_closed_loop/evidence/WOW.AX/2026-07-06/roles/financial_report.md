@@ -231,7 +231,7 @@ Product stewardship More information on our sustainability progress across our v
 - Supports claims: sales growth
 
 ```text
-__TABLE_ROW__ page=35 table=1001 row=13 title=pdfplumber_words | Total sales | 51,452 | 50,823 | 1.2% |
+__TABLE_ROW__ page=31 table=1 row=38 title=pdfplumber_text_table_1 | sales growth of 3.6%. Excluding Petstock, Group sales a normalised 12.6% | primarily d | ue to | lower earning | s |  |  |  |  |  | F25 | F24 |  | CHANGE |
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -283,7 +283,7 @@ Decrease in inventories of $44 million reflects lower inventory holdings in Aust
 - Supports claims: capex
 
 ```text
-2025 (52 WEEKS) AUSTRALIAN FOOD $M AUSTRALIAN B2B $M NEW ZEALAND FOOD $M W LIVING $M OTHER $M ELIMINATIONS/ RECLASSIFICATIONS $M TOTAL $M Revenue External 51,291 4,736 7, 55 6 5,638 238 (382) 69,077 Internal 161 1,007 1 – 8 (1,177) – Total
+2025 2024 52 WEEKS 53 WEEKS NOTE $M $M Cash flows from operating activities Receipts from customers 73,510 72,155 Payments to suppliers and employees (67, 3 3 6 ) (66,292) Payments for the interest component of lease liabilities 3.5.2
 ```
 
 ### Section: asx_fallback_document / sector_metric

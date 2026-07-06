@@ -30,7 +30,7 @@ No global news found between 2026-06-29 and 2026-07-06
 
 ```text
 # Insider Transactions data for CSL.AX
-# Data retrieved on: 2026-07-06 22:14:51
+# Data retrieved on: 2026-07-07 09:06:31
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,1036,71079.0,,Purchase at price 68.61 per share.,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-06-01,D

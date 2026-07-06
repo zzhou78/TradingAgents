@@ -388,6 +388,54 @@ def test_asx_fallback_promotes_report_links_from_discovery_landing_pages():
     assert "https://www.bhp.example/careers" not in requested_urls
 
 
+def test_csl_structured_online_annual_report_is_eligible_financial_source():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/CSL/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/CSL" in url:
+            return """
+            <html><body>
+            <a href="https://investors.csl.com/annualreport/2025/">CSL 2025 Annual Report 19 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://investors.csl.com/annualreport/2025/":
+            return """
+            <html><body>
+            <h1>CSL 2025 Annual Report</h1>
+            <section>Operating and Financial Review</section>
+            <section>Financial Report</section>
+            <section>Key Performance Data Summary</section>
+            __TABLE_ROW__ page=8 table=1 row=0 title=key_performance_data | Metric | FY2025 US$m | FY2024 US$m | Change %
+            __TABLE_ROW__ page=8 table=1 row=1 title=key_performance_data | Segment revenue | 15,558 | 14,800 | 5.1%
+            Research and development investment was US$1.4bn.
+            Plasma collections increased 3.0% and gross margin was 50.6%.
+            Net debt was US$10.2bn. Guidance outlook expects revenue growth of 5%.
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("CSL.AX", "2026-07-02", http_get=fake_http_get)
+
+    assert packet["metric_extraction_status"] == "metrics_extracted_from_authoritative_sources"
+    report = next(source for source in packet["sources"] if source["url"] == "https://investors.csl.com/annualreport/2025/")
+    assert report["document_role"] == "annual_report"
+    assert report["source_quality_tier"] == "tier_3_structured_online_annual_report"
+    assert report["metric_eligibility"] == "eligible_financial_document"
+    segment_revenue = next(
+        section
+        for section in report["extracted_sections"]
+        if section.get("section_type") == "sector_metric" and section.get("metric_name") == "segment_revenue"
+    )
+    assert segment_revenue["metric_value_status"] == "value_extracted"
+    assert segment_revenue["row_label"] == "Segment revenue"
+    assert segment_revenue["column_label"] == "FY2025 US$m"
+    assert "https://investors.csl.com/annualreport/2025/" in requested_urls
+
+
 def test_asx_fallback_prefilters_archive_pages_to_latest_primary_report_pdf():
     module = _load_module()
     requested_urls: list[str] = []
@@ -927,7 +975,7 @@ def test_cba_highlights_row_is_not_suppressed_by_report_navigation_terms():
         "CBA.AX",
         "2025 highlights Financial highlights $10,133m Statutory net profit "
         "$28,465m Operating income Net interest margin 2.08% 9bpts on FY24 "
-        "12.3% Capital ratio Dividend per share, fully franked CET1 (APRA, Level 2) "
+        "12.3% Capital ratio CET1 (APRA, Level 2) Dividend per share, fully franked "
         "Flat on FY24 $4.85 Annual Report Financial Report Additional Information Contents.",
     )
     sections = {
@@ -958,6 +1006,171 @@ def test_cba_cet1_prefers_right_hand_capital_ratio_label_over_prior_dividend_lab
     assert result["value_unit"] == "%"
 
 
+def test_cba_nim_rejects_operating_income_percentage_before_metric_label():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Operating income increased 5% on FY24. Net interest margin commentary follows without a disclosed value.",
+        "net_interest_margin",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_nim_prefers_closest_financial_highlight_value_over_prior_growth_percent():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Statutory NPAT $10,133m 7% on FY24 Cash NPAT $10,252m 4% on FY24 "
+        "Net interest margin 2.08% 9bpts on FY24 Loan loss rate 7bpts 2bpts on FY24.",
+        "net_interest_margin",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "2.08"
+    assert result["value_unit"] == "%"
+
+
+def test_cba_nim_demotes_unmapped_pdf_table_artifact_below_clean_text_block():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=3\n"
+        "__TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | "
+        "2 2025 highlights Financial highlights $10,133m $10,252m Statutory net profit "
+        "Cash NPAT after tax (NPAT) 4% on FY24 7% on FY24 $28,465m 2.08% "
+        "Operating income Net interest margin | 5% on FY24\n"
+        "Financial highlights $10,133m Statutory net profit after tax (NPAT) "
+        "7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 "
+        "(APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 "
+        "$28,465m Operating income 5% on FY24."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "net_interest_margin",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+        },
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "2.08"
+    assert result["candidate_origin"] == "text_block"
+
+
+def test_cba_cet1_rejects_unrelated_coverage_or_tier_one_percentages():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Tier 1 coverage ratio was 2% in the operational risk note. Capital ratio disclosures are discussed later.",
+        "cet1",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_loan_growth_rejects_home_lending_mix_without_growth_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Home lending represented 85% of the Australian lending portfolio mix.",
+        "loan_growth",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_arrears_rejects_climate_or_financed_emissions_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Climate financed emissions sector table: arrears exposure represented 85% of home lending emissions.",
+        "arrears",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+    result = asx._extract_metric_value_from_text(
+        "RE100 renewable electricity % of global operations FY30: 100% 99.9% (Group) "
+        "Pending certification in arrears Pending certification in arrears.",
+        "arrears",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_arrears_rejects_unmapped_pdf_word_table_artifact():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=17\n"
+        "__TABLE_ROW__ page=17 table=1001 row=25 title=pdfplumber_words | 19 | SUSTAINABILITY\n"
+        "__TABLE_ROW__ page=17 table=1001 row=26 title=pdfplumber_words | FY25 | FY24 % change\n"
+        "__TABLE_ROW__ page=17 table=1001 row=28 title=pdfplumber_words | 2.08 | 4% | certification in arrears"
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "arrears",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+        },
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_cba_impairment_table_prefers_current_expense_not_variance_percent():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Metric | FY2025 $m | FY2024 $m | Change %\n"
+        "Loan impairment expense | 802 | 851 | (5.8%)",
+        "impairment",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "802"
+    assert result["value_unit"] == "$m"
+    assert result["column_label"] == "FY2025 $m"
+
+
+def test_cba_impairment_rejects_word_table_with_paragraph_column_fragment():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "__TABLE_ROW__ page=17 table=1001 row=11 title=pdfplumber_words | "
+        "FY24 $9,836m | ongoing financial performance. Statutory NPAT includes non-cash items. | "
+        "Loan impairment expense decreased 9% reflecting our robust credit origination and\n"
+        "__TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words | "
+        "Loan impairment expense | (726) | (802) | 9%",
+        "impairment",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
 def test_bhp_production_value_before_right_hand_production_label_is_accepted():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -972,7 +1185,7 @@ def test_bhp_production_value_before_right_hand_production_label_is_accepted():
     assert result["value_unit"] == "mt"
 
 
-def test_bhp_realised_price_prefers_price_per_tonne_over_revenue_share_percentage():
+def test_bhp_realised_price_dense_text_without_row_column_proof_is_rejected():
     module = _load_module()
     asx = module._load_asx_collector()
 
@@ -983,9 +1196,29 @@ def test_bhp_realised_price_prefers_price_per_tonne_over_revenue_share_percentag
         "realised_price",
     )
 
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["row_label"] in {"", "unavailable"}
+    assert result["column_label"] in {"", "unavailable"}
+
+
+def test_bhp_realised_price_requires_structured_table_row_and_column_mapping():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Metric | FY2025 | FY2024\n"
+        "Average realised price (US$/t) | 103 | 98\n"
+        "Production (Mt) | 257 | 260",
+        "realised_price",
+    )
+
     assert result["metric_value_status"] == "value_extracted"
-    assert result["clean_metric_value"] == "159"
+    assert result["clean_metric_value"] == "103"
     assert result["value_unit"] == "US$/t"
+    assert result["row_label"] == "Average realised price (US$/t)"
+    assert result["column_label"] == "FY2025"
+    assert result["table_mapping_confidence"] >= 80
 
 
 def test_bhp_unit_cost_prefers_dollar_per_tonne_guidance_over_basis_percentage():
@@ -1111,6 +1344,20 @@ def test_csl_segment_revenue_dense_row_requires_structured_table_mapping():
     assert result["association_score"] < 80
 
 
+def test_csl_guidance_rejects_business_outlook_segment_revenue_heading():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "CSL's Businesses and Outlook US$11,158m CSL Behring revenue 16 Performance. "
+        "The FY2025 financial year was dynamic for the vaccine market.",
+        "guidance",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
 def test_wow_dividends_reject_footnote_marker_and_ebit_margin_is_preserved():
     module = _load_module()
     packet = _asx_sector_packet(
@@ -1131,6 +1378,41 @@ def test_wow_dividends_reject_footnote_marker_and_ebit_margin_is_preserved():
     assert sections["ebit_margin"]["clean_metric_value"] == "82"
     assert sections["ebit_margin"]["value_unit"] == "bps"
     assert sections["ebit_margin"]["direction"] == "adverse"
+
+
+def test_wow_capex_extracts_cash_flow_purchase_of_ppe_row():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Consolidated statement of cash flows. Investing activities.\n"
+        "Metric | F25 $m | F24 $m\n"
+        "Payments for property, plant and equipment | (1,890) | (1,732)\n"
+        "Proceeds from disposal of property, plant and equipment | 33 | 28",
+        "capex",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "-1890"
+    assert result["value_unit"] == "$m"
+    assert result["row_label"] == "Payments for property, plant and equipment"
+    assert result["column_label"] == "F25 $m"
+    assert result["table_mapping_confidence"] >= 80
+
+
+def test_wow_capex_rejects_segment_revenue_table_without_capex_row():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Segment performance table capital expenditure mentioned in narrative. "
+        "Segment | Sales $m | EBIT $m | Margin %\n"
+        "Australian Food | 51,000 | 2,753 | 5.4%",
+        "capex",
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
 
 
 def test_mpl_claims_ratio_and_capital_adequacy_preserve_context():

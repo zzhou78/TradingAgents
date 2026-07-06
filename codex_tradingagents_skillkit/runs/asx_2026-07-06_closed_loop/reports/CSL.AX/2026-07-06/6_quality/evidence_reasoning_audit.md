@@ -1,22 +1,24 @@
 # Evidence And Reasoning Audit
 
 ## Summary Verdict
-pass
+pass_with_warnings
 
 ## Critical Findings
 - None.
 
 ## Warnings
-- None.
+- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-06:018 metric=plasma_collections`
+- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-06:019 metric=margins`
 
 ## Evidence References
-- None.
+- financial:CSL.AX:2026-07-06:018 metric=plasma_collections
+- financial:CSL.AX:2026-07-06:019 metric=margins
 
 ## Required Remediation
 - None.
 
 ## Regression Tests Needed
-- None.
+- Consider adding a fixture for this metric/source layout.
 
 ## Do Not Change
 - Do not replace Bull/Bear debate, Research Manager, Trader, Risk Analysts, Portfolio Manager, or Quality Reviewer.

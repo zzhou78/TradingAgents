@@ -7,9 +7,13 @@ pass_with_warnings
 - None.
 
 ## Warnings
+- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-06:019 metric=arrears`
+- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-06:020 metric=impairment`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-06:022 metric=roe`
 
 ## Evidence References
+- financial:CBA.AX:2026-07-06:019 metric=arrears
+- financial:CBA.AX:2026-07-06:020 metric=impairment
 - financial:CBA.AX:2026-07-06:022 metric=roe
 
 ## Required Remediation

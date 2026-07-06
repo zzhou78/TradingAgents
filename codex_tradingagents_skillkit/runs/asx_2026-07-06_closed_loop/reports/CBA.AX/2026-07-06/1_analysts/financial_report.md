@@ -14,11 +14,11 @@
 | financial:CBA.AX:2026-07-06:007 | asx_fallback_document | cash_debt_gearing | 2025-12-31 | available | Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating inc |
 | financial:CBA.AX:2026-07-06:004 | asx_fallback_document | cash_flow_statement | 2025-12-31 | available | cash flows in any given year. Series of severe cyclones over South-East Queensland Assumes two severe cyclones |
 | financial:CBA.AX:2026-07-06:001 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Lev |
-| financial:CBA.AX:2026-07-06:016 | asx_fallback_document | sector_metric_net_interest_margin | 2025-12-31 | available | __TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 / 2 2025 highlights Financial highlights $10,133m |
-| financial:CBA.AX:2026-07-06:017 | asx_fallback_document | sector_metric_cet1 | 2025-12-31 | available | __TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words / Tier 1 capital ratio / coverage ratio 2 / 450 |
-| financial:CBA.AX:2026-07-06:018 | asx_fallback_document | sector_metric_loan_growth | 2025-12-31 | available | Staff increases were due / portfolio remains well secured and 85% of home lending __TABLE_ROW__ page=17 table= |
-| financial:CBA.AX:2026-07-06:019 | asx_fallback_document | sector_metric_arrears | 2025-12-31 | available | Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2 (Scope 3) 1 FY24 PCAF Score S |
-| financial:CBA.AX:2026-07-06:020 | asx_fallback_document | sector_metric_impairment | 2025-12-31 | available | __TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words / Loan impairment expense / (726) / (802) /  |
+| financial:CBA.AX:2026-07-06:016 | asx_fallback_document | sector_metric_net_interest_margin | 2025-12-31 | available | Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully |
+| financial:CBA.AX:2026-07-06:017 | asx_fallback_document | sector_metric_cet1 | 2025-12-31 | available | Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully |
+| financial:CBA.AX:2026-07-06:018 | asx_fallback_document | sector_metric_loan_growth | 2025-12-31 | available | Home lending grew above market at 7%, while business and rural lending grew 2% above a relatively flat |
+| financial:CBA.AX:2026-07-06:019 | asx_fallback_document | sector_metric_arrears | 2025-12-31 | available | Home loan and personal / 1.50 / 1.51 __TABLE_ROW__ page=17 table=1001 row=48 title=pdfplumber_words / Operatin |
+| financial:CBA.AX:2026-07-06:020 | asx_fallback_document | sector_metric_impairment | 2025-12-31 | available | Five-year financial summary 385 CBA FINANCIAL REPORT 2025 Annual report 30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 2 |
 | financial:CBA.AX:2026-07-06:021 | asx_fallback_document | sector_metric_dividend | 2025-12-31 | available | Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully |
 | financial:CBA.AX:2026-07-06:022 | asx_fallback_document | sector_metric_roe | 2025-12-31 | available | 5.6 Cash NPAT ($bn) 1,2 CBA ANZ MBFS NAB WBC 10.3 6.7 1.4 7.1 7.1 Total maximum remuneration ($m) CBA 6 ANZ MB |
 
@@ -33,8 +33,8 @@
 | ASX sector metric: net interest margin | financial:CBA.AX:2026-07-06:016 ASX section record | sector_metric_net_interest_margin | 2025-12-31 | medium | none |
 | ASX sector metric: CET1 | financial:CBA.AX:2026-07-06:017 ASX section record | sector_metric_cet1 | 2025-12-31 | medium | none |
 | ASX sector metric: loan growth | financial:CBA.AX:2026-07-06:018 ASX section record | sector_metric_loan_growth | 2025-12-31 | medium | none |
-| ASX sector metric: arrears | financial:CBA.AX:2026-07-06:019 ASX section record | sector_metric_arrears | 2025-12-31 | medium | none |
-| ASX sector metric: impairment | financial:CBA.AX:2026-07-06:020 ASX section record | sector_metric_impairment | 2025-12-31 | medium | none |
+| ASX sector metric: arrears | financial:CBA.AX:2026-07-06:019 ASX section record | sector_metric_arrears | 2025-12-31 | low | none |
+| ASX sector metric: impairment | financial:CBA.AX:2026-07-06:020 ASX section record | sector_metric_impairment | 2025-12-31 | low | none |
 | ASX sector metric: dividend | financial:CBA.AX:2026-07-06:021 ASX section record | sector_metric_dividend | 2025-12-31 | medium | none |
 | ASX sector metric: ROE | financial:CBA.AX:2026-07-06:022 ASX section record | sector_metric_roe | 2025-12-31 | low | none |
 
@@ -44,8 +44,8 @@
 | financial:CBA.AX:2026-07-06:016 | banks | net interest margin | available | medium | none |
 | financial:CBA.AX:2026-07-06:017 | banks | CET1 | available | medium | none |
 | financial:CBA.AX:2026-07-06:018 | banks | loan growth | available | medium | none |
-| financial:CBA.AX:2026-07-06:019 | banks | arrears | available | medium | none |
-| financial:CBA.AX:2026-07-06:020 | banks | impairment | available | medium | none |
+| financial:CBA.AX:2026-07-06:019 | banks | arrears | available | low | none |
+| financial:CBA.AX:2026-07-06:020 | banks | impairment | available | low | none |
 | financial:CBA.AX:2026-07-06:021 | banks | dividend | available | medium | none |
 | financial:CBA.AX:2026-07-06:022 | banks | ROE | available | low | none |
 

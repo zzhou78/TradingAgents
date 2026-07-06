@@ -14,11 +14,11 @@
 | financial:BHP.AX:2026-07-06:007 | asx_fallback_document | cash_debt_gearing | 2025-12-31 | available | Debt investors Consensus estimates Sustainability approach Value chain sustainability Nature and environmental |
 | financial:BHP.AX:2026-07-06:004 | asx_fallback_document | cash_flow_statement | 2025-12-31 | available | operating cash flow of US$18.7 billion. After an adjusted effective tax rate including royalties of 44.6 per c |
 | financial:BHP.AX:2026-07-06:016 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | income and retirement. Over the past five years, BHP has delivered more than US$50 billion in cash dividends t |
-| financial:BHP.AX:2026-07-06:031 | asx_fallback_document | sector_metric_production | 2025-12-31 | available | 2.1 Our portfolio Record group copper production 2.02 Mt 8% on FY2024 Copper We are one of the world’s largest |
-| financial:BHP.AX:2026-07-06:032 | asx_fallback_document | sector_metric_realised_price | 2025-12-31 | available | Includes the fair value of contingent payments based on 35% revenue share to BMA, subject to average realised |
+| financial:BHP.AX:2026-07-06:031 | asx_fallback_document | sector_metric_production | 2025-12-31 | available | Copper Record group copper production 2.02 Mt ^8% on FY2024 We are one of the world’s largest copper |
+| financial:BHP.AX:2026-07-06:032 | asx_fallback_document | sector_metric_realised_price | 2025-12-31 | available | /nobreakspace Year ended 30 June US$M 2025 2024 Revenue 22,530 18,566 Underlying EBITDA 12,326 8,564 Net opera |
 | financial:BHP.AX:2026-07-06:033 | asx_fallback_document | sector_metric_unit_cost_aisc | 2025-12-31 | available | Production for FY2026 is expected to increase to between 18 and 20 Mt (36 and 40 Mt on a 100 per cent basis), |
-| financial:BHP.AX:2026-07-06:034 | asx_fallback_document | sector_metric_capex | 2025-12-31 | available | Major global producer by the end of the decade US$7.0–US$7.4bn Estimated capital expenditure for Jansen Stage |
-| financial:BHP.AX:2026-07-06:035 | asx_fallback_document | sector_metric_reserves_resources | 2025-12-31 | available | 2025 US$M Cash flow hedging reserve Cost of hedging reserve Gross Tax Net Gross Tax Net Total At the beginning |
+| financial:BHP.AX:2026-07-06:034 | asx_fallback_document | sector_metric_capex | 2025-12-31 | available | /nobreakspace Year ended 30 June 2025 US$M 2024 US$M Net debt at the beginning of the period (9,120) (11,166) |
+| financial:BHP.AX:2026-07-06:035 | asx_fallback_document | sector_metric_reserves_resources | 2025-12-31 | available | Total reserves (2) (15) 13 Summarised financial information relating to each of the Group’s subsidiaries with |
 | financial:BHP.AX:2026-07-06:036 | asx_fallback_document | sector_metric_commodity_exposure | 2025-12-31 | available | Refer to note 2 ‘Revenue’, which presents current and prior year revenue by |
 
 ## Claim-Source Table
@@ -30,9 +30,9 @@
 | Segment/product evidence | financial:BHP.AX:2026-07-06:008 ASX document | segment_product_performance | 2025-12-31 | medium | none |
 | Cash-flow evidence | financial:BHP.AX:2026-07-06:004 ASX document | cash_flow_statement | 2025-12-31 | medium | none |
 | ASX sector metric: production | financial:BHP.AX:2026-07-06:031 ASX section record | sector_metric_production | 2025-12-31 | medium | none |
-| ASX sector metric: realised price | financial:BHP.AX:2026-07-06:032 ASX section record | sector_metric_realised_price | 2025-12-31 | medium | none |
+| ASX sector metric: realised price | financial:BHP.AX:2026-07-06:032 ASX section record | sector_metric_realised_price | 2025-12-31 | low | none |
 | ASX sector metric: unit cost | financial:BHP.AX:2026-07-06:033 ASX section record | sector_metric_unit_cost_aisc | 2025-12-31 | medium | none |
-| ASX sector metric: capex | financial:BHP.AX:2026-07-06:034 ASX section record | sector_metric_capex | 2025-12-31 | medium | none |
+| ASX sector metric: capex | financial:BHP.AX:2026-07-06:034 ASX section record | sector_metric_capex | 2025-12-31 | low | none |
 | ASX sector metric: reserves | financial:BHP.AX:2026-07-06:035 ASX section record | sector_metric_reserves_resources | 2025-12-31 | low | none |
 | ASX sector metric: commodity exposure | financial:BHP.AX:2026-07-06:036 ASX section record | sector_metric_commodity_exposure | 2025-12-31 | low | none |
 
@@ -40,9 +40,9 @@
 | Evidence ID | Sector | Metric | Status | Confidence | Evidence gap |
 |---|---|---|---|---|---|
 | financial:BHP.AX:2026-07-06:031 | miners | production | available | medium | none |
-| financial:BHP.AX:2026-07-06:032 | miners | realised price | available | medium | none |
+| financial:BHP.AX:2026-07-06:032 | miners | realised price | available | low | none |
 | financial:BHP.AX:2026-07-06:033 | miners | unit cost | available | medium | none |
-| financial:BHP.AX:2026-07-06:034 | miners | capex | available | medium | none |
+| financial:BHP.AX:2026-07-06:034 | miners | capex | available | low | none |
 | financial:BHP.AX:2026-07-06:035 | miners | reserves | available | low | none |
 | financial:BHP.AX:2026-07-06:036 | miners | commodity exposure | available | low | none |
 

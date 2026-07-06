@@ -2,7 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
-- evidence_reasoning_auditor.py was run before review-ready status: fail (1 critical findings, 2 warnings).
+- evidence_reasoning_auditor.py was run before review-ready status: pass_with_warnings (0 critical findings, 4 warnings).
 - Role reports and evidence records including market:BHP.AX:2026-07-06:001, financial:BHP.AX:2026-07-06:016, news:BHP.AX:2026-07-06:001, and social:BHP.AX:2026-07-06:001.
 
 ## Quality Gate Findings

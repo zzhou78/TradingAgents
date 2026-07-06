@@ -19,9 +19,9 @@ Interpretation: structured fundamentals provide ratio and statement context only
 ## Sector-Specific Metrics
 - ASX sector identified by collector: miners.
 - production: available via financial:BHP.AX:2026-07-06:031; confidence medium.
-- realised price: available via financial:BHP.AX:2026-07-06:032; confidence medium.
+- realised price: available via financial:BHP.AX:2026-07-06:032; confidence low.
 - unit cost: available via financial:BHP.AX:2026-07-06:033; confidence medium.
-- capex: available via financial:BHP.AX:2026-07-06:034; confidence medium.
+- capex: available via financial:BHP.AX:2026-07-06:034; confidence low.
 - reserves: available via financial:BHP.AX:2026-07-06:035; confidence low.
 - commodity exposure: available via financial:BHP.AX:2026-07-06:036; confidence low.
 

@@ -224,7 +224,7 @@ product offering is now simpler with a focus on home loans and everyday banking.
 - Supports claims: NIM, margin quality
 
 ```text
-__TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights Financial highlights $10,133m $10,252m Statutory net profit Cash NPAT after tax (NPAT) 4% on FY24 7% on FY24 $28,465m 2.08% Operating income Net interest
+Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -237,7 +237,7 @@ __TABLE_ROW__ page=3 table=1 row=0 title=pdfplumber_table_1 | 2 2025 highlights 
 - Supports claims: CET1, capital adequacy
 
 ```text
-__TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital ratio | coverage ratio 2 | 450
+Financial highlights $10,133m Statutory net profit after tax (NPAT) 7% on FY24 $4.85 Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24 2.08% Net interest margin 9bpts on FY24 $28,465m Operating income
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -250,7 +250,7 @@ __TABLE_ROW__ page=15 table=1001 row=40 title=pdfplumber_words | Tier 1 capital 
 - Supports claims: loan growth
 
 ```text
-Staff increases were due | portfolio remains well secured and 85% of home lending __TABLE_ROW__ page=17 table=1001 row=51 title=pdfplumber_words | $12,996m | to additional resources for the delivery of our strategic priorities and were
+Home lending grew above market at 7%, while business and rural lending grew 2% above a relatively flat
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -263,7 +263,7 @@ Staff increases were due | portfolio remains well secured and 85% of home lendin
 - Supports claims: arrears, credit quality
 
 ```text
-Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2 (Scope 3) 1 FY24 PCAF Score Scope 1 & 2 (Scope 3) 1 Status Further information see page(s) Sector-level financed emissions goals Australian housing kgCO2-e/m2
+Home loan and personal | 1.50 | 1.51 __TABLE_ROW__ page=17 table=1001 row=48 title=pdfplumber_words | Operating expenses | Operating expenses increased 6% driven by higher staff, information technology costs and | loan arrears increased as
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -276,7 +276,7 @@ Progress Sector Metric Goal or target FY23 FY24 FY25 FY23 PCAF Score Scope 1 & 2
 - Supports claims: impairment, credit quality
 
 ```text
-__TABLE_ROW__ page=17 table=1001 row=37 title=pdfplumber_words | Loan impairment expense | (726) | (802) | 
+Five-year financial summary 385 CBA FINANCIAL REPORT 2025 Annual report 30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 22 30 Jun 21 $M $M $M $M $M Net interest income 24,023 22,824 23,056 19,473 19,302 Other operating income 4,442 4,350 4,079 5,126
 ```
 
 ### Section: asx_fallback_document / sector_metric

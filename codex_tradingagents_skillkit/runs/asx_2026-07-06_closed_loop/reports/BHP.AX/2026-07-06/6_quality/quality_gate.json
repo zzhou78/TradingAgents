@@ -13,16 +13,8 @@
   "validator": "validate_quality_review.py",
   "status": "remediation_required",
   "quality_gate_passed": false,
-  "evidence_reasoning_audit_status": "fail",
-  "evidence_reasoning_critical_findings": [
-    {
-      "attack": "Dense Table Attack",
-      "finding": "Dense numeric text produced a clean value without row_label and column_label.",
-      "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
-      "required_remediation": "Downgrade the metric to table_row_unparsed unless row/column mapping proves the value.",
-      "regression_test": "Add a dense table value extraction rejection test."
-    }
-  ],
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
   "core_metric_coverage_status": "failed",
   "core_metrics_required": [
     "production",
@@ -34,12 +26,12 @@
   ],
   "core_metrics_cleanly_extracted": [
     "production",
-    "unit_cost_aisc",
-    "capex"
+    "unit_cost_aisc"
   ],
   "core_metrics_unavailable_with_reason": [],
   "core_metrics_unresolved": [
     "realised_price",
+    "capex",
     "commodity_exposure",
     "reserves_resources"
   ],

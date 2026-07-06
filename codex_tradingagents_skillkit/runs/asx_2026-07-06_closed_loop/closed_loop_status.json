@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
   "status": "remediation_required",
-  "generated_at": "2026-07-06T22:20:32+10:00",
+  "generated_at": "2026-07-07T09:06:57+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
@@ -10,21 +10,21 @@
         "ticker": "BHP.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:12:34+10:00",
-        "run_id": "asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-06T22:12:34+10:00",
+        "run_executed_at": "2026-07-07T08:49:15+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-07T08:49:15+10:00",
         "authoritative_result_folder": true,
         "status": "remediation_required",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-06T22:12:34+10:00",
+          "run_executed_at": "2026-07-07T08:49:15+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_closed_loop",
           "ticker_list": [
             "BHP.AX"
           ],
-          "run_id": "asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-06T22:12:34+10:00",
+          "run_id": "asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-07T08:49:15+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "status": "pending",
@@ -212,17 +212,21 @@
           "ASX core metric coverage failed; review-ready quality gate cannot pass"
         ],
         "quality_gate_passed": false,
-        "evidence_reasoning_audit_status": "fail",
-        "evidence_reasoning_critical_findings": [
-          {
-            "attack": "Dense Table Attack",
-            "finding": "Dense numeric text produced a clean value without row_label and column_label.",
-            "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
-            "required_remediation": "Downgrade the metric to table_row_unparsed unless row/column mapping proves the value.",
-            "regression_test": "Add a dense table value extraction rejection test."
-          }
-        ],
+        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_critical_findings": [],
         "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:BHP.AX:2026-07-06:034 metric=capex",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
@@ -249,13 +253,13 @@
         ],
         "core_metrics_cleanly_extracted": [
           "production",
-          "unit_cost_aisc",
-          "capex"
+          "unit_cost_aisc"
         ],
         "core_metrics_unavailable_with_reason": [],
         "core_metrics_gap_disclosed": [],
         "core_metrics_unresolved": [
           "realised_price",
+          "capex",
           "commodity_exposure",
           "reserves_resources"
         ],
@@ -266,7 +270,7 @@
           },
           "realised_price": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
             "evidence_ids": [
               "financial:BHP.AX:2026-07-06:032"
             ]
@@ -275,7 +279,11 @@
             "status": "cleanly_extracted"
           },
           "capex": {
-            "status": "cleanly_extracted"
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:034"
+            ]
           },
           "commodity_exposure": {
             "status": "unresolved",
@@ -301,23 +309,21 @@
         "ticker": "CBA.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
-        "run_id": "asx_2026-07-06_closed_loop:CBA.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+        "run_executed_at": "2026-07-07T08:58:42+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:CBA.AX:2026-07-06:2026-07-07T08:58:42+10:00",
         "authoritative_result_folder": true,
         "status": "remediation_required",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-06T22:15:42+10:00",
+          "run_executed_at": "2026-07-07T08:58:42+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_closed_loop",
           "ticker_list": [
-            "CBA.AX",
-            "MPL.AX",
-            "WOW.AX"
+            "CBA.AX"
           ],
-          "run_id": "asx_2026-07-06_closed_loop:CBA.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+          "run_id": "asx_2026-07-06_closed_loop:CBA.AX:2026-07-06:2026-07-07T08:58:42+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "status": "pending",
@@ -511,6 +517,18 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:020 metric=impairment",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           }
@@ -531,13 +549,13 @@
           "net_interest_margin",
           "cet1",
           "loan_growth",
-          "arrears",
-          "impairment",
           "dividend"
         ],
         "core_metrics_unavailable_with_reason": [],
         "core_metrics_gap_disclosed": [],
         "core_metrics_unresolved": [
+          "arrears",
+          "impairment",
           "roe"
         ],
         "core_metric_coverage_passed": false,
@@ -552,10 +570,18 @@
             "status": "cleanly_extracted"
           },
           "arrears": {
-            "status": "cleanly_extracted"
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:019"
+            ]
           },
           "impairment": {
-            "status": "cleanly_extracted"
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:020"
+            ]
           },
           "roe": {
             "status": "unresolved",
@@ -577,21 +603,21 @@
         "ticker": "CSL.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:14:35+10:00",
-        "run_id": "asx_2026-07-06_closed_loop:CSL.AX:2026-07-06:2026-07-06T22:14:35+10:00",
+        "run_executed_at": "2026-07-07T09:06:17+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:CSL.AX:2026-07-06:2026-07-07T09:06:17+10:00",
         "authoritative_result_folder": true,
         "status": "remediation_required",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-06T22:14:35+10:00",
+          "run_executed_at": "2026-07-07T09:06:17+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_closed_loop",
           "ticker_list": [
             "CSL.AX"
           ],
-          "run_id": "asx_2026-07-06_closed_loop:CSL.AX:2026-07-06:2026-07-06T22:14:35+10:00",
+          "run_id": "asx_2026-07-06_closed_loop:CSL.AX:2026-07-06:2026-07-07T09:06:17+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "status": "pending",
@@ -609,7 +635,7 @@
           "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
           "blocking_dependencies": [],
           "validation_errors": [
-            "ASX sector-specific metrics are missing without evidence-gap disclosure"
+            "ASX core metric coverage failed; review-ready quality gate cannot pass"
           ],
           "completion_gate": "implement next_remediation_task.md, rerun evidence/report workflow, and continue until quality gate passes or a true blocker is documented"
         },
@@ -776,12 +802,25 @@
           }
         ],
         "quality_errors": [
-          "ASX sector-specific metrics are missing without evidence-gap disclosure"
+          "ASX core metric coverage failed; review-ready quality gate cannot pass"
         ],
         "quality_gate_passed": false,
-        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_audit_status": "pass_with_warnings",
         "evidence_reasoning_critical_findings": [],
-        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CSL.AX:2026-07-06:018 metric=plasma_collections",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CSL.AX:2026-07-06:019 metric=margins",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          }
+        ],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
         "sector": "healthcare",
         "core_metric_coverage_status": "failed",
@@ -794,10 +833,11 @@
           "guidance"
         ],
         "core_metrics_cleanly_extracted": [],
-        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_unavailable_with_reason": [
+          "segment_revenue"
+        ],
         "core_metrics_gap_disclosed": [],
         "core_metrics_unresolved": [
-          "segment_revenue",
           "margins",
           "r_and_d",
           "plasma_collections",
@@ -807,34 +847,42 @@
         "core_metric_coverage_passed": false,
         "core_metric_coverage_details": {
           "segment_revenue": {
-            "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "status": "unavailable_with_reason"
           },
           "margins": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:019"
+            ]
           },
           "r_and_d": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:017"
+            ]
           },
           "plasma_collections": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:018"
+            ]
           },
           "debt": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:020"
+            ]
           },
           "guidance": {
             "status": "unresolved",
-            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
-            "evidence_ids": []
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:021"
+            ]
           }
         },
         "remediation_plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
@@ -846,23 +894,21 @@
         "ticker": "MPL.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
-        "run_id": "asx_2026-07-06_closed_loop:MPL.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+        "run_executed_at": "2026-07-07T08:52:50+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:MPL.AX:2026-07-06:2026-07-07T08:52:50+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-06T22:15:42+10:00",
+          "run_executed_at": "2026-07-07T08:52:50+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_closed_loop",
           "ticker_list": [
-            "CBA.AX",
-            "MPL.AX",
-            "WOW.AX"
+            "MPL.AX"
           ],
-          "run_id": "asx_2026-07-06_closed_loop:MPL.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+          "run_id": "asx_2026-07-06_closed_loop:MPL.AX:2026-07-06:2026-07-07T08:52:50+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "status": "pending",
@@ -1087,23 +1133,21 @@
         "ticker": "WOW.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
-        "run_id": "asx_2026-07-06_closed_loop:WOW.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+        "run_executed_at": "2026-07-07T08:53:51+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:WOW.AX:2026-07-06:2026-07-07T08:53:51+10:00",
         "authoritative_result_folder": true,
         "status": "remediation_required",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-06T22:15:42+10:00",
+          "run_executed_at": "2026-07-07T08:53:51+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_closed_loop",
           "ticker_list": [
-            "CBA.AX",
-            "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-06_closed_loop:WOW.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+          "run_id": "asx_2026-07-06_closed_loop:WOW.AX:2026-07-06:2026-07-07T08:53:51+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "status": "pending",
@@ -1394,8 +1438,8 @@
           "rerun_commands": [
             ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
           ],
-          "created_at": "2026-07-06T22:20:31+10:00",
-          "updated_at": "2026-07-06T22:20:31+10:00",
+          "created_at": "2026-07-07T09:06:56+10:00",
+          "updated_at": "2026-07-07T09:06:56+10:00",
           "task_id": "remediate:BHP.AX:2026-07-06:001"
         }
       ],
@@ -1422,8 +1466,8 @@
         "rerun_commands": [
           ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
         ],
-        "created_at": "2026-07-06T22:20:31+10:00",
-        "updated_at": "2026-07-06T22:20:31+10:00",
+        "created_at": "2026-07-07T09:06:56+10:00",
+        "updated_at": "2026-07-07T09:06:56+10:00",
         "task_id": "remediate:BHP.AX:2026-07-06:001"
       },
       "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
@@ -1461,8 +1505,8 @@
           "rerun_commands": [
             ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
           ],
-          "created_at": "2026-07-06T22:20:31+10:00",
-          "updated_at": "2026-07-06T22:20:31+10:00",
+          "created_at": "2026-07-07T09:06:56+10:00",
+          "updated_at": "2026-07-07T09:06:56+10:00",
           "task_id": "remediate:CBA.AX:2026-07-06:001"
         }
       ],
@@ -1489,8 +1533,8 @@
         "rerun_commands": [
           ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
         ],
-        "created_at": "2026-07-06T22:20:31+10:00",
-        "updated_at": "2026-07-06T22:20:31+10:00",
+        "created_at": "2026-07-07T09:06:56+10:00",
+        "updated_at": "2026-07-07T09:06:56+10:00",
         "task_id": "remediate:CBA.AX:2026-07-06:001"
       },
       "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
@@ -1503,20 +1547,24 @@
       "status": "remediation_required",
       "blocking_for_review_grade": true,
       "validator_errors": [
-        "ASX sector-specific metrics are missing without evidence-gap disclosure"
+        "ASX core metric coverage failed; review-ready quality gate cannot pass"
       ],
       "remediation_tasks": [
         {
-          "failed_gate": "quality_review_gate",
-          "root_cause_category": "report_quality_validation",
-          "validator_error": "ASX sector-specific metrics are missing without evidence-gap disclosure",
+          "failed_gate": "asx_core_metric_coverage_gate",
+          "root_cause_category": "asx_core_metric_coverage_insufficient",
+          "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
           "affected_files": [
+            "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
             "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-            "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
           ],
-          "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
+          "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
           "required_tests": [
-            "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
+            "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+            "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
           ],
           "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
           "blocking_for_review_grade": true,
@@ -1524,23 +1572,27 @@
           "rerun_commands": [
             ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
           ],
-          "created_at": "2026-07-06T22:20:31+10:00",
-          "updated_at": "2026-07-06T22:20:31+10:00",
+          "created_at": "2026-07-07T09:06:56+10:00",
+          "updated_at": "2026-07-07T09:06:56+10:00",
           "task_id": "remediate:CSL.AX:2026-07-06:001"
         }
       ],
       "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
       "next_remediation_task": {
-        "failed_gate": "quality_review_gate",
-        "root_cause_category": "report_quality_validation",
-        "validator_error": "ASX sector-specific metrics are missing without evidence-gap disclosure",
+        "failed_gate": "asx_core_metric_coverage_gate",
+        "root_cause_category": "asx_core_metric_coverage_insufficient",
+        "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
         "affected_files": [
+          "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
           "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-          "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+          "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
         ],
-        "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
+        "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
         "required_tests": [
-          "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
+          "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+          "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
         ],
         "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
         "blocking_for_review_grade": true,
@@ -1548,8 +1600,8 @@
         "rerun_commands": [
           ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
         ],
-        "created_at": "2026-07-06T22:20:31+10:00",
-        "updated_at": "2026-07-06T22:20:31+10:00",
+        "created_at": "2026-07-07T09:06:56+10:00",
+        "updated_at": "2026-07-07T09:06:56+10:00",
         "task_id": "remediate:CSL.AX:2026-07-06:001"
       },
       "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
@@ -1598,8 +1650,8 @@
           "rerun_commands": [
             ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
           ],
-          "created_at": "2026-07-06T22:20:32+10:00",
-          "updated_at": "2026-07-06T22:20:32+10:00",
+          "created_at": "2026-07-07T09:06:57+10:00",
+          "updated_at": "2026-07-07T09:06:57+10:00",
           "task_id": "remediate:WOW.AX:2026-07-06:001"
         }
       ],
@@ -1626,25 +1678,29 @@
         "rerun_commands": [
           ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop"
         ],
-        "created_at": "2026-07-06T22:20:32+10:00",
-        "updated_at": "2026-07-06T22:20:32+10:00",
+        "created_at": "2026-07-07T09:06:57+10:00",
+        "updated_at": "2026-07-07T09:06:57+10:00",
         "task_id": "remediate:WOW.AX:2026-07-06:001"
       },
       "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
     }
   ],
   "quality_gate_passed": false,
-  "evidence_reasoning_audit_status": "fail",
-  "evidence_reasoning_critical_findings": [
-    {
-      "attack": "Dense Table Attack",
-      "finding": "Dense numeric text produced a clean value without row_label and column_label.",
-      "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
-      "required_remediation": "Downgrade the metric to table_row_unparsed unless row/column mapping proves the value.",
-      "regression_test": "Add a dense table value extraction rejection test."
-    }
-  ],
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
   "evidence_reasoning_warnings": [
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:BHP.AX:2026-07-06:032 metric=realised_price",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:BHP.AX:2026-07-06:034 metric=capex",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
@@ -1660,7 +1716,31 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:020 metric=impairment",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CSL.AX:2026-07-06:018 metric=plasma_collections",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CSL.AX:2026-07-06:019 metric=margins",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1716,15 +1796,12 @@
   "core_metrics_cleanly_extracted": {
     "BHP.AX": [
       "production",
-      "unit_cost_aisc",
-      "capex"
+      "unit_cost_aisc"
     ],
     "CBA.AX": [
       "net_interest_margin",
       "cet1",
       "loan_growth",
-      "arrears",
-      "impairment",
       "dividend"
     ],
     "CSL.AX": [],
@@ -1746,21 +1823,25 @@
   "core_metrics_unavailable_with_reason": {
     "BHP.AX": [],
     "CBA.AX": [],
-    "CSL.AX": [],
+    "CSL.AX": [
+      "segment_revenue"
+    ],
     "MPL.AX": [],
     "WOW.AX": []
   },
   "core_metrics_unresolved": {
     "BHP.AX": [
       "realised_price",
+      "capex",
       "commodity_exposure",
       "reserves_resources"
     ],
     "CBA.AX": [
+      "arrears",
+      "impairment",
       "roe"
     ],
     "CSL.AX": [
-      "segment_revenue",
       "margins",
       "r_and_d",
       "plasma_collections",

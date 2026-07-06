@@ -227,7 +227,7 @@ segment profit $741.5m (+7.1%) Health Insurance operating profit c. $10m in prod
 - Supports claims: premium growth
 
 ```text
-Measure 2025 2024 20231 2022 2021 Health Insurance premium revenue growth 3.9% 4.0% 4.2% 2.7% 2.1% Group operating profit1 $762.4m $699.8m $648.4m $594.1m $528.3m Group net profit after tax (NPAT) $500.8m $492.5m $308.6m $393.9m $441.3m
+45% 35% 50% 42% Health Insurance premium revenue growth Measured alongside the core metric of group operating profit, the focus of this measure is sustainable and profitable revenue growth to ensure optimal value creation for customers and
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -240,7 +240,7 @@ Measure 2025 2024 20231 2022 2021 Health Insurance premium revenue growth 3.9% 4
 - Supports claims: claims ratio
 
 ```text
-Non-resident net claims expense increased by 8.8% to $190.6 million reflecting the mix and tenure of the
+Resident gross claims increased 3.9% to $6,630.8 million, while net claims expense was up 3.2% to $6,624.0
 ```
 
 ### Section: asx_fallback_document / sector_metric
@@ -253,7 +253,7 @@ Non-resident net claims expense increased by 8.8% to $190.6 million reflecting t
 - Supports claims: membership
 
 ```text
-More than half of Medibank policyholders | • 96% vesting against the total shareholder return (TSR) __TABLE_ROW__ page=52 table=1001 row=36 title=pdfplumber_words | are now engaging with us on their health and wellbeing | measure with a
+2025 highlights Customer 4.2m total health insurance customers $1.71b total COVID financial support since 2020 $6.6b total claims paid Medibank journey NPS 12.9 (+2.3) average ahm service NPS 48.0 (+2.0) average customer advocacy +27.9k
 ```
 
 ### Section: asx_fallback_document / sector_metric

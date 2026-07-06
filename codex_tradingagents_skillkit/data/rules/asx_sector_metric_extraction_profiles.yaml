@@ -16,17 +16,17 @@ banks:
       supportive: ["up", "increased", "higher", "expanded"]
       adverse: ["down", "decreased", "lower", "compressed"]
   cet1:
-    accepted_labels: ["CET1", "common equity tier 1", "capital ratio"]
-    accepted_row_labels: ["CET1", "common equity tier 1", "capital ratio"]
+    accepted_labels: ["CET1", "CET1 capital ratio", "Capital ratio CET1", "common equity tier 1"]
+    accepted_row_labels: ["CET1", "CET1 capital ratio", "Capital ratio CET1", "common equity tier 1"]
     preferred_value_type: ["current_period_value", "variance_value"]
     accepted_column_labels: ["cet1", "capital", "2025", "2024", "bps", "%", "change", "variance"]
-    rejected_column_labels: ["operating income", "dividend", "nim"]
+    rejected_column_labels: ["operating income", "dividend", "nim", "coverage"]
     accepted_units: ["bps", "%"]
     accepted_value_patterns:
       - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
       - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
-    required_nearby_terms: []
-    rejected_nearby_terms: ["operating income", "NIM", "net interest margin", "dividend"]
+    required_nearby_terms: ["CET1", "common equity tier 1"]
+    rejected_nearby_terms: ["operating income", "NIM", "net interest margin", "dividend", "coverage ratio", "tier 1 coverage"]
     max_label_value_distance_tokens: 8
     direction_rules:
       supportive: ["up", "increased", "higher", "strong", "above"]
@@ -35,24 +35,32 @@ banks:
     accepted_labels: ["loan growth", "home lending", "business lending", "gross loans"]
     accepted_units: ["%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
-    required_nearby_terms: []
-    rejected_nearby_terms: ["operating income", "dividend", "CET1"]
+    required_nearby_terms: ["growth", "grew", "increased", "increase", "decreased", "declined", "change", "higher", "lower", "balance growth", "lending growth"]
+    rejected_nearby_terms: ["operating income", "dividend", "CET1", "portfolio mix", "represented", "of home lending", "financed emissions"]
+    hard_rejected_nearby_terms: ["portfolio mix", "represented", "of home lending", "financed emissions"]
     max_label_value_distance_tokens: 10
     direction_rules:
       supportive: ["growth", "increased", "higher", "up"]
       adverse: ["declined", "decreased", "lower", "down"]
   arrears:
-    accepted_labels: ["arrears", "delinquencies", "delinquency"]
+    accepted_labels: ["arrears", "90+ days", "90 days arrears", "troublesome loans", "impaired assets", "delinquencies", "delinquency"]
     accepted_units: ["bps", "%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
-    required_nearby_terms: []
-    rejected_nearby_terms: ["operating income", "dividend"]
+    required_nearby_terms: ["arrears", "90+ days", "90 days", "troublesome loans", "impaired assets", "credit quality", "delinquencies", "delinquency"]
+    rejected_nearby_terms: ["operating income", "dividend", "climate", "financed emissions", "emissions", "scope 3", "sector table"]
+    hard_rejected_nearby_terms: ["climate", "financed emissions", "emissions", "scope 3", "sector table", "PCAF", "renewable electricity", "RE100", "RECs", "certification", "residual emissions", "sustainability"]
+    hard_reject_scope: candidate_text
+    reject_unmapped_table_text: true
     max_label_value_distance_tokens: 10
     direction_rules:
       supportive: ["reduced", "lower", "decreased"]
       adverse: ["increased", "higher", "up", "deteriorated"]
   impairment:
     accepted_labels: ["impairment", "loan loss", "credit loss"]
+    accepted_row_labels: ["impairment", "loan impairment expense", "loan loss", "credit loss", "credit impairment"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["2025", "2024", "fy2025", "fy2024", "$m", "bps", "%", "change", "variance"]
+    rejected_column_labels: ["prior year variance percent"]
     accepted_units: ["bps", "%", "$m", "A$m"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*bps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*m\\b"]
     required_nearby_terms: []
@@ -72,11 +80,12 @@ banks:
       supportive: ["increased", "higher", "up", "franked"]
       adverse: ["decreased", "lower", "cut", "reduced"]
   roe:
-    accepted_labels: ["ROE", "return on equity"]
+    accepted_labels: ["ROE", "return on equity", "cash ROE"]
+    accepted_row_labels: ["ROE", "return on equity", "cash ROE"]
     accepted_units: ["%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: []
-    rejected_nearby_terms: ["operating income", "dividend"]
+    rejected_nearby_terms: ["operating income", "dividend", "peer", "market capitalisation", "market capitalization", "market cap"]
     max_label_value_distance_tokens: 8
     direction_rules:
       supportive: ["increased", "higher", "strong", "improved"]
@@ -94,6 +103,9 @@ miners:
       adverse: ["decreased", "lower", "down"]
   realised_price:
     accepted_labels: ["realised price", "realized price", "average realised"]
+    accepted_row_labels: ["realised price", "realized price", "average realised price", "average realised prices"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["realised", "realized", "price", "fy2025", "fy2024", "2025", "2024", "us$/t", "$/t", "us$ per tonne"]
     accepted_units: ["US$/t", "$/t"]
     accepted_value_patterns: ["\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne)\\b"]
     required_nearby_terms: []
@@ -113,17 +125,24 @@ miners:
       supportive: ["down", "lower", "reduced", "reduction", "lowest-cost"]
       adverse: ["up", "higher", "increased"]
   capex:
-    accepted_labels: ["capex", "capital expenditure"]
+    accepted_labels: ["capex", "capital expenditure", "capital investment", "payments for property, plant and equipment", "purchase of property, plant and equipment", "investing cash flows"]
+    accepted_row_labels: ["capex", "capital expenditure", "capital investment", "payments for property, plant and equipment", "purchase of property, plant and equipment", "payments for property plant and equipment", "purchase of property plant and equipment"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["f25", "f24", "fy2025", "fy2024", "2025", "2024", "$m", "$bn", "US$m", "US$bn", "capital", "payments", "purchase", "investing"]
+    rejected_column_labels: ["sales", "revenue", "ebit", "margin", "segment"]
     accepted_units: ["$m", "$bn", "US$m", "US$bn"]
     accepted_value_patterns: ["\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
     required_nearby_terms: []
-    rejected_nearby_terms: ["page", "contents"]
+    rejected_nearby_terms: ["page", "contents", "segment revenue", "sales table", "ebit margin"]
     max_label_value_distance_tokens: 12
     direction_rules:
       supportive: ["disciplined", "lower", "reduced"]
       adverse: ["higher", "increased", "overrun"]
   reserves_resources:
     accepted_labels: ["reserves", "resources"]
+    accepted_row_labels: ["reserves", "resources", "ore reserves", "mineral resources", "proved reserves", "probable reserves"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["reserves", "resources", "2025", "2024", "mt", "kt", "moz", "change", "variance"]
     accepted_units: ["mt", "moz", "kt"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*(?:mt|moz|kt)\\b"]
     required_nearby_terms: ["reserves", "resources"]
@@ -133,7 +152,11 @@ miners:
       supportive: ["increased", "discovery", "expanded"]
       adverse: ["depleted", "lower", "reduced"]
   commodity_exposure:
-    accepted_labels: ["commodity exposure", "commodity mix", "portfolio mix", "commodity portfolio", "revenue by commodity"]
+    accepted_labels: ["commodity exposure", "commodity mix", "portfolio mix", "commodity portfolio", "revenue by commodity", "EBITDA by commodity", "production by commodity"]
+    accepted_row_labels: ["commodity exposure", "commodity mix", "portfolio mix", "revenue by commodity", "EBITDA by commodity", "production by commodity", "iron ore", "copper", "coal", "potash", "nickel"]
+    preferred_value_type: ["current_period_value", "variance_percent", "variance_value"]
+    accepted_column_labels: ["revenue", "ebitda", "production", "mix", "portfolio", "commodity", "2025", "2024", "%", "share"]
+    rejected_column_labels: ["years", "age", "page"]
     accepted_units: ["%"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: []
@@ -201,8 +224,9 @@ healthcare:
     accepted_labels: ["guidance", "outlook", "expects", "forecast"]
     accepted_units: ["%", "$m", "$bn", "US$m", "US$bn"]
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
-    required_nearby_terms: []
-    rejected_nearby_terms: ["contents", "table of contents", "directors report", "financial statements"]
+    required_nearby_terms: ["guidance", "outlook", "expects", "expected", "forecast", "FY2026", "FY26"]
+    rejected_nearby_terms: ["contents", "table of contents", "directors report", "financial statements", "CSL Behring revenue", "CSL Seqirus revenue", "segment revenue"]
+    hard_rejected_nearby_terms: ["revenue", "CSL Behring revenue", "CSL Seqirus revenue", "CSL Vifor revenue", "segment revenue"]
     max_label_value_distance_tokens: 12
     direction_rules:
       supportive: ["expects", "forecast", "higher", "growth"]
@@ -312,11 +336,15 @@ retailers:
       supportive: ["lower", "reduced", "improved"]
       adverse: ["higher", "increased", "shrink"]
   capex:
-    accepted_labels: ["capex", "capital expenditure"]
+    accepted_labels: ["capex", "capital expenditure", "capital investment", "payments for property, plant and equipment", "purchase of property, plant and equipment", "investing cash flows"]
+    accepted_row_labels: ["capex", "capital expenditure", "capital investment", "payments for property, plant and equipment", "purchase of property, plant and equipment", "payments for property plant and equipment", "purchase of property plant and equipment"]
+    preferred_value_type: ["current_period_value", "variance_value"]
+    accepted_column_labels: ["f25", "f24", "fy2025", "fy2024", "2025", "2024", "$m", "$bn", "capital", "payments", "purchase", "investing"]
+    rejected_column_labels: ["sales", "revenue", "ebit", "margin", "segment"]
     accepted_units: ["$m", "$bn"]
     accepted_value_patterns: ["\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
     required_nearby_terms: []
-    rejected_nearby_terms: ["contents"]
+    rejected_nearby_terms: ["contents", "segment revenue", "sales table", "ebit margin"]
     max_label_value_distance_tokens: 10
     direction_rules:
       supportive: ["disciplined", "lower", "reduced"]

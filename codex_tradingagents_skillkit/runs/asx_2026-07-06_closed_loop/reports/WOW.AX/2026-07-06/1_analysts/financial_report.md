@@ -14,11 +14,11 @@
 | financial:WOW.AX:2026-07-06:007 | asx_fallback_document | cash_debt_gearing | 2025-12-31 | available | cash flows. Non-IFRS financial measures are financial measures other than those defined or specified under all |
 | financial:WOW.AX:2026-07-06:004 | asx_fallback_document | cash_flow_statement | 2025-12-31 | available | cash flows. Non-IFRS financial measures are financial measures other than those defined or specified under all |
 | financial:WOW.AX:2026-07-06:001 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | Revenue 1.7 to 69,077 Profit after tax attributable to equity holders of the parent entity before significant |
-| financial:WOW.AX:2026-07-06:016 | asx_fallback_document | sector_metric_sales_growth | 2025-12-31 | available | __TABLE_ROW__ page=35 table=1001 row=13 title=pdfplumber_words / Total sales / 51,452 / 50,823 / 1.2% / |
+| financial:WOW.AX:2026-07-06:016 | asx_fallback_document | sector_metric_sales_growth | 2025-12-31 | available | __TABLE_ROW__ page=31 table=1 row=38 title=pdfplumber_text_table_1 / sales growth of 3.6%. Excluding Petstock, |
 | financial:WOW.AX:2026-07-06:017 | asx_fallback_document | sector_metric_comparable_sales_if_available | 2025-12-31 | available | Excluding the impact of these divestments, H2 sales increased by 6.9% with comparable sales growth of approxim |
 | financial:WOW.AX:2026-07-06:018 | asx_fallback_document | sector_metric_ebit_margin | 2025-12-31 | available | Australian Food F25 EBIT of $2,753 million declined by a normalised 10.5% with the EBIT margin decreasing by a |
 | financial:WOW.AX:2026-07-06:019 | asx_fallback_document | sector_metric_inventory | 2025-12-31 | available | Decrease in inventories of $44 million reflects lower inventory holdings in Australian Food, New Zealand Food |
-| financial:WOW.AX:2026-07-06:020 | asx_fallback_document | sector_metric_capex | 2025-12-31 | available | 2025 (52 WEEKS) AUSTRALIAN FOOD $M AUSTRALIAN B2B $M NEW ZEALAND FOOD $M W LIVING $M OTHER $M ELIMINATIONS/ RE |
+| financial:WOW.AX:2026-07-06:020 | asx_fallback_document | sector_metric_capex | 2025-12-31 | available | 2025 2024 52 WEEKS 53 WEEKS NOTE $M $M Cash flows from operating activities Receipts from customers 73,510 72, |
 | financial:WOW.AX:2026-07-06:021 | asx_fallback_document | sector_metric_dividends | 2025-12-31 | available | __TABLE_ROW__ page=34 table=2 row=21 title=pdfplumber_crop_balance_sheet_text_table_2 / and dividends /  /  / |
 
 ## Claim-Source Table

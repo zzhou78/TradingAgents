@@ -1,7 +1,7 @@
 {
   "trade_date": "2026-07-06",
   "evidence_as_of_date": "2026-07-06",
-  "run_executed_at": "2026-07-06T22:15:42+10:00",
+  "run_executed_at": "2026-07-07T09:06:17+10:00",
   "market": "ASX",
   "selected_analysts": [
     "market",
@@ -44,97 +44,29 @@
   },
   "runs": [
     {
-      "ticker": "CBA.AX",
-      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\evidence.json",
-      "role_packet_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\role_packets.md",
+      "ticker": "CSL.AX",
+      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\evidence.json",
+      "role_packet_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\role_packets.md",
       "role_packet_paths": {
-        "market": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\roles\\market.md",
-        "social": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\roles\\social.md",
-        "news": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\roles\\news.md",
-        "fundamentals": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\roles\\fundamentals.md",
-        "financial_report": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\roles\\financial_report.md"
+        "market": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\roles\\market.md",
+        "social": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\roles\\social.md",
+        "news": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\roles\\news.md",
+        "fundamentals": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\roles\\fundamentals.md",
+        "financial_report": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\roles\\financial_report.md"
       },
-      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CBA.AX\\2026-07-06\\workflow_state.json",
-      "debate_record_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CBA.AX\\2026-07-06\\debate_record.md",
+      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\CSL.AX\\2026-07-06\\workflow_state.json",
+      "debate_record_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\CSL.AX\\2026-07-06\\debate_record.md",
       "run_metadata": {
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
+        "run_executed_at": "2026-07-07T09:06:17+10:00",
         "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
         "market": "ASX",
         "run_folder_name": "asx_2026-07-06_closed_loop",
         "ticker_list": [
-          "CBA.AX",
-          "MPL.AX",
-          "WOW.AX"
+          "CSL.AX"
         ],
-        "run_id": "asx_2026-07-06_closed_loop:CBA.AX:2026-07-06:2026-07-06T22:15:42+10:00",
-        "authoritative_result_folder": true,
-        "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
-        "status": "pending",
-        "workflow_status": "pending"
-      },
-      "status": "pending"
-    },
-    {
-      "ticker": "MPL.AX",
-      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\evidence.json",
-      "role_packet_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\role_packets.md",
-      "role_packet_paths": {
-        "market": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\roles\\market.md",
-        "social": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\roles\\social.md",
-        "news": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\roles\\news.md",
-        "fundamentals": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\roles\\fundamentals.md",
-        "financial_report": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\roles\\financial_report.md"
-      },
-      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\MPL.AX\\2026-07-06\\workflow_state.json",
-      "debate_record_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\MPL.AX\\2026-07-06\\debate_record.md",
-      "run_metadata": {
-        "trade_date": "2026-07-06",
-        "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
-        "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
-        "market": "ASX",
-        "run_folder_name": "asx_2026-07-06_closed_loop",
-        "ticker_list": [
-          "CBA.AX",
-          "MPL.AX",
-          "WOW.AX"
-        ],
-        "run_id": "asx_2026-07-06_closed_loop:MPL.AX:2026-07-06:2026-07-06T22:15:42+10:00",
-        "authoritative_result_folder": true,
-        "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
-        "status": "pending",
-        "workflow_status": "pending"
-      },
-      "status": "pending"
-    },
-    {
-      "ticker": "WOW.AX",
-      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
-      "role_packet_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\role_packets.md",
-      "role_packet_paths": {
-        "market": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\roles\\market.md",
-        "social": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\roles\\social.md",
-        "news": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\roles\\news.md",
-        "fundamentals": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\roles\\fundamentals.md",
-        "financial_report": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md"
-      },
-      "workflow_state_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\evidence\\WOW.AX\\2026-07-06\\workflow_state.json",
-      "debate_record_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop\\reports\\WOW.AX\\2026-07-06\\debate_record.md",
-      "run_metadata": {
-        "trade_date": "2026-07-06",
-        "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-06T22:15:42+10:00",
-        "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
-        "market": "ASX",
-        "run_folder_name": "asx_2026-07-06_closed_loop",
-        "ticker_list": [
-          "CBA.AX",
-          "MPL.AX",
-          "WOW.AX"
-        ],
-        "run_id": "asx_2026-07-06_closed_loop:WOW.AX:2026-07-06:2026-07-06T22:15:42+10:00",
+        "run_id": "asx_2026-07-06_closed_loop:CSL.AX:2026-07-06:2026-07-07T09:06:17+10:00",
         "authoritative_result_folder": true,
         "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_closed_loop",
         "status": "pending",

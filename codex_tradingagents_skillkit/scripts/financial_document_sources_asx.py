@@ -126,12 +126,22 @@ STRUCTURED_TABLE_REQUIRED_METRICS = {
     "inventory",
     "debt",
     "capital_adequacy",
+    "impairment",
     "segment_revenue",
     "production",
+    "realised_price",
     "commodity_exposure",
     "reserves_resources",
     "capex",
     "membership",
+}
+STRICT_STRUCTURED_VALUE_METRICS = {
+    "capex",
+    "commodity_exposure",
+    "impairment",
+    "realised_price",
+    "reserves_resources",
+    "segment_revenue",
 }
 TABLE_ROW_MARKER = "__TABLE_ROW__"
 PDFPLUMBER_WORD_TABLE_INDEX = 1001
@@ -146,6 +156,7 @@ SOURCE_QUALITY_TIERS = {
     "tier_1_asx_lodged_pdf",
     "tier_2_company_results_pdf",
     "tier_3_company_annual_report_pdf",
+    "tier_3_structured_online_annual_report",
     "tier_4_company_ir_landing_page",
     "tier_5_navigation_or_archive_page",
 }
@@ -153,11 +164,13 @@ ELIGIBLE_SOURCE_QUALITY_TIERS = {
     "tier_1_asx_lodged_pdf",
     "tier_2_company_results_pdf",
     "tier_3_company_annual_report_pdf",
+    "tier_3_structured_online_annual_report",
 }
 SOURCE_QUALITY_RANK = {
     "tier_1_asx_lodged_pdf": 1,
     "tier_2_company_results_pdf": 2,
     "tier_3_company_annual_report_pdf": 3,
+    "tier_3_structured_online_annual_report": 3,
     "tier_4_company_ir_landing_page": 4,
     "tier_5_navigation_or_archive_page": 5,
 }
@@ -639,8 +652,50 @@ def _looks_like_archive_or_navigation(raw_document: str, url: str, title: str) -
     return archive_terms >= 2 and _is_html_like_document(raw_document)
 
 
+def _looks_like_structured_online_annual_report(raw_document: str, url: str, title: str) -> bool:
+    if not raw_document or not _is_html_like_document(raw_document) or _is_pdf_like_url(url):
+        return False
+    lower = _clean_text(f"{title} {url} {raw_document[:30000]}").lower()
+    has_annual_report_identity = bool(
+        re.search(r"\bannual\s+report\b|annualreport/\d{4}|annual-report-\d{4}|annual-reporting", lower)
+    )
+    if not has_annual_report_identity:
+        return False
+    section_hits = sum(
+        1
+        for term in [
+            "operating and financial review",
+            "financial report",
+            "key performance data summary",
+            "directors' report",
+            "directors report",
+            "shareholder information",
+            "performance year in review",
+        ]
+        if term in lower
+    )
+    financial_metric_hits = sum(
+        1
+        for term in [
+            "revenue",
+            "cashflow",
+            "cash flow",
+            "net debt",
+            "gross margin",
+            "research and development",
+            "plasma collections",
+            "guidance",
+            "outlook",
+        ]
+        if term in lower
+    )
+    return section_hits >= 2 and financial_metric_hits >= 2
+
+
 def _document_role(document_type: str | None, *, raw_document: str = "", url: str = "", title: str = "") -> str:
     if raw_document and _is_html_like_document(raw_document) and not _is_pdf_like_url(url):
+        if _looks_like_structured_online_annual_report(raw_document, url, title):
+            return "annual_report"
         return "archive_page" if _looks_like_archive_or_navigation(raw_document, url, title) else "landing_page"
     normalized = (document_type or "").lower()
     if "annual report" in normalized:
@@ -667,6 +722,8 @@ def _source_quality_tier(
     raw_document: str = "",
     title: str = "",
 ) -> str:
+    if _looks_like_structured_online_annual_report(raw_document, url, title):
+        return "tier_3_structured_online_annual_report"
     if document_role == "archive_page" or _looks_like_archive_or_navigation(raw_document, url, title):
         return "tier_5_navigation_or_archive_page"
     if document_role == "landing_page":
@@ -785,6 +842,10 @@ def _can_inherit_report_context(clean_label: str, title: str, href: str) -> bool
     label_title = f"{clean_label} {title}".lower()
     href_context = href.replace("-", " ").replace("_", " ").lower()
     has_report_action = bool(re.search(r"\b(?:read|view|open|download|get)\b.*\breport\b|\breport\b", label_title))
+    inherited_report_asset = bool(
+        re.search(r"\b(?:pdf|download|full\s+report|annual\s+report)\b", label_title)
+        and re.search(r"(?:\.pdf(?:[?#].*)?$|/download|/downloads|/documents?|/reports?|annual\s+report)", href_context)
+    )
     has_document_url_cue = bool(
         re.search(
             r"(?:\.pdf(?:[?#].*)?$|/download|/downloads|/content/dam|/documents?|/reports?|annual\s+report)",
@@ -792,7 +853,23 @@ def _can_inherit_report_context(clean_label: str, title: str, href: str) -> bool
             re.IGNORECASE,
         )
     )
-    return has_report_action and has_document_url_cue
+    return (has_report_action or inherited_report_asset) and has_document_url_cue
+
+
+def _fallback_page_self_row(page_html: str, page_url: str) -> dict[str, Any] | None:
+    clean = _clean_text(page_html)
+    document_type = _classify_document(f"{page_url.replace('-', ' ').replace('_', ' ')} {clean[:1000]}")
+    if not document_type and not _looks_like_structured_online_annual_report(page_html, page_url, clean[:120]):
+        return None
+    date_text = _date_from_text(f"{page_url} {clean[:3000]}")
+    if not date_text:
+        return None
+    return {
+        "title": _fallback_row_title(clean[:240], page_url),
+        "announcement_date": date_text,
+        "url": page_url,
+        "fallback_page_url": page_url,
+    }
 
 
 def _fallback_rows(
@@ -1092,6 +1169,39 @@ def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
     return sorted(matches, key=lambda match: match.start())
 
 
+def _profile_terms(profile: dict[str, Any], key: str) -> list[str]:
+    return [str(term).strip().lower() for term in profile.get(key, []) or [] if str(term).strip()]
+
+
+def _term_present(term: str, text: str) -> bool:
+    if not term:
+        return True
+    if re.fullmatch(r"[\w ]+", term):
+        return bool(re.search(rf"\b{re.escape(term)}\b", text, re.IGNORECASE))
+    return term.lower() in text.lower()
+
+
+def _required_terms_present(text: str, profile: dict[str, Any]) -> bool:
+    required = _profile_terms(profile, "required_nearby_terms")
+    if not required:
+        return True
+    return any(_term_present(term, text) for term in required)
+
+
+def _rejected_terms_present(text: str, profile: dict[str, Any]) -> list[str]:
+    return [term for term in _profile_terms(profile, "rejected_nearby_terms") if _term_present(term, text)]
+
+
+def _hard_rejected_terms_present(text: str, profile: dict[str, Any]) -> list[str]:
+    return [term for term in _profile_terms(profile, "hard_rejected_nearby_terms") if _term_present(term, text)]
+
+
+def _hard_rejected_for_candidate(text: str, window: str, profile: dict[str, Any]) -> list[str]:
+    scope = str(profile.get("hard_reject_scope") or "nearby").lower()
+    haystack = text if scope == "candidate_text" else window
+    return _hard_rejected_terms_present(haystack, profile)
+
+
 def _clean_value_and_unit(raw: str) -> tuple[str, str]:
     value_match = re.search(r"(?P<negative>\()?(?:US\$|A\$|\$)?(?P<value>(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)", raw, re.IGNORECASE)
     if value_match:
@@ -1191,6 +1301,14 @@ def _numeric_cell_value(cell: str, inferred_unit: str) -> tuple[str, str] | None
 
 def _unit_from_column_label(label: str, fallback: str = "unit unavailable") -> str:
     lower = label.lower()
+    if "us$/t" in lower or "us$/" in lower and re.search(r"/(?:t|tonne)\b", lower):
+        return "US$/t"
+    if "$/t" in lower or re.search(r"/(?:t|tonne)\b", lower):
+        return "$/t"
+    if "us$m" in lower:
+        return "US$m"
+    if "us$bn" in lower:
+        return "US$bn"
     if "$m" in lower or "a$m" in lower:
         return "$m"
     if "$bn" in lower or "a$bn" in lower:
@@ -1404,12 +1522,34 @@ def _row_label_matches(row_label: str, profile: dict[str, Any]) -> bool:
 
 def _column_label_allowed(column_label: str, profile: dict[str, Any]) -> bool:
     lower = column_label.lower()
+    if _looks_like_paragraph_fragment(column_label):
+        return False
     normalized = re.sub(r"\bfy(\d{2})\b", lambda match: f"fy20{match.group(1)} 20{match.group(1)}", lower)
     rejected = [str(label).lower() for label in profile.get("rejected_column_labels", []) or []]
     if any(label and (label in lower or label in normalized) for label in rejected):
         return False
     accepted = [str(label).lower() for label in profile.get("accepted_column_labels", []) or []]
     return not accepted or any(label and (label in lower or label in normalized) for label in accepted)
+
+
+def _looks_like_paragraph_fragment(label: str) -> bool:
+    clean = _clean_text(label)
+    words = re.findall(r"\w+", clean)
+    if len(clean) > 110 or len(words) > 14:
+        return True
+    lower = clean.lower()
+    paragraph_terms = [
+        "reflecting",
+        "due to",
+        "geopolitical",
+        "tensions",
+        "performance",
+        "practices",
+        "outlook",
+        "originatio",
+        "financial report",
+    ]
+    return len(words) > 7 and any(term in lower for term in paragraph_terms)
 
 
 def _value_type_from_column_label(column_label: str, index: int) -> str:
@@ -1538,7 +1678,6 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
     value_matches = _value_matches(text, profile)
     if not value_matches:
         return {}
-    rejected_terms = [str(term).lower() for term in profile.get("rejected_nearby_terms", []) or []]
     max_distance = int(profile.get("max_label_value_distance_tokens") or 10)
     best: dict[str, Any] = {}
     for label_match in label_matches:
@@ -1553,6 +1692,10 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             window_end = min(len(text), max(label_match.end(), value_match.end()) + 80)
             window = text[window_start:window_end]
             lower_window = window.lower()
+            if _hard_rejected_for_candidate(text, lower_window, profile):
+                continue
+            if not _required_terms_present(window, profile):
+                continue
             between_start = min(label_match.end(), value_match.end())
             between_end = max(label_match.start(), value_match.start())
             lower_between = text[between_start:between_end].lower()
@@ -1575,25 +1718,37 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             competing = _competing_labels_near_value(text, metric_name, value_match.start())
             if competing:
                 stronger = False
-                own_distance = abs(value_match.start() - label_match.end())
+                own_distance = min(
+                    abs(value_match.start() - label_match.start()),
+                    abs(value_match.start() - label_match.end()),
+                )
                 own_label_is_close_after_value = label_match.start() >= value_match.end() and token_distance <= 3
                 for other_metric in competing:
                     if other_metric == "guidance" and metric_name != "guidance":
                         continue
+                    if metric_name == "operating_profit_or_margin" and other_metric == "margins":
+                        continue
                     if metric_name == "production" and other_metric == "commodity_exposure":
                         continue
                     other_profile = _profile_for_metric(other_metric)
+                    own_label_is_close_before_value = label_match.end() <= value_match.start() and token_distance <= 2
                     for other_label in _label_matches(text, other_profile):
                         if own_label_is_close_after_value and other_label.end() <= value_match.start():
                             continue
-                        if abs(value_match.start() - other_label.end()) < own_distance:
+                        if own_label_is_close_before_value and other_label.start() >= value_match.end():
+                            continue
+                        other_distance = min(
+                            abs(value_match.start() - other_label.start()),
+                            abs(value_match.start() - other_label.end()),
+                        )
+                        if other_distance < own_distance:
                             stronger = True
                 if stronger:
                     score -= 35
             if token_distance <= 2:
-                rejected_hits = [term for term in rejected_terms if term in lower_between]
+                rejected_hits = _rejected_terms_present(lower_between, profile)
             else:
-                rejected_hits = [term for term in rejected_terms if term in lower_window]
+                rejected_hits = _rejected_terms_present(lower_window, profile)
             if rejected_hits:
                 score -= 30
             if _is_navigation_or_toc(window):
@@ -1624,6 +1779,7 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
                 "comparison_reference": _period_references(text)[1],
                 "label_start": label_match.start(),
                 "value_start": value_match.start(),
+                "label_value_distance_tokens": token_distance,
             }
             if not best:
                 best = candidate
@@ -1636,6 +1792,13 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
                     best_unit = str(best.get("value_unit") or "").lower()
                     if candidate_unit == "bps" and best_unit != "bps":
                         best = candidate
+                    continue
+                candidate_distance = int(candidate.get("label_value_distance_tokens", 999))
+                best_distance = int(best.get("label_value_distance_tokens", 999))
+                if candidate_distance < best_distance:
+                    best = candidate
+                    continue
+                if candidate_distance > best_distance:
                     continue
                 if (candidate["label_start"], candidate["value_start"]) < (best["label_start"], best["value_start"]):
                     best = candidate
@@ -1657,8 +1820,7 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         if len(cells) < 3:
             continue
         key = _table_key(metadata)
-        rejected_terms = [str(term).lower() for term in profile.get("rejected_nearby_terms", []) or []]
-        if any(term and term in row.lower() for term in rejected_terms):
+        if _rejected_terms_present(row, profile) or _hard_rejected_terms_present(row, profile):
             continue
         if not _row_label_matches(cells[0], profile):
             if key in headers_by_table and _header_continuation_row(cells):
@@ -1670,10 +1832,15 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         header_cells = headers_by_table.get(key, [])
         if metric_name in STRUCTURED_TABLE_REQUIRED_METRICS and not header_cells:
             continue
+        row_context = " ".join([row_label, metadata.get("table_title", ""), *header_cells, *cells[1:]])
+        if not _required_terms_present(row_context, profile):
+            continue
         values: list[dict[str, str]] = []
         for index, cell in enumerate(cells[1:], start=1):
             column_label = header_cells[index] if header_cells and index < len(header_cells) else cells[index - 1]
             inferred_unit = _unit_from_column_label(column_label)
+            if inferred_unit == "unit unavailable":
+                inferred_unit = _unit_from_column_label(row_label)
             parsed = _numeric_cell_value(cell, inferred_unit)
             if not parsed:
                 continue
@@ -1774,6 +1941,8 @@ def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[s
             if absolute_start > label_matches[0].end() and absolute_start < next_label_start:
                 next_label_start = absolute_start
     row = text[row_start:next_label_start].strip()
+    if _rejected_terms_present(row, profile) or _hard_rejected_terms_present(row, profile) or not _required_terms_present(row, profile):
+        return {}
     first_sentence = re.split(r"(?<=[.!?])\s+", row, maxsplit=1)[0]
     immediate_window = row[:140]
     if not _numeric_value_spans(first_sentence) and len(_numeric_value_spans(immediate_window)) < 2:
@@ -1889,7 +2058,7 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
     metric_context = _best_metric_context(clean, profile)
     metric_context_is_navigation = _is_navigation_or_toc(metric_context)
     best = _extract_table_metric_value(text, metric_name, profile)
-    if not best:
+    if not best and metric_name not in STRICT_STRUCTURED_VALUE_METRICS:
         for sentence in _sentences(clean):
             if not _label_matches(sentence, profile):
                 continue
@@ -1911,7 +2080,7 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
                 continue
             if candidate["score"] > best["score"]:
                 best = candidate
-    if not best and _dense_table_row_signal(metric_context):
+    if not best and metric_name not in STRICT_STRUCTURED_VALUE_METRICS and _dense_table_row_signal(metric_context):
         best = _extract_dense_metric_row_value(metric_context, metric_name, profile)
     if not best and _dense_table_row_signal(metric_context):
         return _table_row_unparsed_result(base, metric_context, profile)
@@ -2070,6 +2239,7 @@ def _source_quality_bonus(source_quality_tier: str) -> int:
         "tier_1_asx_lodged_pdf": 15,
         "tier_2_company_results_pdf": 10,
         "tier_3_company_annual_report_pdf": 6,
+        "tier_3_structured_online_annual_report": 6,
     }.get(source_quality_tier, -50)
 
 
@@ -2131,6 +2301,7 @@ def _metric_candidate_from_association(
     association_score = _int_metric_field(association.get("association_score"))
     table_mapping_confidence = _int_metric_field(association.get("table_mapping_confidence"))
     table_bonus = 8 if table_mapping_confidence >= 80 else 0
+    unmapped_table_text_penalty = 12 if candidate_origin == "table" and table_mapping_confidence < 80 else 0
     candidate_score = max(
         0,
         min(
@@ -2141,7 +2312,8 @@ def _metric_candidate_from_association(
             + _section_relevance_bonus(section_title, candidate_text)
             + table_bonus
             - navigation_penalty
-            - footnote_penalty,
+            - footnote_penalty
+            - unmapped_table_text_penalty,
         ),
     )
     source_page = str(association.get("source_page") or page_number or "unavailable")
@@ -2164,13 +2336,33 @@ def _metric_candidate_from_association(
     }
 
 
-def _metric_candidate_sort_key(candidate: dict[str, Any]) -> tuple[int, int, int, int, int]:
+def _downgrade_unmapped_table_text_association(association: dict[str, Any]) -> dict[str, Any]:
+    return {
+        **association,
+        "metric_value_status": "table_row_unparsed",
+        "clean_metric_value": "unavailable",
+        "value_unit": "unavailable",
+        "value_context": "value association below acceptance threshold",
+        "cell_value": "unavailable",
+        "confidence": "low",
+        "confidence_reason": "clean value withheld because table-origin text lacked row/column mapping",
+        "association_reason": (
+            f"{association.get('association_reason', 'table-origin text candidate')}; "
+            "clean value withheld because table-origin text lacked row/column mapping"
+        ),
+    }
+
+
+def _metric_candidate_sort_key(candidate: dict[str, Any]) -> tuple[int, int, int, int, int, int]:
     source_quality_tier = str(candidate.get("source_quality_tier") or "")
+    table_mapping_confidence = _int_metric_field(candidate.get("table_mapping_confidence"))
+    origin_rank = 2 if table_mapping_confidence >= 80 else (1 if candidate.get("candidate_origin") == "text_block" else 0)
     return (
         _metric_status_rank(str(candidate.get("metric_value_status") or "")),
         _int_metric_field(candidate.get("candidate_score")),
         _int_metric_field(candidate.get("association_score")),
-        _int_metric_field(candidate.get("table_mapping_confidence")),
+        table_mapping_confidence,
+        origin_rank,
         -SOURCE_QUALITY_RANK.get(source_quality_tier, 99),
     )
 
@@ -2191,6 +2383,12 @@ def _extract_metric_value_from_document(
             if not table_text or not _metric_label_present(table_text, profile):
                 continue
             association = _extract_metric_value_from_text(table_text, metric_name)
+            if (
+                profile.get("reject_unmapped_table_text")
+                and association.get("metric_value_status") == "value_extracted"
+                and _int_metric_field(association.get("table_mapping_confidence")) < 80
+            ):
+                association = _downgrade_unmapped_table_text_association(association)
             candidate = _metric_candidate_from_association(
                 association=association,
                 source=source,
@@ -2735,7 +2933,12 @@ def _collect_fallback_sources(
     seen_source_urls: set[str] = set()
     for page_url in _fallback_page_urls(asx_code, identity):
         try:
-            rows = _prefilter_fallback_rows(_fallback_rows(http_get(page_url, headers), page_url))
+            page_html = http_get(page_url, headers)
+            discovered_rows = _fallback_rows(page_html, page_url)
+            self_row = _fallback_page_self_row(page_html, page_url)
+            if self_row:
+                discovered_rows.append(self_row)
+            rows = _prefilter_fallback_rows(discovered_rows)
             fallback_attempts.append(
                 {
                     "source_type": "asx_fallback_page",

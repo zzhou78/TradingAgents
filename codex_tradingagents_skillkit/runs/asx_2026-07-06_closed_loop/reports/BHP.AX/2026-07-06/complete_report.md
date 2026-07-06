@@ -2,8 +2,8 @@
 
 Trade date: 2026-07-06
 Evidence as of: 2026-07-06
-Run executed at: 2026-07-06T22:12:34+10:00
-Run ID: asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-06T22:12:34+10:00
+Run executed at: 2026-07-07T08:49:15+10:00
+Run ID: asx_2026-07-06_closed_loop:BHP.AX:2026-07-06:2026-07-07T08:49:15+10:00
 Run folder: asx_2026-07-06_closed_loop
 
 ## Tool Outputs Used
@@ -55,7 +55,7 @@ Research Manager weighs market, financial-report, news, theme, and sentiment evi
 - Decisive role evidence: Decisive role evidence is Financial Report Analyst / ASX sector metrics (financial:BHP.AX:2026-07-06:031) plus Fundamentals/Financial section context; Market Analyst (market:BHP.AX:2026-07-06:001, market:BHP.AX:2026-07-06:002, market:BHP.AX:2026-07-06:003, market:BHP.AX:2026-07-06:004) modifies timing; News (news:BHP.AX:2026-07-06:001) is contextual and Sentiment is low weight.
 - Sector-specific metric or gap: miners metric direction mix: 6 available / 0 gap-labelled; 1 supportive, 0 adverse, 0 mixed, 5 neutral, 0 context-only. supportive examples: production (supportive, financial:BHP.AX:2026-07-06:031); adverse examples: none; mixed/neutral examples: realised price (neutral, financial:BHP.AX:2026-07-06:032); unit cost (neutral, financial:BHP.AX:2026-07-06:033). Highlighted metric: production is available / supportive via financial:BHP.AX:2026-07-06:031.
 - Sector metric audit: `2_research/manager.md` stores metric_name, extracted_value_or_phrase, clean_metric_value, value_unit, value_context, metric_value_status, association_score, association_reason, period_reference, comparison_reference, supporting_sentence, comparison_basis, direction, confidence, confidence_reason, evidence_id, and table context fields for each ASX sector metric.
-- Compact metric-audit summary: Metric audit summary: production supportive (2.02 mt; value_extracted; association_score 100; financial:BHP.AX:2026-07-06:031; medium); realised_price neutral (value unavailable; value_extracted; association_score 84; financial:BHP.AX:2026-07-06:032; medium).
+- Compact metric-audit summary: Metric audit summary: production supportive (2.02 mt; value_extracted; association_score 100; financial:BHP.AX:2026-07-06:031; medium); unit_cost_aisc neutral (value unavailable; value_extracted; association_score 86; financial:BHP.AX:2026-07-06:033; medium).
 - Evidence-gap confidence cap: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:BHP.AX:2026-07-06:001, and medium-confidence extraction depth.
 Debate outcome scorecard: Debate winner: Balanced. Rating implication: Hold. Trader implication: HOLD. Changed from pre-debate analyst evidence: No; Pre-debate analyst evidence already supported Hold; Bull/Bear debate clarified evidence quality and independence groups rather than changing the rating.
 

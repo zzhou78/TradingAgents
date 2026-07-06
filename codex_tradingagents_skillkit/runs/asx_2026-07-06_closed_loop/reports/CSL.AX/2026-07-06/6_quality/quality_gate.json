@@ -6,12 +6,6 @@
     {
       "severity": "major",
       "section": "Quality Gate",
-      "issue": "ASX sector-specific metrics are missing without evidence-gap disclosure",
-      "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
-    },
-    {
-      "severity": "major",
-      "section": "Quality Gate",
       "issue": "ASX core metric coverage failed; review-ready quality gate cannot pass",
       "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
     }
@@ -19,7 +13,7 @@
   "validator": "validate_quality_review.py",
   "status": "remediation_required",
   "quality_gate_passed": false,
-  "evidence_reasoning_audit_status": "pass",
+  "evidence_reasoning_audit_status": "pass_with_warnings",
   "evidence_reasoning_critical_findings": [],
   "core_metric_coverage_status": "failed",
   "core_metrics_required": [
@@ -31,9 +25,10 @@
     "guidance"
   ],
   "core_metrics_cleanly_extracted": [],
-  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unavailable_with_reason": [
+    "segment_revenue"
+  ],
   "core_metrics_unresolved": [
-    "segment_revenue",
     "margins",
     "r_and_d",
     "plasma_collections",

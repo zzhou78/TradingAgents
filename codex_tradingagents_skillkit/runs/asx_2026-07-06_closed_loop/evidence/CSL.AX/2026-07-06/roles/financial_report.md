@@ -208,6 +208,81 @@ risk and legal fields. He has more than 35 years’ experience and from 2014 he 
 Product Portfolio 20 Material Risks 24 Healthier World Healthier Communities 27 Healthier Environment 35 IN THIS REPORT ANNUAL GENERAL MEETING The 2025 Annual General Meeting (AGM) of CSL Limited (ABN 99 051 588 348) will be held on Tuesday, 28 October 2025 at 10 a.m. (Melbourne time) at RACV City Club, Level 17, 501 Bourke St, Melbourne 3000. Governance Governance 40 Directors’ Report Remuneration Report 61 Financial Report Financial Report 90 Shareholder Information Shareholder Information 138 Key Performance Data Summary 141 Glossary 143 Corporate Directory 144 Sections which are read as part of the Operating and Financial Review (see page 52) 2025 19/8 Annual results and final dividend announcement 9/9 Shares trade ex‑dividend 10/9 Record date for final dividend 3/10 Final dividend paid 28/10 Annual General Meeting 31/12 Half Year ends 2026 10/2 Half Year results and interim dividend announcement 10/3 Shares trade ex‑dividend 11/3 Record date for interim dividend 9/4 Interim dividend paid 30/6 Full Year ends 18/8 Annual profit and final dividend announcement 9/9 Shares trade ex‑dividend 10/9 Record date for final dividend 2/10 Final dividend paid 27/10 Annual General Meeting 31/12 Half Year ends CSL CALENDAR ABOUT THIS REPORT This Annual Report combines CSL’s financial and non‑financial performance in one comprehensive report, linking CSL’s sustainability and strategic priorities to its business results. Unless otherwise stated, this report covers CSL’s controlled entities as disclosed within its consolidated entity disclosure statement included in the financial report. This 2025 Annual Report is a summary of CSL’s operations and activities for the year ended 30 June 2025 and financial position as at 30 June 2025. This report covers CSL’s global operations, including subsidiaries, unless otherwise noted. A reference to CSL, CSL Group, we, us and our and similar expressions refer collectively to CSL Limited and its related bodies corporate. Please refer to the inside back cover to read the legal notice and the disclaimers as they relate to forward looking statements, non-IFRS financial information and trademarks. + READ MORE AT INVESTORS.CSL.COM 1 CSL Limited Annual Report 2024/25 CSL CSL is a global biopharma company working to create enduring impact for patients and public health. OUR GLOBAL MANUFACTURING AND OFFICE PRESENCE OUR BUSINESS US$15.6b in annual revenue 100+ countries that CSL provides lifesaving products to patients US$2.92 dividend per share for 2025 CSL uses its deep expertise in plasma-derived therapies, vaccines and biotechnology to deliver medicines for serious and complex diseases such as haemophilia, immune deficiencies, influenza and iron deficiency anaemia. CSL innovates at every step of the process. It pioneers therapies and vaccines, improves patients’ and donors’ experiences, broadens access to treatments, and tackles complexity at scale through specialised manufacturing processes. Helping address unmet medical needs is what sets CSL apart. CSL’s focus on diseases where it has a fundamental advantage in understanding the disease and the science; and medicines with a high degree of specialist expertise or manufacturing differentiation. 29,000+ employees globally United States Puerto Rico 2 Leading the Way in Treating Rare and Serious Diseases CSL Behring discovers, develops and delivers innovative therapies for people living with a range of rare and serious health conditions. Securing Health for All of Us CSL Seqirus is a major contributor to the prevention of influenza globally and a transcontinental partner in pandemic preparedness. Changing the Game in Iron Deficiency and Nephrology CSL Vifor is a global partner of choice for pharmaceuticals and innovative leading therapies in iron deficiency and nephrology. + READ MORE ON PAGE 16 + READ MORE ON PAGE 17 + READ MORE ON PAGE 18 Australia Japan China Germany Netherlands United Kingdom Spain Switzerland Italy Hungary 3 CSL Limited Annual Report 2024/25 CSL Message from the Chair The past year has been significant to say the least with a great deal of uncertainty in the external environment. Our CEO Paul McKenzie is settling into the second year of his tenure and along with his leadership team is working with the Board of Directors to address some shortcomings in the way our business currently operates and in charting a path for continuing growth. CSL is a truly global company, and we have the flexibility and resilience to cope with shifting external trends. We also have the financial strength to make decisions now that will enhance shareholder value in the future. Your Directors and management team are focused on what we can control and, despite the complexity, the company has delivered strong financial results. This is due to the great work of our staff who work across 100 different countries. Focused strategy While CSL has a strong track record of sustainable, profitable growth, our operating environment has become increasingly complex and competitive. A company of our size must and does constantly evolve its strategy to deal with such changing times. We must also recognise that not all our investments have performed as we had anticipated. The detail in this report shows our strategic ambition of delivering enduring patient impact in areas of high unmet medical need. This underpins value creation for shareholders into the future. It’s what we’ve always done, but how we deliver on that ambition needs adjustment – our organisation needs to return to a more productive one. . We remain focused on five core therapeutic areas – but particularly in areas where CSL is uniquely positioned to outperform our competitors. In order to improve clinical and commercial execution, CSL has embarked on a series of strategic initiatives to help reduce cost and complexity. Although this is painful and has a significant cost impact in the coming financial year, these measures will drive further growth through transforming our
 ```
 
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_segment_revenue
+- Status: `unavailable`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: segment revenue
+- Unavailable reason: segment revenue was not identified in selected eligible ASX financial documents.
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_r_and_d
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: R&D
+
+```text
++ READ MORE ABOUT CSL’S R&D PIPELINE AT WWW.CSL.COM/RESEARCH-ANDDEVELOPMENT/PRODUCT-PIPELINE NPATA attributable to equity holders of US$3.2 billion for the year ended 30 June 2025, up 11% on a reported currency basis when compared to the
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_plasma_collections
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: plasma collections
+
+```text
+In plasma collection the focus is on three areas; enhancing collection efficiency, reducing the unit acquisition cost and providing a world-class experience for donors and
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_margins
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: margins
+
+```text
+CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL’s
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_debt
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: debt, liquidity
+
+```text
+CODE OF RESPONSIBLE BUSINESS PRACTICE SALES, MARKETING, POLICY EARLY STAGE RESEARCH MANUFACTURING PRODUCT DEVELOPMENT & COLLABORATION & DISTRIBUTION & CLINICAL TRIALS POLICY ADVOCACY & PATIENT SUPPORT + READ MORE AT INVESTORS.CSL.COM CSL’s
+```
+
+### Section: asx_fallback_document / sector_metric
+
+- Section name: sector_metric_guidance
+- Status: `available`
+- Source type: `asx_fallback_document`
+- Filing date: `2025-12-31`
+- URL: https://investors.csl.com/annualreport/2025/
+- Supports claims: guidance, outlook
+
+```text
++ READ MORE AT INVESTORS.CSL.COM CSL’s Businesses and Outlook US$11,158m CSL Behring revenue 16 Performance The FY2025 financial year was dynamic for the vaccine market and CSL Seqirus generated positive
+```
+
 ### Excerpt: asx_fallback_document
 
 - Filing date: `N/A`

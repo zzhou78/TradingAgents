@@ -14,9 +14,9 @@
 | financial:MPL.AX:2026-07-06:007 | asx_fallback_document | cash_debt_gearing | 2025-12-31 | available | cash flows 76 Notes to the consolidated financial statements 77 Consolidated entity disclosure statement 110 D |
 | financial:MPL.AX:2026-07-06:004 | asx_fallback_document | cash_flow_statement | 2025-12-31 | available | Consolidated statement of cash flows 76 Notes to the consolidated financial statements 77 Consolidated entity |
 | financial:MPL.AX:2026-07-06:001 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | income 73 Consolidated statement of financial position 74 Consolidated statement of changes in equity 75 Conso |
-| financial:MPL.AX:2026-07-06:016 | asx_fallback_document | sector_metric_premium_growth | 2025-12-31 | available | Measure 2025 2024 20231 2022 2021 Health Insurance premium revenue growth 3.9% 4.0% 4.2% 2.7% 2.1% Group opera |
-| financial:MPL.AX:2026-07-06:017 | asx_fallback_document | sector_metric_claims_ratio | 2025-12-31 | available | Non-resident net claims expense increased by 8.8% to $190.6 million reflecting the mix and tenure of the |
-| financial:MPL.AX:2026-07-06:018 | asx_fallback_document | sector_metric_membership | 2025-12-31 | available | More than half of Medibank policyholders / • 96% vesting against the total shareholder return (TSR) __TABLE_RO |
+| financial:MPL.AX:2026-07-06:016 | asx_fallback_document | sector_metric_premium_growth | 2025-12-31 | available | 45% 35% 50% 42% Health Insurance premium revenue growth Measured alongside the core metric of group operating |
+| financial:MPL.AX:2026-07-06:017 | asx_fallback_document | sector_metric_claims_ratio | 2025-12-31 | available | Resident gross claims increased 3.9% to $6,630.8 million, while net claims expense was up 3.2% to $6,624.0 |
+| financial:MPL.AX:2026-07-06:018 | asx_fallback_document | sector_metric_membership | 2025-12-31 | available | 2025 highlights Customer 4.2m total health insurance customers $1.71b total COVID financial support since 2020 |
 | financial:MPL.AX:2026-07-06:019 | asx_fallback_document | sector_metric_capital_adequacy | 2025-12-31 | available | • The target health insurance capital ratio is between 10% and 12% of premium revenue, however, the current ra |
 | financial:MPL.AX:2026-07-06:020 | asx_fallback_document | sector_metric_operating_profit_or_margin | 2025-12-31 | available | __TABLE_ROW__ page=27 table=1001 row=36 title=pdfplumber_words / Health Insurance operating profit1 / 741.5 / |
 

@@ -29,12 +29,12 @@
     "net_interest_margin",
     "cet1",
     "loan_growth",
-    "arrears",
-    "impairment",
     "dividend"
   ],
   "core_metrics_unavailable_with_reason": [],
   "core_metrics_unresolved": [
+    "arrears",
+    "impairment",
     "roe"
   ],
   "core_metric_coverage_passed": false,
