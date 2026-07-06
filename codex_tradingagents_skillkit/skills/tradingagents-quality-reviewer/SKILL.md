@@ -20,7 +20,7 @@ Procedure:
 6. Fail or warn when financial_report.md is missing; financial report source coverage is unclear; fundamentals only lists ratios and omits financial statement data; industry_theme.md is missing; themes are preconfigured without evidence support; complete_report.md omits Financial Report Analyst or Industry / Theme Discovery Analyst sections; Research Manager ignores material financial-report or theme evidence; Portfolio Manager merely repeats Trader; or quality_gate.json passes despite quality errors.
 7. Fail completed role reports that omit Tool Outputs Used, Article Evidence Cards for News Analyst, Quantitative Regime / Tool Outputs for Market Analyst, Claim-Source Table for Financial Report Analyst, or Structured Evidence Matrix for Research Manager.
 8. ASX reports are not complete when ASX source collection fails. If official ASX announcements or investor-relations evidence cannot be collected, fail quality_gate.json or leave completion pending with an explicit evidence gap.
-9. Fail ASX review-grade completion when `complete_report.md` is missing, `financial_report.md` is pending, ASX source collection is `error` without an explicit external blocker, sector-specific metrics are missing without evidence-gap disclosure, ASX financial strength/weakness claims lack section or metric evidence, or report folder trade date and report trade date disagree.
+9. Fail ASX review-grade completion when `complete_report.md` is missing, `financial_report.md` is pending, ASX source collection is `error` without an explicit external blocker, sector-specific metrics are missing without evidence-gap disclosure, ASX financial strength/weakness claims lack section or metric evidence, ASX core sector metric coverage fails, or report folder trade date and report trade date disagree.
 10. Fail or warn when the News Analyst treats political-trading or celebrity-trading headlines as material without a direct link to company fundamentals, regulation, price action, or sentiment.
 11. Fail pending role outputs unless the final gate explicitly documents a limitation and leaves normal completion pending.
 12. Require fixes that are specific enough for Codex to apply in a second report-writing pass.
@@ -45,6 +45,8 @@ Fail the report when:
 - structured financial evidence lacks any extracted cash-flow statement section;
 - Financial Report Analyst makes management-commentary, guidance, segment, capex, liquidity, risk-factor, income-statement, balance-sheet, or cash-flow claims without `evidence_id` citation or an explicit evidence gap;
 - Financial Report Analyst treats an 8-K cover page as the full earnings release when Exhibit 99.1 is unavailable.
+- ASX core sector metrics are only `metric_mentioned_only`, `direction_extracted`, `table_row_unparsed`, low-confidence `context_only`, or unavailable without a documented source-absence reason.
+- `quality_gate.json` passes while `core_metric_coverage_passed` is false.
 
 ## Market Analyst Evidence Gate
 
@@ -82,6 +84,7 @@ Fail the report when:
 - Fail if Trader omits explicit setup thresholds, uses ASX-specific execution wording in US reports, or omits ASX-specific liquidity/spread/event caution in `.AX` reports;
 - Fail if `closed_loop_status.json` is `review_ready_paper_study` but root or nested run metadata status fields disagree; report run-level warnings in `run_quality_warnings` and `quality_review.md` without failing unless configured;
 - Fail if ASX sector metric audit rows omit clean value, value unit, value context, `metric_value_status`, `association_score`, `association_reason`, period reference, comparison reference, supporting sentence, comparison basis, direction, confidence reason, or evidence ID; fail if `clean_metric_value` is populated below the accepted association threshold, if a high-score dense numeric row lacks row/column mapping, if table-of-contents/navigation text is marked `value_extracted`, or if `context_only` / `metric_mentioned_only` / `table_row_unparsed` evidence is counted as strong support; downgrade navigation/page-list snippets and unsupported reserves/resources or commodity-exposure snippets instead of treating them as supportive;
+- Fail ASX review-ready status unless each core sector metric is either `value_extracted` with a populated clean value, accepted association score, and row/cell proof for dense tables, or explicitly unavailable because the reviewed source genuinely lacks the metric with a clear evidence-gap reason.
 - Portfolio Manager says the risk debate tempers action but does not explain whether Aggressive, Conservative, or Neutral risk was stronger, or omits the strongest concrete opportunity and strongest concrete risk;
 - trader final proposal mismatch;
 - trader Buy/Sell lacks paper-study price framework;

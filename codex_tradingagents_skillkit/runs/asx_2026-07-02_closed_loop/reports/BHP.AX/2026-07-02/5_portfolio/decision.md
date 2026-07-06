@@ -1,22 +1,22 @@
 # Portfolio Manager Decision - BHP.AX
 
 ## Tool Outputs Used
-- Research Manager: Hold.
+- Research Manager: Overweight.
 - Trader action: HOLD at reference price 59.57.
 - Risk debate outputs and evidence: market:BHP.AX:2026-07-02:001, financial:BHP.AX:2026-07-02:009, news:BHP.AX:2026-07-02:001.
 
 ## Risk debate impact
-The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: miners metric direction mix: 5 available / 1 gap-labelled; 0 supportive, 0 adverse, 0 mixed, 5 neutral, 0 context-only. supportive examples: none; adverse examples: none; mixed/neutral examples: production (neutral, financial:BHP.AX:2026-07-02:016); realised price (neutral, financial:BHP.AX:2026-07-02:017). Highlighted metric: production is available / neutral via financial:BHP.AX:2026-07-02:016. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:BHP.AX:2026-07-02:016 rather than generic sector language. Strongest concrete risk: Confidence is capped by 1 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:BHP.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 59.57 versus confirmation 60.27 and invalidation/caution 58.88. Stronger risk side: Neutral Risk was stronger because evidence remains mixed and no directional setup is complete.
+The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: miners metric direction mix: 5 available / 1 gap-labelled; 2 supportive, 0 adverse, 0 mixed, 3 neutral, 0 context-only. supportive examples: production (supportive, financial:BHP.AX:2026-07-02:016); unit cost (supportive, financial:BHP.AX:2026-07-02:018); adverse examples: none; mixed/neutral examples: realised price (neutral, financial:BHP.AX:2026-07-02:017); reserves (neutral, financial:BHP.AX:2026-07-02:020). Highlighted metric: production is available / supportive via financial:BHP.AX:2026-07-02:016. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:BHP.AX:2026-07-02:016 rather than generic sector language. Strongest concrete risk: Confidence is capped by 1 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:BHP.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 59.57 versus confirmation 60.27 and invalidation/caution 58.88. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD.
 
 ## Final Portfolio Decision
-**Rating**: Hold
+**Rating**: Overweight
 
-Research decision: Hold. Trader action: HOLD. Portfolio decision: maintain Hold paper-study stance while preserving rating/action tension. Rating and action are aligned by current setup quality. No real trade execution or broker/order tooling is used.
+Research decision: Overweight. Trader action: HOLD. Portfolio decision: maintain Overweight paper-study stance while preserving rating/action tension. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action. No real trade execution or broker/order tooling is used.
 
 ## Rating-Action Tension
-- Research Manager rating: Hold
+- Research Manager rating: Overweight
 - Trader action: HOLD
-- Portfolio stance: Hold
+- Portfolio stance: Overweight
 - Interpretation: research evidence and trade timing are separate decisions; the portfolio stance reflects research quality and risk debate, not just the immediate Trader action.
 
 ## Evidence Gaps

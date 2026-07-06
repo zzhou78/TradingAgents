@@ -68,8 +68,9 @@ def _dense_numeric_text(text: str) -> bool:
         text,
         re.IGNORECASE,
     )
+    distinct_labels = {label.lower() for label in labels}
     parenthesized = len(re.findall(r"\([\d,]+(?:\.\d+)?\)", text))
-    return len(numbers) > 4 and (len(labels) >= 2 or parenthesized >= 2)
+    return len(numbers) > 4 and (len(distinct_labels) >= 2 or parenthesized >= 2)
 
 
 def _finding(

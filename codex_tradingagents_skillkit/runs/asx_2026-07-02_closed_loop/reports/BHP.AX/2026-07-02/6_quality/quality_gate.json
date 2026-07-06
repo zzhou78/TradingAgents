@@ -8,6 +8,24 @@
   "quality_gate_passed": true,
   "evidence_reasoning_audit_status": "pass_with_warnings",
   "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "production",
+    "unit_cost_aisc"
+  ],
+  "core_metrics_unavailable_with_reason": [
+    "capex"
+  ],
+  "core_metrics_unresolved": [],
+  "core_metric_coverage_passed": true,
   "review_ready": true,
   "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\closed_loop_status.json",
   "closed_loop_status_artifact": "closed_loop_status.json",

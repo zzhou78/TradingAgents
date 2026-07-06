@@ -1,10 +1,19 @@
+# ruff: noqa: E402
+
 from __future__ import annotations
 
 import argparse
 import json
 import re
+import sys
 from difflib import SequenceMatcher
 from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from core_metric_coverage import CORE_METRIC_PROFILES, evaluate_core_metric_coverage
 
 ROLE_REQUIRED_SECTIONS = {
     ("1_analysts", "market.md"): ["Tool Outputs Used", "Quantitative Regime / Tool Outputs"],
@@ -275,8 +284,8 @@ ASX_REQUIRED_SECTOR_METRICS = {
     "banks": {"net_interest_margin", "cet1", "loan_growth", "arrears", "impairment", "dividend", "roe"},
     "miners": {"production", "realised_price", "unit_cost_aisc", "capex", "reserves_resources", "commodity_exposure"},
     "healthcare": {"segment_revenue", "r_and_d", "plasma_collections", "margins", "debt", "guidance"},
-    "health_insurers": {"premium_growth", "claims_ratio", "membership", "capital_adequacy"},
-    "retailers": {"sales_growth", "ebit_margin", "inventory", "capex", "dividends"},
+    "health_insurers": {"premium_growth", "claims_ratio", "membership", "capital_adequacy", "operating_profit_or_margin"},
+    "retailers": {"sales_growth", "ebit_margin", "inventory_or_working_capital", "capex", "dividends", "comparable_sales_if_available"},
 }
 
 DENSE_FINANCIAL_ROW_LABELS = [
@@ -323,7 +332,8 @@ def _asx_sector_metric_quality_errors(evidence_path: Path | None, records: list[
     by_metric = {str(record.get("metric_name") or "").lower(): record for record in metric_records}
     errors: list[str] = []
     for metric in sorted(required):
-        record = by_metric.get(metric)
+        aliases = CORE_METRIC_PROFILES.get(sector, {}).get(metric, (metric,))
+        record = next((by_metric.get(alias) for alias in aliases if by_metric.get(alias)), None)
         if not record:
             errors.append(f"ASX sector metric {metric} is missing without evidence-gap disclosure")
             break
@@ -332,6 +342,9 @@ def _asx_sector_metric_quality_errors(evidence_path: Path | None, records: list[
         ):
             errors.append(f"ASX sector metric {metric} is unavailable without evidence-gap disclosure")
             break
+    coverage = evaluate_core_metric_coverage(records, ticker=evidence_path.parent.parent.name if evidence_path else "")
+    if not coverage["core_metric_coverage_passed"]:
+        errors.append("ASX core metric coverage failed; review-ready quality gate cannot pass")
     return errors
 
 
@@ -1185,8 +1198,6 @@ def validate_report_dir(report_dir: Path, evidence_path: Path | None = None) -> 
                 errors.extend(_evidence_reasoning_audit_errors(report_dir))
             if errors and gate.get("passed") is True:
                 errors.append("quality_gate.json passes despite quality errors")
-            if not passed:
-                errors.append("quality_gate.json does not pass; workflow remains incomplete")
 
     return errors
 

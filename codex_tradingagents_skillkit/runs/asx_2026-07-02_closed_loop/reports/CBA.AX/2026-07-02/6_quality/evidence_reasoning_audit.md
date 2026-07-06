@@ -7,23 +7,15 @@ pass_with_warnings
 - None.
 
 ## Warnings
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:040 metric=loan_growth`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:041 metric=arrears`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:042 metric=impairment`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:044 metric=roe`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:062 metric=loan_growth`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:063 metric=arrears`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:064 metric=impairment`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CBA.AX:2026-07-02:066 metric=roe`
 
 ## Evidence References
-- financial:CBA.AX:2026-07-02:040 metric=loan_growth
 - financial:CBA.AX:2026-07-02:041 metric=arrears
-- financial:CBA.AX:2026-07-02:042 metric=impairment
 - financial:CBA.AX:2026-07-02:044 metric=roe
-- financial:CBA.AX:2026-07-02:062 metric=loan_growth
 - financial:CBA.AX:2026-07-02:063 metric=arrears
-- financial:CBA.AX:2026-07-02:064 metric=impairment
 - financial:CBA.AX:2026-07-02:066 metric=roe
 
 ## Required Remediation

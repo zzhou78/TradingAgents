@@ -82,6 +82,38 @@ def test_auditor_fails_dense_clean_value_without_row_column_mapping(tmp_path: Pa
     assert any("Dense numeric text produced a clean value without row_label and column_label" in item["finding"] for item in audit["critical_findings"])
 
 
+def test_auditor_allows_narrative_ebit_margin_sentence_with_repeated_label(tmp_path: Path):
+    module = _load_auditor()
+    evidence_path = _write_evidence(
+        [
+            {
+                "section_kind": "sector_metric",
+                "evidence_id": "financial:WOW.AX:2026-07-02:018",
+                "metric_name": "ebit_margin",
+                "status": "available",
+                "clean_metric_value": "82",
+                "value_unit": "bps",
+                "metric_value_status": "value_extracted",
+                "association_score": 100,
+                "table_mapping_confidence": 0,
+                "direction": "adverse",
+                "confidence": "medium",
+                "row_label": "unavailable",
+                "column_label": "unavailable",
+                "supporting_sentence": (
+                    "Australian Food F25 EBIT of $2,753 million declined by a normalised 10.5% "
+                    "with the EBIT margin decreasing by a normalised 82 bps to 5.4%."
+                ),
+            }
+        ],
+        tmp_path,
+    )
+
+    audit = module.audit_report_dir(tmp_path / "reports" / "WOW.AX" / "2026-07-02", evidence_path)
+
+    assert audit["critical_findings"] == []
+
+
 def test_auditor_allows_valid_metric_and_warns_on_unparsed_rows(tmp_path: Path):
     module = _load_auditor()
     evidence_path = _write_evidence(

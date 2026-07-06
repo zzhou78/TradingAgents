@@ -70,9 +70,21 @@ ASX_SECTOR_METRIC_PATTERNS: dict[str, list[tuple[str, str, str, list[str]]]] = {
         ("claims_ratio", "Claims ratio", r"claims ratio|claims expense|benefits paid", ["claims ratio"]),
         ("membership", "Membership", r"membership|policyholders?|members", ["membership"]),
         ("capital_adequacy", "Capital adequacy", r"capital adequacy|capital ratio|regulatory capital", ["capital adequacy"]),
+        (
+            "operating_profit_or_margin",
+            "Operating profit / margin",
+            r"operating profit(?: margin)?|operating margin|organic operating profit growth",
+            ["operating profit", "operating margin"],
+        ),
     ],
     "retailers": [
         ("sales_growth", "Sales growth", r"sales growth|comparable sales|same[- ]store sales|total sales", ["sales growth"]),
+        (
+            "comparable_sales_if_available",
+            "Comparable sales",
+            r"comparable sales|same[- ]store sales|like[- ]for[- ]like sales",
+            ["comparable sales"],
+        ),
         ("ebit_margin", "EBIT margin", r"EBIT margin|operating margin", ["EBIT margin"]),
         ("inventory", "Inventory", r"inventor(?:y|ies)|stock loss|shrink", ["inventory"]),
         ("capex", "Capex", r"capex|capital expenditure", ["capex"]),
@@ -868,6 +880,8 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
         unit = "$bn"
     elif ("a$" in lower or "$" in raw) and "m" in lower:
         unit = "$m"
+    elif "us$" in lower or "a$" in lower or "$" in raw:
+        unit = "$"
     elif lower.endswith("bn"):
         unit = "bn"
     elif lower.endswith("m"):
@@ -1167,6 +1181,9 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             window_end = min(len(text), max(label_match.end(), value_match.end()) + 80)
             window = text[window_start:window_end]
             lower_window = window.lower()
+            between_start = min(label_match.end(), value_match.end())
+            between_end = max(label_match.start(), value_match.start())
+            lower_between = text[between_start:between_end].lower()
             score = 35
             score += max(0, 20 - token_distance * 2)
             score += 20 if _unit_compatible(unit, profile) else -25
@@ -1187,14 +1204,22 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             if competing:
                 stronger = False
                 own_distance = abs(value_match.start() - label_match.end())
+                own_label_is_close_after_value = label_match.start() >= value_match.end() and token_distance <= 3
                 for other_metric in competing:
+                    if metric_name == "production" and other_metric == "commodity_exposure":
+                        continue
                     other_profile = _profile_for_metric(other_metric)
                     for other_label in _label_matches(text, other_profile):
+                        if own_label_is_close_after_value and other_label.end() <= value_match.start():
+                            continue
                         if abs(value_match.start() - other_label.end()) < own_distance:
                             stronger = True
                 if stronger:
                     score -= 35
-            rejected_hits = [term for term in rejected_terms if term in lower_window]
+            if token_distance <= 2:
+                rejected_hits = [term for term in rejected_terms if term in lower_between]
+            else:
+                rejected_hits = [term for term in rejected_terms if term in lower_window]
             if rejected_hits:
                 score -= 30
             if _is_navigation_or_toc(window):
@@ -1232,6 +1257,12 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             candidate_high = candidate["score"] >= 80
             best_high = best["score"] >= 80
             if candidate_high and best_high:
+                if metric_name in {"ebit_margin", "margins"}:
+                    candidate_unit = str(candidate.get("value_unit") or "").lower()
+                    best_unit = str(best.get("value_unit") or "").lower()
+                    if candidate_unit == "bps" and best_unit != "bps":
+                        best = candidate
+                    continue
                 if (candidate["label_start"], candidate["value_start"]) < (best["label_start"], best["value_start"]):
                     best = candidate
             elif candidate["score"] > best["score"]:
@@ -1423,6 +1454,23 @@ def _metric_label_present(text: str, profile: dict[str, Any]) -> bool:
     return bool(_label_matches(text, profile))
 
 
+def _best_metric_context(clean: str, profile: dict[str, Any], fallback_length: int = 900) -> str:
+    label_matches = _label_matches(clean, profile)
+    if not label_matches:
+        return clean[:fallback_length]
+    label_match = label_matches[0]
+    sentence_match = None
+    for sentence in _sentences(clean):
+        if _label_matches(sentence, profile):
+            sentence_match = sentence
+            break
+    if sentence_match:
+        return sentence_match
+    window_start = max(0, label_match.start() - 220)
+    window_end = min(len(clean), label_match.end() + fallback_length)
+    return clean[window_start:window_end].strip()
+
+
 def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, Any]:
     profile = _profile_for_metric(metric_name)
     clean = _clean_text(text)
@@ -1456,27 +1504,21 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
     if not profile:
         return base
     label_present = _metric_label_present(clean, profile)
-    if _is_navigation_or_toc(clean):
-        return {
-            **base,
-            "metric_value_status": "context_only",
-            "association_reason": "navigation or table-of-contents context is not metric evidence",
-            "supporting_sentence": clean[:240] or base["supporting_sentence"],
-            "direction": "context_only",
-            "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
-        }
     if not label_present:
         return base
+    navigation_context = _is_navigation_or_toc(clean)
+    metric_context = _best_metric_context(clean, profile)
+    metric_context_is_navigation = _is_navigation_or_toc(metric_context)
     best = _extract_table_metric_value(text, metric_name, profile)
-    if not best and _dense_table_row_signal(clean):
-        best = _extract_dense_metric_row_value(clean, metric_name, profile)
-    if not best and _dense_table_row_signal(clean):
-        return _table_row_unparsed_result(base, clean, profile)
     if not best:
         for sentence in _sentences(clean):
             if not _label_matches(sentence, profile):
                 continue
             if _dense_table_row_signal(sentence):
+                dense_candidate = _extract_dense_metric_row_value(sentence, metric_name, profile)
+                if dense_candidate:
+                    best = dense_candidate if not best or dense_candidate["score"] > best["score"] else best
+                    continue
                 return _table_row_unparsed_result(base, sentence, profile)
             candidate = _best_label_value_association(sentence, metric_name, profile)
             if not candidate:
@@ -1490,6 +1532,19 @@ def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, An
                 continue
             if candidate["score"] > best["score"]:
                 best = candidate
+    if not best and _dense_table_row_signal(metric_context):
+        best = _extract_dense_metric_row_value(metric_context, metric_name, profile)
+    if not best and _dense_table_row_signal(metric_context):
+        return _table_row_unparsed_result(base, metric_context, profile)
+    if not best and navigation_context and metric_context_is_navigation:
+        return {
+            **base,
+            "metric_value_status": "context_only",
+            "association_reason": "navigation or table-of-contents context is not metric evidence",
+            "supporting_sentence": metric_context[:240] or base["supporting_sentence"],
+            "direction": "context_only",
+            "confidence_reason": "downgraded because extracted text is navigation/table-of-contents context",
+        }
     support_sentence = clean[:240]
     for sentence in _sentences(clean):
         if _label_matches(sentence, profile):
@@ -1647,7 +1702,8 @@ def _extract_sector_metrics(
                 }
             )
             continue
-        excerpt = clean[match.start() : match.start() + excerpt_chars].rsplit(" ", 1)[0].strip()
+        excerpt_start = max(0, match.start() - min(300, excerpt_chars // 4))
+        excerpt = clean[excerpt_start : match.start() + excerpt_chars].rsplit(" ", 1)[0].strip()
         association = _extract_metric_value_from_text(excerpt, metric_name)
         metrics.append(
             {

@@ -15,13 +15,13 @@
 | financial:CSL.AX:2026-07-02:109 | asx_fallback_document | cash_flow_statement | 2025-12-31 | available | Cash Flows from Operating Activities Profit before income tax expense 3,724 3,375 Adjustments for: Depreciatio |
 | financial:CSL.AX:2026-07-02:001 | asx_fallback_document | revenue_income_npat | 2025-12-31 | available | revenue 100+ countries that CSL provides lifesaving products to patients US$2.92 dividend per share for 2025 C |
 | financial:CSL.AX:2026-07-02:016 | asx_fallback_document | sector_metric_segment_revenue | 2025-12-31 | unavailable |  |
-| financial:CSL.AX:2026-07-02:017 | asx_fallback_document | sector_metric_r_and_d | 2025-12-31 | available | R&D, our portfolio and re-establishing the organisation with a leaner, more agile design. We must accelerate i |
-| financial:CSL.AX:2026-07-02:018 | asx_fallback_document | sector_metric_plasma_collections | 2025-12-31 | available | plasma collection networks, with collection centres in the US and Europe. Plasma collected at CSL Plasma facil |
-| financial:CSL.AX:2026-07-02:019 | asx_fallback_document | sector_metric_margins | 2025-12-31 | available | margin and increase plasma volumes at a lower cost per litre. Our purpose and our people My final priority is |
-| financial:CSL.AX:2026-07-02:020 | asx_fallback_document | sector_metric_debt | 2025-12-31 | available | debt for future growth 14 Performance WHAT CSL DOES THE VALUE CSL CREATES Provide a safe, rewarding and produc |
-| financial:CSL.AX:2026-07-02:021 | asx_fallback_document | sector_metric_guidance | 2025-12-31 | available | Outlook 16 Global Manufacturing Presence 19 Platforms, Therapeutic Areas and Product Portfolio 20 Material Ris |
+| financial:CSL.AX:2026-07-02:017 | asx_fallback_document | sector_metric_r_and_d | 2025-12-31 | available | improve clinical and commercial execution, CSL has embarked on a series of strategic initiatives to help reduc |
+| financial:CSL.AX:2026-07-02:018 | asx_fallback_document | sector_metric_plasma_collections | 2025-12-31 | available | l need. CSL provides lifesaving products to patients in more than 100 countries and employs over 29,000 people |
+| financial:CSL.AX:2026-07-02:019 | asx_fallback_document | sector_metric_margins | 2025-12-31 | available | launch of an exciting new product Andembry which was approved in US, Japan and EU. 6 The Enterprise Operations |
+| financial:CSL.AX:2026-07-02:020 | asx_fallback_document | sector_metric_debt | 2025-12-31 | available | r rare and serious diseases; influenza virus strains for vaccine manufacture; iron sources (including syntheti |
+| financial:CSL.AX:2026-07-02:021 | asx_fallback_document | sector_metric_guidance | 2025-12-31 | available | purpose of manufacturing and delivering its life-saving therapies to people in more than 100 countries. + READ |
 | financial:CSL.AX:2026-07-02:037 | asx_fallback_document | sector_metric_segment_revenue | 2024-12-31 | unavailable |  |
-| financial:CSL.AX:2026-07-02:038 | asx_fallback_document | sector_metric_r_and_d | 2024-12-31 | available | research and development to identify new indications for CSL’s existing products, and innovative new products |
+| financial:CSL.AX:2026-07-02:038 | asx_fallback_document | sector_metric_r_and_d | 2024-12-31 | available | CSL 2025 Annual Report – Page 17 1 16 Table of Contents 18 148 CSL 2025 Annual Report WHAT CSL DOES THE VALUE |
 
 ## Claim-Source Table
 | Claim | Source document | Section / exhibit | Filing date | Confidence | Evidence gap if section/exhibit is missing |

@@ -1,28 +1,10 @@
 {
-  "summary_verdict": "pass_with_warnings",
+  "summary_verdict": "pass",
   "critical_findings": [],
-  "warnings": [
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:MPL.AX:2026-07-02:016 metric=premium_growth",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:MPL.AX:2026-07-02:019 metric=capital_adequacy",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    }
-  ],
-  "evidence_references": [
-    "financial:MPL.AX:2026-07-02:016 metric=premium_growth",
-    "financial:MPL.AX:2026-07-02:019 metric=capital_adequacy"
-  ],
+  "warnings": [],
+  "evidence_references": [],
   "required_remediation": [],
-  "regression_tests_needed": [
-    "Consider adding a fixture for this metric/source layout."
-  ],
+  "regression_tests_needed": [],
   "do_not_change": [
     "Do not replace Bull/Bear debate, Research Manager, Trader, Risk Analysts, Portfolio Manager, or Quality Reviewer.",
     "Keep Research Manager rating separate from Trader action and Portfolio stance.",

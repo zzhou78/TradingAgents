@@ -1,22 +1,22 @@
 # Portfolio Manager Decision - MPL.AX
 
 ## Tool Outputs Used
-- Research Manager: Hold.
+- Research Manager: Underweight.
 - Trader action: HOLD at reference price 4.99.
 - Risk debate outputs and evidence: market:MPL.AX:2026-07-02:001, financial:MPL.AX:2026-07-02:001, news:MPL.AX:2026-07-02:001.
 
 ## Risk debate impact
-The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: health_insurers metric direction mix: 4 available / 0 gap-labelled; 0 supportive, 1 adverse, 0 mixed, 3 neutral, 0 context-only. supportive examples: none; adverse examples: claims ratio (adverse, financial:MPL.AX:2026-07-02:017); mixed/neutral examples: premium growth (neutral, financial:MPL.AX:2026-07-02:016); membership (neutral, financial:MPL.AX:2026-07-02:018). Highlighted metric: claims ratio is available / adverse via financial:MPL.AX:2026-07-02:017. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:MPL.AX:2026-07-02:017 rather than generic sector language. Strongest concrete risk: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 4.99 versus confirmation 5.04 and invalidation/caution 4.94. Stronger risk side: Neutral Risk was stronger because evidence remains mixed and no directional setup is complete.
+The risk debate tempers position implementation through concrete evidence, not a generic sizing phrase. Strongest concrete opportunity: health_insurers metric direction mix: 5 available / 0 gap-labelled; 1 supportive, 2 adverse, 0 mixed, 2 neutral, 0 context-only. supportive examples: membership (supportive, financial:MPL.AX:2026-07-02:018); adverse examples: premium growth (adverse, financial:MPL.AX:2026-07-02:016); claims ratio (adverse, financial:MPL.AX:2026-07-02:017); mixed/neutral examples: capital adequacy (neutral, financial:MPL.AX:2026-07-02:019); operating profit (neutral, financial:MPL.AX:2026-07-02:020). Highlighted metric: membership is available / supportive via financial:MPL.AX:2026-07-02:018. This is the strongest concrete opportunity because it is tied to Financial Report Analyst evidence financial:MPL.AX:2026-07-02:018 rather than generic sector language. Strongest concrete risk: Confidence is capped by 0 unavailable sector metric/gap labels, 0 unavailable core financial sections, low-confidence retail sentiment from social:MPL.AX:2026-07-02:001, and medium-confidence extraction depth. Market timing risk is explicit at close 4.99 versus confirmation 5.04 and invalidation/caution 4.94. Stronger risk side: Neutral Risk was stronger because research direction exists, but Trader confirmation gates keep action at HOLD.
 
 ## Final Portfolio Decision
-**Rating**: Hold
+**Rating**: Underweight
 
-Research decision: Hold. Trader action: HOLD. Portfolio decision: maintain Hold paper-study stance while preserving rating/action tension. Rating and action are aligned by current setup quality. No real trade execution or broker/order tooling is used.
+Research decision: Underweight. Trader action: HOLD. Portfolio decision: maintain Underweight paper-study stance while preserving rating/action tension. Rating and action differ because research evidence supports the rating, but setup quality does not yet justify action. No real trade execution or broker/order tooling is used.
 
 ## Rating-Action Tension
-- Research Manager rating: Hold
+- Research Manager rating: Underweight
 - Trader action: HOLD
-- Portfolio stance: Hold
+- Portfolio stance: Underweight
 - Interpretation: research evidence and trade timing are separate decisions; the portfolio stance reflects research quality and risk debate, not just the immediate Trader action.
 
 ## Evidence Gaps

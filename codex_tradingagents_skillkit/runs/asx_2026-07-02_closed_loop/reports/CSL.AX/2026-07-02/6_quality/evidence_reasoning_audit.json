@@ -23,12 +23,6 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CSL.AX:2026-07-02:020 metric=debt",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CSL.AX:2026-07-02:021 metric=guidance",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
@@ -97,13 +91,18 @@
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CSL.AX:2026-07-02:314 metric=debt",
       "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CSL.AX:2026-07-02:334 metric=margins",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
     }
   ],
   "evidence_references": [
     "financial:CSL.AX:2026-07-02:017 metric=r_and_d",
     "financial:CSL.AX:2026-07-02:018 metric=plasma_collections",
     "financial:CSL.AX:2026-07-02:019 metric=margins",
-    "financial:CSL.AX:2026-07-02:020 metric=debt",
     "financial:CSL.AX:2026-07-02:021 metric=guidance",
     "financial:CSL.AX:2026-07-02:038 metric=r_and_d",
     "financial:CSL.AX:2026-07-02:040 metric=margins",
@@ -115,7 +114,8 @@
     "financial:CSL.AX:2026-07-02:209 metric=debt",
     "financial:CSL.AX:2026-07-02:251 metric=debt",
     "financial:CSL.AX:2026-07-02:272 metric=debt",
-    "financial:CSL.AX:2026-07-02:314 metric=debt"
+    "financial:CSL.AX:2026-07-02:314 metric=debt",
+    "financial:CSL.AX:2026-07-02:334 metric=margins"
   ],
   "required_remediation": [],
   "regression_tests_needed": [

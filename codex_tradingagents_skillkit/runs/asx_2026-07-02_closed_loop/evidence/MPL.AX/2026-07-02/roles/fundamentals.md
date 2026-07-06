@@ -14,15 +14,15 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for MPL.AX
-# Data retrieved on: 2026-07-05 22:31:05
+# Data retrieved on: 2026-07-06 20:05:15
 
 Name: Medibank Private Limited
 Sector: Financial Services
 Industry: Insurance - Specialty
-Market Cap: 13770015744
-PE Ratio (TTM): 29.411764
-Forward PE: 19.672647
-Price to Book: 5.8685446
+Market Cap: 13687395328
+PE Ratio (TTM): 29.235292
+Forward PE: 19.554611
+Price to Book: 5.833333
 EPS (TTM): 0.17
 Forward EPS: 0.25416
 Dividend Yield: 3.32
@@ -51,7 +51,7 @@ Free Cash Flow: 692750016
 
 ```text
 # Balance Sheet data for MPL.AX (quarterly)
-# Data retrieved on: 2026-07-05 22:31:05
+# Data retrieved on: 2026-07-06 20:05:16
 
 ,2025-06-30
 Ordinary Shares Number,2754003240.0

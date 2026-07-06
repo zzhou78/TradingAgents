@@ -2,7 +2,7 @@
 
 ## Tool Outputs Used
 - validate_quality_review.py was run for this report directory and passed before quality_gate.json was marked passed.
-- evidence_reasoning_auditor.py was run before review-ready status: pass_with_warnings (0 critical findings, 2 warnings).
+- evidence_reasoning_auditor.py was run before review-ready status: pass_with_warnings (0 critical findings, 6 warnings).
 - Role reports and evidence records including market:WOW.AX:2026-07-02:001, financial:WOW.AX:2026-07-02:001, news:WOW.AX:2026-07-02:003, and social:WOW.AX:2026-07-02:001.
 
 ## Quality Gate Findings
@@ -21,7 +21,3 @@
 * Open questions: None for this artifact beyond disclosed evidence gaps.
 * Evidence references: market:WOW.AX:2026-07-02:001, financial:WOW.AX:2026-07-02:001, news:WOW.AX:2026-07-02:003
 * Staleness / expiry: Evidence is valid only for trade date 2026-07-02; refresh before reuse.
-
-## Run-Level Warnings
-- debate winner is always Balanced across a multi-ticker run
-

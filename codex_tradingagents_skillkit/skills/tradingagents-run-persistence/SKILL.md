@@ -38,6 +38,7 @@ Complete report assembly:
 - Include `## Tool Outputs Used` and cite stage input evidence IDs when assembling final report sections.
 - Do not mark `complete_report.md` as a completed successful review when a required role output is pending or a required source collection failed unless Quality Reviewer explicitly passes with documented limitations.
 - Do not mark the workflow complete when `quality_remediation_plan.json` has pending remediation tasks. `next_remediation_task.md` must be executed and the workflow rerun until the quality gate passes or a true external blocker is documented.
+- For ASX runs, do not mark the workflow `review_ready_paper_study` unless `quality_gate_passed` is true, the evidence-and-reasoning auditor has no critical findings, and `core_metric_coverage_passed` is true.
 - Use the exact heading `# Trading Analysis Report: <TICKER>`.
 - I. Analyst Team Reports: `### Market Analyst`, `### Sentiment Analyst`, `### News Analyst`, `### Fundamentals Analyst`, `### Financial Report Analyst`, and `### Industry / Theme Discovery Analyst`.
 - II. Research Team Debate: `### Bull Researcher Round 1 - Opening Case`, `### Bear Researcher Round 1 - Rebuttal to Bull`, and `### Research Manager Decision - Evidence Weighing`.
@@ -66,11 +67,14 @@ The report must distinguish research rating from trader action when they differ.
 
 ## Closed Remediation Persistence
 
-When quality validation fails, persist both `quality_remediation_plan.json` and
+When quality validation fails, persist both `quality_gate.json` with
+`passed: false`, `quality_remediation_plan.json`, and
 `next_remediation_task.md`. A run with a pending remediation task is
 validation-only, not complete. The persisted next task must tell Codex what to
 fix, which tests to run, and how to rerun the evidence/report workflow. Completion
-requires that the quality gate passes or a true external blocker is documented.
+requires that the ordinary quality gate passes, the evidence-and-reasoning
+auditor has no critical findings, and ASX core metric coverage passes where
+applicable, or a true external blocker is documented.
 Use `codex_tradingagents_skillkit/scripts/run_closed_loop_workflow.py` to write
 `closed_loop_status.json`, discover the next remediation task, and keep the run
 status at `remediation_required` until the task is implemented and rerun.

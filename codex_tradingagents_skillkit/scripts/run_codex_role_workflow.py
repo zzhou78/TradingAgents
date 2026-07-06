@@ -203,6 +203,51 @@ def _audit_status_fields(report_dir: Path) -> dict[str, Any]:
     }
 
 
+def _core_metric_coverage_fields(evidence_path: Path | None, ticker: str = "") -> dict[str, Any]:
+    if evidence_path is None:
+        return {
+            "core_metric_coverage_status": "not_applicable",
+            "core_metrics_required": [],
+            "core_metrics_cleanly_extracted": [],
+            "core_metrics_unavailable_with_reason": [],
+            "core_metrics_unresolved": [],
+            "core_metric_coverage_passed": True,
+        }
+    try:
+        evidence = _read_json(evidence_path)
+    except (OSError, json.JSONDecodeError):
+        return {
+            "core_metric_coverage_status": "missing_evidence",
+            "core_metrics_required": [],
+            "core_metrics_cleanly_extracted": [],
+            "core_metrics_unavailable_with_reason": [],
+            "core_metrics_unresolved": [],
+            "core_metric_coverage_passed": False,
+        }
+    if not str(evidence.get("ticker") or ticker).upper().endswith(".AX"):
+        return {
+            "core_metric_coverage_status": "not_applicable",
+            "core_metrics_required": [],
+            "core_metrics_cleanly_extracted": [],
+            "core_metrics_unavailable_with_reason": [],
+            "core_metrics_unresolved": [],
+            "core_metric_coverage_passed": True,
+        }
+    try:
+        from core_metric_coverage import evaluate_core_metric_coverage_from_evidence
+
+        return evaluate_core_metric_coverage_from_evidence(evidence_path, ticker=ticker)
+    except Exception as exc:  # pragma: no cover - defensive status reporting
+        return {
+            "core_metric_coverage_status": "error",
+            "core_metrics_required": [],
+            "core_metrics_cleanly_extracted": [],
+            "core_metrics_unavailable_with_reason": [],
+            "core_metrics_unresolved": [f"core metric coverage failed to run: {exc}"],
+            "core_metric_coverage_passed": False,
+        }
+
+
 def _run_metadata_errors(workflow_path: Path, workflow: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     output_dir = Path(str(workflow.get("output_dir") or workflow_path.parents[3]))
@@ -333,9 +378,12 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
 
     run_metadata = dict(workflow.get("run_metadata") or {})
     report_dir = Path(str(workflow.get("report_dir") or ""))
+    evidence_path = Path(workflow["evidence_path"]) if workflow.get("evidence_path") else None
     audit_fields = _audit_status_fields(report_dir)
+    core_metric_fields = _core_metric_coverage_fields(evidence_path, str(workflow.get("ticker") or ""))
     ordinary_validation_passed = workflow_complete_for_validation and not quality_errors
-    quality_gate_passed = _quality_gate_passed(report_dir) or ordinary_validation_passed
+    core_metric_coverage_passed = bool(core_metric_fields.get("core_metric_coverage_passed"))
+    quality_gate_passed = (_quality_gate_passed(report_dir) or ordinary_validation_passed) and core_metric_coverage_passed
     audit_has_no_critical_findings = not audit_fields["evidence_reasoning_critical_findings"] and audit_fields[
         "evidence_reasoning_audit_status"
     ] in {"pass", "pass_with_warnings"}
@@ -345,7 +393,9 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         quality_errors=quality_errors,
         run_metadata=run_metadata,
     )
-    if status == "review_ready_paper_study" and not (quality_gate_passed and audit_has_no_critical_findings):
+    if status == "review_ready_paper_study" and not (
+        quality_gate_passed and audit_has_no_critical_findings and core_metric_coverage_passed
+    ):
         status = "remediation_required"
     return {
         "ticker": workflow.get("ticker", ""),
@@ -365,9 +415,13 @@ def summarize_workflow(workflow_path: Path) -> dict[str, Any]:
         "quality_errors": quality_errors,
         "quality_gate_passed": quality_gate_passed,
         **audit_fields,
+        **core_metric_fields,
         "remediation_plan_path": remediation_plan_path,
         "next_remediation_task_path": next_remediation_task_path,
-        "complete": complete_count == len(stage_summaries) and not quality_errors and audit_has_no_critical_findings,
+        "complete": complete_count == len(stage_summaries)
+        and not quality_errors
+        and audit_has_no_critical_findings
+        and core_metric_coverage_passed,
         "review_ready": status == "review_ready_paper_study",
     }
 

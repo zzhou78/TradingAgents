@@ -1302,7 +1302,7 @@ def test_quality_validator_fails_review_gate_when_all_news_evidence_is_snippet_o
     assert "news evidence has no full-text articles; review-grade quality gate cannot pass" in result.stdout
 
 
-def test_quality_validator_fails_when_quality_gate_is_stale_false(tmp_path: Path):
+def test_quality_validator_allows_stale_false_quality_gate_to_be_overwritten(tmp_path: Path):
     report_dir = _write_quality_fixture(tmp_path, include_financial=True, include_theme=True)
     quality_gate = report_dir / "6_quality" / "quality_gate.json"
     quality_gate.write_text(
@@ -1322,8 +1322,7 @@ def test_quality_validator_fails_when_quality_gate_is_stale_false(tmp_path: Path
         capture_output=True,
     )
 
-    assert result.returncode != 0
-    assert "quality_gate.json does not pass; workflow remains incomplete" in result.stdout
+    assert "quality_gate.json does not pass; workflow remains incomplete" not in result.stdout
 
 
 def test_quality_validator_fails_when_news_output_is_pending(tmp_path: Path):

@@ -10,7 +10,6 @@ pass_with_warnings
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:017 metric=r_and_d`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:018 metric=plasma_collections`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:019 metric=margins`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:020 metric=debt`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:021 metric=guidance`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:038 metric=r_and_d`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:040 metric=margins`
@@ -23,12 +22,12 @@ pass_with_warnings
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:251 metric=debt`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:272 metric=debt`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:314 metric=debt`
+- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:CSL.AX:2026-07-02:334 metric=margins`
 
 ## Evidence References
 - financial:CSL.AX:2026-07-02:017 metric=r_and_d
 - financial:CSL.AX:2026-07-02:018 metric=plasma_collections
 - financial:CSL.AX:2026-07-02:019 metric=margins
-- financial:CSL.AX:2026-07-02:020 metric=debt
 - financial:CSL.AX:2026-07-02:021 metric=guidance
 - financial:CSL.AX:2026-07-02:038 metric=r_and_d
 - financial:CSL.AX:2026-07-02:040 metric=margins
@@ -41,6 +40,7 @@ pass_with_warnings
 - financial:CSL.AX:2026-07-02:251 metric=debt
 - financial:CSL.AX:2026-07-02:272 metric=debt
 - financial:CSL.AX:2026-07-02:314 metric=debt
+- financial:CSL.AX:2026-07-02:334 metric=margins
 
 ## Required Remediation
 - None.

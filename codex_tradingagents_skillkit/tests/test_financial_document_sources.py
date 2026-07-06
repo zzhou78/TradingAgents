@@ -744,6 +744,96 @@ def test_cba_nim_and_cet1_do_not_capture_operating_income_percentage():
     assert sections["cet1"]["value_unit"] == "%"
 
 
+def test_cba_highlights_row_is_not_suppressed_by_report_navigation_terms():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "CBA.AX",
+        "2025 highlights Financial highlights $10,133m Statutory net profit "
+        "$28,465m Operating income Net interest margin 2.08% 9bpts on FY24 "
+        "12.3% Capital ratio Dividend per share, fully franked CET1 (APRA, Level 2) "
+        "Flat on FY24 $4.85 Annual Report Financial Report Additional Information Contents.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["net_interest_margin"]["metric_value_status"] == "value_extracted"
+    assert sections["net_interest_margin"]["clean_metric_value"] == "2.08"
+    assert sections["net_interest_margin"]["value_unit"] == "%"
+    assert sections["cet1"]["metric_value_status"] == "value_extracted"
+    assert sections["cet1"]["clean_metric_value"] == "12.3"
+    assert sections["cet1"]["value_unit"] == "%"
+
+
+def test_cba_cet1_prefers_right_hand_capital_ratio_label_over_prior_dividend_label():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Dividend per share, fully franked 12.3% Capital ratio CET1 (APRA, Level 2) Flat on FY24.",
+        "cet1",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "12.3"
+    assert result["value_unit"] == "%"
+
+
+def test_bhp_production_value_before_right_hand_production_label_is_accepted():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "FY2025 at a glance 2Mt record annual copper production, including highest copper production in 17 years.",
+        "production",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "2"
+    assert result["value_unit"] == "mt"
+
+
+def test_health_insurer_operating_profit_metric_profile_extracts_margin():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "MPL.AX",
+        "Annual report operating and financial review. Operating profit margin increased 2.1% "
+        "as premium revenue and resident policyholder growth improved.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["operating_profit_or_margin"]["metric_value_status"] == "value_extracted"
+    assert sections["operating_profit_or_margin"]["clean_metric_value"] == "2.1"
+    assert sections["operating_profit_or_margin"]["value_unit"] == "%"
+
+
+def test_retailer_comparable_sales_metric_profile_extracts_growth():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "WOW.AX",
+        "Annual report operating and financial review. Comparable sales increased 3.7% "
+        "while total sales growth remained positive.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["comparable_sales_if_available"]["metric_value_status"] == "value_extracted"
+    assert sections["comparable_sales_if_available"]["clean_metric_value"] == "3.7"
+    assert sections["comparable_sales_if_available"]["value_unit"] == "%"
+
+
 def test_csl_segment_revenue_and_guidance_reject_unrelated_percentages_and_toc_numbers():
     module = _load_module()
     packet = _asx_sector_packet(
@@ -836,6 +926,22 @@ def test_wow_ebit_margin_prefers_82_bps_change_over_later_percentage():
         "ebit_margin",
     )
 
+    assert result["clean_metric_value"] == "82"
+    assert result["value_unit"] == "bps"
+    assert result["direction"] == "adverse"
+
+
+def test_wow_ebit_margin_prefers_margin_bps_over_ebit_decline_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    result = asx._extract_metric_value_from_text(
+        "Australian Food F25 EBIT of $2,753 million declined by a normalised 10.5% "
+        "with the EBIT margin decreasing by a normalised 82 bps to 5.4%.",
+        "ebit_margin",
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
     assert result["clean_metric_value"] == "82"
     assert result["value_unit"] == "bps"
     assert result["direction"] == "adverse"

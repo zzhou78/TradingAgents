@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
   "status": "review_ready_paper_study",
-  "generated_at": "2026-07-05T22:33:18+10:00",
+  "generated_at": "2026-07-06T20:10:31+10:00",
   "commands": [],
   "workflow": {
     "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
@@ -10,14 +10,14 @@
         "ticker": "BHP.AX",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-05T22:27:21+10:00",
-        "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+        "run_executed_at": "2026-07-06T20:00:57+10:00",
+        "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:2026-07-06T20:00:57+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-05T22:27:21+10:00",
+          "run_executed_at": "2026-07-06T20:00:57+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -28,7 +28,7 @@
             "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+          "run_id": "asx_2026-07-02_closed_loop:BHP.AX:2026-07-02:2026-07-06T20:00:57+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -209,19 +209,7 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:BHP.AX:2026-07-02:016 metric=production",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:BHP.AX:2026-07-02:017 metric=realised_price",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:BHP.AX:2026-07-02:018 metric=unit_cost_aisc",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
           {
@@ -239,19 +227,7 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:BHP.AX:2026-07-02:037 metric=production",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:BHP.AX:2026-07-02:038 metric=realised_price",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:BHP.AX:2026-07-02:039 metric=unit_cost_aisc",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
           {
@@ -268,6 +244,65 @@
           }
         ],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\BHP.AX\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "miners",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "production",
+          "realised_price",
+          "unit_cost_aisc",
+          "capex",
+          "commodity_exposure",
+          "reserves_resources"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "production",
+          "unit_cost_aisc"
+        ],
+        "core_metrics_unavailable_with_reason": [
+          "capex"
+        ],
+        "core_metrics_gap_disclosed": [
+          "realised_price",
+          "commodity_exposure",
+          "reserves_resources"
+        ],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "production": {
+            "status": "cleanly_extracted"
+          },
+          "realised_price": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-02:017",
+              "financial:BHP.AX:2026-07-02:038"
+            ]
+          },
+          "unit_cost_aisc": {
+            "status": "cleanly_extracted"
+          },
+          "capex": {
+            "status": "unavailable_with_reason"
+          },
+          "commodity_exposure": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-02:021",
+              "financial:BHP.AX:2026-07-02:042"
+            ]
+          },
+          "reserves_resources": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-02:020",
+              "financial:BHP.AX:2026-07-02:041"
+            ]
+          }
+        },
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -277,14 +312,14 @@
         "ticker": "CBA.AX",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-05T22:27:21+10:00",
-        "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+        "run_executed_at": "2026-07-06T20:00:57+10:00",
+        "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-06T20:00:57+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-05T22:27:21+10:00",
+          "run_executed_at": "2026-07-06T20:00:57+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -295,7 +330,7 @@
             "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+          "run_id": "asx_2026-07-02_closed_loop:CBA.AX:2026-07-02:2026-07-06T20:00:57+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -476,19 +511,7 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:CBA.AX:2026-07-02:040 metric=loan_growth",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:CBA.AX:2026-07-02:041 metric=arrears",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:CBA.AX:2026-07-02:042 metric=impairment",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
           {
@@ -500,19 +523,7 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:CBA.AX:2026-07-02:062 metric=loan_growth",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:CBA.AX:2026-07-02:063 metric=arrears",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:CBA.AX:2026-07-02:064 metric=impairment",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
           {
@@ -523,6 +534,64 @@
           }
         ],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CBA.AX\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "banks",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "arrears",
+          "impairment",
+          "roe",
+          "dividend"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "impairment",
+          "dividend"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [
+          "arrears",
+          "roe"
+        ],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "net_interest_margin": {
+            "status": "cleanly_extracted"
+          },
+          "cet1": {
+            "status": "cleanly_extracted"
+          },
+          "loan_growth": {
+            "status": "cleanly_extracted"
+          },
+          "arrears": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-02:041",
+              "financial:CBA.AX:2026-07-02:063"
+            ]
+          },
+          "impairment": {
+            "status": "cleanly_extracted"
+          },
+          "roe": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-02:044",
+              "financial:CBA.AX:2026-07-02:066"
+            ]
+          },
+          "dividend": {
+            "status": "cleanly_extracted"
+          }
+        },
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -532,14 +601,14 @@
         "ticker": "CSL.AX",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-05T22:27:21+10:00",
-        "run_id": "asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+        "run_executed_at": "2026-07-06T20:00:57+10:00",
+        "run_id": "asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-06T20:00:57+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-05T22:27:21+10:00",
+          "run_executed_at": "2026-07-06T20:00:57+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -550,7 +619,7 @@
             "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+          "run_id": "asx_2026-07-02_closed_loop:CSL.AX:2026-07-02:2026-07-06T20:00:57+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -749,12 +818,6 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:CSL.AX:2026-07-02:020 metric=debt",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:CSL.AX:2026-07-02:021 metric=guidance",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
@@ -823,9 +886,93 @@
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
             "evidence_reference": "financial:CSL.AX:2026-07-02:314 metric=debt",
             "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CSL.AX:2026-07-02:334 metric=margins",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
           }
         ],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "healthcare",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "segment_revenue",
+          "margins",
+          "r_and_d",
+          "plasma_collections",
+          "debt",
+          "guidance"
+        ],
+        "core_metrics_cleanly_extracted": [],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [
+          "segment_revenue",
+          "margins",
+          "r_and_d",
+          "plasma_collections",
+          "debt",
+          "guidance"
+        ],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "segment_revenue": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:163"
+            ]
+          },
+          "margins": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:019",
+              "financial:CSL.AX:2026-07-02:040",
+              "financial:CSL.AX:2026-07-02:103",
+              "financial:CSL.AX:2026-07-02:334"
+            ]
+          },
+          "r_and_d": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:017",
+              "financial:CSL.AX:2026-07-02:038",
+              "financial:CSL.AX:2026-07-02:164",
+              "financial:CSL.AX:2026-07-02:206"
+            ]
+          },
+          "plasma_collections": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:018"
+            ]
+          },
+          "debt": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:020",
+              "financial:CSL.AX:2026-07-02:125",
+              "financial:CSL.AX:2026-07-02:209",
+              "financial:CSL.AX:2026-07-02:251",
+              "financial:CSL.AX:2026-07-02:272",
+              "financial:CSL.AX:2026-07-02:314"
+            ]
+          },
+          "guidance": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-02:021",
+              "financial:CSL.AX:2026-07-02:084"
+            ]
+          }
+        },
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -835,14 +982,14 @@
         "ticker": "MPL.AX",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-05T22:27:21+10:00",
-        "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+        "run_executed_at": "2026-07-06T20:00:57+10:00",
+        "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-06T20:00:57+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-05T22:27:21+10:00",
+          "run_executed_at": "2026-07-06T20:00:57+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -853,7 +1000,7 @@
             "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+          "run_id": "asx_2026-07-02_closed_loop:MPL.AX:2026-07-02:2026-07-06T20:00:57+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -1028,23 +1175,52 @@
         ],
         "quality_errors": [],
         "quality_gate_passed": true,
-        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_audit_status": "pass",
         "evidence_reasoning_critical_findings": [],
-        "evidence_reasoning_warnings": [
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:MPL.AX:2026-07-02:016 metric=premium_growth",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          },
-          {
-            "attack": "Validator Blind-Spot Attack",
-            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:MPL.AX:2026-07-02:019 metric=capital_adequacy",
-            "regression_test": "Consider adding a fixture for this metric/source layout."
-          }
-        ],
+        "evidence_reasoning_warnings": [],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\MPL.AX\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "health_insurers",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "premium_growth",
+          "claims_ratio",
+          "membership",
+          "capital_adequacy",
+          "operating_profit_or_margin"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "claims_ratio",
+          "membership",
+          "capital_adequacy",
+          "operating_profit_or_margin"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [
+          "premium_growth"
+        ],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "premium_growth": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-02:016"
+            ]
+          },
+          "claims_ratio": {
+            "status": "cleanly_extracted"
+          },
+          "membership": {
+            "status": "cleanly_extracted"
+          },
+          "capital_adequacy": {
+            "status": "cleanly_extracted"
+          },
+          "operating_profit_or_margin": {
+            "status": "cleanly_extracted"
+          }
+        },
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -1054,14 +1230,14 @@
         "ticker": "WOW.AX",
         "trade_date": "2026-07-02",
         "evidence_as_of_date": "2026-07-02",
-        "run_executed_at": "2026-07-05T22:27:21+10:00",
-        "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+        "run_executed_at": "2026-07-06T20:00:57+10:00",
+        "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-06T20:00:57+10:00",
         "authoritative_result_folder": true,
         "status": "review_ready_paper_study",
         "run_metadata": {
           "trade_date": "2026-07-02",
           "evidence_as_of_date": "2026-07-02",
-          "run_executed_at": "2026-07-05T22:27:21+10:00",
+          "run_executed_at": "2026-07-06T20:00:57+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-02_closed_loop",
@@ -1072,7 +1248,7 @@
             "MPL.AX",
             "WOW.AX"
           ],
-          "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-05T22:27:21+10:00",
+          "run_id": "asx_2026-07-02_closed_loop:WOW.AX:2026-07-02:2026-07-06T20:00:57+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop",
           "status": "review_ready_paper_study",
@@ -1253,17 +1429,107 @@
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:WOW.AX:2026-07-02:018 metric=inventory",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:016 metric=sales_growth",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           },
           {
             "attack": "Validator Blind-Spot Attack",
             "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-            "evidence_reference": "financial:WOW.AX:2026-07-02:019 metric=capex",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:017 metric=comparable_sales_if_available",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:019 metric=inventory",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:040 metric=inventory",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:041 metric=capex",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:WOW.AX:2026-07-02:042 metric=dividends",
             "regression_test": "Consider adding a fixture for this metric/source layout."
           }
         ],
         "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\WOW.AX\\2026-07-02\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "retailers",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "sales_growth",
+          "ebit_margin",
+          "inventory_or_working_capital",
+          "capex",
+          "dividends",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "ebit_margin"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [
+          "sales_growth",
+          "inventory_or_working_capital",
+          "capex",
+          "dividends",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "sales_growth": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-02:016"
+            ]
+          },
+          "ebit_margin": {
+            "status": "cleanly_extracted"
+          },
+          "inventory_or_working_capital": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-02:019",
+              "financial:WOW.AX:2026-07-02:040"
+            ]
+          },
+          "capex": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-02:020",
+              "financial:WOW.AX:2026-07-02:041"
+            ]
+          },
+          "dividends": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-02:021",
+              "financial:WOW.AX:2026-07-02:042"
+            ]
+          },
+          "comparable_sales_if_available": {
+            "status": "gap_disclosed",
+            "reason": "source mentions the metric, but extraction disclosed that no clean value was safely attached",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-02:017"
+            ]
+          }
+        },
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": true,
@@ -1271,9 +1537,7 @@
       }
     ],
     "run_quality_errors": [],
-    "run_quality_warnings": [
-      "debate winner is always Balanced across a multi-ticker run"
-    ]
+    "run_quality_warnings": []
   },
   "remediation_plans": [],
   "quality_gate_passed": true,
@@ -1283,19 +1547,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:BHP.AX:2026-07-02:016 metric=production",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:BHP.AX:2026-07-02:017 metric=realised_price",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:BHP.AX:2026-07-02:018 metric=unit_cost_aisc",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1313,19 +1565,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:BHP.AX:2026-07-02:037 metric=production",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:BHP.AX:2026-07-02:038 metric=realised_price",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:BHP.AX:2026-07-02:039 metric=unit_cost_aisc",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1343,19 +1583,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:040 metric=loan_growth",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-02:041 metric=arrears",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:042 metric=impairment",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1367,19 +1595,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:062 metric=loan_growth",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-02:063 metric=arrears",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:064 metric=impairment",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1404,12 +1620,6 @@
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CSL.AX:2026-07-02:019 metric=margins",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CSL.AX:2026-07-02:020 metric=debt",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -1487,37 +1697,133 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:MPL.AX:2026-07-02:016 metric=premium_growth",
+      "evidence_reference": "financial:CSL.AX:2026-07-02:334 metric=margins",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:MPL.AX:2026-07-02:019 metric=capital_adequacy",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:016 metric=sales_growth",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:WOW.AX:2026-07-02:018 metric=inventory",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:017 metric=comparable_sales_if_available",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:WOW.AX:2026-07-02:019 metric=capex",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:019 metric=inventory",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:040 metric=inventory",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:041 metric=capex",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:WOW.AX:2026-07-02:042 metric=dividends",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     }
   ],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": {
+    "BHP.AX": [
+      "production",
+      "realised_price",
+      "unit_cost_aisc",
+      "capex",
+      "commodity_exposure",
+      "reserves_resources"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "arrears",
+      "impairment",
+      "roe",
+      "dividend"
+    ],
+    "CSL.AX": [
+      "segment_revenue",
+      "margins",
+      "r_and_d",
+      "plasma_collections",
+      "debt",
+      "guidance"
+    ],
+    "MPL.AX": [
+      "premium_growth",
+      "claims_ratio",
+      "membership",
+      "capital_adequacy",
+      "operating_profit_or_margin"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin",
+      "inventory_or_working_capital",
+      "capex",
+      "dividends",
+      "comparable_sales_if_available"
+    ]
+  },
+  "core_metrics_cleanly_extracted": {
+    "BHP.AX": [
+      "production",
+      "unit_cost_aisc"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "impairment",
+      "dividend"
+    ],
+    "CSL.AX": [],
+    "MPL.AX": [
+      "claims_ratio",
+      "membership",
+      "capital_adequacy",
+      "operating_profit_or_margin"
+    ],
+    "WOW.AX": [
+      "ebit_margin"
+    ]
+  },
+  "core_metrics_unavailable_with_reason": {
+    "BHP.AX": [
+      "capex"
+    ],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "core_metrics_unresolved": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "core_metric_coverage_passed": true,
   "review_ready": true,
   "patched_quality_gates": [],
-  "patched_quality_reviews": [
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\BHP.AX\\2026-07-02\\6_quality\\quality_review.md",
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CBA.AX\\2026-07-02\\6_quality\\quality_review.md",
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CSL.AX\\2026-07-02\\6_quality\\quality_review.md",
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\MPL.AX\\2026-07-02\\6_quality\\quality_review.md",
-    "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\WOW.AX\\2026-07-02\\6_quality\\quality_review.md"
-  ],
+  "patched_quality_reviews": [],
+  "written_failed_quality_gates": [],
   "written_quality_gates": [
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\BHP.AX\\2026-07-02\\6_quality\\quality_gate.json",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\reports\\CBA.AX\\2026-07-02\\6_quality\\quality_gate.json",

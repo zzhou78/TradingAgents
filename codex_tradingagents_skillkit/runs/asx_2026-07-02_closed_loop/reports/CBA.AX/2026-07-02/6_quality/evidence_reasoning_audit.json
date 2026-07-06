@@ -5,19 +5,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:040 metric=loan_growth",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-02:041 metric=arrears",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:042 metric=impairment",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -29,19 +17,7 @@
     {
       "attack": "Validator Blind-Spot Attack",
       "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:062 metric=loan_growth",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
       "evidence_reference": "financial:CBA.AX:2026-07-02:063 metric=arrears",
-      "regression_test": "Consider adding a fixture for this metric/source layout."
-    },
-    {
-      "attack": "Validator Blind-Spot Attack",
-      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
-      "evidence_reference": "financial:CBA.AX:2026-07-02:064 metric=impairment",
       "regression_test": "Consider adding a fixture for this metric/source layout."
     },
     {
@@ -52,13 +28,9 @@
     }
   ],
   "evidence_references": [
-    "financial:CBA.AX:2026-07-02:040 metric=loan_growth",
     "financial:CBA.AX:2026-07-02:041 metric=arrears",
-    "financial:CBA.AX:2026-07-02:042 metric=impairment",
     "financial:CBA.AX:2026-07-02:044 metric=roe",
-    "financial:CBA.AX:2026-07-02:062 metric=loan_growth",
     "financial:CBA.AX:2026-07-02:063 metric=arrears",
-    "financial:CBA.AX:2026-07-02:064 metric=impairment",
     "financial:CBA.AX:2026-07-02:066 metric=roe"
   ],
   "required_remediation": [],

@@ -7,26 +7,18 @@ pass_with_warnings
 - None.
 
 ## Warnings
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:016 metric=production`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:017 metric=realised_price`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:018 metric=unit_cost_aisc`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:020 metric=reserves_resources`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:021 metric=commodity_exposure`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:037 metric=production`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:038 metric=realised_price`
-- Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:039 metric=unit_cost_aisc`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:041 metric=reserves_resources`
 - Metric is present but clean value or row/column mapping remains unresolved. Reference: `financial:BHP.AX:2026-07-02:042 metric=commodity_exposure`
 
 ## Evidence References
-- financial:BHP.AX:2026-07-02:016 metric=production
 - financial:BHP.AX:2026-07-02:017 metric=realised_price
-- financial:BHP.AX:2026-07-02:018 metric=unit_cost_aisc
 - financial:BHP.AX:2026-07-02:020 metric=reserves_resources
 - financial:BHP.AX:2026-07-02:021 metric=commodity_exposure
-- financial:BHP.AX:2026-07-02:037 metric=production
 - financial:BHP.AX:2026-07-02:038 metric=realised_price
-- financial:BHP.AX:2026-07-02:039 metric=unit_cost_aisc
 - financial:BHP.AX:2026-07-02:041 metric=reserves_resources
 - financial:BHP.AX:2026-07-02:042 metric=commodity_exposure
 

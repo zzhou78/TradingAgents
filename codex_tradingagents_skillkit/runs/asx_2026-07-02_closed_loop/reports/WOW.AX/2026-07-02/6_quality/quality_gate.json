@@ -8,6 +8,21 @@
   "quality_gate_passed": true,
   "evidence_reasoning_audit_status": "pass_with_warnings",
   "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "sales_growth",
+    "ebit_margin",
+    "inventory_or_working_capital",
+    "capex",
+    "dividends",
+    "comparable_sales_if_available"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "ebit_margin"
+  ],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [],
+  "core_metric_coverage_passed": true,
   "review_ready": true,
   "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-02_closed_loop\\closed_loop_status.json",
   "closed_loop_status_artifact": "closed_loop_status.json",

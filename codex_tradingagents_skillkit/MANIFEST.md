@@ -148,7 +148,10 @@ role outputs missing `Tool Outputs Used`, `Article Evidence Cards`,
 `Quantitative Regime / Tool Outputs`, `Claim-Source Table`, or
 `Structured Evidence Matrix`. When passed `--evidence <evidence.json>`, it also
 fails ASX reports whose ASX source collection ended in an error or unavailable
-state.
+state. `core_metric_coverage.py` enforces the ASX minimum financial-metric
+coverage gate: each sector core metric must be cleanly extracted with auditable
+value mapping or explicitly unavailable because the reviewed source genuinely
+lacks it.
 
 `run_quality_remediation.py` turns quality-gate failures into implementation
 tasks. It writes `quality_remediation_plan.json` next to `quality_gate.json`
@@ -158,9 +161,9 @@ improvement; it is not an investment judgment.
 
 `evidence_reasoning_auditor.py` writes `evidence_reasoning_audit.md` and
 `evidence_reasoning_audit.json` before a workflow can be review-ready. Final
-completion requires both ordinary quality validation and no critical evidence
-or reasoning audit findings:
-`review_ready = quality_gate_passed AND evidence_reasoning_audit_has_no_critical_findings`.
+completion requires ordinary quality validation, no critical evidence or
+reasoning audit findings, and ASX core metric coverage where applicable:
+`review_ready = quality_gate_passed AND evidence_reasoning_audit_has_no_critical_findings AND core_metric_coverage_passed`.
 
 Example output scope for Apple and Microsoft:
 - `AAPL` and `MSFT` are normalized as stock tickers.

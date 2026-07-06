@@ -20,6 +20,13 @@ class RemediationRule:
     required_tests: tuple[str, ...]
 
 
+REMEDIATION_PRIORITY = {
+    "asx_core_metric_coverage_gate": 0,
+    "asx_official_source_gate": 10,
+    "evidence_reasoning_audit_gate": 20,
+}
+
+
 RULES = (
     RemediationRule(
         marker="news evidence has no full-text articles",
@@ -189,6 +196,23 @@ RULES = (
         ),
     ),
     RemediationRule(
+        marker="ASX core metric coverage failed",
+        failed_gate="asx_core_metric_coverage_gate",
+        root_cause_category="asx_core_metric_coverage_insufficient",
+        affected_files=(
+            "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py",
+        ),
+        required_fix="Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+        required_tests=(
+            "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+            "codex_tradingagents_skillkit/tests/test_financial_document_sources.py",
+        ),
+    ),
+    RemediationRule(
         marker="ASX source collection failed",
         failed_gate="asx_official_source_gate",
         root_cause_category="asx_official_source_collection",
@@ -305,11 +329,13 @@ def build_remediation_plan(
             if key in seen:
                 continue
             seen.add(key)
-            task["task_id"] = f"remediate:{ticker or 'UNKNOWN'}:{trade_date or 'UNKNOWN'}:{len(tasks) + 1:03d}"
             task["rerun_commands"] = [rerun_command]
             task["created_at"] = created_at
             task["updated_at"] = created_at
             tasks.append(task)
+    tasks.sort(key=lambda task: REMEDIATION_PRIORITY.get(str(task.get("failed_gate")), 100))
+    for index, task in enumerate(tasks, start=1):
+        task["task_id"] = f"remediate:{ticker or 'UNKNOWN'}:{trade_date or 'UNKNOWN'}:{index:03d}"
     status = "remediation_required" if tasks else "no_remediation_required"
     return {
         "ticker": ticker,

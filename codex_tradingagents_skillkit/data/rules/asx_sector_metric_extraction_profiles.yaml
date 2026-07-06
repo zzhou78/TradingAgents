@@ -16,8 +16,8 @@ banks:
       supportive: ["up", "increased", "higher", "expanded"]
       adverse: ["down", "decreased", "lower", "compressed"]
   cet1:
-    accepted_labels: ["CET1", "common equity tier 1"]
-    accepted_row_labels: ["CET1", "common equity tier 1"]
+    accepted_labels: ["CET1", "common equity tier 1", "capital ratio"]
+    accepted_row_labels: ["CET1", "common equity tier 1", "capital ratio"]
     preferred_value_type: ["current_period_value", "variance_value"]
     accepted_column_labels: ["cet1", "capital", "2025", "2024", "bps", "%", "change", "variance"]
     rejected_column_labels: ["operating income", "dividend", "nim"]
@@ -63,8 +63,8 @@ banks:
       adverse: ["increased", "higher", "up"]
   dividend:
     accepted_labels: ["dividend", "DPS", "dividend per share"]
-    accepted_units: ["cents", "cps", "%"]
-    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*cents\\b", "\\b\\d+(?:\\.\\d+)?\\s*cps\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    accepted_units: ["cents", "cps", "%", "$"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*cents\\b", "\\b\\d+(?:\\.\\d+)?\\s*cps\\b", "\\$\\d+(?:\\.\\d+)?\\b", "\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: []
     rejected_nearby_terms: ["footnote", "note", "operating income", "NIM", "CET1", "tax rate", "franked"]
     max_label_value_distance_tokens: 8
@@ -252,6 +252,16 @@ health_insurers:
     direction_rules:
       supportive: ["above", "strong", "buffer", "surplus"]
       adverse: ["below", "weaker", "deficit"]
+  operating_profit_or_margin:
+    accepted_labels: ["operating profit", "operating profit margin", "operating margin", "organic operating profit growth"]
+    accepted_units: ["%", "$m", "$bn", "A$m", "A$bn"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*m\\b", "\\b(?:A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*bn\\b"]
+    required_nearby_terms: ["operating"]
+    rejected_nearby_terms: ["contents", "premium", "claims ratio"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher", "improved"]
+      adverse: ["declined", "lower", "down", "decreased"]
 retailers:
   sales_growth:
     accepted_labels: ["sales growth", "comparable sales", "same-store sales", "total sales"]
@@ -259,6 +269,16 @@ retailers:
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
     required_nearby_terms: ["sales"]
     rejected_nearby_terms: ["contents"]
+    max_label_value_distance_tokens: 10
+    direction_rules:
+      supportive: ["growth", "increased", "higher"]
+      adverse: ["declined", "lower", "down"]
+  comparable_sales_if_available:
+    accepted_labels: ["comparable sales", "same-store sales", "like-for-like sales"]
+    accepted_units: ["%"]
+    accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b"]
+    required_nearby_terms: ["sales"]
+    rejected_nearby_terms: ["contents", "inventory", "dividend"]
     max_label_value_distance_tokens: 10
     direction_rules:
       supportive: ["growth", "increased", "higher"]
