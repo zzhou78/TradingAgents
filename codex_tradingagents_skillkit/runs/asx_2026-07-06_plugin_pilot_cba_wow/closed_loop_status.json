@@ -1,0 +1,808 @@
+{
+  "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+  "status": "remediation_required",
+  "generated_at": "2026-07-07T17:10:35+10:00",
+  "commands": [],
+  "workflow": {
+    "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+    "runs": [
+      {
+        "ticker": "CBA.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-07T17:04:57+10:00",
+        "run_id": "asx_2026-07-06_plugin_pilot_cba_wow:CBA.AX:2026-07-06:2026-07-07T17:04:57+10:00",
+        "authoritative_result_folder": true,
+        "status": "remediation_required",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-07T17:04:57+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_plugin_pilot_cba_wow",
+          "ticker_list": [
+            "CBA.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_plugin_pilot_cba_wow:CBA.AX:2026-07-06:2026-07-07T17:04:57+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "status": "pending",
+          "workflow_status": "pending"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\CBA.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": {
+          "stage": "quality_remediation",
+          "skill": "codex-session-quality-remediation",
+          "status": "pending",
+          "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+          "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+          "blocking_dependencies": [],
+          "validation_errors": [
+            "ASX core metric coverage failed; review-ready quality gate cannot pass"
+          ],
+          "completion_gate": "implement next_remediation_task.md, rerun evidence/report workflow, and continue until quality gate passes or a true blocker is documented"
+        },
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [
+          "ASX core metric coverage failed; review-ready quality gate cannot pass"
+        ],
+        "quality_gate_passed": false,
+        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:020 metric=impairment",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          }
+        ],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "banks",
+        "core_metric_coverage_status": "failed",
+        "core_metrics_required": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "arrears",
+          "impairment",
+          "roe",
+          "dividend"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "dividend"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [
+          "arrears",
+          "impairment",
+          "roe"
+        ],
+        "core_metric_coverage_passed": false,
+        "core_metric_coverage_details": {
+          "net_interest_margin": {
+            "status": "cleanly_extracted"
+          },
+          "cet1": {
+            "status": "cleanly_extracted"
+          },
+          "loan_growth": {
+            "status": "cleanly_extracted"
+          },
+          "arrears": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:019"
+            ]
+          },
+          "impairment": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:020"
+            ]
+          },
+          "roe": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:022"
+            ]
+          },
+          "dividend": {
+            "status": "cleanly_extracted"
+          }
+        },
+        "remediation_plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+        "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+        "complete": false,
+        "review_ready": false
+      },
+      {
+        "ticker": "WOW.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-07T17:04:57+10:00",
+        "run_id": "asx_2026-07-06_plugin_pilot_cba_wow:WOW.AX:2026-07-06:2026-07-07T17:04:57+10:00",
+        "authoritative_result_folder": true,
+        "status": "remediation_required",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-07T17:04:57+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_plugin_pilot_cba_wow",
+          "ticker_list": [
+            "CBA.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_plugin_pilot_cba_wow:WOW.AX:2026-07-06:2026-07-07T17:04:57+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "status": "pending",
+          "workflow_status": "pending"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": {
+          "stage": "quality_remediation",
+          "skill": "codex-session-quality-remediation",
+          "status": "pending",
+          "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+          "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+          "blocking_dependencies": [],
+          "validation_errors": [
+            "ASX core metric coverage failed; review-ready quality gate cannot pass"
+          ],
+          "completion_gate": "implement next_remediation_task.md, rerun evidence/report workflow, and continue until quality gate passes or a true blocker is documented"
+        },
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [
+          "ASX core metric coverage failed; review-ready quality gate cannot pass"
+        ],
+        "quality_gate_passed": false,
+        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:WOW.AX:2026-07-06:020 metric=capex",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          }
+        ],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "retailers",
+        "core_metric_coverage_status": "failed",
+        "core_metrics_required": [
+          "sales_growth",
+          "ebit_margin",
+          "inventory_or_working_capital",
+          "capex",
+          "dividends",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "sales_growth",
+          "ebit_margin",
+          "inventory_or_working_capital",
+          "dividends",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [
+          "capex"
+        ],
+        "core_metric_coverage_passed": false,
+        "core_metric_coverage_details": {
+          "sales_growth": {
+            "status": "cleanly_extracted"
+          },
+          "ebit_margin": {
+            "status": "cleanly_extracted"
+          },
+          "inventory_or_working_capital": {
+            "status": "cleanly_extracted"
+          },
+          "capex": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:020"
+            ]
+          },
+          "dividends": {
+            "status": "cleanly_extracted"
+          },
+          "comparable_sales_if_available": {
+            "status": "cleanly_extracted"
+          }
+        },
+        "remediation_plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+        "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+        "complete": false,
+        "review_ready": false
+      }
+    ],
+    "run_quality_errors": [],
+    "run_quality_warnings": [
+      "debate winner is always Balanced across a multi-ticker run"
+    ]
+  },
+  "remediation_plans": [
+    {
+      "ticker": "CBA.AX",
+      "trade_date": "2026-07-06",
+      "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06",
+      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\CBA.AX\\2026-07-06\\evidence.json",
+      "status": "remediation_required",
+      "blocking_for_review_grade": true,
+      "validator_errors": [
+        "ASX core metric coverage failed; review-ready quality gate cannot pass"
+      ],
+      "remediation_tasks": [
+        {
+          "failed_gate": "asx_core_metric_coverage_gate",
+          "root_cause_category": "asx_core_metric_coverage_insufficient",
+          "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+          "affected_files": [
+            "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+          ],
+          "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+          "required_tests": [
+            "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+            "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+          ],
+          "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "blocking_for_review_grade": true,
+          "status": "pending",
+          "rerun_commands": [
+            ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow"
+          ],
+          "created_at": "2026-07-07T17:10:35+10:00",
+          "updated_at": "2026-07-07T17:10:35+10:00",
+          "task_id": "remediate:CBA.AX:2026-07-06:001"
+        }
+      ],
+      "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+      "next_remediation_task": {
+        "failed_gate": "asx_core_metric_coverage_gate",
+        "root_cause_category": "asx_core_metric_coverage_insufficient",
+        "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+        "affected_files": [
+          "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+          "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+          "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+        ],
+        "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+        "required_tests": [
+          "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+          "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+        ],
+        "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+        "blocking_for_review_grade": true,
+        "status": "pending",
+        "rerun_commands": [
+          ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CBA.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow"
+        ],
+        "created_at": "2026-07-07T17:10:35+10:00",
+        "updated_at": "2026-07-07T17:10:35+10:00",
+        "task_id": "remediate:CBA.AX:2026-07-06:001"
+      },
+      "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
+    },
+    {
+      "ticker": "WOW.AX",
+      "trade_date": "2026-07-06",
+      "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06",
+      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
+      "status": "remediation_required",
+      "blocking_for_review_grade": true,
+      "validator_errors": [
+        "ASX core metric coverage failed; review-ready quality gate cannot pass"
+      ],
+      "remediation_tasks": [
+        {
+          "failed_gate": "asx_core_metric_coverage_gate",
+          "root_cause_category": "asx_core_metric_coverage_insufficient",
+          "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+          "affected_files": [
+            "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+            "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+          ],
+          "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+          "required_tests": [
+            "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+            "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+          ],
+          "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+          "blocking_for_review_grade": true,
+          "status": "pending",
+          "rerun_commands": [
+            ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow"
+          ],
+          "created_at": "2026-07-07T17:10:35+10:00",
+          "updated_at": "2026-07-07T17:10:35+10:00",
+          "task_id": "remediate:WOW.AX:2026-07-06:001"
+        }
+      ],
+      "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+      "next_remediation_task": {
+        "failed_gate": "asx_core_metric_coverage_gate",
+        "root_cause_category": "asx_core_metric_coverage_insufficient",
+        "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+        "affected_files": [
+          "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
+          "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
+          "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
+          "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
+        ],
+        "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
+        "required_tests": [
+          "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
+          "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
+        ],
+        "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+        "blocking_for_review_grade": true,
+        "status": "pending",
+        "rerun_commands": [
+          ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker WOW.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow"
+        ],
+        "created_at": "2026-07-07T17:10:35+10:00",
+        "updated_at": "2026-07-07T17:10:35+10:00",
+        "task_id": "remediate:WOW.AX:2026-07-06:001"
+      },
+      "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
+    }
+  ],
+  "quality_gate_passed": false,
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
+  "evidence_reasoning_warnings": [
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:020 metric=impairment",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:WOW.AX:2026-07-06:020 metric=capex",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    }
+  ],
+  "core_metric_coverage_status": "failed",
+  "core_metrics_required": {
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "arrears",
+      "impairment",
+      "roe",
+      "dividend"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin",
+      "inventory_or_working_capital",
+      "capex",
+      "dividends",
+      "comparable_sales_if_available"
+    ]
+  },
+  "core_metrics_cleanly_extracted": {
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "dividend"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin",
+      "inventory_or_working_capital",
+      "dividends",
+      "comparable_sales_if_available"
+    ]
+  },
+  "core_metrics_unavailable_with_reason": {
+    "CBA.AX": [],
+    "WOW.AX": []
+  },
+  "core_metrics_unresolved": {
+    "CBA.AX": [
+      "arrears",
+      "impairment",
+      "roe"
+    ],
+    "WOW.AX": [
+      "capex"
+    ]
+  },
+  "core_metric_coverage_passed": false,
+  "review_ready": false,
+  "patched_quality_gates": [],
+  "patched_quality_reviews": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_review.md"
+  ],
+  "written_failed_quality_gates": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_gate.json"
+  ],
+  "written_quality_gates": [],
+  "closed_loop_rule": "continue from next_remediation_task.md until quality passes or a true external blocker is documented",
+  "run_metadata_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\run_metadata.json"
+}

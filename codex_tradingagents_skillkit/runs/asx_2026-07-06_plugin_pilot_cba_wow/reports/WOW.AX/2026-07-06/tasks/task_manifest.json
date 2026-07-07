@@ -1,0 +1,682 @@
+{
+  "ticker": "WOW.AX",
+  "trade_date": "2026-07-06",
+  "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
+  "tasks": {
+    "market_analyst_task.md": {
+      "stage": "market_analyst",
+      "skill": "tradingagents-market-analyst",
+      "output_key": "market_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+      "dependency_inputs": [],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\market\\quantitative_observations.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\market\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\social.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\market_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\market_analyst\\memory.json"
+      ],
+      "completion_gate": "write market_report in TradingAgents analyst style",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Quantitative Regime / Tool Outputs",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "market_metric_consistency_gate"
+    },
+    "sentiment_analyst_task.md": {
+      "stage": "sentiment_analyst",
+      "skill": "tradingagents-sentiment-analyst",
+      "output_key": "sentiment_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+      "dependency_inputs": [],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\social.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\social\\social_summary.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\social\\social_cards.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\social\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\sentiment_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\sentiment_analyst\\memory.json"
+      ],
+      "completion_gate": "write sentiment_report in TradingAgents analyst style",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Sentiment Evidence Quality Summary",
+        "Source Quality Table",
+        "Top Reasoned Items",
+        "Excluded / Downgraded Evidence",
+        "Event Context vs Reaction Evidence",
+        "Final Sentiment Interpretation",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "sentiment_social_evidence_gate"
+    },
+    "news_analyst_task.md": {
+      "stage": "news_analyst",
+      "skill": "tradingagents-news-analyst",
+      "output_key": "news_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+      "dependency_inputs": [],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\news\\candidates.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\news\\source_attempts.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\news\\source_evidence_ledger.jsonl",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\news\\article_cards.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\news\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\social.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\news_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\news_analyst\\memory.json"
+      ],
+      "completion_gate": "write news_report in TradingAgents analyst style",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Article Evidence Cards",
+        "News Impact Summary",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "news_analyst_quality_gate"
+    },
+    "fundamentals_analyst_task.md": {
+      "stage": "fundamentals_analyst",
+      "skill": "tradingagents-fundamentals-analyst",
+      "output_key": "fundamentals_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+      "dependency_inputs": [],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\fundamentals\\statement_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\fundamentals\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\social.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md"
+      ],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\fundamentals_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\fundamentals_analyst\\memory.json"
+      ],
+      "completion_gate": "write fundamentals_report in TradingAgents analyst style",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Financial Statement Evidence",
+        "Sector-Specific Metrics",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "fundamentals_statement_evidence_gate"
+    },
+    "financial_report_task.md": {
+      "stage": "financial_report_analyst",
+      "skill": "tradingagents-financial-report-analyst",
+      "output_key": "financial_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\financial_report_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\roles\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\financial_report\\section_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\financial_report\\evidence_ledger.jsonl",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\financial_report\\asx_metric_audit_review.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\financial_report\\asx_metric_audit_review.csv",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\financial_report\\asx_table_extraction_diagnostics.json"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\financial_report_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\financial_report_analyst\\memory.json"
+      ],
+      "completion_gate": "write financial_report.md before industry/theme discovery",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Source coverage table",
+        "Claim-Source Table",
+        "Evidence gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "financial_report_claim_source_gate"
+    },
+    "industry_theme_discovery_task.md": {
+      "stage": "industry_theme_discovery_analyst",
+      "skill": "tradingagents-industry-theme-discovery-analyst",
+      "output_key": "industry_theme_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\industry_theme_discovery_analyst\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\industry_theme_discovery_analyst\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\industry_theme_discovery_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\industry_theme_discovery_analyst\\memory.json"
+      ],
+      "completion_gate": "discover evidence-grounded industry/theme context before research debate",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Theme Evidence Table",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "industry_theme_evidence_gate"
+    },
+    "bull_researcher_round_1_task.md": {
+      "stage": "bull_researcher_round_1",
+      "skill": "tradingagents-bull-researcher",
+      "output_key": "bull_researcher_round_1",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\bull_researcher_round_1\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\bull_researcher_round_1\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\bull_researcher\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\bull_researcher\\memory.json"
+      ],
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Strongest Bull Evidence",
+        "Falsification Conditions",
+        "Response To Bear",
+        "Memory Update"
+      ],
+      "quality_gate": "bull_debate_evidence_gate"
+    },
+    "bear_researcher_round_1_task.md": {
+      "stage": "bear_researcher_round_1",
+      "skill": "tradingagents-bear-researcher",
+      "output_key": "bear_researcher_round_1",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\bear_researcher_round_1\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\bear_researcher_round_1\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\bear_researcher\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\bear_researcher\\memory.json"
+      ],
+      "completion_gate": "Bear must directly rebut the strongest Bull point.",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Strongest Bear Evidence",
+        "Falsification Conditions",
+        "Response To Bull",
+        "Memory Update"
+      ],
+      "quality_gate": "bear_debate_evidence_gate"
+    },
+    "research_manager_task.md": {
+      "stage": "research_manager",
+      "skill": "tradingagents-research-manager",
+      "output_key": "research_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\research_manager_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\research_manager\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\research_manager\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\research_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\research_manager\\memory.json"
+      ],
+      "completion_gate": "Research Manager must weigh Bull vs Bear evidence.",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Structured Evidence Matrix",
+        "Rating Rationale",
+        "Debate Outcome Scorecard",
+        "Debate Change Assessment",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "research_manager_evidence_matrix_gate"
+    },
+    "trader_task.md": {
+      "stage": "trader",
+      "skill": "tradingagents-trader",
+      "output_key": "trader",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\trader_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\trader\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\trader\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\trader\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\trader\\memory.json"
+      ],
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Action Consistency Check",
+        "Setup Quality Assessment",
+        "Setup Thresholds",
+        "Paper-study price framework",
+        "FINAL TRANSACTION PROPOSAL",
+        "Memory Update"
+      ],
+      "quality_gate": "trader_action_consistency_gate"
+    },
+    "aggressive_risk_round_1_task.md": {
+      "stage": "aggressive_risk_round_1",
+      "skill": "tradingagents-aggressive-risk-analyst",
+      "output_key": "aggressive_risk_round_1",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\aggressive_risk_round_1\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\aggressive_risk_round_1\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\aggressive_risk_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\aggressive_risk_analyst\\memory.json"
+      ],
+      "completion_gate": "write the visible debate-stage output before advancing",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Opportunity Case",
+        "Failure Points",
+        "Response To Prior Risk Arguments",
+        "Memory Update"
+      ],
+      "quality_gate": "aggressive_risk_evidence_gate"
+    },
+    "conservative_risk_round_1_task.md": {
+      "stage": "conservative_risk_round_1",
+      "skill": "tradingagents-conservative-risk-analyst",
+      "output_key": "conservative_risk_round_1",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\conservative_risk_round_1\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\conservative_risk_round_1\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\conservative_risk_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\conservative_risk_analyst\\memory.json"
+      ],
+      "completion_gate": "Conservative Risk must directly respond to Aggressive Risk.",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Downside Case",
+        "Unsupported Upside Challenges",
+        "Response To Aggressive",
+        "Memory Update"
+      ],
+      "quality_gate": "conservative_risk_evidence_gate"
+    },
+    "neutral_risk_round_1_task.md": {
+      "stage": "neutral_risk_round_1",
+      "skill": "tradingagents-neutral-risk-analyst",
+      "output_key": "neutral_risk_round_1",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\neutral_risk_round_1\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\neutral_risk_round_1\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\neutral_risk_analyst\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\neutral_risk_analyst\\memory.json"
+      ],
+      "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative.",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Risk Argument Quality",
+        "Stronger Risk Side",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "neutral_risk_evidence_gate"
+    },
+    "portfolio_manager_task.md": {
+      "stage": "portfolio_manager",
+      "skill": "tradingagents-portfolio-manager",
+      "output_key": "portfolio_manager",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\portfolio_manager\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\portfolio_manager\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\portfolio_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\portfolio_manager\\memory.json"
+      ],
+      "completion_gate": "Portfolio Manager must synthesize the risk debate.",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Risk debate impact",
+        "Final Portfolio Decision",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "portfolio_decision_evidence_gate"
+    },
+    "complete_report_task.md": {
+      "stage": "complete_report",
+      "skill": "tradingagents-run-persistence",
+      "output_key": "complete_report",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\complete_report_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\complete_report.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\complete_report\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\complete_report\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\portfolio_manager\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\portfolio_manager\\memory.json"
+      ],
+      "completion_gate": "assemble TradingAgents-style complete_report.md",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Complete Report",
+        "Evidence Gaps"
+      ],
+      "quality_gate": "complete_report_persistence_gate"
+    },
+    "quality_reviewer_task.md": {
+      "stage": "quality_review",
+      "skill": "tradingagents-quality-reviewer",
+      "output_key": "quality_review",
+      "path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+      "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_review.md",
+      "dependency_inputs": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\complete_report.md"
+      ],
+      "allowed_input_files": [
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\reports\\WOW.AX\\2026-07-06\\complete_report.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\evidence.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\quality_review\\input_records.json",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow\\evidence\\WOW.AX\\2026-07-06\\stage_inputs\\quality_review\\evidence_ledger.jsonl"
+      ],
+      "forbidden_input_files": [],
+      "allowed_memory_files": [
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\quality_reviewer\\memory.md",
+        "codex_tradingagents_skillkit\\memory\\WOW.AX\\quality_reviewer\\memory.json"
+      ],
+      "completion_gate": "write quality_review.md and quality_gate.json",
+      "required_output_sections": [
+        "Tool Outputs Used",
+        "Quality Gate Findings",
+        "Evidence Gaps",
+        "Memory Update"
+      ],
+      "quality_gate": "quality_reviewer_gate"
+    }
+  },
+  "contract": "Task prompts only. Codex role execution writes reports."
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "asx_2026-07-06_plugin_pilot_cba_wow:CBA.AX,WOW.AX:2026-07-06:2026-07-07T17:04:57+10:00",
+  "run_folder_name": "asx_2026-07-06_plugin_pilot_cba_wow",
+  "ticker_list": [
+    "CBA.AX",
+    "WOW.AX"
+  ],
+  "market": "ASX",
+  "trade_date": "2026-07-06",
+  "evidence_as_of_date": "2026-07-06",
+  "run_executed_at": "2026-07-07T17:04:57+10:00",
+  "authoritative_result_folder": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_plugin_pilot_cba_wow",
+  "workflow_status": "remediation_required",
+  "status": "remediation_required"
+}
