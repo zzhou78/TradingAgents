@@ -1006,6 +1006,89 @@ def test_cba_cet1_prefers_right_hand_capital_ratio_label_over_prior_dividend_lab
     assert result["value_unit"] == "%"
 
 
+def test_asx_ticker_plugins_load_cba_and_wow_without_runtime_metric_values():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    cba_plugin = asx._load_ticker_plugin("CBA.AX")
+    wow_plugin = asx._load_ticker_plugin("WOW.AX")
+
+    assert cba_plugin["ticker"] == "CBA.AX"
+    assert wow_plugin["ticker"] == "WOW.AX"
+    assert "financial highlights" in cba_plugin["preferred_sections"]
+    assert "cash-flow statement" in wow_plugin["preferred_sections"]
+    assert "net_interest_margin" in cba_plugin["metrics"]
+    assert "capex" in wow_plugin["metrics"]
+
+    def assert_no_runtime_values(value):
+        if isinstance(value, dict):
+            forbidden = {"clean_metric_value", "final_metric_value", "hard_coded_value", "expected_value"}
+            assert not forbidden.intersection(value)
+            for child in value.values():
+                assert_no_runtime_values(child)
+        elif isinstance(value, list):
+            for child in value:
+                assert_no_runtime_values(child)
+
+    assert_no_runtime_values(cba_plugin)
+    assert_no_runtime_values(wow_plugin)
+
+
+def test_cba_plugin_rejects_nim_and_cet1_false_positives_with_plugin_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+
+    nim = asx._extract_metric_value_from_text(
+        "Financial highlights $28,465m Operating income increased 5% on FY24. "
+        "Net interest margin commentary follows without a disclosed value.",
+        "net_interest_margin",
+        ticker_plugin=plugin,
+    )
+    cet1 = asx._extract_metric_value_from_text(
+        "Tier 1 coverage ratio was 2% in an operational risk table. "
+        "Capital ratio disclosures are discussed later.",
+        "cet1",
+        ticker_plugin=plugin,
+    )
+
+    assert nim["metric_value_status"] != "value_extracted"
+    assert nim["clean_metric_value"] == "unavailable"
+    assert cet1["metric_value_status"] != "value_extracted"
+    assert cet1["clean_metric_value"] == "unavailable"
+
+
+def test_cba_plugin_extracts_roe_from_key_ratio_style_text():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Key ratios Cash NPAT $10,252m Return on average equity 13.9% and dividend payout ratio 79%.",
+        "roe",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "13.9"
+    assert result["value_unit"] == "%"
+
+
+def test_cba_plugin_value_validation_rejects_implausible_nim_percentage():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Financial highlights Net interest margin 85% due to a malformed table extraction.",
+        "net_interest_margin",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
 def test_cba_nim_rejects_operating_income_percentage_before_metric_label():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1400,6 +1483,27 @@ def test_wow_capex_extracts_cash_flow_purchase_of_ppe_row():
     assert result["table_mapping_confidence"] >= 80
 
 
+def test_wow_plugin_extracts_capex_from_cash_flow_investing_ppe_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("WOW.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Consolidated cash-flow statement. Investing activities.\n"
+        "Metric | F25 $m | F24 $m\n"
+        "Purchase of property, plant and equipment | (1,890) | (1,732)",
+        "capex",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "-1890"
+    assert result["value_unit"] == "$m"
+    assert result["row_label"] == "Purchase of property, plant and equipment"
+    assert result["column_label"] == "F25 $m"
+    assert result["source_page"] == "unavailable"
+
+
 def test_wow_capex_rejects_segment_revenue_table_without_capex_row():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1413,6 +1517,70 @@ def test_wow_capex_rejects_segment_revenue_table_without_capex_row():
 
     assert result["metric_value_status"] != "value_extracted"
     assert result["clean_metric_value"] == "unavailable"
+
+
+def test_wow_plugin_rejects_segment_revenue_table_as_capex_evidence():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("WOW.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Segment revenue table capital investment mentioned in narrative. "
+        "Segment | Sales $m | EBIT $m | Margin %\n"
+        "Australian Food | 51,000 | 2,753 | 5.4%",
+        "capex",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_wow_plugin_allows_f25_full_year_csv_data_pack_discovery():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "companies/WOW/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/WOW" in url:
+            return """
+            <html><body>
+            <a href="https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/f25/2936242.pdf">
+            F25 Annual Report 27 Aug 2025</a>
+            <a href="https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/f25/full-year-data-pack.csv">
+            F25 Full Year CSV Data Pack 27 Aug 2025</a>
+            </body></html>
+            """
+        if url.endswith("2936242.pdf"):
+            return "Annual report operating and financial review cash flow statement total sales capex dividends inventory"
+        if url.endswith("full-year-data-pack.csv"):
+            return "Metric,F25 $m,F24 $m\nPurchase of property plant and equipment,(1890),(1732)"
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("WOW.AX", "2026-07-02", http_get=fake_http_get)
+    urls = {source.get("url") for source in packet["sources"]}
+    csv_source = next(
+        source for source in packet["sources"] if str(source.get("url", "")).endswith("full-year-data-pack.csv")
+    )
+    capex = next(
+        section
+        for source in packet["sources"]
+        for section in source.get("extracted_sections", [])
+        if section.get("section_type") == "sector_metric" and section.get("metric_name") == "capex"
+    )
+
+    assert "https://www.woolworthsgroup.com.au/content/dam/wwg/investors/reports/f25/f25/full-year-data-pack.csv" in urls
+    assert csv_source["document_structure"]["table_count"] >= 1
+    assert capex["metric_value_status"] == "value_extracted"
+    assert capex["clean_metric_value"] == "-1890"
+    assert capex["row_label"] == "Purchase of property plant and equipment"
+    assert capex["column_label"] == "F25 $m"
+    assert capex["source_page"] == "1"
+    assert capex["candidate_score"] >= 80
+    assert capex["ticker_plugin"] == "WOW.AX"
+    assert any("markets/company/WOW" in url for url in requested_urls)
 
 
 def test_mpl_claims_ratio_and_capital_adequacy_preserve_context():

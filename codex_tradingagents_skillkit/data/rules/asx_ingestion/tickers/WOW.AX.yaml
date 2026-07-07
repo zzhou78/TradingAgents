@@ -1,0 +1,79 @@
+ticker: WOW.AX
+plugin_version: 1
+source_hints:
+  official_urls:
+    - https://www.woolworthsgroup.com.au/au/en/investors.html
+  fallback_page_urls:
+    - https://www.woolworthsgroup.com.au/au/en/investors/our-performance/reports.html
+  preferred_document_roles:
+    - annual_report
+    - financial_report_pdf
+  preferred_document_types:
+    - Annual Report
+    - Full Year Results
+  allow_asset_patterns:
+    - "full[- ]year.*(?:csv|data[- ]pack)"
+    - "data[- ]pack.*\\.csv"
+  document_type_hints:
+    - pattern: "full[- ]year.*(?:csv|data[- ]pack)|data[- ]pack.*\\.csv"
+      document_type: "Full Year Results"
+preferred_sections:
+  - annual report
+  - f25 full year
+  - cash-flow statement
+  - cash flow statement
+  - investing activities
+reject_sections:
+  - segment revenue
+  - segment performance
+metrics:
+  capex:
+    accepted_labels:
+      - capex
+      - capital expenditure
+      - capital investment
+      - payments for property, plant and equipment
+      - purchase of property, plant and equipment
+      - payments for property plant and equipment
+      - purchase of property plant and equipment
+      - investing cash flows
+    accepted_row_labels:
+      - capex
+      - capital expenditure
+      - capital investment
+      - payments for property, plant and equipment
+      - purchase of property, plant and equipment
+      - payments for property plant and equipment
+      - purchase of property plant and equipment
+    preferred_sections:
+      - cash-flow statement
+      - cash flow statement
+      - investing activities
+    preferred_tables:
+      - cash flows
+      - investing activities
+    accepted_column_labels:
+      - f25
+      - f24
+      - fy2025
+      - fy2024
+      - 2025
+      - 2024
+      - $m
+      - payments
+      - purchase
+      - investing
+    rejected_nearby_terms:
+      - segment revenue
+      - sales table
+      - ebit margin
+    rejected_column_labels:
+      - sales
+      - revenue
+      - ebit
+      - margin
+      - segment
+    reject_contexts:
+      - segment revenue
+      - segment performance
+      - sales table

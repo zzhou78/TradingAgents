@@ -1,0 +1,170 @@
+ticker: CBA.AX
+plugin_version: 1
+source_hints:
+  official_urls:
+    - https://www.commbank.com.au/about-us/investors.html
+  fallback_page_urls:
+    - https://www.commbank.com.au/about-us/investors/financial-results.html
+  preferred_document_roles:
+    - annual_report
+    - appendix_4e
+    - financial_report_pdf
+  preferred_document_types:
+    - Annual Report
+    - Appendix 4E / Preliminary Final Report
+preferred_sections:
+  - financial highlights
+  - key ratios
+  - performance summary
+  - credit quality
+  - delivering financial performance
+reject_sections:
+  - peer comparison
+  - market capitalisation
+  - market capitalization
+  - remuneration
+  - climate disclosures
+  - financed emissions
+metrics:
+  net_interest_margin:
+    accepted_labels:
+      - net interest margin
+      - NIM
+    preferred_sections:
+      - financial highlights
+      - key ratios
+      - performance summary
+    direct_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\s+Net interest margin\\b"
+      - "\\bNet interest margin\\s+\\d+(?:\\.\\d+)?\\s*%\\b"
+    value_validation:
+      ranges:
+        - units: ["%"]
+          min: 0
+          max: 10
+        - units: ["bps"]
+          min: -500
+          max: 500
+    rejected_nearby_terms:
+      - operating income
+      - cash NPAT
+      - dividend
+      - CET1
+    reject_contexts:
+      - operating income
+  cet1:
+    accepted_labels:
+      - CET1
+      - CET1 capital ratio
+      - Capital ratio CET1
+      - common equity tier 1
+    preferred_sections:
+      - financial highlights
+      - key ratios
+      - capital
+    required_nearby_terms:
+      - CET1
+      - common equity tier 1
+    rejected_nearby_terms:
+      - coverage ratio
+      - tier 1 coverage
+      - operating income
+      - net interest margin
+      - dividend
+    reject_contexts:
+      - coverage ratio
+      - unrelated Tier 1
+    value_validation:
+      ranges:
+        - units: ["%"]
+          min: 0
+          max: 25
+        - units: ["bps"]
+          min: -1000
+          max: 1000
+  roe:
+    accepted_labels:
+      - ROE
+      - cash ROE
+      - return on equity
+      - return on average equity
+    accepted_row_labels:
+      - ROE
+      - cash ROE
+      - return on equity
+      - return on average equity
+    preferred_sections:
+      - key ratios
+      - performance summary
+      - financial highlights
+    rejected_nearby_terms:
+      - peer
+      - market capitalisation
+      - market capitalization
+      - market cap
+      - remuneration
+    value_validation:
+      ranges:
+        - units: ["%"]
+          min: -20
+          max: 40
+  loan_growth:
+    required_nearby_terms:
+      - growth
+      - grew
+      - increased
+      - increase
+      - decreased
+      - declined
+      - change
+      - higher
+      - lower
+      - balance growth
+      - lending growth
+    rejected_nearby_terms:
+      - portfolio mix
+      - represented
+      - of home lending
+      - financed emissions
+    value_validation:
+      ranges:
+        - units: ["%"]
+          min: -30
+          max: 40
+  arrears:
+    accepted_labels:
+      - arrears
+      - 90+ days
+      - 90 days arrears
+      - troublesome loans
+      - impaired assets
+      - delinquencies
+      - delinquency
+    preferred_sections:
+      - credit quality
+      - troublesome exposures
+      - impairment
+    required_nearby_terms:
+      - arrears
+      - 90+ days
+      - 90 days
+      - troublesome loans
+      - impaired assets
+      - credit quality
+      - delinquencies
+      - delinquency
+    hard_rejected_nearby_terms:
+      - climate
+      - financed emissions
+      - emissions
+      - scope 3
+      - sector table
+      - PCAF
+    value_validation:
+      ranges:
+        - units: ["%"]
+          min: 0
+          max: 20
+        - units: ["bps"]
+          min: 0
+          max: 2000

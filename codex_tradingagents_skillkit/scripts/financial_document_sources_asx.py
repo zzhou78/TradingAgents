@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import html
 import io
 import json
@@ -7,6 +8,7 @@ import re
 import sys
 import urllib.request
 from collections.abc import Callable
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -20,6 +22,7 @@ DEFAULT_ASX_USER_AGENT = "CodexTradingAgents/0.1 ASX document research"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ASX_IR_RULES_PATH = REPO_ROOT / "data" / "rules" / "asx_investor_relations_urls.yaml"
 ASX_METRIC_PROFILE_PATH = Path(__file__).resolve().parents[1] / "data" / "rules" / "asx_sector_metric_extraction_profiles.yaml"
+ASX_TICKER_PLUGIN_DIR = Path(__file__).resolve().parents[1] / "data" / "rules" / "asx_ingestion" / "tickers"
 CODEX_BUNDLED_PYTHON_PACKAGES = (
     Path.home()
     / ".cache"
@@ -575,6 +578,23 @@ def _format_structured_table_row(cells: list[str], page_number: int, table_index
     )
 
 
+def _csv_document_to_structured_table_text(raw_document: str, *, table_title: str = "csv_data_pack") -> str:
+    rows: list[str] = []
+    for row_index, row in enumerate(csv.reader(io.StringIO(raw_document))):
+        cells = [_clean_text(cell) for cell in row]
+        if len([cell for cell in cells if cell]) < 2:
+            continue
+        rows.append(_format_structured_table_row(cells, 1, 1, row_index, table_title))
+    return "\n".join(rows)
+
+
+def _document_text_for_structure(raw_document: str, url: str, title: str = "") -> str:
+    if _is_csv_like_url(url):
+        table_text = _csv_document_to_structured_table_text(raw_document, table_title=title or "csv_data_pack")
+        return f"{raw_document}\n{table_text}" if table_text else raw_document
+    return raw_document
+
+
 def normalize_asx_code(ticker: str) -> str:
     symbol = ticker.upper().strip()
     return symbol[:-3] if symbol.endswith(".AX") else symbol
@@ -622,9 +642,26 @@ def _classify_document(title: str) -> str | None:
     return None
 
 
+def _classify_document_with_plugin(title: str, url: str = "", ticker_plugin: dict[str, Any] | None = None) -> str | None:
+    haystack = f"{title} {url}"
+    for hint in _plugin_list(_plugin_source_hints(ticker_plugin), "document_type_hints"):
+        if not isinstance(hint, dict):
+            continue
+        pattern = str(hint.get("pattern") or "")
+        document_type = str(hint.get("document_type") or "")
+        if pattern and document_type and re.search(pattern, haystack, re.IGNORECASE):
+            return document_type
+    return _classify_document(title)
+
+
 def _is_pdf_like_url(url: str) -> bool:
     lower = url.lower()
     return lower.endswith(".pdf") or ".pdf?" in lower or "/file/" in lower
+
+
+def _is_csv_like_url(url: str) -> bool:
+    lower = url.lower()
+    return lower.endswith(".csv") or ".csv?" in lower
 
 
 def _is_html_like_document(raw_document: str) -> bool:
@@ -878,6 +915,7 @@ def _fallback_rows(
     *,
     inherited_title: str = "",
     inherited_date: str = "",
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     inherited_title = _clean_text(inherited_title)
@@ -893,7 +931,7 @@ def _fallback_rows(
         clean_label = _clean_text(anchor.group("label"))
         direct_searchable_text = f"{clean_label} {title} {href.replace('-', ' ').replace('_', ' ')} {page_url}"
         searchable_text = direct_searchable_text
-        if not _classify_document(searchable_text):
+        if not _classify_document_with_plugin(searchable_text, href, ticker_plugin):
             if not inherited_title or not _can_inherit_report_context(clean_label, title, href):
                 continue
             searchable_text = f"{direct_searchable_text} {inherited_title}"
@@ -915,7 +953,7 @@ def _fallback_rows(
         clean_label = _clean_text(label)
         direct_searchable_text = f"{clean_label} {href.replace('-', ' ').replace('_', ' ')}"
         searchable_text = direct_searchable_text
-        if not _classify_document(searchable_text):
+        if not _classify_document_with_plugin(searchable_text, href, ticker_plugin):
             if not inherited_title or not _can_inherit_report_context(clean_label, "", href):
                 continue
             searchable_text = f"{direct_searchable_text} {inherited_title}"
@@ -933,7 +971,10 @@ def _fallback_rows(
     return rows
 
 
-def _fallback_row_sort_key(row: dict[str, Any]) -> tuple[datetime, int, int, str]:
+def _fallback_row_sort_key(
+    row: dict[str, Any],
+    ticker_plugin: dict[str, Any] | None = None,
+) -> tuple[datetime, int, int, str]:
     date_text = str(row.get("announcement_date") or "")
     try:
         parsed_date = _parse_date(date_text)
@@ -941,7 +982,11 @@ def _fallback_row_sort_key(row: dict[str, Any]) -> tuple[datetime, int, int, str
         parsed_date = datetime.min
     url = str(row.get("url") or "")
     title = str(row.get("title") or "")
-    document_type = _classify_document(f"{title} {url.replace('-', ' ').replace('_', ' ')}")
+    document_type = _classify_document_with_plugin(
+        f"{title} {url.replace('-', ' ').replace('_', ' ')}",
+        url,
+        ticker_plugin,
+    )
     role = _document_role(document_type, url=url, title=title)
     if _is_pdf_like_url(url):
         asset_rank = 0
@@ -952,8 +997,18 @@ def _fallback_row_sort_key(row: dict[str, Any]) -> tuple[datetime, int, int, str
     return (parsed_date, -asset_rank, -DOCUMENT_ROLE_RANK.get(role, 99), url)
 
 
-def _allowed_fallback_document_asset(row: dict[str, Any]) -> bool:
+def _allowed_by_plugin_asset_pattern(row: dict[str, Any], ticker_plugin: dict[str, Any] | None) -> bool:
     haystack = f"{row.get('title', '')} {row.get('url', '')}".lower()
+    for pattern in _plugin_list(_plugin_source_hints(ticker_plugin), "allow_asset_patterns"):
+        if re.search(str(pattern), haystack, re.IGNORECASE):
+            return True
+    return False
+
+
+def _allowed_fallback_document_asset(row: dict[str, Any], ticker_plugin: dict[str, Any] | None = None) -> bool:
+    haystack = f"{row.get('title', '')} {row.get('url', '')}".lower()
+    if _allowed_by_plugin_asset_pattern(row, ticker_plugin):
+        return True
     if re.search(r"\.(?:zip|xml|xhtml|xlsx?|csv)(?:[?#].*)?$", haystack):
         return False
     excluded_report_terms = [
@@ -968,18 +1023,25 @@ def _allowed_fallback_document_asset(row: dict[str, Any]) -> bool:
     return not any(term in haystack for term in excluded_report_terms)
 
 
-def _prefilter_fallback_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _prefilter_fallback_rows(
+    rows: list[dict[str, Any]],
+    ticker_plugin: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     selected: list[dict[str, Any]] = []
     seen_roles: set[str] = set()
     sorted_rows = sorted(
-        [row for row in rows if _allowed_fallback_document_asset(row)],
-        key=_fallback_row_sort_key,
+        [row for row in rows if _allowed_fallback_document_asset(row, ticker_plugin)],
+        key=lambda row: _fallback_row_sort_key(row, ticker_plugin),
         reverse=True,
     )
     for row in sorted_rows:
         url = str(row.get("url") or "")
         title = str(row.get("title") or "")
-        document_type = _classify_document(f"{title} {url.replace('-', ' ').replace('_', ' ')}")
+        document_type = _classify_document_with_plugin(
+            f"{title} {url.replace('-', ' ').replace('_', ' ')}",
+            url,
+            ticker_plugin,
+        )
         role = _document_role(document_type, url=url, title=title)
         role_key = role if role in FINANCIAL_DOCUMENT_ROLES else document_type or url
         if role_key in FINANCIAL_DOCUMENT_ROLES and role_key in seen_roles:
@@ -990,13 +1052,20 @@ def _prefilter_fallback_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]
     return selected
 
 
-def _fallback_page_urls(asx_code: str, identity: dict[str, Any] | None) -> list[str]:
+def _fallback_page_urls(
+    asx_code: str,
+    identity: dict[str, Any] | None,
+    ticker_plugin: dict[str, Any] | None = None,
+) -> list[str]:
     urls = [ASX_COMPANY_PAGE_URL.format(code=asx_code)]
     identity = identity or {}
     for key in ("investor_relations_url", "investorRelationsUrl", "ir_url", "investors_url"):
         url = identity.get(key)
         if url:
             urls.append(str(url))
+    hints = _plugin_source_hints(ticker_plugin)
+    urls.extend(str(url) for url in _plugin_list(hints, "fallback_page_urls") if url)
+    urls.extend(str(url) for url in _plugin_list(hints, "official_urls") if url)
     urls.extend(_load_known_asx_ir_urls().get(asx_code, []))
     return list(dict.fromkeys(urls))
 
@@ -1056,6 +1125,97 @@ def _load_metric_profiles(path: Path = ASX_METRIC_PROFILE_PATH) -> dict[str, dic
             if isinstance(profile, dict)
         }
     return profiles
+
+
+def _ticker_plugin_path(ticker: str, plugin_dir: Path = ASX_TICKER_PLUGIN_DIR) -> Path:
+    symbol = ticker.upper().strip()
+    if not symbol.endswith(".AX"):
+        symbol = f"{normalize_asx_code(symbol)}.AX"
+    return plugin_dir / f"{symbol}.yaml"
+
+
+def _load_ticker_plugin(ticker: str, plugin_dir: Path = ASX_TICKER_PLUGIN_DIR) -> dict[str, Any]:
+    path = _ticker_plugin_path(ticker, plugin_dir)
+    if not path.exists():
+        return {}
+    try:
+        import yaml
+    except ImportError:
+        return {}
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    if not isinstance(data, dict):
+        return {}
+    plugin = deepcopy(data)
+    plugin.setdefault("ticker", _ticker_plugin_path(ticker, plugin_dir).stem)
+    plugin["_plugin_path"] = str(path)
+    return plugin
+
+
+def _plugin_source_hints(ticker_plugin: dict[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(ticker_plugin, dict):
+        return {}
+    hints = ticker_plugin.get("source_hints") or {}
+    return hints if isinstance(hints, dict) else {}
+
+
+def _plugin_list(container: dict[str, Any], key: str) -> list[Any]:
+    value = container.get(key)
+    return value if isinstance(value, list) else []
+
+
+def _plugin_metric_profile(ticker_plugin: dict[str, Any] | None, metric_name: str) -> dict[str, Any]:
+    if not isinstance(ticker_plugin, dict):
+        return {}
+    metrics = ticker_plugin.get("metrics") or {}
+    if not isinstance(metrics, dict):
+        return {}
+    profile = metrics.get(metric_name) or {}
+    return profile if isinstance(profile, dict) else {}
+
+
+def _merge_unique_list(left: list[Any], right: list[Any]) -> list[Any]:
+    merged: list[Any] = []
+    seen: set[str] = set()
+    for item in [*left, *right]:
+        key = str(item)
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(item)
+    return merged
+
+
+def _merge_metric_profile(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]:
+    if not overlay:
+        return base
+    merged = deepcopy(base)
+    list_keys = {
+        "accepted_labels",
+        "accepted_row_labels",
+        "accepted_column_labels",
+        "accepted_units",
+        "accepted_value_patterns",
+        "preferred_value_type",
+        "required_nearby_terms",
+        "rejected_nearby_terms",
+        "hard_rejected_nearby_terms",
+        "rejected_column_labels",
+        "preferred_sections",
+        "preferred_tables",
+        "reject_sections",
+        "reject_contexts",
+        "validation_rules",
+    }
+    for key, value in overlay.items():
+        if key in {"fixture_snippets", "expected_outputs"}:
+            continue
+        if key in list_keys and isinstance(value, list):
+            merged[key] = _merge_unique_list(list(merged.get(key) or []), value)
+        elif isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = {**merged[key], **value}
+        else:
+            merged[key] = deepcopy(value)
+    return merged
 
 
 def _metric_profiles_for_sector(sector: str) -> dict[str, dict[str, Any]]:
@@ -1118,15 +1278,17 @@ def _is_navigation_or_toc(text: str) -> bool:
     return (toc_hits >= 1 and numbered_sections >= 3) or nav_hits >= 4
 
 
-def _profile_for_metric(metric_name: str) -> dict[str, Any]:
+def _profile_for_metric(metric_name: str, ticker_plugin: dict[str, Any] | None = None) -> dict[str, Any]:
+    plugin_profile = _plugin_metric_profile(ticker_plugin, metric_name)
     for sector_profiles in _load_metric_profiles().values():
         profile = sector_profiles.get(metric_name)
         if profile:
-            return profile
+            return _merge_metric_profile(profile, plugin_profile)
     for specs in ASX_SECTOR_METRIC_PATTERNS.values():
         for name, label, pattern, _supports_claims in specs:
             if name == metric_name:
-                return {
+                return _merge_metric_profile(
+                    {
                     "accepted_labels": [label, name.replace("_", " ")],
                     "accepted_units": ["%", "bps", "$m", "$bn", "m", "bn", "cents"],
                     "accepted_value_patterns": [
@@ -1137,8 +1299,19 @@ def _profile_for_metric(metric_name: str) -> dict[str, Any]:
                     "max_label_value_distance_tokens": 10,
                     "direction_rules": {"supportive": ["increased", "higher"], "adverse": ["decreased", "lower"]},
                     "legacy_pattern": pattern,
-                }
+                    },
+                    plugin_profile,
+                )
     return {}
+
+
+def _profile_for_metric_context(metric_name: str, ticker_plugin: dict[str, Any] | None = None) -> dict[str, Any]:
+    try:
+        return _profile_for_metric(metric_name, ticker_plugin)
+    except TypeError:
+        if ticker_plugin:
+            raise
+        return _profile_for_metric(metric_name)
 
 
 def _label_regex(label: str) -> str:
@@ -1629,6 +1802,30 @@ def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
     return normalized in {"$m", "$bn"} and any(item in accepted for item in {normalized, f"a{normalized}", normalized[1:]})
 
 
+def _value_validation_failure(clean_value: str, unit: str, profile: dict[str, Any]) -> str:
+    validation = profile.get("value_validation") or {}
+    if not isinstance(validation, dict):
+        return ""
+    try:
+        numeric_value = float(str(clean_value).replace(",", ""))
+    except ValueError:
+        return ""
+    normalized_unit = unit.lower()
+    for rule in validation.get("ranges", []) or []:
+        if not isinstance(rule, dict):
+            continue
+        units = {str(item).lower() for item in rule.get("units", []) or []}
+        if units and normalized_unit not in units:
+            continue
+        min_value = rule.get("min")
+        max_value = rule.get("max")
+        if min_value is not None and numeric_value < float(min_value):
+            return f"value {clean_value}{unit} below plugin validation minimum {min_value}"
+        if max_value is not None and numeric_value > float(max_value):
+            return f"value {clean_value}{unit} above plugin validation maximum {max_value}"
+    return ""
+
+
 def _direction_from_profile(text: str, profile: dict[str, Any]) -> str:
     lower = text.lower()
     rules = profile.get("direction_rules") or {}
@@ -1688,6 +1885,8 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
                 continue
             raw_value = value_match.group(0)
             clean_value, unit = _clean_value_and_unit(raw_value)
+            if _value_validation_failure(clean_value, unit, profile):
+                continue
             window_start = max(0, min(label_match.start(), value_match.start()) - 80)
             window_end = min(len(text), max(label_match.end(), value_match.end()) + 80)
             window = text[window_start:window_end]
@@ -1820,7 +2019,8 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         if len(cells) < 3:
             continue
         key = _table_key(metadata)
-        if _rejected_terms_present(row, profile) or _hard_rejected_terms_present(row, profile):
+        row_content = " | ".join(cells)
+        if _rejected_terms_present(row_content, profile) or _hard_rejected_terms_present(row_content, profile):
             continue
         if not _row_label_matches(cells[0], profile):
             if key in headers_by_table and _header_continuation_row(cells):
@@ -1846,6 +2046,8 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
                 continue
             clean_value, unit = parsed
             if unit != "unit unavailable" and not _unit_compatible(unit, profile):
+                continue
+            if _value_validation_failure(clean_value, unit, profile):
                 continue
             value_type = _value_type_from_column_label(column_label, index)
             if not _column_label_allowed(column_label, profile):
@@ -1965,6 +2167,8 @@ def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[s
     clean_value, unit, raw_value = preferred
     if unit != "unit unavailable" and not _unit_compatible(unit, profile):
         return {}
+    if _value_validation_failure(clean_value, unit, profile):
+        return {}
     direction = _direction_from_profile(row, profile)
     if metric_name == "claims_ratio" and unit in {"%", "per cent"}:
         try:
@@ -2019,8 +2223,13 @@ def _best_metric_context(clean: str, profile: dict[str, Any], fallback_length: i
     return clean[window_start:window_end].strip()
 
 
-def _extract_metric_value_from_text(text: str, metric_name: str) -> dict[str, Any]:
-    profile = _profile_for_metric(metric_name)
+def _extract_metric_value_from_text(
+    text: str,
+    metric_name: str,
+    *,
+    ticker_plugin: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    profile = _profile_for_metric_context(metric_name, ticker_plugin)
     clean = _clean_text(text)
     base = {
         "clean_metric_value": "unavailable",
@@ -2271,6 +2480,20 @@ def _section_relevance_bonus(section_title: str, text: str) -> int:
     return 0
 
 
+def _plugin_section_bonus(profile: dict[str, Any], section_title: str, text: str) -> int:
+    haystack = f"{section_title} {text}".lower()
+    bonus = 0
+    if any(str(term).lower() in haystack for term in profile.get("preferred_sections", []) or []):
+        bonus += 10
+    if any(str(term).lower() in haystack for term in profile.get("preferred_tables", []) or []):
+        bonus += 8
+    if any(str(term).lower() in haystack for term in profile.get("reject_sections", []) or []):
+        bonus -= 35
+    if any(str(term).lower() in haystack for term in profile.get("reject_contexts", []) or []):
+        bonus -= 35
+    return bonus
+
+
 def _metric_status_rank(status: str) -> int:
     return {
         "value_extracted": 5,
@@ -2290,6 +2513,7 @@ def _metric_candidate_from_association(
     section_title: str,
     candidate_text: str,
     candidate_origin: str,
+    profile: dict[str, Any] | None = None,
 ) -> dict[str, Any] | None:
     status = str(association.get("metric_value_status") or "unavailable")
     if status == "unavailable":
@@ -2302,6 +2526,7 @@ def _metric_candidate_from_association(
     table_mapping_confidence = _int_metric_field(association.get("table_mapping_confidence"))
     table_bonus = 8 if table_mapping_confidence >= 80 else 0
     unmapped_table_text_penalty = 12 if candidate_origin == "table" and table_mapping_confidence < 80 else 0
+    plugin_section_bonus = _plugin_section_bonus(profile or {}, section_title, candidate_text)
     candidate_score = max(
         0,
         min(
@@ -2310,6 +2535,7 @@ def _metric_candidate_from_association(
             + _source_quality_bonus(source_quality_tier)
             + _document_role_bonus(document_role)
             + _section_relevance_bonus(section_title, candidate_text)
+            + plugin_section_bonus
             + table_bonus
             - navigation_penalty
             - footnote_penalty
@@ -2333,6 +2559,7 @@ def _metric_candidate_from_association(
         "competing_labels_near_value": _competing_labels_from_association(association),
         "navigation_toc_penalty": navigation_penalty,
         "footnote_header_footer_penalty": footnote_penalty,
+        "ticker_plugin": source.get("ticker_plugin", "unavailable"),
     }
 
 
@@ -2371,8 +2598,10 @@ def _extract_metric_value_from_document(
     document_structure: dict[str, Any],
     metric_name: str,
     source: dict[str, Any],
+    *,
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    profile = _profile_for_metric(metric_name)
+    profile = _profile_for_metric_context(metric_name, ticker_plugin)
     if not profile:
         return _extract_metric_value_from_text("", metric_name)
     candidates: list[dict[str, Any]] = []
@@ -2382,7 +2611,7 @@ def _extract_metric_value_from_document(
             table_text = _table_text_from_structured_table(table)
             if not table_text or not _metric_label_present(table_text, profile):
                 continue
-            association = _extract_metric_value_from_text(table_text, metric_name)
+            association = _extract_metric_value_from_text(table_text, metric_name, ticker_plugin=ticker_plugin)
             if (
                 profile.get("reject_unmapped_table_text")
                 and association.get("metric_value_status") == "value_extracted"
@@ -2396,6 +2625,7 @@ def _extract_metric_value_from_document(
                 section_title=str(table.get("section_title") or "financial_statement_tables"),
                 candidate_text=table_text,
                 candidate_origin="table",
+                profile=profile,
             )
             if candidate:
                 candidates.append(candidate)
@@ -2403,7 +2633,7 @@ def _extract_metric_value_from_document(
             block_text = str(block.get("text") or "")
             if not block_text or not _metric_label_present(block_text, profile):
                 continue
-            association = _extract_metric_value_from_text(block_text, metric_name)
+            association = _extract_metric_value_from_text(block_text, metric_name, ticker_plugin=ticker_plugin)
             candidate = _metric_candidate_from_association(
                 association=association,
                 source=source,
@@ -2411,6 +2641,7 @@ def _extract_metric_value_from_document(
                 section_title=str(block.get("section_title") or _section_title_for_text(block_text)),
                 candidate_text=block_text,
                 candidate_origin="text_block",
+                profile=profile,
             )
             if candidate:
                 candidates.append(candidate)
@@ -2426,6 +2657,8 @@ def _extract_sector_metrics(
     source: dict[str, Any],
     excerpt_chars: int,
     sector: str,
+    *,
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     specs = _metric_specs_for_sector(sector)
     if not specs:
@@ -2449,7 +2682,12 @@ def _extract_sector_metrics(
         return []
     for metric_name, metric_label, supports_claims in specs:
         section_name = f"sector_metric_{metric_name}"
-        association = _extract_metric_value_from_document(document_structure, metric_name, metric_source)
+        association = _extract_metric_value_from_document(
+            document_structure,
+            metric_name,
+            metric_source,
+            ticker_plugin=ticker_plugin,
+        )
         if association["metric_value_status"] == "unavailable":
             reason = f"{metric_label} was not identified in extracted ASX document text."
             metrics.append(
@@ -2493,6 +2731,7 @@ def _extract_sector_metrics(
                     "row_label": "unavailable",
                     "column_label": "unavailable",
                     "source_page": "unavailable",
+                    "ticker_plugin": metric_source.get("ticker_plugin", "unavailable"),
                 }
             )
             continue
@@ -2527,6 +2766,7 @@ def _extract_sections(
     sector: str = "general",
     *,
     include_sector_metrics: bool = True,
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     sections: list[dict[str, Any]] = []
     clean = _clean_text(text)
@@ -2558,7 +2798,7 @@ def _extract_sections(
             }
         )
     if include_sector_metrics:
-        sections.extend(_extract_sector_metrics(text, source, excerpt_chars, sector))
+        sections.extend(_extract_sector_metrics(text, source, excerpt_chars, sector, ticker_plugin=ticker_plugin))
     return sections
 
 
@@ -2756,6 +2996,7 @@ def _apply_authoritative_sector_metric_extraction(
     *,
     sector: str,
     excerpt_chars: int,
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> tuple[str, list[dict[str, Any]]]:
     _remove_existing_sector_metrics(sources)
     specs = _metric_specs_for_sector(sector)
@@ -2770,7 +3011,12 @@ def _apply_authoritative_sector_metric_extraction(
             document_structure = source.get("document_structure")
             if not isinstance(document_structure, dict):
                 document_structure = _build_document_structure(str(source.get("excerpt") or ""))
-            association = _extract_metric_value_from_document(document_structure, metric_name, source)
+            association = _extract_metric_value_from_document(
+                document_structure,
+                metric_name,
+                source,
+                ticker_plugin=ticker_plugin,
+            )
             if association["metric_value_status"] != "unavailable":
                 candidates.append((source, association))
         if candidates:
@@ -2814,9 +3060,11 @@ def _source_from_row(
     excerpt_chars: int,
     source_type: str = "asx_announcement",
     asx_sector: str = "general",
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> dict[str, Any] | None:
     title = _field(row, "title", "header", "headline", "description")
-    document_type = _classify_document(title)
+    url = _document_url(row)
+    document_type = _classify_document_with_plugin(title, url, ticker_plugin)
     if not document_type:
         return None
     raw_date = _field(row, "announcement_date", "lodgement_date", "date", "releaseDate", "lodgementDate")
@@ -2826,7 +3074,6 @@ def _source_from_row(
         return None
     if parsed_date > _parse_date(trade_date):
         return None
-    url = _document_url(row)
     initial_document_role = _document_role(document_type, url=url, title=title)
     source: dict[str, Any] = {
         "ticker": "",
@@ -2853,6 +3100,8 @@ def _source_from_row(
         "extracted_sections": [],
         "document_structure": {"pages": [], "page_count": 0, "table_count": 0, "text_block_count": 0},
     }
+    if ticker_plugin:
+        source["ticker_plugin"] = str(ticker_plugin.get("ticker") or "unavailable")
     if row.get("fallback_page_url"):
         source["fallback_page_url"] = str(row["fallback_page_url"])
     if not url:
@@ -2866,7 +3115,8 @@ def _source_from_row(
         return source
     try:
         raw_document = http_get(url, headers)
-        text = _excerpt(raw_document, excerpt_chars)
+        structured_document = _document_text_for_structure(raw_document, url, title)
+        text = _excerpt(structured_document, excerpt_chars)
         source["extraction_status"] = "available" if text else "unavailable"
         source["document_role"] = _document_role(document_type, raw_document=raw_document, url=url, title=title)
         source["source_quality_tier"] = _source_quality_tier(
@@ -2882,7 +3132,7 @@ def _source_from_row(
             str(source["document_role"]),
             str(source["extraction_status"]),
         )
-        source["document_structure"] = _build_document_structure(raw_document)
+        source["document_structure"] = _build_document_structure(structured_document)
         source["excerpt"] = text
         if _is_html_like_document(raw_document) and source["metric_eligibility"] == "discovery_only":
             source["discovered_child_rows"] = [
@@ -2892,18 +3142,20 @@ def _source_from_row(
                     url,
                     inherited_title=title,
                     inherited_date=str(source["announcement_date"]),
+                    ticker_plugin=ticker_plugin,
                 )
                 if child_row.get("url") and child_row.get("url") != url
             ]
         source["extracted_sections"] = _extract_sections(
-            raw_document,
+            structured_document,
             source,
             excerpt_chars,
             asx_sector,
             include_sector_metrics=False,
+            ticker_plugin=ticker_plugin,
         )
         source["table_extraction_diagnostics"] = _table_extraction_diagnostics(
-            raw_document,
+            structured_document,
             source["extracted_sections"],
         )
     except Exception as exc:  # noqa: BLE001 - keep discovered announcement with extraction failure.
@@ -2926,19 +3178,20 @@ def _collect_fallback_sources(
     http_get: HttpGet,
     headers: dict[str, str],
     excerpt_chars: int,
+    ticker_plugin: dict[str, Any] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     sources: list[dict[str, Any]] = []
     fallback_attempts: list[dict[str, Any]] = []
     asx_sector = _sector_for_asx_code(asx_code)
     seen_source_urls: set[str] = set()
-    for page_url in _fallback_page_urls(asx_code, identity):
+    for page_url in _fallback_page_urls(asx_code, identity, ticker_plugin):
         try:
             page_html = http_get(page_url, headers)
-            discovered_rows = _fallback_rows(page_html, page_url)
+            discovered_rows = _fallback_rows(page_html, page_url, ticker_plugin=ticker_plugin)
             self_row = _fallback_page_self_row(page_html, page_url)
             if self_row:
                 discovered_rows.append(self_row)
-            rows = _prefilter_fallback_rows(discovered_rows)
+            rows = _prefilter_fallback_rows(discovered_rows, ticker_plugin)
             fallback_attempts.append(
                 {
                     "source_type": "asx_fallback_page",
@@ -2971,9 +3224,10 @@ def _collect_fallback_sources(
                 excerpt_chars=excerpt_chars,
                 source_type="asx_fallback_document",
                 asx_sector=asx_sector,
+                ticker_plugin=ticker_plugin,
             )
             if source:
-                child_rows = _prefilter_fallback_rows(source.pop("discovered_child_rows", []))
+                child_rows = _prefilter_fallback_rows(source.pop("discovered_child_rows", []), ticker_plugin)
                 source["ticker"] = symbol
                 sources.append(source)
                 for child_row in child_rows:
@@ -2990,6 +3244,7 @@ def _collect_fallback_sources(
                         excerpt_chars=excerpt_chars,
                         source_type="asx_fallback_document",
                         asx_sector=asx_sector,
+                        ticker_plugin=ticker_plugin,
                     )
                     if child_source:
                         child_source.pop("discovered_child_rows", None)
@@ -3042,6 +3297,7 @@ def _source_selection_summaries(sources: list[dict[str, Any]]) -> list[dict[str,
             "document_role": str(source.get("document_role") or ""),
             "extraction_status": str(source.get("extraction_status") or ""),
             "metric_eligibility": str(source.get("metric_eligibility") or ""),
+            "ticker_plugin": str(source.get("ticker_plugin") or "unavailable"),
         }
         for source in sources
     ]
@@ -3058,6 +3314,7 @@ def collect_asx_financial_document_sources(
     symbol = ticker.upper().strip()
     asx_code = normalize_asx_code(symbol)
     asx_sector = _sector_for_asx_code(asx_code)
+    ticker_plugin = _load_ticker_plugin(symbol)
     if not is_asx_ticker(symbol, identity):
         return {
             "ticker": symbol,
@@ -3113,6 +3370,7 @@ def collect_asx_financial_document_sources(
                     headers=headers,
                     excerpt_chars=excerpt_chars,
                     asx_sector=asx_sector,
+                    ticker_plugin=ticker_plugin,
                 )
             )
         ]
@@ -3134,6 +3392,7 @@ def collect_asx_financial_document_sources(
                 http_get=http_get,
                 headers=headers,
                 excerpt_chars=excerpt_chars,
+                ticker_plugin=ticker_plugin,
             )
             if fallback_sources:
                 sources = fallback_sources
@@ -3146,6 +3405,7 @@ def collect_asx_financial_document_sources(
                 http_get=http_get,
                 headers=headers,
                 excerpt_chars=excerpt_chars,
+                ticker_plugin=ticker_plugin,
             )
             if fallback_sources:
                 sources = _merge_unique_sources(sources, fallback_sources)
@@ -3155,6 +3415,7 @@ def collect_asx_financial_document_sources(
             sources,
             sector=asx_sector,
             excerpt_chars=excerpt_chars,
+            ticker_plugin=ticker_plugin,
         )
         return {
             "ticker": symbol,
@@ -3165,6 +3426,7 @@ def collect_asx_financial_document_sources(
             "status": "ok" if any(source.get("status") == "available" for source in sources) else "unavailable",
             "as_of_rule": "Only ASX announcements with announcement/lodgement date <= trade_date are included.",
             "metric_extraction_status": metric_extraction_status,
+            "ticker_plugin": ticker_plugin.get("ticker", "unavailable") if ticker_plugin else "unavailable",
             "authoritative_financial_sources": _source_selection_summaries(authoritative_sources),
             "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
@@ -3178,12 +3440,14 @@ def collect_asx_financial_document_sources(
         http_get=http_get,
         headers=headers,
         excerpt_chars=excerpt_chars,
+        ticker_plugin=ticker_plugin,
     )
     if fallback_sources:
         metric_extraction_status, authoritative_sources = _apply_authoritative_sector_metric_extraction(
             fallback_sources,
             sector=asx_sector,
             excerpt_chars=excerpt_chars,
+            ticker_plugin=ticker_plugin,
         )
         return {
             "ticker": symbol,
@@ -3195,6 +3459,7 @@ def collect_asx_financial_document_sources(
             "as_of_rule": "ASX endpoint failed; fallback official ASX/company IR documents still require date <= trade_date.",
             "primary_endpoint_error": endpoint_error,
             "metric_extraction_status": metric_extraction_status,
+            "ticker_plugin": ticker_plugin.get("ticker", "unavailable") if ticker_plugin else "unavailable",
             "authoritative_financial_sources": _source_selection_summaries(authoritative_sources),
             "endpoint_attempts": endpoint_attempts,
             "fallback_attempts": fallback_attempts,
