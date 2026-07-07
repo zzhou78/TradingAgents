@@ -49,9 +49,23 @@ metrics:
       - cash-flow statement
       - cash flow statement
       - investing activities
+    target_sections:
+      - cash-flow statement
+      - cash flow statement
+      - investing activities
     preferred_tables:
       - cash flows
       - investing activities
+    target_rows:
+      - payments for property, plant and equipment
+      - purchase of property, plant and equipment
+      - payments for property plant and equipment
+      - purchase of property plant and equipment
+      - capital expenditure
+      - capital investment
+    preferred_value_type:
+      - current_period_value
+      - variance_value
     accepted_column_labels:
       - f25
       - f24

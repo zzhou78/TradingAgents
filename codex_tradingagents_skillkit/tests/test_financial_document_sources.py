@@ -1089,6 +1089,16 @@ def test_cba_plugin_value_validation_rejects_implausible_nim_percentage():
     assert result["clean_metric_value"] == "unavailable"
 
 
+def test_cba_plugin_direct_value_patterns_are_promoted_to_active_value_patterns():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+
+    profile = asx._profile_for_metric("net_interest_margin", plugin)
+
+    assert any("Net interest margin" in pattern for pattern in profile["accepted_value_patterns"])
+
+
 def test_cba_nim_rejects_operating_income_percentage_before_metric_label():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1196,6 +1206,39 @@ def test_cba_arrears_rejects_climate_or_financed_emissions_context():
     assert result["clean_metric_value"] == "unavailable"
 
 
+def test_cba_targeted_extractor_recovers_arrears_credit_quality_row():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=17\n"
+        "Credit quality and arrears. 90+ days arrears by portfolio. "
+        "Home loan and personal | 1.50 | 1.51. "
+        "Business troublesome loans | 0.70 | 0.75."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "arrears",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "CBA.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "1.50"
+    assert result["value_unit"] == "%"
+    assert result["row_label"] == "Home loan and personal"
+    assert result["column_label"] == "current_period_value"
+    assert result["source_page"] == "17"
+    assert result["candidate_origin"] == "targeted_plugin"
+
+
 def test_cba_arrears_rejects_unmapped_pdf_word_table_artifact():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1235,6 +1278,107 @@ def test_cba_impairment_table_prefers_current_expense_not_variance_percent():
     assert result["clean_metric_value"] == "802"
     assert result["value_unit"] == "$m"
     assert result["column_label"] == "FY2025 $m"
+
+
+def test_cba_targeted_extractor_recovers_flattened_impairment_financial_summary():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=18\n"
+        "Five-year financial summary 30 Jun 25 30 Jun 24 % change $M $M. "
+        "Cash NPAT 10,252 9,836 4.2%. "
+        "Loan impairment expense 802 851 (5.8%). "
+        "Return on equity 13.9% 13.5%."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "impairment",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "CBA.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "802"
+    assert result["value_unit"] == "$m"
+    assert result["row_label"] == "Loan impairment expense"
+    assert result["column_label"] in {"30 Jun 25 $M", "current_period_value"}
+    assert result["current_period_value"] == "802"
+    assert result["prior_period_value"] == "851"
+    assert result["variance_percent"] == "-5.8"
+    assert result["source_page"] == "18"
+    assert result["candidate_origin"] == "targeted_plugin"
+
+
+def test_cba_targeted_impairment_does_not_treat_table_heading_dates_as_values():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=130\n"
+        "Loan impairment expense and provisions for impairment Group Bank "
+        "30 Jun 25 30 Jun 24 30 Jun 23 30 Jun 25 30 Jun 24 $M $M $M $M $M "
+        "Loan impairment expense Net collective provision funding 456 559 795 445 513 "
+        "Net new and increased individual provisioning 439 397."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "impairment",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "CBA.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["metric_diagnostics"]["failure_type"] in {"row_column_mapping_missing", "target_row_not_found"}
+
+
+def test_cba_targeted_extractor_prefers_financial_summary_roe_over_rejected_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CBA.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=18\n"
+        "Five-year financial summary 30 Jun 25 30 Jun 24 % %. "
+        "Return on equity 13.9% 13.5%.\n"
+        f"{asx.PDF_PAGE_MARKER} page=96\n"
+        "Remuneration peer comparison market capitalisation MFI share table. "
+        "Cash NPAT and ROE 99% are discussed in executive pay benchmarking."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "roe",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "CBA.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "13.9"
+    assert result["value_unit"] == "%"
+    assert result["source_page"] == "18"
+    assert result["candidate_origin"] == "targeted_plugin"
+    assert "remuneration" not in result["supporting_sentence"].lower()
 
 
 def test_cba_impairment_rejects_word_table_with_paragraph_column_fragment():
@@ -1502,6 +1646,74 @@ def test_wow_plugin_extracts_capex_from_cash_flow_investing_ppe_context():
     assert result["row_label"] == "Purchase of property, plant and equipment"
     assert result["column_label"] == "F25 $m"
     assert result["source_page"] == "unavailable"
+
+
+def test_wow_targeted_extractor_recovers_flattened_cash_flow_capex_row():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("WOW.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=115\n"
+        "Consolidated statement of cash flows 2025 2024 52 WEEKS 53 WEEKS NOTE $M $M. "
+        "Cash flows from operating activities Receipts from customers 73,210 70,110. "
+        "Cash flows from investing activities Payments for property, plant and equipment (1,890) (1,732). "
+        "Proceeds from disposal of property, plant and equipment 33 28."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "capex",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "WOW.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "-1890"
+    assert result["value_unit"] == "$m"
+    assert result["row_label"] == "Payments for property, plant and equipment"
+    assert result["column_label"] in {"2025 $M", "current_period_value"}
+    assert result["current_period_value"] == "-1890"
+    assert result["prior_period_value"] == "-1732"
+    assert result["source_page"] == "115"
+    assert result["candidate_origin"] == "targeted_plugin"
+
+
+def test_wow_targeted_capex_unresolved_records_search_diagnostics():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("WOW.AX")
+    document_structure = asx._build_document_structure(
+        f"{asx.PDF_PAGE_MARKER} page=115\n"
+        "Consolidated statement of cash flows 2025 2024 $M $M. "
+        "Cash flows from investing activities Proceeds from disposal of businesses 33 28."
+    )
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "capex",
+        {
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "extraction_status": "available",
+            "metric_eligibility": "eligible_financial_document",
+            "ticker_plugin": "WOW.AX",
+        },
+        ticker_plugin=plugin,
+    )
+
+    diagnostics = result["metric_diagnostics"]
+    assert result["metric_value_status"] != "value_extracted"
+    assert diagnostics["plugin_used"] is True
+    assert diagnostics["targeted_search_attempted"] is True
+    assert diagnostics["failure_type"] == "target_row_not_found"
+    assert "cash flow statement" in diagnostics["target_sections"]
+    assert diagnostics["candidate_sections_seen"]
 
 
 def test_wow_capex_rejects_segment_revenue_table_without_capex_row():

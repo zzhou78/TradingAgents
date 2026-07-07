@@ -1195,6 +1195,7 @@ def _merge_metric_profile(base: dict[str, Any], overlay: dict[str, Any]) -> dict
         "accepted_column_labels",
         "accepted_units",
         "accepted_value_patterns",
+        "direct_value_patterns",
         "preferred_value_type",
         "required_nearby_terms",
         "rejected_nearby_terms",
@@ -1202,12 +1203,18 @@ def _merge_metric_profile(base: dict[str, Any], overlay: dict[str, Any]) -> dict
         "rejected_column_labels",
         "preferred_sections",
         "preferred_tables",
+        "target_sections",
+        "target_rows",
         "reject_sections",
         "reject_contexts",
         "validation_rules",
     }
     for key, value in overlay.items():
         if key in {"fixture_snippets", "expected_outputs"}:
+            continue
+        if key == "direct_value_patterns" and isinstance(value, list):
+            merged["direct_value_patterns"] = _merge_unique_list(list(merged.get("direct_value_patterns") or []), value)
+            merged["accepted_value_patterns"] = _merge_unique_list(list(merged.get("accepted_value_patterns") or []), value)
             continue
         if key in list_keys and isinstance(value, list):
             merged[key] = _merge_unique_list(list(merged.get(key) or []), value)
@@ -1790,6 +1797,76 @@ def _table_mapping_score(
     return max(0, min(100, score)), "; ".join(reasons)
 
 
+def _profile_string_list(profile: dict[str, Any], key: str) -> list[str]:
+    return [str(term).strip() for term in profile.get(key, []) or [] if str(term).strip()]
+
+
+def _target_rows_for_profile(profile: dict[str, Any]) -> list[str]:
+    target_rows = _profile_string_list(profile, "target_rows")
+    if target_rows:
+        return target_rows
+    return _profile_string_list(profile, "accepted_row_labels")
+
+
+def _target_sections_for_profile(profile: dict[str, Any]) -> list[str]:
+    return _merge_unique_list(
+        _profile_string_list(profile, "target_sections"),
+        _profile_string_list(profile, "preferred_sections"),
+    )
+
+
+def _term_hits(text: str, terms: list[str]) -> list[str]:
+    return [term for term in terms if _term_present(term.lower(), text.lower())]
+
+
+def _targeted_search_enabled(ticker_plugin: dict[str, Any] | None, profile: dict[str, Any]) -> bool:
+    return bool(ticker_plugin and (_profile_string_list(profile, "target_rows") or _profile_string_list(profile, "target_sections")))
+
+
+def _new_metric_diagnostics(
+    *,
+    ticker_plugin: dict[str, Any] | None,
+    profile: dict[str, Any],
+    targeted_search_attempted: bool,
+) -> dict[str, Any]:
+    return {
+        "plugin_used": bool(ticker_plugin),
+        "plugin_path": str((ticker_plugin or {}).get("_plugin_path") or "unavailable"),
+        "targeted_search_attempted": targeted_search_attempted,
+        "target_sections": _target_sections_for_profile(profile),
+        "target_rows": _target_rows_for_profile(profile),
+        "candidate_sections_seen": [],
+        "candidate_rows_seen": [],
+        "best_rejected_candidate": "unavailable",
+        "best_rejected_source_page": "unavailable",
+        "rejection_reason": "unavailable",
+        "failure_type": "metric_not_present",
+    }
+
+
+def _record_diagnostic_seen(diagnostics: dict[str, Any], key: str, value: str) -> None:
+    if not value or value == "unavailable":
+        return
+    values = diagnostics.setdefault(key, [])
+    if value not in values:
+        values.append(value)
+
+
+def _set_diagnostic_rejection(
+    diagnostics: dict[str, Any],
+    *,
+    candidate: str,
+    source_page: str,
+    reason: str,
+    failure_type: str,
+) -> None:
+    if diagnostics.get("best_rejected_candidate") == "unavailable":
+        diagnostics["best_rejected_candidate"] = candidate[:240]
+        diagnostics["best_rejected_source_page"] = source_page
+        diagnostics["rejection_reason"] = reason
+        diagnostics["failure_type"] = failure_type
+
+
 def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
     accepted = {str(item).lower() for item in profile.get("accepted_units", []) or []}
     if not accepted:
@@ -1824,6 +1901,326 @@ def _value_validation_failure(clean_value: str, unit: str, profile: dict[str, An
         if max_value is not None and numeric_value > float(max_value):
             return f"value {clean_value}{unit} above plugin validation maximum {max_value}"
     return ""
+
+
+def _flattened_table_column_labels(text: str, metric_name: str, profile: dict[str, Any]) -> list[str]:
+    lower = text.lower()
+    money_unit = "$M" if re.search(r"\$\s*m|\$m|a\$m|\bus\$m\b", text, re.IGNORECASE) else ""
+    percent_unit = "%" if "%" in text or metric_name in {"arrears", "roe"} else ""
+    value_unit = money_unit or percent_unit
+    if re.search(r"\b30\s+jun\s+25\b.*\b30\s+jun\s+24\b", lower):
+        labels = ["30 Jun 25", "30 Jun 24"]
+    elif re.search(r"\bfy\s?25\b.*\bfy\s?24\b|\bfy2025\b.*\bfy2024\b", lower):
+        labels = ["FY2025", "FY2024"]
+    elif re.search(r"\b2025\b.*\b2024\b", lower):
+        labels = ["2025", "2024"]
+    else:
+        labels = ["current_period_value", "prior_period_value"]
+    if value_unit and not labels[0].endswith(value_unit):
+        labels = [f"{label} {value_unit}" if not label.endswith("_value") else label for label in labels]
+    if re.search(r"%\s*change|change\s*%", lower):
+        labels.append("% change")
+    elif "variance" in lower:
+        labels.append("variance")
+    return labels
+
+
+def _infer_flattened_unit(metric_name: str, raw_value: str, column_label: str, text: str, profile: dict[str, Any]) -> str:
+    _clean_value, unit = _clean_value_and_unit(raw_value)
+    if unit != "unit unavailable":
+        return unit
+    column_unit = _unit_from_column_label(column_label)
+    if column_unit != "unit unavailable":
+        return column_unit
+    accepted = {str(item).lower() for item in profile.get("accepted_units", []) or []}
+    lower = text.lower()
+    if metric_name in {"arrears", "roe"} and "%" in accepted:
+        return "%"
+    if metric_name in {"impairment", "capex"} and any(unit_name in accepted for unit_name in {"$m", "a$m", "us$m"}):
+        return "$m"
+    if re.search(r"\$\s*m|\$m|a\$m|\bus\$m\b", lower) and any(unit_name in accepted for unit_name in {"$m", "a$m", "us$m"}):
+        return "$m"
+    return "unit unavailable"
+
+
+def _slice_flattened_row(text: str, label_match: re.Match[str]) -> str:
+    tail = text[label_match.start() :]
+    sentence_end = re.search(r"(?:(?<=\d)|(?<=\))|(?<=%))\.\s+(?=[A-Z])", tail)
+    if sentence_end:
+        return tail[: sentence_end.start()].strip(" .")
+    return tail[:260].strip(" .")
+
+
+def _numeric_match_is_period_fragment(text: str, match: re.Match[str]) -> bool:
+    raw = match.group(0).strip().strip("()")
+    if not re.fullmatch(r"\d{2,4}", raw):
+        return False
+    before = text[max(0, match.start() - 12) : match.start()].lower()
+    after = text[match.end() : match.end() + 12].lower()
+    if re.search(r"\bjun\s*$", before) or re.match(r"\s*jun\b", after):
+        return True
+    return raw in {"23", "24", "25", "2023", "2024", "2025"} and (
+        re.search(r"\b(?:fy|year|weeks?|period)\s*$", before) or re.match(r"\s*(?:fy|year|weeks?|period)\b", after)
+    )
+
+
+def _row_value_prefix_too_noisy(value_text: str, first_value_start: int) -> bool:
+    prefix = _clean_text(value_text[:first_value_start])
+    if not prefix:
+        return False
+    words = re.findall(r"[A-Za-z]+", prefix)
+    return len(words) > 3
+
+
+def _extract_metric_from_flattened_financial_table(
+    text: str,
+    metric_name: str,
+    profile: dict[str, Any],
+    source_context: dict[str, Any],
+) -> dict[str, Any]:
+    target_rows = _target_rows_for_profile(profile)
+    if not target_rows:
+        return {}
+    last_rejection: dict[str, Any] = {}
+    for row_label_pattern in target_rows:
+        for match in re.finditer(_label_regex(row_label_pattern), text, re.IGNORECASE):
+            row_text = _slice_flattened_row(text, match)
+            row_label = _clean_text(text[match.start() : match.end()])
+            value_text = row_text[match.end() - match.start() :]
+            value_matches = [
+                value_match
+                for value_match in _numeric_value_spans(value_text)
+                if not _numeric_match_is_period_fragment(value_text, value_match)
+            ]
+            if not value_matches:
+                last_rejection = {
+                    "metric_value_status": "unavailable",
+                    "failure_type": "row_column_mapping_missing",
+                    "rejection_reason": "target row was present but no numeric values were found after the row label",
+                    "raw_row_text": row_text,
+                }
+                continue
+            if _row_value_prefix_too_noisy(value_text, value_matches[0].start()):
+                last_rejection = {
+                    "metric_value_status": "unavailable",
+                    "failure_type": "row_column_mapping_missing",
+                    "rejection_reason": "target row label appeared in a heading or grouped table label rather than a value row",
+                    "raw_row_text": row_text,
+                }
+                continue
+            column_labels = _flattened_table_column_labels(text, metric_name, profile)
+            metadata = {"source_page": str(source_context.get("source_page") or "unavailable")}
+            values: list[dict[str, str]] = []
+            for index, value_match in enumerate(value_matches[: max(2, len(column_labels))], start=1):
+                raw_value = value_match.group(0).strip()
+                column_label = column_labels[index - 1] if index - 1 < len(column_labels) else f"value_{index}"
+                inferred_unit = _infer_flattened_unit(metric_name, raw_value, column_label, text, profile)
+                parsed = _numeric_cell_value(raw_value, inferred_unit)
+                if not parsed:
+                    continue
+                clean_value, unit = parsed
+                value_type = _value_type_from_column_label(column_label, index)
+                if not _unit_compatible(unit, profile):
+                    continue
+                validation_failure = _value_validation_failure(clean_value, unit, profile)
+                if validation_failure:
+                    last_rejection = {
+                        "metric_value_status": "unavailable",
+                        "failure_type": "value_rejected_by_profile",
+                        "rejection_reason": validation_failure,
+                        "raw_row_text": row_text,
+                    }
+                    continue
+                if not _column_label_allowed(column_label, profile):
+                    continue
+                mapping_score, mapping_reason = _table_mapping_score(
+                    row_label=row_label,
+                    column_label=column_label,
+                    value_type=value_type,
+                    unit=unit,
+                    profile=profile,
+                    has_header=column_label not in {"current_period_value", "prior_period_value"},
+                    metadata=metadata,
+                )
+                values.append(
+                    {
+                        "clean_value": clean_value,
+                        "unit": unit,
+                        "column_label": column_label,
+                        "value_type": value_type,
+                        "cell_value": raw_value,
+                        "table_mapping_confidence": str(mapping_score),
+                        "table_mapping_reason": mapping_reason,
+                    }
+                )
+            if not values:
+                last_rejection = {
+                    "metric_value_status": "unavailable",
+                    "failure_type": "row_column_mapping_missing",
+                    "rejection_reason": "target row values were present but no value satisfied unit, column, and profile rules",
+                    "raw_row_text": row_text,
+                }
+                continue
+            preferred_types = _preferred_value_types(profile)
+            preferred = next((item for value_type in preferred_types for item in values if item["value_type"] == value_type), values[0])
+            value_fields = {item["value_type"]: item["clean_value"] for item in values}
+            value_column_labels = {item["value_type"]: item["column_label"] for item in values}
+            current_period_value = value_fields.get("current_period_value", "unavailable")
+            prior_period_value = value_fields.get("prior_period_value", "unavailable")
+            variance_value = value_fields.get("variance_value", "unavailable")
+            variance_percent = value_fields.get("variance_percent", "unavailable")
+            comparison_reference = (
+                value_column_labels.get("prior_period_value", "not specified")
+                if prior_period_value != "unavailable"
+                else "not specified"
+            )
+            mapping_score = int(preferred["table_mapping_confidence"])
+            return {
+                "score": max(88, mapping_score),
+                "clean_metric_value": preferred["clean_value"],
+                "value_unit": preferred["unit"],
+                "value_context": "targeted plugin flattened table row/column association",
+                "metric_value_status": "value_extracted",
+                "association_score": max(88, mapping_score),
+                "association_reason": "targeted ticker plugin matched a configured row inside a configured section before generic scoring",
+                "period_reference": preferred["column_label"],
+                "comparison_reference": comparison_reference,
+                "supporting_sentence": row_text,
+                "comparison_basis": "current/prior period values parsed from flattened financial table text",
+                "direction": _direction_from_profile(row_text, profile),
+                "confidence": "medium",
+                "confidence_reason": "clean value accepted because ticker plugin target row, section context, and row/column mapping were satisfied",
+                "table_title": str(source_context.get("section_title") or "flattened_financial_table"),
+                "row_label": row_label,
+                "column_label": preferred["column_label"],
+                "source_page": str(source_context.get("source_page") or "unavailable"),
+                "cell_value": preferred["cell_value"],
+                "table_mapping_confidence": max(88, mapping_score),
+                "table_mapping_reason": preferred["table_mapping_reason"],
+                "raw_row_text": row_text,
+                "current_period_value": current_period_value,
+                "prior_period_value": prior_period_value,
+                "variance_value": variance_value,
+                "variance_percent": variance_percent,
+                "value_type": preferred["value_type"],
+                "table_values": value_fields,
+            }
+    return last_rejection
+
+
+def _target_context_matches(text: str, section_title: str, profile: dict[str, Any]) -> list[str]:
+    haystack = _clean_text(f"{section_title} {text}")
+    return _term_hits(haystack, _target_sections_for_profile(profile))
+
+
+def _target_context_rejections(text: str, section_title: str, profile: dict[str, Any]) -> list[str]:
+    haystack = _clean_text(f"{section_title} {text}")
+    rejected = []
+    for key in ("reject_sections", "reject_contexts", "rejected_nearby_terms", "hard_rejected_nearby_terms"):
+        rejected.extend(_term_hits(haystack, _profile_string_list(profile, key)))
+    return _merge_unique_list([], rejected)
+
+
+def _extract_ticker_targeted_metric_value(
+    *,
+    document_structure: dict[str, Any],
+    metric_name: str,
+    ticker_plugin: dict[str, Any] | None,
+    source: dict[str, Any],
+    profile: dict[str, Any],
+) -> dict[str, Any]:
+    if not _targeted_search_enabled(ticker_plugin, profile):
+        return {}
+    diagnostics = _new_metric_diagnostics(
+        ticker_plugin=ticker_plugin,
+        profile=profile,
+        targeted_search_attempted=True,
+    )
+    candidates: list[dict[str, Any]] = []
+    target_rows = _target_rows_for_profile(profile)
+    for page in document_structure.get("pages", []):
+        page_number = str(page.get("page_number") or "unavailable")
+        blocks: list[tuple[str, str]] = []
+        for table in page.get("tables", []):
+            table_text = _table_text_from_structured_table(table)
+            blocks.append((str(table.get("section_title") or table.get("table_title") or "financial_statement_tables"), table_text))
+        for block in page.get("text_blocks", []):
+            blocks.append((str(block.get("section_title") or "unclassified_text"), str(block.get("text") or "")))
+        for section_title, block_text in blocks:
+            if not block_text:
+                continue
+            context_hits = _target_context_matches(block_text, section_title, profile)
+            row_hits = _term_hits(block_text, target_rows)
+            for context_hit in context_hits:
+                _record_diagnostic_seen(diagnostics, "candidate_sections_seen", context_hit)
+            for row_hit in row_hits:
+                _record_diagnostic_seen(diagnostics, "candidate_rows_seen", row_hit)
+            if not context_hits and not row_hits:
+                continue
+            rejections = _target_context_rejections(block_text, section_title, profile)
+            if rejections:
+                _set_diagnostic_rejection(
+                    diagnostics,
+                    candidate=block_text,
+                    source_page=page_number,
+                    reason=f"rejected targeted context: {', '.join(rejections)}",
+                    failure_type="rejected_context",
+                )
+                continue
+            if _target_sections_for_profile(profile) and not context_hits:
+                _set_diagnostic_rejection(
+                    diagnostics,
+                    candidate=block_text,
+                    source_page=page_number,
+                    reason="target row appeared outside configured target sections",
+                    failure_type="section_not_found",
+                )
+                continue
+            if not row_hits:
+                continue
+            association = _extract_metric_from_flattened_financial_table(
+                block_text,
+                metric_name,
+                profile,
+                {"source_page": page_number, "section_title": section_title},
+            )
+            if not association:
+                continue
+            if association.get("metric_value_status") != "value_extracted":
+                _set_diagnostic_rejection(
+                    diagnostics,
+                    candidate=str(association.get("raw_row_text") or block_text),
+                    source_page=page_number,
+                    reason=str(association.get("rejection_reason") or "target row could not be mapped"),
+                    failure_type=str(association.get("failure_type") or "row_column_mapping_missing"),
+                )
+                continue
+            candidate = _metric_candidate_from_association(
+                association=association,
+                source=source,
+                page_number=page_number,
+                section_title=section_title,
+                candidate_text=block_text,
+                candidate_origin="targeted_plugin",
+                profile=profile,
+            )
+            if candidate:
+                candidate["metric_diagnostics"] = {**diagnostics, "failure_type": "unavailable"}
+                candidates.append(candidate)
+    if candidates:
+        return max(candidates, key=_metric_candidate_sort_key)
+    if diagnostics["candidate_rows_seen"]:
+        diagnostics["failure_type"] = diagnostics["failure_type"] if diagnostics["failure_type"] != "metric_not_present" else "row_column_mapping_missing"
+    elif diagnostics["candidate_sections_seen"]:
+        diagnostics["failure_type"] = "target_row_not_found"
+    else:
+        diagnostics["failure_type"] = "section_not_found"
+    return {
+        "metric_value_status": "unavailable",
+        "clean_metric_value": "unavailable",
+        "metric_diagnostics": diagnostics,
+        "association_reason": "targeted ticker plugin search did not find a row/column-mapped metric value",
+    }
 
 
 def _direction_from_profile(text: str, profile: dict[str, Any]) -> str:
@@ -2604,6 +3001,16 @@ def _extract_metric_value_from_document(
     profile = _profile_for_metric_context(metric_name, ticker_plugin)
     if not profile:
         return _extract_metric_value_from_text("", metric_name)
+    targeted = _extract_ticker_targeted_metric_value(
+        document_structure=document_structure,
+        metric_name=metric_name,
+        ticker_plugin=ticker_plugin,
+        source=source,
+        profile=profile,
+    )
+    targeted_diagnostics = targeted.get("metric_diagnostics") if targeted else None
+    if targeted.get("metric_value_status") == "value_extracted":
+        return targeted
     candidates: list[dict[str, Any]] = []
     for page in document_structure.get("pages", []):
         page_number = str(page.get("page_number") or "unavailable")
@@ -2648,8 +3055,13 @@ def _extract_metric_value_from_document(
     if not candidates:
         result = _extract_metric_value_from_text("", metric_name)
         result["association_reason"] = "metric label was not found in eligible structured pages, sections, or tables"
+        if targeted_diagnostics:
+            result["metric_diagnostics"] = targeted_diagnostics
         return result
-    return max(candidates, key=_metric_candidate_sort_key)
+    best = max(candidates, key=_metric_candidate_sort_key)
+    if targeted_diagnostics and best.get("metric_value_status") != "value_extracted":
+        best["metric_diagnostics"] = targeted_diagnostics
+    return best
 
 
 def _extract_sector_metrics(

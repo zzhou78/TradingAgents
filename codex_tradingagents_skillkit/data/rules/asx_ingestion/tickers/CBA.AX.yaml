@@ -97,6 +97,23 @@ metrics:
       - key ratios
       - performance summary
       - financial highlights
+    target_sections:
+      - financial highlights
+      - key ratios
+      - five-year financial summary
+      - performance summary
+      - shareholder returns
+    reject_sections:
+      - remuneration
+      - market capitalisation
+      - market capitalization
+      - peer comparison
+      - board
+      - executive pay
+    target_rows:
+      - return on equity
+      - cash ROE
+      - return on average equity
     rejected_nearby_terms:
       - peer
       - market capitalisation
@@ -144,6 +161,20 @@ metrics:
       - credit quality
       - troublesome exposures
       - impairment
+    target_sections:
+      - arrears
+      - credit quality
+      - loan impairment
+      - troublesome exposures
+      - risk management
+    target_rows:
+      - home loan arrears
+      - home loan and personal
+      - 90+ days arrears
+      - consumer finance arrears
+      - troublesome loans
+      - impaired assets
+      - delinquencies
     required_nearby_terms:
       - arrears
       - 90+ days
@@ -168,3 +199,31 @@ metrics:
         - units: ["bps"]
           min: 0
           max: 2000
+  impairment:
+    accepted_labels:
+      - impairment
+      - loan impairment expense
+      - loan loss
+      - credit loss
+    accepted_row_labels:
+      - loan impairment expense
+      - impairment
+      - loan loss
+      - credit loss
+    target_sections:
+      - five-year financial summary
+      - credit quality
+      - financial summary
+      - loan impairment
+    target_rows:
+      - loan impairment expense
+    preferred_value_type:
+      - current_period_value
+    accepted_units:
+      - $m
+      - A$m
+      - bps
+      - "%"
+    rejected_column_labels:
+      - prior-year expense
+      - variance percent
