@@ -88,33 +88,71 @@ metrics:
       - realized price
       - average realised price
       - average realised prices
+      - price received
+      - realised pricing
     accepted_row_labels:
       - realised price
       - realized price
       - average realised price
       - average realised prices
+    contextual_row_labels:
+      - iron ore
+      - copper
+      - steelmaking coal
+      - coal
+      - potash
+      - nickel
+      - petroleum
+      - energy coal
+      - metallurgical coal
     target_rows:
       - realised price
       - realized price
       - average realised price
       - average realised prices
+      - iron ore
+      - copper
+      - steelmaking coal
+      - coal
+      - potash
+      - nickel
+      - petroleum
+      - energy coal
+      - metallurgical coal
     target_sections:
+      - prices
       - realised prices
       - average realised prices
+      - price received
+      - realised pricing
+      - commodity prices
       - financial results
       - operational review
       - operations review
+      - revenue
+      - unit revenue
     accepted_units:
       - US$/t
       - $/t
+      - US$/wmt
+      - $/wmt
+      - US$/dmt
+      - $/dmt
       - US$/lb
       - $/lb
+      - USc/lb
+      - c/lb
+      - US cents/lb
+      - cents/lb
       - US$/oz
       - $/oz
       - US$/boe
       - $/boe
+      - US$/kg
+      - $/kg
     accepted_value_patterns:
-      - "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne|lb|oz|boe)\\b"
+      - "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne|wmt|dmt|lb|oz|boe|kg)\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*(?:USc|c|US cents|cents)\\s*/\\s*lb\\b"
     preferred_value_type:
       - current_period_value
       - variance_value
@@ -208,6 +246,9 @@ metrics:
       - commodity exposure
       - commodity mix
       - portfolio mix
+      - portfolio
+      - asset portfolio
+      - business portfolio
       - commodity portfolio
       - revenue by commodity
       - EBITDA by commodity
@@ -244,11 +285,32 @@ metrics:
       - petroleum
     target_sections:
       - operational review
+      - our businesses
+      - business overview
+      - asset portfolio
+      - portfolio
+      - group overview
+      - operating assets
+      - principal activities
+      - commodities
+      - iron ore
+      - copper
+      - coal
+      - steelmaking coal
+      - potash
       - commodity portfolio
       - portfolio mix
       - financial results
     accepted_units:
       - "%"
+      - US$m
+      - US$bn
+      - $m
+      - $bn
+      - mt
+      - kt
+      - moz
+      - mmboe
     accepted_value_patterns:
       - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
     required_nearby_terms:

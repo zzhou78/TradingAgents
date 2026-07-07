@@ -132,6 +132,17 @@ VALID_METRIC_SUBTYPES: dict[str, set[str]] = {
 NARRATIVE_MATERIALITY_STATUSES = {
     "commodity_exposure": {"portfolio_mix_narrative"},
     "guidance": {"guidance_narrative"},
+    "plasma_collections": {"plasma_network_narrative"},
+    "plasma_collection": {"plasma_network_narrative"},
+    "plasma_collections_or_collection_network": {"plasma_network_narrative"},
+}
+VALUE_BEARING_MATERIALITY_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
+CRITICAL_WARNING_STATUSES = {
+    "portfolio_mix_narrative",
+    "guidance_narrative",
+    "plasma_network_narrative",
+    "segment_growth",
+    "profitability_metric",
 }
 
 WEAK_STATUSES = {"metric_mentioned_only", "direction_extracted", "table_row_unparsed", "context_only"}
@@ -246,7 +257,7 @@ def _metric_subtype_rejection_reason(metric_name: str, record: dict[str, Any]) -
 
 
 def _is_cleanly_extracted(record: dict[str, Any], metric_name: str = "") -> bool:
-    if str(record.get("metric_value_status") or "").strip().lower() != "value_extracted":
+    if str(record.get("metric_value_status") or "").strip().lower() not in VALUE_BEARING_MATERIALITY_STATUSES:
         return False
     if not _eligible_source_quality(record):
         return False
@@ -311,19 +322,32 @@ def _proof_present(record: dict[str, Any]) -> bool:
 
 
 def _commodity_names(record: dict[str, Any]) -> list[str]:
-    value = record.get("commodity_names")
-    if isinstance(value, list):
-        names = [str(item).strip().lower() for item in value if str(item).strip()]
-    else:
-        text = " ".join(
-            str(record.get(field) or "")
-            for field in ("supporting_sentence", "extracted_value_or_phrase", "raw_row_text")
-        ).lower()
-        names = [
-            commodity
-            for commodity in ("iron ore", "copper", "steelmaking coal", "coal", "potash", "nickel", "petroleum")
-            if commodity in text
-        ]
+    names: list[str] = []
+    for key in ("commodity_names", "commodity_names_identified"):
+        value = record.get(key)
+        if isinstance(value, list):
+            names.extend(str(item).strip().lower() for item in value if str(item).strip())
+        elif isinstance(value, str):
+            names.extend(
+                item.strip().lower()
+                for item in re.split(r"[,;|]", value)
+                if item.strip()
+            )
+    text = " ".join(
+        str(record.get(field) or "")
+        for field in (
+            "supporting_sentence",
+            "extracted_value_or_phrase",
+            "raw_row_text",
+            "excerpt",
+            "value_context",
+        )
+    ).lower()
+    names.extend(
+        commodity
+        for commodity in ("iron ore", "copper", "steelmaking coal", "coal", "potash", "nickel", "petroleum")
+        if commodity in text
+    )
     return _dedupe(names)
 
 
@@ -367,8 +391,16 @@ def _aliases_for_metric(sector: str, metric: str) -> tuple[str, ...]:
 def _metric_state(records: list[dict[str, Any]], sector: str, metric: str) -> dict[str, Any]:
     candidates = _matching_records(records, _aliases_for_metric(sector, metric))
     evidence_ids = [str(record.get("evidence_id") or "") for record in candidates]
-    if any(_is_cleanly_extracted(record, metric) for record in candidates):
-        return {"status": "cleanly_extracted", "materially_satisfied": True, "evidence_ids": evidence_ids}
+    clean_candidates = [record for record in candidates if _is_cleanly_extracted(record, metric)]
+    if clean_candidates:
+        return {
+            "status": "cleanly_extracted",
+            "materially_satisfied": True,
+            "evidence_ids": evidence_ids,
+            "metric_value_statuses": _dedupe(
+                [str(record.get("metric_value_status") or "").strip().lower() for record in clean_candidates]
+            ),
+        }
     narrative_candidates = [record for record in candidates if _is_materially_satisfied_narrative(metric, record)]
     if narrative_candidates:
         return {
@@ -376,6 +408,9 @@ def _metric_state(records: list[dict[str, Any]], sector: str, metric: str) -> di
             "materially_satisfied": True,
             "reason": f"{metric} is supported by eligible narrative evidence rather than a clean numeric value",
             "evidence_ids": [str(record.get("evidence_id") or "") for record in narrative_candidates],
+            "metric_value_statuses": _dedupe(
+                [str(record.get("metric_value_status") or "").strip().lower() for record in narrative_candidates]
+            ),
         }
     subtype_rejected_candidates = [
         record
@@ -494,6 +529,13 @@ def _materiality_summary(
         state = _requirement_state(states, sector, metric)
         if state.get("materially_satisfied") is True:
             critical_clean.append(metric)
+            warning_statuses = [
+                status
+                for status in state.get("metric_value_statuses", [])
+                if status in CRITICAL_WARNING_STATUSES
+            ]
+            for warning_status in warning_statuses:
+                major_warnings.append(f"{_warning_label(metric)} is supported by {warning_status} evidence")
             continue
         critical_unresolved.append(metric)
         remediation_required_reasons.append(

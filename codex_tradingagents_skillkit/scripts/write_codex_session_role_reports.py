@@ -8,6 +8,7 @@ from pathlib import Path
 
 TRADE_DATE_DEFAULT = "2026-07-02"
 SCRIPT_DIR = Path(__file__).resolve().parent
+VALUE_BEARING_METRIC_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
 
 
 def _load_json(path: Path) -> object:
@@ -661,7 +662,7 @@ def _asx_metric_audit_summary(records: list[dict[str, object]], manager_rec: str
         for item in audit_records
         if item["direction"] in preferred and item["direction"] not in {"unavailable"}
         and (
-            item["metric_value_status"] == "value_extracted"
+            item["metric_value_status"] in VALUE_BEARING_METRIC_STATUSES
             or (item["clean_metric_value"] == "unavailable" and item["confidence"] in {"medium", "high"})
         )
     ][:2]

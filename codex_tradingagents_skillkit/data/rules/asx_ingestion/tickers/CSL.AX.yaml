@@ -51,6 +51,9 @@ metrics:
       - CSL Behring revenue
       - CSL Seqirus revenue
       - CSL Vifor revenue
+    accepted_statuses:
+      - value_extracted
+      - segment_growth
     accepted_row_labels:
       - segment revenue
       - revenue by operating segment
@@ -58,6 +61,8 @@ metrics:
       - CSL Behring revenue
       - CSL Seqirus revenue
       - CSL Vifor revenue
+      - total revenue
+      - sales
       - revenue
     target_rows:
       - CSL Behring revenue
@@ -66,6 +71,9 @@ metrics:
       - revenue by operating segment
       - segment revenue
       - segment sales
+      - total revenue
+      - sales
+      - revenue
     target_sections:
       - key performance data summary
       - key performance data
@@ -82,6 +90,10 @@ metrics:
     accepted_value_patterns:
       - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
       - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+    required_nearby_terms:
+      - CSL Behring
+      - CSL Seqirus
+      - CSL Vifor
     preferred_value_type:
       - current_period_value
       - variance_percent
@@ -92,17 +104,41 @@ metrics:
       - EBIT margin
       - operating margin
       - NPATA margin
+      - operating profit margin
+      - EBIT
+      - EBITA
+      - NPATA
+      - net profit after tax before amortisation
+      - underlying profit
+      - profit margin
       - margin
+    accepted_statuses:
+      - value_extracted
+      - profitability_metric
     accepted_row_labels:
       - gross margin
       - EBIT margin
       - operating margin
       - NPATA margin
+      - operating profit margin
+      - EBIT
+      - EBITA
+      - NPATA
+      - net profit after tax before amortisation
+      - underlying profit
+      - profit margin
     target_rows:
       - gross margin
       - EBIT margin
       - operating margin
       - NPATA margin
+      - operating profit margin
+      - EBIT
+      - EBITA
+      - NPATA
+      - net profit after tax before amortisation
+      - underlying profit
+      - profit margin
     target_sections:
       - key performance data summary
       - operating and financial review
@@ -158,26 +194,57 @@ metrics:
     accepted_labels:
       - net debt
       - borrowings
+      - total borrowings
+      - total debt
       - debt
       - leverage
+      - interest-bearing liabilities
+      - lease liabilities
+      - liquidity
+      - cash
       - cash and cash equivalents
+      - net cash
+      - net cash / debt
+      - balance sheet
+      - gearing
     accepted_row_labels:
       - net debt
       - borrowings
+      - total borrowings
+      - total debt
       - debt
       - leverage
+      - interest-bearing liabilities
+      - lease liabilities
+      - liquidity
+      - cash
       - cash and cash equivalents
+      - net cash
+      - net cash / debt
+      - balance sheet
+      - gearing
     target_rows:
       - net debt
       - borrowings
+      - total borrowings
+      - total debt
       - debt
       - leverage
+      - interest-bearing liabilities
+      - lease liabilities
+      - liquidity
+      - cash
       - cash and cash equivalents
+      - net cash
+      - net cash / debt
+      - gearing
     target_sections:
       - financial report
       - borrowings
       - liquidity
       - net debt
+      - balance sheet
+      - gearing
     accepted_units:
       - US$m
       - US$bn
@@ -190,21 +257,45 @@ metrics:
       - plasma collections
       - plasma collection
       - plasma collection volume
+      - plasma collection centres
       - plasma centres
+      - donor centres
+      - collection centres
       - plasma collection network
       - collection network
+      - plasma network
+      - plasma volumes
+      - plasma collection volumes
+      - plasma supply
+    accepted_statuses:
+      - value_extracted
+      - plasma_network_narrative
     accepted_row_labels:
       - plasma collections
       - plasma collection volume
+      - plasma collection centres
       - plasma centres
+      - donor centres
+      - collection centres
       - collection network
       - plasma collection network
+      - plasma network
+      - plasma volumes
+      - plasma collection volumes
+      - plasma supply
     target_rows:
       - plasma collections
       - plasma collection volume
+      - plasma collection centres
       - plasma centres
+      - donor centres
+      - collection centres
       - collection network
       - plasma collection network
+      - plasma network
+      - plasma volumes
+      - plasma collection volumes
+      - plasma supply
     target_sections:
       - CSL Plasma
       - plasma collections

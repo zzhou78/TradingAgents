@@ -421,6 +421,58 @@ def test_csl_structured_online_annual_report_tier_is_eligible_for_critical_healt
     assert "r_and_d" in status["important_metrics_unresolved"]
 
 
+def test_csl_segment_growth_profitability_guidance_and_plasma_narratives_satisfy_critical_groups():
+    module = _load_coverage()
+    records = [
+        {
+            **_clean_metric("healthcare", "segment_revenue", "8"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+            "metric_value_status": "segment_growth",
+            "value_unit": "%",
+            "segment_name": "CSL Seqirus",
+            "section_title": "CSL Seqirus",
+        },
+        {
+            **_clean_metric("healthcare", "margins", "14"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+            "metric_value_status": "profitability_metric",
+            "row_label": "NPATA",
+            "value_unit": "%",
+        },
+        {
+            **_narrative_metric("healthcare", "guidance", "guidance_narrative"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+            "section_title": "Outlook",
+        },
+        {
+            **_clean_metric("healthcare", "borrowings", "5200"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+            "row_label": "Net debt",
+            "value_unit": "US$m",
+        },
+        {
+            **_narrative_metric("healthcare", "plasma_collections", "plasma_network_narrative"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+            "section_title": "CSL Plasma",
+            "supporting_sentence": "CSL Plasma expanded its plasma collection network and donor centres.",
+        },
+        {**_weak_gap_metric("healthcare", "r_and_d"), "source_quality_tier": "tier_3_structured_online_annual_report"},
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="CSL.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert status["critical_metrics_unresolved"] == []
+    assert "segment_revenue_or_growth" in status["critical_metrics_clean"]
+    assert "margins" in status["critical_metrics_clean"]
+    assert "guidance" in status["critical_metrics_clean"]
+    assert "debt_or_balance_sheet" in status["critical_metrics_clean"]
+    assert "plasma_collections_or_collection_network" in status["critical_metrics_clean"]
+    assert any("guidance" in warning for warning in status["major_warnings"])
+    assert any("plasma" in warning for warning in status["major_warnings"])
+
+
 def test_quality_gate_passed_fails_when_core_metric_coverage_fails(tmp_path: Path):
     validator = _load_quality_validator()
     run_dir = tmp_path / "run"

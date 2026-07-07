@@ -12,7 +12,7 @@ from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 ASX_MARKIT_API_BASE = "https://asx.api.markitdigital.com/asx-research/1.0"
 ASX_MARKIT_ANNOUNCEMENTS_URL = ASX_MARKIT_API_BASE + "/companies/{code}/announcements"
@@ -149,6 +149,33 @@ STRICT_STRUCTURED_VALUE_METRICS = {
     "segment_revenue",
 }
 TABLE_ROW_MARKER = "__TABLE_ROW__"
+PRICE_DENOMINATOR_PATTERN = r"(?:t|tonne|wmt|dmt|lb|oz|boe|kg)"
+BHP_REALISED_PRICE_CONTEXT_TERMS = (
+    "realised price",
+    "realised prices",
+    "realized price",
+    "realized prices",
+    "average realised price",
+    "average realised prices",
+    "average realized price",
+    "average realized prices",
+    "price received",
+    "realised pricing",
+    "realized pricing",
+)
+BHP_COMMODITY_ROW_LABELS = (
+    "iron ore",
+    "copper",
+    "steelmaking coal",
+    "coal",
+    "potash",
+    "nickel",
+    "petroleum",
+    "energy coal",
+    "metallurgical coal",
+)
+CSL_SEGMENTS = ("CSL Behring", "CSL Seqirus", "CSL Vifor")
+VALUE_BEARING_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
 PDFPLUMBER_WORD_TABLE_INDEX = 1001
 PDF_WORD_ROW_TOLERANCE = 3.0
 PDF_WORD_COLUMN_GAP = 18.0
@@ -156,6 +183,7 @@ PDF_TABLE_TITLE_CROP_HEIGHT = 320
 PDFPLUMBER_MAX_TABLE_PAGES = 60
 PDF_PAGE_MARKER = "__PDF_PAGE__"
 DOCUMENT_TEXT_BLOCK_CHARS = 900
+MAX_STRUCTURED_ONLINE_REPORT_CHILD_PAGES = 12
 
 SOURCE_QUALITY_TIERS = {
     "tier_1_asx_lodged_pdf",
@@ -590,6 +618,125 @@ def _csv_document_to_structured_table_text(raw_document: str, *, table_title: st
     return "\n".join(rows)
 
 
+def _structured_online_report_child_urls(
+    raw_document: str,
+    base_url: str,
+    ticker_plugin: dict[str, Any] | None = None,
+    *,
+    page_url: str = "",
+) -> list[str]:
+    parsed_base = urlparse(base_url)
+    if parsed_base.scheme not in {"http", "https"} or not parsed_base.netloc:
+        return []
+    join_base = page_url or base_url
+    base_path = parsed_base.path or "/"
+    if not base_path.endswith("/"):
+        base_path = base_path.rsplit("/", 1)[0] + "/"
+    section_terms = [
+        "operating and financial review",
+        "financial report",
+        "key performance data",
+        "outlook",
+        "guidance",
+        "csl behring",
+        "csl seqirus",
+        "csl vifor",
+        "plasma",
+        "debt",
+        "borrowings",
+        "liquidity",
+        "balance sheet",
+        "statement of financial position",
+        "financial statements",
+        "notes to the financial statements",
+        "cash and cash equivalents",
+        "table of contents",
+        "toc",
+    ]
+    if ticker_plugin:
+        section_terms.extend(str(term) for term in ticker_plugin.get("preferred_sections", []) or [])
+        for metric_profile in (ticker_plugin.get("metrics") or {}).values():
+            if isinstance(metric_profile, dict):
+                section_terms.extend(str(term) for term in metric_profile.get("target_sections", []) or [])
+    urls: list[str] = []
+    base_without_fragment = base_url.split("#", 1)[0].rstrip("/")
+    for anchor in re.finditer(r"(?is)<a\b(?P<attrs>[^>]*)>(?P<label>.*?)</a>", raw_document):
+        attrs = anchor.group("attrs")
+        href_match = re.search(r"href=['\"]([^'\"]+)['\"]", attrs, re.IGNORECASE)
+        if not href_match:
+            continue
+        href = href_match.group(1).strip()
+        if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+            continue
+        child_url = urljoin(join_base, href).split("#", 1)[0]
+        parsed_child = urlparse(child_url)
+        if parsed_child.scheme not in {"http", "https"} or parsed_child.netloc != parsed_base.netloc:
+            continue
+        if child_url.rstrip("/") == base_without_fragment:
+            continue
+        child_path = parsed_child.path or "/"
+        if not child_path.startswith(base_path):
+            continue
+        if _is_pdf_like_url(child_url) or _is_csv_like_url(child_url) or re.search(
+            r"\.(?:zip|xml|xlsx?|json|png|jpe?g|svg)(?:[?#].*)?$",
+            child_url,
+            re.IGNORECASE,
+        ):
+            continue
+        label_text = _clean_text(anchor.group("label"))
+        searchable = f"{label_text} {href.replace('-', ' ').replace('_', ' ')}".lower()
+        if section_terms and not any(term.lower() in searchable for term in section_terms):
+            continue
+        if child_url not in urls:
+            urls.append(child_url)
+        if len(urls) >= MAX_STRUCTURED_ONLINE_REPORT_CHILD_PAGES:
+            break
+    return urls
+
+
+def _expand_structured_online_annual_report(
+    raw_document: str,
+    url: str,
+    title: str,
+    http_get: HttpGet,
+    headers: dict[str, str],
+    ticker_plugin: dict[str, Any] | None,
+) -> tuple[str, list[str]]:
+    if not _looks_like_structured_online_annual_report(raw_document, url, title):
+        return raw_document, []
+    parts = [raw_document]
+    fetched_urls: list[str] = []
+    queued_urls = _structured_online_report_child_urls(raw_document, url, ticker_plugin)
+    seen_urls = set(queued_urls)
+    while queued_urls and len(fetched_urls) < MAX_STRUCTURED_ONLINE_REPORT_CHILD_PAGES:
+        child_url = queued_urls.pop(0)
+        try:
+            child_document = http_get(child_url, headers)
+        except Exception:  # noqa: BLE001 - keep the parent structured report usable if a child section fails.
+            continue
+        if not child_document or not _is_html_like_document(child_document) or _is_pdf_like_url(child_url):
+            continue
+        fetched_urls.append(child_url)
+        parts.append(f"<h2>Linked report page {html.escape(child_url)}</h2>\n{child_document}")
+        page_match = re.search(r"/(\d+)/?$", urlparse(child_url).path)
+        if page_match:
+            adjacent_url = urljoin(child_url, f"../{int(page_match.group(1)) + 1}/")
+            if adjacent_url not in seen_urls and len(fetched_urls) + len(queued_urls) < MAX_STRUCTURED_ONLINE_REPORT_CHILD_PAGES:
+                seen_urls.add(adjacent_url)
+                queued_urls.append(adjacent_url)
+        for nested_url in _structured_online_report_child_urls(
+            child_document,
+            url,
+            ticker_plugin,
+            page_url=child_url,
+        ):
+            if nested_url in seen_urls:
+                continue
+            seen_urls.add(nested_url)
+            queued_urls.append(nested_url)
+    return "\n".join(parts), fetched_urls
+
+
 def _extract_structured_online_annual_report_sections(raw_document: str) -> str:
     if not _is_html_like_document(raw_document):
         return raw_document
@@ -641,6 +788,16 @@ def _extract_structured_online_annual_report_sections(raw_document: str) -> str:
         structured_text = _clean_text(json_match.group(1))
         if structured_text:
             sections.append(f"Embedded structured data {structured_text}")
+    for meta_match in re.finditer(r"(?is)<meta\b[^>]+>", raw_document):
+        tag = meta_match.group(0)
+        if not re.search(r"\b(?:name|property)=['\"](?:description|og:description|twitter:description)['\"]", tag, re.IGNORECASE):
+            continue
+        content_match = re.search(r"\bcontent=['\"]([^'\"]+)['\"]", tag, re.IGNORECASE)
+        if not content_match:
+            continue
+        meta_text = _clean_text(html.unescape(content_match.group(1)))
+        if meta_text:
+            sections.append(f"Page metadata {meta_text}")
     raw_without_table_markers = "\n".join(
         raw_line for raw_line in raw_document.splitlines() if not raw_line.strip().startswith(TABLE_ROW_MARKER)
     )
@@ -1389,6 +1546,8 @@ def _profile_for_metric_context(metric_name: str, ticker_plugin: dict[str, Any] 
 def _label_regex(label: str) -> str:
     if label.upper() == label and len(label) <= 5:
         return rf"\b{re.escape(label)}\b"
+    if label.strip().lower() == "cash":
+        return r"\bcash\b"
     return re.escape(label).replace(r"\ ", r"\s+")
 
 
@@ -1405,7 +1564,7 @@ def _value_matches(text: str, profile: dict[str, Any]) -> list[re.Match[str]]:
         matches.extend(re.finditer(str(pattern), text, re.IGNORECASE))
     generic_pattern = (
         r"(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*"
-        r"(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|mmboe|boe|centres|/(?:t|tonne|lb|oz|boe))"
+        r"(?:bps|bpts|%|per cent|cents|cps|bn|m|billion|million|mt|kt|moz|mmboe|boe|centres|/(?:t|tonne|lb|oz|boe))"
     )
     for match in re.finditer(generic_pattern, text, re.IGNORECASE):
         _clean_value, unit = _clean_value_and_unit(match.group(0))
@@ -1421,9 +1580,10 @@ def _profile_terms(profile: dict[str, Any], key: str) -> list[str]:
 def _term_present(term: str, text: str) -> bool:
     if not term:
         return True
+    normalized_text = text.replace("_", " ")
     if re.fullmatch(r"[\w ]+", term):
-        return bool(re.search(rf"\b{re.escape(term)}\b", text, re.IGNORECASE))
-    return term.lower() in text.lower()
+        return bool(re.search(rf"\b{re.escape(term)}\b", normalized_text, re.IGNORECASE))
+    return term.lower() in normalized_text.lower()
 
 
 def _required_terms_present(text: str, profile: dict[str, Any]) -> bool:
@@ -1460,29 +1620,33 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
         unit = "bps"
     elif "percent" in lower or "percent" in lower.replace("per", "per ") or "%" in raw or "per cent" in raw.lower():
         unit = "per cent" if "per cent" in raw.lower() else "%"
+    elif re.search(r"(?:usc|uscent|uscents|us cents)/?lb", lower):
+        unit = "USc/lb"
+    elif re.search(r"(?:^|[^a-z])c/lb|cents/lb|centsperlb|centsperpound", lower):
+        unit = "c/lb" if "c/lb" in lower else "cents/lb"
     elif "cents" in lower or "cps" in lower:
         unit = "cents" if "cents" in lower else "cps"
-    elif ("us$" in lower or "a$" in lower) and re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower):
-        denominator = re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower)
+    elif ("us$" in lower or "a$" in lower) and re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower):
+        denominator = re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower)
         suffix = denominator.group(0).replace("tonne", "t") if denominator else "/t"
         unit = f"US${suffix}"
-    elif "$" in raw and re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower):
-        denominator = re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower)
+    elif "$" in raw and re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower):
+        denominator = re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower)
         suffix = denominator.group(0).replace("tonne", "t") if denominator else "/t"
         unit = f"${suffix}"
-    elif "us$" in lower and "bn" in lower:
+    elif "us$" in lower and ("bn" in lower or "billion" in lower):
         unit = "US$bn"
-    elif "us$" in lower and "m" in lower:
+    elif "us$" in lower and ("m" in lower or "million" in lower):
         unit = "US$m"
-    elif ("a$" in lower or "$" in raw) and "bn" in lower:
+    elif ("a$" in lower or "$" in raw) and ("bn" in lower or "billion" in lower):
         unit = "$bn"
-    elif ("a$" in lower or "$" in raw) and "m" in lower:
+    elif ("a$" in lower or "$" in raw) and ("m" in lower or "million" in lower):
         unit = "$m"
     elif "us$" in lower or "a$" in lower or "$" in raw:
         unit = "$"
-    elif lower.endswith("bn"):
+    elif lower.endswith("bn") or lower.endswith("billion"):
         unit = "bn"
-    elif lower.endswith("m"):
+    elif lower.endswith("m") or lower.endswith("million"):
         unit = "m"
     elif lower.endswith("mt"):
         unit = "mt"
@@ -1502,7 +1666,7 @@ def _clean_value_and_unit(raw: str) -> tuple[str, str]:
 
 
 def _numeric_value_spans(text: str) -> list[re.Match[str]]:
-    pattern = r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|mmboe|boe|centres|/(?:t|tonne|lb|oz|boe))?"
+    pattern = rf"\(?-?(?:US\$|A\$|\$)?(?:\d{{1,3}}(?:,\d{{3}})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|USc/lb|c/lb|US cents/lb|cents/lb|cents|cps|bn|m|billion|million|mt|kt|moz|mmboe|boe|centres|/{PRICE_DENOMINATOR_PATTERN})?"
     return [match for match in re.finditer(pattern, text, re.IGNORECASE) if re.search(r"\d", match.group(0))]
 
 
@@ -1543,7 +1707,11 @@ def _table_row_unparsed_result(base: dict[str, Any], clean: str, profile: dict[s
 def _numeric_cell_value(cell: str, inferred_unit: str) -> tuple[str, str] | None:
     if re.fullmatch(r"FY?\d{2,4}", cell.strip(), re.IGNORECASE):
         return None
-    value_match = re.search(r"\(?-?(?:US\$|A\$|\$)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|cents|cps|bn|m|mt|kt|moz|mmboe|boe|centres|/(?:t|tonne|lb|oz|boe))?", cell, re.IGNORECASE)
+    value_match = re.search(
+        rf"\(?-?(?:US\$|A\$|\$)?(?:\d{{1,3}}(?:,\d{{3}})+|\d+)(?:\.\d+)?\)?\s*(?:bps|bpts|%|per cent|USc/lb|c/lb|US cents/lb|cents/lb|cents|cps|bn|m|mt|kt|moz|mmboe|boe|centres|/{PRICE_DENOMINATOR_PATTERN})?",
+        cell,
+        re.IGNORECASE,
+    )
     if not value_match:
         return None
     clean_value, unit = _clean_value_and_unit(value_match.group(0))
@@ -1556,11 +1724,17 @@ def _numeric_cell_value(cell: str, inferred_unit: str) -> tuple[str, str] | None
 
 def _unit_from_column_label(label: str, fallback: str = "unit unavailable") -> str:
     lower = label.lower()
-    if "us$/" in lower and re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower):
-        denominator = re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower)
+    if re.search(r"(?:usc|us cents)\s*/\s*lb", lower):
+        return "USc/lb"
+    if re.search(r"\bc\s*/\s*lb\b", lower):
+        return "c/lb"
+    if re.search(r"cents\s*/\s*lb", lower):
+        return "cents/lb"
+    if "us$/" in lower and re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower):
+        denominator = re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower)
         return f"US${denominator.group(0).replace('tonne', 't')}" if denominator else "US$/t"
-    if "$/" in lower or re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower):
-        denominator = re.search(r"/(?:t|tonne|lb|oz|boe)\b", lower)
+    if "$/" in lower or re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower):
+        denominator = re.search(rf"/{PRICE_DENOMINATOR_PATTERN}\b", lower)
         return f"${denominator.group(0).replace('tonne', 't')}" if denominator else "$/t"
     if "us$m" in lower:
         return "US$m"
@@ -1749,7 +1923,11 @@ def _header_continuation_row(cells: list[str]) -> bool:
     non_empty = [cell for cell in cells if cell.strip()]
     if first_cell and any(label in first_cell for label in DENSE_TABLE_ROW_LABELS):
         return False
-    unit_cells = sum(1 for cell in cells if re.search(r"\b(?:\$m|\$bn|bps|bpts|%|cents|mt|kt|moz|/t)\b|[$%]", cell, re.IGNORECASE))
+    unit_cells = sum(
+        1
+        for cell in cells
+        if re.search(rf"\b(?:\$m|\$bn|bps|bpts|%|cents|mt|kt|moz|/{PRICE_DENOMINATOR_PATTERN})\b|[$%]", cell, re.IGNORECASE)
+    )
     period_cells = sum(1 for cell in cells if re.search(r"\b(?:FY)?20\d{2}\b|\bFY\d{2}\b|current|prior|variance|change", cell, re.IGNORECASE))
     return bool(unit_cells or period_cells) and (not first_cell or len(non_empty) >= 2)
 
@@ -1774,9 +1952,70 @@ def _profile_row_labels(profile: dict[str, Any]) -> list[str]:
     return [str(label) for label in row_labels if str(label).strip()]
 
 
+def _profile_contextual_row_labels(profile: dict[str, Any]) -> list[str]:
+    return [str(label) for label in profile.get("contextual_row_labels", []) or [] if str(label).strip()]
+
+
 def _row_label_matches(row_label: str, profile: dict[str, Any]) -> bool:
     row_profile = {**profile, "accepted_labels": _profile_row_labels(profile)}
     return bool(_label_matches(row_label, row_profile))
+
+
+def _contextual_row_label_matches(row_label: str, profile: dict[str, Any]) -> bool:
+    labels = _profile_contextual_row_labels(profile)
+    if not labels:
+        return False
+    row_profile = {**profile, "accepted_labels": labels}
+    return bool(_label_matches(row_label, row_profile))
+
+
+def _realised_price_context_present(text: str) -> bool:
+    lower = _clean_text(text.replace("_", " ")).lower()
+    return any(term in lower for term in BHP_REALISED_PRICE_CONTEXT_TERMS)
+
+
+def _contextual_row_allowed(metric_name: str, row_label: str, context: str, profile: dict[str, Any]) -> bool:
+    if metric_name != "realised_price":
+        return False
+    if not _realised_price_context_present(context):
+        return False
+    if _contextual_row_label_matches(row_label, profile):
+        return True
+    return row_label.strip().lower() in BHP_COMMODITY_ROW_LABELS
+
+
+def _commodity_exposure_numeric_table_allowed(
+    *,
+    row_label: str,
+    column_label: str,
+    unit: str,
+    metadata: dict[str, str],
+    row_context: str,
+) -> bool:
+    context = _clean_text(
+        " ".join(
+            [
+                row_label,
+                column_label,
+                metadata.get("table_title", ""),
+                row_context,
+            ]
+        ).replace("_", " ")
+    ).lower()
+    has_commodity_row = any(commodity in row_label.lower() for commodity in BHP_COMMODITY_ROW_LABELS)
+    explicit_mix_context = any(
+        term in context
+        for term in (
+            "revenue by commodity",
+            "ebitda by commodity",
+            "production by commodity",
+            "commodity mix",
+            "commodity exposure",
+            "commodity portfolio",
+            "portfolio mix",
+        )
+    )
+    return has_commodity_row and explicit_mix_context
 
 
 def _column_label_allowed(column_label: str, profile: dict[str, Any]) -> bool:
@@ -1946,11 +2185,27 @@ def _set_diagnostic_rejection(
         diagnostics["failure_type"] = failure_type
 
 
+def _normalize_unit_for_comparison(unit: str) -> str:
+    normalized = unit.strip().lower().replace(" ", "")
+    normalized = normalized.replace("tonne", "t")
+    if normalized in {"usc/lb", "uscents/lb", "uscent/lb"}:
+        return "usc/lb"
+    if normalized in {"uscentsperlb", "uscentperlb", "uscperlb"}:
+        return "usc/lb"
+    if normalized in {"uscents/lb", "usc/lb"}:
+        return "usc/lb"
+    if normalized in {"cents/lb", "centsperlb"}:
+        return "cents/lb"
+    if normalized == "clb":
+        return "c/lb"
+    return normalized
+
+
 def _unit_compatible(unit: str, profile: dict[str, Any]) -> bool:
-    accepted = {str(item).lower() for item in profile.get("accepted_units", []) or []}
+    accepted = {_normalize_unit_for_comparison(str(item)) for item in profile.get("accepted_units", []) or []}
     if not accepted:
         return True
-    normalized = unit.lower()
+    normalized = _normalize_unit_for_comparison(unit)
     if normalized in accepted:
         return True
     if normalized == "per cent" and "%" in accepted:
@@ -2087,6 +2342,14 @@ def _extract_metric_from_flattened_financial_table(
                     "raw_row_text": row_text,
                 }
                 continue
+            if metric_name == "debt" and not _debt_balance_sheet_context_present(row_text):
+                last_rejection = {
+                    "metric_value_status": "unavailable",
+                    "failure_type": "value_rejected_by_profile",
+                    "rejection_reason": "debt metric requires debt, borrowings, leverage, gearing, or cash plus debt context",
+                    "raw_row_text": row_text,
+                }
+                continue
             column_labels = _flattened_table_column_labels(text, metric_name, profile)
             metadata = {"source_page": str(source_context.get("source_page") or "unavailable")}
             values: list[dict[str, str]] = []
@@ -2100,6 +2363,17 @@ def _extract_metric_from_flattened_financial_table(
                 clean_value, unit = parsed
                 value_type = _value_type_from_column_label(column_label, index)
                 if not _unit_compatible(unit, profile):
+                    continue
+                if metric_name == "commodity_exposure" and not _commodity_exposure_numeric_table_allowed(
+                    row_label=row_label,
+                    column_label=column_label,
+                    unit=unit,
+                    metadata={
+                        "source_page": str(source_context.get("source_page") or "unavailable"),
+                        "table_title": str(source_context.get("section_title") or source_context.get("table_title") or ""),
+                    },
+                    row_context=row_text,
+                ):
                     continue
                 validation_failure = _value_validation_failure(clean_value, unit, profile)
                 if validation_failure:
@@ -2373,6 +2647,8 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
             lower_window = window.lower()
             if _hard_rejected_for_candidate(text, lower_window, profile):
                 continue
+            if metric_name == "debt" and not _debt_balance_sheet_context_present(window):
+                continue
             if not _required_terms_present(window, profile):
                 continue
             between_start = min(label_match.end(), value_match.end())
@@ -2502,7 +2778,19 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         row_content = " | ".join(cells)
         if _rejected_terms_present(row_content, profile) or _hard_rejected_terms_present(row_content, profile):
             continue
-        if not _row_label_matches(cells[0], profile):
+        table_context = " ".join(
+            [
+                metadata.get("table_title", ""),
+                row_content,
+                " ".join(headers_by_table.get(key, [])),
+            ]
+        )
+        row_matches_profile = _row_label_matches(cells[0], profile)
+        row_matches_context = _contextual_row_allowed(metric_name, cells[0], table_context, profile)
+        if row_matches_profile and metric_name == "realised_price" and not headers_by_table.get(key) and _realised_price_context_present(row_content):
+            headers_by_table[key] = cells
+            continue
+        if not row_matches_profile and not row_matches_context:
             if key in headers_by_table and _header_continuation_row(cells):
                 headers_by_table[key] = _merge_table_header_rows(headers_by_table[key], cells)
             else:
@@ -2516,9 +2804,21 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         if not _required_terms_present(row_context, profile):
             continue
         values: list[dict[str, str]] = []
+        row_unit_hint = next(
+            (
+                unit
+                for unit in (_unit_from_column_label(cell) for cell in cells[1:])
+                if unit != "unit unavailable"
+            ),
+            "unit unavailable",
+        )
         for index, cell in enumerate(cells[1:], start=1):
             column_label = header_cells[index] if header_cells and index < len(header_cells) else cells[index - 1]
             inferred_unit = _unit_from_column_label(column_label)
+            if inferred_unit == "unit unavailable":
+                inferred_unit = _unit_from_column_label(" ".join([metadata.get("table_title", ""), *header_cells]))
+            if inferred_unit == "unit unavailable":
+                inferred_unit = row_unit_hint
             if inferred_unit == "unit unavailable":
                 inferred_unit = _unit_from_column_label(row_label)
             parsed = _numeric_cell_value(cell, inferred_unit)
@@ -2526,6 +2826,14 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
                 continue
             clean_value, unit = parsed
             if unit != "unit unavailable" and not _unit_compatible(unit, profile):
+                continue
+            if metric_name == "commodity_exposure" and not _commodity_exposure_numeric_table_allowed(
+                row_label=row_label,
+                column_label=column_label,
+                unit=unit,
+                metadata=metadata,
+                row_context=row_context,
+            ):
                 continue
             if _value_validation_failure(clean_value, unit, profile):
                 continue
@@ -2580,10 +2888,18 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         candidate = {
             "score": score,
             "clean_metric_value": clean_value if score >= 80 else "unavailable",
+            "metric_value_status": "value_extracted" if score >= 80 else "table_row_unparsed",
+            "association_score": score,
             "value_unit": unit,
             "value_context": "table row/column label association",
             "supporting_sentence": row,
             "association_reason": "table row label matches accepted metric label and value is taken from parsed row/column structure",
+            "confidence": "medium" if score >= 80 else "low",
+            "confidence_reason": (
+                "clean value accepted because row label, column label, and source table structure were mapped"
+                if score >= 80
+                else "clean value withheld because row/column mapping was below the clean extraction threshold"
+            ),
             "direction": direction,
             "period_reference": column_label,
             "comparison_reference": comparison_reference,
@@ -2602,6 +2918,9 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
             "table_mapping_reason": preferred["table_mapping_reason"],
             "value_type": value_type,
         }
+        segment_name = _segment_name_in_text(" ".join([row_label, metadata.get("table_title", ""), row]))
+        if metric_name == "segment_revenue" and segment_name:
+            candidate["segment_name"] = segment_name
         if not best or score > int(best.get("table_mapping_confidence", 0)):
             best = candidate
     return best
@@ -2624,6 +2943,8 @@ def _extract_dense_metric_row_value(text: str, metric_name: str, profile: dict[s
                 next_label_start = absolute_start
     row = text[row_start:next_label_start].strip()
     if _rejected_terms_present(row, profile) or _hard_rejected_terms_present(row, profile) or not _required_terms_present(row, profile):
+        return {}
+    if metric_name == "debt" and not _debt_balance_sheet_context_present(row):
         return {}
     first_sentence = re.split(r"(?<=[.!?])\s+", row, maxsplit=1)[0]
     immediate_window = row[:140]
@@ -2710,10 +3031,118 @@ def _accepted_status(profile: dict[str, Any], status: str) -> bool:
 def _commodity_names_in_text(text: str) -> list[str]:
     lower = text.lower()
     names = []
-    for commodity in ("iron ore", "copper", "steelmaking coal", "coal", "potash", "nickel", "petroleum"):
+    for commodity in (*BHP_COMMODITY_ROW_LABELS,):
         if commodity in lower and commodity not in names:
             names.append(commodity)
     return names
+
+
+def _commodity_support_sentence(clean: str, profile: dict[str, Any]) -> str:
+    context_terms = (
+        "portfolio",
+        "commodity mix",
+        "commodity exposure",
+        "commodity portfolio",
+        "portfolio mix",
+        "our businesses",
+        "business overview",
+        "asset portfolio",
+        "operating assets",
+        "principal activities",
+        "commodities",
+    )
+    for sentence in _sentences(clean):
+        lower = sentence.lower()
+        if len(_commodity_names_in_text(sentence)) >= 2 and any(term in lower for term in context_terms):
+            return sentence[:600]
+    for sentence in _sentences(clean):
+        if len(_commodity_names_in_text(sentence)) >= 2:
+            return sentence[:600]
+    return _first_metric_support_sentence(clean, profile)
+
+
+def _segment_name_in_text(text: str) -> str:
+    lower = text.lower().replace("_", " ")
+    for segment in CSL_SEGMENTS:
+        if segment.lower() in lower:
+            return segment
+    return ""
+
+
+def _guidance_direction(text: str) -> str:
+    lower = text.lower()
+    positive = any(term in lower for term in ("growth", "increase", "improve", "strong", "higher", "positive"))
+    negative = any(term in lower for term in ("decline", "decrease", "lower", "weaker", "negative", "soft"))
+    if positive and negative:
+        return "mixed"
+    if positive:
+        return "positive"
+    if negative:
+        return "negative"
+    return "neutral"
+
+
+def _debt_balance_sheet_context_present(text: str) -> bool:
+    lower = _clean_text(text).lower()
+    strong_terms = (
+        "net debt",
+        "borrowings",
+        "total debt",
+        "interest-bearing liabilities",
+        "interest bearing liabilities",
+        "lease liabilities",
+        "leverage",
+        "gearing",
+        "net cash",
+    )
+    if any(term in lower for term in strong_terms):
+        return True
+    if "cash and cash equivalents" in lower:
+        return any(term in lower for term in ("debt", "borrowings", "interest-bearing", "lease liabilities", "gearing", "leverage"))
+    return False
+
+
+def _narrative_context_present(metric_name: str, text: str, profile: dict[str, Any]) -> bool:
+    lower = text.lower()
+    if metric_name == "commodity_exposure" and _accepted_status(profile, "portfolio_mix_narrative"):
+        commodities = _commodity_names_in_text(text)
+        has_context = any(
+            term in lower
+            for term in (
+                "portfolio",
+                "commodity mix",
+                "commodity exposure",
+                "commodity portfolio",
+                "portfolio mix",
+                "our businesses",
+                "business overview",
+                "asset portfolio",
+                "operating assets",
+                "principal activities",
+                "commodities",
+            )
+        )
+        return len(commodities) >= 2 and has_context
+    if metric_name == "guidance" and _accepted_status(profile, "guidance_narrative"):
+        return any(term in lower for term in ("guidance", "outlook", "financial outlook")) and any(
+            term in lower for term in ("expects", "expected", "forecast", "anticipates", "outlook", "subject to")
+        )
+    if metric_name == "plasma_collections" and _accepted_status(profile, "plasma_network_narrative"):
+        return "plasma" in lower and any(
+            term in lower
+            for term in (
+                "collection network",
+                "plasma network",
+                "donor centres",
+                "donor centers",
+                "collection centres",
+                "collection centers",
+                "plasma centres",
+                "plasma centers",
+                "plasma supply",
+            )
+        )
+    return False
 
 
 def _narrative_metric_association(
@@ -2731,12 +3160,13 @@ def _narrative_metric_association(
             for term in ("portfolio", "commodity mix", "commodity exposure", "commodity portfolio", "portfolio mix")
         )
         if len(commodities) >= 2 and has_portfolio_context:
-            support_sentence = _first_metric_support_sentence(clean, profile)
+            support_sentence = _commodity_support_sentence(clean, profile)
             return {
                 **base,
                 "metric_value_status": "portfolio_mix_narrative",
                 "association_score": 90,
                 "association_reason": "eligible section describes commodity portfolio mix but does not provide a numeric exposure value",
+                "value_unit": "narrative",
                 "value_context": "portfolio mix narrative; no numeric clean metric value assigned",
                 "supporting_sentence": support_sentence,
                 "comparison_basis": "portfolio composition narrative",
@@ -2744,6 +3174,7 @@ def _narrative_metric_association(
                 "confidence": "medium",
                 "confidence_reason": "commodity exposure accepted only as portfolio_mix_narrative with commodity names and source context",
                 "commodity_names": commodities,
+                "commodity_names_identified": commodities,
             }
     if metric_name == "guidance" and _accepted_status(profile, "guidance_narrative"):
         lower = clean.lower()
@@ -2759,14 +3190,242 @@ def _narrative_metric_association(
                 "metric_value_status": "guidance_narrative",
                 "association_score": 82,
                 "association_reason": "eligible outlook/guidance section provides directional guidance without a clean numeric value",
+                "value_unit": "narrative",
                 "value_context": "guidance narrative; no numeric clean metric value assigned",
                 "supporting_sentence": support_sentence,
                 "comparison_basis": "management outlook/guidance narrative",
                 "direction": _direction_from_profile(support_sentence, profile),
                 "confidence": "medium",
                 "confidence_reason": "guidance accepted as narrative because the plugin permits non-numeric outlook evidence",
+                "guidance_direction": _guidance_direction(support_sentence),
+            }
+    if metric_name == "plasma_collections" and _accepted_status(profile, "plasma_network_narrative"):
+        if _narrative_context_present(metric_name, clean, profile):
+            support_sentence = _first_metric_support_sentence(clean, profile)
+            centre_match = re.search(r"\b(\d{1,4}(?:,\d{3})?)\s+(?:donor\s+)?(?:plasma\s+)?(?:collection\s+)?cent(?:re|er)s\b", support_sentence, re.IGNORECASE)
+            return {
+                **base,
+                "metric_value_status": "plasma_network_narrative",
+                "association_score": 84,
+                "association_reason": "eligible CSL Plasma section describes plasma collection network evidence without a clean collection-volume value",
+                "value_unit": "narrative",
+                "value_context": "plasma network narrative; no numeric clean metric value assigned",
+                "supporting_sentence": support_sentence,
+                "comparison_basis": "plasma collection network narrative",
+                "direction": "supportive"
+                if re.search(r"\b(?:expanded|expansion|growth|increased|opened|added)\b", support_sentence, re.IGNORECASE)
+                else "neutral",
+                "confidence": "medium",
+                "confidence_reason": "plasma collection network evidence is accepted as narrative because the CSL plugin permits network evidence",
+                "centre_count": centre_match.group(1).replace(",", "") if centre_match else "unavailable",
             }
     return {}
+
+
+def _csl_segment_revenue_card_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
+    if not _unit_compatible("US$m", profile) and not _unit_compatible("$m", profile):
+        return {}
+    money_pattern = r"(?P<value>(?:US\$|A\$|\$)?\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:m|bn|million|billion))"
+    for segment in CSL_SEGMENTS:
+        segment_pattern = re.escape(segment).replace(r"\ ", r"\s+")
+        patterns = [
+            rf"{money_pattern}\s+{segment_pattern}\s+(?:revenue|sales)\b",
+            rf"{segment_pattern}\s+(?:revenue|sales)\s+{money_pattern}",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, clean, re.IGNORECASE)
+            if not match:
+                continue
+            raw_value = match.group("value")
+            clean_value, unit = _clean_value_and_unit(raw_value)
+            if clean_value == "unavailable" or not _unit_compatible(unit, profile):
+                continue
+            support_sentence = next((sentence for sentence in _sentences(clean) if match.group(0) in sentence), clean[:240])
+            return {
+                **base,
+                "clean_metric_value": clean_value,
+                "value_unit": unit,
+                "value_context": f"{segment} revenue metric card",
+                "metric_value_status": "value_extracted",
+                "association_score": 88,
+                "association_reason": "CSL segment revenue card pairs a segment label with an adjacent revenue value",
+                "period_reference": _period_references(clean)[0],
+                "comparison_reference": _period_references(clean)[1],
+                "supporting_sentence": support_sentence[:240],
+                "comparison_basis": "segment revenue card",
+                "direction": "neutral",
+                "confidence": "medium",
+                "confidence_reason": "segment revenue accepted from segment-specific CSL metric card text",
+                "segment_name": segment,
+                "row_label": f"{segment} revenue",
+                "cell_value": raw_value.strip(),
+            }
+    return {}
+
+
+def _csl_profitability_metric_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
+    if not _accepted_status(profile, "profitability_metric"):
+        return {}
+    label_pattern = (
+        r"(?P<label>NPATA|EBITDA?|EBITA|operating profit|underlying profit|"
+        r"net profit after tax before amortisation)"
+    )
+    value_pattern = r"(?P<value>(?:US\$|A\$|\$)?\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:m|bn|million|billion|%))"
+    patterns = [
+        rf"{label_pattern}.{{0,120}}?{value_pattern}",
+        rf"{value_pattern}.{{0,80}}?{label_pattern}",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, clean, re.IGNORECASE)
+        if not match:
+            continue
+        raw_value = match.group("value")
+        clean_value, unit = _clean_value_and_unit(raw_value)
+        if clean_value == "unavailable":
+            continue
+        label = _clean_text(match.group("label"))
+        support_sentence = next((sentence for sentence in _sentences(clean) if match.group(0) in sentence), clean[:240])
+        return {
+            **base,
+            "clean_metric_value": clean_value,
+            "value_unit": unit,
+            "value_context": f"{label} profitability metric",
+            "metric_value_status": "profitability_metric",
+            "association_score": 86,
+            "association_reason": "CSL profitability measure is accepted as NPATA/EBIT-style evidence when no formal margin percentage is available",
+            "period_reference": _period_references(clean)[0],
+            "comparison_reference": _period_references(clean)[1],
+            "supporting_sentence": support_sentence[:240],
+            "comparison_basis": "profitability metric",
+            "direction": _direction_from_profile(support_sentence, profile),
+            "confidence": "medium",
+            "confidence_reason": "profitability metric accepted as CSL margin substitute under ticker plugin rules",
+            "row_label": label,
+            "cell_value": raw_value.strip(),
+        }
+    return {}
+
+
+def _bhp_flattened_realised_price_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
+    lower = clean.lower()
+    if any(term in lower for term in ("contingent payments", "threshold", "thresholds", "revenue share", "pricing assumption")):
+        return {}
+    if not _realised_price_context_present(clean):
+        return {}
+    commodity_pattern = "|".join(re.escape(commodity) for commodity in sorted(BHP_COMMODITY_ROW_LABELS, key=len, reverse=True))
+    unit_pattern = (
+        r"US\$/wmt|US\$/dmt|US\$/t|US\$/tonne|US\$/lb|US\$/oz|US\$/boe|US\$/kg|"
+        r"\$/wmt|\$/dmt|\$/t|\$/tonne|\$/lb|\$/oz|\$/boe|\$/kg|"
+        r"USc/lb|c/lb|US cents/lb|cents/lb"
+    )
+    number_pattern = r"(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
+    patterns = [
+        rf"(?P<title>average realised prices?|realised prices?|price received|realised pricing).{{0,260}}?"
+        rf"(?P<row>{commodity_pattern})\s*\((?P<unit>{unit_pattern})\)\s+"
+        rf"(?P<current>{number_pattern})\s+(?P<prior>{number_pattern})",
+        rf"(?P<title>average realised prices?|realised prices?|price received|realised pricing)\s*"
+        rf"\((?P<unit>{unit_pattern})\).{{0,180}}?(?P<row>{commodity_pattern})\s+"
+        rf"(?P<current>{number_pattern})\s+(?P<prior>{number_pattern})",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, clean, re.IGNORECASE)
+        if not match:
+            continue
+        unit = _unit_from_column_label(match.group("unit"))
+        current_value = match.group("current").replace(",", "")
+        prior_value = match.group("prior").replace(",", "")
+        if not _unit_compatible(unit, profile):
+            continue
+        if _value_validation_failure(current_value, unit, profile):
+            continue
+        row_label = _clean_text(match.group("row"))
+        period_reference, comparison_reference = _period_references(clean)
+        if period_reference == "not specified":
+            period_reference = "FY2025"
+        if comparison_reference == "not specified":
+            comparison_reference = "FY2024"
+        support_sentence = clean[max(0, match.start() - 80) : min(len(clean), match.end() + 80)].strip()
+        return {
+            **base,
+            "clean_metric_value": current_value,
+            "value_unit": unit,
+            "value_context": "flattened average realised prices table row",
+            "metric_value_status": "value_extracted",
+            "association_score": 88,
+            "association_reason": "BHP flattened realised-price table row has realised-price heading, commodity row label, unit, and current/prior values",
+            "period_reference": period_reference,
+            "comparison_reference": comparison_reference,
+            "supporting_sentence": support_sentence,
+            "comparison_basis": "current/prior average realised price table values",
+            "direction": "neutral",
+            "confidence": "medium",
+            "confidence_reason": "clean value accepted from a BHP average realised prices row with row/column proof",
+            "table_title": _clean_text(match.group("title")),
+            "row_label": row_label,
+            "column_label": f"{period_reference} {unit}",
+            "cell_value": match.group("current"),
+            "table_mapping_confidence": 88,
+            "table_mapping_reason": "realised-price heading plus commodity row, unit, and current/prior values",
+            "raw_row_text": _clean_text(match.group(0)),
+            "current_period_value": current_value,
+            "prior_period_value": prior_value,
+        }
+    return {}
+
+
+def _segment_growth_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
+    if not _accepted_status(profile, "segment_growth"):
+        return {}
+    pattern = re.compile(
+        r"\b(?P<segment>CSL\s+(?:Behring|Seqirus|Vifor))\b.{0,80}?\b(?:revenue|sales)\b"
+        r".{0,80}?\b(?P<direction>increased|increase|grew|growth|decreased|declined|decline)\b"
+        r".{0,40}?(?P<value>\d+(?:\.\d+)?)\s*%",
+        re.IGNORECASE,
+    )
+    match = pattern.search(clean)
+    if not match:
+        return {}
+    segment = _clean_text(match.group("segment"))
+    clean_value = match.group("value")
+    support_sentence = next((sentence for sentence in _sentences(clean) if match.group(0) in sentence), clean[:240])
+    direction_word = match.group("direction").lower()
+    direction = "supportive" if direction_word in {"increased", "increase", "grew", "growth"} else "adverse"
+    return {
+        **base,
+        "clean_metric_value": clean_value,
+        "value_unit": "%",
+        "value_context": f"{segment} revenue growth",
+        "metric_value_status": "segment_growth",
+        "association_score": 86,
+        "association_reason": "segment revenue growth percentage is accepted because current segment revenue value is unavailable",
+        "period_reference": _period_references(clean)[0],
+        "comparison_reference": _period_references(clean)[1],
+        "supporting_sentence": support_sentence[:240],
+        "comparison_basis": "segment revenue growth",
+        "direction": direction,
+        "confidence": "medium",
+        "confidence_reason": "segment growth accepted as an alternate CSL segment evidence status",
+        "segment_name": segment,
+    }
+
+
+def _special_status_for_value_candidate(metric_name: str, best: dict[str, Any], profile: dict[str, Any]) -> str:
+    support = " ".join(
+        str(best.get(field) or "")
+        for field in ("supporting_sentence", "row_label", "column_label", "table_title", "value_context")
+    )
+    support_lower = support.lower()
+    unit = str(best.get("value_unit") or "").lower()
+    if metric_name == "segment_revenue" and _accepted_status(profile, "segment_growth"):
+        if unit in {"%", "per cent"} and re.search(r"\b(?:growth|grew|increased|increase|declined|decreased|change)\b", support_lower):
+            return "segment_growth"
+    if metric_name == "margins" and _accepted_status(profile, "profitability_metric"):
+        if re.search(
+            r"\b(?:npata|ebit|ebita|operating profit|underlying profit|net profit after tax before amortisation)\b",
+            support_lower,
+        ) and "margin" not in support_lower:
+            return "profitability_metric"
+    return "value_extracted"
 
 
 def _extract_metric_value_from_text(
@@ -2806,6 +3465,24 @@ def _extract_metric_value_from_text(
     }
     if not profile:
         return base
+    if metric_name == "realised_price":
+        realised_price = _bhp_flattened_realised_price_association(clean, profile, base)
+        if realised_price:
+            return realised_price
+    if metric_name == "segment_revenue":
+        segment_card = _csl_segment_revenue_card_association(clean, profile, base)
+        if segment_card:
+            return segment_card
+        segment_growth = _segment_growth_association(clean, profile, base)
+        if segment_growth:
+            return segment_growth
+    if metric_name == "margins":
+        profitability_metric = _csl_profitability_metric_association(clean, profile, base)
+        if profitability_metric:
+            return profitability_metric
+    early_narrative = _narrative_metric_association(metric_name=metric_name, clean=clean, profile=profile, base=base)
+    if early_narrative and not _metric_label_present(clean, profile):
+        return early_narrative
     label_present = _metric_label_present(clean, profile)
     if not label_present:
         return base
@@ -2893,13 +3570,15 @@ def _extract_metric_value_from_text(
             else ("direction_extracted" if best["direction"] != "neutral" or score >= 50 else "metric_mentioned_only")
         )
     )
+    if status == "value_extracted":
+        status = _special_status_for_value_candidate(metric_name, best, profile)
     if unit_missing_for_profile:
         status = "direction_extracted" if best["direction"] != "neutral" else "metric_mentioned_only"
-    clean_value = best["clean_metric_value"] if status == "value_extracted" else "unavailable"
-    confidence = "medium" if status == "value_extracted" else "low"
+    clean_value = best["clean_metric_value"] if status in VALUE_BEARING_STATUSES else "unavailable"
+    confidence = "medium" if status in VALUE_BEARING_STATUSES else "low"
     confidence_reason = (
         "clean value accepted because metric label, compatible unit, and proximity met threshold"
-        if status == "value_extracted"
+        if status in VALUE_BEARING_STATUSES
         else (
             "clean value withheld because accepted metric units were not preserved in the source text"
             if unit_missing_for_profile
@@ -2916,8 +3595,8 @@ def _extract_metric_value_from_text(
     return {
         **base,
         "clean_metric_value": clean_value,
-        "value_unit": best["value_unit"] if status == "value_extracted" else "unavailable",
-        "value_context": best["value_context"] if status == "value_extracted" else "value association below acceptance threshold",
+        "value_unit": best["value_unit"] if status in VALUE_BEARING_STATUSES else "unavailable",
+        "value_context": best["value_context"] if status in VALUE_BEARING_STATUSES else "value association below acceptance threshold",
         "metric_value_status": status,
         "association_score": score,
         "association_reason": association_reason,
@@ -2934,7 +3613,7 @@ def _extract_metric_value_from_text(
         "row_label": best.get("row_label", "unavailable"),
         "column_label": best.get("column_label", "unavailable"),
         "source_page": best.get("source_page", "unavailable"),
-        "cell_value": best.get("cell_value", "unavailable") if status == "value_extracted" else "unavailable",
+        "cell_value": best.get("cell_value", "unavailable") if status in VALUE_BEARING_STATUSES else "unavailable",
         "table_mapping_confidence": best.get("table_mapping_confidence", 0),
         "table_mapping_reason": best.get("table_mapping_reason", "no structured table mapping available"),
         "raw_row_text": best.get("raw_row_text", "unavailable"),
@@ -2942,6 +3621,9 @@ def _extract_metric_value_from_text(
         "prior_period_value": best.get("prior_period_value", "unavailable"),
         "variance_value": best.get("variance_value", "unavailable"),
         "variance_percent": best.get("variance_percent", "unavailable"),
+        "segment_name": _segment_name_in_text(
+            " ".join(str(best.get(field) or "") for field in ("supporting_sentence", "row_label", "table_title", "value_context"))
+        ),
     }
 
 
@@ -3046,8 +3728,11 @@ def _plugin_section_bonus(profile: dict[str, Any], section_title: str, text: str
 def _metric_status_rank(status: str) -> int:
     return {
         "value_extracted": 5,
+        "segment_growth": 5,
+        "profitability_metric": 5,
         "portfolio_mix_narrative": 4,
         "guidance_narrative": 4,
+        "plasma_network_narrative": 4,
         "table_row_unparsed": 3,
         "direction_extracted": 2,
         "metric_mentioned_only": 1,
@@ -3170,7 +3855,10 @@ def _extract_metric_value_from_document(
         page_number = str(page.get("page_number") or "unavailable")
         for table in page.get("tables", []):
             table_text = _table_text_from_structured_table(table)
-            if not table_text or not _metric_label_present(table_text, profile):
+            if not table_text or (
+                not _metric_label_present(table_text, profile)
+                and not _narrative_context_present(metric_name, table_text, profile)
+            ):
                 continue
             association = _extract_metric_value_from_text(table_text, metric_name, ticker_plugin=ticker_plugin)
             if (
@@ -3192,7 +3880,10 @@ def _extract_metric_value_from_document(
                 candidates.append(candidate)
         for block in page.get("text_blocks", []):
             block_text = str(block.get("text") or "")
-            if not block_text or not _metric_label_present(block_text, profile):
+            if not block_text or (
+                not _metric_label_present(block_text, profile)
+                and not _narrative_context_present(metric_name, block_text, profile)
+            ):
                 continue
             association = _extract_metric_value_from_text(block_text, metric_name, ticker_plugin=ticker_plugin)
             candidate = _metric_candidate_from_association(
@@ -3704,7 +4395,15 @@ def _source_from_row(
         return source
     try:
         raw_document = http_get(url, headers)
-        structured_document = _document_text_for_structure(raw_document, url, title)
+        expanded_document, structured_child_urls = _expand_structured_online_annual_report(
+            raw_document,
+            url,
+            title,
+            http_get,
+            headers,
+            ticker_plugin,
+        )
+        structured_document = _document_text_for_structure(expanded_document, url, title)
         text = _excerpt(structured_document, excerpt_chars)
         source["extraction_status"] = "available" if text else "unavailable"
         source["document_role"] = _document_role(document_type, raw_document=raw_document, url=url, title=title)
@@ -3722,6 +4421,8 @@ def _source_from_row(
             str(source["extraction_status"]),
         )
         source["document_structure"] = _build_document_structure(structured_document)
+        if structured_child_urls:
+            source["structured_online_child_urls"] = structured_child_urls
         source["excerpt"] = text
         if _is_html_like_document(raw_document) and source["metric_eligibility"] == "discovery_only":
             source["discovered_child_rows"] = [

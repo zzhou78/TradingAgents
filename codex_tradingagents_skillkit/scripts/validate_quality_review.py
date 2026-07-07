@@ -15,6 +15,8 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from core_metric_coverage import CORE_METRIC_PROFILES, evaluate_core_metric_coverage
 
+VALUE_BEARING_METRIC_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
+
 ROLE_REQUIRED_SECTIONS = {
     ("1_analysts", "market.md"): ["Tool Outputs Used", "Quantitative Regime / Tool Outputs"],
     ("1_analysts", "sentiment.md"): [
@@ -705,11 +707,11 @@ def _asx_research_specificity_errors(research_path: Path, evidence_path: Path | 
                 if clean_value not in {"", "unavailable"} and association_score < 80:
                     errors.append("ASX metric audit populates clean_metric_value below accepted association threshold")
                     break
-                if clean_value not in {"", "unavailable"} and status != "value_extracted":
-                    errors.append("ASX metric audit populates clean_metric_value without value_extracted status")
+                if clean_value not in {"", "unavailable"} and status not in VALUE_BEARING_METRIC_STATUSES:
+                    errors.append("ASX metric audit populates clean_metric_value without value-bearing status")
                     break
                 if (
-                    status == "value_extracted"
+                    status in VALUE_BEARING_METRIC_STATUSES
                     and
                     association_score >= 90
                     and _dense_financial_numeric_text(support_text)

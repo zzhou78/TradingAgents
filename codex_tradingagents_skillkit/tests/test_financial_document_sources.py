@@ -436,6 +436,60 @@ def test_csl_structured_online_annual_report_is_eligible_financial_source():
     assert "https://investors.csl.com/annualreport/2025/" in requested_urls
 
 
+def test_csl_structured_online_report_expands_navigation_linked_segment_pages():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/CSL/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/CSL" in url:
+            return """
+            <html><body>
+            <a href="https://investors.csl.com/annualreport/2025/">CSL 2025 Annual Report 19 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://investors.csl.com/annualreport/2025/":
+            return """
+            <html><body>
+            <h1>CSL 2025 Annual Report</h1>
+            <h2>Operating and Financial Review</h2>
+            <h2>Financial Report</h2>
+            <h2>Key Performance Data Summary</h2>
+            <p>Revenue, net debt, plasma collections and outlook are covered in the annual report sections.</p>
+            <nav><a href="/annualreport/2025/csl-behring/">CSL Behring</a></nav>
+            </body></html>
+            """
+        if url == "https://investors.csl.com/annualreport/2025/csl-behring/":
+            return """
+            <html><body>
+            <h1>CSL Behring</h1>
+            <table>
+              <caption>CSL Behring</caption>
+              <tr><th>Metric</th><th>Unit</th><th>FY2025</th></tr>
+              <tr><td>Revenue</td><td>US$m</td><td>10,500</td></tr>
+            </table>
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("CSL.AX", "2026-07-02", http_get=fake_http_get)
+
+    report = next(source for source in packet["sources"] if source["url"] == "https://investors.csl.com/annualreport/2025/")
+    assert "https://investors.csl.com/annualreport/2025/csl-behring/" in requested_urls
+    assert report["structured_online_child_urls"] == ["https://investors.csl.com/annualreport/2025/csl-behring/"]
+    segment_revenue = next(
+        section
+        for section in report["extracted_sections"]
+        if section.get("section_type") == "sector_metric" and section.get("metric_name") == "segment_revenue"
+    )
+    assert segment_revenue["metric_value_status"] == "value_extracted"
+    assert segment_revenue["segment_name"] == "CSL Behring"
+    assert segment_revenue["row_label"] == "Revenue"
+    assert segment_revenue["clean_metric_value"] == "10500"
+
+
 def test_asx_fallback_prefilters_archive_pages_to_latest_primary_report_pdf():
     module = _load_module()
     requested_urls: list[str] = []
@@ -1479,6 +1533,89 @@ def test_bhp_realised_price_requires_structured_table_row_and_column_mapping():
     assert result["table_mapping_confidence"] >= 80
 
 
+def test_bhp_realised_price_accepts_commodity_row_under_average_realised_prices_table():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "__TABLE_ROW__ page=31 table=1 row=0 title=Average_realised_prices | "
+        "Average realised prices | FY2025 US$/t | FY2024 US$/t\n"
+        "__TABLE_ROW__ page=31 table=1 row=1 title=Average_realised_prices | "
+        "Iron ore | 103 | 98",
+        "realised_price",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "103"
+    assert result["row_label"] == "Iron ore"
+    assert result["value_unit"] == "US$/t"
+    assert result["column_label"] == "FY2025 US$/t"
+    assert result["source_page"] == "31"
+    assert result["table_mapping_confidence"] >= 80
+
+
+def test_bhp_realised_price_accepts_wmt_unit():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "__TABLE_ROW__ page=32 table=1 row=0 title=Average_realised_prices_USD_per_wmt | "
+        "Average realised prices (US$/wmt) | FY2025 | FY2024\n"
+        "__TABLE_ROW__ page=32 table=1 row=1 title=Average_realised_prices_USD_per_wmt | "
+        "Iron ore | 80.35 | 92.54",
+        "realised_price",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "80.35"
+    assert result["row_label"] == "Iron ore"
+    assert result["value_unit"] == "US$/wmt"
+
+
+def test_bhp_realised_price_accepts_usc_per_lb():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "__TABLE_ROW__ page=33 table=1 row=0 title=Average_realised_prices | "
+        "Average realised prices | FY2025 USc/lb | FY2024 USc/lb\n"
+        "__TABLE_ROW__ page=33 table=1 row=1 title=Average_realised_prices | "
+        "Copper | 423 | 389",
+        "realised_price",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "423"
+    assert result["row_label"] == "Copper"
+    assert result["value_unit"] == "USc/lb"
+
+
+def test_bhp_realised_price_accepts_flattened_average_realised_prices_row():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Year ended 30 June 2025 2024 Total copper production (kt) 2,017 1,865 "
+        "Average realised prices Copper (US$/lb) 4.25 3.98 Unit costs Escondida (US$/lb) 1.19 1.45",
+        "realised_price",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "4.25"
+    assert result["row_label"] == "Copper"
+    assert result["column_label"] == "FY2025 US$/lb"
+    assert result["prior_period_value"] == "3.98"
+    assert result["table_mapping_confidence"] >= 80
+
+
 def test_bhp_unit_cost_prefers_dollar_per_tonne_guidance_over_basis_percentage():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1524,6 +1661,98 @@ def test_bhp_commodity_exposure_does_not_capture_production_decline_percentage()
     )
 
     assert result == {}
+
+
+def test_bhp_commodity_exposure_accepts_portfolio_mix_narrative_from_document_section():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+    source = {
+        "source_quality_tier": "tier_3_company_annual_report_pdf",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "BHP.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "12",
+                "tables": [],
+                "text_blocks": [
+                    {
+                        "section_title": "operational review",
+                        "text": (
+                            "Operational review portfolio. BHP's portfolio spans iron ore, copper, "
+                            "steelmaking coal and potash across long-life operating assets."
+                        ),
+                    }
+                ],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "commodity_exposure",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "portfolio_mix_narrative"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["value_unit"] == "narrative"
+    assert set(result["commodity_names_identified"]) >= {"iron ore", "copper", "steelmaking coal", "potash"}
+    assert result["source_page"] == "12"
+    assert "iron ore" in result["supporting_sentence"].lower()
+    assert "copper" in result["supporting_sentence"].lower()
+
+
+def test_bhp_commodity_exposure_rejects_production_performance_percent_as_numeric_mix():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+    source = {
+        "source_quality_tier": "tier_3_company_annual_report_pdf",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "BHP.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "19",
+                "tables": [
+                    {
+                        "source_page": "19",
+                        "table_index": "1",
+                        "table_title": "segment_product_performance",
+                        "section_title": "segment_product_performance",
+                        "rows": [
+                            {"row_index": "0", "cells": ["Commodity", "FY2025 %"]},
+                            {"row_index": "1", "cells": ["Iron ore", "2"]},
+                        ],
+                    }
+                ],
+                "text_blocks": [],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "commodity_exposure",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
 
 
 def test_health_insurer_operating_profit_metric_profile_extracts_margin():
@@ -1650,6 +1879,168 @@ def test_csl_structured_online_report_extracts_guidance_debt_plasma_and_rd():
     assert sections["plasma_collections"]["metric_value_status"] == "value_extracted"
     assert sections["r_and_d"]["metric_value_status"] == "value_extracted"
     assert "https://investors.csl.com/annualreport/2025/" in requested_urls
+
+
+def test_csl_segment_revenue_from_segment_section():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+    source = {
+        "source_quality_tier": "tier_3_structured_online_annual_report",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "CSL.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "14",
+                "tables": [
+                    {
+                        "source_page": "14",
+                        "table_index": "1",
+                        "table_title": "CSL Behring",
+                        "section_title": "CSL Behring",
+                        "rows": [
+                            {"row_index": "0", "cells": ["Metric", "Unit", "FY2025"]},
+                            {"row_index": "1", "cells": ["Revenue", "US$m", "10,500"]},
+                        ],
+                    }
+                ],
+                "text_blocks": [],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "segment_revenue",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["segment_name"] == "CSL Behring"
+    assert result["row_label"] == "Revenue"
+    assert result["clean_metric_value"] == "10500"
+    assert result["value_unit"] == "US$m"
+
+
+def test_csl_segment_growth_extracts_when_revenue_value_absent():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "CSL Seqirus revenue increased 8% at constant currency.",
+        "segment_revenue",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "segment_growth"
+    assert result["segment_name"] == "CSL Seqirus"
+    assert result["clean_metric_value"] == "8"
+    assert result["value_unit"] == "%"
+
+
+def test_csl_segment_revenue_card_extracts_value_before_label():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "US$11,158m CSL Behring revenue US$2,166m CSL Seqirus revenue US$2,234m CSL Vifor revenue.",
+        "segment_revenue",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["segment_name"] == "CSL Behring"
+    assert result["clean_metric_value"] == "11158"
+    assert result["value_unit"] == "US$m"
+
+
+def test_csl_profitability_metric_extracts_npata_amount_as_margin_substitute():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "NPATA attributable to equity holders of US$3.2 billion for the year ended 30 June 2025, up 11%.",
+        "margins",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "profitability_metric"
+    assert result["row_label"] == "NPATA"
+    assert result["clean_metric_value"] == "3.2"
+    assert result["value_unit"] == "US$bn"
+
+
+def test_csl_debt_rejects_cashflow_near_segment_revenue_card():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "US$2,234m CSL Vifor revenue Cashflow from operations was $3,561 million, up 29%.",
+        "debt",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_csl_debt_rejects_cash_and_cash_equivalents_without_debt_context():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Consolidated Entity 2025 2024 Notes US$m US$m CURRENT ASSETS "
+        "Cash and cash equivalents 11 2,157 1,657 Receivables and contract assets 14 3,141 2,895",
+        "debt",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_csl_guidance_narrative_satisfies_guidance_source_record():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Outlook and guidance. CSL expects NPATA growth at constant currency, subject to market conditions.",
+        "guidance",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "guidance_narrative"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["guidance_direction"] in {"positive", "mixed", "neutral"}
+
+
+def test_csl_plasma_network_narrative_is_accepted():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "CSL Plasma expanded its plasma collection network and donor centres during the year.",
+        "plasma_collections",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "plasma_network_narrative"
+    assert result["clean_metric_value"] == "unavailable"
+    assert result["direction"] == "supportive"
 
 
 def test_csl_segment_revenue_dense_row_requires_structured_table_mapping():

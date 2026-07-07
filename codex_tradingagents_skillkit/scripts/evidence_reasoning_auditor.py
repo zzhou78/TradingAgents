@@ -8,6 +8,7 @@ from typing import Any
 
 ACCEPTED_ASSOCIATION_THRESHOLD = 80
 ACCEPTED_TABLE_MAPPING_THRESHOLD = 80
+VALUE_BEARING_METRIC_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
 WEAK_METRIC_STATUSES = {"table_row_unparsed", "context_only", "metric_mentioned_only", "unavailable"}
 ROLE_REPORTS = [
     ("research_manager", Path("2_research") / "manager.md"),
@@ -118,11 +119,14 @@ def _metric_attachment_findings(records: list[dict[str, Any]]) -> tuple[list[dic
         reference = f"{evidence_id} metric={metric_name}"
 
         if _clean_value_present(record):
-            if status != "value_extracted":
+            if status not in VALUE_BEARING_METRIC_STATUSES:
                 critical.append(
                     _finding(
                         attack="Metric-Value Attachment Attack",
-                        finding="clean_metric_value is populated without metric_value_status=value_extracted.",
+                        finding=(
+                            "clean_metric_value is populated without metric_value_status=value_extracted "
+                            "or an approved value-bearing metric_value_status."
+                        ),
                         reference=reference,
                         required_remediation="Suppress the clean value or set value_extracted only after valid association proof.",
                         regression_test="Add a metric audit test where clean_metric_value with weak status fails.",
