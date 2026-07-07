@@ -774,6 +774,37 @@ def test_asx_miner_metrics_are_extracted_for_bhp():
     assert statuses["commodity_exposure"] == "available"
 
 
+def test_bhp_plugin_provides_miner_target_rules():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    assert plugin["ticker"] == "BHP.AX"
+    assert "realised_price" in plugin["metrics"]
+    assert "average realised price" in plugin["metrics"]["realised_price"]["target_rows"]
+    assert "contingent payments" in plugin["metrics"]["realised_price"]["hard_rejected_nearby_terms"]
+    assert "portfolio_mix_narrative" in plugin["metrics"]["commodity_exposure"]["accepted_statuses"]
+    assert "ore reserves" in plugin["metrics"]["reserves_resources"]["target_sections"]
+
+
+def test_bhp_commodity_exposure_narrative_is_not_numeric_clean_value():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("BHP.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Operational review portfolio mix narrative. BHP's commodity portfolio includes iron ore, "
+        "copper, steelmaking coal and potash across global assets.",
+        "commodity_exposure",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "portfolio_mix_narrative"
+    assert result["clean_metric_value"] == "unavailable"
+    assert set(result["commodity_names"]) >= {"iron ore", "copper", "steelmaking coal", "potash"}
+
+
 def test_asx_bank_metrics_are_extracted_for_cba():
     module = _load_module()
     packet = _asx_sector_packet(
@@ -1555,6 +1586,72 @@ def test_csl_segment_revenue_and_guidance_reject_unrelated_percentages_and_toc_n
     assert sections["guidance"]["metric_value_status"] in {"metric_mentioned_only", "context_only"}
 
 
+def test_csl_plugin_provides_structured_online_report_targets():
+    module = _load_module()
+    asx = module._load_asx_collector()
+
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    assert plugin["ticker"] == "CSL.AX"
+    assert "https://investors.csl.com/annualreport/2025/" in plugin["source_hints"]["fallback_page_urls"]
+    assert "tier_3_structured_online_annual_report" in plugin["source_hints"]["preferred_source_quality_tiers"]
+    assert "CSL Behring revenue" in plugin["metrics"]["segment_revenue"]["target_rows"]
+    assert "outlook" in plugin["metrics"]["guidance"]["target_sections"]
+    assert "net debt" in plugin["metrics"]["debt"]["target_rows"]
+    assert "plasma collection network" in plugin["metrics"]["plasma_collections"]["target_sections"]
+
+
+def test_csl_structured_online_report_extracts_guidance_debt_plasma_and_rd():
+    module = _load_module()
+    requested_urls: list[str] = []
+
+    def fake_http_get(url: str, headers: dict[str, str]) -> str:
+        requested_urls.append(url)
+        if "company/CSL/announcements" in url:
+            raise RuntimeError("ASX endpoint unavailable")
+        if "markets/company/CSL" in url:
+            return """
+            <html><body>
+            <a href="https://investors.csl.com/annualreport/2025/">CSL 2025 Annual Report 19 Aug 2025</a>
+            </body></html>
+            """
+        if url == "https://investors.csl.com/annualreport/2025/":
+            return """
+            <html><body>
+            <h1>CSL 2025 Annual Report</h1>
+            <h2>Key Performance Data Summary</h2>
+            __TABLE_ROW__ page=8 table=1 row=0 title=key_performance_data | Metric | FY2025 US$m | FY2024 US$m | Change %
+            __TABLE_ROW__ page=8 table=1 row=1 title=key_performance_data | CSL Behring revenue | 11,158 | 10,608 | 5.2%
+            <h2>Operating and Financial Review</h2>
+            Plasma collection network expanded to 341 centres.
+            Gross margin was 50.6%.
+            <h2>Financial Report</h2>
+            Net debt was US$10.2bn.
+            Research and development investment was US$1.4bn.
+            <h2>Outlook</h2>
+            Guidance outlook expects revenue growth of 5%.
+            </body></html>
+            """
+        raise AssertionError(url)
+
+    packet = module.collect_financial_document_sources("CSL.AX", "2026-07-02", http_get=fake_http_get)
+    report = next(source for source in packet["sources"] if source["url"] == "https://investors.csl.com/annualreport/2025/")
+    sections = {
+        section["metric_name"]: section
+        for section in report["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert report["source_quality_tier"] == "tier_3_structured_online_annual_report"
+    assert sections["segment_revenue"]["metric_value_status"] == "value_extracted"
+    assert sections["segment_revenue"]["row_label"] == "CSL Behring revenue"
+    assert sections["guidance"]["metric_value_status"] == "value_extracted"
+    assert sections["debt"]["metric_value_status"] == "value_extracted"
+    assert sections["plasma_collections"]["metric_value_status"] == "value_extracted"
+    assert sections["r_and_d"]["metric_value_status"] == "value_extracted"
+    assert "https://investors.csl.com/annualreport/2025/" in requested_urls
+
+
 def test_csl_segment_revenue_dense_row_requires_structured_table_mapping():
     module = _load_module()
     asx = module._load_asx_collector()
@@ -1605,6 +1702,24 @@ def test_wow_dividends_reject_footnote_marker_and_ebit_margin_is_preserved():
     assert sections["ebit_margin"]["clean_metric_value"] == "82"
     assert sections["ebit_margin"]["value_unit"] == "bps"
     assert sections["ebit_margin"]["direction"] == "adverse"
+
+
+def test_wow_sector_metric_records_include_inventory_and_dividend_subtypes():
+    module = _load_module()
+    packet = _asx_sector_packet(
+        module,
+        "WOW.AX",
+        "Annual report operating and financial review cash flow statement. "
+        "Inventories decreased by $44 million. Dividend increased 26.0%.",
+    )
+    sections = {
+        section["metric_name"]: section
+        for section in packet["sources"][0]["extracted_sections"]
+        if section.get("section_type") == "sector_metric"
+    }
+
+    assert sections["inventory"]["metric_subtype"] == "inventory_balance"
+    assert sections["dividends"]["metric_subtype"] == "dividend_change_percent"
 
 
 def test_wow_capex_extracts_cash_flow_purchase_of_ppe_row():

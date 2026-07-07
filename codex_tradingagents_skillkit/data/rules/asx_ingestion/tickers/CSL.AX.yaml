@@ -1,0 +1,249 @@
+ticker: CSL.AX
+plugin_version: 1
+source_hints:
+  official_urls:
+    - https://investors.csl.com/
+    - https://investors.csl.com/annualreport/2025/
+  fallback_page_urls:
+    - https://investors.csl.com/annualreport/2025/
+    - https://investors.csl.com/
+  preferred_source_quality_tiers:
+    - tier_1_asx_lodged_pdf
+    - tier_2_company_results_pdf
+    - tier_3_company_annual_report_pdf
+    - tier_3_structured_online_annual_report
+  preferred_document_roles:
+    - annual_report
+    - results_presentation
+    - appendix_4e
+    - financial_report_pdf
+  preferred_document_types:
+    - Annual Report
+    - Full Year Results
+    - Appendix 4E / Preliminary Final Report
+  document_type_hints:
+    - pattern: "annualreport/20\\d{2}|annual\\s+report"
+      document_type: "Annual Report"
+    - pattern: "full[- ]year.*results|fy\\s?25.*results"
+      document_type: "Full Year Results"
+preferred_sections:
+  - key performance data summary
+  - key performance data
+  - operating and financial review
+  - csl behring
+  - csl seqirus
+  - csl vifor
+  - financial report
+  - outlook
+  - guidance
+  - research and development
+  - debt
+  - borrowings
+  - net debt
+  - plasma collections
+  - plasma collection network
+metrics:
+  segment_revenue:
+    accepted_labels:
+      - segment revenue
+      - revenue by operating segment
+      - segment sales
+      - CSL Behring revenue
+      - CSL Seqirus revenue
+      - CSL Vifor revenue
+    accepted_row_labels:
+      - segment revenue
+      - revenue by operating segment
+      - segment sales
+      - CSL Behring revenue
+      - CSL Seqirus revenue
+      - CSL Vifor revenue
+      - revenue
+    target_rows:
+      - CSL Behring revenue
+      - CSL Seqirus revenue
+      - CSL Vifor revenue
+      - revenue by operating segment
+      - segment revenue
+      - segment sales
+    target_sections:
+      - key performance data summary
+      - key performance data
+      - operating and financial review
+      - csl behring
+      - csl seqirus
+      - csl vifor
+    accepted_units:
+      - US$m
+      - US$bn
+      - $m
+      - $bn
+      - "%"
+    accepted_value_patterns:
+      - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_percent
+      - variance_value
+  margins:
+    accepted_labels:
+      - gross margin
+      - EBIT margin
+      - operating margin
+      - NPATA margin
+      - margin
+    accepted_row_labels:
+      - gross margin
+      - EBIT margin
+      - operating margin
+      - NPATA margin
+    target_rows:
+      - gross margin
+      - EBIT margin
+      - operating margin
+      - NPATA margin
+    target_sections:
+      - key performance data summary
+      - operating and financial review
+      - financial report
+    accepted_units:
+      - "%"
+      - bps
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*bps\\b"
+  guidance:
+    accepted_labels:
+      - guidance
+      - outlook
+      - expected NPATA
+      - expected revenue
+      - expected profit
+      - financial outlook
+    accepted_statuses:
+      - value_extracted
+      - guidance_narrative
+    target_sections:
+      - outlook
+      - guidance
+      - financial outlook
+    target_rows:
+      - expected NPATA
+      - expected revenue
+      - expected profit
+      - guidance
+      - outlook
+    accepted_units:
+      - "%"
+      - US$m
+      - US$bn
+      - $m
+      - $bn
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+      - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
+    required_nearby_terms:
+      - guidance
+      - outlook
+      - expects
+      - expected
+      - forecast
+      - financial outlook
+    rejected_nearby_terms:
+      - table of contents
+      - contents
+      - segment revenue
+  debt:
+    accepted_labels:
+      - net debt
+      - borrowings
+      - debt
+      - leverage
+      - cash and cash equivalents
+    accepted_row_labels:
+      - net debt
+      - borrowings
+      - debt
+      - leverage
+      - cash and cash equivalents
+    target_rows:
+      - net debt
+      - borrowings
+      - debt
+      - leverage
+      - cash and cash equivalents
+    target_sections:
+      - financial report
+      - borrowings
+      - liquidity
+      - net debt
+    accepted_units:
+      - US$m
+      - US$bn
+      - $m
+      - $bn
+    accepted_value_patterns:
+      - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
+  plasma_collections:
+    accepted_labels:
+      - plasma collections
+      - plasma collection
+      - plasma collection volume
+      - plasma centres
+      - plasma collection network
+      - collection network
+    accepted_row_labels:
+      - plasma collections
+      - plasma collection volume
+      - plasma centres
+      - collection network
+      - plasma collection network
+    target_rows:
+      - plasma collections
+      - plasma collection volume
+      - plasma centres
+      - collection network
+      - plasma collection network
+    target_sections:
+      - CSL Plasma
+      - plasma collections
+      - plasma collection network
+      - CSL Behring
+      - operating and financial review
+    accepted_units:
+      - "%"
+      - m
+      - centres
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*m\\b"
+      - "\\b\\d+(?:,\\d{3})?\\s*centres\\b"
+  r_and_d:
+    accepted_labels:
+      - research and development
+      - R&D
+      - R&D expense
+      - R&D investment
+    accepted_row_labels:
+      - research and development
+      - R&D expense
+      - R&D investment
+    target_rows:
+      - research and development
+      - R&D expense
+      - R&D investment
+    target_sections:
+      - research and development
+      - R&D
+      - financial report
+      - operating and financial review
+    accepted_units:
+      - US$m
+      - US$bn
+      - $m
+      - $bn
+      - "%"
+    accepted_value_patterns:
+      - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"

@@ -203,15 +203,33 @@ def _audit_status_fields(report_dir: Path) -> dict[str, Any]:
     }
 
 
+def _core_metric_materiality_defaults(status: str = "not_applicable") -> dict[str, Any]:
+    return {
+        "materiality_status": status,
+        "critical_metrics_required": [],
+        "critical_metrics_clean": [],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [],
+        "important_metrics_unresolved": [],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [],
+        "warnings": [],
+        "major_warnings": [],
+        "remediation_required_reasons": [],
+    }
+
+
 def _core_metric_coverage_fields(evidence_path: Path | None, ticker: str = "") -> dict[str, Any]:
     if evidence_path is None:
         return {
             "core_metric_coverage_status": "not_applicable",
             "core_metrics_required": [],
             "core_metrics_cleanly_extracted": [],
+            "core_metrics_materially_satisfied": [],
             "core_metrics_unavailable_with_reason": [],
             "core_metrics_unresolved": [],
             "core_metric_coverage_passed": True,
+            **_core_metric_materiality_defaults(),
         }
     try:
         evidence = _read_json(evidence_path)
@@ -220,18 +238,22 @@ def _core_metric_coverage_fields(evidence_path: Path | None, ticker: str = "") -
             "core_metric_coverage_status": "missing_evidence",
             "core_metrics_required": [],
             "core_metrics_cleanly_extracted": [],
+            "core_metrics_materially_satisfied": [],
             "core_metrics_unavailable_with_reason": [],
             "core_metrics_unresolved": [],
             "core_metric_coverage_passed": False,
+            **_core_metric_materiality_defaults("remediation_required"),
         }
     if not str(evidence.get("ticker") or ticker).upper().endswith(".AX"):
         return {
             "core_metric_coverage_status": "not_applicable",
             "core_metrics_required": [],
             "core_metrics_cleanly_extracted": [],
+            "core_metrics_materially_satisfied": [],
             "core_metrics_unavailable_with_reason": [],
             "core_metrics_unresolved": [],
             "core_metric_coverage_passed": True,
+            **_core_metric_materiality_defaults(),
         }
     try:
         from core_metric_coverage import evaluate_core_metric_coverage_from_evidence
@@ -242,9 +264,11 @@ def _core_metric_coverage_fields(evidence_path: Path | None, ticker: str = "") -
             "core_metric_coverage_status": "error",
             "core_metrics_required": [],
             "core_metrics_cleanly_extracted": [],
+            "core_metrics_materially_satisfied": [],
             "core_metrics_unavailable_with_reason": [],
             "core_metrics_unresolved": [f"core metric coverage failed to run: {exc}"],
             "core_metric_coverage_passed": False,
+            **_core_metric_materiality_defaults("remediation_required"),
         }
 
 

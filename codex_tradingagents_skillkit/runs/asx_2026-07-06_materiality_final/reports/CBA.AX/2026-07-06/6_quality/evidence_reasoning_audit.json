@@ -1,0 +1,31 @@
+{
+  "summary_verdict": "pass_with_warnings",
+  "critical_findings": [],
+  "warnings": [
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    }
+  ],
+  "evidence_references": [
+    "financial:CBA.AX:2026-07-06:019 metric=arrears",
+    "financial:CBA.AX:2026-07-06:022 metric=roe"
+  ],
+  "required_remediation": [],
+  "regression_tests_needed": [
+    "Consider adding a fixture for this metric/source layout."
+  ],
+  "do_not_change": [
+    "Do not replace Bull/Bear debate, Research Manager, Trader, Risk Analysts, Portfolio Manager, or Quality Reviewer.",
+    "Keep Research Manager rating separate from Trader action and Portfolio stance.",
+    "Keep paper-study-only boundary, ASX metric safeguards, dense-table table_row_unparsed behavior, validators, and remediation loop."
+  ]
+}

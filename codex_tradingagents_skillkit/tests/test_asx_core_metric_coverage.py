@@ -43,6 +43,28 @@ def _clean_metric(sector: str, metric_name: str, value: str = "1.0") -> dict[str
     }
 
 
+def _narrative_metric(sector: str, metric_name: str, status: str) -> dict[str, object]:
+    return {
+        "section_kind": "sector_metric",
+        "sector": sector,
+        "metric_name": metric_name,
+        "source_quality_tier": "tier_1_asx_lodged_pdf",
+        "document_role": "annual_report",
+        "status": "available",
+        "clean_metric_value": "unavailable",
+        "metric_value_status": status,
+        "association_score": 90,
+        "association_reason": "eligible financial report section contains a supported narrative metric",
+        "table_mapping_confidence": 0,
+        "direction": "neutral",
+        "confidence": "medium",
+        "evidence_id": f"financial:TEST:2026-07-02:{metric_name}",
+        "supporting_sentence": f"{metric_name} narrative is supported by source section proof.",
+        "section_title": "operating_and_financial_review",
+        "source_page": "12",
+    }
+
+
 def _unavailable_metric(sector: str, metric_name: str) -> dict[str, object]:
     return {
         "section_kind": "sector_metric",
@@ -106,7 +128,7 @@ def test_bhp_core_metrics_fail_when_mostly_unresolved():
     assert status["core_metrics_unavailable_with_reason"] == ["capex"]
 
 
-def test_weak_core_metric_with_explicit_gap_disclosure_requires_remediation_without_blocker():
+def test_cba_materiality_passes_with_major_warnings_when_credit_quality_uses_impairment():
     module = _load_coverage()
     records = [
         _clean_metric("banks", "net_interest_margin"),
@@ -120,9 +142,36 @@ def test_weak_core_metric_with_explicit_gap_disclosure_requires_remediation_with
 
     status = module.evaluate_core_metric_coverage(records, ticker="CBA.AX")
 
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert status["critical_metrics_required"] == ["net_interest_margin", "cet1", "credit_quality_group"]
+    assert status["critical_metrics_clean"] == ["net_interest_margin", "cet1", "credit_quality_group"]
+    assert status["critical_metrics_unresolved"] == []
+    assert {"arrears", "roe"}.issubset(set(status["important_metrics_unresolved"]))
+    assert any("arrears not cleanly extracted" in warning for warning in status["major_warnings"])
+    assert any("ROE not cleanly extracted" in warning for warning in status["major_warnings"])
+    assert any("credit quality assessment relies on impairment" in warning for warning in status["major_warnings"])
+
+
+def test_cba_materiality_requires_one_clean_credit_quality_metric():
+    module = _load_coverage()
+    records = [
+        _clean_metric("banks", "net_interest_margin"),
+        _clean_metric("banks", "cet1"),
+        _clean_metric("banks", "loan_growth"),
+        _weak_gap_metric("banks", "arrears"),
+        _weak_gap_metric("banks", "impairment"),
+        _clean_metric("banks", "roe"),
+        _clean_metric("banks", "dividend"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="CBA.AX")
+
     assert status["core_metric_coverage_passed"] is False
-    assert status["core_metrics_gap_disclosed"] == []
-    assert set(status["core_metrics_unresolved"]) >= {"arrears", "roe"}
+    assert status["materiality_status"] == "remediation_required"
+    assert status["critical_metrics_unresolved"] == ["credit_quality_group"]
+    assert any("credit_quality_group" in reason for reason in status["remediation_required_reasons"])
+    assert set(status["core_metrics_unresolved"]) >= {"arrears", "impairment"}
 
 
 def test_core_metric_clean_value_from_landing_page_tier_fails_coverage():
@@ -208,7 +257,7 @@ def test_mpl_passes_when_claims_ratio_clean_and_other_core_metrics_clean_or_unav
     assert status["core_metrics_unresolved"] == []
 
 
-def test_wow_inventory_unresolved_fails_even_when_ebit_margin_is_clean():
+def test_wow_materiality_passes_with_major_warnings_when_important_metrics_are_unresolved():
     module = _load_coverage()
     records = [
         _clean_metric("retailers", "sales_growth"),
@@ -221,8 +270,11 @@ def test_wow_inventory_unresolved_fails_even_when_ebit_margin_is_clean():
 
     status = module.evaluate_core_metric_coverage(records, ticker="WOW.AX")
 
-    assert status["core_metric_coverage_passed"] is False
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert status["critical_metrics_clean"] == ["sales_growth", "ebit_margin"]
     assert "inventory_or_working_capital" in status["core_metrics_unresolved"]
+    assert "inventory_or_working_capital" in status["important_metrics_unresolved"]
     assert "ebit_margin" in status["core_metrics_cleanly_extracted"]
 
 
@@ -248,8 +300,125 @@ def test_dense_table_clean_value_without_row_column_does_not_pass_core_coverage(
 
     status = module.evaluate_core_metric_coverage(records, ticker="WOW.AX")
 
-    assert status["core_metric_coverage_passed"] is False
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
     assert "inventory_or_working_capital" in status["core_metrics_unresolved"]
+
+
+def test_wow_inventory_movement_subtype_can_satisfy_working_capital_metric():
+    module = _load_coverage()
+    records = [
+        _clean_metric("retailers", "sales_growth"),
+        _clean_metric("retailers", "ebit_margin"),
+        {
+            **_clean_metric("retailers", "inventory", "44"),
+            "metric_subtype": "inventory_or_working_capital_movement",
+            "row_label": "Net investment in inventory",
+            "column_label": "Variance $m",
+            "cell_value": "44",
+            "table_mapping_confidence": 90,
+        },
+        _clean_metric("retailers", "capex"),
+        _unavailable_metric("retailers", "dividends"),
+        _unavailable_metric("retailers", "comparable_sales"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="WOW.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert "inventory_or_working_capital" in status["important_metrics_clean"]
+    assert "inventory_or_working_capital" not in status["important_metrics_unresolved"]
+
+
+def test_wow_dividend_change_subtype_does_not_satisfy_dividend_amount_metric():
+    module = _load_coverage()
+    records = [
+        _clean_metric("retailers", "sales_growth"),
+        _clean_metric("retailers", "ebit_margin"),
+        _clean_metric("retailers", "inventory", "4169"),
+        _clean_metric("retailers", "capex"),
+        {
+            **_clean_metric("retailers", "dividends", "5"),
+            "metric_subtype": "dividend_change_percent",
+            "value_unit": "%",
+        },
+        _unavailable_metric("retailers", "comparable_sales"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="WOW.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert "dividends" in status["supporting_metrics_unresolved"]
+    assert status["core_metric_coverage_details"]["dividends"]["reason"] == (
+        "clean value subtype is not valid for this metric profile"
+    )
+
+
+def test_bhp_commodity_exposure_portfolio_mix_narrative_satisfies_critical_without_numeric_value():
+    module = _load_coverage()
+    records = [
+        _clean_metric("miners", "production"),
+        _clean_metric("miners", "realised_price"),
+        _clean_metric("miners", "unit_cost_aisc"),
+        _clean_metric("miners", "capex"),
+        {
+            **_narrative_metric("miners", "commodity_exposure", "portfolio_mix_narrative"),
+            "commodity_names": ["iron ore", "copper", "steelmaking coal", "potash"],
+        },
+        _unavailable_metric("miners", "reserves_resources"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="BHP.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert "commodity_exposure" in status["critical_metrics_clean"]
+    assert "reserves_resources" in status["important_metrics_unresolved"]
+
+
+def test_bhp_missing_realised_price_still_blocks_miner_materiality():
+    module = _load_coverage()
+    records = [
+        _clean_metric("miners", "production"),
+        _weak_gap_metric("miners", "realised_price"),
+        _clean_metric("miners", "unit_cost_aisc"),
+        _clean_metric("miners", "capex"),
+        _narrative_metric("miners", "commodity_exposure", "portfolio_mix_narrative"),
+        _unavailable_metric("miners", "reserves_resources"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="BHP.AX")
+
+    assert status["core_metric_coverage_passed"] is False
+    assert status["materiality_status"] == "remediation_required"
+    assert "realised_price" in status["critical_metrics_unresolved"]
+
+
+def test_csl_structured_online_annual_report_tier_is_eligible_for_critical_healthcare_metrics():
+    module = _load_coverage()
+    records = [
+        {**_clean_metric("healthcare", "segment_revenue"), "source_quality_tier": "tier_3_structured_online_annual_report"},
+        {**_clean_metric("healthcare", "margins"), "source_quality_tier": "tier_3_structured_online_annual_report"},
+        {
+            **_narrative_metric("healthcare", "guidance", "guidance_narrative"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+        },
+        {**_clean_metric("healthcare", "debt"), "source_quality_tier": "tier_3_structured_online_annual_report"},
+        {
+            **_clean_metric("healthcare", "plasma_collections"),
+            "source_quality_tier": "tier_3_structured_online_annual_report",
+        },
+        {**_weak_gap_metric("healthcare", "r_and_d"), "source_quality_tier": "tier_3_structured_online_annual_report"},
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="CSL.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert status["critical_metrics_unresolved"] == []
+    assert "debt_or_balance_sheet" in status["critical_metrics_clean"]
+    assert "plasma_collections_or_collection_network" in status["critical_metrics_clean"]
+    assert "r_and_d" in status["important_metrics_unresolved"]
 
 
 def test_quality_gate_passed_fails_when_core_metric_coverage_fails(tmp_path: Path):

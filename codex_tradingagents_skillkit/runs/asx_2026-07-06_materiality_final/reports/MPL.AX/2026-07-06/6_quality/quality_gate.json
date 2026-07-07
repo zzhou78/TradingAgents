@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "ticker": "MPL.AX",
+  "trade_date": "2026-07-06",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "review_ready_clean",
+  "workflow_status": "workflow_complete",
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass",
+  "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "premium_growth",
+    "claims_ratio",
+    "membership",
+    "capital_adequacy",
+    "operating_profit_or_margin"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "premium_growth",
+    "claims_ratio",
+    "membership",
+    "capital_adequacy",
+    "operating_profit_or_margin"
+  ],
+  "core_metrics_materially_satisfied": [],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [],
+  "core_metric_coverage_passed": true,
+  "materiality_status": "review_ready_clean",
+  "critical_metrics_required": [
+    "claims_ratio",
+    "capital_adequacy"
+  ],
+  "critical_metrics_clean": [
+    "claims_ratio",
+    "capital_adequacy"
+  ],
+  "critical_metrics_unresolved": [],
+  "important_metrics_clean": [
+    "premium_growth",
+    "membership",
+    "operating_profit_or_margin"
+  ],
+  "important_metrics_unresolved": [],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [],
+  "remediation_required_reasons": [],
+  "review_ready": true,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_materiality_final\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Codex-session workflow and quality validators passed; see closed_loop_status.json for run-level workflow status."
+}

@@ -1,0 +1,298 @@
+ticker: BHP.AX
+plugin_version: 1
+source_hints:
+  official_urls:
+    - https://www.bhp.com/investors/annual-reporting
+    - https://www.bhp.com/investors/results-centre
+  fallback_page_urls:
+    - https://www.bhp.com/investors/annual-reporting
+    - https://www.bhp.com/investors/results-centre
+  preferred_source_quality_tiers:
+    - tier_1_asx_lodged_pdf
+    - tier_2_company_results_pdf
+    - tier_3_company_annual_report_pdf
+  preferred_document_roles:
+    - annual_report
+    - results_presentation
+    - appendix_4e
+    - financial_report_pdf
+  preferred_document_types:
+    - Annual Report
+    - Full Year Results
+    - Appendix 4E / Preliminary Final Report
+    - Operational Review
+  document_type_hints:
+    - pattern: "operational\\s+review|operations\\s+review"
+      document_type: "Full Year Results"
+    - pattern: "fy\\s?25.*results|full[- ]year.*results"
+      document_type: "Full Year Results"
+preferred_sections:
+  - operational review
+  - financial results
+  - realised prices
+  - average realised prices
+  - ore reserves
+  - mineral resources
+  - reserves and resources
+reject_sections:
+  - reports and presentations
+  - downloads
+  - contents
+metrics:
+  production:
+    accepted_labels:
+      - production
+      - produced
+      - shipments
+    accepted_row_labels:
+      - production
+      - copper production
+      - iron ore production
+      - steelmaking coal production
+      - potash production
+      - nickel production
+      - petroleum production
+      - shipments
+    target_rows:
+      - production
+      - copper production
+      - iron ore production
+      - steelmaking coal production
+      - potash production
+      - nickel production
+      - petroleum production
+      - shipments
+    target_sections:
+      - operational review
+      - production
+      - operations review
+    accepted_units:
+      - mt
+      - kt
+      - moz
+      - mmboe
+      - boe
+      - tonnes
+      - m
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*(?:Mt|kt|Moz|MMboe|boe|tonnes|m)\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_value
+    rejected_nearby_terms:
+      - contents
+      - downloads
+  realised_price:
+    accepted_labels:
+      - realised price
+      - realized price
+      - average realised price
+      - average realised prices
+    accepted_row_labels:
+      - realised price
+      - realized price
+      - average realised price
+      - average realised prices
+    target_rows:
+      - realised price
+      - realized price
+      - average realised price
+      - average realised prices
+    target_sections:
+      - realised prices
+      - average realised prices
+      - financial results
+      - operational review
+      - operations review
+    accepted_units:
+      - US$/t
+      - $/t
+      - US$/lb
+      - $/lb
+      - US$/oz
+      - $/oz
+      - US$/boe
+      - $/boe
+    accepted_value_patterns:
+      - "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne|lb|oz|boe)\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_value
+    hard_rejected_nearby_terms:
+      - contingent payments
+      - threshold
+      - thresholds
+      - revenue share
+      - narrative pricing assumptions
+    rejected_nearby_terms:
+      - contingent payments
+      - threshold
+      - revenue share
+      - contents
+  unit_cost_aisc:
+    accepted_labels:
+      - unit cost
+      - unit costs
+      - cash cost
+      - AISC
+      - all-in sustaining cost
+    accepted_row_labels:
+      - unit cost
+      - unit costs
+      - cash cost
+      - AISC
+      - all-in sustaining cost
+    target_rows:
+      - unit cost
+      - unit costs
+      - cash cost
+      - AISC
+      - all-in sustaining cost
+    target_sections:
+      - operational review
+      - financial results
+      - costs
+    accepted_units:
+      - US$/t
+      - $/t
+      - US$/oz
+      - $/oz
+      - US$/lb
+      - $/lb
+    accepted_value_patterns:
+      - "\\b(?:US\\$|\\$)?\\d+(?:\\.\\d+)?\\s*/\\s*(?:t|tonne|oz|lb)\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_value
+  capex:
+    accepted_labels:
+      - capital expenditure
+      - capex
+      - capital and exploration expenditure
+      - sustaining capital
+      - development capital
+      - investing cash flows
+    accepted_row_labels:
+      - capital expenditure
+      - capex
+      - capital and exploration expenditure
+      - sustaining capital
+      - development capital
+      - investing cash flows
+    target_rows:
+      - capital expenditure
+      - capex
+      - capital and exploration expenditure
+      - sustaining capital
+      - development capital
+      - investing cash flows
+    target_sections:
+      - cash flow statement
+      - investing activities
+      - financial results
+      - operational review
+    accepted_units:
+      - US$m
+      - US$bn
+      - A$m
+      - A$bn
+      - $m
+      - $bn
+    accepted_value_patterns:
+      - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_value
+  commodity_exposure:
+    accepted_labels:
+      - commodity exposure
+      - commodity mix
+      - portfolio mix
+      - commodity portfolio
+      - revenue by commodity
+      - EBITDA by commodity
+      - production by commodity
+    accepted_statuses:
+      - value_extracted
+      - portfolio_mix_narrative
+    accepted_row_labels:
+      - commodity exposure
+      - commodity mix
+      - portfolio mix
+      - revenue by commodity
+      - EBITDA by commodity
+      - production by commodity
+      - iron ore
+      - copper
+      - coal
+      - steelmaking coal
+      - potash
+      - nickel
+      - petroleum
+    target_rows:
+      - revenue by commodity
+      - EBITDA by commodity
+      - production by commodity
+      - commodity mix
+      - portfolio mix
+      - iron ore
+      - copper
+      - steelmaking coal
+      - coal
+      - potash
+      - nickel
+      - petroleum
+    target_sections:
+      - operational review
+      - commodity portfolio
+      - portfolio mix
+      - financial results
+    accepted_units:
+      - "%"
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*%\\b"
+    required_nearby_terms:
+      - iron ore
+      - copper
+    rejected_nearby_terms:
+      - downloads
+      - contents
+      - years
+  reserves_resources:
+    accepted_labels:
+      - ore reserves
+      - mineral resources
+      - reserves and resources
+      - petroleum reserves
+      - reserves
+      - resources
+    accepted_row_labels:
+      - ore reserves
+      - mineral resources
+      - proved reserves
+      - probable reserves
+      - reserves
+      - resources
+    target_rows:
+      - ore reserves
+      - mineral resources
+      - proved reserves
+      - probable reserves
+      - reserves
+      - resources
+    target_sections:
+      - ore reserves
+      - mineral resources
+      - reserves and resources
+      - petroleum reserves
+    accepted_units:
+      - mt
+      - kt
+      - moz
+      - mmboe
+      - boe
+    accepted_value_patterns:
+      - "\\b\\d+(?:\\.\\d+)?\\s*(?:Mt|kt|Moz|MMboe|boe)\\b"
+    preferred_value_type:
+      - current_period_value
+      - variance_value

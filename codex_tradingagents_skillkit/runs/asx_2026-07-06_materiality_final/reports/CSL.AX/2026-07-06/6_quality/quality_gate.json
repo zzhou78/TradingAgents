@@ -1,0 +1,87 @@
+{
+  "passed": false,
+  "ticker": "CSL.AX",
+  "trade_date": "2026-07-06",
+  "issues": [
+    {
+      "severity": "major",
+      "section": "Quality Gate",
+      "issue": "financial evidence lacks extracted cash-flow statement section; review-grade quality gate cannot pass",
+      "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
+    },
+    {
+      "severity": "major",
+      "section": "Quality Gate",
+      "issue": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+      "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
+    }
+  ],
+  "validator": "validate_quality_review.py",
+  "status": "remediation_required",
+  "quality_gate_passed": false,
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "failed",
+  "core_metrics_required": [
+    "segment_revenue",
+    "margins",
+    "r_and_d",
+    "plasma_collections",
+    "debt",
+    "guidance"
+  ],
+  "core_metrics_cleanly_extracted": [],
+  "core_metrics_materially_satisfied": [
+    "guidance"
+  ],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [
+    "segment_revenue",
+    "margins",
+    "r_and_d",
+    "plasma_collections",
+    "debt"
+  ],
+  "core_metric_coverage_passed": false,
+  "materiality_status": "remediation_required",
+  "critical_metrics_required": [
+    "segment_revenue_or_growth",
+    "margins",
+    "guidance",
+    "debt_or_balance_sheet",
+    "plasma_collections_or_collection_network"
+  ],
+  "critical_metrics_clean": [
+    "guidance"
+  ],
+  "critical_metrics_unresolved": [
+    "segment_revenue_or_growth",
+    "margins",
+    "debt_or_balance_sheet",
+    "plasma_collections_or_collection_network"
+  ],
+  "important_metrics_clean": [],
+  "important_metrics_unresolved": [
+    "r_and_d",
+    "product_segment_commentary",
+    "pipeline_commentary"
+  ],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [
+    "r_and_d not cleanly extracted",
+    "product_segment_commentary not cleanly extracted",
+    "pipeline_commentary not cleanly extracted"
+  ],
+  "remediation_required_reasons": [
+    "critical metric segment_revenue_or_growth is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value",
+    "critical metric margins is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value",
+    "critical metric debt_or_balance_sheet is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value",
+    "critical metric plasma_collections_or_collection_network is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value"
+  ],
+  "review_ready": false,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_materiality_final\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Closed-loop validation failed; see quality_remediation_plan.json and next_remediation_task.md."
+}

@@ -226,7 +226,7 @@ healthcare:
     accepted_value_patterns: ["\\b\\d+(?:\\.\\d+)?\\s*%\\b", "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"]
     required_nearby_terms: ["guidance", "outlook", "expects", "expected", "forecast", "FY2026", "FY26"]
     rejected_nearby_terms: ["contents", "table of contents", "directors report", "financial statements", "CSL Behring revenue", "CSL Seqirus revenue", "segment revenue"]
-    hard_rejected_nearby_terms: ["revenue", "CSL Behring revenue", "CSL Seqirus revenue", "CSL Vifor revenue", "segment revenue"]
+    hard_rejected_nearby_terms: ["CSL Behring revenue", "CSL Seqirus revenue", "CSL Vifor revenue", "segment revenue"]
     max_label_value_distance_tokens: 12
     direction_rules:
       supportive: ["expects", "forecast", "higher", "growth"]

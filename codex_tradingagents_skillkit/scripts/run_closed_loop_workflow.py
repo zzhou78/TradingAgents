@@ -17,6 +17,20 @@ if str(SCRIPT_DIR) not in sys.path:
 from run_codex_role_workflow import summarize
 from run_quality_remediation import run as run_quality_remediation
 
+MATERIALITY_GATE_FIELDS = [
+    "materiality_status",
+    "critical_metrics_required",
+    "critical_metrics_clean",
+    "critical_metrics_unresolved",
+    "important_metrics_clean",
+    "important_metrics_unresolved",
+    "supporting_metrics_clean",
+    "supporting_metrics_unresolved",
+    "warnings",
+    "major_warnings",
+    "remediation_required_reasons",
+]
+
 
 def _run_command(args: list[str]) -> dict[str, Any]:
     result = subprocess.run(args, text=True, capture_output=True)
@@ -77,6 +91,10 @@ def _sync_nested_run_metadata_status(workflow_payload: dict[str, Any], status: s
         run_metadata["workflow_status"] = status
 
 
+def _materiality_gate_fields(run: dict[str, Any]) -> dict[str, Any]:
+    return {field: run.get(field, [] if field != "materiality_status" else "not_applicable") for field in MATERIALITY_GATE_FIELDS}
+
+
 def _patch_quality_gates_with_status(output_dir: Path, status_path: Path) -> list[str]:
     patched: list[str] = []
     for gate_path in sorted((output_dir / "reports").glob("*/*/6_quality/quality_gate.json")):
@@ -111,16 +129,19 @@ def _write_passed_quality_gates(workflow_payload: dict[str, Any], status_path: P
             "trade_date": run.get("trade_date", ""),
             "issues": [],
             "validator": "validate_quality_review.py",
-            "status": "workflow_complete",
+            "status": run.get("materiality_status") or "workflow_complete",
+            "workflow_status": "workflow_complete",
             "quality_gate_passed": bool(run.get("quality_gate_passed")),
             "evidence_reasoning_audit_status": run.get("evidence_reasoning_audit_status", "missing"),
             "evidence_reasoning_critical_findings": list(run.get("evidence_reasoning_critical_findings") or []),
             "core_metric_coverage_status": run.get("core_metric_coverage_status", "not_applicable"),
             "core_metrics_required": list(run.get("core_metrics_required") or []),
             "core_metrics_cleanly_extracted": list(run.get("core_metrics_cleanly_extracted") or []),
+            "core_metrics_materially_satisfied": list(run.get("core_metrics_materially_satisfied") or []),
             "core_metrics_unavailable_with_reason": list(run.get("core_metrics_unavailable_with_reason") or []),
             "core_metrics_unresolved": list(run.get("core_metrics_unresolved") or []),
             "core_metric_coverage_passed": bool(run.get("core_metric_coverage_passed")),
+            **_materiality_gate_fields(run),
             "review_ready": bool(run.get("review_ready")),
             "closed_loop_status_path": str(status_path),
             "closed_loop_status_artifact": "closed_loop_status.json",
@@ -170,9 +191,11 @@ def _write_failed_quality_gates(workflow_payload: dict[str, Any], status_path: P
             "core_metric_coverage_status": run.get("core_metric_coverage_status", "not_applicable"),
             "core_metrics_required": list(run.get("core_metrics_required") or []),
             "core_metrics_cleanly_extracted": list(run.get("core_metrics_cleanly_extracted") or []),
+            "core_metrics_materially_satisfied": list(run.get("core_metrics_materially_satisfied") or []),
             "core_metrics_unavailable_with_reason": list(run.get("core_metrics_unavailable_with_reason") or []),
             "core_metrics_unresolved": list(run.get("core_metrics_unresolved") or []),
             "core_metric_coverage_passed": bool(run.get("core_metric_coverage_passed")),
+            **_materiality_gate_fields(run),
             "review_ready": False,
             "closed_loop_status_path": str(status_path),
             "closed_loop_status_artifact": "closed_loop_status.json",
@@ -215,8 +238,20 @@ def _aggregate_completion_gates(workflow_payload: dict[str, Any]) -> dict[str, A
     statuses = []
     core_required: dict[str, list[Any]] = {}
     core_clean: dict[str, list[Any]] = {}
+    core_materially_satisfied: dict[str, list[Any]] = {}
     core_unavailable: dict[str, list[Any]] = {}
     core_unresolved: dict[str, list[Any]] = {}
+    materiality_status_by_ticker: dict[str, str] = {}
+    critical_required: dict[str, list[Any]] = {}
+    critical_clean: dict[str, list[Any]] = {}
+    critical_unresolved: dict[str, list[Any]] = {}
+    important_clean: dict[str, list[Any]] = {}
+    important_unresolved: dict[str, list[Any]] = {}
+    supporting_clean: dict[str, list[Any]] = {}
+    supporting_unresolved: dict[str, list[Any]] = {}
+    materiality_warnings: dict[str, list[Any]] = {}
+    materiality_major_warnings: dict[str, list[Any]] = {}
+    remediation_required_reasons: dict[str, list[Any]] = {}
     core_statuses = []
     for run in runs:
         ticker = str(run.get("ticker") or "")
@@ -227,8 +262,21 @@ def _aggregate_completion_gates(workflow_payload: dict[str, Any]) -> dict[str, A
         if run.get("core_metrics_required"):
             core_required[ticker] = list(run.get("core_metrics_required") or [])
             core_clean[ticker] = list(run.get("core_metrics_cleanly_extracted") or [])
+            core_materially_satisfied[ticker] = list(run.get("core_metrics_materially_satisfied") or [])
             core_unavailable[ticker] = list(run.get("core_metrics_unavailable_with_reason") or [])
             core_unresolved[ticker] = list(run.get("core_metrics_unresolved") or [])
+        if run.get("materiality_status"):
+            materiality_status_by_ticker[ticker] = str(run.get("materiality_status"))
+            critical_required[ticker] = list(run.get("critical_metrics_required") or [])
+            critical_clean[ticker] = list(run.get("critical_metrics_clean") or [])
+            critical_unresolved[ticker] = list(run.get("critical_metrics_unresolved") or [])
+            important_clean[ticker] = list(run.get("important_metrics_clean") or [])
+            important_unresolved[ticker] = list(run.get("important_metrics_unresolved") or [])
+            supporting_clean[ticker] = list(run.get("supporting_metrics_clean") or [])
+            supporting_unresolved[ticker] = list(run.get("supporting_metrics_unresolved") or [])
+            materiality_warnings[ticker] = list(run.get("warnings") or [])
+            materiality_major_warnings[ticker] = list(run.get("major_warnings") or [])
+            remediation_required_reasons[ticker] = list(run.get("remediation_required_reasons") or [])
     if critical or any(status == "fail" for status in statuses):
         audit_status = "fail"
     elif warnings or any(status == "pass_with_warnings" for status in statuses):
@@ -259,9 +307,21 @@ def _aggregate_completion_gates(workflow_payload: dict[str, Any]) -> dict[str, A
         "core_metric_coverage_status": core_metric_status,
         "core_metrics_required": core_required,
         "core_metrics_cleanly_extracted": core_clean,
+        "core_metrics_materially_satisfied": core_materially_satisfied,
         "core_metrics_unavailable_with_reason": core_unavailable,
         "core_metrics_unresolved": core_unresolved,
         "core_metric_coverage_passed": core_metric_coverage_passed,
+        "materiality_status": materiality_status_by_ticker,
+        "critical_metrics_required": critical_required,
+        "critical_metrics_clean": critical_clean,
+        "critical_metrics_unresolved": critical_unresolved,
+        "important_metrics_clean": important_clean,
+        "important_metrics_unresolved": important_unresolved,
+        "supporting_metrics_clean": supporting_clean,
+        "supporting_metrics_unresolved": supporting_unresolved,
+        "warnings": materiality_warnings,
+        "major_warnings": materiality_major_warnings,
+        "remediation_required_reasons": remediation_required_reasons,
         "review_ready": review_ready,
     }
 

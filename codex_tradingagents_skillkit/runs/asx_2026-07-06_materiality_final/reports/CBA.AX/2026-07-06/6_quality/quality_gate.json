@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "ticker": "CBA.AX",
+  "trade_date": "2026-07-06",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "review_ready_with_major_warnings",
+  "workflow_status": "workflow_complete",
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "net_interest_margin",
+    "cet1",
+    "loan_growth",
+    "arrears",
+    "impairment",
+    "roe",
+    "dividend"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "net_interest_margin",
+    "cet1",
+    "loan_growth",
+    "impairment",
+    "dividend"
+  ],
+  "core_metrics_materially_satisfied": [],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [
+    "arrears",
+    "roe"
+  ],
+  "core_metric_coverage_passed": true,
+  "materiality_status": "review_ready_with_major_warnings",
+  "critical_metrics_required": [
+    "net_interest_margin",
+    "cet1",
+    "credit_quality_group"
+  ],
+  "critical_metrics_clean": [
+    "net_interest_margin",
+    "cet1",
+    "credit_quality_group"
+  ],
+  "critical_metrics_unresolved": [],
+  "important_metrics_clean": [
+    "loan_growth",
+    "dividend",
+    "impairment"
+  ],
+  "important_metrics_unresolved": [
+    "roe",
+    "arrears"
+  ],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [
+    "ROE not cleanly extracted",
+    "arrears not cleanly extracted",
+    "credit quality assessment relies on impairment / loan impairment expense instead of arrears"
+  ],
+  "remediation_required_reasons": [],
+  "review_ready": true,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_materiality_final\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Codex-session workflow and quality validators passed; see closed_loop_status.json for run-level workflow status."
+}
