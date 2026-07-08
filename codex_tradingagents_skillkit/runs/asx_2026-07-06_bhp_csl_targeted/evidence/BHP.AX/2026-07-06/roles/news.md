@@ -61,9 +61,10 @@ Link: https://finance.yahoo.com/technology/ai/articles/bio-key-showcases-passwor
 
 ```text
 # Insider Transactions data for BHP.AX
-# Data retrieved on: 2026-07-08 08:43:59
+# Data retrieved on: 2026-07-08 19:47:04
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
-0,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
+0,64,1304,,Stock Award(Grant) at price 0.00 - 40.74 per share.,STONE EMMA KATE,Officer,,2026-07-02,D
+1,74,1275,,Stock Award(Grant) at price 0.00 - 34.47 per share.,STONE EMMA KATE,Officer,,2026-04-02,D
 
 ```

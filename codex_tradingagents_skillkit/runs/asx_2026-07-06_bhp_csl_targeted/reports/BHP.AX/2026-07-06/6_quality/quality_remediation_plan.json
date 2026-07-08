@@ -3,74 +3,72 @@
   "trade_date": "2026-07-06",
   "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06",
   "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence\\BHP.AX\\2026-07-06\\evidence.json",
-  "status": "remediation_required",
+  "status": "pending_codex_role_execution",
   "blocking_for_review_grade": true,
   "validator_errors": [
-    "market.md is still pending",
-    "sentiment.md is still pending",
-    "news.md is still pending",
-    "fundamentals.md is still pending",
-    "financial_report.md is still pending",
-    "industry_theme.md is still pending",
-    "bull_round_1.md is still pending",
-    "bear_round_1.md is still pending",
-    "manager.md is still pending",
-    "trader.md is still pending",
-    "aggressive_round_1.md is still pending",
-    "conservative_round_1.md is still pending",
-    "neutral_round_1.md is still pending",
-    "decision.md is still pending",
-    "complete_report.md is still pending",
-    "debate_record.md is still a task index rather than a completed debate transcript",
-    "debate_record.md missing debate turn: Bull Researcher Round 1 - Opening Case",
-    "debate_record.md does not link to completed role output files",
-    "debate_record.md does not confirm zero pending debate outputs"
+    "Codex role execution is not complete; next stage: market_analyst",
+    "evidence_reasoning_audit.json missing"
   ],
+  "evidence_metric_blockers": [],
+  "core_metric_coverage_status": "passed",
+  "core_metric_coverage_passed": true,
+  "materiality_status": "review_ready_with_major_warnings",
+  "critical_metrics_clean": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure"
+  ],
+  "critical_metrics_unresolved": [],
+  "core_metrics_cleanly_extracted": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex"
+  ],
+  "core_metrics_materially_satisfied": [
+    "commodity_exposure"
+  ],
+  "core_metrics_unresolved": [
+    "reserves_resources"
+  ],
+  "remediation_required_reasons": [],
   "remediation_tasks": [
     {
-      "failed_gate": "quality_review_gate",
-      "root_cause_category": "report_quality_validation",
-      "validator_error": "market.md is still pending",
+      "failed_gate": "codex_role_workflow",
+      "root_cause_category": "role_report_execution_pending",
+      "validator_error": "Codex role execution is not complete; next stage: market_analyst",
       "affected_files": [
-        "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-        "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+        "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\1_analysts\\market.md"
       ],
-      "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-      "required_tests": [
-        "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
-      ],
-      "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
+      "required_fix": "Run the remaining Codex role stages and then run the Evidence and Reasoning Auditor.",
+      "required_tests": [],
+      "rerun_command": "",
       "blocking_for_review_grade": true,
       "status": "pending",
-      "rerun_commands": [
-        ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-      ],
-      "created_at": "2026-07-08T08:45:56+10:00",
-      "updated_at": "2026-07-08T08:45:56+10:00",
-      "task_id": "remediate:BHP.AX:2026-07-06:001"
+      "rerun_commands": [],
+      "task_id": "complete-role-workflow:BHP.AX:2026-07-06"
     }
   ],
   "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
   "next_remediation_task": {
-    "failed_gate": "quality_review_gate",
-    "root_cause_category": "report_quality_validation",
-    "validator_error": "market.md is still pending",
+    "failed_gate": "codex_role_workflow",
+    "root_cause_category": "role_report_execution_pending",
+    "validator_error": "Codex role execution is not complete; next stage: market_analyst",
     "affected_files": [
-      "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-      "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
+      "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+      "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\1_analysts\\market.md"
     ],
-    "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-    "required_tests": [
-      "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
-    ],
-    "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
+    "required_fix": "Run the remaining Codex role stages and then run the Evidence and Reasoning Auditor.",
+    "required_tests": [],
+    "rerun_command": "",
     "blocking_for_review_grade": true,
     "status": "pending",
-    "rerun_commands": [
-      ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-    ],
-    "created_at": "2026-07-08T08:45:56+10:00",
-    "updated_at": "2026-07-08T08:45:56+10:00",
-    "task_id": "remediate:BHP.AX:2026-07-06:001"
-  }
+    "rerun_commands": [],
+    "task_id": "complete-role-workflow:BHP.AX:2026-07-06"
+  },
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\closed_loop_status.json",
+  "notes": "No upstream ASX metric evidence blocker remains for this ticker in the current evidence run; review-grade completion is blocked by pending role reports and audit."
 }

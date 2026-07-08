@@ -14,18 +14,19 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for BHP.AX
-# Data retrieved on: 2026-07-08 08:43:59
+# Data retrieved on: 2026-07-08 19:47:04
 
 Name: BHP Group Limited
 Sector: Basic Materials
 Industry: Other Industrial Metals & Mining
-Market Cap: 299100209152
-PE Ratio (TTM): 20.160957
-Forward PE: 15.405503
+Market Cap: 292190486528
+PE Ratio (TTM): 19.695204
+Forward PE: 15.049609
 PEG Ratio: 2.93
-Price to Book: 4.0884676
+Price to Book: 4.0282483
 EPS (TTM): 2.92
 Forward EPS: 3.8213615
+Dividend Yield: 3.33
 Beta: 0.831
 52 Week High: 65.98
 52 Week Low: 37.56
@@ -41,7 +42,7 @@ Return on Equity: 0.24712999
 Return on Assets: 0.122250006
 Debt to Equity: 52.639
 Current Ratio: 1.649
-Book Value: 14.399037
+Book Value: 14.276676
 Free Cash Flow: 8137124864
 ```
 
@@ -51,7 +52,7 @@ Free Cash Flow: 8137124864
 
 ```text
 # Balance Sheet data for BHP.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:43:59
+# Data retrieved on: 2026-07-08 19:47:05
 
 ,2025-12-31,2025-06-30,2024-12-31
 Treasury Shares Number,,701522.0,

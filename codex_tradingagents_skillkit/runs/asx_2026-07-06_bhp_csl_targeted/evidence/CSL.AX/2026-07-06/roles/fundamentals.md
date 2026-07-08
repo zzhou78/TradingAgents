@@ -14,19 +14,19 @@ Read only this packet when acting this analyst role. Do not inspect other analys
 
 ```text
 # Company Fundamentals for CSL.AX
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:56
 
 Name: CSL Limited
 Sector: Healthcare
 Industry: Biotechnology
-Market Cap: 59370717184
-PE Ratio (TTM): 13.8513975
-Forward PE: 13.469467
+Market Cap: 59528757248
+PE Ratio (TTM): 13.888268
+Forward PE: 13.547594
 PEG Ratio: 1.82
-Price to Book: 2.2209463
+Price to Book: 2.2268584
 EPS (TTM): 8.95
-Forward EPS: 9.203779
-Dividend Yield: 3.44
+Forward EPS: 9.175061
+Dividend Yield: 3.43
 Beta: 0.084
 52 Week High: 275.79
 52 Week Low: 90.0
@@ -52,7 +52,7 @@ Free Cash Flow: 1848125056
 
 ```text
 # Balance Sheet data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Ordinary Shares Number,484206716.0
@@ -124,7 +124,7 @@ Cash Financial,1524000000.0
 
 ```text
 # Cash Flow data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Free Cash Flow,726000000.0
@@ -174,7 +174,7 @@ Other Cash Receiptsfrom Operating Activities,1567000000.0
 
 ```text
 # Income Statement data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:46
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Tax Effect Of Unusual Items,0.0

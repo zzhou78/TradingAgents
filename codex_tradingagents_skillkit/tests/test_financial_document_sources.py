@@ -2011,6 +2011,199 @@ def test_csl_debt_rejects_cash_and_cash_equivalents_without_debt_context():
     assert result["clean_metric_value"] == "unavailable"
 
 
+def test_csl_debt_rejects_cash_only_balance_sheet_table():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+    source = {
+        "source_quality_tier": "tier_3_structured_online_annual_report",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "CSL.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "91",
+                "tables": [
+                    {
+                        "source_page": "91",
+                        "table_index": "1",
+                        "table_title": "Consolidated Balance Sheet",
+                        "section_title": "Consolidated Balance Sheet",
+                        "rows": [
+                            {"row_index": "0", "cells": ["", "Notes", "2025 US$m", "2024 US$m"]},
+                            {"row_index": "1", "cells": ["Cash and cash equivalents", "11", "2,157", "1,657"]},
+                        ],
+                    }
+                ],
+                "text_blocks": [],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "debt",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] != "value_extracted"
+    assert result["clean_metric_value"] == "unavailable"
+
+
+def test_csl_debt_accepts_current_and_non_current_interest_bearing_liabilities_pair():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+    source = {
+        "source_quality_tier": "tier_3_structured_online_annual_report",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "CSL.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "92",
+                "tables": [
+                    {
+                        "source_page": "92",
+                        "table_index": "1",
+                        "table_title": "Consolidated Balance Sheet",
+                        "section_title": "Consolidated Balance Sheet",
+                        "rows": [
+                            {"row_index": "0", "cells": ["", "Notes", "2025 US$m", "2024 US$m"]},
+                            {
+                                "row_index": "1",
+                                "cells": ["Current interest-bearing liabilities and borrowings", "11", "804", "944"],
+                            },
+                            {
+                                "row_index": "2",
+                                "cells": ["Non-current interest-bearing liabilities and borrowings", "11", "10,694", "11,239"],
+                            },
+                        ],
+                    }
+                ],
+                "text_blocks": [],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "debt",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "11498"
+    assert result["value_unit"] == "US$m"
+    assert result["row_label"] == "total interest-bearing liabilities and borrowings"
+    assert result["current_period_value"] == "11498"
+
+
+def test_csl_debt_accepts_note_11_interest_bearing_liabilities_breakdown():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+    source = {
+        "source_quality_tier": "tier_3_structured_online_annual_report",
+        "document_role": "annual_report",
+        "source_type": "company_ir_report",
+        "announcement_date": "2025-08-15",
+        "extraction_status": "structured",
+        "metric_eligibility": "eligible",
+        "ticker_plugin": "CSL.AX",
+    }
+    document_structure = {
+        "pages": [
+            {
+                "page_number": "126",
+                "tables": [
+                    {
+                        "source_page": "126",
+                        "table_index": "1",
+                        "table_title": "Note 11 Financial Risk Management",
+                        "section_title": "Note 11 Financial Risk Management",
+                        "rows": [
+                            {"row_index": "0", "cells": ["Current", "2025 US$m"]},
+                            {"row_index": "1", "cells": ["Bank and other borrowings - unsecured", "282"]},
+                            {"row_index": "2", "cells": ["Senior notes - unsecured", "413"]},
+                            {"row_index": "3", "cells": ["Lease liabilities", "109"]},
+                            {"row_index": "4", "cells": ["Total current interest-bearing liabilities and borrowings", "804"]},
+                            {"row_index": "5", "cells": ["Non-current", "2025 US$m"]},
+                            {"row_index": "6", "cells": ["Bank and other borrowings - unsecured", "1,222"]},
+                            {"row_index": "7", "cells": ["Senior notes - unsecured", "2,713"]},
+                            {"row_index": "8", "cells": ["Senior 144A notes - unsecured", "5,206"]},
+                            {"row_index": "9", "cells": ["Lease liabilities", "1,553"]},
+                            {"row_index": "10", "cells": ["Total non-current interest-bearing liabilities and borrowings", "10,694"]},
+                        ],
+                    }
+                ],
+                "text_blocks": [],
+            }
+        ]
+    }
+
+    result = asx._extract_metric_value_from_document(
+        document_structure,
+        "debt",
+        source,
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "11498"
+    assert result["value_unit"] == "US$m"
+    assert result["source_section"] == "Note 11 Financial Risk Management"
+
+
+def test_csl_debt_accepts_flattened_balance_sheet_interest_bearing_liabilities_pair():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Consolidated Balance Sheet As at 30 June 2025 Consolidated Entity 2025 2024 Notes US$m US$m "
+        "CURRENT LIABILITIES Trade and other payables 14 3,461 3,345 "
+        "Interest-bearing liabilities and borrowings 11 804 944 Current tax liabilities 280 176 "
+        "NON-CURRENT LIABILITIES Interest-bearing liabilities and borrowings 11 10,694 11,239 "
+        "Retirement benefit liabilities 17 308 282 Total Non-Current Liabilities 13,182 13,671",
+        "debt",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "11498"
+    assert result["value_unit"] == "US$m"
+    assert result["row_label"] == "total interest-bearing liabilities and borrowings"
+
+
+def test_csl_debt_accepts_lease_liabilities_with_not_total_debt_warning():
+    module = _load_module()
+    asx = module._load_asx_collector()
+    plugin = asx._load_ticker_plugin("CSL.AX")
+
+    result = asx._extract_metric_value_from_text(
+        "Financial Report borrowings table. Lease liabilities were US$1,200m at 30 June 2025.",
+        "debt",
+        ticker_plugin=plugin,
+    )
+
+    assert result["metric_value_status"] == "value_extracted"
+    assert result["clean_metric_value"] == "1200"
+    assert "not total debt" in result["confidence_reason"].lower()
+
+
 def test_csl_guidance_narrative_satisfies_guidance_source_record():
     module = _load_module()
     asx = module._load_asx_collector()

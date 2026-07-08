@@ -274,7 +274,7 @@ R&D investment US$ million 1,266†^ 1,428¶^ 1,359¶^ 106 Clinical trials in op
 - Supports claims: debt, liquidity
 
 ```text
-Over the short term, two current trends will likely Page metadata Consolidated Entity 2025 2024 Notes US$m US$m CURRENT ASSETS Cash and cash equivalents 11 2,157 1,657 Receivables and contract assets 14 3,141 2,895 Inventories Page
+assets 11 203 163 Other non-current assets 14 189 158 Total Non-Current Assets 27,554 27,254 TOTAL ASSETS 39,404 38,022 CURRENT LIABILITIES Trade and other payables 14 3,461 3,345 Interest-bearing liabilities and borrowings 11 804 944 Current tax liabilities 280 176 Provisions 15 270 475 Liabilities held for sale 2 — 10 Total Current Liabilities 4,815 4,950 NON-CURRENT LIABILITIES Interest-bearing liabilities and borrowings 11 10,694 11,239 Retirement benefit liabilities 17 308 282 Deferred tax liabilities 4 1,510 1,514 Provisions 15 155 186 Other non-current liabilities 14 515 450 Total
 ```
 
 ### Section: asx_fallback_document / sector_metric

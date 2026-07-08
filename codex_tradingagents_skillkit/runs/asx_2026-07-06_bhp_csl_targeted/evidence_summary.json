@@ -1,7 +1,7 @@
 {
   "trade_date": "2026-07-06",
   "evidence_as_of_date": "2026-07-06",
-  "run_executed_at": "2026-07-08T08:43:45+10:00",
+  "run_executed_at": "2026-07-08T19:46:50+10:00",
   "market": "ASX",
   "selected_analysts": [
     "market",
@@ -59,7 +59,7 @@
       "run_metadata": {
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-08T08:43:45+10:00",
+        "run_executed_at": "2026-07-08T19:46:50+10:00",
         "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
         "market": "ASX",
         "run_folder_name": "asx_2026-07-06_bhp_csl_targeted",
@@ -67,7 +67,7 @@
           "BHP.AX",
           "CSL.AX"
         ],
-        "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+        "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T19:46:50+10:00",
         "authoritative_result_folder": true,
         "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
         "status": "pending",
@@ -91,7 +91,7 @@
       "run_metadata": {
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-08T08:43:45+10:00",
+        "run_executed_at": "2026-07-08T19:46:50+10:00",
         "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
         "market": "ASX",
         "run_folder_name": "asx_2026-07-06_bhp_csl_targeted",
@@ -99,7 +99,7 @@
           "BHP.AX",
           "CSL.AX"
         ],
-        "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+        "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T19:46:50+10:00",
         "authoritative_result_folder": true,
         "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
         "status": "pending",

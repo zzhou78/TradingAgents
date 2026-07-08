@@ -16,7 +16,7 @@ These packets are evidence only. Codex must act each role independently using th
 ```text
 # Stock data for CSL.AX from 2026-06-06 to 2026-07-06
 # Total records: 20
-# Data retrieved on: 2026-07-08 08:45:32
+# Data retrieved on: 2026-07-08 19:48:44
 
 Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
 2026-06-09,97.95,99.82,96.88,99.47,2260104,0.0,0.0
@@ -383,7 +383,7 @@ Link: https://finance.yahoo.com/technology/ai/articles/bio-key-showcases-passwor
 
 ```text
 # Insider Transactions data for CSL.AX
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:56
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,1036,71079.0,,Purchase at price 68.61 per share.,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-06-01,D
@@ -441,19 +441,19 @@ Link: https://finance.yahoo.com/technology/ai/articles/bio-key-showcases-passwor
 
 ```text
 # Company Fundamentals for CSL.AX
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:56
 
 Name: CSL Limited
 Sector: Healthcare
 Industry: Biotechnology
-Market Cap: 59370717184
-PE Ratio (TTM): 13.8513975
-Forward PE: 13.469467
+Market Cap: 59528757248
+PE Ratio (TTM): 13.888268
+Forward PE: 13.547594
 PEG Ratio: 1.82
-Price to Book: 2.2209463
+Price to Book: 2.2268584
 EPS (TTM): 8.95
-Forward EPS: 9.203779
-Dividend Yield: 3.44
+Forward EPS: 9.175061
+Dividend Yield: 3.43
 Beta: 0.084
 52 Week High: 275.79
 52 Week Low: 90.0
@@ -479,7 +479,7 @@ Free Cash Flow: 1848125056
 
 ```text
 # Balance Sheet data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Ordinary Shares Number,484206716.0
@@ -551,7 +551,7 @@ Cash Financial,1524000000.0
 
 ```text
 # Cash Flow data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Free Cash Flow,726000000.0
@@ -601,7 +601,7 @@ Other Cash Receiptsfrom Operating Activities,1567000000.0
 
 ```text
 # Income Statement data for CSL.AX (quarterly)
-# Data retrieved on: 2026-07-08 08:45:46
+# Data retrieved on: 2026-07-08 19:48:57
 
 ,2024-12-31
 Tax Effect Of Unusual Items,0.0
@@ -923,7 +923,7 @@ R&D investment US$ million 1,266†^ 1,428¶^ 1,359¶^ 106 Clinical trials in op
 - Supports claims: debt, liquidity
 
 ```text
-Over the short term, two current trends will likely Page metadata Consolidated Entity 2025 2024 Notes US$m US$m CURRENT ASSETS Cash and cash equivalents 11 2,157 1,657 Receivables and contract assets 14 3,141 2,895 Inventories Page
+assets 11 203 163 Other non-current assets 14 189 158 Total Non-Current Assets 27,554 27,254 TOTAL ASSETS 39,404 38,022 CURRENT LIABILITIES Trade and other payables 14 3,461 3,345 Interest-bearing liabilities and borrowings 11 804 944 Current tax liabilities 280 176 Provisions 15 270 475 Liabilities held for sale 2 — 10 Total Current Liabilities 4,815 4,950 NON-CURRENT LIABILITIES Interest-bearing liabilities and borrowings 11 10,694 11,239 Retirement benefit liabilities 17 308 282 Deferred tax liabilities 4 1,510 1,514 Provisions 15 155 186 Other non-current liabilities 14 515 450 Total
 ```
 
 ### Section: asx_fallback_document / sector_metric

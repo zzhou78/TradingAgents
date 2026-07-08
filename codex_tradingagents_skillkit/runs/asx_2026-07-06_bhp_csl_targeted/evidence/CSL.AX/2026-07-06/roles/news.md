@@ -35,7 +35,7 @@ Link: https://finance.yahoo.com/technology/ai/articles/bio-key-showcases-passwor
 
 ```text
 # Insider Transactions data for CSL.AX
-# Data retrieved on: 2026-07-08 08:45:45
+# Data retrieved on: 2026-07-08 19:48:56
 
 ,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
 0,1036,71079.0,,Purchase at price 68.61 per share.,Hewson (Carolyn Judith),Independent Non-Executive Director,,2026-06-01,D

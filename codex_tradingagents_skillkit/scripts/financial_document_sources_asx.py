@@ -175,6 +175,36 @@ BHP_COMMODITY_ROW_LABELS = (
     "metallurgical coal",
 )
 CSL_SEGMENTS = ("CSL Behring", "CSL Seqirus", "CSL Vifor")
+CSL_DEBT_CURRENT_TOTAL_LABELS = (
+    "current interest-bearing liabilities and borrowings",
+    "current interest bearing liabilities and borrowings",
+    "total current interest-bearing liabilities and borrowings",
+    "total current interest bearing liabilities and borrowings",
+    "current borrowings",
+    "total current borrowings",
+)
+CSL_DEBT_NON_CURRENT_TOTAL_LABELS = (
+    "non-current interest-bearing liabilities and borrowings",
+    "non current interest bearing liabilities and borrowings",
+    "noncurrent interest bearing liabilities and borrowings",
+    "total non-current interest-bearing liabilities and borrowings",
+    "total non current interest bearing liabilities and borrowings",
+    "total noncurrent interest bearing liabilities and borrowings",
+    "non-current borrowings",
+    "non current borrowings",
+    "total non-current borrowings",
+    "total non current borrowings",
+)
+CSL_DEBT_DIRECT_TOTAL_LABELS = (
+    "net debt",
+    "total debt",
+    "total borrowings",
+    "borrowings",
+    "interest-bearing liabilities and borrowings",
+    "interest bearing liabilities and borrowings",
+    "interest-bearing liabilities",
+    "interest bearing liabilities",
+)
 VALUE_BEARING_STATUSES = {"value_extracted", "segment_growth", "profitability_metric"}
 PDFPLUMBER_WORD_TABLE_INDEX = 1001
 PDF_WORD_ROW_TOLERANCE = 3.0
@@ -2020,6 +2050,8 @@ def _commodity_exposure_numeric_table_allowed(
 
 def _column_label_allowed(column_label: str, profile: dict[str, Any]) -> bool:
     lower = column_label.lower()
+    if re.fullmatch(r"\s*notes?\s*", lower):
+        return False
     if _looks_like_paragraph_fragment(column_label):
         return False
     normalized = re.sub(r"\bfy(\d{2})\b", lambda match: f"fy20{match.group(1)} 20{match.group(1)}", lower)
@@ -2762,9 +2794,336 @@ def _best_label_value_association(text: str, metric_name: str, profile: dict[str
     return best
 
 
+def _normalize_debt_label(label: str) -> str:
+    normalized = _clean_text(label).lower()
+    normalized = re.sub(r"[\u2010-\u2015]", "-", normalized)
+    normalized = normalized.replace("interest bearing", "interest-bearing")
+    normalized = normalized.replace("non current", "non-current")
+    normalized = normalized.replace("noncurrent", "non-current")
+    return normalized
+
+
+def _csl_debt_row_kind(row_label: str) -> str:
+    label = _normalize_debt_label(row_label)
+    if "cash and cash equivalents" in label:
+        return "cash_only"
+    if any(term in label for term in CSL_DEBT_NON_CURRENT_TOTAL_LABELS):
+        return "non_current_total"
+    if any(term in label for term in CSL_DEBT_CURRENT_TOTAL_LABELS):
+        return "current_total"
+    if "lease liabilities" in label:
+        return "lease_liabilities"
+    if any(term in label for term in CSL_DEBT_DIRECT_TOTAL_LABELS):
+        return "direct_total"
+    if "senior notes" in label or "bank and other borrowings" in label:
+        return "debt_component"
+    return ""
+
+
+def _numeric_string_to_float(value: str) -> float | None:
+    try:
+        return float(str(value).replace(",", ""))
+    except ValueError:
+        return None
+
+
+def _format_numeric_total(value: float) -> str:
+    if value.is_integer():
+        return str(int(value))
+    return f"{value:.2f}".rstrip("0").rstrip(".")
+
+
+def _csl_debt_values_from_cells(
+    *,
+    cells: list[str],
+    header_cells: list[str],
+    metadata: dict[str, str],
+    profile: dict[str, Any],
+    full_context: str,
+) -> list[dict[str, str]]:
+    values: list[dict[str, str]] = []
+    row_label = cells[0] if cells else ""
+    unit_context = " ".join([metadata.get("table_title", ""), *header_cells, *cells, full_context])
+    fallback_unit = _unit_from_column_label(unit_context)
+    for index, cell in enumerate(cells[1:], start=1):
+        column_label = header_cells[index] if index < len(header_cells) and header_cells[index] else f"value_{index}"
+        if re.fullmatch(r"\s*notes?\s*", column_label, re.IGNORECASE):
+            continue
+        inferred_unit = _unit_from_column_label(column_label)
+        if inferred_unit == "unit unavailable":
+            inferred_unit = fallback_unit
+        if inferred_unit == "unit unavailable":
+            inferred_unit = _unit_from_column_label(row_label)
+        parsed = _numeric_cell_value(cell, inferred_unit)
+        if not parsed:
+            continue
+        clean_value, unit = parsed
+        if unit == "unit unavailable" and fallback_unit != "unit unavailable":
+            unit = fallback_unit
+        if not _unit_compatible(unit, profile):
+            continue
+        if _value_validation_failure(clean_value, unit, profile):
+            continue
+        value_type = _value_type_from_column_label(column_label, index)
+        if value_type not in {"current_period_value", "prior_period_value"} and index == 1:
+            value_type = "current_period_value"
+        values.append(
+            {
+                "clean_value": clean_value,
+                "unit": unit,
+                "column_label": column_label,
+                "value_type": value_type,
+                "cell_value": cell,
+            }
+        )
+    return values
+
+
+def _csl_debt_first_value(
+    rows: list[dict[str, str]],
+    value_type: str = "current_period_value",
+) -> dict[str, str] | None:
+    return next((row for row in rows if row["value_type"] == value_type), rows[0] if rows else None)
+
+
+def _csl_debt_total_association(
+    *,
+    current_row: dict[str, Any],
+    non_current_row: dict[str, Any],
+    table_title: str,
+    source_page: str,
+    profile: dict[str, Any],
+) -> dict[str, Any]:
+    current_value = _csl_debt_first_value(current_row["values"])
+    non_current_value = _csl_debt_first_value(non_current_row["values"])
+    if not current_value or not non_current_value:
+        return {}
+    current_number = _numeric_string_to_float(current_value["clean_value"])
+    non_current_number = _numeric_string_to_float(non_current_value["clean_value"])
+    if current_number is None or non_current_number is None:
+        return {}
+    unit = current_value["unit"] if current_value["unit"] == non_current_value["unit"] else current_value["unit"]
+    total = current_number + non_current_number
+    prior_total = "unavailable"
+    current_prior = _csl_debt_first_value(current_row["values"], "prior_period_value")
+    non_current_prior = _csl_debt_first_value(non_current_row["values"], "prior_period_value")
+    if current_prior and non_current_prior:
+        current_prior_number = _numeric_string_to_float(current_prior["clean_value"])
+        non_current_prior_number = _numeric_string_to_float(non_current_prior["clean_value"])
+        if current_prior_number is not None and non_current_prior_number is not None:
+            prior_total = _format_numeric_total(current_prior_number + non_current_prior_number)
+    row_label = "total interest-bearing liabilities and borrowings"
+    mapping_score, mapping_reason = _table_mapping_score(
+        row_label=row_label,
+        column_label=current_value["column_label"],
+        value_type="current_period_value",
+        unit=unit,
+        profile=profile,
+        has_header=True,
+        metadata={"source_page": source_page, "table_title": table_title},
+    )
+    score = max(92, mapping_score)
+    current_total = _format_numeric_total(total)
+    return {
+        "score": score,
+        "clean_metric_value": current_total,
+        "metric_value_status": "value_extracted",
+        "association_score": score,
+        "value_unit": unit,
+        "value_context": "current and non-current interest-bearing liabilities and borrowings total",
+        "supporting_sentence": f"{current_row['raw_row_text']} {non_current_row['raw_row_text']}",
+        "association_reason": "CSL debt extracted by summing current and non-current interest-bearing liabilities and borrowings rows",
+        "confidence": "medium",
+        "confidence_reason": "clean value accepted because current and non-current borrowings rows prove total balance-sheet debt",
+        "direction": "neutral",
+        "period_reference": current_value["column_label"],
+        "comparison_reference": current_prior["column_label"] if current_prior else "not specified",
+        "table_title": table_title,
+        "source_section": table_title,
+        "row_label": row_label,
+        "column_label": current_value["column_label"],
+        "cell_value": current_total,
+        "source_page": source_page,
+        "current_period_value": current_total,
+        "prior_period_value": prior_total,
+        "variance_value": "unavailable",
+        "variance_percent": "unavailable",
+        "raw_row_text": f"{current_row['raw_row_text']} | {non_current_row['raw_row_text']}",
+        "table_values": {
+            "current_interest_bearing_liabilities_and_borrowings": current_value["clean_value"],
+            "non_current_interest_bearing_liabilities_and_borrowings": non_current_value["clean_value"],
+            "current_period_value": current_total,
+            "prior_period_value": prior_total,
+        },
+        "table_mapping_confidence": score,
+        "table_mapping_reason": f"current and non-current borrowings rows mapped; {mapping_reason}",
+        "value_type": "current_period_value",
+    }
+
+
+def _csl_direct_debt_association(
+    *,
+    row: dict[str, Any],
+    table_title: str,
+    source_page: str,
+    profile: dict[str, Any],
+    lease_warning: bool = False,
+) -> dict[str, Any]:
+    value = _csl_debt_first_value(row["values"])
+    if not value:
+        return {}
+    row_label = row["row_label"]
+    mapping_score, mapping_reason = _table_mapping_score(
+        row_label=row_label,
+        column_label=value["column_label"],
+        value_type=value["value_type"],
+        unit=value["unit"],
+        profile=profile,
+        has_header=True,
+        metadata={"source_page": source_page, "table_title": table_title},
+    )
+    score = max(88, mapping_score)
+    confidence_reason = "clean value accepted because CSL debt row has row/column proof"
+    if lease_warning:
+        confidence_reason += "; lease liabilities are balance-sheet debt evidence, not total debt"
+    return {
+        "score": score,
+        "clean_metric_value": value["clean_value"],
+        "metric_value_status": "value_extracted",
+        "association_score": score,
+        "value_unit": value["unit"],
+        "value_context": "CSL balance-sheet debt row",
+        "supporting_sentence": row["raw_row_text"],
+        "association_reason": "CSL debt extracted from a borrowings, debt, or balance-sheet liabilities row",
+        "confidence": "medium",
+        "confidence_reason": confidence_reason,
+        "direction": "neutral",
+        "period_reference": value["column_label"],
+        "comparison_reference": "not specified",
+        "table_title": table_title,
+        "source_section": table_title,
+        "row_label": row_label,
+        "column_label": value["column_label"],
+        "cell_value": value["cell_value"],
+        "source_page": source_page,
+        "current_period_value": value["clean_value"],
+        "prior_period_value": "unavailable",
+        "variance_value": "unavailable",
+        "variance_percent": "unavailable",
+        "raw_row_text": row["raw_row_text"],
+        "table_values": {value["value_type"]: value["clean_value"]},
+        "table_mapping_confidence": score,
+        "table_mapping_reason": mapping_reason,
+        "value_type": value["value_type"],
+        "metric_subtype": "lease_liabilities_balance_sheet_debt" if lease_warning else "",
+    }
+
+
+def _extract_csl_debt_or_balance_sheet_table(text: str, profile: dict[str, Any]) -> dict[str, Any]:
+    if "|" not in text:
+        return {}
+    headers_by_table: dict[tuple[str, str], list[str]] = {}
+    current_rows: dict[tuple[str, str], dict[str, Any]] = {}
+    non_current_rows: dict[tuple[str, str], dict[str, Any]] = {}
+    direct_candidates: list[dict[str, Any]] = []
+    lease_candidates: list[dict[str, Any]] = []
+    cash_only_seen = False
+    split_pattern = r"\n|(?<=\d[%a-zA-Z])\s+(?=(?:__TABLE_ROW__\s+)?[A-Z][A-Za-z /&-]{2,}\s*\|)"
+    for raw_row in re.split(split_pattern, text):
+        row = raw_row.strip()
+        if "|" not in row:
+            continue
+        metadata, cells = _parse_structured_table_line(row)
+        if len(cells) < 2:
+            continue
+        key = _table_key(metadata)
+        table_title = metadata.get("table_title", "unavailable").replace("_", " ")
+        row_label = cells[0]
+        row_kind = _csl_debt_row_kind(row_label)
+        if not row_kind:
+            if key in headers_by_table and _header_continuation_row(cells):
+                headers_by_table[key] = _merge_table_header_rows(headers_by_table[key], cells)
+            else:
+                headers_by_table[key] = cells
+            continue
+        if row_kind == "cash_only":
+            cash_only_seen = True
+            continue
+        values = _csl_debt_values_from_cells(
+            cells=cells,
+            header_cells=headers_by_table.get(key, []),
+            metadata=metadata,
+            profile=profile,
+            full_context=text,
+        )
+        if not values:
+            continue
+        row_record = {
+            "row_label": row_label,
+            "values": values,
+            "raw_row_text": " | ".join(cells),
+            "table_title": table_title,
+            "source_page": metadata.get("source_page", "unavailable"),
+        }
+        if row_kind == "current_total":
+            current_rows[key] = row_record
+        elif row_kind == "non_current_total":
+            non_current_rows[key] = row_record
+        elif row_kind == "direct_total":
+            direct_candidates.append(row_record)
+        elif row_kind == "lease_liabilities":
+            lease_candidates.append(row_record)
+    for key, current_row in current_rows.items():
+        non_current_row = non_current_rows.get(key)
+        if not non_current_row:
+            continue
+        table_title = current_row.get("table_title") or non_current_row.get("table_title") or "CSL debt table"
+        source_page = current_row.get("source_page") or non_current_row.get("source_page") or "unavailable"
+        association = _csl_debt_total_association(
+            current_row=current_row,
+            non_current_row=non_current_row,
+            table_title=table_title,
+            source_page=source_page,
+            profile=profile,
+        )
+        if association:
+            return association
+    for row in direct_candidates:
+        association = _csl_direct_debt_association(
+            row=row,
+            table_title=str(row.get("table_title") or "CSL debt table"),
+            source_page=str(row.get("source_page") or "unavailable"),
+            profile=profile,
+        )
+        if association:
+            return association
+    for row in lease_candidates:
+        association = _csl_direct_debt_association(
+            row=row,
+            table_title=str(row.get("table_title") or "CSL debt table"),
+            source_page=str(row.get("source_page") or "unavailable"),
+            profile=profile,
+            lease_warning=True,
+        )
+        if association:
+            return association
+    if cash_only_seen:
+        return {
+            "metric_value_status": "unavailable",
+            "failure_type": "value_rejected_by_profile",
+            "rejection_reason": "cash and cash equivalents alone is not debt or borrowings evidence",
+            "raw_row_text": "cash and cash equivalents",
+        }
+    return {}
+
+
 def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, Any]) -> dict[str, Any]:
     if "|" not in text:
         return {}
+    if metric_name == "debt":
+        csl_debt = _extract_csl_debt_or_balance_sheet_table(text, profile)
+        if csl_debt:
+            return csl_debt
     headers_by_table: dict[tuple[str, str], list[str]] = {}
     best: dict[str, Any] = {}
     for raw_row in re.split(r"\n|(?<=\d[%a-zA-Z])\s+(?=(?:__TABLE_ROW__\s+)?[A-Z][A-Za-z /&-]{2,}\s*\|)", text):
@@ -2801,6 +3160,8 @@ def _extract_table_metric_value(text: str, metric_name: str, profile: dict[str, 
         if metric_name in STRUCTURED_TABLE_REQUIRED_METRICS and not header_cells:
             continue
         row_context = " ".join([row_label, metadata.get("table_title", ""), *header_cells, *cells[1:]])
+        if metric_name == "debt" and not _debt_balance_sheet_context_present(row_context):
+            continue
         if not _required_terms_present(row_context, profile):
             continue
         values: list[dict[str, str]] = []
@@ -3373,6 +3734,100 @@ def _bhp_flattened_realised_price_association(clean: str, profile: dict[str, Any
     return {}
 
 
+def _csl_flattened_debt_balance_sheet_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
+    lower = clean.lower()
+    if "interest-bearing liabilities and borrowings" not in lower and "interest bearing liabilities and borrowings" not in lower:
+        return {}
+    if "current liabilities" not in lower or "non-current liabilities" not in lower:
+        return {}
+    current_section_match = re.search(
+        r"(?<!non-)current liabilities(?P<section>.*?)(?:non-current liabilities|total current liabilities|$)",
+        clean,
+        re.IGNORECASE,
+    )
+    non_current_section_match = re.search(
+        r"non-current liabilities(?P<section>.*?)(?:total non-current liabilities|total liabilities|net assets|$)",
+        clean,
+        re.IGNORECASE,
+    )
+    if not current_section_match or not non_current_section_match:
+        return {}
+    row_pattern = re.compile(
+        r"interest[- ]bearing liabilities and borrowings\s+(?:\d{1,3}\s+)?"
+        r"(?P<current>\(?-?\d{1,3}(?:,\d{3})*(?:\.\d+)?\)?)\s+"
+        r"(?P<prior>\(?-?\d{1,3}(?:,\d{3})*(?:\.\d+)?\)?)",
+        re.IGNORECASE,
+    )
+    current_match = row_pattern.search(current_section_match.group("section"))
+    non_current_match = row_pattern.search(non_current_section_match.group("section"))
+    if not current_match or not non_current_match:
+        return {}
+    current_value = current_match.group("current").replace(",", "").strip("()")
+    non_current_value = non_current_match.group("current").replace(",", "").strip("()")
+    current_number = _numeric_string_to_float(current_value)
+    non_current_number = _numeric_string_to_float(non_current_value)
+    if current_number is None or non_current_number is None:
+        return {}
+    unit = _unit_from_column_label(clean)
+    if unit == "unit unavailable":
+        unit = "US$m" if "us$m" in lower or "us$ million" in lower else "$m"
+    if not _unit_compatible(unit, profile):
+        return {}
+    total = _format_numeric_total(current_number + non_current_number)
+    if _value_validation_failure(total, unit, profile):
+        return {}
+    current_prior = current_match.group("prior").replace(",", "").strip("()")
+    non_current_prior = non_current_match.group("prior").replace(",", "").strip("()")
+    prior_total = "unavailable"
+    current_prior_number = _numeric_string_to_float(current_prior)
+    non_current_prior_number = _numeric_string_to_float(non_current_prior)
+    if current_prior_number is not None and non_current_prior_number is not None:
+        prior_total = _format_numeric_total(current_prior_number + non_current_prior_number)
+    period_reference, comparison_reference = _period_references(clean)
+    if period_reference == "not specified":
+        period_reference = "FY2025"
+    if comparison_reference == "not specified":
+        comparison_reference = "FY2024"
+    source_page_match = re.search(r"(?:page\s+|/)(9[0-9]|1[01][0-9])(?:/|\b)", clean, re.IGNORECASE)
+    source_page = source_page_match.group(1) if source_page_match else "unavailable"
+    support_start = max(0, current_section_match.start() - 120)
+    support_end = min(len(clean), non_current_section_match.end() + 120)
+    supporting_sentence = _clean_text(clean[support_start:support_end])
+    return {
+        **base,
+        "clean_metric_value": total,
+        "value_unit": unit,
+        "value_context": "flattened balance-sheet current and non-current interest-bearing liabilities total",
+        "metric_value_status": "value_extracted",
+        "association_score": 90,
+        "association_reason": "CSL flattened balance-sheet text contains current and non-current interest-bearing liabilities and borrowings rows",
+        "period_reference": period_reference,
+        "comparison_reference": comparison_reference,
+        "supporting_sentence": supporting_sentence[:600],
+        "comparison_basis": "current and non-current balance-sheet liabilities summed",
+        "direction": "neutral",
+        "confidence": "medium",
+        "confidence_reason": "clean value accepted because flattened balance-sheet text preserves both current and non-current borrowings rows",
+        "table_title": "Consolidated Balance Sheet",
+        "source_section": "Consolidated Balance Sheet",
+        "row_label": "total interest-bearing liabilities and borrowings",
+        "column_label": f"{period_reference} {unit}",
+        "cell_value": total,
+        "source_page": source_page,
+        "table_mapping_confidence": 90,
+        "table_mapping_reason": "flattened current/non-current borrowings rows mapped from balance-sheet text",
+        "raw_row_text": _clean_text(f"{current_match.group(0)} | {non_current_match.group(0)}"),
+        "current_period_value": total,
+        "prior_period_value": prior_total,
+        "table_values": {
+            "current_interest_bearing_liabilities_and_borrowings": current_value,
+            "non_current_interest_bearing_liabilities_and_borrowings": non_current_value,
+            "current_period_value": total,
+            "prior_period_value": prior_total,
+        },
+    }
+
+
 def _segment_growth_association(clean: str, profile: dict[str, Any], base: dict[str, Any]) -> dict[str, Any]:
     if not _accepted_status(profile, "segment_growth"):
         return {}
@@ -3469,6 +3924,10 @@ def _extract_metric_value_from_text(
         realised_price = _bhp_flattened_realised_price_association(clean, profile, base)
         if realised_price:
             return realised_price
+    if metric_name == "debt":
+        csl_debt = _csl_flattened_debt_balance_sheet_association(clean, profile, base)
+        if csl_debt:
+            return csl_debt
     if metric_name == "segment_revenue":
         segment_card = _csl_segment_revenue_card_association(clean, profile, base)
         if segment_card:
@@ -3490,6 +3949,8 @@ def _extract_metric_value_from_text(
     metric_context = _best_metric_context(clean, profile)
     metric_context_is_navigation = _is_navigation_or_toc(metric_context)
     best = _extract_table_metric_value(text, metric_name, profile)
+    if best and best.get("metric_value_status") == "unavailable":
+        best = {}
     if not best and metric_name not in STRICT_STRUCTURED_VALUE_METRICS:
         for sentence in _sentences(clean):
             if not _label_matches(sentence, profile):
@@ -3592,8 +4053,21 @@ def _extract_metric_value_from_text(
     association_reason = best["association_reason"]
     if unit_missing_for_profile:
         association_reason = f"{association_reason}; accepted unit was unavailable so clean value was suppressed"
+    lease_liabilities_warning = (
+        metric_name == "debt"
+        and status in VALUE_BEARING_STATUSES
+        and re.search(
+            r"\blease liabilities\b",
+            " ".join(str(best.get(field) or "") for field in ("supporting_sentence", "row_label", "value_context")),
+            re.IGNORECASE,
+        )
+    )
+    if lease_liabilities_warning:
+        association_reason = f"{association_reason}; lease liabilities are balance-sheet debt evidence, not total debt"
+        confidence_reason = f"{confidence_reason}; lease liabilities are balance-sheet debt evidence, not total debt"
     return {
         **base,
+        "metric_subtype": "lease_liabilities_balance_sheet_debt" if lease_liabilities_warning else base.get("metric_subtype", ""),
         "clean_metric_value": clean_value,
         "value_unit": best["value_unit"] if status in VALUE_BEARING_STATUSES else "unavailable",
         "value_context": best["value_context"] if status in VALUE_BEARING_STATUSES else "value association below acceptance threshold",

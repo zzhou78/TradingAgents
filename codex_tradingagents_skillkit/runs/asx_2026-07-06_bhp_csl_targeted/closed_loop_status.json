@@ -1,7 +1,7 @@
 {
   "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-  "status": "remediation_required",
-  "generated_at": "2026-07-08T08:45:56+10:00",
+  "status": "pending_codex_role_execution",
+  "generated_at": "2026-07-08T19:49:06+10:00",
   "commands": [
     {
       "command": [
@@ -16,7 +16,7 @@
       ],
       "returncode": 0,
       "stdout": "BHP.AX: codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence\\BHP.AX\\2026-07-06\\role_packets.md\nCSL.AX: codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence\\CSL.AX\\2026-07-06\\role_packets.md\nSummary: codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence_summary.json\n",
-      "stderr": "StockTwits fetch failed for BHP.AX: HTTP Error 404: Not Found\nReddit RSS 429 for r/stocks \u00b7 BHP.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/stocks \u00b7 BHP.AX: HTTP Error 429: Too Many Requests\nReddit RSS 429 for r/investing \u00b7 BHP.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/investing \u00b7 BHP.AX: HTTP Error 429: Too Many Requests\nStockTwits fetch failed for CSL.AX: HTTP Error 404: Not Found\nReddit RSS 429 for r/stocks \u00b7 CSL.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/stocks \u00b7 CSL.AX: HTTP Error 429: Too Many Requests\nReddit RSS 429 for r/investing \u00b7 CSL.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/investing \u00b7 CSL.AX: HTTP Error 429: Too Many Requests\n"
+      "stderr": "StockTwits fetch failed for BHP.AX: HTTP Error 404: Not Found\nReddit RSS 429 for r/stocks \u00b7 BHP.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/stocks \u00b7 BHP.AX: HTTP Error 429: Too Many Requests\nReddit RSS 429 for r/investing \u00b7 BHP.AX \u2014 backing off 5.0s then retrying once\nStockTwits fetch failed for CSL.AX: HTTP Error 404: Not Found\nReddit RSS 429 for r/stocks \u00b7 CSL.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/stocks \u00b7 CSL.AX: HTTP Error 429: Too Many Requests\nReddit RSS 429 for r/investing \u00b7 CSL.AX \u2014 backing off 5.0s then retrying once\nReddit RSS fetch failed for r/investing \u00b7 CSL.AX: HTTP Error 429: Too Many Requests\n"
     },
     {
       "command": [
@@ -37,14 +37,14 @@
         "ticker": "BHP.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-08T08:43:45+10:00",
-        "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+        "run_executed_at": "2026-07-08T19:46:50+10:00",
+        "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T19:46:50+10:00",
         "authoritative_result_folder": true,
         "status": "pending",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-08T08:43:45+10:00",
+          "run_executed_at": "2026-07-08T19:46:50+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_bhp_csl_targeted",
@@ -52,7 +52,7 @@
             "BHP.AX",
             "CSL.AX"
           ],
-          "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+          "run_id": "asx_2026-07-06_bhp_csl_targeted:BHP.AX:2026-07-06:2026-07-08T19:46:50+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
           "status": "pending",
@@ -475,14 +475,14 @@
         "ticker": "CSL.AX",
         "trade_date": "2026-07-06",
         "evidence_as_of_date": "2026-07-06",
-        "run_executed_at": "2026-07-08T08:43:45+10:00",
-        "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+        "run_executed_at": "2026-07-08T19:46:50+10:00",
+        "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T19:46:50+10:00",
         "authoritative_result_folder": true,
         "status": "pending",
         "run_metadata": {
           "trade_date": "2026-07-06",
           "evidence_as_of_date": "2026-07-06",
-          "run_executed_at": "2026-07-08T08:43:45+10:00",
+          "run_executed_at": "2026-07-08T19:46:50+10:00",
           "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
           "market": "ASX",
           "run_folder_name": "asx_2026-07-06_bhp_csl_targeted",
@@ -490,7 +490,7 @@
             "BHP.AX",
             "CSL.AX"
           ],
-          "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T08:43:45+10:00",
+          "run_id": "asx_2026-07-06_bhp_csl_targeted:CSL.AX:2026-07-06:2026-07-08T19:46:50+10:00",
           "authoritative_result_folder": true,
           "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
           "status": "pending",
@@ -797,7 +797,7 @@
         "evidence_reasoning_warnings": [],
         "evidence_reasoning_audit_path": "",
         "sector": "healthcare",
-        "core_metric_coverage_status": "failed",
+        "core_metric_coverage_status": "passed",
         "core_metrics_required": [
           "segment_revenue",
           "margins",
@@ -809,7 +809,8 @@
         "core_metrics_cleanly_extracted": [
           "segment_revenue",
           "margins",
-          "r_and_d"
+          "r_and_d",
+          "debt"
         ],
         "core_metrics_materially_satisfied": [
           "plasma_collections",
@@ -817,10 +818,8 @@
         ],
         "core_metrics_unavailable_with_reason": [],
         "core_metrics_gap_disclosed": [],
-        "core_metrics_unresolved": [
-          "debt"
-        ],
-        "core_metric_coverage_passed": false,
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
         "core_metric_coverage_details": {
           "segment_revenue": {
             "status": "cleanly_extracted",
@@ -860,10 +859,12 @@
             ]
           },
           "debt": {
-            "status": "unresolved",
-            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "status": "cleanly_extracted",
             "evidence_ids": [
               "financial:CSL.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
             ]
           },
           "guidance": {
@@ -886,10 +887,12 @@
             ]
           },
           "debt_or_balance_sheet": {
-            "status": "unresolved",
-            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "status": "cleanly_extracted",
             "evidence_ids": [
               "financial:CSL.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
             ]
           },
           "plasma_collections_or_collection_network": {
@@ -913,7 +916,7 @@
             "evidence_ids": []
           }
         },
-        "materiality_status": "remediation_required",
+        "materiality_status": "review_ready_with_major_warnings",
         "critical_metrics_required": [
           "segment_revenue_or_growth",
           "margins",
@@ -925,11 +928,10 @@
           "segment_revenue_or_growth",
           "margins",
           "guidance",
+          "debt_or_balance_sheet",
           "plasma_collections_or_collection_network"
         ],
-        "critical_metrics_unresolved": [
-          "debt_or_balance_sheet"
-        ],
+        "critical_metrics_unresolved": [],
         "important_metrics_clean": [
           "r_and_d"
         ],
@@ -947,9 +949,7 @@
           "product_segment_commentary not cleanly extracted",
           "pipeline_commentary not cleanly extracted"
         ],
-        "remediation_required_reasons": [
-          "critical metric debt_or_balance_sheet is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value"
-        ],
+        "remediation_required_reasons": [],
         "remediation_plan_path": "",
         "next_remediation_task_path": "",
         "complete": false,
@@ -959,193 +959,7 @@
     "run_quality_errors": [],
     "run_quality_warnings": []
   },
-  "remediation_plans": [
-    {
-      "ticker": "BHP.AX",
-      "trade_date": "2026-07-06",
-      "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06",
-      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence\\BHP.AX\\2026-07-06\\evidence.json",
-      "status": "remediation_required",
-      "blocking_for_review_grade": true,
-      "validator_errors": [
-        "market.md is still pending",
-        "sentiment.md is still pending",
-        "news.md is still pending",
-        "fundamentals.md is still pending",
-        "financial_report.md is still pending",
-        "industry_theme.md is still pending",
-        "bull_round_1.md is still pending",
-        "bear_round_1.md is still pending",
-        "manager.md is still pending",
-        "trader.md is still pending",
-        "aggressive_round_1.md is still pending",
-        "conservative_round_1.md is still pending",
-        "neutral_round_1.md is still pending",
-        "decision.md is still pending",
-        "complete_report.md is still pending",
-        "debate_record.md is still a task index rather than a completed debate transcript",
-        "debate_record.md missing debate turn: Bull Researcher Round 1 - Opening Case",
-        "debate_record.md does not link to completed role output files",
-        "debate_record.md does not confirm zero pending debate outputs"
-      ],
-      "remediation_tasks": [
-        {
-          "failed_gate": "quality_review_gate",
-          "root_cause_category": "report_quality_validation",
-          "validator_error": "market.md is still pending",
-          "affected_files": [
-            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-            "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
-          ],
-          "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-          "required_tests": [
-            "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
-          ],
-          "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-          "blocking_for_review_grade": true,
-          "status": "pending",
-          "rerun_commands": [
-            ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-          ],
-          "created_at": "2026-07-08T08:45:56+10:00",
-          "updated_at": "2026-07-08T08:45:56+10:00",
-          "task_id": "remediate:BHP.AX:2026-07-06:001"
-        }
-      ],
-      "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
-      "next_remediation_task": {
-        "failed_gate": "quality_review_gate",
-        "root_cause_category": "report_quality_validation",
-        "validator_error": "market.md is still pending",
-        "affected_files": [
-          "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-          "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
-        ],
-        "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-        "required_tests": [
-          "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
-        ],
-        "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-        "blocking_for_review_grade": true,
-        "status": "pending",
-        "rerun_commands": [
-          ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker BHP.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-        ],
-        "created_at": "2026-07-08T08:45:56+10:00",
-        "updated_at": "2026-07-08T08:45:56+10:00",
-        "task_id": "remediate:BHP.AX:2026-07-06:001"
-      },
-      "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
-    },
-    {
-      "ticker": "CSL.AX",
-      "trade_date": "2026-07-06",
-      "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06",
-      "evidence_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\evidence\\CSL.AX\\2026-07-06\\evidence.json",
-      "status": "remediation_required",
-      "blocking_for_review_grade": true,
-      "validator_errors": [
-        "market.md is still pending",
-        "sentiment.md is still pending",
-        "news.md is still pending",
-        "fundamentals.md is still pending",
-        "financial_report.md is still pending",
-        "industry_theme.md is still pending",
-        "bull_round_1.md is still pending",
-        "bear_round_1.md is still pending",
-        "manager.md is still pending",
-        "trader.md is still pending",
-        "aggressive_round_1.md is still pending",
-        "conservative_round_1.md is still pending",
-        "neutral_round_1.md is still pending",
-        "decision.md is still pending",
-        "complete_report.md is still pending",
-        "ASX core metric coverage failed; review-ready quality gate cannot pass",
-        "debate_record.md is still a task index rather than a completed debate transcript",
-        "debate_record.md missing debate turn: Bull Researcher Round 1 - Opening Case",
-        "debate_record.md does not link to completed role output files",
-        "debate_record.md does not confirm zero pending debate outputs"
-      ],
-      "remediation_tasks": [
-        {
-          "failed_gate": "asx_core_metric_coverage_gate",
-          "root_cause_category": "asx_core_metric_coverage_insufficient",
-          "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
-          "affected_files": [
-            "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
-            "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
-            "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
-            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-            "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
-          ],
-          "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
-          "required_tests": [
-            "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
-            "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
-          ],
-          "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-          "blocking_for_review_grade": true,
-          "status": "pending",
-          "rerun_commands": [
-            ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-          ],
-          "created_at": "2026-07-08T08:45:56+10:00",
-          "updated_at": "2026-07-08T08:45:56+10:00",
-          "task_id": "remediate:CSL.AX:2026-07-06:001"
-        },
-        {
-          "failed_gate": "quality_review_gate",
-          "root_cause_category": "report_quality_validation",
-          "validator_error": "market.md is still pending",
-          "affected_files": [
-            "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-            "codex_tradingagents_skillkit/skills/tradingagents-quality-reviewer/SKILL.md"
-          ],
-          "required_fix": "Inspect the validator error and repair the relevant report, prompt, validator, or evidence adapter.",
-          "required_tests": [
-            "codex_tradingagents_skillkit/tests/test_skillkit_bundle.py"
-          ],
-          "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-          "blocking_for_review_grade": true,
-          "status": "pending",
-          "rerun_commands": [
-            ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-          ],
-          "created_at": "2026-07-08T08:45:56+10:00",
-          "updated_at": "2026-07-08T08:45:56+10:00",
-          "task_id": "remediate:CSL.AX:2026-07-06:002"
-        }
-      ],
-      "next_remediation_task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
-      "next_remediation_task": {
-        "failed_gate": "asx_core_metric_coverage_gate",
-        "root_cause_category": "asx_core_metric_coverage_insufficient",
-        "validator_error": "ASX core metric coverage failed; review-ready quality gate cannot pass",
-        "affected_files": [
-          "codex_tradingagents_skillkit/scripts/core_metric_coverage.py",
-          "codex_tradingagents_skillkit/scripts/financial_document_sources_asx.py",
-          "codex_tradingagents_skillkit/scripts/financial_document_evidence.py",
-          "codex_tradingagents_skillkit/scripts/validate_quality_review.py",
-          "codex_tradingagents_skillkit/scripts/run_codex_role_workflow.py"
-        ],
-        "required_fix": "Improve ASX core financial metric extraction or mark genuinely absent metrics unavailable with documented source absence; do not accept unresolved core metrics as review-ready.",
-        "required_tests": [
-          "codex_tradingagents_skillkit/tests/test_asx_core_metric_coverage.py",
-          "codex_tradingagents_skillkit/tests/test_financial_document_sources.py"
-        ],
-        "rerun_command": ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted",
-        "blocking_for_review_grade": true,
-        "status": "pending",
-        "rerun_commands": [
-          ".\\.venv\\Scripts\\python.exe codex_tradingagents_skillkit\\scripts\\collect_role_evidence.py --ticker CSL.AX --trade-date 2026-07-06 --output-dir codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted"
-        ],
-        "created_at": "2026-07-08T08:45:56+10:00",
-        "updated_at": "2026-07-08T08:45:56+10:00",
-        "task_id": "remediate:CSL.AX:2026-07-06:001"
-      },
-      "plan_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json"
-    }
-  ],
+  "remediation_plans": [],
   "quality_gate_passed": false,
   "evidence_reasoning_audit_status": "fail",
   "evidence_reasoning_critical_findings": [
@@ -1153,7 +967,7 @@
     "evidence_reasoning_audit.json missing"
   ],
   "evidence_reasoning_warnings": [],
-  "core_metric_coverage_status": "failed",
+  "core_metric_coverage_status": "passed",
   "core_metrics_required": {
     "BHP.AX": [
       "production",
@@ -1182,7 +996,8 @@
     "CSL.AX": [
       "segment_revenue",
       "margins",
-      "r_and_d"
+      "r_and_d",
+      "debt"
     ]
   },
   "core_metrics_materially_satisfied": {
@@ -1202,14 +1017,12 @@
     "BHP.AX": [
       "reserves_resources"
     ],
-    "CSL.AX": [
-      "debt"
-    ]
+    "CSL.AX": []
   },
-  "core_metric_coverage_passed": false,
+  "core_metric_coverage_passed": true,
   "materiality_status": {
     "BHP.AX": "review_ready_with_major_warnings",
-    "CSL.AX": "remediation_required"
+    "CSL.AX": "review_ready_with_major_warnings"
   },
   "critical_metrics_required": {
     "BHP.AX": [
@@ -1239,14 +1052,13 @@
       "segment_revenue_or_growth",
       "margins",
       "guidance",
+      "debt_or_balance_sheet",
       "plasma_collections_or_collection_network"
     ]
   },
   "critical_metrics_unresolved": {
     "BHP.AX": [],
-    "CSL.AX": [
-      "debt_or_balance_sheet"
-    ]
+    "CSL.AX": []
   },
   "important_metrics_clean": {
     "BHP.AX": [],
@@ -1290,15 +1102,21 @@
   },
   "remediation_required_reasons": {
     "BHP.AX": [],
-    "CSL.AX": [
-      "critical metric debt_or_balance_sheet is not cleanly extracted or source-limited: source appears to contain the metric but extraction did not produce a clean value"
-    ]
+    "CSL.AX": []
   },
   "review_ready": false,
   "patched_quality_gates": [],
   "patched_quality_reviews": [],
-  "written_failed_quality_gates": [
+  "written_failed_quality_gates": [],
+  "written_pending_quality_gates": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_gate.json",
     "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_gate.json"
+  ],
+  "written_pending_remediation_artifacts": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\BHP.AX\\2026-07-06\\6_quality\\next_remediation_task.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_remediation_plan.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\reports\\CSL.AX\\2026-07-06\\6_quality\\next_remediation_task.md"
   ],
   "written_quality_gates": [],
   "closed_loop_rule": "continue from next_remediation_task.md until quality passes or a true external blocker is documented",

@@ -379,6 +379,154 @@ def test_closed_loop_blocks_review_ready_when_asx_core_metrics_unresolved(tmp_pa
     }
 
 
+def test_pending_asx_quality_gate_refreshes_current_materiality_fields(tmp_path: Path):
+    module = _load_closed_loop()
+    output_dir = tmp_path / "run"
+    report_dir = output_dir / "reports" / "BHP.AX" / "2026-07-06"
+    evidence_dir = output_dir / "evidence" / "BHP.AX" / "2026-07-06"
+    financial_dir = evidence_dir / "financial_report"
+    quality_dir = report_dir / "6_quality"
+    financial_dir.mkdir(parents=True)
+    quality_dir.mkdir(parents=True)
+    (output_dir / "run_metadata.json").write_text(
+        json.dumps(
+            {
+                "run_id": "test-asx-pending",
+                "run_folder_name": output_dir.name,
+                "ticker_list": ["BHP.AX"],
+                "market": "ASX",
+                "trade_date": "2026-07-06",
+                "evidence_as_of_date": "2026-07-06",
+                "run_executed_at": "2026-07-06T12:00:00+10:00",
+                "authoritative_result_folder": True,
+                "workflow_status": "running",
+            }
+        ),
+        encoding="utf-8",
+    )
+    evidence_path = evidence_dir / "evidence.json"
+    evidence_path.write_text(json.dumps({"ticker": "BHP.AX", "trade_date": "2026-07-06"}), encoding="utf-8")
+    metric_records = [
+        {
+            "section_kind": "sector_metric",
+            "sector": "miners",
+            "metric_name": metric,
+            "status": "available",
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "clean_metric_value": "1.0",
+            "metric_value_status": "value_extracted",
+            "association_score": 90,
+            "confidence": "medium",
+            "direction": "neutral",
+            "evidence_id": f"financial:BHP.AX:2026-07-06:{index:03d}",
+            "supporting_sentence": f"{metric} 1.0",
+        }
+        for index, metric in enumerate(["production", "realised_price", "unit_cost_aisc", "capex"], start=1)
+    ]
+    metric_records.extend(
+        [
+            {
+                "section_kind": "sector_metric",
+                "sector": "miners",
+                "metric_name": "commodity_exposure",
+                "status": "available",
+                "source_quality_tier": "tier_3_company_annual_report_pdf",
+                "document_role": "annual_report",
+                "metric_eligibility": "eligible_financial_document",
+                "clean_metric_value": "unavailable",
+                "metric_value_status": "portfolio_mix_narrative",
+                "association_score": 90,
+                "confidence": "medium",
+                "direction": "neutral",
+                "evidence_id": "financial:BHP.AX:2026-07-06:005",
+                "supporting_sentence": "BHP portfolio includes iron ore, copper, steelmaking coal and potash.",
+                "source_page": "3",
+            },
+            {
+                "section_kind": "sector_metric",
+                "sector": "miners",
+                "metric_name": "reserves_resources",
+                "status": "unavailable",
+                "source_quality_tier": "tier_3_company_annual_report_pdf",
+                "document_role": "annual_report",
+                "clean_metric_value": "unavailable",
+                "metric_value_status": "unavailable",
+                "association_score": 0,
+                "confidence": "low",
+                "direction": "unavailable",
+                "evidence_id": "financial:BHP.AX:2026-07-06:006",
+                "unavailable_reason": "Reviewed source documents do not disclose this metric before the trade date.",
+                "evidence_gap": "Metric absent from extracted source documents.",
+            },
+        ]
+    )
+    (financial_dir / "section_records.json").write_text(json.dumps(metric_records), encoding="utf-8")
+    (quality_dir / "quality_gate.json").write_text(
+        json.dumps(
+            {
+                "passed": False,
+                "status": "remediation_required",
+                "materiality_status": "remediation_required",
+                "critical_metrics_unresolved": ["commodity_exposure"],
+            }
+        ),
+        encoding="utf-8",
+    )
+    workflow_path = evidence_dir / "workflow_state.json"
+    workflow_path.write_text(
+        json.dumps(
+            {
+                "ticker": "BHP.AX",
+                "trade_date": "2026-07-06",
+                "evidence_path": str(evidence_path),
+                "report_dir": str(report_dir),
+                "run_metadata": {
+                    "run_folder_name": output_dir.name,
+                    "authoritative_result_folder": True,
+                    "status": "running",
+                    "workflow_status": "running",
+                },
+                "stages": [
+                    {
+                        "stage": "market_analyst",
+                        "skill": "tradingagents-market-analyst",
+                        "allowed_inputs": [str(evidence_path)],
+                        "forbidden_inputs": [],
+                        "output_path": str(report_dir / "1_analysts" / "market.md"),
+                        "completion_gate": "write market_report in TradingAgents analyst style",
+                        "role_execution_contract": {
+                            "required_output_sections": [],
+                            "required_evidence_citations": [],
+                        },
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    payload = module.run_closed_loop(output_dir=output_dir)
+
+    assert payload["status"] == "pending_codex_role_execution"
+    assert payload["written_pending_quality_gates"] == [str(quality_dir / "quality_gate.json")]
+    gate = json.loads((quality_dir / "quality_gate.json").read_text(encoding="utf-8"))
+    assert gate["passed"] is False
+    assert gate["status"] == "pending_codex_role_execution"
+    assert gate["materiality_status"] == "review_ready_with_major_warnings"
+    assert gate["core_metric_coverage_passed"] is True
+    assert gate["critical_metrics_unresolved"] == []
+    assert gate["core_metrics_materially_satisfied"] == ["commodity_exposure"]
+    assert any("next stage: market_analyst" in issue["issue"] for issue in gate["issues"])
+    plan = json.loads((quality_dir / "quality_remediation_plan.json").read_text(encoding="utf-8"))
+    assert plan["status"] == "pending_codex_role_execution"
+    assert plan["evidence_metric_blockers"] == []
+    assert plan["core_metric_coverage_passed"] is True
+    assert plan["critical_metrics_unresolved"] == []
+    assert plan["remediation_tasks"][0]["failed_gate"] == "codex_role_workflow"
+    assert "ASX core metric coverage failed" not in json.dumps(plan)
+
+
 def test_run_warnings_are_written_to_quality_review_without_failure(tmp_path: Path):
     module = _load_closed_loop()
     report_dir = tmp_path / "run" / "reports" / "AAPL" / "2026-07-02"

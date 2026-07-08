@@ -376,6 +376,33 @@ def test_bhp_commodity_exposure_portfolio_mix_narrative_satisfies_critical_witho
     assert "reserves_resources" in status["important_metrics_unresolved"]
 
 
+def test_bhp_commodity_exposure_minimal_portfolio_mix_fixture_satisfies_critical():
+    module = _load_coverage()
+    records = [
+        _clean_metric("miners", "production"),
+        _clean_metric("miners", "realised_price"),
+        _clean_metric("miners", "unit_cost_aisc"),
+        _clean_metric("miners", "capex"),
+        {
+            "metric_name": "commodity_exposure",
+            "metric_value_status": "portfolio_mix_narrative",
+            "source_quality_tier": "tier_3_company_annual_report_pdf",
+            "document_role": "annual_report",
+            "metric_eligibility": "eligible_financial_document",
+            "supporting_sentence": "BHP portfolio includes copper, iron ore, steelmaking coal and potash.",
+            "source_page": "3",
+        },
+        _unavailable_metric("miners", "reserves_resources"),
+    ]
+
+    status = module.evaluate_core_metric_coverage(records, ticker="BHP.AX")
+
+    assert status["core_metric_coverage_passed"] is True
+    assert status["materiality_status"] == "review_ready_with_major_warnings"
+    assert "commodity_exposure" in status["critical_metrics_clean"]
+    assert "commodity_exposure" not in status["critical_metrics_unresolved"]
+
+
 def test_bhp_missing_realised_price_still_blocks_miner_materiality():
     module = _load_coverage()
     records = [

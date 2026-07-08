@@ -199,6 +199,12 @@ metrics:
       - debt
       - leverage
       - interest-bearing liabilities
+      - interest-bearing liabilities and borrowings
+      - current interest-bearing liabilities and borrowings
+      - non-current interest-bearing liabilities and borrowings
+      - bank and other borrowings
+      - senior notes
+      - senior 144A notes
       - lease liabilities
       - liquidity
       - cash
@@ -215,6 +221,17 @@ metrics:
       - debt
       - leverage
       - interest-bearing liabilities
+      - interest-bearing liabilities and borrowings
+      - current interest-bearing liabilities and borrowings
+      - non-current interest-bearing liabilities and borrowings
+      - total current interest-bearing liabilities and borrowings
+      - total non-current interest-bearing liabilities and borrowings
+      - bank and other borrowings
+      - bank and other borrowings - unsecured
+      - senior notes
+      - senior notes - unsecured
+      - senior 144A notes
+      - senior 144A notes - unsecured
       - lease liabilities
       - liquidity
       - cash
@@ -245,11 +262,24 @@ metrics:
       - net debt
       - balance sheet
       - gearing
+      - consolidated balance sheet
+      - consolidated statement of financial position
+      - note 11 financial risk management
+      - financial risk management
+      - funding and liquidity risk
+      - notes to the financial statements
+      - financial liabilities
+      - interest-bearing liabilities and borrowings
+      - capital management
+      - liquidity and capital resources
     accepted_units:
       - US$m
       - US$bn
       - $m
       - $bn
+    rejected_column_labels:
+      - notes
+      - note
     accepted_value_patterns:
       - "\\b(?:US\\$|A\\$|\\$)?\\d+(?:\\.\\d+)?\\s*(?:m|bn)\\b"
   plasma_collections:

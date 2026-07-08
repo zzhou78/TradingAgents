@@ -193,7 +193,22 @@ def _metric_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for record in records
         if str(record.get("section_kind") or record.get("section_type") or "") == "sector_metric"
         or str(record.get("section_name") or "").startswith("sector_metric_")
+        or _looks_like_metric_record(record)
     ]
+
+
+def _looks_like_metric_record(record: dict[str, Any]) -> bool:
+    if not str(record.get("metric_name") or record.get("metric_label") or "").strip():
+        return False
+    return any(
+        str(record.get(field) or "").strip()
+        for field in (
+            "metric_value_status",
+            "clean_metric_value",
+            "source_quality_tier",
+            "metric_eligibility",
+        )
+    )
 
 
 def _record_metric_name(record: dict[str, Any]) -> str:

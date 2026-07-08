@@ -206,6 +206,159 @@ def _write_failed_quality_gates(workflow_payload: dict[str, Any], status_path: P
     return written
 
 
+def _write_pending_quality_gates(
+    workflow_payload: dict[str, Any],
+    status_path: Path,
+    workflow_status: str,
+) -> list[str]:
+    written: list[str] = []
+    for run in workflow_payload.get("runs", []):
+        if not isinstance(run, dict):
+            continue
+        if run.get("complete") or run.get("quality_errors"):
+            continue
+        next_stage = run.get("next_stage") if isinstance(run.get("next_stage"), dict) else {}
+        report_dir = Path(str(run.get("report_dir") or ""))
+        if not report_dir:
+            continue
+        quality_dir = report_dir / "6_quality"
+        quality_dir.mkdir(parents=True, exist_ok=True)
+        gate_path = quality_dir / "quality_gate.json"
+        issues: list[dict[str, str]] = []
+        if next_stage:
+            stage = str(next_stage.get("stage") or "unknown")
+            issues.append(
+                {
+                    "severity": "pending",
+                    "section": "Workflow",
+                    "issue": f"Codex role execution is not complete; next stage: {stage}",
+                    "required_fix": "Run the remaining Codex role stages before marking the report review-ready.",
+                }
+            )
+        audit_findings = list(run.get("evidence_reasoning_critical_findings") or [])
+        if audit_findings:
+            issues.append(
+                {
+                    "severity": "pending",
+                    "section": "Evidence and Reasoning Audit",
+                    "issue": "; ".join(str(finding) for finding in audit_findings),
+                    "required_fix": "Run the Evidence and Reasoning Auditor after role outputs are complete.",
+                }
+            )
+        payload = {
+            "passed": False,
+            "ticker": run.get("ticker", ""),
+            "trade_date": run.get("trade_date", ""),
+            "issues": issues,
+            "validator": "validate_quality_review.py",
+            "status": workflow_status,
+            "workflow_status": workflow_status,
+            "quality_gate_passed": bool(run.get("quality_gate_passed")),
+            "evidence_reasoning_audit_status": run.get("evidence_reasoning_audit_status", "missing"),
+            "evidence_reasoning_critical_findings": audit_findings,
+            "core_metric_coverage_status": run.get("core_metric_coverage_status", "not_applicable"),
+            "core_metrics_required": list(run.get("core_metrics_required") or []),
+            "core_metrics_cleanly_extracted": list(run.get("core_metrics_cleanly_extracted") or []),
+            "core_metrics_materially_satisfied": list(run.get("core_metrics_materially_satisfied") or []),
+            "core_metrics_unavailable_with_reason": list(run.get("core_metrics_unavailable_with_reason") or []),
+            "core_metrics_unresolved": list(run.get("core_metrics_unresolved") or []),
+            "core_metric_coverage_passed": bool(run.get("core_metric_coverage_passed")),
+            **_materiality_gate_fields(run),
+            "review_ready": False,
+            "closed_loop_status_path": str(status_path),
+            "closed_loop_status_artifact": "closed_loop_status.json",
+            "notes": (
+                "Codex role workflow is pending; ASX core metric coverage fields reflect current evidence "
+                "so metric blockers are distinct from role/audit completion blockers."
+            ),
+        }
+        gate_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        written.append(str(gate_path))
+    return written
+
+
+def _workflow_pending_issue(run: dict[str, Any]) -> str:
+    next_stage = run.get("next_stage") if isinstance(run.get("next_stage"), dict) else {}
+    if next_stage:
+        return f"Codex role execution is not complete; next stage: {next_stage.get('stage') or 'unknown'}"
+    return "Codex role execution is not complete"
+
+
+def _write_pending_remediation_artifacts(workflow_payload: dict[str, Any], workflow_status: str) -> list[str]:
+    written: list[str] = []
+    output_dir = Path(str(workflow_payload.get("output_dir") or ""))
+    for run in workflow_payload.get("runs", []):
+        if not isinstance(run, dict):
+            continue
+        if run.get("complete") or run.get("quality_errors") or run.get("core_metric_coverage_passed") is False:
+            continue
+        report_dir = Path(str(run.get("report_dir") or ""))
+        if not report_dir:
+            continue
+        quality_dir = report_dir / "6_quality"
+        quality_dir.mkdir(parents=True, exist_ok=True)
+        plan_path = quality_dir / "quality_remediation_plan.json"
+        task_path = quality_dir / "next_remediation_task.md"
+        issue = _workflow_pending_issue(run)
+        audit_findings = [str(item) for item in run.get("evidence_reasoning_critical_findings") or []]
+        validator_errors = [issue, *audit_findings]
+        next_stage = run.get("next_stage") if isinstance(run.get("next_stage"), dict) else {}
+        task = {
+            "failed_gate": "codex_role_workflow",
+            "root_cause_category": "role_report_execution_pending",
+            "validator_error": issue,
+            "affected_files": [item for item in [next_stage.get("task_path"), next_stage.get("output_path")] if item],
+            "required_fix": "Run the remaining Codex role stages and then run the Evidence and Reasoning Auditor.",
+            "required_tests": [],
+            "rerun_command": "",
+            "blocking_for_review_grade": True,
+            "status": "pending",
+            "rerun_commands": [],
+            "task_id": f"complete-role-workflow:{run.get('ticker', '')}:{run.get('trade_date', '')}",
+        }
+        workflow_path = Path(str(run.get("workflow_path") or ""))
+        evidence_path = str(workflow_path.with_name("evidence.json")) if workflow_path else ""
+        payload = {
+            "ticker": run.get("ticker", ""),
+            "trade_date": run.get("trade_date", ""),
+            "report_dir": str(report_dir),
+            "evidence_path": evidence_path,
+            "status": workflow_status,
+            "blocking_for_review_grade": True,
+            "validator_errors": validator_errors,
+            "evidence_metric_blockers": [],
+            "core_metric_coverage_status": run.get("core_metric_coverage_status", "not_applicable"),
+            "core_metric_coverage_passed": bool(run.get("core_metric_coverage_passed")),
+            "materiality_status": run.get("materiality_status", "not_applicable"),
+            "critical_metrics_clean": list(run.get("critical_metrics_clean") or []),
+            "critical_metrics_unresolved": list(run.get("critical_metrics_unresolved") or []),
+            "core_metrics_cleanly_extracted": list(run.get("core_metrics_cleanly_extracted") or []),
+            "core_metrics_materially_satisfied": list(run.get("core_metrics_materially_satisfied") or []),
+            "core_metrics_unresolved": list(run.get("core_metrics_unresolved") or []),
+            "remediation_required_reasons": list(run.get("remediation_required_reasons") or []),
+            "remediation_tasks": [task],
+            "next_remediation_task_path": str(task_path),
+            "next_remediation_task": task,
+            "closed_loop_status_path": str(output_dir / "closed_loop_status.json") if output_dir else "closed_loop_status.json",
+            "notes": (
+                "No upstream ASX metric evidence blocker remains for this ticker in the current evidence run; "
+                "review-grade completion is blocked by pending role reports and audit."
+            ),
+        }
+        plan_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        task_path.write_text(
+            "# Next Remediation Task\n\n"
+            f"- Failed gate: {task['failed_gate']}\n"
+            f"- Root cause: {task['root_cause_category']}\n"
+            f"- Current blocker: {issue}\n"
+            "- Evidence metric blockers: none in the current ASX core metric coverage result.\n"
+            "- Required fix: run the remaining Codex role stages, then run the Evidence and Reasoning Auditor.\n",
+            encoding="utf-8",
+        )
+        written.extend([str(plan_path), str(task_path)])
+    return written
+
+
 def _patch_quality_reviews_with_warnings(workflow_payload: dict[str, Any]) -> list[str]:
     warnings = [str(item) for item in workflow_payload.get("run_quality_warnings", []) if item]
     if not warnings:
@@ -403,6 +556,15 @@ def run_closed_loop(
         "patched_quality_gates": patched_quality_gates,
         "patched_quality_reviews": patched_quality_reviews,
         "written_failed_quality_gates": _write_failed_quality_gates(workflow_payload, provisional_status_path),
+        "written_pending_quality_gates": _write_pending_quality_gates(
+            workflow_payload,
+            provisional_status_path,
+            str(status),
+        ),
+        "written_pending_remediation_artifacts": _write_pending_remediation_artifacts(
+            workflow_payload,
+            str(status),
+        ),
         "written_quality_gates": _write_passed_quality_gates(workflow_payload, provisional_status_path),
         "closed_loop_rule": "continue from next_remediation_task.md until quality passes or a true external blocker is documented",
     }
