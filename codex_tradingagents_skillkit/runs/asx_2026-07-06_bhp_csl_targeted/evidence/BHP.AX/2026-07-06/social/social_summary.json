@@ -1,0 +1,52 @@
+{
+  "social_summary": {
+    "ticker": "BHP.AX",
+    "trade_date": "2026-07-06",
+    "total_items_reviewed": 2,
+    "usable_items": 0,
+    "source_limitations": [
+      "social coverage has no usable ticker-relevant items"
+    ],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:BHP.AX:2026-07-06:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 1,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
+      ],
+      "representative_items": [],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:BHP.AX:2026-07-06:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 1,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
+      ],
+      "representative_items": [],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

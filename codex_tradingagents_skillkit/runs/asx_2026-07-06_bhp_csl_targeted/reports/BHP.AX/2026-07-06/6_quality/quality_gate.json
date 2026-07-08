@@ -1,0 +1,76 @@
+{
+  "passed": false,
+  "ticker": "BHP.AX",
+  "trade_date": "2026-07-06",
+  "issues": [
+    {
+      "severity": "major",
+      "section": "Quality Gate",
+      "issue": "ASX core metric coverage failed; review-ready quality gate cannot pass",
+      "required_fix": "Resolve the validation failure and rerun the closed-loop workflow before review-ready status."
+    }
+  ],
+  "validator": "validate_quality_review.py",
+  "status": "remediation_required",
+  "quality_gate_passed": false,
+  "evidence_reasoning_audit_status": "missing",
+  "evidence_reasoning_critical_findings": [
+    "evidence_reasoning_audit.json missing"
+  ],
+  "core_metric_coverage_status": "failed",
+  "core_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex"
+  ],
+  "core_metrics_materially_satisfied": [],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metric_coverage_passed": false,
+  "materiality_status": "remediation_required",
+  "critical_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure"
+  ],
+  "critical_metrics_clean": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex"
+  ],
+  "critical_metrics_unresolved": [
+    "commodity_exposure"
+  ],
+  "important_metrics_clean": [],
+  "important_metrics_unresolved": [
+    "reserves_resources"
+  ],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [
+    "reserves_resources not cleanly extracted"
+  ],
+  "remediation_required_reasons": [
+    "critical metric commodity_exposure is not cleanly extracted or source-limited: core metric missing, unavailable without reason, or not cleanly extracted"
+  ],
+  "review_ready": false,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_bhp_csl_targeted\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Closed-loop validation failed; see quality_remediation_plan.json and next_remediation_task.md."
+}

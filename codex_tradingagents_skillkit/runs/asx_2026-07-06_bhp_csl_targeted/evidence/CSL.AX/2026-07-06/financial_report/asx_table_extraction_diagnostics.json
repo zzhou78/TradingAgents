@@ -1,0 +1,35 @@
+{
+  "ticker": "CSL.AX",
+  "trade_date": "2026-07-06",
+  "market": "ASX",
+  "source_count": 1,
+  "sources": [
+    {
+      "source_type": "asx_fallback_document",
+      "document_type": "Annual Report",
+      "title": "View our annual report 2025",
+      "url": "https://investors.csl.com/annualreport/2025/",
+      "announcement_date": "2025-12-31",
+      "table_rows_detected": 34,
+      "table_rows_by_strategy": {
+        "pdfplumber_default": 34
+      },
+      "table_rows_by_table": {
+        "page_1_table_1_online_annual_report_table_1": 34
+      },
+      "metric_like_table_rows": [
+        {
+          "source_page": "1",
+          "table_index": "1",
+          "row_index": "25",
+          "table_title": "online_annual_report_table_1",
+          "strategy": "pdfplumber_default",
+          "cell_count": 2,
+          "numeric_cell_count": 1,
+          "raw_row_text": "Consolidated Statement of Cash Flows | 94"
+        }
+      ],
+      "table_row_unparsed_metrics": []
+    }
+  ]
+}
