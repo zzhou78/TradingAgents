@@ -1,0 +1,78 @@
+{
+  "social_summary": {
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "total_items_reviewed": 13,
+    "usable_items": 3,
+    "source_limitations": [
+      "social coverage is noisy or sparse"
+    ],
+    "final_sentiment_judgment": "pending_codex_interpretation"
+  },
+  "sources": [
+    {
+      "evidence_id": "social:MSFT:2026-07-06:001",
+      "source": "fetch_stocktwits_messages",
+      "status": "available",
+      "source_confidence_category": "ticker_specific_retail_platform",
+      "retail_only": true,
+      "items_reviewed": 2,
+      "usable_ticker_relevant_items": 0,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "confidence": "low",
+      "limitations": [
+        "no_usable_ticker_relevant_items"
+      ],
+      "representative_items": [],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    },
+    {
+      "evidence_id": "social:MSFT:2026-07-06:002",
+      "source": "fetch_reddit_posts",
+      "status": "available",
+      "source_confidence_category": "broad_social_discussion",
+      "retail_only": true,
+      "items_reviewed": 11,
+      "usable_ticker_relevant_items": 3,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 3,
+      "confidence": "low",
+      "limitations": [],
+      "representative_items": [
+        {
+          "text_excerpt": "r/stocks \u2014 4 recent posts mentioning MSFT (via RSS feed; scores/comments unavailable):",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "[2026-07-02] Are hyperscalers like $AMZN, $MSFT and $GOOG screwed if the there is an oversupply of data centres?",
+          "classification": "directly ticker-relevant",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        },
+        {
+          "text_excerpt": "body excerpt: META and SpaceX is just showed us it has excess capacity. If a data centre oversupply is true, semi stocks will fucking crash and burn for sure. Very dramatic end. But hyperscalers, our beloved Mag 7, the big 3 cloud. like MSF",
+          "classification": "irrelevant / spam / joke / low-information",
+          "label": "neutral",
+          "ticker_relevance": "direct_company",
+          "candidate_sentiment_label": "neutral",
+          "reasoning_quality": "low",
+          "influence_weight": 0.3
+        }
+      ],
+      "quality_weighted_balance": "pending_codex_interpretation",
+      "final_sentiment_judgment": "pending_codex_interpretation"
+    }
+  ]
+}

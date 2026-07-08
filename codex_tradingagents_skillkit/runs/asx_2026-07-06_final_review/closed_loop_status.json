@@ -1,0 +1,1953 @@
+{
+  "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+  "status": "review_ready_paper_study",
+  "generated_at": "2026-07-08T20:13:39+10:00",
+  "commands": [],
+  "workflow": {
+    "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+    "runs": [
+      {
+        "ticker": "BHP.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-08T20:03:28+10:00",
+        "run_id": "asx_2026-07-06_final_review:BHP.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+        "authoritative_result_folder": true,
+        "status": "review_ready_paper_study",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-08T20:03:28+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_final_review",
+          "ticker_list": [
+            "BHP.AX",
+            "CBA.AX",
+            "MPL.AX",
+            "CSL.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_final_review:BHP.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\evidence\\BHP.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": null,
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:BHP.AX:2026-07-06:035 metric=reserves_resources",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          }
+        ],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "miners",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "production",
+          "realised_price",
+          "unit_cost_aisc",
+          "capex",
+          "commodity_exposure",
+          "reserves_resources"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "production",
+          "realised_price",
+          "unit_cost_aisc",
+          "capex"
+        ],
+        "core_metrics_materially_satisfied": [
+          "commodity_exposure"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [
+          "reserves_resources"
+        ],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "production": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:031"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "realised_price": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:032"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "unit_cost_aisc": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:033"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "capex": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:034"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "commodity_exposure": {
+            "status": "materially_satisfied",
+            "reason": "commodity_exposure is supported by eligible narrative evidence rather than a clean numeric value",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:036"
+            ],
+            "metric_value_statuses": [
+              "portfolio_mix_narrative"
+            ]
+          },
+          "reserves_resources": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:BHP.AX:2026-07-06:035"
+            ]
+          }
+        },
+        "materiality_status": "review_ready_with_major_warnings",
+        "critical_metrics_required": [
+          "production",
+          "realised_price",
+          "unit_cost_aisc",
+          "capex",
+          "commodity_exposure"
+        ],
+        "critical_metrics_clean": [
+          "production",
+          "realised_price",
+          "unit_cost_aisc",
+          "capex",
+          "commodity_exposure"
+        ],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [],
+        "important_metrics_unresolved": [
+          "reserves_resources"
+        ],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [],
+        "warnings": [],
+        "major_warnings": [
+          "commodity_exposure is supported by portfolio_mix_narrative evidence",
+          "reserves_resources not cleanly extracted"
+        ],
+        "remediation_required_reasons": [],
+        "remediation_plan_path": "",
+        "next_remediation_task_path": "",
+        "complete": true,
+        "review_ready": true
+      },
+      {
+        "ticker": "CBA.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-08T20:03:28+10:00",
+        "run_id": "asx_2026-07-06_final_review:CBA.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+        "authoritative_result_folder": true,
+        "status": "review_ready_paper_study",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-08T20:03:28+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_final_review",
+          "ticker_list": [
+            "BHP.AX",
+            "CBA.AX",
+            "MPL.AX",
+            "CSL.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_final_review:CBA.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\evidence\\CBA.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": null,
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass_with_warnings",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          },
+          {
+            "attack": "Validator Blind-Spot Attack",
+            "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+            "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+            "regression_test": "Consider adding a fixture for this metric/source layout."
+          }
+        ],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "banks",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "arrears",
+          "impairment",
+          "roe",
+          "dividend"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "net_interest_margin",
+          "cet1",
+          "loan_growth",
+          "impairment",
+          "dividend"
+        ],
+        "core_metrics_materially_satisfied": [],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [
+          "arrears",
+          "roe"
+        ],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "net_interest_margin": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:016"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "cet1": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:017"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "loan_growth": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:018"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "arrears": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:019"
+            ]
+          },
+          "impairment": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "roe": {
+            "status": "unresolved",
+            "reason": "source appears to contain the metric but extraction did not produce a clean value",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:022"
+            ]
+          },
+          "dividend": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CBA.AX:2026-07-06:021"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          }
+        },
+        "materiality_status": "review_ready_with_major_warnings",
+        "critical_metrics_required": [
+          "net_interest_margin",
+          "cet1",
+          "credit_quality_group"
+        ],
+        "critical_metrics_clean": [
+          "net_interest_margin",
+          "cet1",
+          "credit_quality_group"
+        ],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [
+          "loan_growth",
+          "dividend",
+          "impairment"
+        ],
+        "important_metrics_unresolved": [
+          "roe",
+          "arrears"
+        ],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [],
+        "warnings": [],
+        "major_warnings": [
+          "ROE not cleanly extracted",
+          "arrears not cleanly extracted",
+          "credit quality assessment relies on impairment / loan impairment expense instead of arrears"
+        ],
+        "remediation_required_reasons": [],
+        "remediation_plan_path": "",
+        "next_remediation_task_path": "",
+        "complete": true,
+        "review_ready": true
+      },
+      {
+        "ticker": "CSL.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-08T20:03:28+10:00",
+        "run_id": "asx_2026-07-06_final_review:CSL.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+        "authoritative_result_folder": true,
+        "status": "review_ready_paper_study",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-08T20:03:28+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_final_review",
+          "ticker_list": [
+            "BHP.AX",
+            "CBA.AX",
+            "MPL.AX",
+            "CSL.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_final_review:CSL.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\evidence\\CSL.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": null,
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "healthcare",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "segment_revenue",
+          "margins",
+          "r_and_d",
+          "plasma_collections",
+          "debt",
+          "guidance"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "segment_revenue",
+          "margins",
+          "r_and_d",
+          "debt"
+        ],
+        "core_metrics_materially_satisfied": [
+          "plasma_collections",
+          "guidance"
+        ],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "segment_revenue": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:016"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "margins": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:019"
+            ],
+            "metric_value_statuses": [
+              "profitability_metric"
+            ]
+          },
+          "r_and_d": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:017"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "plasma_collections": {
+            "status": "materially_satisfied",
+            "reason": "plasma_collections is supported by eligible narrative evidence rather than a clean numeric value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:018"
+            ],
+            "metric_value_statuses": [
+              "plasma_network_narrative"
+            ]
+          },
+          "debt": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "guidance": {
+            "status": "materially_satisfied",
+            "reason": "guidance is supported by eligible narrative evidence rather than a clean numeric value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:021"
+            ],
+            "metric_value_statuses": [
+              "guidance_narrative"
+            ]
+          },
+          "segment_revenue_or_growth": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:016"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "debt_or_balance_sheet": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "plasma_collections_or_collection_network": {
+            "status": "materially_satisfied",
+            "reason": "plasma_collections_or_collection_network is supported by eligible narrative evidence rather than a clean numeric value",
+            "evidence_ids": [
+              "financial:CSL.AX:2026-07-06:018"
+            ],
+            "metric_value_statuses": [
+              "plasma_network_narrative"
+            ]
+          },
+          "product_segment_commentary": {
+            "status": "unresolved",
+            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
+            "evidence_ids": []
+          },
+          "pipeline_commentary": {
+            "status": "unresolved",
+            "reason": "core metric missing, unavailable without reason, or not cleanly extracted",
+            "evidence_ids": []
+          }
+        },
+        "materiality_status": "review_ready_with_major_warnings",
+        "critical_metrics_required": [
+          "segment_revenue_or_growth",
+          "margins",
+          "guidance",
+          "debt_or_balance_sheet",
+          "plasma_collections_or_collection_network"
+        ],
+        "critical_metrics_clean": [
+          "segment_revenue_or_growth",
+          "margins",
+          "guidance",
+          "debt_or_balance_sheet",
+          "plasma_collections_or_collection_network"
+        ],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [
+          "r_and_d"
+        ],
+        "important_metrics_unresolved": [
+          "product_segment_commentary",
+          "pipeline_commentary"
+        ],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [],
+        "warnings": [],
+        "major_warnings": [
+          "margins is supported by profitability_metric evidence",
+          "guidance is supported by guidance_narrative evidence",
+          "plasma_collections_or_collection_network is supported by plasma_network_narrative evidence",
+          "product_segment_commentary not cleanly extracted",
+          "pipeline_commentary not cleanly extracted"
+        ],
+        "remediation_required_reasons": [],
+        "remediation_plan_path": "",
+        "next_remediation_task_path": "",
+        "complete": true,
+        "review_ready": true
+      },
+      {
+        "ticker": "MPL.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-08T20:03:28+10:00",
+        "run_id": "asx_2026-07-06_final_review:MPL.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+        "authoritative_result_folder": true,
+        "status": "review_ready_paper_study",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-08T20:03:28+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_final_review",
+          "ticker_list": [
+            "BHP.AX",
+            "CBA.AX",
+            "MPL.AX",
+            "CSL.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_final_review:MPL.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\evidence\\MPL.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": null,
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "health_insurers",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "premium_growth",
+          "claims_ratio",
+          "membership",
+          "capital_adequacy",
+          "operating_profit_or_margin"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "premium_growth",
+          "claims_ratio",
+          "membership",
+          "capital_adequacy",
+          "operating_profit_or_margin"
+        ],
+        "core_metrics_materially_satisfied": [],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "premium_growth": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-06:016"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "claims_ratio": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-06:017"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "membership": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-06:018"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "capital_adequacy": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-06:019"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "operating_profit_or_margin": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:MPL.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          }
+        },
+        "materiality_status": "review_ready_clean",
+        "critical_metrics_required": [
+          "claims_ratio",
+          "capital_adequacy"
+        ],
+        "critical_metrics_clean": [
+          "claims_ratio",
+          "capital_adequacy"
+        ],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [
+          "premium_growth",
+          "membership",
+          "operating_profit_or_margin"
+        ],
+        "important_metrics_unresolved": [],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [],
+        "warnings": [],
+        "major_warnings": [],
+        "remediation_required_reasons": [],
+        "remediation_plan_path": "",
+        "next_remediation_task_path": "",
+        "complete": true,
+        "review_ready": true
+      },
+      {
+        "ticker": "WOW.AX",
+        "trade_date": "2026-07-06",
+        "evidence_as_of_date": "2026-07-06",
+        "run_executed_at": "2026-07-08T20:03:28+10:00",
+        "run_id": "asx_2026-07-06_final_review:WOW.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+        "authoritative_result_folder": true,
+        "status": "review_ready_paper_study",
+        "run_metadata": {
+          "trade_date": "2026-07-06",
+          "evidence_as_of_date": "2026-07-06",
+          "run_executed_at": "2026-07-08T20:03:28+10:00",
+          "output_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "market": "ASX",
+          "run_folder_name": "asx_2026-07-06_final_review",
+          "ticker_list": [
+            "BHP.AX",
+            "CBA.AX",
+            "MPL.AX",
+            "CSL.AX",
+            "WOW.AX"
+          ],
+          "run_id": "asx_2026-07-06_final_review:WOW.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+          "authoritative_result_folder": true,
+          "authoritative_result_folder_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+          "status": "review_ready_paper_study",
+          "workflow_status": "review_ready_paper_study"
+        },
+        "workflow_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\evidence\\WOW.AX\\2026-07-06\\workflow_state.json",
+        "report_dir": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06",
+        "total_stages": 16,
+        "complete_stages": 16,
+        "next_stage": null,
+        "stages": [
+          {
+            "stage": "market_analyst",
+            "skill": "tradingagents-market-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\market_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\market.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write market_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "sentiment_analyst",
+            "skill": "tradingagents-sentiment-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\sentiment_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\sentiment.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write sentiment_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "news_analyst",
+            "skill": "tradingagents-news-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\news_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\news.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write news_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "fundamentals_analyst",
+            "skill": "tradingagents-fundamentals-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\fundamentals_analyst_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\fundamentals.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write fundamentals_report in TradingAgents analyst style"
+          },
+          {
+            "stage": "financial_report_analyst",
+            "skill": "tradingagents-financial-report-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\financial_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\financial_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write financial_report.md before industry/theme discovery"
+          },
+          {
+            "stage": "industry_theme_discovery_analyst",
+            "skill": "tradingagents-industry-theme-discovery-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\industry_theme_discovery_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\1_analysts\\industry_theme.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "discover evidence-grounded industry/theme context before research debate"
+          },
+          {
+            "stage": "bull_researcher_round_1",
+            "skill": "tradingagents-bull-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\bull_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\2_research\\bull_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "bear_researcher_round_1",
+            "skill": "tradingagents-bear-researcher",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\bear_researcher_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\2_research\\bear_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Bear must directly rebut the strongest Bull point."
+          },
+          {
+            "stage": "research_manager",
+            "skill": "tradingagents-research-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\research_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\2_research\\manager.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Research Manager must weigh Bull vs Bear evidence."
+          },
+          {
+            "stage": "trader",
+            "skill": "tradingagents-trader",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\trader_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\3_trading\\trader.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "aggressive_risk_round_1",
+            "skill": "tradingagents-aggressive-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\aggressive_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\4_risk\\aggressive_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write the visible debate-stage output before advancing"
+          },
+          {
+            "stage": "conservative_risk_round_1",
+            "skill": "tradingagents-conservative-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\conservative_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\4_risk\\conservative_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Conservative Risk must directly respond to Aggressive Risk."
+          },
+          {
+            "stage": "neutral_risk_round_1",
+            "skill": "tradingagents-neutral-risk-analyst",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\neutral_risk_round_1_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\4_risk\\neutral_round_1.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Neutral Risk must weigh Aggressive vs Conservative."
+          },
+          {
+            "stage": "portfolio_manager",
+            "skill": "tradingagents-portfolio-manager",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\portfolio_manager_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\5_portfolio\\decision.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "Portfolio Manager must synthesize the risk debate."
+          },
+          {
+            "stage": "complete_report",
+            "skill": "tradingagents-run-persistence",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\complete_report_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\complete_report.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "assemble TradingAgents-style complete_report.md"
+          },
+          {
+            "stage": "quality_review",
+            "skill": "tradingagents-quality-reviewer",
+            "status": "complete",
+            "task_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\tasks\\quality_reviewer_task.md",
+            "output_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_review.md",
+            "blocking_dependencies": [],
+            "validation_errors": [],
+            "completion_gate": "write quality_review.md and quality_gate.json"
+          }
+        ],
+        "quality_errors": [],
+        "quality_gate_passed": true,
+        "evidence_reasoning_audit_status": "pass",
+        "evidence_reasoning_critical_findings": [],
+        "evidence_reasoning_warnings": [],
+        "evidence_reasoning_audit_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\6_quality\\evidence_reasoning_audit.json",
+        "sector": "retailers",
+        "core_metric_coverage_status": "passed",
+        "core_metrics_required": [
+          "sales_growth",
+          "ebit_margin",
+          "inventory_or_working_capital",
+          "capex",
+          "dividends",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_cleanly_extracted": [
+          "sales_growth",
+          "ebit_margin",
+          "inventory_or_working_capital",
+          "capex",
+          "comparable_sales_if_available"
+        ],
+        "core_metrics_materially_satisfied": [],
+        "core_metrics_unavailable_with_reason": [],
+        "core_metrics_gap_disclosed": [],
+        "core_metrics_unresolved": [
+          "dividends"
+        ],
+        "core_metric_coverage_passed": true,
+        "core_metric_coverage_details": {
+          "sales_growth": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:016"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "ebit_margin": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:018"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "inventory_or_working_capital": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:019"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "capex": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:020"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          },
+          "dividends": {
+            "status": "unresolved",
+            "reason": "clean value subtype is not valid for this metric profile",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:021"
+            ]
+          },
+          "comparable_sales_if_available": {
+            "status": "cleanly_extracted",
+            "evidence_ids": [
+              "financial:WOW.AX:2026-07-06:017"
+            ],
+            "metric_value_statuses": [
+              "value_extracted"
+            ]
+          }
+        },
+        "materiality_status": "review_ready_with_warnings",
+        "critical_metrics_required": [
+          "sales_growth",
+          "ebit_margin"
+        ],
+        "critical_metrics_clean": [
+          "sales_growth",
+          "ebit_margin"
+        ],
+        "critical_metrics_unresolved": [],
+        "important_metrics_clean": [
+          "inventory_or_working_capital",
+          "capex",
+          "comparable_sales_if_available"
+        ],
+        "important_metrics_unresolved": [],
+        "supporting_metrics_clean": [],
+        "supporting_metrics_unresolved": [
+          "dividends"
+        ],
+        "warnings": [
+          "dividends not cleanly extracted"
+        ],
+        "major_warnings": [],
+        "remediation_required_reasons": [],
+        "remediation_plan_path": "",
+        "next_remediation_task_path": "",
+        "complete": true,
+        "review_ready": true
+      }
+    ],
+    "run_quality_errors": [],
+    "run_quality_warnings": [
+      "debate winner is always Balanced across a multi-ticker run"
+    ]
+  },
+  "remediation_plans": [],
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
+  "evidence_reasoning_warnings": [
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:BHP.AX:2026-07-06:035 metric=reserves_resources",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:019 metric=arrears",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    },
+    {
+      "attack": "Validator Blind-Spot Attack",
+      "warning": "Metric is present but clean value or row/column mapping remains unresolved.",
+      "evidence_reference": "financial:CBA.AX:2026-07-06:022 metric=roe",
+      "regression_test": "Consider adding a fixture for this metric/source layout."
+    }
+  ],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": {
+    "BHP.AX": [
+      "production",
+      "realised_price",
+      "unit_cost_aisc",
+      "capex",
+      "commodity_exposure",
+      "reserves_resources"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "arrears",
+      "impairment",
+      "roe",
+      "dividend"
+    ],
+    "CSL.AX": [
+      "segment_revenue",
+      "margins",
+      "r_and_d",
+      "plasma_collections",
+      "debt",
+      "guidance"
+    ],
+    "MPL.AX": [
+      "premium_growth",
+      "claims_ratio",
+      "membership",
+      "capital_adequacy",
+      "operating_profit_or_margin"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin",
+      "inventory_or_working_capital",
+      "capex",
+      "dividends",
+      "comparable_sales_if_available"
+    ]
+  },
+  "core_metrics_cleanly_extracted": {
+    "BHP.AX": [
+      "production",
+      "realised_price",
+      "unit_cost_aisc",
+      "capex"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "loan_growth",
+      "impairment",
+      "dividend"
+    ],
+    "CSL.AX": [
+      "segment_revenue",
+      "margins",
+      "r_and_d",
+      "debt"
+    ],
+    "MPL.AX": [
+      "premium_growth",
+      "claims_ratio",
+      "membership",
+      "capital_adequacy",
+      "operating_profit_or_margin"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin",
+      "inventory_or_working_capital",
+      "capex",
+      "comparable_sales_if_available"
+    ]
+  },
+  "core_metrics_materially_satisfied": {
+    "BHP.AX": [
+      "commodity_exposure"
+    ],
+    "CBA.AX": [],
+    "CSL.AX": [
+      "plasma_collections",
+      "guidance"
+    ],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "core_metrics_unavailable_with_reason": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "core_metrics_unresolved": {
+    "BHP.AX": [
+      "reserves_resources"
+    ],
+    "CBA.AX": [
+      "arrears",
+      "roe"
+    ],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": [
+      "dividends"
+    ]
+  },
+  "core_metric_coverage_passed": true,
+  "materiality_status": {
+    "BHP.AX": "review_ready_with_major_warnings",
+    "CBA.AX": "review_ready_with_major_warnings",
+    "CSL.AX": "review_ready_with_major_warnings",
+    "MPL.AX": "review_ready_clean",
+    "WOW.AX": "review_ready_with_warnings"
+  },
+  "critical_metrics_required": {
+    "BHP.AX": [
+      "production",
+      "realised_price",
+      "unit_cost_aisc",
+      "capex",
+      "commodity_exposure"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "credit_quality_group"
+    ],
+    "CSL.AX": [
+      "segment_revenue_or_growth",
+      "margins",
+      "guidance",
+      "debt_or_balance_sheet",
+      "plasma_collections_or_collection_network"
+    ],
+    "MPL.AX": [
+      "claims_ratio",
+      "capital_adequacy"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin"
+    ]
+  },
+  "critical_metrics_clean": {
+    "BHP.AX": [
+      "production",
+      "realised_price",
+      "unit_cost_aisc",
+      "capex",
+      "commodity_exposure"
+    ],
+    "CBA.AX": [
+      "net_interest_margin",
+      "cet1",
+      "credit_quality_group"
+    ],
+    "CSL.AX": [
+      "segment_revenue_or_growth",
+      "margins",
+      "guidance",
+      "debt_or_balance_sheet",
+      "plasma_collections_or_collection_network"
+    ],
+    "MPL.AX": [
+      "claims_ratio",
+      "capital_adequacy"
+    ],
+    "WOW.AX": [
+      "sales_growth",
+      "ebit_margin"
+    ]
+  },
+  "critical_metrics_unresolved": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "important_metrics_clean": {
+    "BHP.AX": [],
+    "CBA.AX": [
+      "loan_growth",
+      "dividend",
+      "impairment"
+    ],
+    "CSL.AX": [
+      "r_and_d"
+    ],
+    "MPL.AX": [
+      "premium_growth",
+      "membership",
+      "operating_profit_or_margin"
+    ],
+    "WOW.AX": [
+      "inventory_or_working_capital",
+      "capex",
+      "comparable_sales_if_available"
+    ]
+  },
+  "important_metrics_unresolved": {
+    "BHP.AX": [
+      "reserves_resources"
+    ],
+    "CBA.AX": [
+      "roe",
+      "arrears"
+    ],
+    "CSL.AX": [
+      "product_segment_commentary",
+      "pipeline_commentary"
+    ],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "supporting_metrics_clean": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "supporting_metrics_unresolved": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": [
+      "dividends"
+    ]
+  },
+  "warnings": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": [
+      "dividends not cleanly extracted"
+    ]
+  },
+  "major_warnings": {
+    "BHP.AX": [
+      "commodity_exposure is supported by portfolio_mix_narrative evidence",
+      "reserves_resources not cleanly extracted"
+    ],
+    "CBA.AX": [
+      "ROE not cleanly extracted",
+      "arrears not cleanly extracted",
+      "credit quality assessment relies on impairment / loan impairment expense instead of arrears"
+    ],
+    "CSL.AX": [
+      "margins is supported by profitability_metric evidence",
+      "guidance is supported by guidance_narrative evidence",
+      "plasma_collections_or_collection_network is supported by plasma_network_narrative evidence",
+      "product_segment_commentary not cleanly extracted",
+      "pipeline_commentary not cleanly extracted"
+    ],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "remediation_required_reasons": {
+    "BHP.AX": [],
+    "CBA.AX": [],
+    "CSL.AX": [],
+    "MPL.AX": [],
+    "WOW.AX": []
+  },
+  "review_ready": true,
+  "patched_quality_gates": [],
+  "patched_quality_reviews": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\6_quality\\quality_review.md",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_review.md"
+  ],
+  "written_failed_quality_gates": [],
+  "written_pending_quality_gates": [],
+  "written_pending_remediation_artifacts": [],
+  "written_quality_gates": [
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\BHP.AX\\2026-07-06\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CBA.AX\\2026-07-06\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\CSL.AX\\2026-07-06\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\MPL.AX\\2026-07-06\\6_quality\\quality_gate.json",
+    "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\reports\\WOW.AX\\2026-07-06\\6_quality\\quality_gate.json"
+  ],
+  "closed_loop_rule": "continue from next_remediation_task.md until quality passes or a true external blocker is documented",
+  "run_metadata_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\run_metadata.json"
+}

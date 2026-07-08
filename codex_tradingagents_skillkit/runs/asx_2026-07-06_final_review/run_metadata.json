@@ -1,0 +1,18 @@
+{
+  "run_id": "asx_2026-07-06_final_review:BHP.AX,CBA.AX,MPL.AX,CSL.AX,WOW.AX:2026-07-06:2026-07-08T20:03:28+10:00",
+  "run_folder_name": "asx_2026-07-06_final_review",
+  "ticker_list": [
+    "BHP.AX",
+    "CBA.AX",
+    "MPL.AX",
+    "CSL.AX",
+    "WOW.AX"
+  ],
+  "market": "ASX",
+  "trade_date": "2026-07-06",
+  "evidence_as_of_date": "2026-07-06",
+  "run_executed_at": "2026-07-08T20:03:28+10:00",
+  "authoritative_result_folder": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review",
+  "workflow_status": "review_ready_paper_study",
+  "status": "review_ready_paper_study"
+}

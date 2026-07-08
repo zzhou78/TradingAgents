@@ -1,0 +1,15 @@
+{
+  "run_id": "us_2026-07-06_final_review:AAPL,MSFT:2026-07-06:2026-07-08T20:03:28+10:00",
+  "run_folder_name": "us_2026-07-06_final_review",
+  "ticker_list": [
+    "AAPL",
+    "MSFT"
+  ],
+  "market": "US",
+  "trade_date": "2026-07-06",
+  "evidence_as_of_date": "2026-07-06",
+  "run_executed_at": "2026-07-08T20:03:28+10:00",
+  "authoritative_result_folder": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review",
+  "workflow_status": "review_ready_paper_study",
+  "status": "review_ready_paper_study"
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:001",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\reports\\MSFT\\2026-07-06\\1_analysts\\market.md",
+    "status": "pending_or_missing",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:002",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\reports\\MSFT\\2026-07-06\\1_analysts\\sentiment.md",
+    "status": "pending_or_missing",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:003",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\reports\\MSFT\\2026-07-06\\1_analysts\\news.md",
+    "status": "pending_or_missing",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:004",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\reports\\MSFT\\2026-07-06\\1_analysts\\fundamentals.md",
+    "status": "pending_or_missing",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:005",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\reports\\MSFT\\2026-07-06\\1_analysts\\financial_report.md",
+    "status": "pending_or_missing",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "low",
+    "limitations": [
+      "input_pending_or_missing_at_task_generation"
+    ],
+    "final_role_judgment": "pending_codex_interpretation"
+  },
+  {
+    "evidence_id": "stage:industry_theme_discovery_analyst:MSFT:2026-07-06:006",
+    "ticker": "MSFT",
+    "trade_date": "2026-07-06",
+    "role": "industry_theme_discovery_analyst",
+    "input_path": "codex_tradingagents_skillkit\\runs\\us_2026-07-06_final_review\\evidence\\MSFT\\2026-07-06\\evidence.json",
+    "status": "available",
+    "supports_claims": [
+      "upstream role evidence",
+      "cross-role synthesis input"
+    ],
+    "confidence": "medium",
+    "limitations": [],
+    "final_role_judgment": "pending_codex_interpretation"
+  }
+]

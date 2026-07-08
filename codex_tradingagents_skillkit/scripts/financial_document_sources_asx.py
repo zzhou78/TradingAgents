@@ -2641,6 +2641,18 @@ def _period_references(text: str) -> tuple[str, str]:
     return (periods[0] if periods else "not specified", periods[1] if len(periods) > 1 else "not specified")
 
 
+def _fiscal_period_from_column_label(label: str) -> str:
+    match = re.search(r"\b(?:FY)?20\d{2}\b|\bFY\d{2}\b", str(label), re.IGNORECASE)
+    if not match:
+        return "not specified"
+    value = match.group(0).upper()
+    if value.startswith("FY") and len(value) == 4:
+        return "FY20" + value[-2:]
+    if value.startswith("20"):
+        return "FY" + value
+    return value
+
+
 def _competing_labels_near_value(text: str, metric_name: str, value_start: int) -> list[str]:
     competitors: list[tuple[int, str]] = []
     for sector_profiles in _load_metric_profiles().values():
@@ -2924,6 +2936,17 @@ def _csl_debt_total_association(
     )
     score = max(92, mapping_score)
     current_total = _format_numeric_total(total)
+    period_reference = _fiscal_period_from_column_label(current_value["column_label"])
+    if period_reference == "not specified":
+        period_reference = current_value["column_label"]
+    comparison_reference = (
+        _fiscal_period_from_column_label(current_prior["column_label"]) if current_prior else "not specified"
+    )
+    if current_prior and comparison_reference == "not specified":
+        comparison_reference = current_prior["column_label"]
+    normalized_column_label = (
+        f"{period_reference} {unit}" if period_reference.startswith("FY") else current_value["column_label"]
+    )
     return {
         "score": score,
         "clean_metric_value": current_total,
@@ -2936,12 +2959,12 @@ def _csl_debt_total_association(
         "confidence": "medium",
         "confidence_reason": "clean value accepted because current and non-current borrowings rows prove total balance-sheet debt",
         "direction": "neutral",
-        "period_reference": current_value["column_label"],
-        "comparison_reference": current_prior["column_label"] if current_prior else "not specified",
+        "period_reference": period_reference,
+        "comparison_reference": comparison_reference,
         "table_title": table_title,
         "source_section": table_title,
         "row_label": row_label,
-        "column_label": current_value["column_label"],
+        "column_label": normalized_column_label,
         "cell_value": current_total,
         "source_page": source_page,
         "current_period_value": current_total,
@@ -3783,11 +3806,8 @@ def _csl_flattened_debt_balance_sheet_association(clean: str, profile: dict[str,
     non_current_prior_number = _numeric_string_to_float(non_current_prior)
     if current_prior_number is not None and non_current_prior_number is not None:
         prior_total = _format_numeric_total(current_prior_number + non_current_prior_number)
-    period_reference, comparison_reference = _period_references(clean)
-    if period_reference == "not specified":
-        period_reference = "FY2025"
-    if comparison_reference == "not specified":
-        comparison_reference = "FY2024"
+    period_reference = "FY2025"
+    comparison_reference = "FY2024"
     source_page_match = re.search(r"(?:page\s+|/)(9[0-9]|1[01][0-9])(?:/|\b)", clean, re.IGNORECASE)
     source_page = source_page_match.group(1) if source_page_match else "unavailable"
     support_start = max(0, current_section_match.start() - 120)

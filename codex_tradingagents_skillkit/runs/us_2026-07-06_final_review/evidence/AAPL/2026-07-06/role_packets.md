@@ -1,0 +1,1021 @@
+# Codex Role Evidence Packet: AAPL
+
+- Trade date: `2026-07-06`
+- Instrument identity: `Apple Inc.`
+
+These packets are evidence only. Codex must act each role independently using the named skill.
+
+## Role: market
+
+- Skill: `tradingagents-market-analyst`
+
+### Tool: get_stock_data
+
+- Status: `ok`
+
+```text
+# Stock data for AAPL from 2026-06-06 to 2026-07-06
+# Total records: 19
+# Data retrieved on: 2026-07-08 20:03:29
+
+Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
+2026-06-08,308.74,317.4,301.17,301.54,77949100,0.0,0.0
+2026-06-09,300.28,300.75,287.78,290.55,70108800,0.0,0.0
+2026-06-10,290.74,294.75,287.38,291.58,52793300,0.0,0.0
+2026-06-11,293.72,297.0,289.59,295.63,42572500,0.0,0.0
+2026-06-12,296.03,297.14,289.62,291.13,38742100,0.0,0.0
+2026-06-15,294.12,297.78,291.7,296.42,45732600,0.0,0.0
+2026-06-16,295.25,300.48,293.97,299.24,39874400,0.0,0.0
+2026-06-17,300.85,302.07,294.36,295.95,42745100,0.0,0.0
+2026-06-18,298.11,300.57,295.62,298.01,85962200,0.0,0.0
+2026-06-22,297.31,302.42,296.76,297.01,44879900,0.0,0.0
+2026-06-23,297.54,301.64,294.18,294.3,52010900,0.0,0.0
+2026-06-24,295.36,299.7,292.94,293.08,53081900,0.0,0.0
+2026-06-25,287.4,288.8,273.75,275.15,107013700,0.0,0.0
+2026-06-26,275.0,285.95,274.21,283.78,261775500,0.0,0.0
+2026-06-29,286.73,288.37,279.85,281.74,66427000,0.0,0.0
+2026-06-30,281.17,289.94,280.7,289.36,65100200,0.0,0.0
+2026-07-01,293.44,296.59,289.2,294.38,50164200,0.0,0.0
+2026-07-02,294.12,309.42,293.68,308.63,75352800,0.0,0.0
+2026-07-06,307.36,314.2,307.0,312.66,53590000,0.0,0.0
+
+```
+
+### Tool: get_verified_market_snapshot
+
+- Status: `ok`
+
+```text
+## Verified market data snapshot for AAPL
+
+- Requested analysis date: 2026-07-06
+- Latest trading row used: 2026-07-06
+- Rows after the requested analysis date are excluded before verification.
+
+### Latest verified OHLCV row
+
+| Field | Value |
+|---|---:|
+| Open | 307.36 |
+| High | 314.20 |
+| Low | 307.00 |
+| Close | 312.66 |
+| Volume | 53590000 |
+
+### Verified technical indicators (latest row)
+
+| Indicator | Value |
+|---|---:|
+| close_10_ema | 297.06 |
+| close_50_sma | 294.25 |
+| close_200_sma | 270.70 |
+| rsi | 62.44 |
+| boll | 294.87 |
+| boll_ub | 312.68 |
+| boll_lb | 277.07 |
+| macd | 0.89 |
+| macds | -0.56 |
+| macdh | 1.46 |
+| atr | 8.63 |
+
+### Recent verified closes (last 30 rows)
+
+| Date | Close |
+|---|---:|
+| 2026-05-21 | 304.99 |
+| 2026-05-22 | 308.82 |
+| 2026-05-26 | 308.33 |
+| 2026-05-27 | 310.85 |
+| 2026-05-28 | 312.51 |
+| 2026-05-29 | 312.06 |
+| 2026-06-01 | 306.31 |
+| 2026-06-02 | 315.20 |
+| 2026-06-03 | 310.26 |
+| 2026-06-04 | 311.23 |
+| 2026-06-05 | 307.34 |
+| 2026-06-08 | 301.54 |
+| 2026-06-09 | 290.55 |
+| 2026-06-10 | 291.58 |
+| 2026-06-11 | 295.63 |
+| 2026-06-12 | 291.13 |
+| 2026-06-15 | 296.42 |
+| 2026-06-16 | 299.24 |
+| 2026-06-17 | 295.95 |
+| 2026-06-18 | 298.01 |
+| 2026-06-22 | 297.01 |
+| 2026-06-23 | 294.30 |
+| 2026-06-24 | 293.08 |
+| 2026-06-25 | 275.15 |
+| 2026-06-26 | 283.78 |
+| 2026-06-29 | 281.74 |
+| 2026-06-30 | 289.36 |
+| 2026-07-01 | 294.38 |
+| 2026-07-02 | 308.63 |
+| 2026-07-06 | 312.66 |
+
+Use this snapshot as the source of truth for exact OHLCV, price-level, and indicator-value claims. If another tool output conflicts with it, flag the discrepancy rather than inventing a reconciled number. Do not claim historical validation, support/resistance bounces, or exact percentage moves unless directly supported by tool output with concrete dates and prices.
+```
+
+### Tool: get_indicators:close_50_sma
+
+- Status: `ok`
+
+```text
+## close_50_sma values from 2026-06-06 to 2026-07-06:
+
+2026-07-06: 294.2514270019531
+2026-07-05: N/A: Not a trading day (weekend or holiday)
+2026-07-04: N/A: Not a trading day (weekend or holiday)
+2026-07-03: N/A: Not a trading day (weekend or holiday)
+2026-07-02: 293.4565985107422
+2026-07-01: 292.60249877929687
+2026-06-30: 292.1708715820312
+2026-06-29: 291.7832971191406
+2026-06-28: N/A: Not a trading day (weekend or holiday)
+2026-06-27: N/A: Not a trading day (weekend or holiday)
+2026-06-26: 291.4116479492188
+2026-06-25: 291.0597430419922
+2026-06-24: 290.72857788085935
+2026-06-23: 290.04620666503905
+2026-06-22: 289.36501159667966
+2026-06-21: N/A: Not a trading day (weekend or holiday)
+2026-06-20: N/A: Not a trading day (weekend or holiday)
+2026-06-19: N/A: Not a trading day (weekend or holiday)
+2026-06-18: 288.62981567382815
+2026-06-17: 287.84284912109376
+2026-06-16: 286.98918212890624
+2026-06-15: 286.17681640625
+2026-06-14: N/A: Not a trading day (weekend or holiday)
+2026-06-13: N/A: Not a trading day (weekend or holiday)
+2026-06-12: 285.36210479736326
+2026-06-11: 284.64739868164065
+2026-06-10: 283.8059262084961
+2026-06-09: 282.9023861694336
+2026-06-08: 282.0628060913086
+2026-06-07: N/A: Not a trading day (weekend or holiday)
+2026-06-06: N/A: Not a trading day (weekend or holiday)
+
+
+50 SMA: A medium-term trend indicator. Usage: Identify trend direction and serve as dynamic support/resistance. Tips: It lags price; combine with faster indicators for timely signals.
+```
+
+### Tool: get_indicators:close_200_sma
+
+- Status: `ok`
+
+```text
+## close_200_sma values from 2026-06-06 to 2026-07-06:
+
+2026-07-06: 270.69713218688963
+2026-07-05: N/A: Not a trading day (weekend or holiday)
+2026-07-04: N/A: Not a trading day (weekend or holiday)
+2026-07-03: N/A: Not a trading day (weekend or holiday)
+2026-07-02: 270.3212229156494
+2026-07-01: 269.95823402404784
+2026-06-30: 269.65338233947756
+2026-06-29: 269.35348770141604
+2026-06-28: N/A: Not a trading day (weekend or holiday)
+2026-06-27: N/A: Not a trading day (weekend or holiday)
+2026-06-26: 269.07553871154784
+2026-06-25: 268.82508308410644
+2026-06-24: 268.6353776550293
+2026-06-23: 268.3650466918945
+2026-06-22: 268.0890644836426
+2026-06-21: N/A: Not a trading day (weekend or holiday)
+2026-06-20: N/A: Not a trading day (weekend or holiday)
+2026-06-19: N/A: Not a trading day (weekend or holiday)
+2026-06-18: 267.79300071716307
+2026-06-17: 267.4483103942871
+2026-06-16: 267.1259858703613
+2026-06-15: 266.78930557250976
+2026-06-14: N/A: Not a trading day (weekend or holiday)
+2026-06-13: N/A: Not a trading day (weekend or holiday)
+2026-06-12: 266.45640434265135
+2026-06-11: 266.1440697479248
+2026-06-10: 265.79851547241213
+2026-06-09: 265.4762028503418
+2026-06-08: 265.1447805786133
+2026-06-07: N/A: Not a trading day (weekend or holiday)
+2026-06-06: N/A: Not a trading day (weekend or holiday)
+
+
+200 SMA: A long-term trend benchmark. Usage: Confirm overall market trend and identify golden/death cross setups. Tips: It reacts slowly; best for strategic trend confirmation rather than frequent trading entries.
+```
+
+### Tool: get_indicators:rsi
+
+- Status: `ok`
+
+```text
+## rsi values from 2026-06-06 to 2026-07-06:
+
+2026-07-06: 62.444674738104354
+2026-07-05: N/A: Not a trading day (weekend or holiday)
+2026-07-04: N/A: Not a trading day (weekend or holiday)
+2026-07-03: N/A: Not a trading day (weekend or holiday)
+2026-07-02: 60.276633644985544
+2026-07-01: 50.98610400674842
+2026-06-30: 46.92554495971469
+2026-06-29: 39.90868304263178
+2026-06-28: N/A: Not a trading day (weekend or holiday)
+2026-06-27: N/A: Not a trading day (weekend or holiday)
+2026-06-26: 41.26490524224988
+2026-06-25: 32.21626505797364
+2026-06-24: 45.840823826574585
+2026-06-23: 47.09933626871878
+2026-06-22: 49.926590564687174
+2026-06-21: N/A: Not a trading day (weekend or holiday)
+2026-06-20: N/A: Not a trading day (weekend or holiday)
+2026-06-19: N/A: Not a trading day (weekend or holiday)
+2026-06-18: 50.97504659408278
+2026-06-17: 48.92330273947574
+2026-06-16: 52.16066007338972
+2026-06-15: 49.501004067637524
+2026-06-14: N/A: Not a trading day (weekend or holiday)
+2026-06-13: N/A: Not a trading day (weekend or holiday)
+2026-06-12: 44.08616263335208
+2026-06-11: 48.165714553437034
+2026-06-10: 43.82118744748384
+2026-06-09: 42.6867635447915
+2026-06-08: 53.36306102183181
+2026-06-07: N/A: Not a trading day (weekend or holiday)
+2026-06-06: N/A: Not a trading day (weekend or holiday)
+
+
+RSI: Measures momentum to flag overbought/oversold conditions. Usage: Apply 70/30 thresholds and watch for divergence to signal reversals. Tips: In strong trends, RSI may remain extreme; always cross-check with trend analysis.
+```
+
+### Tool: get_indicators:macd
+
+- Status: `ok`
+
+```text
+## macd values from 2026-06-06 to 2026-07-06:
+
+2026-07-06: 0.892042347047834
+2026-07-05: N/A: Not a trading day (weekend or holiday)
+2026-07-04: N/A: Not a trading day (weekend or holiday)
+2026-07-03: N/A: Not a trading day (weekend or holiday)
+2026-07-02: -0.6719229842898358
+2026-07-01: -2.2480108880791363
+2026-06-30: -2.7760647450890588
+2026-06-29: -2.8985451012895282
+2026-06-28: N/A: Not a trading day (weekend or holiday)
+2026-06-27: N/A: Not a trading day (weekend or holiday)
+2026-06-26: -2.2368598697984226
+2026-06-25: -1.5674827189811822
+2026-06-24: 0.18837709022443505
+2026-06-23: 0.6011534165822354
+2026-06-22: 0.9950437536934373
+2026-06-21: N/A: Not a trading day (weekend or holiday)
+2026-06-20: N/A: Not a trading day (weekend or holiday)
+2026-06-19: N/A: Not a trading day (weekend or holiday)
+2026-06-18: 1.2073881830639266
+2026-06-17: 1.3590366993431076
+2026-06-16: 1.74257275046034
+2026-06-15: 1.8717781256410717
+2026-06-14: N/A: Not a trading day (weekend or holiday)
+2026-06-13: N/A: Not a trading day (weekend or holiday)
+2026-06-12: 2.2965902157203004
+2026-06-11: 3.3440190230394364
+2026-06-10: 4.174096969500624
+2026-06-09: 5.585229638683245
+2026-06-08: 7.409980962860175
+2026-06-07: N/A: Not a trading day (weekend or holiday)
+2026-06-06: N/A: Not a trading day (weekend or holiday)
+
+
+MACD: Computes momentum via differences of EMAs. Usage: Look for crossovers and divergence as signals of trend changes. Tips: Confirm with other indicators in low-volatility or sideways markets.
+```
+
+### Tool: get_indicators:atr
+
+- Status: `ok`
+
+```text
+## atr values from 2026-06-06 to 2026-07-06:
+
+2026-07-06: 8.625944952823462
+2026-07-05: N/A: Not a trading day (weekend or holiday)
+2026-07-04: N/A: Not a trading day (weekend or holiday)
+2026-07-03: N/A: Not a trading day (weekend or holiday)
+2026-07-02: 8.735632087115171
+2026-07-01: 8.196832959050711
+2026-06-30: 8.258898253526967
+2026-06-29: 8.183429639615579
+2026-06-28: N/A: Not a trading day (weekend or holiday)
+2026-06-27: N/A: Not a trading day (weekend or holiday)
+2026-06-26: 8.157540456995864
+2026-06-25: 7.881965049691459
+2026-06-24: 7.001348009493446
+2026-06-23: 7.019912489791019
+2026-06-22: 6.986057914186001
+2026-06-21: N/A: Not a trading day (weekend or holiday)
+2026-06-20: N/A: Not a trading day (weekend or holiday)
+2026-06-19: N/A: Not a trading day (weekend or holiday)
+2026-06-18: 7.088062087422665
+2026-06-17: 7.2525274628373895
+2026-06-16: 7.2173355774667085
+2026-06-15: 7.2717452553006865
+2026-06-14: N/A: Not a trading day (weekend or holiday)
+2026-06-13: N/A: Not a trading day (weekend or holiday)
+2026-06-12: 7.319572282901941
+2026-06-11: 7.304153263798244
+2026-06-10: 7.296010925466619
+2026-06-09: 7.290319833795781
+2026-06-08: 6.792651377501226
+2026-06-07: N/A: Not a trading day (weekend or holiday)
+2026-06-06: N/A: Not a trading day (weekend or holiday)
+
+
+ATR: Averages true range to measure volatility. Usage: Set stop-loss levels and adjust position sizes based on current market volatility. Tips: It's a reactive measure, so use it as part of a broader risk management strategy.
+```
+
+## Role: social
+
+- Skill: `tradingagents-sentiment-analyst`
+
+### Tool: fetch_stocktwits_messages
+
+- Status: `ok`
+
+```text
+Bullish: 0 (0%) · Bearish: 0 (0%) · Unlabeled: 0 · Total: 0 messages on or before 2026-07-06
+
+As-of filter: removed 30 post-trade-date social items after 2026-07-06.
+```
+
+### Tool: fetch_reddit_posts
+
+- Status: `ok`
+
+```text
+r/wallstreetbets — 1 recent posts mentioning AAPL (via RSS feed; scores/comments unavailable):
+  [2026-07-03] Every dip is buying opportunity in Apple.
+    body excerpt: Added Apple options when it crashed ~6% after the price increase announcement. From a business perspective, every price increase is good for their earnings meaning they are managing the operating expense cost well. Few reasons that made me …
+
+r/stocks: <no posts found mentioning AAPL in the past 7 days>
+
+r/investing: <no posts found mentioning AAPL in the past 7 days>
+```
+
+## Role: news
+
+- Skill: `tradingagents-news-analyst`
+
+### Tool: get_news
+
+- Status: `ok`
+
+```text
+No news found for AAPL between 2026-06-29 and 2026-07-06
+```
+
+### Tool: get_global_news
+
+- Status: `ok`
+
+```text
+## Global Market News, from 2026-06-29 to 2026-07-06:
+
+### BIO-key Showcases Passwordless & Biometric Identity Solutions at Jordan Banking Cybersecurity Workshop in Amman on July 6th (source: GlobeNewswire)
+Link: https://finance.yahoo.com/technology/ai/articles/bio-key-showcases-passwordless-biometric-080000707.html
+
+
+```
+
+### Tool: get_insider_transactions
+
+- Status: `ok`
+
+```text
+# Insider Transactions data for AAPL
+# Data retrieved on: 2026-07-08 20:03:44
+
+,Shares,Value,URL,Text,Insider,Position,Transaction,Start Date,Ownership
+0,116,34236.0,,Sale at price 295.14 per share.,BORDERS BEN,Officer,,2026-06-16,D
+1,30104,,,,NEWSTEAD JENNIFER,General Counsel,,2026-06-15,D
+2,240,,,,BORDERS BEN,Officer,,2026-06-15,D
+3,50000,15551000.0,,Sale at price 311.02 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+4,65000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-27,D
+5,1274,369460.0,,Sale at price 290.00 per share.,BORDERS BEN,Officer,,2026-05-08,D
+6,250000,71189722.0,,Sale at price 284.57 - 285.04 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+7,5000,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-05-06,D
+8,1534,421850.0,,Sale at price 275.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2026-04-23,D
+9,10928,,,,PAREKH KEVAN,Chief Financial Officer,,2026-04-15,D
+10,1717,,,,BORDERS BEN,Officer,,2026-04-15,D
+11,64949,16512198.0,,Sale at price 251.25 - 256.00 per share.,COOK TIMOTHY D,Chief Executive Officer,,2026-04-02,D
+12,30002,7660875.0,,Sale at price 255.12 - 255.82 per share.,O'BRIEN DEIRDRE,Officer,,2026-04-02,D
+13,64317,,,,O'BRIEN DEIRDRE,Officer,,2026-04-01,D
+14,64317,,,,KHAN SABIH,Chief Operating Officer,,2026-04-01,D
+15,131576,,,,COOK TIMOTHY D,Chief Executive Officer,,2026-04-01,D
+16,60208,,,,NEWSTEAD JENNIFER,General Counsel,,2026-03-13,D
+17,1113,0.0,,Stock Gift at price 0.00 per share.,LEVINSON ARTHUR D,Director,,2026-02-26,D
+18,1113,,,,LEVINSON ARTHUR D,Director,,2026-01-30,D
+19,1255,,,,AUSTIN WANDA M,Director,,2026-01-30,D
+20,1255,,,,GORSKY ALEX,Director,,2026-01-30,D
+21,1255,,,,WAGNER SUSAN L,Director,,2026-01-30,D
+22,1255,,,,SUGAR RONALD D,Director,,2026-01-30,D
+23,1255,,,,LOZANO MONICA C.,Director,,2026-01-30,D
+24,1255,,,,JUNG ANDREA,Director,,2026-01-30,D
+25,3750,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2025-11-12,D
+26,3752,1017655.0,,Sale at price 271.23 per share.,KONDO CHRISTOPHER,Officer,,2025-11-07,D
+27,4199,1038787.0,,Sale at price 245.89 - 248.73 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-10-16,D
+28,7371,,,,KONDO CHRISTOPHER,Officer,,2025-10-15,D
+29,16457,,,,PAREKH KEVAN,Chief Financial Officer,,2025-10-15,D
+30,47125,12101154.0,,Sale at price 254.83 - 257.54 per share.,ADAMS KATHERINE L,General Counsel,,2025-10-02,D
+31,129963,33375723.0,,Sale at price 254.83 - 257.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-10-02,D
+32,43013,11071078.0,,Sale at price 257.36 - 258.08 per share.,O'BRIEN DEIRDRE,Officer,,2025-10-02,D
+33,92403,,,,ADAMS KATHERINE L,General Counsel,,2025-10-01,D
+34,92403,,,,O'BRIEN DEIRDRE,Officer,,2025-10-01,D
+35,92403,,,,KHAN SABIH,Chief Operating Officer,,2025-10-01,D
+36,277206,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-10-01,D
+37,90000,20886300.0,,Sale at price 232.07 per share.,LEVINSON ARTHUR D,Director,,2025-08-28,D
+38,435,0.0,,Stock Gift at price 0.00 per share.,KONDO CHRISTOPHER,Officer,,2025-08-25,D
+39,34821,7772047.0,,Sale at price 223.20 per share.,O'BRIEN DEIRDRE,Officer,,2025-08-08,D
+40,4486,933955.0,,Sale at price 208.19 per share.,KONDO CHRISTOPHER,Officer,,2025-05-12,D
+41,4570,941420.0,,Sale at price 206.00 per share.,PAREKH KEVAN,Chief Financial Officer,,2025-04-23,D
+42,7373,,,,KONDO CHRISTOPHER,Officer,,2025-04-15,D
+43,16458,,,,PAREKH KEVAN,Chief Financial Officer,,2025-04-15,D
+44,35493,7950691.0,,Sale at price 223.48 - 225.03 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-02,D
+45,38822,8683252.0,,Sale at price 221.68 - 224.62 per share.,ADAMS KATHERINE L,General Counsel,,2025-04-02,D
+46,108136,24184658.0,,Sale at price 221.77 - 224.76 per share.,COOK TIMOTHY D,Chief Executive Officer,,2025-04-02,D
+47,74535,,,,ADAMS KATHERINE L,General Counsel,,2025-04-01,D
+48,74535,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2025-04-01,D
+49,74535,,,,O'BRIEN DEIRDRE,Officer,,2025-04-01,D
+50,218568,,,,COOK TIMOTHY D,Chief Executive Officer,,2025-04-01,D
+51,1516,343147.0,,Sale at price 226.35 per share.,LEVINSON ARTHUR D,Director,,2025-02-03,D
+52,1516,,,,LEVINSON ARTHUR D,Director,,2025-01-31,D
+53,1516,,,,AUSTIN WANDA M,Director,,2025-01-31,D
+54,1516,,,,GORSKY ALEX,Director,,2025-01-31,D
+55,1516,,,,WAGNER SUSAN L,Director,,2025-01-31,D
+56,1516,,,,SUGAR RONALD D,Director,,2025-01-31,D
+57,1516,,,,LOZANO MONICA C.,Director,,2025-01-31,D
+58,1516,,,,JUNG ANDREA,Director,,2025-01-31,D
+59,100000,24997395.0,,Sale at price 248.61 - 251.10 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-12-16,I
+60,200000,45464500.0,,Sale at price 224.68 - 229.28 per share.,LEVINSON ARTHUR D,Director,,2024-11-19,D
+61,4130,945233.0,,Sale at price 228.87 per share.,KONDO CHRISTOPHER,Officer,,2024-11-18,D
+62,8000,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-11-05,D
+63,8115,,,,KONDO CHRISTOPHER,Officer,,2024-10-15,D
+64,59305,13433769.0,,Sale at price 226.52 per share.,MAESTRI LUCA,Chief Financial Officer,,2024-10-04,D
+65,59730,13550148.0,,Sale at price 226.80 - 227.22 per share.,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-02,D
+66,61019,13802297.0,,Sale at price 223.79 - 227.24 per share.,ADAMS KATHERINE L,General Counsel,,2024-10-02,D
+67,223986,50276355.0,,Sale at price 223.75 - 226.57 per share.,COOK TIMOTHY D,Chief Executive Officer,,2024-10-02,D
+68,61019,13843382.0,,Sale at price 226.72 - 227.13 per share.,O'BRIEN DEIRDRE,Officer,,2024-10-02,D
+69,127282,,,,MAESTRI LUCA,Chief Financial Officer,,2024-10-01,D
+70,127282,,,,ADAMS KATHERINE L,General Counsel,,2024-10-01,D
+71,127282,,,,WILLIAMS JEFFREY E,Chief Operating Officer,,2024-10-01,D
+72,127282,,,,O'BRIEN DEIRDRE,Officer,,2024-10-01,D
+73,477301,,,,COOK TIMOTHY D,Chief Executive Officer,,2024-10-01,D
+74,8706,1958850.0,,Sale at price 225.00 per share.,KONDO CHRISTOPHER,Officer,,2024-08-15,D
+75,5178,1121037.0,,Sale at price 216.50 per share.,KONDO CHRISTOPHER,Officer,,2024-08-09,D
+76,4500,0.0,,Stock Gift at price 0.00 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-07,D
+77,100000,20643512.0,,Sale at price 206.42 - 207.05 per share.,ADAMS KATHERINE L,General Counsel,,2024-08-05,D
+
+```
+
+## Role: fundamentals
+
+- Skill: `tradingagents-fundamentals-analyst`
+
+### Tool: get_fundamentals
+
+- Status: `ok`
+
+```text
+# Company Fundamentals for AAPL
+# Data retrieved on: 2026-07-08 20:03:44
+
+Name: Apple Inc.
+Sector: Technology
+Industry: Consumer Electronics
+Market Cap: 4562774130688
+PE Ratio (TTM): 37.88537
+Forward PE: 32.330276
+PEG Ratio: 2.53
+Price to Book: 42.790634
+EPS (TTM): 8.2
+Forward EPS: 9.60895
+Dividend Yield: 0.35
+Beta: 1.097
+52 Week High: 317.4
+52 Week Low: 201.5
+50 Day Average: 295.0574
+200 Day Average: 271.42236
+Revenue (TTM): 451442016256
+Gross Profit: 216070995968
+EBITDA: 159975997440
+Net Income: 122575003648
+Profit Margin: 0.27152002
+Operating Margin: 0.32275
+Return on Equity: 1.4147099
+Return on Assets: 0.26229
+Debt to Equity: 79.548
+Current Ratio: 1.07
+Book Value: 7.26
+Free Cash Flow: 101090746368
+```
+
+### Tool: get_balance_sheet
+
+- Status: `ok`
+
+```text
+# Balance Sheet data for AAPL (quarterly)
+# Data retrieved on: 2026-07-08 20:03:44
+
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
+Ordinary Shares Number,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,
+Share Issued,14667688000.0,14697926000.0,14773260000.0,14856722000.0,14939315000.0,
+Net Debt,39139000000.0,45192000000.0,62723000000.0,65429000000.0,70024000000.0,
+Total Debt,84711000000.0,90509000000.0,98657000000.0,101698000000.0,98186000000.0,
+Tangible Book Value,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,
+Invested Capital,191202000000.0,178699000000.0,172390000000.0,167528000000.0,164982000000.0,
+Working Capital,9473000000.0,-4263000000.0,-17674000000.0,-18629000000.0,-25897000000.0,
+Net Tangible Assets,85157000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,
+Common Stock Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,
+Total Capitalization,180895000000.0,164875000000.0,152061000000.0,148260000000.0,145362000000.0,
+Total Equity Gross Minority Interest,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,
+Stockholders Equity,106491000000.0,88190000000.0,73733000000.0,65830000000.0,66796000000.0,
+Gains Losses Not Affecting Retained Earnings,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,
+Other Equity Adjustments,-5375000000.0,-4854000000.0,-5571000000.0,-6369000000.0,-6363000000.0,
+Retained Earnings,12359000000.0,-2177000000.0,-14264000000.0,-17607000000.0,-15552000000.0,
+Capital Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,
+Common Stock,99507000000.0,95221000000.0,93568000000.0,89806000000.0,88711000000.0,
+Total Liabilities Net Minority Interest,264591000000.0,291107000000.0,285508000000.0,265665000000.0,264437000000.0,
+Total Non Current Liabilities Net Minority Interest,129950000000.0,128740000000.0,119877000000.0,124545000000.0,119866000000.0,
+Other Non Current Liabilities,55546000000.0,52055000000.0,41549000000.0,42115000000.0,41300000000.0,
+Long Term Debt And Capital Lease Obligation,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,
+Long Term Debt,74404000000.0,76685000000.0,78328000000.0,82430000000.0,78566000000.0,
+Current Liabilities,134641000000.0,162367000000.0,165631000000.0,141120000000.0,144571000000.0,
+Other Current Liabilities,57654000000.0,68543000000.0,44452000000.0,62499000000.0,61849000000.0,
+Current Deferred Liabilities,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,
+Current Deferred Revenue,9331000000.0,9413000000.0,9055000000.0,8979000000.0,8976000000.0,
+Current Debt And Capital Lease Obligation,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,
+Current Debt,10307000000.0,13824000000.0,20329000000.0,19268000000.0,19620000000.0,
+Other Current Borrowings,8310000000.0,11827000000.0,12350000000.0,9345000000.0,13638000000.0,
+Commercial Paper,1997000000.0,1997000000.0,7979000000.0,9923000000.0,5982000000.0,
+Payables And Accrued Expenses,57349000000.0,70587000000.0,91795000000.0,50374000000.0,54126000000.0,
+Current Accrued Expenses,,,8919000000.0,,,
+Payables,57349000000.0,70587000000.0,82876000000.0,50374000000.0,54126000000.0,
+Total Tax Payable,,,13016000000.0,,,
+Income Tax Payable,,,13016000000.0,,,
+Accounts Payable,57349000000.0,70587000000.0,69860000000.0,50374000000.0,54126000000.0,
+Total Assets,371082000000.0,379297000000.0,359241000000.0,331495000000.0,331233000000.0,
+Total Non Current Assets,226968000000.0,221193000000.0,211284000000.0,209004000000.0,212559000000.0,
+Other Non Current Assets,77430000000.0,93146000000.0,62950000000.0,82882000000.0,81259000000.0,
+Non Current Deferred Assets,,,20777000000.0,,,
+Non Current Deferred Taxes Assets,,,20777000000.0,,,
+Investments And Advances,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,
+Investmentin Financial Assets,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,
+Available For Sale Securities,78088000000.0,77888000000.0,77723000000.0,77614000000.0,84424000000.0,
+Goodwill And Other Intangible Assets,21334000000.0,,,,,
+Net PPE,50116000000.0,50159000000.0,49834000000.0,48508000000.0,46876000000.0,
+Accumulated Depreciation,-77441000000.0,-77161000000.0,-76014000000.0,-75803000000.0,-74303000000.0,
+Gross PPE,127557000000.0,127320000000.0,125848000000.0,124311000000.0,121179000000.0,
+Leases,,,15091000000.0,,,
+Machinery Furniture Equipment,,,83420000000.0,,,
+Land And Improvements,,,27337000000.0,,,
+Properties,,,0.0,,,
+Current Assets,144114000000.0,158104000000.0,147957000000.0,122491000000.0,118674000000.0,
+Other Current Assets,15349000000.0,15002000000.0,14585000000.0,14359000000.0,14109000000.0,
+Inventory,6747000000.0,5875000000.0,5718000000.0,5925000000.0,6269000000.0,
+Finished Goods,,,,3637000000.0,3596000000.0,4119000000.0
+Raw Materials,,,,2288000000.0,2673000000.0,2792000000.0
+Receivables,53511000000.0,70320000000.0,72957000000.0,46835000000.0,49798000000.0,
+Other Receivables,23172000000.0,30399000000.0,33180000000.0,19278000000.0,23662000000.0,
+Accounts Receivable,30339000000.0,39921000000.0,39777000000.0,27557000000.0,26136000000.0,
+Cash Cash Equivalents And Short Term Investments,68507000000.0,66907000000.0,54697000000.0,55372000000.0,48498000000.0,
+Other Short Term Investments,22935000000.0,21590000000.0,18763000000.0,19103000000.0,20336000000.0,
+Cash And Cash Equivalents,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,
+Cash Equivalents,15832000000.0,14491000000.0,7667000000.0,9583000000.0,3101000000.0,
+Cash Financial,29740000000.0,30826000000.0,28267000000.0,26686000000.0,25061000000.0,
+
+```
+
+### Tool: get_cashflow
+
+- Status: `ok`
+
+```text
+# Cash Flow data for AAPL (quarterly)
+# Data retrieved on: 2026-07-08 20:03:45
+
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31,2024-12-31
+Free Cash Flow,26731000000.0,51552000000.0,26486000000.0,24405000000.0,20881000000.0,
+Repurchase Of Capital Stock,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,
+Repayment Of Debt,-5751000000.0,-8074000000.0,-1185000000.0,-1770000000.0,976000000.0,
+Issuance Of Debt,,,0.0,,,
+Capital Expenditure,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,
+Income Tax Paid Supplemental Data,16963000000.0,3434000000.0,6037000000.0,5649000000.0,13032000000.0,
+End Cash Position,45572000000.0,45317000000.0,35934000000.0,36269000000.0,28162000000.0,
+Beginning Cash Position,45317000000.0,35934000000.0,36269000000.0,28162000000.0,30299000000.0,
+Changes In Cash,255000000.0,9383000000.0,-335000000.0,8107000000.0,-2137000000.0,
+Financing Cash Flow,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,
+Cash Flow From Continuing Financing Activities,-22279000000.0,-39656000000.0,-27476000000.0,-24833000000.0,-29006000000.0,
+Net Other Financing Charges,-418000000.0,-2960000000.0,-265000000.0,-2524000000.0,-326000000.0,
+Cash Dividends Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,
+Common Stock Dividend Paid,-3822000000.0,-3921000000.0,-3862000000.0,-3945000000.0,-3758000000.0,
+Net Common Stock Issuance,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,
+Common Stock Payments,-12288000000.0,-24701000000.0,-20132000000.0,-21075000000.0,-25898000000.0,
+Net Issuance Payments Of Debt,-5751000000.0,-8074000000.0,-3217000000.0,2711000000.0,976000000.0,
+Net Short Term Debt Issuance,-1000000.0,-5910000000.0,-1967000000.0,3903000000.0,3976000000.0,
+Short Term Debt Payments,-1000000.0,-5910000000.0,,3903000000.0,3976000000.0,-7944000000.0
+Net Long Term Debt Issuance,-5750000000.0,-2164000000.0,-1250000000.0,-1192000000.0,-3000000000.0,
+Long Term Debt Payments,-5750000000.0,-2164000000.0,-1250000000.0,-5673000000.0,-3000000000.0,
+Long Term Debt Issuance,,,0.0,,,
+Investing Cash Flow,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,
+Cash Flow From Continuing Investing Activities,-6168000000.0,-4886000000.0,-2587000000.0,5073000000.0,2917000000.0,
+Net Other Investing Changes,-1430000000.0,-154000000.0,-505000000.0,-340000000.0,-32000000.0,
+Net Investment Purchase And Sale,-2767000000.0,-2359000000.0,1160000000.0,8875000000.0,6020000000.0,
+Sale Of Investment,16972000000.0,10334000000.0,7976000000.0,14024000000.0,12338000000.0,
+Purchase Of Investment,-19739000000.0,-12693000000.0,-6816000000.0,-5149000000.0,-6318000000.0,
+Net PPE Purchase And Sale,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,
+Purchase Of PPE,-1971000000.0,-2373000000.0,-3242000000.0,-3462000000.0,-3071000000.0,
+Operating Cash Flow,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,
+Cash Flow From Continuing Operating Activities,28702000000.0,53925000000.0,29728000000.0,27867000000.0,23952000000.0,
+Change In Working Capital,-6654000000.0,5548000000.0,-5707000000.0,-2034000000.0,-6507000000.0,
+Change In Other Current Liabilities,-5232000000.0,12533000000.0,4085000000.0,418000000.0,-3581000000.0,
+Change In Other Current Assets,-4079000000.0,-10250000000.0,-3081000000.0,-1745000000.0,-5310000000.0,
+Change In Payables And Accrued Expense,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,
+Change In Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,
+Change In Account Payable,-13145000000.0,848000000.0,19381000000.0,-3875000000.0,-7933000000.0,
+Change In Inventory,-873000000.0,-211000000.0,177000000.0,365000000.0,643000000.0,
+Change In Receivables,16675000000.0,2628000000.0,-26269000000.0,2803000000.0,9674000000.0,
+Changes In Account Receivables,9448000000.0,-153000000.0,-12367000000.0,-1581000000.0,3669000000.0,
+Other Non Cash Items,-1189000000.0,-528000000.0,1659000000.0,469000000.0,-208000000.0,
+Stock Based Compensation,3528000000.0,3594000000.0,3183000000.0,3168000000.0,3226000000.0,
+Depreciation Amortization Depletion,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,
+Depreciation And Amortization,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0,
+Net Income From Continuing Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0,
+
+```
+
+### Tool: get_income_statement
+
+- Status: `ok`
+
+```text
+# Income Statement data for AAPL (quarterly)
+# Data retrieved on: 2026-07-08 20:03:45
+
+,2026-03-31,2025-12-31,2025-09-30,2025-06-30,2025-03-31
+Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0,0.0
+Tax Rate For Calcs,0.175,0.175,0.162724,0.164,0.154555
+Normalized EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
+Net Income From Continuing Operation Net Minority Interest,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Reconciled Depreciation,3439000000.0,3214000000.0,3127000000.0,2830000000.0,2661000000.0
+Reconciled Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
+EBITDA,39324000000.0,54066000000.0,35554000000.0,31032000000.0,32250000000.0
+EBIT,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Normalized Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income From Continuing And Discontinued Operation,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Total Expenses,75299000000.0,92904000000.0,70039000000.0,65834000000.0,65770000000.0
+Total Operating Income As Reported,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Diluted Average Shares,14725873000.0,14810356000.0,14863609000.0,14948179000.0,15056133000.0
+Basic Average Shares,14673278000.0,14748158000.0,14815307000.0,14902886000.0,14994082000.0
+Diluted EPS,2.01,2.84,1.85,1.57,1.65
+Basic EPS,2.02,2.85,1.85,1.57,1.65
+Diluted NI Availto Com Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Common Stockholders,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Including Noncontrolling Interests,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Net Income Continuous Operations,29578000000.0,42097000000.0,27466000000.0,23434000000.0,24780000000.0
+Tax Provision,6255000000.0,8905000000.0,5338000000.0,4597000000.0,4530000000.0
+Pretax Income,35833000000.0,51002000000.0,32804000000.0,28031000000.0,29310000000.0
+Other Income Expense,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
+Other Non Operating Income Expenses,-52000000.0,150000000.0,377000000.0,-171000000.0,-279000000.0
+Operating Income,35885000000.0,50852000000.0,32427000000.0,28202000000.0,29589000000.0
+Operating Expense,18896000000.0,18379000000.0,15914000000.0,15516000000.0,15278000000.0
+Research And Development,11419000000.0,10887000000.0,8866000000.0,8866000000.0,8550000000.0
+Selling General And Administration,7477000000.0,7492000000.0,7048000000.0,6650000000.0,6728000000.0
+Gross Profit,54781000000.0,69231000000.0,48341000000.0,43718000000.0,44867000000.0
+Cost Of Revenue,56403000000.0,74525000000.0,54125000000.0,50318000000.0,50492000000.0
+Total Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
+Operating Revenue,111184000000.0,143756000000.0,102466000000.0,94036000000.0,95359000000.0
+
+```
+
+## Role: financial_report
+
+- Skill: `tradingagents-financial-report-analyst`
+
+### Tool: collect_financial_document_sources
+
+- Status: `ok`
+
+```text
+## Financial Document Source Packet: AAPL
+
+- Trade date: `2026-07-06`
+- Collection status: `ok`
+- SEC company name: Apple Inc.
+- SEC CIK: `0000320193`
+- As-of rule: Only filings with filingDate <= trade_date are included.
+
+| Source | Status | Filing date | Form | URL / reason |
+|---|---:|---:|---:|---|
+| annual_report_10k | available | 2025-10-31 | 10-K | https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm |
+| quarterly_report_10q | available | 2026-05-01 | 10-Q | https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm |
+| earnings_release_8k | available | 2026-04-30 | 8-K | https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm |
+| investor_presentation | unavailable |  |  | No investor presentation source was discovered from the SEC submissions feed. |
+
+### Section: annual_report_10k / business_overview
+
+- Section name: 10-K business overview
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: business model, revenue drivers, operating context
+
+```text
+Item 1. Business 1
+```
+
+### Section: annual_report_10k / risk_factors
+
+- Section name: 10-K risk factors
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: risk factors, downside risks, uncertainty
+
+```text
+Item 1A. Risk Factors 5
+```
+
+### Section: annual_report_10k / mda
+
+- Section name: 10-K MD&A
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: revenue growth, margin trend, management discussion
+
+```text
+Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 21
+```
+
+### Section: annual_report_10k / segment_information
+
+- Section name: 10-K segment information
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: segment mix, business-line performance
+
+```text
+Segment Information and Geographic Data” for 2025, 2024 and 2023, except in Greater China, where iPhone revenue represented a moderately higher proportion of net sales. As of September 27, 2025 and September 28, 2024, the Company had total deferred revenue of $ 13.7 billion and $ 12.8 billion, respectively. As of September 27, 2025, the Company expects 66 % of total deferred revenue to be realized in less than a year, 23 % within one-to-two years, 9 % within two-to-three years and 2 % in greater than three years. Note 3 – Earnings Per Share The following table shows the computation of basic and diluted earnings per share for 2025, 2024 and 2023 (net income in millions and shares in thousands): 2025 2024 2023 Numerator: Net income $ 112,010 $ 93,736 $ 96,995 Denominator: Weighted-average basic shares outstanding 14,948,500 15,343,783 15,744,231 Effect of dilutive share-based awards 56,197 64,312 68,316 Weighted-average diluted shares 15,004,697 15,408,095 15,812,547 Basic earnings per share $ 7.49 $ 6.11 $ 6.16 Diluted earnings per share $ 7.46 $ 6.08 $ 6.13 Approximately 24 million restricted stock units (“RSUs”) were excluded from the computation of diluted earnings per share for 2023 because their effect would have been antidilutive. Apple Inc. | 2025 Form 10-K | 36 Note 4 – Financial Instruments Cash, Cash Equivalents and Marketable Securities The following tables show the Company’s cash, cash equivalents and marketable securities by significant investment category as of September 27, 2025 and September 28, 2024 (in millions): 2025 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 28,267 $ — $ — $ 28,267 $ 28,267 $ — $ — Level 1: Money market funds 5,272 — — 5,272 5,272 — — Mutual funds 679 177 ( 2 ) 854 — 854 — Subtotal 5,951 177 ( 2 ) 6,126 5,272 854 — Level 2 (1) : U.S. Treasury securities 16,074 56 ( 282 ) 15,848 1,190 3,712 10,946 U.S. agency securities 5,269 — ( 149 ) 5,120 251 2,456 2,413 Non-U.S. government securities 6,586 111 ( 424 ) 6,273 — 855 5,418 Certificates of deposit and time deposits 917 — — 917 904 — 13 Commercial paper 100 — — 100 50 50 — Corporate debt securities 47,210 266 ( 916 ) 46,560 — 10,623 35,937 Municipal securities 207 — ( 2 ) 205 — 119 86 Mortgage- and asset-backed securities 24,130 126 ( 1,252 ) 23,004 — 94 22,910 Subtotal 100,493 559 ( 3,025 ) 98,027 2,395 17,909 77,723 Total $ 134,711 $ 736 $ ( 3,027 ) $ 132,420 $ 35,934 $ 18,763 $ 77,723 2024 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 27,199 $ — $ — $ 27,199 $ 27,199 $ — $ — Level 1: Money market funds 778 — — 778 778 — — Mutual funds 515 105 ( 3 ) 617 — 617 — Subtotal 1,293 105 ( 3 ) 1,395 778 617 — Level 2 (1) : U.S. Treasury securities 16,150 45 ( 516 ) 15,679 212 4,087 11,380 U.S. agency securities 5,431 — ( 272 ) 5,159 155 703 4,301 Non-U.S. government securities 17,959 93 ( 484 ) 17,568 1,158 10,810 5,600 Certificates of deposit and time deposits 873 — — 873 387 478 8 Commercial paper 1,066 — — 1,066 28 1,038 — Corporate debt securities 65,622 270 ( 1,953 ) 63,939 26 16,027 47,886 Municipal securities 412 — ( 7 ) 405 — 190 215 Mortgage- and asset-backed securities 24,595 175 ( 1,403 ) 23,367 — 1,278 22,089 Subtotal 132,108 583 ( 4,635 ) 128,056 1,966 34,611 91,479 Total (2)(3) $ 160,600 $ 688 $ ( 4,638 ) $ 156,650 $ 29,943 $ 35,228 $ 91,479 (1) The valuation techniques used to measure the fair values of the Company’s Level 2 financial instruments, which generally have counterparties with high credit ratings, are based on quoted market prices or model-driven valuations using significant inputs derived from or corroborated by observable market data. (2) As of September 28, 2024, cash and cash equivalents included $ 2.6 billion held in escrow and restricted from general use. These restricted cash and cash equivalents were designated to settle the Company’s obligation related to the State Aid Decision (refer to Note 7, “Income Taxes”). (3) As of September 28, 2024, current marketable securities included $ 13.2 billion held in escrow and restricted from general use. These restricted marketable securities were designated to settle the Company’s obligation related to the State Aid Decision (refer to Note 7, “Income Taxes”). Apple Inc. | 2025 Form 10-K | 37 As of September 27, 2025, 80 % of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years, 15 % between 5 and 10 years, and 5 % greater than 10 years. As of September 27, 2025, 13 % of the Company’s non-current mortgage- and asset-backed securities had maturities between 1 and 5 years, 14 % between 5 and 10 years, and 73 % greater than 10 years. The Company’s investments in marketable debt securities have been classified and accounted for as available-for-sale. The Company classifies marketable debt securities as either current or non-current based on each instrument’s underlying maturity. Derivative Instruments and Hedging The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk. However, the Company may choose not to hedge certain exposures for a variety of reasons including accounting considerations or the prohibitive economic cost of hedging particular exposures. There can be no assurance the hedges will offset more than a portion of the financial impact resulting from movements in foreign exchange or interest rates. All derivative instruments are recorded in the Consolidated Balance Sheets at fair value. The accounting treatment for derivative gains and losses is based on intended use and hedge designation. Gains and losses arising from amounts that are included in the assessment of cash flow hedge effectiveness are initially deferred in accumulated other comprehensive
+```
+
+### Section: annual_report_10k / segment_product_revenue_tables
+
+- Section name: 10-K segment/product revenue tables
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: segment revenue, product revenue, geographic revenue
+
+```text
+net sales by reportable segment for 2025, 2024 and 2023 (dollars in millions): 2025 Change 2024 Change 2023 Americas $ 178,353 7 % $ 167,045 3 % $ 162,560 Europe 111,032 10 % 101,328 7 % 94,294 Greater China 64,377 (4) % 66,952 (8) % 72,559 Japan 28,703 15 % 25,052 3 % 24,257 Rest of Asia Pacific 33,696 10 % 30,658 4 % 29,615 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285 Americas Americas net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPhone and Services. The weakness in foreign currencies relative to the U.S. dollar had an unfavorable year-over-year impact on Americas net sales during 2025. Europe Europe net sales increased during 2025 compared to 2024 primarily due to higher net sales of Services, iPhone and Mac. Greater China Greater China net sales decreased during 2025 compared to 2024 primarily due to lower net sales of iPhone, partially offset by higher net sales of Mac. Japan Japan net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPhone, Services and iPad. Rest of Asia Pacific Rest of Asia Pacific net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPhone, Services and Mac. Apple Inc. | 2025 Form 10-K | 22 Products and Services Performance The following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions): 2025 Change 2024 Change 2023 iPhone $ 209,586 4 % $ 201,183 — % $ 200,583 Mac 33,708 12 % 29,984 2 % 29,357 iPad 28,023 5 % 26,694 (6) % 28,300 Wearables, Home and Accessories 35,686 (4) % 37,005 (7) % 39,845 Services (1) 109,158 14 % 96,169 13 % 85,200 Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285 (1) Services net sales include amortization of the deferred value of services bundled in the sales price of certain products. iPhone iPhone net sales increased during 2025 compared to 2024 due to higher net sales of Pro models. Mac Mac net sales increased during 2025 compared to 2024 primarily due to higher net sales of laptops and desktops. iPad iPad net sales increased during 2025 compared to 2024 primarily due to higher net sales of iPad Air, iPad mini and iPad, partially offset by lower net sales of iPad Pro. Wearables, Home and Accessories Wearables, Home and Accessories net sales decreased during 2025 compared to 2024 primarily due to lower net sales of Accessories and Wearables. Services Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services. Apple Inc. | 2025 Form 10-K | 23 Gross Margin Products and Services gross margin and gross margin percentage for 2025, 2024 and 2023 were as follows (dollars in millions): 2025 2024 2023 Gross margin: Products $ 112,887 $ 109,633 $ 108,803 Services 82,314 71,050 60,345 Total gross margin $ 195,201 $ 180,683 $ 169,148 Gross margin percentage: Products 36.8 % 37.2 % 36.5 % Services 75.4 % 73.9 % 70.8 % Total gross margin percentage 46.9 % 46.2 % 44.1 % Products Gross Margin Products gross margin increased during 2025 compared to 2024 primarily due to favorable costs and a different mix of products, partially offset by tariff costs. Products gross margin percentage decreased during 2025 compared to 2024 primarily due to a different mix of products and tariff costs, partially offset by other favorable costs. Services Gross Margin Services gross margin increased during 2025 compared to 2024 primarily due to higher Services net sales and a different mix of services. Services gross margin percentage increased during 2025 compared to 2024 primarily due to a different mix of services, partially offset by higher costs. The Company’s future gross margins can be impacted by a variety of factors, as discussed in Part I, Item 1A of this Form 10-K under the heading
+```
+
+### Section: annual_report_10k / liquidity_and_capital_resources
+
+- Section name: 10-K liquidity and capital resources
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: liquidity, cash resources, capital resources
+
+```text
+Liquidity and Capital Resources The Company believes its balances of cash, cash equivalents and marketable securities, which totaled $132.4 billion as of September 27, 2025, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s material cash requirements include the following contractual obligations: Debt As of September 27, 2025, the Company had outstanding fixed-rate notes with varying maturities for an aggregate principal amount of $91.3 billion (collectively the “Notes”), with $12.4 billion payable within 12 months. Future interest payments associated with the Notes total $37.0 billion, with $2.6 billion payable within 12 months. The Company also issues unsecured short-term promissory notes pursuant to a commercial paper program. As of September 27, 2025, the Company had $8.0 billion of commercial paper outstanding, which was payable within 12 months. Leases The Company has lease arrangements for certain equipment and facilities, including corporate, data center, manufacturing and retail space. As of September 27, 2025, the Company had fixed lease payment obligations of $16.8 billion, with $2.6 billion payable within 12 months. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of September 27, 2025, the Company had manufacturing purchase obligations of $56.2 billion, with $55.4 billion payable within 12 months. Other Purchase Obligations The Company’s other purchase obligations primarily consist of noncancelable obligations to acquire capital assets, including assets related to product manufacturing, and noncancelable obligations related to supplier arrangements, licensed intellectual property and content, and distribution rights. As of September 27, 2025, the Company had other purchase obligations of $14.8 billion, with $7.0 billion payable within 12 months. Deemed Repatriation Tax Payable As of September 27, 2025, the balance of the deemed repatriation tax payable imposed by the U.S. Tax Cuts and Jobs Act of 2017 (“TCJA”) was $8.8 billion, which was payable within 12 months. Apple Inc. | 2025 Form 10-K | 25 Capital Return Program In addition to its contractual cash requirements, the Company has an authorized share repurchase program. The program does not obligate the Company to acquire a minimum amount of shares. As of September 27, 2025, the Company’s quarterly cash dividend was $0.26 per share. The Company intends to increase its dividend on an annual basis, subject to declaration by the Board. In May 2025, the Company announced a new share repurchase program of up to $100 billion and raised its quarterly dividend from $0.25 to $0.26 per share beginning in May 2025. During 2025, the Company repurchased $89.3 billion of its common stock and paid dividends and dividend equivalents of $15.4 billion. Recent Accounting Pronouncements Internal-Use Software In September 2025, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) No. 2025-06, Intangibles—Goodwill and Other—Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software (“ASU 2025-06”), which modernizes the accounting for internal-use software. ASU 2025-06 removes all references to software development stages and requires capitalization of software costs when management has committed to the software project and it is probable the software will be completed and perform its intended use. ASU 2025-06 will be effective for the Company in its first quarter of 2029, and early adoption is permitted. The Company is currently evaluating the timing and method of its adoption of ASU 2025-06. Disaggregation of Income Statement Expenses In November 2024, the FASB issued ASU No. 2024-03, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses (“ASU 2024-03”) and in January 2025, the FASB issued ASU No. 2025-01, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Clarifying the Effective Date , which clarified the effective date of ASU 2024-03. ASU 2024-03 will require the Company to disclose the amounts of purchases of inventory, employee compensation, depreciation and intangible asset amortization, as applicable, included in certain expense captions in the Consolidated Statements of Operations, as well as qualitatively describe remaining amounts included in those captions. ASU 2024-03 will also require the Company to disclose both the amount and the Company’s definition of selling expenses. The Company will adopt ASU 2024-03 in its fourth quarter of 2028 using a prospective transition method. Income Taxes In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures (“ASU 2023-09”), which will require the Company to disclose specified additional information in its income tax rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold. ASU 2023-09 will also require the Company to disaggregate its income taxes paid disclosure by federal, state and foreign taxes, with further disaggregation required for significant individual jurisdictions. The Company will adopt ASU 2023-09 in its fourth quarter of 2026 using a prospective transition method. Critical Accounting Estimates The preparation of financial statements and related disclosures in conformity with U.S. generally accepted accounting principles (“GAAP”) and the Company’s discussion and analysis of its financial condition and operating
+```
+
+### Section: annual_report_10k / commitments_capex_contractual_obligations
+
+- Section name: 10-K commitments / capex / contractual obligations
+- Status: `unavailable`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: capex, commitments, contractual obligations
+- Unavailable reason: 10-K commitments / capex / contractual obligations was not identified in the extracted filing text.
+
+### Section: annual_report_10k / income_statement
+
+- Section name: 10-K income statement
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: revenue, net income, EPS, margin
+
+```text
+Consolidated Statements of Operations, as well as qualitatively describe remaining amounts included in those captions. ASU 2024-03 will also require the Company to disclose both the amount and the Company’s definition of selling expenses. The Company will adopt ASU 2024-03 in its fourth quarter of 2028 using a prospective transition method. Income Taxes In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures (“ASU 2023-09”), which will require the Company to disclose specified additional information in its income tax rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold. ASU 2023-09 will also require the Company to disaggregate its income taxes paid disclosure by federal, state and foreign taxes, with further disaggregation required for significant individual jurisdictions. The Company will adopt ASU 2023-09 in its fourth quarter of 2026 using a prospective transition method. Critical Accounting Estimates The preparation of financial statements and related disclosures in conformity with U.S. generally accepted accounting principles (“GAAP”) and the Company’s discussion and analysis of its financial condition and operating results require the Company’s management to make judgments, assumptions and estimates that affect the amounts reported. Note 1, “Summary of Significant Accounting Policies” of the Notes to Consolidated Financial Statements in Part II, Item 8 of this Form 10-K describes the significant accounting policies and methods used in the preparation of the Company’s consolidated financial statements. Management bases its estimates on historical experience and on various other assumptions it believes to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities. Uncertain Tax Positions The Company is subject to income taxes in the U.S. and numerous foreign jurisdictions. The evaluation of the Company’s uncertain tax positions involves significant judgment in the interpretation and application of GAAP and complex domestic and international tax laws, including the TCJA and the allocation of international taxation rights between countries. Although management believes the Company’s reserves are reasonable, no assurance can be given that the final outcome of these uncertainties will not be different from that reflected in the Company’s reserves. Reserves are adjusted considering changing facts and circumstances, such as the closing of a tax examination. Resolution of these uncertainties in a manner inconsistent with management’s expectations could have a material impact on the Company’s financial condition and operating results. Apple Inc. | 2025 Form 10-K | 26 Legal and Other Contingencies The Company is subject to various legal proceedings and claims that arise in the ordinary course of business, the outcomes of which are inherently uncertain. The Company records a liability when it is probable a loss has been incurred and the amount is reasonably estimable, the determination of which requires significant judgment. Resolution of legal matters in a manner inconsistent with management’s expectations could have a material impact on the Company’s financial condition and operating results.
+```
+
+### Section: annual_report_10k / balance_sheet
+
+- Section name: 10-K balance sheet
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: assets, liabilities, cash, debt
+
+```text
+Consolidated Balance Sheets as of September 27, 2025 and September 28, 2024 31 Consolidated Statements of Shareholders’ Equity for the years ended September 27, 2025, September 28, 2024 and September 30, 2023 32 Consolidated Statements of Cash Flows for the years ended September 27, 2025, September 28, 2024 and September 30, 2023 33 Notes to Consolidated Financial Statements 34 Reports of Independent Registered Public Accounting Firm 49 All financial statement schedules have been omitted, since the required information is not applicable or is not present in amounts sufficient to require submission of the schedule, or because the information required is included in the consolidated financial statements and accompanying notes. Apple Inc. | 2025 Form 10-K | 28 Apple Inc. CONSOLIDATED STATEMENTS OF OPERATIONS (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Net sales: Products $ 307,003 $ 294,866 $ 298,085 Services 109,158 96,169 85,200 Total net sales 416,161 391,035 383,285 Cost of sales: Products 194,116 185,233 189,282 Services 26,844 25,119 24,855 Total cost of sales 220,960 210,352 214,137 Gross margin 195,201 180,683 169,148 Operating expenses: Research and development 34,550 31,370 29,915 Selling, general and administrative 27,601 26,097 24,932 Total operating expenses 62,151 57,467 54,847 Operating income 133,050 123,216 114,301 Other income/(expense), net ( 321 ) 269 ( 565 ) Income before provision for income taxes 132,729 123,485 113,736 Provision for income taxes 20,719 29,749 16,741 Net income $ 112,010 $ 93,736 $ 96,995 Earnings per share: Basic $ 7.49 $ 6.11 $ 6.16 Diluted $ 7.46 $ 6.08 $ 6.13 Shares used in computing earnings per share: Basic 14,948,500 15,343,783 15,744,231 Diluted 15,004,697 15,408,095 15,812,547 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 29 Apple Inc. CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (In millions) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Net income $ 112,010 $ 93,736 $ 96,995 Other comprehensive income/(loss): Change in foreign currency translation, net of tax ( 267 ) 395 ( 765 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 849 ( 832 ) 323 Adjustment for net (gains)/losses realized and included in net income ( 212 ) ( 1,337 ) ( 1,717 ) Total change in unrealized gains/losses on derivative instruments 637 ( 2,169 ) ( 1,394 ) Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities 817 5,850 1,563 Adjustment for net (gains)/losses realized and included in net income 414 204 253 Total change in unrealized gains/losses on marketable debt securities 1,231 6,054 1,816 Total other comprehensive income/(loss) 1,601 4,280 ( 343 ) Total comprehensive income $ 113,611 $ 98,016 $ 96,652 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 30 Apple Inc. CONSOLIDATED BALANCE SHEETS (In millions, except number of shares, which are reflected in thousands, and par value) September 27, 2025 September 28, 2024 ASSETS: Current assets: Cash and cash equivalents $ 35,934 $ 29,943 Marketable securities 18,763 35,228 Accounts receivable, net 39,777 33,410 Vendor non-trade receivables 33,180 32,833 Inventories 5,718 7,286 Other current assets 14,585 14,287 Total current assets 147,957 152,987 Non-current assets: Marketable securities 77,723 91,479 Property, plant and equipment, net 49,834 45,680 Other non-current assets 83,727 74,834 Total non-current assets 211,284 211,993 Total assets $ 359,241 $ 364,980 LIABILITIES AND SHAREHOLDERS’ EQUITY: Current liabilities: Accounts payable $ 69,860 $ 68,960 Other current liabilities 66,387 78,304 Deferred revenue 9,055 8,249 Commercial paper 7,979 9,967 Term debt 12,350 10,912 Total current liabilities 165,631 176,392 Non-current liabilities: Term debt 78,328 85,750 Other non-current liabilities 41,549 45,888 Total non-current liabilities 119,877 131,638 Total liabilities 285,508 308,030 Commitments and contingencies Shareholders’ equity: Common stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 14,773,260 and 15,116,786 shares issued and outstanding, respectively 93,568 83,276 Accumulated deficit ( 14,264 ) ( 19,154 ) Accumulated other comprehensive loss ( 5,571 ) ( 7,172 ) Total shareholders’ equity 73,733 56,950 Total liabilities and shareholders’ equity $ 359,241 $ 364,980 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 31 Apple Inc. CONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY (In millions, except per-share amounts) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Total shareholders’ equity, beginning balances $ 56,950 $ 62,146 $ 50,672 Common stock and additional paid-in capital: Beginning balances 83,276 73,812 64,849 Common stock issued 1,498 1,423 1,346 Common stock withheld related to net share settlement of equity awards ( 4,452 ) ( 3,993 ) ( 3,521 ) Share-based compensation 13,246 12,034 11,138 Ending balances 93,568 83,276 73,812 Accumulated deficit: Beginning balances ( 19,154 ) ( 214 ) ( 3,068 ) Net income 112,010 93,736 96,995 Dividends and dividend equivalents declared ( 15,413 ) ( 15,218 ) ( 14,996 ) Common stock withheld related to net share settlement of equity awards ( 1,655 ) ( 1,612 ) ( 2,099 ) Common stock repurchased ( 90,052 ) ( 95,846 ) ( 77,046 ) Ending balances ( 14,264 ) ( 19,154 ) ( 214 ) Accumulated other comprehensive loss: Beginning balances ( 7,172 ) ( 11,452 ) ( 11,109 ) Other comprehensive income/(loss) 1,601 4,280 ( 343 ) Ending balances ( 5,571 ) ( 7,172 ) ( 11,452 ) Total shareholders’ equity, ending balances $ 73,733 $ 56,950 $ 62,146 Dividends and dividend equivalents declared per share or RSU $ 1.02 $ 0.98 $
+```
+
+### Section: annual_report_10k / cash_flow_statement
+
+- Section name: 10-K cash flow statement
+- Status: `available`
+- Source type: `annual_report_10k`
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+- Supports claims: operating cash flow, free cash flow, investing cash flow
+
+```text
+Consolidated Statements of Cash Flows for the years ended September 27, 2025, September 28, 2024 and September 30, 2023 33 Notes to Consolidated Financial Statements 34 Reports of Independent Registered Public Accounting Firm 49 All financial statement schedules have been omitted, since the required information is not applicable or is not present in amounts sufficient to require submission of the schedule, or because the information required is included in the consolidated financial statements and accompanying notes. Apple Inc. | 2025 Form 10-K | 28 Apple Inc. CONSOLIDATED STATEMENTS OF OPERATIONS (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Net sales: Products $ 307,003 $ 294,866 $ 298,085 Services 109,158 96,169 85,200 Total net sales 416,161 391,035 383,285 Cost of sales: Products 194,116 185,233 189,282 Services 26,844 25,119 24,855 Total cost of sales 220,960 210,352 214,137 Gross margin 195,201 180,683 169,148 Operating expenses: Research and development 34,550 31,370 29,915 Selling, general and administrative 27,601 26,097 24,932 Total operating expenses 62,151 57,467 54,847 Operating income 133,050 123,216 114,301 Other income/(expense), net ( 321 ) 269 ( 565 ) Income before provision for income taxes 132,729 123,485 113,736 Provision for income taxes 20,719 29,749 16,741 Net income $ 112,010 $ 93,736 $ 96,995 Earnings per share: Basic $ 7.49 $ 6.11 $ 6.16 Diluted $ 7.46 $ 6.08 $ 6.13 Shares used in computing earnings per share: Basic 14,948,500 15,343,783 15,744,231 Diluted 15,004,697 15,408,095 15,812,547 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 29 Apple Inc. CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (In millions) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Net income $ 112,010 $ 93,736 $ 96,995 Other comprehensive income/(loss): Change in foreign currency translation, net of tax ( 267 ) 395 ( 765 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 849 ( 832 ) 323 Adjustment for net (gains)/losses realized and included in net income ( 212 ) ( 1,337 ) ( 1,717 ) Total change in unrealized gains/losses on derivative instruments 637 ( 2,169 ) ( 1,394 ) Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities 817 5,850 1,563 Adjustment for net (gains)/losses realized and included in net income 414 204 253 Total change in unrealized gains/losses on marketable debt securities 1,231 6,054 1,816 Total other comprehensive income/(loss) 1,601 4,280 ( 343 ) Total comprehensive income $ 113,611 $ 98,016 $ 96,652 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 30 Apple Inc. CONSOLIDATED BALANCE SHEETS (In millions, except number of shares, which are reflected in thousands, and par value) September 27, 2025 September 28, 2024 ASSETS: Current assets: Cash and cash equivalents $ 35,934 $ 29,943 Marketable securities 18,763 35,228 Accounts receivable, net 39,777 33,410 Vendor non-trade receivables 33,180 32,833 Inventories 5,718 7,286 Other current assets 14,585 14,287 Total current assets 147,957 152,987 Non-current assets: Marketable securities 77,723 91,479 Property, plant and equipment, net 49,834 45,680 Other non-current assets 83,727 74,834 Total non-current assets 211,284 211,993 Total assets $ 359,241 $ 364,980 LIABILITIES AND SHAREHOLDERS’ EQUITY: Current liabilities: Accounts payable $ 69,860 $ 68,960 Other current liabilities 66,387 78,304 Deferred revenue 9,055 8,249 Commercial paper 7,979 9,967 Term debt 12,350 10,912 Total current liabilities 165,631 176,392 Non-current liabilities: Term debt 78,328 85,750 Other non-current liabilities 41,549 45,888 Total non-current liabilities 119,877 131,638 Total liabilities 285,508 308,030 Commitments and contingencies Shareholders’ equity: Common stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 14,773,260 and 15,116,786 shares issued and outstanding, respectively 93,568 83,276 Accumulated deficit ( 14,264 ) ( 19,154 ) Accumulated other comprehensive loss ( 5,571 ) ( 7,172 ) Total shareholders’ equity 73,733 56,950 Total liabilities and shareholders’ equity $ 359,241 $ 364,980 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 31 Apple Inc. CONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY (In millions, except per-share amounts) Years ended September 27, 2025 September 28, 2024 September 30, 2023 Total shareholders’ equity, beginning balances $ 56,950 $ 62,146 $ 50,672 Common stock and additional paid-in capital: Beginning balances 83,276 73,812 64,849 Common stock issued 1,498 1,423 1,346 Common stock withheld related to net share settlement of equity awards ( 4,452 ) ( 3,993 ) ( 3,521 ) Share-based compensation 13,246 12,034 11,138 Ending balances 93,568 83,276 73,812 Accumulated deficit: Beginning balances ( 19,154 ) ( 214 ) ( 3,068 ) Net income 112,010 93,736 96,995 Dividends and dividend equivalents declared ( 15,413 ) ( 15,218 ) ( 14,996 ) Common stock withheld related to net share settlement of equity awards ( 1,655 ) ( 1,612 ) ( 2,099 ) Common stock repurchased ( 90,052 ) ( 95,846 ) ( 77,046 ) Ending balances ( 14,264 ) ( 19,154 ) ( 214 ) Accumulated other comprehensive loss: Beginning balances ( 7,172 ) ( 11,452 ) ( 11,109 ) Other comprehensive income/(loss) 1,601 4,280 ( 343 ) Ending balances ( 5,571 ) ( 7,172 ) ( 11,452 ) Total shareholders’ equity, ending balances $ 73,733 $ 56,950 $ 62,146 Dividends and dividend equivalents declared per share or RSU $ 1.02 $ 0.98 $ 0.94 See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 32 Apple Inc. CONSOLIDATED STATEMENTS OF CASH FLOWS (In millions) Years ended September 27, 2025 September 28, 2024
+```
+
+### Excerpt: annual_report_10k
+
+- Filing date: `2025-10-31`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+
+```text
+aapl-20250927 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 27 , 2025 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 0.000% Notes due 2025 — The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Securities registered pursuant to Section 12(g) of the Act: None Indicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☒ No ☐ Indicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒ Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. ☒ If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. ☐ Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes ☐ No ☒ The aggregate market value of the voting and non-voting stock held by non-affiliates of the Registrant, as of March 28, 2025, the last business day of the Registrant’s most recently completed second fiscal quarter, was approximately $ 3,253,431,000,000 . Solely for purposes of this disclosure, shares of common stock held by executive officers and directors of the Registrant as of such date have been excluded because such persons may be deemed to be affiliates. This determination of executive officers and directors as affiliates is not necessarily a conclusive determination for any other purposes. 14,776,353,000 shares of common stock were issued and outstanding as of October 17, 2025. DOCUMENTS INCORPORATED BY REFERENCE Portions of the Registrant’s definitive proxy statement relating to its 2026 annual meeting of shareholders are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. The Registrant’s definitive proxy statement will be filed with the U.S. Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates. Apple Inc. Form 10-K For the Fiscal Year Ended September 27, 2025 TABLE OF CONTENTS Page Part I Item 1. Business 1 Item 1A. Risk Factors 5 Item 1B. Unresolved Staff Comments 17 Item 1C. Cybersecurity 17 Item 2. Properties 17 Item 3. Legal Proceedings 18 Item 4. Mine Safety Disclosures 18 Part II Item 5. Market for Registrant’s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities 19 Item 6. [Reserved] 20 Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations 21 Item 7A. Quantitative and Qualitative Disclosures About Market Risk 27 Item 8. Financial Statements and Supplementary Data 28 Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure 52 Item 9A. Controls and Procedures 52 Item 9B. Other Information 53 Item 9C. Disclosure
+```
+
+### Section: quarterly_report_10q / business_overview
+
+- Section name: 10-Q business overview
+- Status: `unavailable`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: business model, revenue drivers, operating context
+- Unavailable reason: 10-Q business overview was not identified in the extracted filing text.
+
+### Section: quarterly_report_10q / risk_factors
+
+- Section name: 10-Q risk factors
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: risk factors, downside risks, uncertainty
+
+```text
+Item 1A. Risk Factors 21
+```
+
+### Section: quarterly_report_10q / mda
+
+- Section name: 10-Q MD&A
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: revenue growth, margin trend, management discussion
+
+```text
+Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 13
+```
+
+### Section: quarterly_report_10q / segment_information
+
+- Section name: 10-Q segment information
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: segment mix, business-line performance
+
+```text
+Segment Information” for the three- and six-month periods ended March 28, 2026 and March 29, 2025, except in Greater China, where iPhone revenue represented a moderately higher proportion of net sales. As of March 28, 2026 and September 27, 2025, the Company had total deferred revenue of $ 14.7 billion and $ 13.7 billion, respectively. As of March 28, 2026, the Company expects 64 % of total deferred revenue to be realized in less than a year, 23 % within one-to-two years, 11 % within two-to-three years and 2 % in greater than three years. Apple Inc. | Q2 2026 Form 10-Q | 6 Note 3 – Earnings Per Share The following table shows the computation of basic and diluted earnings per share for the three- and six-month periods ended March 28, 2026 and March 29, 2025 (net income in millions and shares in thousands): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Numerator: Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Denominator: Weighted-average basic shares outstanding 14,673,278 14,994,082 14,710,718 15,037,903 Effect of dilutive share-based awards 52,595 62,051 57,397 65,596 Weighted-average diluted shares 14,725,873 15,056,133 14,768,115 15,103,499 Basic earnings per share $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted earnings per share $ 2.01 $ 1.65 $ 4.85 $ 4.05 Note 4 – Financial Instruments Cash, Cash Equivalents and Marketable Securities The following tables show the Company’s cash, cash equivalents and marketable securities by significant investment category as of March 28, 2026 and September 27, 2025 (in millions): March 28, 2026 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 29,740 $ — $ — $ 29,740 $ 29,740 $ — $ — Level 1: Money market funds 6,588 — — 6,588 6,588 — — Mutual funds 821 128 ( 14 ) 935 — 935 — Subtotal 7,409 128 ( 14 ) 7,523 6,588 935 — Level 2 (1) : U.S. Treasury securities 18,650 14 ( 254 ) 18,410 2,935 4,174 11,301 U.S. agency securities 7,483 — ( 112 ) 7,371 2,923 2,470 1,978 Non-U.S. government securities 5,906 45 ( 493 ) 5,458 — 576 4,882 Certificates of deposit and time deposits 3,263 — — 3,263 2,987 276 — Commercial paper 3,628 — — 3,628 399 3,229 — Corporate debt securities 48,111 83 ( 982 ) 47,212 — 11,042 36,170 Municipal securities 122 — ( 1 ) 121 — 95 26 Mortgage- and asset-backed securities 25,106 64 ( 1,301 ) 23,869 — 138 23,731 Subtotal 112,269 206 ( 3,143 ) 109,332 9,244 22,000 78,088 Total $ 149,418 $ 334 $ ( 3,157 ) $ 146,595 $ 45,572 $ 22,935 $ 78,088 Apple Inc. | Q2 2026 Form 10-Q | 7 September 27, 2025 Adjusted Cost Unrealized Gains Unrealized Losses Fair Value Cash and Cash Equivalents Current Marketable Securities Non-Current Marketable Securities Cash $ 28,267 $ — $ — $ 28,267 $ 28,267 $ — $ — Level 1: Money market funds 5,272 — — 5,272 5,272 — — Mutual funds 679 177 ( 2 ) 854 — 854 — Subtotal 5,951 177 ( 2 ) 6,126 5,272 854 — Level 2 (1) : U.S. Treasury securities 16,074 56 ( 282 ) 15,848 1,190 3,712 10,946 U.S. agency securities 5,269 — ( 149 ) 5,120 251 2,456 2,413 Non-U.S. government securities 6,586 111 ( 424 ) 6,273 — 855 5,418 Certificates of deposit and time deposits 917 — — 917 904 — 13 Commercial paper 100 — — 100 50 50 — Corporate debt securities 47,210 266 ( 916 ) 46,560 — 10,623 35,937 Municipal securities 207 — ( 2 ) 205 — 119 86 Mortgage- and asset-backed securities 24,130 126 ( 1,252 ) 23,004 — 94 22,910 Subtotal 100,493 559 ( 3,025 ) 98,027 2,395 17,909 77,723 Total $ 134,711 $ 736 $ ( 3,027 ) $ 132,420 $ 35,934 $ 18,763 $ 77,723 (1) The valuation techniques used to measure the fair values of the Company’s Level 2 financial instruments, which generally have counterparties with high credit ratings, are based on quoted market prices or model-driven valuations using significant inputs derived from or corroborated by observable market data. As of March 28, 2026, 79 % of the Company’s non-current marketable debt securities other than mortgage- and asset-backed securities had maturities between 1 and 5 years, 17 % between 5 and 10 years, and 4 % greater than 10 years. As of March 28, 2026, 13 % of the Company’s non-current mortgage- and asset-backed securities had maturities between 1 and 5 years, 22 % between 5 and 10 years, and 65 % greater than 10 years. Derivative Instruments and Hedging The Company may use derivative instruments to partially offset its business exposure to foreign exchange and interest rate risk. However, the Company may choose not to hedge certain exposures for a variety of reasons, including accounting considerations or the prohibitive economic cost of hedging particular exposures. There can be no assurance the hedges will offset more than a portion of the financial impact resulting from movements in foreign exchange or interest rates. Foreign Exchange Rate Risk To protect gross margins from fluctuations in foreign exchange rates, the Company may use forwards, options or other instruments, and may designate these instruments as cash flow hedges. The Company generally hedges portions of its forecasted foreign currency exposure associated with revenue and inventory purchases, typically for up to 12 months. To protect the Company’s foreign currency–denominated term debt or marketable securities from fluctuations in foreign exchange rates, the Company may use forwards, cross-currency swaps or other instruments. The Company designates these instruments as either cash flow or fair value hedges. As of March 28, 2026, the maximum length of time over which the Company is hedging its exposure to the variability in future cash flows for term debt–related foreign currency transactions is 16 years. The Company may also use derivative instruments that are not designated as accounting hedges to protect gross margins from certain fluctuations in foreign exchange rates, as well as to offset a portion of the foreign currency gains and losses generated by the remeasurement of
+```
+
+### Section: quarterly_report_10q / segment_product_revenue_tables
+
+- Section name: 10-Q segment/product revenue tables
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: segment revenue, product revenue, geographic revenue
+
+```text
+net sales by reportable segment for the three- and six-month periods ended March 28, 2026 and March 29, 2025 (dollars in millions): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 Change March 28, 2026 March 29, 2025 Change Americas $ 45,093 $ 40,315 12 % $ 103,622 $ 92,963 11 % Europe 28,055 24,454 15 % 66,201 58,315 14 % Greater China 20,497 16,002 28 % 46,023 34,515 33 % Japan 8,401 7,298 15 % 17,814 16,285 9 % Rest of Asia Pacific 9,138 7,290 25 % 21,280 17,581 21 % Total net sales $ 111,184 $ 95,359 17 % $ 254,940 $ 219,659 16 % Americas Americas net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 due to higher net sales of iPhone and Services. The strength in foreign currencies relative to the U.S. dollar had a favorable year-over-year impact on Americas net sales during the second quarter of 2026. Europe Europe net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPhone and Services. The strength in foreign currencies relative to the U.S. dollar had a net favorable year-over-year impact on Europe net sales during the second quarter and first six months of 2026. Greater China Greater China net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 due to higher net sales of iPhone. The strength in the renminbi relative to the U.S. dollar had a favorable year-over-year impact on Greater China net sales during the second quarter of 2026. Apple Inc. | Q2 2026 Form 10-Q | 14 Japan Japan net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPhone. The weakness in the yen relative to the U.S. dollar had an unfavorable year-over-year impact on Japan net sales during the first six months of 2026. Rest of Asia Pacific Rest of Asia Pacific net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPhone and Services. The strength in foreign currencies relative to the U.S. dollar had a net favorable year-over-year impact on Rest of Asia Pacific net sales during the second quarter of 2026. Products and Services Performance The following table shows net sales by category for the three- and six-month periods ended March 28, 2026 and March 29, 2025 (dollars in millions): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 Change March 28, 2026 March 29, 2025 Change iPhone $ 56,994 $ 46,841 22 % $ 142,263 $ 115,979 23 % Mac 8,399 7,949 6 % 16,785 16,936 (1) % iPad 6,914 6,402 8 % 15,509 14,490 7 % Wearables, Home and Accessories 7,901 7,522 5 % 19,394 19,269 1 % Services 30,976 26,645 16 % 60,989 52,985 15 % Total net sales $ 111,184 $ 95,359 17 % $ 254,940 $ 219,659 16 % iPhone iPhone net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 due to higher net sales of Pro models. Mac Mac net sales increased during the second quarter of 2026 compared to the second quarter of 2025 due to higher net sales of laptops. Year-over-year Mac net sales during the first six months of 2026 were relatively flat. iPad iPad net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPad, partially offset by lower net sales of iPad mini ® . Wearables, Home and Accessories Wearables, Home and Accessories net sales increased during the second quarter of 2026 compared to the second quarter of 2025 primarily due to higher net sales of Accessories and Wearables. Year-over-year Wearables, Home and Accessories net sales during the first six months of 2026 were relatively flat. Services Services net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales from advertising, the App Store ® and cloud services. Apple Inc. | Q2 2026 Form 10-Q | 15 Gross Margin Products and Services gross margin and gross margin percentage for the three- and six-month periods ended March 28, 2026 and March 29, 2025, were as follows (dollars in millions): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Gross margin: Products $ 31,029 $ 24,684 $ 77,294 $ 63,197 Services 23,752 20,183 46,718 39,945 Total gross margin $ 54,781 $ 44,867 $ 124,012 $ 103,142 Gross margin percentage: Products 38.7 % 35.9 % 39.9 % 37.9 % Services 76.7 % 75.7 % 76.6 % 75.4 % Total gross margin percentage 49.3 % 47.1 % 48.6 % 47.0 % Products Gross Margin Products gross margin and gross margin percentage increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to a different mix of products and strength in foreign currencies relative to the U.S. dollar, partially offset by higher costs. Services Gross Margin Services gross margin increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher Services net sales and a different mix of services. Services gross margin percentage increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to a different mix of services and strength in foreign currencies relative to the U.S. dollar, partially offset by higher costs. The Company’s future gross margins can be impacted by a variety of factors, as discussed in Part I, Item 1A of the 2025 Form 10-K and Part II, Item 1A of this Form 10-Q, in each case under the heading
+```
+
+### Section: quarterly_report_10q / liquidity_and_capital_resources
+
+- Section name: 10-Q liquidity and capital resources
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: liquidity, cash resources, capital resources
+
+```text
+Liquidity and Capital Resources The Company believes its balances of cash, cash equivalents and marketable securities, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s contractual cash requirements have not changed materially since the 2025 Form 10-K, except for manufacturing purchase obligations, other purchase obligations, and deemed repatriation tax payable. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of March 28, 2026, the Company had manufacturing purchase obligations of $44.6 billion, with $43.9 billion payable within 12 months. Other Purchase Obligations The Company’s other purchase obligations primarily consist of noncancelable obligations related to supplier arrangements, licensed intellectual property and content, distribution rights, and the acquisition of capital assets related to product manufacturing. As of March 28, 2026, the Company had other purchase obligations of $30.4 billion, with $9.3 billion payable within 12 months. Deemed Repatriation Tax Payable During the first six months of 2026, the Company paid the remaining $8.8 billion balance of the deemed repatriation tax payable imposed by the U.S. Tax Cuts and Jobs Act of 2017. Capital Return Program In addition to its contractual cash requirements, the Company has an authorized share repurchase program, under which the remaining availability was $63.8 billion as of March 28, 2026. On April 30, 2026, the Company announced the Board of Directors had authorized an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. On April 30, 2026, the Company also announced the Board of Directors raised the Company’s quarterly cash dividend from $0.26 to $0.27 per share, beginning with the dividend to be paid during the third quarter of 2026. The Company intends to increase its dividend on an annual basis, subject to declaration by the Board of Directors. During the second quarter of 2026, the Company repurchased $11.0 billion of its common stock and paid dividends and dividend equivalents of $3.8 billion. Recent Accounting Pronouncements Internal-Use Software In September 2025, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) No. 2025-06, Intangibles—Goodwill and Other—Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software (“ASU 2025-06”), which modernizes the accounting for internal-use software. ASU 2025-06 removes all references to software development stages and requires capitalization of software costs when management has committed to the software project and it is probable the software will be completed and perform its intended use. ASU 2025-06 will be effective for the Company in its first quarter of 2029, and early adoption is permitted. The Company is currently evaluating the timing and method of its adoption of ASU 2025-06. Apple Inc. | Q2 2026 Form 10-Q | 18 Disaggregation of Income Statement Expenses In November 2024, the FASB issued ASU No. 2024-03, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses (“ASU 2024-03”) and in January 2025, the FASB issued ASU No. 2025-01, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Clarifying the Effective Date , which clarified the effective date of ASU 2024-03. ASU 2024-03 will require the Company to disclose the amounts of purchases of inventory, employee compensation, depreciation and intangible asset amortization, as applicable, included in certain expense captions in the Consolidated Statements of Operations, as well as qualitatively describe remaining amounts included in those captions. ASU 2024-03 will also require the Company to disclose both the amount and the Company’s definition of selling expenses. The Company will adopt ASU 2024-03 in its fourth quarter of 2028 using a prospective transition method. Income Taxes In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures (“ASU 2023-09”), which will require the Company to disclose specified additional information in its income tax rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold. ASU 2023-09 will also require the Company to disaggregate its income taxes paid disclosure by federal, state and foreign taxes, with further disaggregation required for significant individual jurisdictions. The Company will adopt ASU 2023-09 in its fourth quarter of 2026 using a prospective transition method. Critical Accounting Estimates The preparation of financial statements and related disclosures in conformity with GAAP and the Company’s discussion and analysis of its financial condition and operating results require the Company’s management to make judgments, assumptions and estimates that affect the amounts reported. Note 1, “Summary of Significant Accounting Policies” of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Form 10-Q and in the Notes to Consolidated Financial Statements in Part II, Item 8 of the 2025 Form 10-K describe the significant accounting policies and methods used in the preparation of the Company’s condensed consolidated financial statements. There have been no material changes to the Company’s critical accounting estimates since the 2025 Form 10-K.
+```
+
+### Section: quarterly_report_10q / commitments_capex_contractual_obligations
+
+- Section name: 10-Q commitments / capex / contractual obligations
+- Status: `unavailable`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: capex, commitments, contractual obligations
+- Unavailable reason: 10-Q commitments / capex / contractual obligations was not identified in the extracted filing text.
+
+### Section: quarterly_report_10q / income_statement
+
+- Section name: 10-Q income statement
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: revenue, net income, EPS, margin
+
+```text
+CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271 13,040 Total cost of sales 56,403 50,492 130,928 116,517 Gross margin 54,781 44,867 124,012 103,142 Operating expenses: Research and development 11,419 8,550 22,306 16,818 Selling, general and administrative 7,477 6,728 14,969 13,903 Total operating expenses 18,896 15,278 37,275 30,721 Operating income 35,885 29,589 86,737 72,421 Other income/(expense), net ( 52 ) ( 279 ) 98 ( 527 ) Income before provision for income taxes 35,833 29,310 86,835 71,894 Provision for income taxes 6,255 4,530 15,160 10,784 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Earnings per share: Basic $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted $ 2.01 $ 1.65 $ 4.85 $ 4.05 Shares used in computing earnings per share: Basic 14,673,278 14,994,082 14,710,718 15,037,903 Diluted 14,725,873 15,056,133 14,768,115 15,103,499 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 1 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In millions) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Other comprehensive income/(loss): Change in foreign currency translation, net of tax 67 90 ( 92 ) ( 535 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 162 ( 318 ) 373 1,333 Adjustment for net (gains)/losses realized and included in net income 44 ( 628 ) 281 156 Total change in unrealized gains/losses on derivative instruments 206 ( 946 ) 654 1,489 Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities ( 808 ) 1,097 ( 384 ) ( 550 ) Adjustment for net (gains)/losses realized and included in net income 14 185 18 405 Total change in unrealized gains/losses on marketable debt securities ( 794 ) 1,282 ( 366 ) ( 145 ) Total other comprehensive income/(loss) ( 521 ) 426 196 809 Total comprehensive income $ 29,057 $ 25,206 $ 71,871 $ 61,919 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 2 Apple Inc. CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and par value) March 28, 2026 September 27, 2025 ASSETS: Current assets: Cash and cash equivalents $ 45,572 $ 35,934 Marketable securities 22,935 18,763 Accounts receivable, net 30,339 39,777 Vendor non-trade receivables 23,172 33,180 Inventories 6,747 5,718 Other current assets 15,349 14,585 Total current assets 144,114 147,957 Non-current assets: Marketable securities 78,088 77,723 Property, plant and equipment, net 50,116 49,834 Intangible assets, net 21,334 11,093 Other non-current assets 77,430 72,634 Total non-current assets 226,968 211,284 Total assets $ 371,082 $ 359,241 LIABILITIES AND SHAREHOLDERS’ EQUITY: Current liabilities: Accounts payable $ 57,349 $ 69,860 Other current liabilities 57,654 66,387 Deferred revenue 9,331 9,055 Commercial paper 1,997 7,979 Term debt 8,310 12,350 Total current liabilities 134,641 165,631 Non-current liabilities: Term debt 74,404 78,328 Other non-current liabilities 55,546 41,549 Total non-current liabilities 129,950 119,877 Total liabilities 264,591 285,508 Commitments and contingencies Shareholders’ equity: Common stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 14,667,688 and 14,773,260 shares issued and outstanding, respectively 99,507 93,568 Retained earnings/(Accumulated deficit) 12,359 ( 14,264 ) Accumulated other comprehensive loss ( 5,375 ) ( 5,571 ) Total shareholders’ equity 106,491 73,733 Total liabilities and shareholders’ equity $ 371,082 $ 359,241 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 3 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY (Unaudited) (In millions, except per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Total shareholders’ equity, beginning balances $ 88,190 $ 66,758 $ 73,733 $ 56,950 Common stock and additional paid-in capital: Beginning balances 95,221 84,768 93,568 83,276 Common stock issued 878 825 878 825 Common stock withheld related to net share settlement of equity awards ( 250 ) ( 206 ) ( 2,308 ) ( 2,097 ) Share-based compensation 3,658 3,324 7,369 6,707 Ending balances 99,507 88,711 99,507 88,711 Retained earnings/(Accumulated deficit): Beginning balances ( 2,177 ) ( 11,221 ) ( 14,264 ) ( 19,154 ) Net income 29,578 24,780 71,675 61,110 Dividends and dividend equivalents declared ( 3,855 ) ( 3,794 ) ( 7,735 ) ( 7,613 ) Common stock withheld related to net share settlement of equity awards ( 88 ) ( 85 ) ( 1,024 ) ( 1,187 ) Common stock repurchased ( 11,099 ) ( 25,232 ) ( 36,293 ) ( 48,708 ) Ending balances 12,359 ( 15,552 ) 12,359 ( 15,552 ) Accumulated other comprehensive loss: Beginning balances ( 4,854 ) ( 6,789 ) ( 5,571 ) ( 7,172 ) Other comprehensive income/(loss) ( 521 ) 426 196 809 Ending balances ( 5,375 ) ( 6,363 ) ( 5,375 ) ( 6,363 ) Total shareholders’ equity, ending balances $ 106,491 $ 66,796 $ 106,491 $ 66,796 Dividends and dividend equivalents declared per share or RSU $ 0.26 $ 0.25 $ 0.52 $ 0.50 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 4 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (In millions) Six Months Ended March 28, 2026
+```
+
+### Section: quarterly_report_10q / balance_sheet
+
+- Section name: 10-Q balance sheet
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: assets, liabilities, cash, debt
+
+```text
+CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and par value) March 28, 2026 September 27, 2025 ASSETS: Current assets: Cash and cash equivalents $ 45,572 $ 35,934 Marketable securities 22,935 18,763 Accounts receivable, net 30,339 39,777 Vendor non-trade receivables 23,172 33,180 Inventories 6,747 5,718 Other current assets 15,349 14,585 Total current assets 144,114 147,957 Non-current assets: Marketable securities 78,088 77,723 Property, plant and equipment, net 50,116 49,834 Intangible assets, net 21,334 11,093 Other non-current assets 77,430 72,634 Total non-current assets 226,968 211,284 Total assets $ 371,082 $ 359,241 LIABILITIES AND SHAREHOLDERS’ EQUITY: Current liabilities: Accounts payable $ 57,349 $ 69,860 Other current liabilities 57,654 66,387 Deferred revenue 9,331 9,055 Commercial paper 1,997 7,979 Term debt 8,310 12,350 Total current liabilities 134,641 165,631 Non-current liabilities: Term debt 74,404 78,328 Other non-current liabilities 55,546 41,549 Total non-current liabilities 129,950 119,877 Total liabilities 264,591 285,508 Commitments and contingencies Shareholders’ equity: Common stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 14,667,688 and 14,773,260 shares issued and outstanding, respectively 99,507 93,568 Retained earnings/(Accumulated deficit) 12,359 ( 14,264 ) Accumulated other comprehensive loss ( 5,375 ) ( 5,571 ) Total shareholders’ equity 106,491 73,733 Total liabilities and shareholders’ equity $ 371,082 $ 359,241 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 3 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY (Unaudited) (In millions, except per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Total shareholders’ equity, beginning balances $ 88,190 $ 66,758 $ 73,733 $ 56,950 Common stock and additional paid-in capital: Beginning balances 95,221 84,768 93,568 83,276 Common stock issued 878 825 878 825 Common stock withheld related to net share settlement of equity awards ( 250 ) ( 206 ) ( 2,308 ) ( 2,097 ) Share-based compensation 3,658 3,324 7,369 6,707 Ending balances 99,507 88,711 99,507 88,711 Retained earnings/(Accumulated deficit): Beginning balances ( 2,177 ) ( 11,221 ) ( 14,264 ) ( 19,154 ) Net income 29,578 24,780 71,675 61,110 Dividends and dividend equivalents declared ( 3,855 ) ( 3,794 ) ( 7,735 ) ( 7,613 ) Common stock withheld related to net share settlement of equity awards ( 88 ) ( 85 ) ( 1,024 ) ( 1,187 ) Common stock repurchased ( 11,099 ) ( 25,232 ) ( 36,293 ) ( 48,708 ) Ending balances 12,359 ( 15,552 ) 12,359 ( 15,552 ) Accumulated other comprehensive loss: Beginning balances ( 4,854 ) ( 6,789 ) ( 5,571 ) ( 7,172 ) Other comprehensive income/(loss) ( 521 ) 426 196 809 Ending balances ( 5,375 ) ( 6,363 ) ( 5,375 ) ( 6,363 ) Total shareholders’ equity, ending balances $ 106,491 $ 66,796 $ 106,491 $ 66,796 Dividends and dividend equivalents declared per share or RSU $ 0.26 $ 0.25 $ 0.52 $ 0.50 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 4 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (In millions) Six Months Ended March 28, 2026 March 29, 2025 Cash, cash equivalents, and restricted cash and cash equivalents, beginning balances $ 35,934 $ 29,943 Operating activities: Net income 71,675 61,110 Adjustments to reconcile net income to cash generated by operating activities: Depreciation and amortization 6,653 5,741 Share-based compensation expense 7,122 6,512 Other ( 1,717 ) ( 2,217 ) Changes in operating assets and liabilities: Accounts receivable, net 9,295 7,266 Vendor non-trade receivables 10,008 9,171 Inventories ( 1,084 ) 858 Other current and non-current assets ( 14,329 ) ( 4,371 ) Accounts payable ( 12,297 ) ( 14,604 ) Other current and non-current liabilities 7,301 ( 15,579 ) Cash generated by operating activities 82,627 53,887 Investing activities: Purchases of marketable securities ( 32,432 ) ( 12,442 ) Proceeds from maturities of marketable securities 18,691 26,587 Proceeds from sales of marketable securities 8,615 5,210 Payments for acquisition of property, plant and equipment ( 4,344 ) ( 6,011 ) Other ( 1,584 ) ( 635 ) Cash generated by/(used in) investing activities ( 11,054 ) 12,709 Financing activities: Payments for taxes related to net share settlement of equity awards ( 3,252 ) ( 3,205 ) Payments for dividends and dividend equivalents ( 7,743 ) ( 7,614 ) Repurchases of common stock ( 36,989 ) ( 49,504 ) Repayments of term debt ( 7,914 ) ( 4,009 ) Repayments of commercial paper, net ( 5,911 ) ( 3,968 ) Other ( 126 ) ( 77 ) Cash used in financing activities ( 61,935 ) ( 68,377 ) Increase/(Decrease) in cash, cash equivalents, and restricted cash and cash equivalents 9,638 ( 1,781 ) Cash, cash equivalents, and restricted cash and cash equivalents, ending balances $ 45,572 $ 28,162 Supplemental cash flow disclosure: Cash paid for income taxes, net $ 20,397 $ 31,683 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management
+```
+
+### Section: quarterly_report_10q / cash_flow_statement
+
+- Section name: 10-Q cash flow statement
+- Status: `available`
+- Source type: `quarterly_report_10q`
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+- Supports claims: operating cash flow, free cash flow, investing cash flow
+
+```text
+CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (In millions) Six Months Ended March 28, 2026 March 29, 2025 Cash, cash equivalents, and restricted cash and cash equivalents, beginning balances $ 35,934 $ 29,943 Operating activities: Net income 71,675 61,110 Adjustments to reconcile net income to cash generated by operating activities: Depreciation and amortization 6,653 5,741 Share-based compensation expense 7,122 6,512 Other ( 1,717 ) ( 2,217 ) Changes in operating assets and liabilities: Accounts receivable, net 9,295 7,266 Vendor non-trade receivables 10,008 9,171 Inventories ( 1,084 ) 858 Other current and non-current assets ( 14,329 ) ( 4,371 ) Accounts payable ( 12,297 ) ( 14,604 ) Other current and non-current liabilities 7,301 ( 15,579 ) Cash generated by operating activities 82,627 53,887 Investing activities: Purchases of marketable securities ( 32,432 ) ( 12,442 ) Proceeds from maturities of marketable securities 18,691 26,587 Proceeds from sales of marketable securities 8,615 5,210 Payments for acquisition of property, plant and equipment ( 4,344 ) ( 6,011 ) Other ( 1,584 ) ( 635 ) Cash generated by/(used in) investing activities ( 11,054 ) 12,709 Financing activities: Payments for taxes related to net share settlement of equity awards ( 3,252 ) ( 3,205 ) Payments for dividends and dividend equivalents ( 7,743 ) ( 7,614 ) Repurchases of common stock ( 36,989 ) ( 49,504 ) Repayments of term debt ( 7,914 ) ( 4,009 ) Repayments of commercial paper, net ( 5,911 ) ( 3,968 ) Other ( 126 ) ( 77 ) Cash used in financing activities ( 61,935 ) ( 68,377 ) Increase/(Decrease) in cash, cash equivalents, and restricted cash and cash equivalents 9,638 ( 1,781 ) Cash, cash equivalents, and restricted cash and cash equivalents, ending balances $ 45,572 $ 28,162 Supplemental cash flow disclosure: Cash paid for income taxes, net $ 20,397 $ 31,683 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. Certain prior period amounts in the condensed consolidated financial statements and accompanying notes have been reclassified to conform to the current period’s presentation. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 27, 2025 (the “2025 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2026 and 2025 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue The following table shows disaggregated net sales, as well as the portion of total net sales that was previously deferred, for the three- and six-month periods ended March 28, 2026 and March 29, 2025 (in millions): Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 iPhone ® $ 56,994 $ 46,841 $ 142,263 $ 115,979 Mac ® 8,399 7,949 16,785 16,936 iPad ® 6,914 6,402 15,509 14,490 Wearables, Home and Accessories 7,901 7,522 19,394 19,269 Services 30,976 26,645 60,989 52,985 Total net sales $ 111,184 $ 95,359 $ 254,940 $ 219,659 Portion of total net sales that was included in deferred revenue as of the beginning of the period $ 3,987 $ 3,672 $ 5,834 $ 5,440 The Company’s proportion of net sales by disaggregated revenue source was generally consistent for each reportable segment in Note 10,
+```
+
+### Excerpt: quarterly_report_10q
+
+- Filing date: `2026-05-01`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm
+
+```text
+aapl-20260328 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-Q (Mark One) ☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the quarterly period ended March 28, 2026 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter) California 94-2404110 (State or other jurisdiction of incorporation or organization) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐ Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒ No ☐ Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act. Large accelerated filer ☒ Accelerated filer ☐ Non-accelerated filer ☐ Smaller reporting company ☐ Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒ 14,687,356,000 shares of common stock were issued and outstanding as of April 17, 2026 . Apple Inc. Form 10-Q For the Fiscal Quarter Ended March 28, 2026 TABLE OF CONTENTS Page Part I Item 1. Financial Statements 1 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 13 Item 3. Quantitative and Qualitative Disclosures About Market Risk 19 Item 4. Controls and Procedures 19 Part II Item 1. Legal Proceedings 20 Item 1A. Risk Factors 21 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 24 Item 3. Defaults Upon Senior Securities 25 Item 4. Mine Safety Disclosures 25 Item 5. Other Information 25 Item 6. Exhibits 25 PART I — FINANCIAL INFORMATION Item 1. Financial Statements Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271 13,040 Total cost of sales 56,403 50,492 130,928 116,517 Gross margin 54,781 44,867 124,012 103,142 Operating expenses: Research and development 11,419 8,550 22,306 16,818 Selling, general and administrative 7,477 6,728 14,969 13,903 Total operating expenses 18,896 15,278 37,275 30,721 Operating income 35,885 29,589 86,737 72,421 Other income/(expense), net ( 52 ) ( 279 ) 98 ( 527 ) Income before provision for income taxes 35,833 29,310 86,835 71,894 Provision for income taxes 6,255 4,530 15,160 10,784 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Earnings per share: Basic $ 2.02 $ 1.65 $ 4.87 $ 4.06 Diluted $ 2.01 $ 1.65 $ 4.85 $ 4.05 Shares used in computing earnings per share: Basic 14,673,278 14,994,082 14,710,718 15,037,903 Diluted 14,725,873 15,056,133 14,768,115 15,103,499 See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2026 Form 10-Q | 1 Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In millions) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net income $ 29,578 $ 24,780 $ 71,675 $ 61,110 Other comprehensive income/(loss): Change in foreign currency translation, net of tax 67 90 ( 92 ) ( 535 ) Change in unrealized gains/losses on derivative instruments, net of tax: Change in fair value of derivative instruments 162 ( 318 ) 373 1,333 Adjustment for net (gains)/losses realized and included in net income 44 ( 628 ) 281 156 Total change in unrealized gains/losses on derivative instruments 206 ( 946 ) 654 1,489 Change in unrealized gains/losses on marketable debt securities, net of tax: Change in fair value of marketable debt securities ( 808 ) 1,097 ( 384 ) ( 550 ) Adjustment for net (gains)/losses realized and included in net income 14 185 18 405 Total change in unrealized gains/losses on marketable debt securities ( 794 ) 1,282 ( 366 ) ( 145 ) Total other comprehensive income/(loss) ( 521 ) 426
+```
+
+### 8-K Cover Page: earnings_release_8k
+
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm
+
+```text
+aapl-20260430 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 8-K CURRENT REPORT Pursuant to Section 13 OR 15(d) of The Securities Exchange Act of 1934 April 30, 2026 Date of Report (Date of earliest event reported) Apple Inc. (Exact name of Registrant as specified in its charter) California 001-36743 94-2404110 (State or other jurisdiction of incorporation) (Commission File Number) (I.R.S. Employer Identification No.) One Apple Park Way Cupertino , California 95014 (Address of principal executive offices) (Zip Code) ( 408 ) 996-1010 (Registrant’s telephone number, including area code) Not applicable (Former name or former address, if changed since last report.) Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the Registrant under any of the following provisions: ☐ Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425) ☐ Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12) ☐ Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b)) ☐ Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading symbol(s) Name of each exchange on which registered Common Stock, $0.00001 par value per share AAPL The Nasdaq Stock Market LLC 1.625% Notes due 2026 — The Nasdaq Stock Market LLC 2.000% Notes due 2027 — The Nasdaq Stock Market LLC 1.375% Notes due 2029 — The Nasdaq Stock Market LLC 3.050% Notes due 2029 — The Nasdaq Stock Market LLC 0.500% Notes due 2031 — The Nasdaq Stock Market LLC 3.600% Notes due 2042 — The Nasdaq Stock Market LLC Indicate by check mark whether the Registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging growth company ☐ If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operations and Financial Condition. On April 30, 2026, Apple Inc. (“Apple”) issued a press release regarding Apple’s financial results for its second fiscal quarter ended March 28, 2026. A copy of Apple’s press release is attached hereto as Exhibit 99.1. The information contained in this Current Report shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such a filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits. Exhibit Number Exhibit Description 99.1 Press release issued by Apple Inc. on April 30, 2026. 104 Inline XBRL for the cover page of this Current Report on Form 8-K. SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: April 30, 2026 Apple Inc. By: /s/ Kevan Parekh Kevan Parekh Senior Vice President, Chief Financial Officer
+```
+
+### Exhibit 99.1: earnings_release_8k
+
+- Status: `available`
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/a8-kex991q2202603282026.htm
+- Supports claims: guidance, earnings release, management commentary
+
+```text
+EX-99.1 2 a8-kex991q2202603282026.htm EX-99.1 Document Exhibit 99.1 Apple reports second quarter results March quarter records for total company revenue, iPhone revenue, and EPS Services revenue reaches new all-time high CUPERTINO, CALIFORNIA — Apple ® today announced financial results for its fiscal 2026 second quarter ended March 28, 2026. The Company posted quarterly revenue of $111.2 billion, up 17 percent year over year. Diluted earnings per share was $2.01, up 22 percent year over year. “Today Apple is proud to report our best March quarter ever, with revenue of $111.2 billion and double-digit growth across every geographic segment,” said Tim Cook, Apple’s CEO. “iPhone achieved a March quarter revenue record, fueled by such extraordinary demand for the iPhone 17 lineup. During the quarter, Services achieved yet another all-time record, and we were excited to introduce remarkable new products to our strongest lineup ever. That included the addition of the iPhone 17e and the M4-powered iPad Air, along with the launch of MacBook Neo, which is captivating customers all around the world.” “Our strong business performance during the March quarter generated over $28 billion in operating cash flow and drove new March quarter records for both operating cash flow and EPS,” said Kevan Parekh, Apple’s CFO. “Continued strong customer demand for our products and services once again helped us achieve a new all-time high for our installed base of active devices across all major product categories and geographic segments.” Apple’s board of directors has declared a cash dividend of $0.27 per share of the Company’s common stock, an increase of 4 percent. The dividend is payable on May 14, 2026, to shareholders of record as of the close of business on May 11, 2026. The board of directors has also authorized an additional program to repurchase up to $100 billion of the Company’s common stock. Apple will provide live streaming of its Q2 2026 financial results conference call beginning at 2:00 p.m. PT on April 30, 2026, at apple.com/investor/earnings-call. The webcast will be available for replay for approximately two weeks thereafter. Apple periodically provides information for investors on its corporate website, apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, reports filed or furnished with the SEC, information on corporate governance, and details related to its annual meeting of shareholders. This press release contains forward-looking statements, within the meaning of the Private Securities Litigation Reform Act of 1995. These forward-looking statements include without limitation those about the Company’s plan for return of capital, payment of the Company’s quarterly dividend and future business plans. These statements involve risks and uncertainties, and actual results may differ materially from any future results expressed or implied by the forward-looking statements. Risks and uncertainties include without limitation: effects of global and regional economic conditions, including as a result of government policies, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, and public health issues; risks relating to the design, manufacture, introduction, and transition of products and services in highly competitive and rapidly changing markets, including from reliance on third parties for components, technology, manufacturing, applications, services, support, and content; risks relating to information technology system failures, network disruptions, and failure to protect, loss of, or unauthorized access to, or release of, data; and effects of unfavorable legal proceedings, government investigations, and complex and changing laws and regulations. More information on these risks and other potential factors that could affect the Company’s business, reputation, results of operations, financial condition, and stock price is included in the Company’s filings with the SEC, including in the “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” sections of the Company’s most recently filed periodic reports on Form 10-K and Form 10-Q and subsequent filings. The Company assumes no obligation to update any forward-looking statements, which speak only as of the date they are made. Apple revolutionized personal technology with the introduction of the Macintosh in 1984. Today, Apple leads the world in innovation with iPhone, iPad, Mac, AirPods, Apple Watch, and Apple Vision Pro. Apple’s six software platforms — iOS, iPadOS, macOS, watchOS, visionOS, and tvOS — provide seamless experiences across all Apple devices and empower people with breakthrough services including the App Store, Apple Music, Apple Pay, iCloud, and Apple TV. Apple’s more than 150,000 employees are dedicated to making the best products on earth and to leaving the world better than we found it. Press Contact: Josh Rosenstock Apple jrosenstock@apple.com (408) 862-1142 Investor Relations Contact: Suhasini Chandramouli Apple suhasini@apple.com (408) 974-3123 NOTE TO EDITORS: For additional information visit Apple Newsroom (www.apple.com/newsroom), or email Apple’s Media Helpline at media.help@apple.com. © 2026 Apple Inc. All rights reserved. Apple and the Apple logo are trademarks of Apple. Other company and product names may be trademarks of their respective owners. Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales (1) 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271
+```
+
+### Excerpt: earnings_release_8k
+
+- Filing date: `2026-04-30`
+- URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm
+
+```text
+EX-99.1 2 a8-kex991q2202603282026.htm EX-99.1 Document Exhibit 99.1 Apple reports second quarter results March quarter records for total company revenue, iPhone revenue, and EPS Services revenue reaches new all-time high CUPERTINO, CALIFORNIA — Apple ® today announced financial results for its fiscal 2026 second quarter ended March 28, 2026. The Company posted quarterly revenue of $111.2 billion, up 17 percent year over year. Diluted earnings per share was $2.01, up 22 percent year over year. “Today Apple is proud to report our best March quarter ever, with revenue of $111.2 billion and double-digit growth across every geographic segment,” said Tim Cook, Apple’s CEO. “iPhone achieved a March quarter revenue record, fueled by such extraordinary demand for the iPhone 17 lineup. During the quarter, Services achieved yet another all-time record, and we were excited to introduce remarkable new products to our strongest lineup ever. That included the addition of the iPhone 17e and the M4-powered iPad Air, along with the launch of MacBook Neo, which is captivating customers all around the world.” “Our strong business performance during the March quarter generated over $28 billion in operating cash flow and drove new March quarter records for both operating cash flow and EPS,” said Kevan Parekh, Apple’s CFO. “Continued strong customer demand for our products and services once again helped us achieve a new all-time high for our installed base of active devices across all major product categories and geographic segments.” Apple’s board of directors has declared a cash dividend of $0.27 per share of the Company’s common stock, an increase of 4 percent. The dividend is payable on May 14, 2026, to shareholders of record as of the close of business on May 11, 2026. The board of directors has also authorized an additional program to repurchase up to $100 billion of the Company’s common stock. Apple will provide live streaming of its Q2 2026 financial results conference call beginning at 2:00 p.m. PT on April 30, 2026, at apple.com/investor/earnings-call. The webcast will be available for replay for approximately two weeks thereafter. Apple periodically provides information for investors on its corporate website, apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, reports filed or furnished with the SEC, information on corporate governance, and details related to its annual meeting of shareholders. This press release contains forward-looking statements, within the meaning of the Private Securities Litigation Reform Act of 1995. These forward-looking statements include without limitation those about the Company’s plan for return of capital, payment of the Company’s quarterly dividend and future business plans. These statements involve risks and uncertainties, and actual results may differ materially from any future results expressed or implied by the forward-looking statements. Risks and uncertainties include without limitation: effects of global and regional economic conditions, including as a result of government policies, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, and public health issues; risks relating to the design, manufacture, introduction, and transition of products and services in highly competitive and rapidly changing markets, including from reliance on third parties for components, technology, manufacturing, applications, services, support, and content; risks relating to information technology system failures, network disruptions, and failure to protect, loss of, or unauthorized access to, or release of, data; and effects of unfavorable legal proceedings, government investigations, and complex and changing laws and regulations. More information on these risks and other potential factors that could affect the Company’s business, reputation, results of operations, financial condition, and stock price is included in the Company’s filings with the SEC, including in the “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” sections of the Company’s most recently filed periodic reports on Form 10-K and Form 10-Q and subsequent filings. The Company assumes no obligation to update any forward-looking statements, which speak only as of the date they are made. Apple revolutionized personal technology with the introduction of the Macintosh in 1984. Today, Apple leads the world in innovation with iPhone, iPad, Mac, AirPods, Apple Watch, and Apple Vision Pro. Apple’s six software platforms — iOS, iPadOS, macOS, watchOS, visionOS, and tvOS — provide seamless experiences across all Apple devices and empower people with breakthrough services including the App Store, Apple Music, Apple Pay, iCloud, and Apple TV. Apple’s more than 150,000 employees are dedicated to making the best products on earth and to leaving the world better than we found it. Press Contact: Josh Rosenstock Apple jrosenstock@apple.com (408) 862-1142 Investor Relations Contact: Suhasini Chandramouli Apple suhasini@apple.com (408) 974-3123 NOTE TO EDITORS: For additional information visit Apple Newsroom (www.apple.com/newsroom), or email Apple’s Media Helpline at media.help@apple.com. © 2026 Apple Inc. All rights reserved. Apple and the Apple logo are trademarks of Apple. Other company and product names may be trademarks of their respective owners. Apple Inc. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In millions, except number of shares, which are reflected in thousands, and per-share amounts) Three Months Ended Six Months Ended March 28, 2026 March 29, 2025 March 28, 2026 March 29, 2025 Net sales: Products $ 80,208 $ 68,714 $ 193,951 $ 166,674 Services 30,976 26,645 60,989 52,985 Total net sales (1) 111,184 95,359 254,940 219,659 Cost of sales: Products 49,179 44,030 116,657 103,477 Services 7,224 6,462 14,271
+```
+
+```

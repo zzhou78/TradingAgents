@@ -2108,7 +2108,11 @@ def test_csl_debt_accepts_current_and_non_current_interest_bearing_liabilities_p
     assert result["clean_metric_value"] == "11498"
     assert result["value_unit"] == "US$m"
     assert result["row_label"] == "total interest-bearing liabilities and borrowings"
+    assert result["period_reference"] == "FY2025"
+    assert result["comparison_reference"] == "FY2024"
+    assert result["column_label"] == "FY2025 US$m"
     assert result["current_period_value"] == "11498"
+    assert result["prior_period_value"] == "12183"
 
 
 def test_csl_debt_accepts_note_11_interest_bearing_liabilities_breakdown():
@@ -2186,6 +2190,11 @@ def test_csl_debt_accepts_flattened_balance_sheet_interest_bearing_liabilities_p
     assert result["clean_metric_value"] == "11498"
     assert result["value_unit"] == "US$m"
     assert result["row_label"] == "total interest-bearing liabilities and borrowings"
+    assert result["period_reference"] == "FY2025"
+    assert result["comparison_reference"] == "FY2024"
+    assert result["column_label"] == "FY2025 US$m"
+    assert result["current_period_value"] == "11498"
+    assert result["prior_period_value"] == "12183"
 
 
 def test_csl_debt_accepts_lease_liabilities_with_not_total_debt_warning():

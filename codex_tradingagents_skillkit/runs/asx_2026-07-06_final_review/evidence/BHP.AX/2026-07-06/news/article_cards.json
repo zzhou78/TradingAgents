@@ -1,0 +1,150 @@
+[
+  {
+    "evidence_id": "news:BHP.AX:2026-07-06:001",
+    "ticker": "BHP.AX",
+    "trade_date": "2026-07-06",
+    "company_name": "BHP Group Limited",
+    "title": "BHP's 2025 Annual Report Learn more about our financial, economic, social and environmental performance.",
+    "source": "ASX announcement",
+    "source_url": "https://www.bhp.com/investor-hub/reports-and-presentations/annual-report",
+    "source_date": "2025-12-31",
+    "discovered_by": "regulatory_filings_adapter",
+    "retrieval_time": "2026-07-08T20:05:32+10:00",
+    "fetch_status": "ok",
+    "http_status": null,
+    "final_url": "https://www.bhp.com/investor-hub/reports-and-presentations/annual-report",
+    "content_type": "text/plain",
+    "extraction_method": "candidate_full_text",
+    "text_status": "partial_text",
+    "content_quality_score": 55,
+    "quality_flags": [
+      "no_company_entity_match"
+    ],
+    "word_count": 834,
+    "sentence_count": 18,
+    "title_similarity": 0.01,
+    "company_entity_hits": [],
+    "event_fact_count": 10,
+    "key_facts_for_codex": [],
+    "full_text_status": "full_text",
+    "full_text_source": "candidate_full_text",
+    "full_text_excerpt": "Section Annual Report 2025 Section FY2025 at a glance Section 2Mt Section 5% Section US$46.8bn Section US$19.5bn Section 110 USc Section US$10.4bn Section 18% Section 41.3% Section US$853m Section Strong results Section Strong performance in areas we can control Section Value-adding investments and resilient balance sheet Section How we create and deliver value Section Our portfolio Section Social value --> \ud83d\udd0d --> Search Contact us English ES | Espa\u00f1ol \u4e2d\u6587 | Chinese --> English ES | Espa\u00f1ol \u4e2d\u6587 | Chinese Home --> About What we do Investor Hub Sustainability Careers News & Publications Suppliers",
+    "direct_company_relevance": "context_only",
+    "event_type": "context_only",
+    "key_facts": [],
+    "novelty": "pending_codex_interpretation",
+    "materiality": "context_only",
+    "reason": "Generic or unmatched source page; use only as context.",
+    "confidence": "low",
+    "evidence_gap": "",
+    "limitations": [
+      "no_company_entity_match"
+    ],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "materiality_readiness": "limited_or_not_ready_for_codex_interpretation",
+    "duplicate_count": 1
+  },
+  {
+    "evidence_id": "news:BHP.AX:2026-07-06:002",
+    "ticker": "BHP.AX",
+    "trade_date": "2026-07-06",
+    "company_name": "BHP Group Limited",
+    "title": "BHP's 2025 Annual Report Learn more about our financial, economic, social and environmental performance.",
+    "source": "ASX announcement",
+    "source_url": "https://www.bhp.com/-/media/documents/investors/annual-reports/2025/bhpform20f2025.pdf",
+    "source_date": "2025-12-31",
+    "discovered_by": "regulatory_filings_adapter",
+    "retrieval_time": "2026-07-08T20:05:32+10:00",
+    "fetch_status": "ok",
+    "http_status": null,
+    "final_url": "https://www.bhp.com/-/media/documents/investors/annual-reports/2025/bhpform20f2025.pdf",
+    "content_type": "text/plain",
+    "extraction_method": "candidate_full_text",
+    "text_status": "error_page",
+    "content_quality_score": 10,
+    "quality_flags": [
+      "error_page"
+    ],
+    "word_count": 938,
+    "sentence_count": 33,
+    "title_similarity": 0.04,
+    "company_entity_hits": [
+      "BHP Group Limited",
+      "BHP.AX"
+    ],
+    "event_fact_count": 7,
+    "key_facts_for_codex": [],
+    "full_text_status": "snippet_only",
+    "full_text_source": "candidate_full_text",
+    "full_text_excerpt": "",
+    "direct_company_relevance": "pending_codex_interpretation",
+    "event_type": "pending_codex_interpretation",
+    "key_facts": [],
+    "novelty": "pending_codex_interpretation",
+    "materiality": "pending_codex_interpretation",
+    "reason": "pending_codex_interpretation",
+    "confidence": "low",
+    "evidence_gap": "full text unavailable or not review-grade",
+    "limitations": [
+      "error_page",
+      "snippet_only"
+    ],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "materiality_readiness": "limited_or_not_ready_for_codex_interpretation",
+    "duplicate_count": 1
+  },
+  {
+    "evidence_id": "news:BHP.AX:2026-07-06:003",
+    "ticker": "BHP.AX",
+    "trade_date": "2026-07-06",
+    "company_name": "BHP Group Limited",
+    "title": "BHP's 2025 Annual Report Learn more about our financial, economic, social and environmental performance.",
+    "source": "ASX announcement",
+    "source_url": "https://www.bhp.com/investor-hub/reports-and-presentations/financial-results-operational-reviews",
+    "source_date": "2025-12-31",
+    "discovered_by": "regulatory_filings_adapter",
+    "retrieval_time": "2026-07-08T20:05:32+10:00",
+    "fetch_status": "ok",
+    "http_status": null,
+    "final_url": "https://www.bhp.com/investor-hub/reports-and-presentations/financial-results-operational-reviews",
+    "content_type": "text/plain",
+    "extraction_method": "candidate_full_text",
+    "text_status": "partial_text",
+    "content_quality_score": 55,
+    "quality_flags": [
+      "no_company_entity_match"
+    ],
+    "word_count": 590,
+    "sentence_count": 7,
+    "title_similarity": 0.06,
+    "company_entity_hits": [],
+    "event_fact_count": 1,
+    "key_facts_for_codex": [],
+    "full_text_status": "full_text",
+    "full_text_source": "candidate_full_text",
+    "full_text_excerpt": "Section Financial results and operational reviews Section BHP operational review for the nine months ended 31 March 2026 Section FY2026 results and operational reviews at a glance Section Past results and operational reviews Anchor Contact us /contact-us Anchor ES | Espa\u00f1ol /es Anchor \u4e2d\u6587 | Chinese https://www.bhp-china.cn/ Anchor ES | Espa\u00f1ol /es Anchor \u4e2d\u6587 | Chinese https://www.bhp-china.cn/ Anchor About /about Anchor What we do /what-we-do Anchor Investor Hub /investor-hub Anchor Sustainability /sustainability Anchor Careers /careers Anchor News & Publications /news Anchor Suppliers",
+    "direct_company_relevance": "context_only",
+    "event_type": "context_only",
+    "key_facts": [],
+    "novelty": "pending_codex_interpretation",
+    "materiality": "context_only",
+    "reason": "Generic or unmatched source page; use only as context.",
+    "confidence": "low",
+    "evidence_gap": "",
+    "limitations": [
+      "no_company_entity_match"
+    ],
+    "as_of_validity": {
+      "valid_for_trade_date": true,
+      "reason": "source_date is on or before trade_date"
+    },
+    "materiality_readiness": "limited_or_not_ready_for_codex_interpretation",
+    "duplicate_count": 1
+  }
+]

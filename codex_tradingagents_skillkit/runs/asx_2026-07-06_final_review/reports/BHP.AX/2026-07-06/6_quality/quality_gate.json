@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "ticker": "BHP.AX",
+  "trade_date": "2026-07-06",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "review_ready_with_major_warnings",
+  "workflow_status": "workflow_complete",
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass_with_warnings",
+  "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure",
+    "reserves_resources"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex"
+  ],
+  "core_metrics_materially_satisfied": [
+    "commodity_exposure"
+  ],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [
+    "reserves_resources"
+  ],
+  "core_metric_coverage_passed": true,
+  "materiality_status": "review_ready_with_major_warnings",
+  "critical_metrics_required": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure"
+  ],
+  "critical_metrics_clean": [
+    "production",
+    "realised_price",
+    "unit_cost_aisc",
+    "capex",
+    "commodity_exposure"
+  ],
+  "critical_metrics_unresolved": [],
+  "important_metrics_clean": [],
+  "important_metrics_unresolved": [
+    "reserves_resources"
+  ],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [
+    "commodity_exposure is supported by portfolio_mix_narrative evidence",
+    "reserves_resources not cleanly extracted"
+  ],
+  "remediation_required_reasons": [],
+  "review_ready": true,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Codex-session workflow and quality validators passed; see closed_loop_status.json for run-level workflow status."
+}

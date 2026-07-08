@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "ticker": "CSL.AX",
+  "trade_date": "2026-07-06",
+  "issues": [],
+  "validator": "validate_quality_review.py",
+  "status": "review_ready_with_major_warnings",
+  "workflow_status": "workflow_complete",
+  "quality_gate_passed": true,
+  "evidence_reasoning_audit_status": "pass",
+  "evidence_reasoning_critical_findings": [],
+  "core_metric_coverage_status": "passed",
+  "core_metrics_required": [
+    "segment_revenue",
+    "margins",
+    "r_and_d",
+    "plasma_collections",
+    "debt",
+    "guidance"
+  ],
+  "core_metrics_cleanly_extracted": [
+    "segment_revenue",
+    "margins",
+    "r_and_d",
+    "debt"
+  ],
+  "core_metrics_materially_satisfied": [
+    "plasma_collections",
+    "guidance"
+  ],
+  "core_metrics_unavailable_with_reason": [],
+  "core_metrics_unresolved": [],
+  "core_metric_coverage_passed": true,
+  "materiality_status": "review_ready_with_major_warnings",
+  "critical_metrics_required": [
+    "segment_revenue_or_growth",
+    "margins",
+    "guidance",
+    "debt_or_balance_sheet",
+    "plasma_collections_or_collection_network"
+  ],
+  "critical_metrics_clean": [
+    "segment_revenue_or_growth",
+    "margins",
+    "guidance",
+    "debt_or_balance_sheet",
+    "plasma_collections_or_collection_network"
+  ],
+  "critical_metrics_unresolved": [],
+  "important_metrics_clean": [
+    "r_and_d"
+  ],
+  "important_metrics_unresolved": [
+    "product_segment_commentary",
+    "pipeline_commentary"
+  ],
+  "supporting_metrics_clean": [],
+  "supporting_metrics_unresolved": [],
+  "warnings": [],
+  "major_warnings": [
+    "margins is supported by profitability_metric evidence",
+    "guidance is supported by guidance_narrative evidence",
+    "plasma_collections_or_collection_network is supported by plasma_network_narrative evidence",
+    "product_segment_commentary not cleanly extracted",
+    "pipeline_commentary not cleanly extracted"
+  ],
+  "remediation_required_reasons": [],
+  "review_ready": true,
+  "closed_loop_status_path": "codex_tradingagents_skillkit\\runs\\asx_2026-07-06_final_review\\closed_loop_status.json",
+  "closed_loop_status_artifact": "closed_loop_status.json",
+  "notes": "Codex-session workflow and quality validators passed; see closed_loop_status.json for run-level workflow status."
+}
